@@ -1,0 +1,35 @@
+<module>
+	<adapter name="HelloWorld" active="${HelloWorld.active}">
+		<receiver
+			name="HelloWorld"
+			className="nl.nn.adapterframework.receivers.GenericReceiver"
+			>
+			<listener
+				name="HelloWorld"
+				className="nl.nn.adapterframework.receivers.JavaListener"
+			/>
+		</receiver>
+		<pipeline firstPipe="HelloWorld">
+			<exits>
+				<exit path="EXIT" state="success"/>
+			</exits>
+			<pipe
+				name="HelloWorld"
+				className="nl.nn.adapterframework.pipes.FixedResult"
+				returnString="Hello World"
+				>
+				<forward name="success" path="EXIT"/>
+			</pipe>
+		</pipeline>
+	</adapter>
+	<scheduler>
+		<job
+			name="HelloWorld"
+			adapterName="HelloWorld"
+			receiverName="HelloWorld"
+			interval="0"
+			function="sendMessage"
+			active="${HelloWorld.active}"
+		/>
+	</scheduler>
+</module>
