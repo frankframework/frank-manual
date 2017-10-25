@@ -61,7 +61,7 @@ In some cases you might want/need to:
 IntelliJ
 ========
 
-- Clone this any way you like. E.g. at the commandline: git clone git@github.com:ibissource/ibis4example.git
+- Clone this any way you like. E.g. at the commandline: ```git clone git@github.com:ibissource/ibis4example.git```
 - File -> Open project, and select the pom.xml which just appeared.
 - To use git via intellij you need to install the git and/or github plugin.
 - You can add a tomcat configuration via Run-> Edit Configuration -> + -> Tomcat Server -> Local -> Add example webapp under deployments tab.
