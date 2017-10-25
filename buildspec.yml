@@ -1,0 +1,10 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - mvn
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: target/ibis4example-*
