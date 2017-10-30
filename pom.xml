@@ -14,6 +14,8 @@
 		<ibissource.maven.repository.https>https://github.com/ibissource/mvn-repo/raw/master</ibissource.maven.repository.https>
 		<ibissource.maven.repository.file>file:../mvn-repo</ibissource.maven.repository.file>
 		<iaf.version>7.0-B4-SNAPSHOT</iaf.version>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 	</properties>
 
 	<repositories>
@@ -64,6 +66,7 @@
 	</dependencies>
 
 	<build>
+		<defaultGoal>package</defaultGoal>
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
@@ -74,11 +77,14 @@
 					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
 					<archive>
 						<manifestEntries>
+							<Ibis-Project>${pom.name}</Ibis-Project>
+							<Ibis-Description>${pom.description}</Ibis-Description>
 							<Created-By>Apache Maven ${maven.version}</Created-By>
-							<Ibis-Project>${instance.name}</Ibis-Project>
-							<Creation-Time>${my.build.timestamp}</Creation-Time>
+							<Creation-Time>${timestamp}</Creation-Time>
+							<Build-Version>${project.version}</Build-Version>
+							<Build-Artifact>${project.artifactId}</Build-Artifact>
 						</manifestEntries>
-						<addMavenDescriptor>false</addMavenDescriptor>
+						<addMavenDescriptor>true</addMavenDescriptor>
 					</archive>
 					<webResources>
 						<resource>
@@ -86,6 +92,14 @@
 							<targetPath>WEB-INF/classes</targetPath>
 						</resource>
 					</webResources>
+					<executions>
+						<execution>
+						<phase>package</phase>
+							<goals>
+								<goal>manifest</goal>
+							</goals>
+						</execution>
+					</executions>
 				</configuration>
 			</plugin>
 			<plugin>
