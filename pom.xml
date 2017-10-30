@@ -79,12 +79,13 @@
 						<manifestEntries>
 							<Ibis-Project>${pom.name}</Ibis-Project>
 							<Ibis-Description>${pom.description}</Ibis-Description>
+							<IAF-Version>${iaf.version}</IAF-Version>
 							<Created-By>Apache Maven ${maven.version}</Created-By>
 							<Creation-Time>${timestamp}</Creation-Time>
 							<Build-Version>${project.version}</Build-Version>
 							<Build-Artifact>${project.artifactId}</Build-Artifact>
 						</manifestEntries>
-						<addMavenDescriptor>true</addMavenDescriptor>
+						<addMavenDescriptor>false</addMavenDescriptor>
 					</archive>
 					<webResources>
 						<resource>
