@@ -21,22 +21,22 @@ Eclipse
 + Newline settings  
   Make sure that the default text file line delimiter is set to Unix and default encoding is set to UTF-8:  
   Window, Preferences, General, Workspace, New text file line delimiter: Unix, Text file encoding: UTF-8.
-- Maven  
++ Maven  
   Make sure Maven is able to access the internet. E.g. when behind a proxy:  
   Window, Preferences, Maven, User Settings, settings.xml should exist and contain proxy configuration.
-- Git  
++ Git  
   Window, Open Perspective, Other..., Git, OK,  
   Clone a Git repository, URI: https://github.com/ibissource/ibis4example.git, Next, Next, Finish.
-- Install Server  
++ Install Server  
   If no servers are available. Click this link to create a new server...,  
   Apache, Tomcat v7.0 Server or higher, Next, Browse..., select the root folder of a Tomcat installation  
   (when not available download  [Tomcat](http://tomcat.apache.org/)  
   (version 7.0.22 is known to work, but other version are expected to work too)), OK, Finish.
-- Configure Server  
++ Configure Server  
   Double click Tomcat v7.0 Server at localhost, Open launch configuration, Arguments, VM arguments, add ```-Dotap.stage=LOC```, OK  
   Next click Modules tab, Add Web Module..., iaf-example, OK, File, Save  
   Right click Tomcat v7.0 Server at localhost, Start.
-- Start ibis4example on your local machine  
++ Start ibis4example on your local machine  
   Open a webbrowser and goto [http://localhost:8080/ibis4example/](http://localhost:8080/ibis4example/) to check if ibis4example is running
 
 ### Trouble shooting
