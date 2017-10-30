@@ -64,6 +64,7 @@
 	</dependencies>
 
 	<build>
+		<defaultGoal>package</defaultGoal>
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
