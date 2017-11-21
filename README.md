@@ -52,6 +52,7 @@ In some cases you might want/need to:
   will result in java.lang.NoClassDefFoundError:
   org/aspectj/lang/ProceedingJoinPoint when starting Tomcat. Remove the jar file
   from the repository to make Maven download the file again.
+- Sometimes the m2e tool crashes during the download resulting in corrupted overlays. You can resolve this by cleaning the target/m2e-wtp/overlays directory.
 
 *****
 
