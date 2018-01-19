@@ -13,7 +13,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<ibissource.maven.repository.https>https://github.com/ibissource/mvn-repo/raw/master</ibissource.maven.repository.https>
 		<ibissource.maven.repository.file>file:../mvn-repo</ibissource.maven.repository.file>
-		<iaf.version>7.0-B4-SNAPSHOT</iaf.version>
+		<iaf.version>7.0-RC2</iaf.version>
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 	</properties>
