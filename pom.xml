@@ -13,7 +13,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<ibissource.maven.repository.https>https://raw.githubusercontent.com/ibissource/mvn-repo/master</ibissource.maven.repository.https>
 		<ibissource.maven.repository.file>file:../mvn-repo</ibissource.maven.repository.file>
-		<iaf.version>7.0-RC3-SNAPSHOT</iaf.version>
+		<iaf.version>7.1-B1</iaf.version>
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 	</properties>
@@ -71,48 +71,19 @@
 		<defaultGoal>package</defaultGoal>
 		<plugins>
 			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.0.0</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
 				<configuration>
-					<packagingExcludes>.gitignore</packagingExcludes>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-					<archive>
-						<manifestEntries>
-							<Ibis-Project>${pom.name}</Ibis-Project>
-							<Ibis-Description>${pom.description}</Ibis-Description>
-							<IAF-Version>${iaf.version}</IAF-Version>
-							<Created-By>Apache Maven ${maven.version}</Created-By>
-							<Creation-Time>${timestamp}</Creation-Time>
-							<Build-Version>${project.version}</Build-Version>
-							<Build-Artifact>${project.artifactId}</Build-Artifact>
-						</manifestEntries>
-						<addMavenDescriptor>false</addMavenDescriptor>
-					</archive>
-					<webResources>
-						<resource>
-							<directory>${project.build.sourceDirectory}</directory>
-							<targetPath>WEB-INF/classes</targetPath>
-						</resource>
-					</webResources>
-					<executions>
-						<execution>
-						<phase>package</phase>
-							<goals>
-								<goal>manifest</goal>
-							</goals>
-						</execution>
-					</executions>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
+				<groupId>org.ibissource</groupId>
+				<artifactId>ibis-war-plugin</artifactId>
+				<version>0.2</version>
+				<extensions>true</extensions>
 			</plugin>
 		</plugins>
 	</build>
