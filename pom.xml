@@ -84,6 +84,9 @@
 				<artifactId>ibis-war-plugin</artifactId>
 				<version>0.2</version>
 				<extensions>true</extensions>
+				<configuration>
+					<enableSecurityConstraints>false</enableSecurityConstraints>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
