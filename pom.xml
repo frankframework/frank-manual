@@ -2,11 +2,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.ibissource</groupId>
-	<artifactId>ibis4example</artifactId>
+	<artifactId>ibis4template</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Ibis4Example</name>
-	<description>test project</description>
+	<name>Ibis4Template</name>
+	<description>ibis template for new projects</description>
 	<url>ibis4example.ibissource.org</url>
 
 	<properties>

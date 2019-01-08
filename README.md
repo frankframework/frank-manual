@@ -2,7 +2,7 @@
 
 
 ## Purpose
-The ibis4example project is meant as a starterkit for creating a new ibis applications. 
+The ibis4template project is meant as a starterkit for creating a new ibis applications. 
 ## What is ibis
 An ibis is an application is an implementation of the IAF (Ibis Adapter Framework) and can be used to build backend applications or integration component wich will run on any java machine
 *******
@@ -61,10 +61,8 @@ Command-line interface
 
 Initial:
 
-- git clone https://github.com/ibissource/ibis4example
-- cd ibis4example
-- mvn
-- cd example
+- git clone https://github.com/ibissource/ibis4template
+- mvn package
 - mvn jetty:run
 - [http://localhost:8080/](http://localhost:8080/)
 
