@@ -1,0 +1,12 @@
+<edudexDirectory xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://studieData.nl/schema/edudex/directory">
+<editor>editor@edudex.nl</editor>
+<generator>EDU-DEX system</generator>
+<version>v0.90429</version>
+<orgUnitId>edudex</orgUnitId>
+<subDirectory>
+<orgUnitId>zuidema</orgUnitId>
+<directoryUrl>
+https://feeds.edudex.nl/institutes/prodis/feed/?key=2ec767ad9ada6f6c4a4f541e0e98d102&amp;org=zuidema
+</directoryUrl>
+</subDirectory>
+</edudexDirectory>

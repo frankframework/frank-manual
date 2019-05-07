@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module>
+	<adapter name="GorillaIT"
+		description="Extracts a list of educational institutions">
+		<receiver
+			className="nl.nn.adapterframework.receivers.GenericReceiver"
+			name="GorrillaIT">
+			<listener
+				className="nl.nn.adapterframework.receivers.JavaListener"
+				name="GorillaIT_Listener" />
+		</receiver>
+		<pipeline firstPipe="getEdudexInfo">
+			<exits>
+				<exit path="EXIT" state="success" code="200" />
+				<exit path="ServerError" state="failure" code="500" />
+			</exits>
+
+			<pipe name="getEdudexInfo" active="${stubEdudex.active}"
+				className="nl.nn.adapterframework.pipes.FixedResult"
+				fileName="Gorilla/input.xml">
+				<forward name="failure" path="ServerError" />
+				<forward name="succes" path="GetInfoFromSomewhere" />
+			</pipe>
+			<pipe name="getEdudexInfo" active="!${stubEdudex.active}"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
+				<sender className="nl.nn.adapterframework.http.HttpSender"
+					verifyHostname="false"
+					allowSelfSignedCertificates ="true"
+					url="https://feeds.edudex.nl/institutes/prodis/feed/?key=2ec767ad9ada6f6c4a4f541e0e98d102">
+				</sender>
+				<forward name="failure" path="ServerError" />
+				<forward name="success" path="processDirectoryUrl" />
+			</pipe>
+
+			<pipe name="processDirectoryUrl"
+				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
+				elementXPathExpression="edudexDirectory/subDirectory">
+				<sender
+					className="nl.nn.adapterframework.senders.IbisLocalSender"
+					javaListener="ProcessDirectoryUrl">
+					<param name="directoryUrl"
+						xpathExpression="subDirectory/directoryUrl" />
+					<param name="orgUnitId"
+						xpathExpression="subDirectory/orgUnitId" />
+				</sender>
+				<forward name="success" path="EXIT" />
+			</pipe>
+		</pipeline>
+	</adapter>
+
+	<adapter name="ProcessDirectoryUrl"
+		description="Gets a list of educational programs">
+
+		<receiver name="ProcessDirectoryUrl"
+			className="nl.nn.adapterframework.receivers.GenericReceiver">
+			<listener name="ProcessDirectoryUrl"
+				className="nl.nn.adapterframework.receivers.JavaListener" />
+		</receiver>
+
+		<pipeline firstPipe="getProgramResourceInfo">
+
+			<exits>
+				<exit path="EXIT" state="success" />
+				<exit path="ServerError" state="failure" code="500" />
+			</exits>
+
+			<pipe name="getProgramResourceInfo"
+				active="${stubEdudex.active}"
+				className="nl.nn.adapterframework.pipes.FixedResult"
+				fileName="Gorilla/input2.xml">
+				<forward name="failure" path="ServerError" />
+				<forward name="succes" path="getResourceInfo" />
+			</pipe>
+			<pipe name="getProgramResourceInfo"
+				active="!${stubEdudex.active}"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
+				<sender className="nl.nn.adapterframework.http.HttpSender"
+					verifyHostname="false"
+					allowSelfSignedCertificates ="true"
+					><!-- Juiste manier om een variabele url op te geven?? -->
+				<param name="url" sessionKey="directoryUrl"/>
+				</sender>
+				<forward name="failure" path="ServerError" />
+				<forward name="success" path="getResourceInfo" />
+			</pipe>
+			
+			<pipe name="getResourceInfo"
+				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
+				elementXPathExpression="edudexDirectory/programResource">
+				<sender
+					className="nl.nn.adapterframework.senders.IbisLocalSender"
+					javaListener="GetProgram">
+					<param name="orgUnitId" sessionKey="orgUnitId" />
+				</sender>
+				<forward name="success" path="EXIT" />
+			</pipe>
+		</pipeline>
+	</adapter>
+
+	<adapter name="GetProgram"
+		description="This adapter will Fetch one program and inserts the data into the db">
+
+		<receiver name="GetProgram"
+			className="nl.nn.adapterframework.receivers.GenericReceiver">
+			<listener name="GetProgram"
+				className="nl.nn.adapterframework.receivers.JavaListener" />
+		</receiver>
+
+		<pipeline firstPipe="put param in session">
+
+			<exits>
+				<exit path="EXIT" state="success" />
+				<exit path="ServerError" state="failure" code="500" />
+			</exits>
+
+			<pipe name="put param in session"  className="nl.nn.adapterframework.pipes.PutParametersInSession">
+			<param name="programId" xpathExpression="programResource/programId"/>
+			<param name="programUrl" xpathExpression="programResource/resourceUrl"/>
+			<forward name="success" path="getProgramResourceInfo"/>
+			</pipe>
+			
+			<pipe name="getProgramResourceInfo"
+					active="${stubEdudex.active}"
+					className="nl.nn.adapterframework.pipes.FixedResult"
+					fileName="Gorilla/input3.xml">
+					<forward name="failure" path="ServerError" />
+					<forward name="succes" path="InsertIntoPrograms" />
+				</pipe>
+				<pipe name="getProgramResourceInfo"
+					active="!${stubEdudex.active}"
+					className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
+					<sender className="nl.nn.adapterframework.http.HttpSender"
+						verifyHostname="false"
+						allowSelfSignedCertificates ="true"
+						>
+						<param name="url" sessionKey="programUrl"/>
+				</sender>
+				<forward name="failure" path="ServerError" />
+				<forward name="success" path="InsertIntoPrograms" />
+			</pipe>
+			
+			<pipe name="InsertIntoPrograms"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
+				<sender
+					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="INSERT INTO Programs (orgunitid, programid) 
+				VALUES (?,?)">
+					<param name="orgUnitId"	sessionKey="orgUnitId" />
+					<param name="programId"	sessionKey="programId" />
+				</sender>
+				<forward name="failure" path="ServerError" />
+				<forward name="success" path="EXIT" />
+			</pipe>
+
+		</pipeline>
+	</adapter>
+
+
+
+
+
+
+
+
+
+
+
+	<adapter name="GetProgramxx"
+		description="Fetches an xml with a formal description of an educational program">
+
+		<receiver name="GetProgramxx"
+			className="nl.nn.adapterframework.receivers.GenericReceiver">
+			<listener name="GetProgramxx"
+				className="nl.nn.adapterframework.receivers.JavaListener" />
+		</receiver>
+
+		<pipeline firstPipe="getProgramResourceInfo">
+
+			<exits>
+				<exit path="EXIT" state="success" />
+				<exit path="ServerError" state="failure" code="500" />
+			</exits>
+
+
+			<pipe name="getProgramResourceInfo"
+				active="${stubEdudex.active}"
+				className="nl.nn.adapterframework.pipes.FixedResult"
+				fileName="Gorilla/input3.xml">
+				<forward name="failure" path="ServerError" />
+				<forward name="succes" path="EXIT" />
+			</pipe>
+
+
+			<pipe name="getProgramResourceInfo"
+				active="!${stubEdudex.active}"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
+				<sender className="nl.nn.adapterframework.http.HttpSender"
+					verifyHostname="false"
+					url="https://feeds.edudex.nl/institutes/prodis/feed/?key=2ec767ad9ada6f6c4a4f541e0e98d102">
+					<param name="resourceUrl" sessionKey="resourceUrl" />
+				</sender>
+				<forward name="failure" path="ServerError" />
+				<forward name="success" path="EXIT" />
+			</pipe>
+
+			<pipe name="InsertIntoPrograms"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
+				<sender
+					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="INSERT INTO Programs (orgunitid, programid) 
+				VALUES (?,?)">
+					<param name="orgUnitId"	sessionKey="orgUnitId" />
+					<param name="programId"	sessionKey="programId" />
+				</sender>
+				<forward name="failure" path="ServerError" />
+				<forward name="success" path="EXIT" />
+			</pipe>
+		</pipeline>
+	</adapter>
+</module>
+
+
+
+
+
+
+
+
+
