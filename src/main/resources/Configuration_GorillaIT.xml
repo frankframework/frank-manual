@@ -119,12 +119,14 @@
 			<pipe name="getProgramResourceInfo"
 					active="${stubEdudex.active}"
 					className="nl.nn.adapterframework.pipes.FixedResult"
+					storeResultInSessionKey="ResourceInfo"
 					fileName="Gorilla/input3.xml">
 					<forward name="failure" path="ServerError" />
 					<forward name="succes" path="InsertIntoPrograms" />
 				</pipe>
 				<pipe name="getProgramResourceInfo"
 					active="!${stubEdudex.active}"
+					storeResultInSessionKey="ResourceInfo"
 					className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 					<sender className="nl.nn.adapterframework.http.HttpSender"
 						verifyHostname="false"
@@ -146,9 +148,29 @@
 					<param name="programId"	sessionKey="programId" />
 				</sender>
 				<forward name="failure" path="ServerError" />
+				<forward name="success" path="storeContactdata" />
+			</pipe>
+			
+			<pipe name="storeContactdata"
+				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
+				getInputFromSessionKey="ResourceInfo"
+				elementXPathExpression="program/programContacts/contactData">
+				<sender
+					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="INSERT INTO programcontacts (orgunitid, programid, contactname, email, role, telephone) 
+					VALUES (?,?,?,?,?,?)"
+					>
+					<param name="programId"	sessionKey="programId" />
+					<param name="orgUnitId" sessionKey="orgUnitId" />
+					<param name="contactname" xpathExpression="contactData/contactName" />
+					<param name="email" xpathExpression="contactData/email" />
+					<param name="role" xpathExpression="contactData/role" />
+					<param name="telephone" xpathExpression="contactData/telephone" />
+				</sender>
 				<forward name="success" path="EXIT" />
 			</pipe>
+			
 		</pipeline>
-
 	</adapter>
 </module>
