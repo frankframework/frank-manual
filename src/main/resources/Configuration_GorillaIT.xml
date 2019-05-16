@@ -32,6 +32,7 @@
 				<sender className="nl.nn.adapterframework.http.HttpSender"
 					verifyHostname="false"
 					allowSelfSignedCertificates ="true"
+					throwException="false"
 					url="https://feeds.edudex.nl/institutes/prodis/feed/?key=2ec767ad9ada6f6c4a4f541e0e98d102">
 				</sender>
 				<forward name="failure" path="ServerError" />
@@ -134,6 +135,7 @@
 					<sender className="nl.nn.adapterframework.http.HttpSender"
 						verifyHostname="false"
 						allowSelfSignedCertificates ="true"
+						throwException="false"
 						>
 						<param name="url" sessionKey="programUrl"/>
 				</sender>
@@ -168,14 +170,14 @@
 					query="INSERT INTO programcontacts (orgunitid, programid, contactname, email, role, telephone) 
 					VALUES (?,?,?,?,?,?)"
 					>
-					<param name="programId"	sessionKey="programId"  />
-					<param name="orgUnitId" sessionKey="orgUnitId" />
-					<param name="contactname" xpathExpression="contactData/contactName" />
+					<param name="programId"	sessionKey="programId" defaultValue="null" />
+					<param name="orgUnitId" sessionKey="orgUnitId" defaultValue="null"/>
+					<param name="contactname" xpathExpression="contactData/contactName" defaultValue="null" />
 					<param name="email" xpathExpression="contactData/email" defaultValue="null"/>
 					<param name="role" xpathExpression="contactData/role" defaultValue="null"/>
 					<param name="telephone" xpathExpression="contactData/telephone" defaultValue="null"/>
 				</sender>
-				<forward name="success" path="storeProgramRun" />
+				<forward name="success" path="EXIT" />
 			</pipe>
 			
 			<pipe name="storeProgramRun"
@@ -188,10 +190,8 @@
 					/>
 				<forward name="success" path="EXIT" />
 			</pipe>
-			
 		</pipeline>
 	</adapter>
-	
 	
 	<adapter name="StoreProgramRun"
 		description="Stores the ProgramRun element into the Db">
@@ -233,7 +233,7 @@
 					query="INSERT INTO programrun_module (programid, name, startdate, enddate, locationaddress, locationzipcode, locationcity ) 
 					VALUES (?,?,?,?,?,?,?)"
 					>
-					<param name="programid" sessionKey="originalMessage" xpathExpression="programRun/id" />
+					<param name="programid" sessionKey="originalMessage" xpathExpression="programRun/id" defaultValue="null"/>
 					<param name="name" xpathExpression="module/name" defaultValue="null"/>
 					<param name="startdate" xpathExpression="module/startDate" defaultValue="null"/>
 					<param name="enddate" xpathExpression="module/endDate" defaultValue="null"/>
@@ -254,7 +254,7 @@
 					query="INSERT INTO programrun_cost (programid, amount ,amountvat ,amountisfinal ) 
 					VALUES (?,?,?,?)"
 					>
-					<param name="programid" sessionKey="originalMessage" xpathExpression="programRun/id" defaultValue="null" />
+					<param name="programid" sessionKey="originalMessage" xpathExpression="programRun/id" defaultValue="null"/>
 					<param name="amount" xpathExpression="cost/amount" defaultValue="null"/>
 					<param name="amountvat" xpathExpression="cost/amountVAT" defaultValue="null"/>
 					<param name="amountisfinal" xpathExpression="cost/amountIsFinal" defaultValue="null"/>
@@ -264,7 +264,7 @@
 		</pipeline>
 	</adapter>	
 	
-			<adapter name="Cleanup"
+		<adapter name="Cleanup"
 		description="Empties the database">
 		<receiver name="Cleanup"
 			className="nl.nn.adapterframework.receivers.GenericReceiver">
