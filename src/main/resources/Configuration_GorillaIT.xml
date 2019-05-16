@@ -48,6 +48,7 @@
 					<param name="orgUnitId"
 						xpathExpression="subDirectory/orgUnitId" />
 				</sender>
+				<forward name="exception" path="EXIT"/>
 				<forward name="success" path="EXIT" />
 			</pipe>
 		</pipeline>
@@ -77,11 +78,12 @@
 				active="!${stubEdudex.active}"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender className="nl.nn.adapterframework.http.HttpSender"
-					verifyHostname="false"
-					allowSelfSignedCertificates ="true"
+						verifyHostname="false"
+						allowSelfSignedCertificates ="true"
 					>
 				<param name="url" sessionKey="directoryUrl"/>
 				</sender>
+				<forward name="exception" path="EXIT"/>
 				<forward name="failure" path="ServerError" />
 				<forward name="success" path="getResourceInfo" />
 			</pipe>
@@ -121,6 +123,7 @@
 					className="nl.nn.adapterframework.pipes.FixedResult"
 					storeResultInSessionKey="ResourceInfo"
 					fileName="Gorilla/input3.xml">
+					<forward name="exception" path="EXIT"/>
 					<forward name="failure" path="ServerError" />
 					<forward name="succes" path="InsertIntoPrograms" />
 				</pipe>
@@ -134,8 +137,11 @@
 						>
 						<param name="url" sessionKey="programUrl"/>
 				</sender>
+				<forward name="exception" path="EXIT"/>
 				<forward name="failure" path="ServerError" />
-				<forward name="success" path="InsertIntoPrograms" />
+				
+				<!-- Change this when doing real inserts... -->
+				<forward name="success" path="EXIT" />
 			</pipe>
 			<pipe name="InsertIntoPrograms"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
@@ -147,6 +153,7 @@
 					<param name="orgUnitId"	sessionKey="orgUnitId" />
 					<param name="programId"	sessionKey="programId" />
 				</sender>
+				<forward name="exception" path="EXIT"/>
 				<forward name="failure" path="ServerError" />
 				<forward name="success" path="storeContactdata" />
 			</pipe>
@@ -161,12 +168,12 @@
 					query="INSERT INTO programcontacts (orgunitid, programid, contactname, email, role, telephone) 
 					VALUES (?,?,?,?,?,?)"
 					>
-					<param name="programId"	sessionKey="programId" />
+					<param name="programId"	sessionKey="programId"  />
 					<param name="orgUnitId" sessionKey="orgUnitId" />
 					<param name="contactname" xpathExpression="contactData/contactName" />
-					<param name="email" xpathExpression="contactData/email" />
-					<param name="role" xpathExpression="contactData/role" />
-					<param name="telephone" xpathExpression="contactData/telephone" />
+					<param name="email" xpathExpression="contactData/email" defaultValue="null"/>
+					<param name="role" xpathExpression="contactData/role" defaultValue="null"/>
+					<param name="telephone" xpathExpression="contactData/telephone" defaultValue="null"/>
 				</sender>
 				<forward name="success" path="storeProgramRun" />
 			</pipe>
@@ -208,10 +215,10 @@
 					query="INSERT INTO programrun (programid, status,startdate, enddate ) 
 					VALUES (?,?,?,?)"
 					>
-					<param name="programid" xpathExpression="programRun/id" />
-					<param name="status" xpathExpression="programRun/status" />
-					<param name="startdate" xpathExpression="programRun/startDate" />
-					<param name="enddate" xpathExpression="programRun/endDate" />
+					<param name="programid" xpathExpression="programRun/id" defaultValue="null"/>
+					<param name="status" xpathExpression="programRun/status" defaultValue="null"/>
+					<param name="startdate" xpathExpression="programRun/startDate" defaultValue="null"/>
+					<param name="enddate" xpathExpression="programRun/endDate" defaultValue="null"/>
 				</sender>
 				<forward name="success" path="storeProgramRunData_Modules" />
 			</pipe>
@@ -227,12 +234,12 @@
 					VALUES (?,?,?,?,?,?,?)"
 					>
 					<param name="programid" sessionKey="originalMessage" xpathExpression="programRun/id" />
-					<param name="name" xpathExpression="module/name" />
-					<param name="startdate" xpathExpression="module/startDate" />
-					<param name="enddate" xpathExpression="module/endDate" />
-					<param name="locationaddress," xpathExpression="module/location/address" />
-					<param name="locationzipcode," xpathExpression="module/location/zipcode" />
-					<param name="locationcity" xpathExpression="module/location/city" />
+					<param name="name" xpathExpression="module/name" defaultValue="null"/>
+					<param name="startdate" xpathExpression="module/startDate" defaultValue="null"/>
+					<param name="enddate" xpathExpression="module/endDate" defaultValue="null"/>
+					<param name="locationaddress," xpathExpression="module/location/address" defaultValue="null"/>
+					<param name="locationzipcode," xpathExpression="module/location/zipcode" defaultValue="null"/>
+					<param name="locationcity" xpathExpression="module/location/city" defaultValue="null"/>
 				</sender>
 				<forward name="success" path="storeProgramRunData_Cost" />
 			</pipe>
@@ -247,10 +254,85 @@
 					query="INSERT INTO programrun_cost (programid, amount ,amountvat ,amountisfinal ) 
 					VALUES (?,?,?,?)"
 					>
-					<param name="programid" sessionKey="originalMessage" xpathExpression="programRun/id" />
-					<param name="amount" xpathExpression="cost/amount" />
-					<param name="amountvat" xpathExpression="cost/amountVAT" />
-					<param name="amountisfinal" xpathExpression="cost/amountIsFinal" />
+					<param name="programid" sessionKey="originalMessage" xpathExpression="programRun/id" defaultValue="null" />
+					<param name="amount" xpathExpression="cost/amount" defaultValue="null"/>
+					<param name="amountvat" xpathExpression="cost/amountVAT" defaultValue="null"/>
+					<param name="amountisfinal" xpathExpression="cost/amountIsFinal" defaultValue="null"/>
+				</sender>
+				<forward name="success" path="EXIT" />
+			</pipe>
+		</pipeline>
+	</adapter>	
+	
+			<adapter name="Cleanup"
+		description="Empties the database">
+		<receiver name="Cleanup"
+			className="nl.nn.adapterframework.receivers.GenericReceiver">
+			<listener name="Cleanup"
+				className="nl.nn.adapterframework.receivers.JavaListener" />
+		</receiver>
+
+		<pipeline firstPipe="emptyPrograms">
+			<exits>
+				<exit path="EXIT" state="success" />
+				<exit path="ServerError" state="failure" code="500" />
+			</exits>
+			<pipe name="emptyPrograms"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+				>
+				<sender
+					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="DELETE FROM PROGRAMS"
+					>
+				</sender>
+				<forward name="success" path="emptyProgramcontacts" />
+			</pipe>
+			
+				<pipe name="emptyProgramcontacts"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+				>
+				<sender
+					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="DELETE FROM PROGRAMCONTACTS"
+					>
+				</sender>
+				<forward name="success" path="emptyProgramRun" />
+			</pipe>
+			
+							<pipe name="emptyProgramRun"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+				>
+				<sender
+					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="DELETE FROM PROGRAMRUN"
+					>
+				</sender>
+				<forward name="success" path="emptyProgramrun_module" />
+			</pipe>
+			
+			<pipe name="emptyProgramrun_module"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+				>
+				<sender
+					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="DELETE FROM PROGRAMRUN_MODULE"
+					>
+				</sender>
+				<forward name="success" path="emptyProgramrun_cost" />
+			</pipe>
+			
+			<pipe name="emptyProgramrun_cost"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+				>
+				<sender
+					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="DELETE FROM PROGRAMRUN_COST"
+					>
 				</sender>
 				<forward name="success" path="EXIT" />
 			</pipe>
