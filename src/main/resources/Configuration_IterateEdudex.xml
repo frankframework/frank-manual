@@ -40,7 +40,7 @@
 			</pipe>
 			<pipe name="processDirectoryUrl"
 				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
-				elementXPathExpression="edudexDirectory/subDirectory[position()&gt;1 and position()&lt;6]"
+				elementXPathExpression="edudexDirectory/subDirectory[position()=2]"
 				>
 				<sender
 					className="nl.nn.adapterframework.senders.IbisLocalSender"
@@ -103,7 +103,7 @@
 	</adapter>
 
 	<adapter name="GetProgram"
-		description="This adapter will Fetch one program and inserts the data into the db">
+		description="This adapter will Fetch one program">
 		<receiver name="GetProgram"
 			className="nl.nn.adapterframework.receivers.GenericReceiver">
 			<listener name="GetProgram"
@@ -144,7 +144,7 @@
 				<forward name="failure" path="ServerError" />
 				
 				<!-- Change this when doing real inserts... -->
-				<forward name="success" path="EXIT" />
+				<forward name="success" path="storeContactData" />
 			</pipe>
 			<pipe name="InsertIntoPrograms"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
@@ -161,23 +161,17 @@
 				<forward name="success" path="storeContactdata" />
 			</pipe>
 			
-			<pipe name="storeContactdata"
+			<pipe name="storeContactData"
 				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
 				getInputFromSessionKey="ResourceInfo"
 				elementXPathExpression="program/programContacts/contactData">
 				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="INSERT INTO programcontacts (orgunitid, programid, contactname, email, role, telephone) 
-					VALUES (?,?,?,?,?,?)"
+					className="nl.nn.adapterframework.senders.IbisLocalSender"
+					javaListener="StoreContactData"
 					>
 					<param name="programId"	sessionKey="programId" defaultValue="null" />
 					<param name="orgUnitId" sessionKey="orgUnitId" defaultValue="null"/>
-					<param name="contactname" xpathExpression="contactData/contactName" defaultValue="null" />
-					<param name="email" xpathExpression="contactData/email" defaultValue="null"/>
-					<param name="role" xpathExpression="contactData/role" defaultValue="null"/>
-					<param name="telephone" xpathExpression="contactData/telephone" defaultValue="null"/>
-				</sender>
+					</sender>
 				<forward name="success" path="EXIT" />
 			</pipe>
 			
@@ -194,150 +188,6 @@
 		</pipeline>
 	</adapter>
 	
-	<adapter name="StoreProgramRun"
-		description="Stores the ProgramRun element into the Db">
-		<receiver name="StoreProgramRun"
-			className="nl.nn.adapterframework.receivers.GenericReceiver">
-			<listener name="StoreProgramRun"
-				className="nl.nn.adapterframework.receivers.JavaListener" />
-		</receiver>
-
-		<pipeline firstPipe="storeProgramRunData">
-			<exits>
-				<exit path="EXIT" state="success" />
-				<exit path="ServerError" state="failure" code="500" />
-			</exits>
-			<pipe name="storeProgramRunData"
-				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
-				elementXPathExpression="programRun">
-				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="INSERT INTO programrun (programid, status,startdate, enddate ) 
-					VALUES (?,?,?,?)"
-					>
-					<param name="programid" xpathExpression="programRun/id" defaultValue="null"/>
-					<param name="status" xpathExpression="programRun/status" defaultValue="null"/>
-					<param name="startdate" xpathExpression="programRun/startDate" defaultValue="null"/>
-					<param name="enddate" xpathExpression="programRun/endDate" defaultValue="null"/>
-				</sender>
-				<forward name="success" path="storeProgramRunData_Modules" />
-			</pipe>
-			
-			<pipe name="storeProgramRunData_Modules"
-				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
-				getInputFromSessionKey="originalMessage"
-				elementXPathExpression="programRun/module">
-				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="INSERT INTO programrun_module (programid, name, startdate, enddate, locationaddress, locationzipcode, locationcity ) 
-					VALUES (?,?,?,?,?,?,?)"
-					>
-					<param name="programid" sessionKey="originalMessage" xpathExpression="programRun/id" defaultValue="null"/>
-					<param name="name" xpathExpression="module/name" defaultValue="null"/>
-					<param name="startdate" xpathExpression="module/startDate" defaultValue="null"/>
-					<param name="enddate" xpathExpression="module/endDate" defaultValue="null"/>
-					<param name="locationaddress," xpathExpression="module/location/address" defaultValue="null"/>
-					<param name="locationzipcode," xpathExpression="module/location/zipcode" defaultValue="null"/>
-					<param name="locationcity" xpathExpression="module/location/city" defaultValue="null"/>
-				</sender>
-				<forward name="success" path="storeProgramRunData_Cost" />
-			</pipe>
-			
-			<pipe name="storeProgramRunData_Cost"
-				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
-				getInputFromSessionKey="originalMessage"
-				elementXPathExpression="programRun/cost">
-				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="INSERT INTO programrun_cost (programid, amount ,amountvat ,amountisfinal ) 
-					VALUES (?,?,?,?)"
-					>
-					<param name="programid" sessionKey="originalMessage" xpathExpression="programRun/id" defaultValue="null"/>
-					<param name="amount" xpathExpression="cost/amount" defaultValue="null"/>
-					<param name="amountvat" xpathExpression="cost/amountVAT" defaultValue="null"/>
-					<param name="amountisfinal" xpathExpression="cost/amountIsFinal" defaultValue="null"/>
-				</sender>
-				<forward name="success" path="EXIT" />
-			</pipe>
-		</pipeline>
-	</adapter>	
 	
-		<adapter name="Cleanup"
-		description="Empties the database">
-		<receiver name="Cleanup"
-			className="nl.nn.adapterframework.receivers.GenericReceiver">
-			<listener name="Cleanup"
-				className="nl.nn.adapterframework.receivers.JavaListener" />
-		</receiver>
-
-		<pipeline firstPipe="emptyPrograms">
-			<exits>
-				<exit path="EXIT" state="success" />
-				<exit path="ServerError" state="failure" code="500" />
-			</exits>
-			<pipe name="emptyPrograms"
-				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
-				>
-				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="DELETE FROM PROGRAMS"
-					>
-				</sender>
-				<forward name="success" path="emptyProgramcontacts" />
-			</pipe>
-			
-				<pipe name="emptyProgramcontacts"
-				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
-				>
-				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="DELETE FROM PROGRAMCONTACTS"
-					>
-				</sender>
-				<forward name="success" path="emptyProgramRun" />
-			</pipe>
-			
-							<pipe name="emptyProgramRun"
-				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
-				>
-				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="DELETE FROM PROGRAMRUN"
-					>
-				</sender>
-				<forward name="success" path="emptyProgramrun_module" />
-			</pipe>
-			
-			<pipe name="emptyProgramrun_module"
-				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
-				>
-				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="DELETE FROM PROGRAMRUN_MODULE"
-					>
-				</sender>
-				<forward name="success" path="emptyProgramrun_cost" />
-			</pipe>
-			
-			<pipe name="emptyProgramrun_cost"
-				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
-				>
-				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="DELETE FROM PROGRAMRUN_COST"
-					>
-				</sender>
-				<forward name="success" path="EXIT" />
-			</pipe>
-		</pipeline>
-	</adapter>	
 	
 </module>

@@ -1,13 +1,14 @@
 <!DOCTYPE configuration [
-	<!ENTITY HelloWorld SYSTEM "ConfigurationHelloWorld.xml">
-	<!ENTITY HelloWorlds SYSTEM "ConfigurationHelloWorlds.xml">
-	<!ENTITY GorillaIT SYSTEM "Configuration_GorillaIT.xml">
+
+
+	<!ENTITY IterateEdudex SYSTEM "Configuration_IterateEdudex.xml">
+	<!ENTITY SaveToDb SYSTEM "Configuration_SaveToDb.xml">
 ]>
 <configuration name="Ibis4Gorilla">
 	<jmsRealms>
 		<jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
-		<!-- jmsRealm realmName="qcf" queueConnectionFactoryName="jms/qcf"/ -->
 	</jmsRealms>
-	&GorillaIT;
+	&IterateEdudex;
+	&SaveToDb;
 </configuration>
 
