@@ -40,7 +40,7 @@
 			</pipe>
 			<pipe name="processDirectoryUrl"
 				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
-				elementXPathExpression="edudexDirectory/subDirectory[position()&gt;1 and position()&lt;6]"
+				elementXPathExpression="edudexDirectory/subDirectory[1] | edudexDirectory/subDirectory[2]"
 				>
 				<sender
 					className="nl.nn.adapterframework.senders.IbisLocalSender"

@@ -1,6 +1,4 @@
 <!DOCTYPE configuration [
-	<!ENTITY HelloWorld SYSTEM "ConfigurationHelloWorld.xml">
-	<!ENTITY HelloWorlds SYSTEM "ConfigurationHelloWorlds.xml">
 	<!ENTITY GorillaIT SYSTEM "Configuration_GorillaIT.xml">
 ]>
 <configuration name="Ibis4Gorilla">

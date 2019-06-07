@@ -1,0 +1,12 @@
+Database queries
+
+create table programs (orgunitid varchar(128), programid varchar(128))
+
+create table programcontacts (orgunitid varchar(128), programid varchar(128), contactname varchar(128),email varchar(128),
+role varchar(128),contactname varchar(128), telephone varchar(128))
+
+create table programrun (programid varchar(128), status varchar(128), startdate varchar(128), enddate varchar(128))
+
+create table programrun_module (programid varchar(128),name varchar(128), startdate varchar(128), enddate varchar(128), locationaddress varchar(128), locationzipcode varchar(128), locationcity varchar(128) )
+
+create table programrun_cost (programid varchar(128), amount varchar(128), amountvat varchar(128), amountisfinal varchar(128))	
