@@ -21,13 +21,8 @@
 				<forward name="failure" path="ServerError" />
 				<forward name="succes" path="getEdudexInfo" />
 			</pipe>
-			<pipe name="getEdudexInfo" active="${stubEdudex.active}"
-				className="nl.nn.adapterframework.pipes.FixedResult"
-				fileName="Gorilla/input.xml">
-				<forward name="failure" path="ServerError" />
-				<forward name="succes" path="GetInfoFromSomewhere" />
-			</pipe>
-			<pipe name="getEdudexInfo" active="!${stubEdudex.active}"
+
+			<pipe name="getEdudexInfo" 
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender className="nl.nn.adapterframework.http.HttpSender"
 					verifyHostname="false"
@@ -64,20 +59,13 @@
 				className="nl.nn.adapterframework.receivers.JavaListener" />
 		</receiver>
 
-		<pipeline firstPipe="getProgramResourceInfo">
+		<pipeline firstPipe="getProgramResourceInf">
 			<exits>
 				<exit path="EXIT" state="success" />
 				<exit path="ServerError" state="failure" code="500" />
 			</exits>
-			<pipe name="getProgramResourceInfo"
-				active="${stubEdudex.active}"
-				className="nl.nn.adapterframework.pipes.FixedResult"
-				fileName="Gorilla/input2.xml">
-				<forward name="failure" path="ServerError" />
-				<forward name="succes" path="getResourceInfo" />
-			</pipe>
-			<pipe name="getProgramResourceInfo"
-				active="!${stubEdudex.active}"
+			
+			<pipe name="getProgramResourceInf"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender className="nl.nn.adapterframework.http.HttpSender"
 						verifyHostname="false"
@@ -89,6 +77,7 @@
 				<forward name="failure" path="ServerError" />
 				<forward name="success" path="getResourceInfo" />
 			</pipe>
+			
 			<pipe name="getResourceInfo"
 				className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
 				elementXPathExpression="edudexDirectory/programResource">
@@ -97,8 +86,30 @@
 					javaListener="GetProgram">
 					<param name="orgUnitId" sessionKey="orgUnitId" />
 				</sender>
+				<forward name="failure" path="cleanup" />
+				<forward name="success" path="archive" />
+			</pipe>
+			
+			<pipe name="cleanup"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+				>
+				<sender
+					className="nl.nn.adapterframework.senders.IbisLocalSender"
+					javaListener="Cleanup">
+				</sender>
 				<forward name="success" path="EXIT" />
 			</pipe>
+			
+			<pipe name="archive"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+				>
+				<sender
+					className="nl.nn.adapterframework.senders.IbisLocalSender"
+					javaListener="Archive">
+				</sender>
+				<forward name="success" path="EXIT" />
+			</pipe>
+			
 		</pipeline>
 	</adapter>
 
@@ -116,21 +127,12 @@
 				<exit path="ServerError" state="failure" code="500" />
 			</exits>
 			<pipe name="put param in session"  className="nl.nn.adapterframework.pipes.PutParametersInSession">
-			<param name="programId" xpathExpression="programResource/programId"/>
-			<param name="programUrl" xpathExpression="programResource/resourceUrl"/>
-			<forward name="success" path="getProgramResourceInfo"/>
+				<param name="programId" xpathExpression="programResource/programId"/>
+				<param name="programUrl" xpathExpression="programResource/resourceUrl"/>
+				<forward name="success" path="getProgram"/>
 			</pipe>
-			<pipe name="getProgramResourceInfo"
-					active="${stubEdudex.active}"
-					className="nl.nn.adapterframework.pipes.FixedResult"
-					storeResultInSessionKey="ResourceInfo"
-					fileName="Gorilla/input3.xml">
-					<forward name="exception" path="EXIT"/>
-					<forward name="failure" path="ServerError" />
-					<forward name="succes" path="InsertIntoPrograms" />
-				</pipe>
-				<pipe name="getProgramResourceInfo"
-					active="!${stubEdudex.active}"
+			
+				<pipe name="getProgram"
 					storeResultInSessionKey="ResourceInfo"
 					className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 					<sender className="nl.nn.adapterframework.http.HttpSender"
@@ -144,21 +146,19 @@
 				<forward name="failure" path="ServerError" />
 				
 				<!-- Change this when doing real inserts... -->
-				<forward name="success" path="storeContactData" />
+				<forward name="success" path="InsertIntoPrograms" />
 			</pipe>
 			<pipe name="InsertIntoPrograms"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc"
-					query="INSERT INTO Programs (orgunitid, programid) 
-				VALUES (?,?)">
+					className="nl.nn.adapterframework.senders.IbisLocalSender"
+					javaListener="StorePrograms">
 					<param name="orgUnitId"	sessionKey="orgUnitId" />
 					<param name="programId"	sessionKey="programId" />
 				</sender>
 				<forward name="exception" path="EXIT"/>
 				<forward name="failure" path="ServerError" />
-				<forward name="success" path="storeContactdata" />
+				<forward name="success" path="EXIT" />
 			</pipe>
 			
 			<pipe name="storeContactData"
@@ -172,7 +172,7 @@
 					<param name="programId"	sessionKey="programId" defaultValue="null" />
 					<param name="orgUnitId" sessionKey="orgUnitId" defaultValue="null"/>
 					</sender>
-				<forward name="success" path="EXIT" />
+				<forward name="success" path="storeProgramRun" />
 			</pipe>
 			
 			<pipe name="storeProgramRun"
