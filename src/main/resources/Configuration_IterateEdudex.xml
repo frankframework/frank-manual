@@ -158,7 +158,7 @@
 				</sender>
 				<forward name="exception" path="EXIT"/>
 				<forward name="failure" path="ServerError" />
-				<forward name="success" path="EXIT" />
+				<forward name="success" path="storeContactData" />
 			</pipe>
 			
 			<pipe name="storeContactData"
@@ -182,7 +182,11 @@
 				<sender
 					className="nl.nn.adapterframework.senders.IbisLocalSender"
 					javaListener="StoreProgramRun"
-					/>
+					>
+					<param name="programId"	sessionKey="programId" defaultValue="null" />
+					<param name="orgUnitId" sessionKey="orgUnitId" defaultValue="null"/>
+					
+				</sender>
 				<forward name="success" path="EXIT" />
 			</pipe>
 		</pipeline>

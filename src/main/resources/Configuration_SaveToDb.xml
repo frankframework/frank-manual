@@ -13,18 +13,17 @@
 				<exit path="EXIT" state="success" />
 				<exit path="ServerError" state="failure" code="500" />
 			</exits>
-			
-				<pipe name="InsertIntoPrograms"
+
+			<pipe name="InsertIntoPrograms"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
-				<sender
-					className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
 					jmsRealm="jdbc"
 					query="INSERT INTO Programs (orgunitid, programid) 
 				VALUES (?,?)">
-					<param name="orgUnitId"	sessionKey="orgUnitId" />
-					<param name="programId"	sessionKey="programId" />
+					<param name="orgUnitId" sessionKey="orgUnitId" />
+					<param name="programId" sessionKey="programId" />
 				</sender>
-				<forward name="exception" path="EXIT"/>
+				<forward name="exception" path="EXIT" />
 				<forward name="failure" path="ServerError" />
 				<forward name="success" path="EXIT" />
 			</pipe>
@@ -199,8 +198,9 @@
 			</pipe>
 		</pipeline>
 	</adapter>
-	
-		<adapter name="Archive" description="Writes a permanent record into the database">
+
+	<adapter name="Archive"
+		description="Writes a permanent record into the database and deletes the contents of the shadowtable">
 		<receiver name="Archive"
 			className="nl.nn.adapterframework.receivers.GenericReceiver">
 			<listener name="Archive"
@@ -212,44 +212,64 @@
 				<exit path="EXIT" state="success" />
 				<exit path="ServerError" state="failure" code="500" />
 			</exits>
-			
+
 			<pipe name="archivePrograms"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc" query="INSERT INTO PROGRAMS_ARCH (orgunitid, programid) SELECT orgunitid, programid FROM PROGRAMS">
+					jmsRealm="jdbc"
+					query="INSERT INTO PROGRAMS_ARCH (orgunitid, programid) SELECT orgunitid, programid FROM PROGRAMS">
 				</sender>
-				<forward name="success" path="EXIT" />
+				<forward name="success" path="emptyPrograms" />
 			</pipe>
-			
+
 			<pipe name="emptyPrograms"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
 					jmsRealm="jdbc" query="DELETE FROM PROGRAMS">
 				</sender>
-				<forward name="success" path="emptyProgramcontacts" />
+				<forward name="success" path="archiveProgramcontacts" />
 			</pipe>
 
-			
 			<pipe name="archiveProgramcontacts"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
-					jmsRealm="jdbc" query="INSERT INTO PROGRAMCONTACTS_ARCH (orgunitid, programid, contactname, email, role, telephone) SELECT (orgunitid, programid, contactname, email, role, telephone) FROM PROGRAMCONTACTS">
+					jmsRealm="jdbc"
+					query="INSERT INTO PROGRAMCONTACTS_ARCH (orgunitid, programid, contactname, email, role, telephone) SELECT orgunitid, programid, contactname, email, role, telephone FROM PROGRAMCONTACTS">
 				</sender>
-				<forward name="success" path="EXIT" />
+				<forward name="success" path="emptyProgramcontacts" />
 			</pipe>
-			
+
 			<pipe name="emptyProgramcontacts"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
 					jmsRealm="jdbc" query="DELETE FROM PROGRAMCONTACTS">
 				</sender>
+				<forward name="success" path="archiveProgramRun" />
+			</pipe>
+
+			<pipe name="archiveProgramRun"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
+				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="INSERT INTO PROGRAMRUN_ARCH (programid,status, startdate, enddate) SELECT programid,status, startdate, enddate FROM PROGRAMRUN">
+				</sender>
 				<forward name="success" path="emptyProgramRun" />
 			</pipe>
+
 
 			<pipe name="emptyProgramRun"
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
 					jmsRealm="jdbc" query="DELETE FROM PROGRAMRUN">
+				</sender>
+				<forward name="success" path="archiveProgramrun_module" />
+			</pipe>
+
+			<pipe name="archiveProgramrun_module"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
+				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="INSERT INTO PROGRAMRUN_MODULE_ARCH (programid,name, startdate, enddate, locationaddress, locationzipcode, locationcity) SELECT programid, name, startdate, enddate, locationaddress, locationzipcode, locationcity FROM PROGRAMRUN_MODULE">
 				</sender>
 				<forward name="success" path="emptyProgramrun_module" />
 			</pipe>
@@ -258,6 +278,15 @@
 				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
 				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
 					jmsRealm="jdbc" query="DELETE FROM PROGRAMRUN_MODULE">
+				</sender>
+				<forward name="success" path="archiveProgramrun_cost" />
+			</pipe>
+
+			<pipe name="archiveProgramrun_cost"
+				className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe">
+				<sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+					jmsRealm="jdbc"
+					query="INSERT INTO PROGRAMRUN_COST_ARCH (programid,amount, amountvat, amountisfinal) SELECT programid,amount, amountvat, amountisfinal FROM PROGRAMRUN_COST">
 				</sender>
 				<forward name="success" path="emptyProgramrun_cost" />
 			</pipe>
@@ -271,8 +300,8 @@
 			</pipe>
 		</pipeline>
 	</adapter>
-	
-	
-	
+
+
+
 
 </module>
