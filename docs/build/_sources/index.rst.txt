@@ -1,8 +1,8 @@
 Welcome to Ibis4Gorilla's superb and special documentation!
-========================================
+===========================================================
  
 
-introduction
+To start
 ============
 
 .. toctree::
