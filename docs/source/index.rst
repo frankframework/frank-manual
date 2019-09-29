@@ -6,11 +6,11 @@ To start
 ============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
     
-   introduction
-   help
-   license
+   home
+   userguide
+   developerguide
 
 Indices and tables
 ==================
