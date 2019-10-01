@@ -7,7 +7,7 @@ Working with configurations
 Extending the framework
 -----------------------
 
-Source Code
+Example Code
 ------------------
 .. toctree::
    :maxdepth: 2
