@@ -11,7 +11,6 @@ There are several topics to be treated here
    Getting_started_locally
    Getting_started_in_the_cloud
 
-Everything superawesome
 
 topic1
 ^^^^^^

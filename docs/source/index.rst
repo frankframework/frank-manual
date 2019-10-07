@@ -1,4 +1,4 @@
-Welcome to Ibis4Gorilla's superb and special documentation!
+Welcome to the Framework docs!
 ===========================================================
  
 
@@ -11,10 +11,6 @@ To start
    home
    userguide
    developerguide
+   setup
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
