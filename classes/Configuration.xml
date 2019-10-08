@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="./ibisdoc.xsd"
+    name="ibis4manual">
+  <jmsRealms>
+    <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
+  </jmsRealms>
+  <adapter name="Hello">
+    <receiver name="dummyInput">
+      <ApiListener
+          name="helloListener"
+          uriPattern="hello"
+          method="GET"/>
+    </receiver>
+    <pipeline firstPipe="hello">
+      <exits>
+        <exit path="Exit" state="success" code="201"/>
+      </exits>
+      <FixedResultPipe name="hello" returnString="Hello 16">
+        <forward name="success" path="Exit"/>
+      </FixedResultPipe>
+    </pipeline>
+  </adapter>
+  <adapter name="IngestBooking">
+    <receiver name="input">
+      <ApiListener
+          name="inputListener"
+          uriPattern="booking"
+          method="POST"/>
+    </receiver>
+    <pipeline firstPipe="checkInput">
+      <exits>
+        <exit path="Exit" state="success" code="201" />
+        <exit path="ServerError" state="failure" code="500" />
+      </exits>
+      <pipe className="nl.nn.adapterframework.pipes.XmlValidator"
+          name="checkInput"
+          root="booking"
+          schema="booking.xsd">
+        <forward name="success" path="insertBooking" />
+        <forward name="failure" path="ServerError" />
+      </pipe>
+      <pipe className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+          name="insertBooking">
+        <sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+            name="insertBookingSender"
+            query="INSERT INTO booking VALUES(?, ?, ?, ?)"
+            jmsRealm="jdbc">
+          <param name="id" xpathExpression="/booking/@id" />
+          <param name="travelerId" xpathExpression="/booking/travelerId" />
+          <param name="price" xpathExpression="/booking/price" />
+          <param name="fee" xpathExpression="/booking/fee" />
+        </sender>
+        <forward name="success" path="Exit" />
+        <forward name="failure" path="ServerError" />
+      </pipe>
+    </pipeline>
+  </adapter>
+</Configuration>
