@@ -59,6 +59,24 @@
           name="getDestinations"
           styleSheetName="booking2destinations.xsl"
           getInputFromSessionKey="originalMessage">
+        <forward name="success" path="iterateDestinations"/>
+        <forward name="failure" path="ServerError"/>
+      </pipe>
+      <pipe className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
+          name="iterateDestinations"
+          elementXpathExpression="/destinations/destination">
+        <sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+            name="insertVisitSender"
+            query="INSERT INTO visit VALUES(?, ?, ?, ?, ?, ?, ?)"
+            jmsRealm="jdbc">
+          <param name="bookingId" xpathExpression="/destination/bookingId" />
+          <param name="seq" xpathExpression="/destination/seq" />
+          <param name="hostId" xpathExpression="/destination/hostId" />
+          <param name="productId" xpathExpression="/destination/productId" />
+          <param name="startDate" xpathExpression="/destination/startDate" />
+          <param name="endDate" xpathExpression="/destination/endDate" />
+          <param name="price" xpathExpression="/destination/price" />
+        </sender>
         <forward name="success" path="Exit"/>
         <forward name="failure" path="ServerError"/>
       </pipe>

@@ -25,6 +25,7 @@
                 productId INT NOT NULL,
                 startDate date NOT NULL,
                 endDate date NOT NULL,
+                price DECIMAL NOT NULL,
                 PRIMARY KEY (bookingId, seq)
             );
             ALTER TABLE visit ADD FOREIGN KEY (bookingId) REFERENCES booking(id)
