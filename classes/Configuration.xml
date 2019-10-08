@@ -52,8 +52,15 @@
           <param name="price" xpathExpression="/booking/price" />
           <param name="fee" xpathExpression="/booking/fee" />
         </sender>
-        <forward name="success" path="Exit" />
+        <forward name="success" path="getDestinations" />
         <forward name="failure" path="ServerError" />
+      </pipe>
+      <pipe className="nl.nn.adapterframework.pipes.XsltPipe"
+          name="getDestinations"
+          styleSheetName="booking2destinations.xsl"
+          getInputFromSessionKey="originalMessage">
+        <forward name="success" path="Exit"/>
+        <forward name="failure" path="ServerError"/>
       </pipe>
     </pipeline>
   </adapter>
