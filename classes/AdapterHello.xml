@@ -1,0 +1,16 @@
+<adapter name="Hello">
+  <receiver name="dummyInput">
+    <ApiListener
+        name="helloListener"
+        uriPattern="hello"
+        method="GET"/>
+  </receiver>
+  <pipeline firstPipe="hello">
+    <exits>
+      <exit path="Exit" state="success" code="201"/>
+    </exits>
+    <FixedResultPipe name="hello" returnString="Hello 16">
+      <forward name="success" path="Exit"/>
+    </FixedResultPipe>
+  </pipeline>
+</adapter>
