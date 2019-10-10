@@ -3,8 +3,8 @@ Installation Linux
 
 Installing the IAF requires two steps:
 
-# Create a Docker image
-# Create your first project
+#. Create a Docker image
+#. Create your first project
 
 Creating a Docker image
 -----------------------
@@ -16,13 +16,14 @@ Please take the following steps:
   your file system.
 * In your local copy of "Docker4Linux", open the file
   "project_directory.sh". Choose some directory where
-  you will store all your IAF projects. Edit
+  you will store all your ibisses. Edit
   "project_directory.sh" to get:
 
-    PROJECTDIR=/your/project/directory
+    PROJECTDIR=/your/ibis/directory
 
   Do not add a slash in the end.
-* Build your docker image with the command:
+* Go to your local copy of "Docker4Linux". Build your docker
+  image there with the command:
 
     docker build -t iaf:7.5 .
 
@@ -34,17 +35,17 @@ Creating your first project
 Please follow these steps:
 
 * Start a new project, say "myProject", by creating
-  a directory named ${PROJECTDIR}/myProject.
+  a project directory named your/ibis/directory/myProject.
 * From your local copy of "Docker4Linux", copy
   "properties.sh" to your new project directory.
   It reads:
 
-    DATABASE=h2
-    IBISNAME=ibis-manual
-
-    IBISCLASSES=$PROJECTDIR/$IBISNAME/classes
-    IBISCONFIG=$PROJECTDIR/$IBISNAME/configurations
-    IBISTESTS=$PROJECTDIR/$IBISNAME/tests
+    | DATABASE=h2
+    | IBISNAME=ibis-manual
+    |
+    | IBISCLASSES=$PROJECTDIR/$IBISNAME/classes
+    | IBISCONFIG=$PROJECTDIR/$IBISNAME/configurations
+    | IBISTESTS=$PROJECTDIR/$IBISNAME/tests
 
 * Now fill in "DATABASE" and "IBISNAME". For
   "DATABASE", "h2" is a valid value. "IBISNAME"
@@ -86,7 +87,10 @@ Please follow these steps:
 
   We will examine this Ibis in :ref:`helloIbis`.
 - Now you can start up the IAF. Go to your local
-  copy of "Docker4Linux" and do "./script.sh <project name>"
+  copy of "Docker4Linux" and do:
+ 
+    ./script.sh <project name>
+
   You see a lot of logging from docker.
 - When docker has started, you can browse to http://localhost/docker/iaf/gui/.
   Here you see the management console for your Ibis. That environment
