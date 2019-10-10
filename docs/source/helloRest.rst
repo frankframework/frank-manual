@@ -1,2 +1,2 @@
-Hello World Application
-=======================
+Hello World Executable
+======================

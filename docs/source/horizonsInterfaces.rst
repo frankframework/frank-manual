@@ -1,2 +1,2 @@
-New Horizons Adapter Requirements
-=================================
+New Horizons Requirements
+=========================

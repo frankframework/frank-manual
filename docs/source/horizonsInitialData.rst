@@ -1,2 +1,2 @@
-Initial Data
-============
+Database Initialization
+=======================

@@ -1,2 +1,2 @@
-Message Transformation with XSLT
-================================
+Transformation with XSLT
+========================
