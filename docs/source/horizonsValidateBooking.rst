@@ -1,2 +1,2 @@
-Validate XML against Schema
-===========================
+Validating XML against Schema
+=============================
