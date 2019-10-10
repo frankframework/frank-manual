@@ -1,16 +1,8 @@
-Welcome to the Framework docs!
-===========================================================
- 
-
-To start
-============
+Ibis Adapter Framework Documentation
+====================================
 
 .. toctree::
    :maxdepth: 3
     
-   home
-   userguide
-   developerguide
-   setup
-
-
+   introduction
+   gettingStarted
