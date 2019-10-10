@@ -16,17 +16,11 @@
 
 import sphinx_rtd_theme
 
-
-
-
-
-
-
 # -- Project information -----------------------------------------------------
 
-project = 'Ibis Adapter Framework'
-copyright = '2019, Ap Reinders'
-author = 'Ap Reinders'
+project = 'Ibis Adapter Framework Manual'
+copyright = '2019, Integration Partners'
+author = 'Integration Partners'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'
