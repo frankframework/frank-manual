@@ -16,6 +16,6 @@ Adapter Framework tries to take away a lot of these challenges, helping you to
 build a better enterprise grade application, or as we say an Ibis
 application, or for short an Ibis.
 
-Ibis-es are written in XML. Please read the :ref:`gettingStarted` to learn how to
-write an Ibis.
+Ibis-es are written in XML. Please read :ref:`gettingStarted` to learn how to
+write an Ibis and to learn what services the IAF provides for it.
 
