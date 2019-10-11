@@ -3,7 +3,7 @@
 Hello World Source Code
 =======================
 
-In this page we study the example Frank given in :ref:`installationLinux` .
+In this page we study the example Frank given in :ref:`installationLinux`.
 
 Frank
 -----
