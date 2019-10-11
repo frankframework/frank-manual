@@ -6,16 +6,17 @@ Getting all these libraries to work together can be difficult. Proving that
 they do so is another challenge, especially when database transactions
 or xa transactions are involved.
 
-Adding a GUI to your application for service managers to manage your application
-usually isn't you first priority. But it is important for a production
+Second, adding a GUI to your application for service managers usually isn't you
+first priority. But it is important for a production
 environment. Once you've build your management console you also have to think about
 authentication and autorisation (LDAP, DTAP, ..).
 
-Building an enterprise grade Java application has a lot of challenges. The Ibis
-Adapter Framework tries to take away a lot of these challenges, helping you to
-build a better enterprise grade application, or as we say an Ibis
-application, or for short an Ibis.
+Building an enterprise grade Java application has a lot of challenges. Therefore, low-code
+solutions from for example Oracle and Mendix have become popular. These solutions
+often are not open. Debugging can be difficult because the inner workings of the
+framework are hidden. Or expensive support appears to be required to maintain
+your solution.
 
-Ibis-es are written in XML. Please read :ref:`gettingStarted` to learn how to
-write an Ibis and to learn what services the IAF provides for it.
-
+The frank!framework provides an open low-code way of developing an enterprise
+application, or as we say a Frank. Franks are written in XML. Please read :ref:`gettingStarted`
+to learn how to write an them and to learn what services frank!framework provides for it.

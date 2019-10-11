@@ -1,7 +1,7 @@
 Installation Linux
 ==================
 
-Installing the IAF requires two steps:
+Installing the frank!framework requires two steps:
 
 #. Create a Docker image
 #. Create your first project
@@ -19,7 +19,7 @@ Please take the following steps:
   you will store all your ibisses. Edit
   "project_directory.sh" to get:
 
-    PROJECTDIR=/your/ibis/directory
+    PROJECTDIR=/your/frank/directory
 
   Do not add a slash in the end.
 * Go to your local copy of "Docker4Linux". Build your docker
@@ -35,7 +35,7 @@ Creating your first project
 Please follow these steps:
 
 * Start a new project, say "myProject", by creating
-  a project directory named /your/ibis/directory/myProject.
+  a project directory named /your/frank/directory/myProject.
 * From your local copy of "Docker4Linux", copy
   "properties.sh" to your new project directory.
   It reads:
@@ -53,7 +53,7 @@ Please follow these steps:
   project directory.
 * In your project directory, create subdirectories
   "classes", "configurations" and "tests".
-* The IAF cannot start if there is no Ibis. In your directory
+* The frank!framework cannot start if there is no Frank. In your directory
   "classes", please add a file "Configuration.xml" with the
   following contents:
 
@@ -93,6 +93,9 @@ Please follow these steps:
 
   You see a lot of logging from docker.
 - When docker has started, you can browse to http://localhost/docker/iaf/gui/.
-  Here you see the management console for your Ibis. That environment
+  Here you see the management console for your Frank. That environment
   also provides test tools. All is explained in :ref:`gettingStarted`.
 
+The frank!framework works when you see something like this:
+
+.. image:: frankScreenshot.jpg

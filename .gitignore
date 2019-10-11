@@ -5,4 +5,4 @@ target
 lib
 docs/build
 classes/ibisdoc.xsd
-
+*.xcf
