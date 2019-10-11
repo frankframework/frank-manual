@@ -3,7 +3,7 @@
 Hello World Source Code
 =======================
 
-In this page we study the example Frank given in :ref:`installationLinux`.
+In this page we study the example Frank given in :ref:`installationLinux` .
 
 Frank
 -----
@@ -31,7 +31,7 @@ this Frank the name ``ibis4manual``.
 Adapter
 -------
 
-When we enter the ``<Configuration>`` tag, we find the following:
+When we examine the ``<Configuration>`` tag, we find the following:
 
   .. code-block:: XML
 
@@ -72,7 +72,7 @@ Our receiver reads:
 It has name ``dummyInput``. Its further definition
 is provided by the tag within, ``<ApiListener>``. Listeners
 are building blocks that accept input. The choice for
-``<ApiListener`` means that the adapter ``dummyInput`` should
+``<ApiListener`` means that the adapter ``Hello`` should
 have a HTTP REST interface. The attribute ``uriPattern``
 defines the relative URL to listen to, while the ``method="GET"``
 attribute defines that we listen to HTTP GET requests.
@@ -131,11 +131,12 @@ It reads:
 
 Pipes are predefined functions that can be performed on
 the incoming message. The ``FixedResultPipe`` ignores
-the input and outputs a fixed string that canbe configured.
+the input and outputs a fixed string that can be configured.
 We configure the name to be ``"hello"``.
 This satisfies the reference made in the
-``firstPipe`` attribute in the ``<pipeline`` tag.
-The fixed output string we want is in the ``returnString``
+``firstPipe`` attribute in the ``<pipeline>`` tag. Therefore,
+the (ignored) incoming message is the message we got from the
+receiver. The fixed output string we want is in the ``returnString``
 attribute.
 
 In the remainder of the :ref:`gettingStarted`, we will see
