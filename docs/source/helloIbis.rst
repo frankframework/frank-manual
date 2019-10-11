@@ -84,7 +84,7 @@ For a complete list of all listeners, see
 https://ibis4example.ibissource.org/iaf/ibisdoc/.
 
 
-pipeline
+Pipeline
 --------
 
 The pipeline defines how the message provided by the receiver
