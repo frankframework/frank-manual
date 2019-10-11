@@ -85,8 +85,8 @@ Please follow these steps:
        </adapter>
      </Configuration>
 
-  We will examine this Ibis in :ref:`helloIbis`.
-- Now you can start up the IAF. Go to your local
+  We will examine this Frank in :ref:`helloIbis`.
+- Now you can start up the frank!framework. Go to your local
   copy of "Docker4Linux" and do:
  
     ./script.sh <project name>

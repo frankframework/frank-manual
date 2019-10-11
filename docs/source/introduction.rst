@@ -19,4 +19,4 @@ your solution.
 
 The frank!framework provides an open low-code way of developing an enterprise
 application, or as we say a Frank. Franks are written in XML. Please read :ref:`gettingStarted`
-to learn how to write an them and to learn what services frank!framework provides for it.
+to learn how to write them and to learn what services the frank!framework provides.
