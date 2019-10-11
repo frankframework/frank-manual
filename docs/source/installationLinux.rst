@@ -35,7 +35,7 @@ Creating your first project
 Please follow these steps:
 
 * Start a new project, say "myProject", by creating
-  a project directory named your/ibis/directory/myProject.
+  a project directory named /your/ibis/directory/myProject.
 * From your local copy of "Docker4Linux", copy
   "properties.sh" to your new project directory.
   It reads:
@@ -60,30 +60,30 @@ Please follow these steps:
   .. code-block:: XML
 
      <?xml version="1.0" encoding="UTF-8" ?>
-       <Configuration
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:noNamespaceSchemaLocation="./ibisdoc.xsd"
-           name="ibis4manual">
-         <jmsRealms>
-           <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
-         </jmsRealms>
-         <adapter name="Hello">
-           <receiver name="dummyInput">
-             <ApiListener
-                 name="helloListener"
-                 uriPattern="hello"
-                 method="GET"/>
-           </receiver>
-           <pipeline firstPipe="hello">
-             <exits>
-               <exit path="Exit" state="success" code="201"/>
-             </exits>
-             <FixedResultPipe name="hello" returnString="Hello 16">
-               <forward name="success" path="Exit"/>
-             </FixedResultPipe>
-           </pipeline>
-         </adapter>
-       </Configuration>
+     <Configuration
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./ibisdoc.xsd"
+         name="ibis4manual">
+       <jmsRealms>
+         <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
+       </jmsRealms>
+       <adapter name="Hello">
+         <receiver name="dummyInput">
+           <ApiListener
+               name="helloListener"
+               uriPattern="hello"
+               method="GET"/>
+         </receiver>
+         <pipeline firstPipe="hello">
+           <exits>
+             <exit path="Exit" state="success" code="201"/>
+           </exits>
+           <FixedResultPipe name="hello" returnString="Hello 16">
+             <forward name="success" path="Exit"/>
+           </FixedResultPipe>
+         </pipeline>
+       </adapter>
+     </Configuration>
 
   We will examine this Ibis in :ref:`helloIbis`.
 - Now you can start up the IAF. Go to your local
