@@ -18,13 +18,13 @@ Hello adapter as follows:
 #. In the "tests" directory of your project, add a directory "Hello".
 #. In the Hello directory, put a file "scenario01.properties" with the following contents. ::
 
-   scenario.description = Hello Test, made to see how to configure Larva
+     scenario.description = Hello Test, made to see how to configure Larva
    
-   hello.default.className = nl.nn.adapterframework.senders.IbisJavaSender
-   hello.default.serviceName = testtool-Hello
+     hello.default.className = nl.nn.adapterframework.senders.IbisJavaSender
+     hello.default.serviceName = testtool-Hello
    
-   step1.hello.default.write = scenario01/step01.xml
-   step2.hello.default.read = scenario01/step02.txt
+     step1.hello.default.write = scenario01/step01.xml
+     step2.hello.default.read = scenario01/step02.txt
 
 #. In the Hello directory, create file "scenario01/step01.xml with the following contents: ::
 
