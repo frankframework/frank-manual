@@ -11,14 +11,12 @@ apply when you create your own Frank.
 
 Let's see what the application does. Please run it as follows:
 
-* As explained in :ref:`installationLinux` , go to your
-local copy of "Docker4Linux".
+* As explained in :ref:`installationLinux` , go to your local copy of "Docker4Linux".
 * Run the following command:
 
   ./script.sh <project name>
 
-* Do a HTTP GET request to localhost/docker/api/hello.
-You can do this with curl, as follows:
+* Do a HTTP GET request to localhost/docker/api/hello. You can do this with curl, as follows:
 
   curl -i -X GET http://localhost/docker/api/hello
 
