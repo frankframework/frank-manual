@@ -16,7 +16,7 @@ you intend. The top row of the table shows a name field of
 "Pipeline Hello".
 
 When you click a row, for example the top row, you see the
-corresponding pipeline. After expanding all nodes, you
+corresponding pipeline. After expanding the top node, you
 get the following picture:
 
 .. image:: ladybugTreeview.jpg
