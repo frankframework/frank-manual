@@ -6,7 +6,7 @@ Frank presented in :ref:`installationLinux` . We want
 to test the pipeline while ignoring the receiver, allowing
 us to enter test input more easily.
 
-To do this, you can browse to "localhost/docker/iaf/gui", you see
+To do this, you can browse to "localhost/docker/iaf/gui". You see
 a console to manage and test your Frank. Click "Testing".
 The "Testing" link will expand to "Larva", "Ladybug",
 "Test Pipeline" and "Test serviceListener". Click
@@ -16,7 +16,7 @@ arbitrary message in the Message field. Then Click
 
 .. image:: frankTestPipeline.png
 
-The ``returnString`` you configured in the ``FixedResultPipe`` is printed
+The ``returnString`` you configured in the ``<FixedResultPipe>`` is printed
 at the bottom. To the top, you see a green bar with
 the word "success". "success" is the state you configured
 in the ``<exit>`` tag.
