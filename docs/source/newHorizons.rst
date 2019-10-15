@@ -1,3 +1,5 @@
+.. _newHorizons:
+
 Example: New Horizons
 =====================
 
