@@ -58,7 +58,7 @@ properties file <your-scenario-name>.properties within
 a parent directory that holds a group of scenarios. To
 build a (trivial) Larva test of the Hello adapter,
 you can create the file
-"<your-project-directory>/tests/Hello/scenario01.properties"
+"<your-project-directory>/tests/Hello/scenario01.properties".
 
 Within your scenario, you need a service that writes to
 the "testtool-Hello" receiver and reads responses
@@ -93,11 +93,11 @@ can be appended to "scenario01.properties": ::
   other side of the "=" sign, we find a filename that references
   the data we want to write.
 
-Finally, the two files "tests/Hello/scenario01/step01.xml" and "tests/Hello/scenario01/step02.txt",
-the latter holding the expected response from the Hello adapter and the former holding some
+Finally, the two files "tests/Hello/scenario01/step01.xml" and "tests/Hello/scenario01/step02.txt"
+are needed, the latter holding the expected response from the Hello adapter and the former holding some
 arbitrary XML.
 
-Before you can run the Larva scenario, you need to refresh the frank!framework.
+Before you can run the Larva scenario, you need to reload your configuration.
 In the Adapter Status screen, press the refresh button (see the arrow)
 
    .. image:: reloadConfiguration.jpg
@@ -108,3 +108,6 @@ Now you can run the Larva scenario by pressing the Start button, as shown:
 
 Your test will succeed if and only if the contents of "step02.txt" is
 the same as the ``returnString`` attribute within the Hello adapter.
+
+This was the last section about the Hello adapter. The rest of :ref:`gettingStarted`
+will consider a more interesting example.
