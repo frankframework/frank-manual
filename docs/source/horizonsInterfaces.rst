@@ -2,11 +2,13 @@ New Horizons Requirements
 =========================
 
 We continue our case here about the imaginary company New Horizons as introduced
-in the previous sThe following tables are relevant ection :ref:`newHorizons` . We focus here on the exact
+in the previous section :ref:`newHorizons` . We focus here on the exact
 requirements for processing an accepted booking, in particular the
 way it should be stored in a relational database. The relational
 database is for internal use by New Horizons and can be developed
 from scratch.
+
+.. highlight:: none
 
 The database we want to fill has the following tables: ::
 
