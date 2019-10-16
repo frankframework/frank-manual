@@ -1,3 +1,5 @@
+.. _horizonsInterfaces:
+
 New Horizons Requirements
 =========================
 
