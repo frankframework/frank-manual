@@ -1,3 +1,5 @@
+.. _validateBooking:
+
 Validating XML against Schema
 =============================
 
