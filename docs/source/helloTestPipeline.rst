@@ -1,3 +1,5 @@
+.. _helloTestPipeline:
+
 Console Test Pipeline
 =====================
 

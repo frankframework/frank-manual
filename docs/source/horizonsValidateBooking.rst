@@ -155,6 +155,13 @@ To the bottom, you see that the incoming XML is echoed in the body of the respon
    this header because the ingest booking uses listener ``<ApiListener>``. Use
    another listener if you want to omit the header from the request.
 
+.. NOTE::
+
+   The exit path "Exit" corresponds to code 201 and state "success". This exit
+   state "success" does not appear in the HTTP response. You can see it
+   if you use the "Test Pipeline" page in the console, see section
+   :ref:`helloTestPipeline`.
+
 You can also test what happens with an invalid input, as follows: ::
 
   curl -i -X POST -H 'Content-Type: application/xml' -d "xxx" http://localhost/docker/api/booking
