@@ -52,7 +52,7 @@ https://www.w3schools.com/xml/schema_intro.asp. You can make a document
 
 The frank!framework defines a pipe that checks the incoming message against
 an XML Schema. Using this pipe, we can can produce an intermediate version
-of the ingest booking adapter:
+of the file AdapterIngestBooking.xml:
 
 .. code-block:: XML
 
@@ -114,16 +114,17 @@ This is predefined behavior of the "XmlValidator" pipe.
 The ``<forward>`` tags link the forward names to paths. On success,
 we go to the pipeline exit having path "Exit", finishing execution.
 The ``<pipeline>`` tag contains an ``<exit>`` tag that links
-path "Exit" to exit state "success". The "XmlValidator" pipe always echos
-its input message to its output message. Therefore, the output
-message of the ingest booking adapter equals the incoming XML in this case.
+path "Exit" to exit state "success" and code 201. The "XmlValidator" pipe echos
+its input message to its output message, both if validation succeeds and
+if validation fails. Therefore, the output
+message of the ingest booking adapter equals the incoming booking if it is valid.
 
 For testing, it is wise to produce an error message if validation fails.
 Therefore, forward name "failure" is linked to the pipe named
 "makeInvalidBookingError". This pipe replaces the incoming message
 by an error message. The "FixedResult" pipe never fails and
-follows the (predefined) forward name "success". It points to path "ServerError",
-corresponding to exit state "failure".
+follows its (predefined) forward name "success". That forward points to
+path "ServerError", corresponding to exit state "failure" and code 500.
 
 You can test your adapter as follows. Copy the valid booking XML to some file
 on your computer, say ``validBooking.xml``. Then execute the following
@@ -145,8 +146,8 @@ The output will be something like the following: ::
 
   <booking id="1">  <travelerId>2</travelerId>  <price>500.00</price>  <fee>100.00</fee>  <destination hostId="3" productId="4">    <price>400.00</price>    <startDate>2018-12-27</startDate>    <endDate>2019-01-02</endDate>  </destination></booking>
 
-The code "201" is the ``code`` attribute defined with exit state "success". To the bottom,
-you see that the incoming XML is echoed in the body of the response.
+The HTTP status code "201" is the ``code`` attribute defined with exit state "success".
+To the bottom, you see that the incoming XML is echoed in the body of the response.
 
 .. NOTE::
 
