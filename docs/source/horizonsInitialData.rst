@@ -25,7 +25,7 @@ The frank!framework expects it in the file
 
 The New Horizons database described in the previous section
 :ref:`horizonsInterfaces` is initialized with the following
-change log:
+changelog:
 
 .. literalinclude:: ../../classes/DatabaseChangelog.xml
    :language: xml
@@ -37,10 +37,10 @@ is specific for H2 databases.
 
 .. NOTE ::
 
-  If you are working on the change log within your own project,
+  If you are working on the changelog within your own project,
   you will probably make some errors. In this situation, you
   want to remove all database tables to rerun all change sets within
-  your change log.
+  your changelog.
 
   You can do this as follows. Start the frank!framework and browse
   to http://localhost/docker/iaf/gui. On the left-hand menu
