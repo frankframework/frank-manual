@@ -1,6 +1,8 @@
 Validating XML against Schema
 =============================
 
+.. highlight:: none
+
 In this section we start coding the Frank
 needed by the imaginary company New Horizons
 as introduced in section :ref:`newHorizons`. In
