@@ -32,7 +32,7 @@ following pipe:
    </pipe>
 
 You see that we send an INSERT query to the database with parameters.
-The parameters appear with question marks in the SQL statements.
+The parameters appear with question marks in the SQL statement.
 The values of the parameters are provided through XPath expressions.
 These XPath expressions are applied to the incoming message. Xpath is
 explained here: https://www.w3schools.com/xml/xpath_intro.asp.
@@ -45,7 +45,8 @@ The intermediate version you have reached now can be tested as follows:
 
 * Copy the booking XML presented in :ref:`horizonsInterfaces` to some file.
 * Edit that file to update the ``id`` attribute of the ``<booking>`` element. This corresponds to the primary key of database table "booking". You need a value that differs from the values you applied so far.
-* In the console, go to Test Pipeline. Run the "IngestBooking" adapter with your booking XML.
+* In the console, go to Testing | Test Pipeline. Run the "IngestBooking" adapter with your booking XML.
 * In the console, go to JDBC | Execute Query.
 * Run the following query: ``SELECT * FROM booking``.
 * Check that there is a row with the values you had in your XML.
+
