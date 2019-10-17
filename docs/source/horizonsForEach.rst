@@ -12,18 +12,18 @@ these rows.
 
 A booking can have multiple destinations, each appearing in their
 own ``<destination>`` element. These elements can be iterated
-with the "ForEachChildElementPipe" pipe. The following pipe
+with the ``<ForEachChildElementPipe>`` . The following pipe
 can be appended:
 
 .. code-block:: XML
 
-   <pipe className="nl.nn.adapterframework.pipes.ForEachChildElementPipe"
+   <ForEachChildElementPipe
        name="iterateDestinations"
        elementXpathExpression="/destinations/destination">
      ...
      <forward name="success" path="Exit"/>
      <forward name="failure" path="ServerError"/>
-   </pipe>
+   </ForEachChildElementPipe>
 
 This pipe applies the ``elementXpathExpression`` to the incoming message
 and iterates over the result set. In the transformed example booking shown
@@ -41,7 +41,7 @@ in :ref:`transform`, there is one match:
      <price>400.00</price>
    </destination>
 
-Within the "ForEachChildElementPipe", a sender should appear. It is
+Within the ``<ForEachChildElementPipe>``, a sender should appear. It is
 similar to the sender of section :ref:`insertDb`. There is an
 INSERT query with a question mark for each inserted value.
 The inserted values are fetched using XPath expressions,
@@ -50,7 +50,7 @@ You can insert the following sender:
 
 .. code-block:: XML
 
-   <sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+   <FixedQuerySender
        name="insertVisitSender"
        query="INSERT INTO visit VALUES(?, ?, ?, ?, ?, ?, ?)"
        jmsRealm="jdbc">
@@ -61,7 +61,7 @@ You can insert the following sender:
      <param name="startDate" xpathExpression="/destination/startDate" />
      <param name="endDate" xpathExpression="/destination/endDate" />
      <param name="price" xpathExpression="/destination/price" />
-   </sender>
+   </FixedQuerySender>
 
 Finally, the pipe with ``name`` attribute "getDestinations" should
 be updated. Its "success" forward should point to "iterateDestinations".

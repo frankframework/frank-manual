@@ -77,7 +77,7 @@ of the file AdapterIngestBooking.xml:
            name="checkInput"
            root="booking"
            schema="booking.xsd">
-         <forward name="success" path="insertBooking" />
+         <forward name="success" path="Exit" />
          <forward name="failure" path="makeInvalidBookingError" />
        </XmlValidatorPipe>
        <FixedResultPipe

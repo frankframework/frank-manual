@@ -4,9 +4,9 @@ Sending to Database
 ===================
 
 The frank!framework can send data to external systems.
-This is done by pipe "GenericMessageSendingPipe".
+This is done by pipe ``<SenderPipe>``.
 Within this pipe, you add a sender to specify the
-destination. We use "FixedQuerySender" to specify
+destination. We use ``<FixedQuerySender>`` to specify
 that we are targeting the database. It is not
 necessary to specify what database we
 target, because this configured elsewhere, see
@@ -18,9 +18,9 @@ following pipe:
 
 .. code-block:: XML
 
-   <pipe className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+   <SenderPipe
        name="insertBooking">
-     <sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+     <FixedQuerySender
          name="insertBookingSender"
          query="INSERT INTO booking VALUES(?, ?, ?, ?)"
          jmsRealm="jdbc">
@@ -28,10 +28,10 @@ following pipe:
        <param name="travelerId" xpathExpression="/booking/travelerId" />
        <param name="price" xpathExpression="/booking/price" />
        <param name="fee" xpathExpression="/booking/fee" />
-     </sender>
+     </FixedQuerySender>
      <forward name="success" path="Exit" />
      <forward name="failure" path="ServerError" />
-   </pipe>
+   </SenderPipe>
 
 You see that we send an INSERT query to the database with parameters.
 The parameters appear with question marks in the SQL statement.

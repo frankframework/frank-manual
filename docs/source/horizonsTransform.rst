@@ -36,7 +36,7 @@ If there were multiple destinations, the second ``<destination>`` would contain
 ``<seq>2</seq>``, the third would contain ``<seq>3</seq>``, etc.
 
 This can be done with an XSLT transformation, see https://www.w3schools.com/xml/xsl_intro.asp.
-The frank!framework defines a pipe "XsltPipe" that does XSLT transformations.
+The frank!framework defines a pipe ``<XsltPipe>`` that does XSLT transformations.
 You can make an XSLT stylesheet "<project directory>/classes/booking2destinations.xsl"
 and give it the following contents:
 
@@ -47,20 +47,20 @@ Then you can append the ingest booking adapter with the following:
 
 .. code-block:: XML
 
-   <pipe className="nl.nn.adapterframework.pipes.XsltPipe"
+   <XsltPipe
        name="getDestinations"
        styleSheetName="booking2destinations.xsl"
        getInputFromSessionKey="originalMessage">
      <forward name="success" path="Exit"/>
      <forward name="failure" path="ServerError"/>
-   </pipe>
+   </XsltPipe>
 
 .. NOTE::
 
    The pipe shown above has attribute ``getInputFromSessionKey="originalMessage"``.
    You may remeber session keys from :ref:`ladyBug`. They are
    name/value pairs that accompany the message flowing throug the pipeline.
-   The "XsltPipe" should not use the output of its predecessor with
+   The ``<XsltPipe>`` should not use the output of its predecessor with
    ``name`` attribute "insertBooking". The output of that pipe is
    an XML coming from the database that expresses the result of
    the INSERT query. Session key "originalMessage" points to
