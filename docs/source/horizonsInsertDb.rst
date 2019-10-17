@@ -1,3 +1,5 @@
+.. _insertDb:
+
 Sending to Database
 ===================
 
@@ -50,3 +52,6 @@ The intermediate version you have reached now can be tested as follows:
 * Run the following query: ``SELECT * FROM booking``.
 * Check that there is a row with the values you had in your XML.
 
+The presented version of the ingest booking adapter only inserts
+in table "booking". In the coming sections, we will extend
+our adapter to also insert into table "visit".

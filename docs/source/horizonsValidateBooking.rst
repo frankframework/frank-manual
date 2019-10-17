@@ -22,6 +22,7 @@ and copy from Configuration.xml the ``<adapter>`` element and its
 contents. This results in:
 
 .. literalinclude:: ../../classes/AdapterHello.xml
+   :language: xml
 
 Then you can change Configuration.xml to be:
 
@@ -49,7 +50,7 @@ This adapter should read XML documents like the one presented in :ref:`horizonsI
 use them to fill the data model described there. Before doing something with the XML, we want
 to check that it is valid. This can be done using an XML Schema, see
 https://www.w3schools.com/xml/schema_intro.asp. You can make a document
-"<project directory>/classes/booking.xsd and give it the following contents:
+"<project directory>/classes/booking.xsd" and give it the following contents:
 
 .. literalinclude:: ../../classes/booking.xsd
    :language: xml
