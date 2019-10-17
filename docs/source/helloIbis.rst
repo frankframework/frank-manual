@@ -130,7 +130,7 @@ It reads:
    ...
 
 Pipes are predefined functions that can be performed on
-the incoming message. The ``FixedResultPipe`` ignores
+the incoming message. The ``<FixedResultPipe>`` ignores
 the input and outputs a fixed string that can be configured.
 We configure the name to be ``"hello"``.
 This satisfies the reference made in the

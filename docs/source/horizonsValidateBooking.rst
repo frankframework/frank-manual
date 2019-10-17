@@ -73,18 +73,18 @@ of the file AdapterIngestBooking.xml:
          <exit path="Exit" state="success" code="201" />
          <exit path="ServerError" state="failure" code="500" />
        </exits>
-       <pipe className="nl.nn.adapterframework.pipes.XmlValidator"
+       <XmlValidatorPipe
            name="checkInput"
            root="booking"
            schema="booking.xsd">
-         <forward name="success" path="Exit" />
+         <forward name="success" path="insertBooking" />
          <forward name="failure" path="makeInvalidBookingError" />
-       </pipe>
-       <pipe className="nl.nn.adapterframework.pipes.FixedResult"
+       </XmlValidatorPipe>
+       <FixedResultPipe
            name="makeInvalidBookingError"
            returnString="Input booking does not satisfy booking.xsd">
          <forward name="success" path="ServerError"/>
-       </pipe>
+       </FixedResultPipe>
      </pipeline>
    </adapter>
 
@@ -93,7 +93,7 @@ The adapter thus listens to REST HTTP requests. The ingest booking
 adapter listens to HTTP POST requests to the path "http://localhost/docker/api/booking".
 See also section :ref:`helloRest`.
 
-Then comes a pipe with the name "XmlValidator". The attributes ``root`` and
+Then comes an ``<XmlValidatorPipe>`` . The attributes ``root`` and
 ``schema`` are used to reference the expected root element of the incoming
 XML and to reference the XML schema file "booking.xsd" presented earlier
 in this section.
@@ -114,12 +114,12 @@ In section :ref:`helloIbis`, the concept of a forward was introduced.
 We see here an example of a pipe that can exit with two different
 forward names. Forward name "success" is followed if the incoming XML
 satisfies "booking.xsd". Otherwise, forward "failure" is followed.
-This is predefined behavior of the "XmlValidator" pipe.
+This is predefined behavior of the ``<XmlValidatorPipe>`` .
 
 The ``<forward>`` tags link the forward names to paths. On success,
 we go to the pipeline exit having path "Exit", finishing execution.
 The ``<pipeline>`` tag contains an ``<exit>`` tag that links
-path "Exit" to exit state "success" and code 201. The "XmlValidator" pipe echos
+path "Exit" to exit state "success" and code 201. The ``<XmlValidatorPipe>`` echos
 its input message to its output message, both if validation succeeds and
 if validation fails. Therefore, the output
 message of the ingest booking adapter equals the incoming booking if it is valid.
@@ -127,7 +127,7 @@ message of the ingest booking adapter equals the incoming booking if it is valid
 For testing, it is wise to produce an error message if validation fails.
 Therefore, forward name "failure" is linked to the pipe named
 "makeInvalidBookingError". This pipe replaces the incoming message
-by an error message. The "FixedResult" pipe never fails and
+by an error message. The fixed result pipe never fails and
 follows its (predefined) forward name "success". That forward points to
 path "ServerError", corresponding to exit state "failure" and code 500.
 
