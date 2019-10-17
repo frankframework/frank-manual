@@ -9,7 +9,7 @@
     <exits>
       <exit path="Exit" state="success" code="201"/>
     </exits>
-    <FixedResultPipe name="hello" returnString="Hello 16">
+    <FixedResultPipe name="hello" returnString="Hello 17">
       <forward name="success" path="Exit"/>
     </FixedResultPipe>
   </pipeline>
