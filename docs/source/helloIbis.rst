@@ -3,7 +3,7 @@
 Hello World Source Code
 =======================
 
-In this page we study the example Frank given in :ref:`installationLinux`.
+In this section we study the example Frank given in :ref:`installationLinux`.
 
 Frank
 -----
@@ -49,8 +49,8 @@ When we examine the ``<Configuration>`` tag, we find the following:
      </adapter>
    
 An adapter is a service that is triggered by a receiver and
-executes a pipeline in response. The ``<receiver`` tag
-defines the receiver, while the ``pipeline`` tag defines the
+executes a pipeline in response. The ``<receiver>`` tag
+defines the receiver, while the ``<pipeline>`` tag defines the
 pipeline.
 
 Receiver
@@ -72,12 +72,12 @@ Our receiver reads:
 It has name ``dummyInput``. Its further definition
 is provided by the tag within, ``<ApiListener>``. Listeners
 are building blocks that accept input. The choice for
-``<ApiListener`` means that the adapter ``Hello`` should
+``<ApiListener>`` means that the adapter ``Hello`` should
 have a HTTP REST interface. The attribute ``uriPattern``
 defines the relative URL to listen to, while the ``method="GET"``
 attribute defines that we listen to HTTP GET requests.
 
-There are other listeners, for example ``DirectoryListener``.
+There are other listeners, for example ``<DirectoryListener>``.
 This listener triggers your adapter when a file is added
 to a chosen directory on a (server-side) local file system.
 For a complete list of all listeners, see
@@ -145,7 +145,7 @@ XSLT transformations and sending data to a database.
 
 The ``<forward>`` within a pipe tag defines what should happen after
 the execution of that pipe. A forward consists of a forward
-name and a path. Each pipe defines the forward names to which
+name and a path. Each pipe predefines the forward names to which
 it can send the output. For the fixed result pipe, the only
 possibility is ``"success"``, but many pipes also have
 the possibility ``"failure"``. This allows Frank developers

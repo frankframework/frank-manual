@@ -1,7 +1,7 @@
 Console Larva
 =============
 
-This is the final page about the Hello adapter presented
+This is the final section about the Hello adapter presented
 in :ref:`installationLinux` . In application development,
 it is common to have automated tests. You cannot rely
 on interactive testing only, because performing these
@@ -49,7 +49,7 @@ following screen:
 
 .. image:: testtoolHello.jpg
 
-You see here that the Hello adapter started in :ref:`installationLinux` now
+You see here that the Hello adapter presented in :ref:`installationLinux` now
 has two receivers. One of them is named "testtool-Hello".
 
 Larva tests are added to the "tests" subdirectory of your
