@@ -1,3 +1,5 @@
+.. _transform:
+
 Transformation with XSLT
 ========================
 
@@ -9,7 +11,7 @@ field of table "booking". Furthermore, the "visit" table has a
 field "seq". This field should contain the sequence number
 of the ``<destination>`` tag in the incoming booking XML.
 We want to transform the incoming booking, such that the
-values intended for each row of table "visit" are grouped together.
+values intended for each row are grouped together.
 
 The example booking of section :ref:`horizonsInterfaces` should
 be transformed to the following:
@@ -49,7 +51,7 @@ Then you can append the ingest booking adapter with the following:
        name="getDestinations"
        styleSheetName="booking2destinations.xsl"
        getInputFromSessionKey="originalMessage">
-     <forward name="success" path="iterateDestinations"/>
+     <forward name="success" path="Exit"/>
      <forward name="failure" path="ServerError"/>
    </pipe>
 
@@ -62,7 +64,7 @@ Then you can append the ingest booking adapter with the following:
    ``name`` attribute "insertBooking". The output of that pipe is
    an XML coming from the database that expresses the result of
    the INSERT query. Session key "originalMessage" points to
-   the original input message of the adapter, which is what we need.
+   the original input message of the pipeline, which is what we need.
 
 Finally, update the pipe with ``name`` attribute "insertBooking".
 Update its "success" forward to have ``path`` "getDestinations".
