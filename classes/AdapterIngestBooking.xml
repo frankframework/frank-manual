@@ -11,9 +11,9 @@
       <exit path="ServerError" state="failure" code="500" />
     </exits>
     &checkInput;
-    <pipe className="nl.nn.adapterframework.pipes.GenericMessageSendingPipe"
+    <SenderPipe
         name="insertBooking">
-      <sender className="nl.nn.adapterframework.jdbc.FixedQuerySender"
+      <FixedQuerySender
           name="insertBookingSender"
           query="INSERT INTO booking VALUES(?, ?, ?, ?)"
           jmsRealm="jdbc">
@@ -21,17 +21,17 @@
         <param name="travelerId" xpathExpression="/booking/travelerId" />
         <param name="price" xpathExpression="/booking/price" />
         <param name="fee" xpathExpression="/booking/fee" />
-      </sender>
+      </FixedQuerySender>
       <forward name="success" path="getDestinations" />
       <forward name="failure" path="ServerError" />
-    </pipe>
-    <pipe className="nl.nn.adapterframework.pipes.XsltPipe"
+    </SenderPipe>
+    <XsltPipe
         name="getDestinations"
         styleSheetName="booking2destinations.xsl"
         getInputFromSessionKey="originalMessage">
       <forward name="success" path="iterateDestinations"/>
       <forward name="failure" path="ServerError"/>
-    </pipe>
+    </XsltPipe>
     <ForEachChildElementPipe
         name="iterateDestinations"
         elementXpathExpression="/destinations/destination">
