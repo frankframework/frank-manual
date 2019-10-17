@@ -1,12 +1,12 @@
-<pipe className="nl.nn.adapterframework.pipes.XmlValidator"
+<XmlValidatorPipe
     name="checkInput"
     root="booking"
     schema="booking.xsd">
   <forward name="success" path="insertBooking" />
   <forward name="failure" path="makeInvalidBookingError" />
-</pipe>
-<pipe className="nl.nn.adapterframework.pipes.FixedResult"
+</XmlValidatorPipe>
+<FixedResultPipe
     name="makeInvalidBookingError"
     returnString="Input booking does not satisfy booking.xsd">
   <forward name="success" path="ServerError"/>
-</pipe>
+</FixedResultPipe>
