@@ -5,7 +5,8 @@
         uriPattern="booking"
         method="POST"/>
   </receiver>
-  <pipeline firstPipe="checkInput">
+  <pipeline firstPipe="checkInput"
+      transactionAttribute="RequiresNew" >
     <exits>
       <exit path="Exit" state="success" code="201" />
       <exit path="ServerError" state="failure" code="500" />
