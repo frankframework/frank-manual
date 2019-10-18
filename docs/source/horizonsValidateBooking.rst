@@ -11,6 +11,9 @@ as introduced in section :ref:`newHorizons`. In
 section :ref:`horizonsInterfaces`, the requirements
 for our adapter are introduced.
 
+Storage in multiple files
+-------------------------
+
 We do not want to throw away the Hello adapter explained
 in section :ref:`helloIbis`, so we will have two adapters.
 We use XML entity references to store our Frank in
@@ -47,8 +50,14 @@ Then you can change Configuration.xml to be:
 Our New Horizons adapter, the ingest booking adapter, now appears in
 "<project directory>/classes/AdapterIngestBooking.xml".
 This adapter should read XML documents like the one presented in :ref:`horizonsInterfaces` and
-use them to fill the data model described there. Before doing something with the XML, we want
-to check that it is valid. This can be done using an XML Schema, see
+use them to fill the data model described there.
+
+The ingest booking adapter
+--------------------------
+
+Before doing something with a booking XML, the ingest booking adapter
+should check that this document is valid.
+This can be done using an XML Schema, see
 https://www.w3schools.com/xml/schema_intro.asp. You can make a document
 "<project directory>/classes/booking.xsd" and give it the following contents:
 
