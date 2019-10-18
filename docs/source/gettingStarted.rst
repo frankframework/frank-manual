@@ -18,4 +18,4 @@ Getting Started
    horizonsInsertDb
    horizonsTransform
    horizonsForEach
-   horizonsTransactions
+   horizonTransactions
