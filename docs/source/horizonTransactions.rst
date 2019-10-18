@@ -33,22 +33,23 @@ file "AdapterIngestBooking.xml" becomes:
 The value "RequiresNew" means that a new transaction is started
 for executing the ``<pipeline>``. There are other possible values.
 The value "Mandatory" for example requires that a transaction
-exists when pipeline execution starts. This value is useful when
+is expected to exist when pipeline execution starts; the pipeline
+will fail otherwise. This value is useful when
 you want to execute multiple adapters within a single transaction.
 See https://ibis4example.ibissource.org/iaf/ibisdoc/ for details.
 
-This completes our implementation of the requirements of section
+This completes the implementation of the requirements of section
 :ref:`horizonsInterfaces` . We have a REST HTTP service listening
 to booking XML documents. The XML is validated and all data
 is written to the database. To do this, multiple INSERT
 statements are needed. These are executed within a transaction,
-such that either all inserts succeed or all inserts fail.
+which means that either all inserts succeed or all inserts fail.
 
-There is one open end: security. We want to restrict access to
-the ingest booking adapter. Ingest booking is not the right user
+There is one open end: security. Ingest booking is not the right user
 story to explain security, because it is part of a larger interaction
 with the user. Before a booking is accepted, the user logs in and
-searches destinations.
+searches destinations. That functionality would be needed before
+restricting access would make sense.
 
 Security is easy to implement using the frank!framework. This manual will be extended with another
 user story of New Horizons to cover this topic.
