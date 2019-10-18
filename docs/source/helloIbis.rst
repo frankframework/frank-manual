@@ -72,7 +72,7 @@ Our receiver reads:
 It has name ``dummyInput``. Its further definition
 is provided by the tag within, ``<ApiListener>``. Listeners
 are building blocks that accept input. The choice for
-``<ApiListener>`` means that the adapter ``Hello`` should
+``<ApiListener>`` means that the adapter "Hello" should
 have a HTTP REST interface. The attribute ``uriPattern``
 defines the relative URL to listen to, while the ``method="GET"``
 attribute defines that we listen to HTTP GET requests.
@@ -103,10 +103,10 @@ should be processed. It reads:
 
 A pipeline is a network of pipes. The ``firstPipe="hello"`` attribute
 defines that the message coming from the receiver should go
-to the pipe named ``hello``. The ``<exits>`` tag defines 
+to the pipe named "hello". The ``<exits>`` tag defines 
 the states in which processing can end. In our case,
-we have one state that we name ``"success"``. It can be
-referenced from other pipes by its path ``"Exit"``.
+we have one state that we name "success". It can be
+referenced from other pipes by its path "Exit".
 It should result in HTTP response code 201.
 
 .. NOTE::
@@ -132,7 +132,7 @@ It reads:
 Pipes are predefined functions that can be performed on
 the incoming message. The ``<FixedResultPipe>`` ignores
 the input and outputs a fixed string that can be configured.
-We configure the name to be ``"hello"``.
+We configure the ``name`` to be "hello".
 This satisfies the reference made in the
 ``firstPipe`` attribute in the ``<pipeline>`` tag. Therefore,
 the (ignored) incoming message is the message we got from the
@@ -145,13 +145,13 @@ XSLT transformations and sending data to a database.
 
 The ``<forward>`` within a pipe tag defines what should happen after
 the execution of that pipe. A forward consists of a forward
-name and a path. Each pipe predefines the forward names to which
+name and a path. Each pipe predefines the forward names from which
 it can send the output. For the fixed result pipe, the only
-possibility is ``"success"``, but many pipes also have
-the possibility ``"failure"``. This allows Frank developers
+possibility is "success", but many pipes also have
+the possibility "failure". This allows Frank developers
 to handle errors and to have branching pipelines.
 
-Our forward points to the path ``"Exit"``, which was defined
+Our forward points to the path "Exit", which was defined
 earlier as the only possible exit of the pipeline. In more
 complex pipelines, there are also forwards that reference other
 pipes by their configured ``name`` attribute.

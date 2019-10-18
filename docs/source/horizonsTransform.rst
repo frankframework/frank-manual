@@ -58,7 +58,7 @@ Then you can append the ingest booking adapter with the following:
 .. NOTE::
 
    The pipe shown above has attribute ``getInputFromSessionKey="originalMessage"``.
-   You may remeber session keys from :ref:`ladyBug`. They are
+   You may remeber session keys from section :ref:`ladyBug`. They are
    name/value pairs that accompany the message flowing throug the pipeline.
    The ``<XsltPipe>`` should not use the output of its predecessor with
    ``name`` attribute "insertBooking". The output of that pipe is

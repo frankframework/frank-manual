@@ -107,18 +107,6 @@ Then comes an ``<XmlValidatorPipe>`` . The attributes ``root`` and
 XML and to reference the XML schema file "booking.xsd" presented earlier
 in this section.
 
-.. NOTE::
-
-   The ``<pipe className=...`` syntax is an alternative syntax
-   for referencing a pipe. The value of the ``className``
-   is the name of a Java class. This Java class is part of the
-   implementation of the frank!framework. This syntax
-   is more difficult to read, but produces better error
-   messages if something goes wrong. Please see the
-   reference documentation https://ibis4example.ibissource.org/iaf/ibisdoc/
-   to find the appropriate value for your ``className``
-   attribute.
-
 In section :ref:`helloIbis`, the concept of a forward was introduced.
 We see here an example of a pipe that can exit with two different
 forward names. Forward name "success" is followed if the incoming XML
@@ -166,7 +154,7 @@ To the bottom, you see that the incoming XML is echoed in the body of the respon
 .. NOTE::
 
    The HTTP request includes a HTTP header "Content-Type: application/xml". You need
-   this header because the ingest booking uses listener ``<ApiListener>``. Use
+   this header because the ingest booking adapter uses listener ``<ApiListener>``. Use
    another listener if you want to omit the header from the request.
 
 .. NOTE::

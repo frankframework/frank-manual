@@ -9,7 +9,7 @@ Within this pipe, you add a sender to specify the
 destination. We use ``<FixedQuerySender>`` to specify
 that we are targeting the database. It is not
 necessary to specify what database we
-target, because this configured elsewhere, see
+target, because this is configured elsewhere, see
 :ref:`installationLinux` .
 
 The ingest booking adapter from the previous section
