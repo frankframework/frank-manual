@@ -1,5 +1,8 @@
 .. _transactions:
 
+Transactions
+============
+
 This section will finish the implementation of :ref:`horizonsInterfaces`.
 So far we have inserted a booking in the two tables "booking" and "visit".
 In this section we add transactionality. The inserts in these two
