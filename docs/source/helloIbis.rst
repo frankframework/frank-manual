@@ -40,9 +40,8 @@ The outer part of it reads:
        ...
      </Configuration>
 
-This part can be almost the same for each Frank. If you want to understand
-it in detail, you can look `here <https://www.w3schools.com/xml/>`_ .
-The only interesting thing here is the ``name`` attribute that gives
+This part can be almost the same for each Frank. The only interesting thing here is
+the ``name`` attribute that gives
 this Frank the name ``Ibis4DockerExample``.
 
 Adapter
@@ -54,12 +53,12 @@ When we examine the ``<Configuration>`` tag, we find the following:
 
      ...
      <Adapter name="HelloDockerWorld">
-	         <Receiver name="HelloDockerWorld">
-		             <JavaListener name="HelloDockerWorld"/>
-             </Receiver>
-             <Pipeline firstPipe="HelloDockerWorld">
-		             ...
-		     </Pipeline>
+	 	<Receiver name="HelloDockerWorld">
+	 		<JavaListener name="HelloDockerWorld"/>
+     	</Receiver>
+     	<Pipeline firstPipe="HelloDockerWorld">
+	 	...
+	 	</Pipeline>
      </Adapter>
    
 An adapter is a service that is triggered by a receiver and
@@ -75,9 +74,9 @@ Our receiver reads:
   .. code-block:: XML
 
      ...
-	 <Receiver name="HelloDockerWorld">
-	         <JavaListener name="HelloDockerWorld"/>
-	 </Receiver>
+     <Receiver name="HelloDockerWorld">
+     	<JavaListener name="HelloDockerWorld"/>
+     </Receiver>
      ...
 
 It has name ``HelloDockerWorld``. Its further definition
@@ -105,10 +104,10 @@ should be processed. It reads:
   .. code-block:: XML
 
      ...
-	 <Pipeline firstPipe="HelloDockerWorld">
-             ...
-		     <Exit path="EXIT" state="success"/>
-	 </Pipeline>
+     <Pipeline firstPipe="HelloDockerWorld">
+     	...
+     	<Exit path="EXIT" state="success"/>
+     </Pipeline>
      ...
 
 A pipeline is a network of pipes. The ``firstPipe="HelloDockerWorld"``
@@ -116,7 +115,7 @@ attribute defines that the message coming from the receiver should go
 to the pipe named "HelloDockerWorld". The ``<Exit>`` tag defines 
 the state in which processing can end. In our case,
 we have one state that we name "success". It can be
-referenced from other pipes by its path "EXIT".
+referenced from pipes by its path "EXIT".
 
 Pipes and forwards
 ------------------
