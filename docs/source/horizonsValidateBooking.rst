@@ -39,7 +39,7 @@ Then you can change Configuration.xml to be:
    <Configuration
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="./ibisdoc.xsd"
-       name="ibis4manual">
+       name="Ibis4DockerExample">
      <jmsRealms>
        <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
      </jmsRealms>
@@ -98,9 +98,10 @@ of the file AdapterIngestBooking.xml:
    </adapter>
 
 This adapter starts with a ``<receiver>`` that contains an ``<ApiListener>``.
-The adapter thus listens to REST HTTP requests. The ingest booking
-adapter listens to HTTP POST requests to the path "http://localhost/docker/api/booking".
-See also section :ref:`helloRest`.
+The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests. The attribute
+``method="POST" makes it listen to HTTP POST requests. The ``uriPattern="booking"`` attribute
+defines the relative path to which the adapter listens.
+The frank!framework extends this path to be "http://localhost/docker/api/booking".
 
 Then comes an ``<XmlValidatorPipe>`` . The attributes ``root`` and
 ``schema`` are used to reference the expected root element of the incoming

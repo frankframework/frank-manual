@@ -1,16 +1,11 @@
-<adapter name="Hello">
-  <receiver name="dummyInput">
-    <ApiListener
-        name="helloListener"
-        uriPattern="hello"
-        method="GET"/>
-  </receiver>
-  <pipeline firstPipe="hello">
-    <exits>
-      <exit path="Exit" state="success" code="201"/>
-    </exits>
-    <FixedResultPipe name="hello" returnString="Hello 17">
-      <forward name="success" path="Exit"/>
+<Adapter name="HelloDockerWorld">
+  <Receiver name="HelloDockerWorld">
+    <JavaListener name="HelloDockerWorld"/>
+  </Receiver>
+  <Pipeline firstPipe="HelloDockerWorld">
+    <FixedResultPipe name="HelloDockerWorld" returnString="Hello Docker World">
+      <Forward name="success" path="EXIT"/>
     </FixedResultPipe>
-  </pipeline>
-</adapter>
+    <Exit path="EXIT" state="success"/>
+  </Pipeline>
+</Adapter>

@@ -3,7 +3,28 @@
 Hello World Source Code
 =======================
 
-In this section we study the example Frank given in :ref:`installationLinux`.
+In this section we study the example Frank provided in https://github.com/ibissource/docker4ibis/.
+During installation, you put it in "classes/Configuration.xml" relative to the folder that contains
+the "Ibis4DockerExample" Frank. It reads:
+
+.. code-block:: XML
+
+   <Configuration name="Ibis4DockerExample">
+	   <jmsRealms>
+		   <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
+	   </jmsRealms>
+	   <Adapter name="HelloDockerWorld">
+		   <Receiver name="HelloDockerWorld">
+			   <JavaListener name="HelloDockerWorld"/>
+		   </Receiver>
+		   <Pipeline firstPipe="HelloDockerWorld">
+			   <FixedResultPipe name="HelloDockerWorld" returnString="Hello Docker World">
+				   <Forward name="success" path="EXIT"/>
+			   </FixedResultPipe>
+			   <Exit path="EXIT" state="success"/>
+		   </Pipeline>
+	   </Adapter>
+   </Configuration>
 
 Frank
 -----
@@ -12,21 +33,17 @@ The outer part of it reads:
 
   .. code-block:: XML
 
-     <?xml version="1.0" encoding="UTF-8" ?>
-     <Configuration
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="./ibisdoc.xsd"
-         name="ibis4manual">
-       <jmsRealms>
-         <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
-       </jmsRealms>
+     <Configuration name="Ibis4DockerExample">
+	     <jmsRealms>
+		     <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
+	     </jmsRealms>
        ...
      </Configuration>
 
 This part can be almost the same for each Frank. If you want to understand
 it in detail, you can look `here <https://www.w3schools.com/xml/>`_ .
 The only interesting thing here is the ``name`` attribute that gives
-this Frank the name ``ibis4manual``.
+this Frank the name ``Ibis4DockerExample``.
 
 Adapter
 -------
@@ -36,21 +53,18 @@ When we examine the ``<Configuration>`` tag, we find the following:
   .. code-block:: XML
 
      ...
-     <adapter name="Hello">
-       <receiver name="dummyInput">
-         <ApiListener
-             name="helloListener"
-             uriPattern="hello"
-             method="GET"/>
-       </receiver>
-       <pipeline firstPipe="hello">
+     <Adapter name="HelloDockerWorld">
+		   <Receiver name="HelloDockerWorld">
+			   <JavaListener name="HelloDockerWorld"/>
+		   </Receiver>
+		   <Pipeline firstPipe="HelloDockerWorld">
          ...
-       </pipeline>
-     </adapter>
+		   </Pipeline>
+	   </Adapter>
    
 An adapter is a service that is triggered by a receiver and
-executes a pipeline in response. The ``<receiver>`` tag
-defines the receiver, while the ``<pipeline>`` tag defines the
+executes a pipeline in response. The ``<Receiver>`` tag
+defines the receiver, while the ``<Pipeline>`` tag defines the
 pipeline.
 
 Receiver
@@ -61,24 +75,21 @@ Our receiver reads:
   .. code-block:: XML
 
      ...
-     <receiver name="dummyInput">
-       <ApiListener
-           name="helloListener"
-           uriPattern="hello"
-           method="GET"/>
-     </receiver>
+		 <Receiver name="HelloDockerWorld">
+		   <JavaListener name="HelloDockerWorld"/>
+		 </Receiver>
      ...
 
-It has name ``dummyInput``. Its further definition
-is provided by the tag within, ``<ApiListener>``. Listeners
+It has name ``HelloDockerWorld``. Its further definition
+is provided by the tag within, ``<JavaListener>``. Listeners
 are building blocks that accept input. The choice for
-``<ApiListener>`` means that the adapter "Hello" should
-have a HTTP REST interface. The attribute ``uriPattern``
-defines the relative URL to listen to, while the ``method="GET"``
-attribute defines that we listen to HTTP GET requests.
+``<JavaListener>`` means that the adapter "HelloDockerWorld" is
+called from other adapters.
 
-There are other listeners, for example ``<DirectoryListener>``.
-This listener triggers your adapter when a file is added
+There are other listeners, for example ``<ApiListener>`` and
+``<DirectoryListener>``. ``ApiListener`` makes your adapter
+listen to REST HTTP requests. ``DirectoryListener``
+triggers your adapter when a file is added
 to a chosen directory on a (server-side) local file system.
 For a complete list of all listeners, see
 https://ibis4example.ibissource.org/iaf/ibisdoc/.
@@ -93,27 +104,18 @@ should be processed. It reads:
   .. code-block:: XML
 
      ...
-     <pipeline firstPipe="hello">
-       <exits>
-         <exit path="Exit" state="success" code="201"/>
-       </exits>
-
-     </pipeline>
+		 <Pipeline firstPipe="HelloDockerWorld">
+         ...
+		   <Exit path="EXIT" state="success"/>
+		 </Pipeline>
      ...
 
-A pipeline is a network of pipes. The ``firstPipe="hello"`` attribute
+A pipeline is a network of pipes. The ``firstPipe="HelloDockerWorld"`` attribute
 defines that the message coming from the receiver should go
-to the pipe named "hello". The ``<exits>`` tag defines 
-the states in which processing can end. In our case,
+to the pipe named "HelloDockerWorld". The ``<Exit>`` tag defines 
+the state in which processing can end. In our case,
 we have one state that we name "success". It can be
-referenced from other pipes by its path "Exit".
-It should result in HTTP response code 201.
-
-.. NOTE::
-
-   The ``code`` attribute is always defined for an exit,
-   but only makes sense when you have a listener for
-   incoming HTTP requests.
+referenced from other pipes by its path "EXIT".
 
 Pipes and forwards
 ------------------
@@ -124,17 +126,17 @@ It reads:
 .. code-block:: XML
 
    ...
-   <FixedResultPipe name="hello" returnString="Hello 16">
-     <forward name="success" path="Exit"/>
-   </FixedResultPipe>
+   <FixedResultPipe name="HelloDockerWorld" returnString="Hello Docker World">
+     <Forward name="success" path="EXIT"/>
+	 </FixedResultPipe>
    ...
 
 Pipes are predefined functions that can be performed on
 the incoming message. The ``<FixedResultPipe>`` ignores
 the input and outputs a fixed string that can be configured.
-We configure the ``name`` to be "hello".
+We configure the ``name`` to be "HelloDockerWorld".
 This satisfies the reference made in the
-``firstPipe`` attribute in the ``<pipeline>`` tag. Therefore,
+``firstPipe`` attribute in the ``<Pipeline>`` tag. Therefore,
 the (ignored) incoming message is the message we got from the
 receiver. The fixed output string we want is in the ``returnString``
 attribute.
@@ -151,25 +153,27 @@ possibility is "success", but many pipes also have
 the possibility "failure". This allows Frank developers
 to handle errors and to have branching pipelines.
 
-Our forward points to the path "Exit", which was defined
-earlier as the only possible exit of the pipeline. In more
+Our forward points to the path "EXIT", which is defined
+within the ``<Exit>`` tag as the only possible exit of the pipeline. In more
 complex pipelines, there are also forwards that reference other
-pipes by their configured ``name`` attribute.
+pipes by their configured ``name`` attribute. It is also possible to define
+multiple exits of a ``<Pipeline>``. The ``<Exit>`` tags should be wrapped
+then within an ``<exits>`` tag.
 
 .. NOTE::
 
    If you studied computer science or mathematics, the following
    may help. A pipeline is an example of a graph, with the
    pipes being the nodes and the forwards being the edges.
-   Before configuring the individual pipes and forwards,
+   Before or after configuring the individual pipes and forwards,
    you name all allowed exit states of the pipeline. Each forward
    then either references a next pipe by its name, or names
-   one of the predefined exits to indicate the end of processing.
+   one of the defined exits to indicate the end of processing.
 
 Conclusion
 ----------
 
-We implemented a simple adapter. It has a receiver that gives our adapter a
-REST HTTP interface. We have a pipeline with a single pipe that
-outputs a fixed message. In the next section, :ref:`helloRest`, we
+We implemented a simple adapter. It has a receiver that allows
+us to trigger it. We have a pipeline with a single pipe that
+outputs a fixed message. In the next section, :ref:`hellohelloTestPipeline`, we
 will see our adapter in action.

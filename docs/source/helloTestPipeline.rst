@@ -3,8 +3,9 @@
 Console Test Pipeline
 =====================
 
-In the previous section :ref:`helloRest` , we executed the
-Frank presented in :ref:`installationLinux` . We want
+In the previous section :ref:`helloIbis` , we examined the
+Frank presented in the installation instructions
+https://github.com/ibissource/docker4ibis/. We want
 to test the pipeline while ignoring the receiver, allowing
 us to enter test input more easily.
 

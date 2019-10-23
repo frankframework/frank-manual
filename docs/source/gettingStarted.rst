@@ -7,7 +7,6 @@ Getting Started
    :maxdepth: 3
 
    helloIbis
-   helloRest
    helloTestPipeline
    helloLadybug
    helloLarva

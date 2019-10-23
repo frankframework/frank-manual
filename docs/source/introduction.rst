@@ -18,5 +18,10 @@ framework are hidden. Or expensive support appears to be required to maintain
 your solution.
 
 The frank!framework provides an open low-code way of developing an enterprise
-application, or as we say a Frank. Franks are written in XML. Please read :ref:`gettingStarted`
+application. There are multiple ways to install and run the frank!framework, but
+the simplest way is to run it within a docker image. To set this up, please
+visit https://github.com/ibissource/docker4ibis/ and follow the instructions.
+
+An enterprise applications created with the frank!framework is called a Frank.
+Franks are written in XML. Please read :ref:`gettingStarted`
 to learn how to write them and to learn what services the frank!framework provides.
