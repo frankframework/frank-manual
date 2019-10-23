@@ -54,13 +54,13 @@ When we examine the ``<Configuration>`` tag, we find the following:
 
      ...
      <Adapter name="HelloDockerWorld">
-		   <Receiver name="HelloDockerWorld">
-			   <JavaListener name="HelloDockerWorld"/>
-		   </Receiver>
-		   <Pipeline firstPipe="HelloDockerWorld">
-         ...
-		   </Pipeline>
-	   </Adapter>
+	         <Receiver name="HelloDockerWorld">
+		             <JavaListener name="HelloDockerWorld"/>
+             </Receiver>
+             <Pipeline firstPipe="HelloDockerWorld">
+		             ...
+		     </Pipeline>
+     </Adapter>
    
 An adapter is a service that is triggered by a receiver and
 executes a pipeline in response. The ``<Receiver>`` tag
@@ -75,16 +75,17 @@ Our receiver reads:
   .. code-block:: XML
 
      ...
-		 <Receiver name="HelloDockerWorld">
-		   <JavaListener name="HelloDockerWorld"/>
-		 </Receiver>
+	 <Receiver name="HelloDockerWorld">
+	         <JavaListener name="HelloDockerWorld"/>
+	 </Receiver>
      ...
 
 It has name ``HelloDockerWorld``. Its further definition
 is provided by the tag within, ``<JavaListener>``. Listeners
 are building blocks that accept input. The choice for
 ``<JavaListener>`` means that the adapter "HelloDockerWorld" is
-called from other adapters.
+called directly from Java code. This is a good choice if you
+only want to call your adapter from other adapters.
 
 There are other listeners, for example ``<ApiListener>`` and
 ``<DirectoryListener>``. ``ApiListener`` makes your adapter
@@ -104,14 +105,14 @@ should be processed. It reads:
   .. code-block:: XML
 
      ...
-		 <Pipeline firstPipe="HelloDockerWorld">
-         ...
-		   <Exit path="EXIT" state="success"/>
-		 </Pipeline>
+	 <Pipeline firstPipe="HelloDockerWorld">
+             ...
+		     <Exit path="EXIT" state="success"/>
+	 </Pipeline>
      ...
 
-A pipeline is a network of pipes. The ``firstPipe="HelloDockerWorld"`` attribute
-defines that the message coming from the receiver should go
+A pipeline is a network of pipes. The ``firstPipe="HelloDockerWorld"``
+attribute defines that the message coming from the receiver should go
 to the pipe named "HelloDockerWorld". The ``<Exit>`` tag defines 
 the state in which processing can end. In our case,
 we have one state that we name "success". It can be
@@ -127,8 +128,8 @@ It reads:
 
    ...
    <FixedResultPipe name="HelloDockerWorld" returnString="Hello Docker World">
-     <Forward name="success" path="EXIT"/>
-	 </FixedResultPipe>
+           <Forward name="success" path="EXIT"/>
+   </FixedResultPipe>
    ...
 
 Pipes are predefined functions that can be performed on
@@ -175,5 +176,5 @@ Conclusion
 
 We implemented a simple adapter. It has a receiver that allows
 us to trigger it. We have a pipeline with a single pipe that
-outputs a fixed message. In the next section, :ref:`hellohelloTestPipeline`, we
+outputs a fixed message. In the next section, :ref:`helloTestPipeline`, we
 will see our adapter in action.

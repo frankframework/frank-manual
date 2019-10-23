@@ -1,17 +1,7 @@
 Database Initialization
 =======================
 
-The frank!framework can take care of database initialization. In
-section :ref:`installationLinux`, we introduced the file
-"<project directory>/properties.sh". We suggested the
-following line there: ::
-
-  DATABASE=h2
-
-This line causes the frank!framework to work with an H2 database,
-which is an in-memory database. No applications external to the
-frank!framework are needed to run the database.
-
+The frank!framework can take care of database initialization. 
 Database initialization should happen when an enterprise application starts
 for the first time. When an enterprise application is restarted later,
 database initialization should be omitted because data in the
@@ -22,6 +12,11 @@ to initialize the database. LiquiBase expects a so-called
 changelog, an XML file that defines the data model and the initial data.
 The frank!framework expects it in the file
 "<project directory>/classes/DatabaseChangelog.xml".
+
+We illustrate database initialization here for H2 databases, because
+this database is embedded within the frank!framework and does not
+require a process external to it. Please see https://github.com/ibissource/docker4ibis/
+to see how to select a database.
 
 The New Horizons database described in the previous section
 :ref:`horizonsInterfaces` is initialized with the following

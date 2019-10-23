@@ -19,7 +19,7 @@ your solution.
 
 The frank!framework provides an open low-code way of developing an enterprise
 application. There are multiple ways to install and run the frank!framework, but
-the simplest way is to run it within a docker image. To set this up, please
+the simplest way is to run it within a docker container. To set this up, please
 visit https://github.com/ibissource/docker4ibis/ and follow the instructions.
 
 An enterprise applications created with the frank!framework is called a Frank.

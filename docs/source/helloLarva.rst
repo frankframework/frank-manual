@@ -2,7 +2,7 @@ Console Larva
 =============
 
 This is the final section about the Hello adapter presented
-in :ref:`installationLinux` . In application development,
+in https://github.com/ibissource/docker4ibis/. In application development,
 it is common to have automated tests. You cannot rely
 on interactive testing only, because performing these
 takes much more time than running automated tests.
@@ -49,8 +49,9 @@ following screen:
 
 .. image:: testtoolHello.jpg
 
-You see here that the Hello adapter presented in :ref:`installationLinux` now
-has two receivers. One of them is named "testtool-Hello".
+You see here that the HelloDockerWorld adapter presented in
+https://github.com/ibissource/docker4ibis/ now
+has two receivers. One of them is named "testtool-HelloDockerWorld".
 
 Larva tests are added to the "tests" subdirectory of your
 project directory. To build a scenario, you need a
@@ -61,7 +62,7 @@ you can create the file
 "<your-project-directory>/tests/Hello/scenario01.properties".
 
 Within your scenario, you need a service that writes to
-the "testtool-Hello" receiver and reads responses
+the "testtool-HelloDockerWorld" receiver and reads responses
 from it. For historic reasons, a service has a name
 consisting of two words separated by a dot. You can
 choose the service name "hello.default".
@@ -69,10 +70,10 @@ choose the service name "hello.default".
 Adding this all together, the following can be written
 to "scenario01.properties": ::
 
-   scenario.description = Hello Test, made to see how to configure Larva
-   
+   scenario.description = Hello world test, made to see how to configure Larva
+
    hello.default.className = nl.nn.adapterframework.senders.IbisJavaSender
-   hello.default.serviceName = testtool-Hello
+   hello.default.serviceName = testtool-HelloDockerWorld
 
 The rest is simpler. We have to direct our service to write a
 dummy message and read the response back. The read response
@@ -89,7 +90,7 @@ can be appended to "scenario01.properties": ::
   two lines for example should be interpreted as follows. "step1" means
   this is the first step in the scenario. "hello.default" is the service
   name to use, defined earlier to interact with the receiver stub
-  "testtool-Hello". "write" means we want to write data. On the
+  "testtool-HelloDockerWorld". "write" means we want to write data. On the
   other side of the "=" sign, we find a filename that references
   the data we want to write.
 

@@ -32,6 +32,4 @@ you can see all inputs and outputs of all pipes.
    In the tree view you see session keys. These are used to
    store information that complements the incoming message, for
    example tsReceived for the time that the input message was
-   received (timezone UTC!). For a real REST call (not coming
-   from Test Pipeline), you can find an XML with all HTTP
-   headers in session key "headers" (not shown).
+   received (timezone UTC!).

@@ -10,7 +10,7 @@ destination. We use ``<FixedQuerySender>`` to specify
 that we are targeting the database. It is not
 necessary to specify what database we
 target, because this is configured elsewhere, see
-:ref:`installationLinux` .
+for example https://github.com/ibissource/docker4ibis/.
 
 The ingest booking adapter from the previous section
 :ref:`validateBooking` can be appended with the
