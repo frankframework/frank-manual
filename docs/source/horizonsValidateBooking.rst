@@ -14,7 +14,7 @@ for our adapter are introduced.
 Storage in multiple files
 -------------------------
 
-We do not want to throw away the Hello adapter explained
+We do not want to throw away the Hello World adapter explained
 in section :ref:`helloIbis`, so we will have two adapters.
 We use XML entity references to store our Frank in
 multiple files. Each of the two adapters gets its own file,

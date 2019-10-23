@@ -10,12 +10,12 @@ The following picture shows how to access Ladybug:
 
 .. image:: ladybugGeneral.jpg
 
-You see a table that shows all recent moments that your frank
+You see a table that shows all recent moments that your Frank
 was triggered. When testing, it is wise to remember the time
 when you run a test. You should press "Refresh" in Ladybug
 and check the time to verify that you are looking to the test
 you intend. The top row of the table shows a name field of
-"Pipeline Hello".
+"Pipeline HelloDockerWorld".
 
 When you click a row, for example the top row, you see the
 corresponding pipeline. After expanding the top node, you

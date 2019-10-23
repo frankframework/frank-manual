@@ -1,7 +1,7 @@
 Console Larva
 =============
 
-This is the final section about the Hello adapter presented
+This is the final section about the Hello World adapter presented
 in https://github.com/ibissource/docker4ibis/. In application development,
 it is common to have automated tests. You cannot rely
 on interactive testing only, because performing these
@@ -57,7 +57,7 @@ Larva tests are added to the "tests" subdirectory of your
 project directory. To build a scenario, you need a
 properties file <your-scenario-name>.properties within
 a parent directory that holds a group of scenarios. To
-build a (trivial) Larva test of the Hello adapter,
+build a (trivial) Larva test of the Hello World adapter,
 you can create the file
 "<your-project-directory>/tests/Hello/scenario01.properties".
 
@@ -95,7 +95,7 @@ can be appended to "scenario01.properties": ::
   the data we want to write.
 
 Finally, the two files "tests/Hello/scenario01/step01.xml" and "tests/Hello/scenario01/step02.txt"
-are needed, the latter holding the expected response from the Hello adapter and the former holding some
+are needed, the latter holding the expected response from the Hello World adapter and the former holding some
 arbitrary XML.
 
 Before you can run the Larva scenario, you need to reload your configuration.
@@ -108,7 +108,7 @@ Now you can run the Larva scenario by pressing the Start button, as shown:
    .. image:: larvaRun.jpg
 
 Your test will succeed if and only if the contents of "step02.txt" is
-the same as the ``returnString`` attribute within the Hello adapter.
+the same as the ``returnString`` attribute within the Hello World adapter.
 
-This was the last section about the Hello adapter. The rest of :ref:`gettingStarted`
+This was the last section about the Hello World adapter. The rest of :ref:`gettingStarted`
 will consider a more interesting example.

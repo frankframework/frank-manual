@@ -9,7 +9,7 @@ https://github.com/ibissource/docker4ibis/. We want
 to test the pipeline while ignoring the receiver, allowing
 us to enter test input more easily.
 
-To do this, you can browse to "localhost/docker/iaf/gui". You see
+To do this, you can browse to http://localhost/docker/iaf/gui. You see
 a console to manage and test your Frank. Click "Testing".
 The "Testing" link will expand to "Larva", "Ladybug",
 "Test Pipeline" and "Test serviceListener". Click
