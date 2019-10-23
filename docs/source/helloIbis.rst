@@ -34,10 +34,10 @@ The outer part of it reads:
   .. code-block:: XML
 
      <Configuration name="Ibis4DockerExample">
-	     <jmsRealms>
-		     <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
-	     </jmsRealms>
-       ...
+         <jmsRealms>
+             <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
+         </jmsRealms>
+         ...
      </Configuration>
 
 This part can be almost the same for each Frank. The only interesting thing here is
@@ -53,12 +53,12 @@ When we examine the ``<Configuration>`` tag, we find the following:
 
      ...
      <Adapter name="HelloDockerWorld">
-	 	<Receiver name="HelloDockerWorld">
-	 		<JavaListener name="HelloDockerWorld"/>
-     	</Receiver>
-     	<Pipeline firstPipe="HelloDockerWorld">
-	 	...
-	 	</Pipeline>
+         <Receiver name="HelloDockerWorld">
+             <JavaListener name="HelloDockerWorld"/>
+         </Receiver>
+         <Pipeline firstPipe="HelloDockerWorld">
+         ...
+         </Pipeline>
      </Adapter>
    
 An adapter is a service that is triggered by a receiver and
@@ -75,7 +75,7 @@ Our receiver reads:
 
      ...
      <Receiver name="HelloDockerWorld">
-     	<JavaListener name="HelloDockerWorld"/>
+         <JavaListener name="HelloDockerWorld"/>
      </Receiver>
      ...
 
@@ -105,8 +105,8 @@ should be processed. It reads:
 
      ...
      <Pipeline firstPipe="HelloDockerWorld">
-     	...
-     	<Exit path="EXIT" state="success"/>
+         ...
+         <Exit path="EXIT" state="success"/>
      </Pipeline>
      ...
 
@@ -127,7 +127,7 @@ It reads:
 
    ...
    <FixedResultPipe name="HelloDockerWorld" returnString="Hello Docker World">
-           <Forward name="success" path="EXIT"/>
+       <Forward name="success" path="EXIT"/>
    </FixedResultPipe>
    ...
 

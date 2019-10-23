@@ -13,7 +13,7 @@ To do this, you can browse to "localhost/docker/iaf/gui". You see
 a console to manage and test your Frank. Click "Testing".
 The "Testing" link will expand to "Larva", "Ladybug",
 "Test Pipeline" and "Test serviceListener". Click
-"Test Pipeline". Select adapter "Hello" and enter some
+"Test Pipeline". Select adapter "HelloDockerWorld" and enter some
 arbitrary message in the Message field. Then Click
 "Send". This results in the following screen:
 
