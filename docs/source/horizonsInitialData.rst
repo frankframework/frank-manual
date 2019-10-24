@@ -8,19 +8,14 @@ database initialization should be omitted because data in the
 database should be persistent.
 
 The frank!framework internally uses LiquiBase, see http://www.liquibase.org/,
-to initialize the database. LiquiBase expects a so-called
-changelog, an XML file that defines the data model and the initial data.
-The frank!framework expects it in the file
-"<project directory>/classes/DatabaseChangelog.xml".
-
-To use LiqueBase, it has to be switched on. There are multiple ways to
+to initialize the database. To use LiqueBase, it has to be switched on. There are multiple ways to
 to this. One possibility is as follows:
 
 * Go to the "classes" directory within your project.
 * Create a file DeploymentSpecifics.properties there if it does not exist.
 * Ensure this file has the following line: ::
 
-  jdbc.migrator.active=true
+    jdbc.migrator.active=true
 
 * Restart the frank!framework.
 
@@ -29,6 +24,10 @@ this database is embedded within the frank!framework and does not
 require a process external to it. Please see https://github.com/ibissource/docker4ibis/
 to see how to select a database.
 
+LiquiBase expects a so-called
+changelog, an XML file that defines the data model and the initial data.
+The frank!framework expects it in the file
+"<project directory>/classes/DatabaseChangelog.xml".
 The New Horizons database described in the previous section
 :ref:`horizonsInterfaces` is initialized with the following
 changelog:
