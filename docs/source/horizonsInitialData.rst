@@ -13,6 +13,17 @@ changelog, an XML file that defines the data model and the initial data.
 The frank!framework expects it in the file
 "<project directory>/classes/DatabaseChangelog.xml".
 
+To use LiqueBase, it has to be switched on. There are multiple ways to
+to this. One possibility is as follows:
+
+* Go to the "classes" directory within your project.
+* Create a file DeploymentSpecifics.properties there if it does not exist.
+* Ensure this file has the following line: ::
+
+  jdbc.migrator.active=true
+
+* Restart the frank!framework.
+
 We illustrate database initialization here for H2 databases, because
 this database is embedded within the frank!framework and does not
 require a process external to it. Please see https://github.com/ibissource/docker4ibis/
