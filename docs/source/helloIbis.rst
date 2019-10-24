@@ -156,9 +156,8 @@ to handle errors and to have branching pipelines.
 Our forward points to the path "EXIT", which is defined
 within the ``<Exit>`` tag as the only possible exit of the pipeline. In more
 complex pipelines, there are also forwards that reference other
-pipes by their configured ``name`` attribute. It is also possible to define
-multiple exits of a ``<Pipeline>``. The ``<Exit>`` tags should be wrapped
-then within an ``<exits>`` tag.
+pipes by their configured ``name`` attribute. It is also possible to have
+multiple ``<Exit>`` tags within a ``<Pipeline>``.
 
 .. NOTE::
 

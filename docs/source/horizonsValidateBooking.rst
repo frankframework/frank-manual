@@ -77,8 +77,7 @@ of the file AdapterIngestBooking.xml:
            uriPattern="booking"
            method="POST"/>
      </Receiver>
-     <Pipeline firstPipe="checkInput"
-         transactionAttribute="RequiresNew" >
+     <Pipeline firstPipe="checkInput">
        <Exit path="Exit" state="success" code="201" />
        <Exit path="ServerError" state="failure" code="500" />
        <XmlValidatorPipe
