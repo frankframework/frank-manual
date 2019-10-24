@@ -99,7 +99,7 @@ of the file AdapterIngestBooking.xml:
 
 This adapter starts with a ``<receiver>`` that contains an ``<ApiListener>``.
 The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests. The attribute
-``method="POST" makes it listen to HTTP POST requests. The ``uriPattern="booking"`` attribute
+``method="POST"`` makes it listen to HTTP POST requests. The ``uriPattern="booking"`` attribute
 defines the relative path to which the adapter listens.
 The frank!framework extends this path to be "http://localhost/docker/api/booking".
 

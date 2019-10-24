@@ -11,7 +11,7 @@ travelers to book travels online, which constitute visits to
 hotels, apartments, campings or any other place where travelers 
 can sleep. New Horizons makes traveling easier, because the 
 traveler with a complex travel does not have to negotiate
-with the indivisual hosts. New Horizons takes the responsibility
+with the individual hosts. New Horizons takes the responsibility
 of paying them.
 
 Of course New Horizons has many user stories. In the
