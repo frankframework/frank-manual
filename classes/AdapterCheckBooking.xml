@@ -1,15 +1,13 @@
-<adapter name="CheckBooking">
-  <receiver name="getCheckBookingInput">
+<Adapter name="CheckBooking">
+  <Receiver name="getCheckBookingInput">
     <ApiListener
         name="getCheckBookingInputListener"
         uriPattern="checkBooking"
         method="POST"/>
-  </receiver>
-  <pipeline firstPipe="checkInput">
-    <exits>
-      <exit path="insertBooking" state="success" code="201" />
-      <exit path="ServerError" state="failure" code="500" />
-    </exits>
+  </Receiver>
+  <Pipeline firstPipe="checkInput">
+    <Exit path="insertBooking" state="success" code="201" />
+    <Exit path="ServerError" state="failure" code="500" />
     &checkInput;
-  </pipeline>
-</adapter>
+  </Pipeline>
+</Adapter>

@@ -21,8 +21,8 @@ can be appended:
        name="iterateDestinations"
        elementXpathExpression="/destinations/destination">
      ...
-     <forward name="success" path="Exit"/>
-     <forward name="failure" path="ServerError"/>
+     <Forward name="success" path="Exit"/>
+     <Forward name="failure" path="ServerError"/>
    </ForEachChildElementPipe>
 
 This pipe applies the ``elementXpathExpression`` to the incoming message
@@ -54,13 +54,13 @@ You can insert the following sender:
        name="insertVisitSender"
        query="INSERT INTO visit VALUES(?, ?, ?, ?, ?, ?, ?)"
        jmsRealm="jdbc">
-     <param name="bookingId" xpathExpression="/destination/bookingId" />
-     <param name="seq" xpathExpression="/destination/seq" />
-     <param name="hostId" xpathExpression="/destination/hostId" />
-     <param name="productId" xpathExpression="/destination/productId" />
-     <param name="startDate" xpathExpression="/destination/startDate" />
-     <param name="endDate" xpathExpression="/destination/endDate" />
-     <param name="price" xpathExpression="/destination/price" />
+     <Param name="bookingId" xpathExpression="/destination/bookingId" />
+     <Param name="seq" xpathExpression="/destination/seq" />
+     <Param name="hostId" xpathExpression="/destination/hostId" />
+     <Param name="productId" xpathExpression="/destination/productId" />
+     <Param name="startDate" xpathExpression="/destination/startDate" />
+     <Param name="endDate" xpathExpression="/destination/endDate" />
+     <Param name="price" xpathExpression="/destination/price" />
    </FixedQuerySender>
 
 Finally, the pipe with ``name`` attribute "getDestinations" should

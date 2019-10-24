@@ -1,16 +1,14 @@
-<adapter name="IngestBooking">
-  <receiver name="input">
+<Adapter name="IngestBooking">
+  <Receiver name="input">
     <ApiListener
         name="inputListener"
         uriPattern="booking"
         method="POST"/>
-  </receiver>
-  <pipeline firstPipe="checkInput"
+  </Receiver>
+  <Pipeline firstPipe="checkInput"
       transactionAttribute="RequiresNew" >
-    <exits>
-      <exit path="Exit" state="success" code="201" />
-      <exit path="ServerError" state="failure" code="500" />
-    </exits>
+    <Exit path="Exit" state="success" code="201" />
+    <Exit path="ServerError" state="failure" code="500" />
     &checkInput;
     <SenderPipe
         name="insertBooking">
@@ -18,20 +16,20 @@
           name="insertBookingSender"
           query="INSERT INTO booking VALUES(?, ?, ?, ?)"
           jmsRealm="jdbc">
-        <param name="id" xpathExpression="/booking/@id" />
-        <param name="travelerId" xpathExpression="/booking/travelerId" />
-        <param name="price" xpathExpression="/booking/price" />
-        <param name="fee" xpathExpression="/booking/fee" />
+        <Param name="id" xpathExpression="/booking/@id" />
+        <Param name="travelerId" xpathExpression="/booking/travelerId" />
+        <Param name="price" xpathExpression="/booking/price" />
+        <Param name="fee" xpathExpression="/booking/fee" />
       </FixedQuerySender>
-      <forward name="success" path="getDestinations" />
-      <forward name="failure" path="ServerError" />
+      <Forward name="success" path="getDestinations" />
+      <Forward name="failure" path="ServerError" />
     </SenderPipe>
     <XsltPipe
         name="getDestinations"
         styleSheetName="booking2destinations.xsl"
         getInputFromSessionKey="originalMessage">
-      <forward name="success" path="iterateDestinations"/>
-      <forward name="failure" path="ServerError"/>
+      <Forward name="success" path="iterateDestinations"/>
+      <Forward name="failure" path="ServerError"/>
     </XsltPipe>
     <ForEachChildElementPipe
         name="iterateDestinations"
@@ -40,16 +38,16 @@
           name="insertVisitSender"
           query="INSERT INTO visit VALUES(?, ?, ?, ?, ?, ?, ?)"
           jmsRealm="jdbc">
-        <param name="bookingId" xpathExpression="/destination/bookingId" />
-        <param name="seq" xpathExpression="/destination/seq" />
-        <param name="hostId" xpathExpression="/destination/hostId" />
-        <param name="productId" xpathExpression="/destination/productId" />
-        <param name="startDate" xpathExpression="/destination/startDate" />
-        <param name="endDate" xpathExpression="/destination/endDate" />
-        <param name="price" xpathExpression="/destination/price" />
+        <Param name="bookingId" xpathExpression="/destination/bookingId" />
+        <Param name="seq" xpathExpression="/destination/seq" />
+        <Param name="hostId" xpathExpression="/destination/hostId" />
+        <Param name="productId" xpathExpression="/destination/productId" />
+        <Param name="startDate" xpathExpression="/destination/startDate" />
+        <Param name="endDate" xpathExpression="/destination/endDate" />
+        <Param name="price" xpathExpression="/destination/price" />
       </FixedQuerySender>
-      <forward name="success" path="Exit"/>
-      <forward name="failure" path="ServerError"/>
+      <Forward name="success" path="Exit"/>
+      <Forward name="failure" path="ServerError"/>
     </ForEachChildElementPipe>
-  </pipeline>
-</adapter>
+  </Pipeline>
+</Adapter>

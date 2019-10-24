@@ -2,11 +2,11 @@
     name="checkInput"
     root="booking"
     schema="booking.xsd">
-  <forward name="success" path="insertBooking" />
-  <forward name="failure" path="makeInvalidBookingError" />
+  <Forward name="success" path="insertBooking" />
+  <Forward name="failure" path="makeInvalidBookingError" />
 </XmlValidatorPipe>
 <FixedResultPipe
     name="makeInvalidBookingError"
     returnString="Input booking does not satisfy booking.xsd">
-  <forward name="success" path="ServerError"/>
+  <Forward name="success" path="ServerError"/>
 </FixedResultPipe>

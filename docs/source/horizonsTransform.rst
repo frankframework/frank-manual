@@ -51,8 +51,8 @@ Then you can append the ingest booking adapter with the following:
        name="getDestinations"
        styleSheetName="booking2destinations.xsl"
        getInputFromSessionKey="originalMessage">
-     <forward name="success" path="Exit"/>
-     <forward name="failure" path="ServerError"/>
+     <Forward name="success" path="Exit"/>
+     <Forward name="failure" path="ServerError"/>
    </XsltPipe>
 
 .. NOTE::

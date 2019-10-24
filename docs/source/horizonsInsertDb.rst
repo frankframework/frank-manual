@@ -24,13 +24,13 @@ following pipe:
          name="insertBookingSender"
          query="INSERT INTO booking VALUES(?, ?, ?, ?)"
          jmsRealm="jdbc">
-       <param name="id" xpathExpression="/booking/@id" />
-       <param name="travelerId" xpathExpression="/booking/travelerId" />
-       <param name="price" xpathExpression="/booking/price" />
-       <param name="fee" xpathExpression="/booking/fee" />
+       <Param name="id" xpathExpression="/booking/@id" />
+       <Param name="travelerId" xpathExpression="/booking/travelerId" />
+       <Param name="price" xpathExpression="/booking/price" />
+       <Param name="fee" xpathExpression="/booking/fee" />
      </FixedQuerySender>
-     <forward name="success" path="Exit" />
-     <forward name="failure" path="ServerError" />
+     <Forward name="success" path="Exit" />
+     <Forward name="failure" path="ServerError" />
    </SenderPipe>
 
 You see that we send an INSERT query to the database with parameters.

@@ -21,7 +21,7 @@ multiple files. Each of the two adapters gets its own file,
 and in Configuration.xml they are referenced.
 
 You can make a file "<project directory>/classes/AdapterHello.xml
-and copy from Configuration.xml the ``<adapter>`` element and its
+and copy from Configuration.xml the ``<Adapter>`` element and its
 contents. This results in:
 
 .. literalinclude:: ../../classes/AdapterHello.xml
@@ -70,34 +70,33 @@ of the file AdapterIngestBooking.xml:
 
 .. code-block:: XML
 
-   <adapter name="IngestBooking">
-     <receiver name="input">
+   <Adapter name="IngestBooking">
+     <Receiver name="input">
        <ApiListener
            name="inputListener"
            uriPattern="booking"
            method="POST"/>
-     </receiver>
-     <pipeline firstPipe="checkInput">
-       <exits>
-         <exit path="Exit" state="success" code="201" />
-         <exit path="ServerError" state="failure" code="500" />
-       </exits>
+     </Receiver>
+     <Pipeline firstPipe="checkInput"
+         transactionAttribute="RequiresNew" >
+       <Exit path="Exit" state="success" code="201" />
+       <Exit path="ServerError" state="failure" code="500" />
        <XmlValidatorPipe
            name="checkInput"
            root="booking"
            schema="booking.xsd">
-         <forward name="success" path="Exit" />
-         <forward name="failure" path="makeInvalidBookingError" />
+         <Forward name="success" path="Exit" />
+         <Forward name="failure" path="makeInvalidBookingError" />
        </XmlValidatorPipe>
        <FixedResultPipe
            name="makeInvalidBookingError"
            returnString="Input booking does not satisfy booking.xsd">
-         <forward name="success" path="ServerError"/>
+         <Forward name="success" path="ServerError"/>
        </FixedResultPipe>
-     </pipeline>
-   </adapter>
+     </Pipeline>
+   </Adapter>
 
-This adapter starts with a ``<receiver>`` that contains an ``<ApiListener>``.
+This adapter starts with a ``<Receiver>`` that contains an ``<ApiListener>``.
 The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests. The attribute
 ``method="POST"`` makes it listen to HTTP POST requests. The ``uriPattern="booking"`` attribute
 defines the relative path to which the adapter listens.
@@ -114,9 +113,9 @@ forward names. Forward name "success" is followed if the incoming XML
 satisfies "booking.xsd". Otherwise, forward "failure" is followed.
 This is predefined behavior of the ``<XmlValidatorPipe>`` .
 
-The ``<forward>`` tags link the forward names to paths. On success,
+The ``<Forward>`` tags link the forward names to paths. On success,
 we go to the pipeline exit having path "Exit", finishing execution.
-The ``<pipeline>`` tag contains an ``<exit>`` tag that links
+The ``<Pipeline>`` tag contains an ``<Exit>`` tag that links
 path "Exit" to exit state "success" and code 201. The ``<XmlValidatorPipe>`` echos
 its input message to its output message, both if validation succeeds and
 if validation fails. Therefore, the output

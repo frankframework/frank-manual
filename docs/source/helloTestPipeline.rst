@@ -22,4 +22,4 @@ arbitrary message in the Message field. Then Click
 The ``returnString`` you configured in the ``<FixedResultPipe>`` is printed
 at the bottom. To the top, you see a green bar with
 the word "success". "success" is the state you configured
-in the ``<exit>`` tag.
+in the ``<Exit>`` tag.

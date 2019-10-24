@@ -9,32 +9,30 @@ In this section we add transactionality. The inserts in these two
 tables should either all succeed, or all fail.
 
 This last requirement can be implemented very easily. To the
-``<pipeline>`` tag, you can add the attribute
+``<Pipeline>`` tag, you can add the attribute
 ``transactionAttribute="RequiresNew"``. With this update,
 file "AdapterIngestBooking.xml" becomes:
 
 .. code-block:: XML
    :emphasize-lines: 9
 
-   <adapter name="IngestBooking">
-     <receiver name="input">
+   <Adapter name="IngestBooking">
+     <Receiver name="input">
        <ApiListener
            name="inputListener"
            uriPattern="booking"
            method="POST"/>
-     </receiver>
-     <pipeline firstPipe="checkInput"
+     </Receiver>
+     <Pipeline firstPipe="checkInput"
          transactionAttribute="RequiresNew" >
-       <exits>
-         <exit path="Exit" state="success" code="201" />
-         <exit path="ServerError" state="failure" code="500" />
-       </exits>
+       <Exit path="Exit" state="success" code="201" />
+       <Exit path="ServerError" state="failure" code="500" />
        ...
-     </pipeline>
-   </adapter>
+     </Pipeline>
+   </Adapter>
 
 The value "RequiresNew" means that a new transaction is started
-for executing the ``<pipeline>``. There are other possible values.
+for executing the ``<Pipeline>``. There are other possible values.
 The value "Mandatory" for example requires that a transaction
 is expected to exist when pipeline execution starts; the pipeline
 will fail otherwise. This value is useful when
