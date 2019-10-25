@@ -6,3 +6,6 @@ Ibis Adapter Framework Documentation
     
    introduction
    gettingStarted/gettingStarted
+   debugging/debugging
+   testing/testing
+   deploying/deploying
