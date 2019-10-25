@@ -5,4 +5,4 @@ Ibis Adapter Framework Documentation
    :maxdepth: 3
     
    introduction
-   gettingStarted
+   gettingStarted/gettingStarted
