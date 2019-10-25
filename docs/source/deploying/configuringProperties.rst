@@ -1,4 +1,4 @@
-.. _deploymentConfiguringProperties:
+.. _deploymentConfigureProperties:
 
 Configuring Properties
 ======================
