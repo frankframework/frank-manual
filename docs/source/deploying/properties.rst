@@ -6,9 +6,9 @@ Properties
 Properties are key/value pairs, both the key and the value being strings. There are
 different ways to set properties, which is the subject of section
 :ref:`deploymentConfigureProperties`. This section focuses on the impact of
-setting properties. First, any property can be accessed from within a Frank. Second, some 
-properties change the way the frank!framework operates.
-
+setting properties. First, any string can be used as a property name and its value can be
+used within a Frank. Second, some 
+properties also change the way the frank!framework operates.
 
 Properties in Frank configurations
 ----------------------------------
@@ -31,8 +31,8 @@ for example the following adapter:
      </Pipeline>
    </Adapter>
 
-The ``FixedResultPipe`` outputs a fixed string that is configured
-in attribute ``resutnString``. The value of this XML attribute
+The ``<FixedResultPipe>`` outputs a fixed string that is configured
+in attribute ``returnString``. The value of this XML attribute
 contains the substrings ``${otap.stage}`` and ``${my.text}``.
 These substrings reference the values associated with keys "otap.stage"
 and "my.text". The way to assign values to properties is described in section
