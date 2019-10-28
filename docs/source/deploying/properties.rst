@@ -31,6 +31,8 @@ for example the following adapter:
      </Pipeline>
    </Adapter>
 
+.. highlight:: none
+
 The ``<FixedResultPipe>`` outputs a fixed string that is configured
 in attribute ``returnString``. The value of this XML attribute
 contains the substrings ``${otap.stage}`` and ``${my.text}``.
