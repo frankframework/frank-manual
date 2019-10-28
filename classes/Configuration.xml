@@ -4,6 +4,7 @@
   <!ENTITY Hello SYSTEM "AdapterHello.xml">
   <!ENTITY IngestBooking SYSTEM "AdapterIngestBooking.xml">
   <!ENTITY CheckBooking SYSTEM "AdapterCheckBooking.xml">
+  <!ENTITY AccessProperties SYSTEM "AdapterAccessProperties.xml">
 ]>
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -15,4 +16,5 @@
   &Hello;
   &IngestBooking;
   &CheckBooking;
+  &AccessProperties;
 </Configuration>
