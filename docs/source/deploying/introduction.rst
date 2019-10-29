@@ -26,8 +26,20 @@ talk to an Oracle database in the Production environment, but a H2 database
 may be sufficient for developers working on the Frank (DTAP stage L).
 These differences are configured using properties, which are just key/value pairs.
 
+.. NOTE::
+   Properties are not the only mechanism that allows the deployment environment
+   to manipulate the operation of the frank!framework and your Frank. For example when
+   you work with the Wearefrank! Quick Docker Installer, you have
+   a configuration file "properties.sh" with the following line: ::
+
+     DATABASE=h2
+
+   This line lets the Wearefrank! Quick Docker Installer set up a h2
+   database, but within the frank!framework you do not see a system
+   property called "DATABASE".
+
 Section :ref:`deploymentProperties` introduces some specific properties, describing
-the impact of setting them on the behavior of your Frank. Section :ref:`deploymentConfigureProperties` 
+the impact of setting properties on the behavior of your Frank. Section :ref:`deploymentConfigureProperties` 
 describes how the environment determines property values, allowing the environment to
 control the behavior of your Frank. Finally, sections :ref:`deploymentDockerDeployment`,
 :ref:`deploymentTomcatDeployment`, :ref:`deploymentJbossDeployment` and

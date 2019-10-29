@@ -8,15 +8,15 @@ are restricted to consist of letters separated by dots (".") and they
 are case insensitive. There are
 different ways to set properties, which is the subject of section
 :ref:`deploymentConfigureProperties`. This section focuses on the impact of
-setting properties. First, any string can be used as a property name and its value can be
+setting properties. First, any key can be used as a property name and its value can be
 used within a Frank. Second, some 
 properties also change the way the frank!framework operates.
 
 Properties in Frank configurations
 ----------------------------------
 
-Any string can be used as a property name. Consider
-for example the following adapter:
+Any key, which is a case-insensitive string of letters and dots, can be used as a property name.
+Consider for example the following adapter:
 
 .. code-block:: XML
 
@@ -61,7 +61,8 @@ Configuration properties of the frank!framework
 Here follows a list of properties with a predefined meaning:
 
 application.server.type
-  The application server used in your deployment. Here is
+  The application server used in your deployment. You do not have to set
+  this property explicitly. It gets its value automatically. Here is
   a list of possible values:
 
   * "WAS" means "WebSphere Application Server".
@@ -97,8 +98,8 @@ otap.side
   property to have specific properties for each. For example, if this property
   has value "v", then additional properties are read from file
   "SideSpecifics_v.properties". The default value is "xxx", causing
-  additional properties to be read from "SideSpecifics_xxx.properties"
-  if this file is present. See section
+  additional properties to be read from file "classes/SideSpecifics_xxx.properties"
+  relative to your project directory. This file is optional. See section
   :ref:`deploymentConfigureProperties` for more details on how properties
   are read.
 
@@ -107,10 +108,11 @@ otap.stage
   "DEV", "TST", "ACC" and "PRD". These values are case insensitive. The
   value determines whether additional properties are read from file
   "StageSpecifics_LOC.properties" or "StageSpecifics_DEV.properties" or
-  ... or "StageSpecifics_PRD.properties". See section
+  ... or "StageSpecifics_PRD.properties". All these files are relative to
+  the "classes" directory of your project. They are all optional. See section
   :ref:`deploymentConfigureProperties` for more details on how properties
   are read.
 
 .. NOTE::
 
-   OTAP is the Duch equivalet of the DTAP acronym.
+   OTAP is the Duch equivalent of the DTAP acronym.

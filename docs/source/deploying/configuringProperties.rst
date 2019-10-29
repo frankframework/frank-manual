@@ -7,7 +7,7 @@ The previous section :ref:`deploymentProperties` explains what happens
 when you set properties. This section explains how you can give properties
 their value.
 
-First remember from :ref:`deploymentIntroduction` that properties
+First remember from section :ref:`deploymentIntroduction` that properties
 are the means to configure your Frank for a specific deployment
 environment: the DTAP stage you deploy for, the application server
 you deploy on, and more. Therefore, a mechanism is needed to
@@ -35,11 +35,11 @@ When the frank!framework starts, it does the following:
 
 * It establishes the system properties and their values. These values are then fixed.
 * Read properties from "DeploymentSpecifics.properties" without changing system properties.
-* Depending on the value of property "application.server.type", read properties "ServerSpecifics_WAS.properties", "ServerSpecifics_WAS.properties" or TODO: value for JBoss? See section :ref:`deploymentProperties`. Do not overwrite system properties, but do overwrite properties read from "DeploymentSpecifics.properties".
+* Depending on the value of property "application.server.type", read properties "ServerSpecifics_TOMCAT.properties", "ServerSpecifics_WAS.properties" or TODO: value for JBoss? See section :ref:`deploymentProperties`. Do not overwrite system properties, but do overwrite properties read from "DeploymentSpecifics.properties".
 * Read properties from file "SideSpecifics_${otap.side}.properties", substituting the value of property "otap.side" to get the name of the file. If "otap.side" would be "xxx", then additional properties would be read from "SideSpecifics_xxx.properties". Do not modify system properties, but modify properties read from earlier property files.
 * Read properties depending on the combination of ${otap.side} and the application server. These are in "SideSpecifics_${otap.side}_${application.server.type}.properties" with the ${...} variables substituted like explained above. Do not change system properties but overwrite other properties.
 * Read properties depending on property "otap.stage". They are in "StageSpecifics_${otap.stage}.properties" in which ${otap.stage} is substituted. Do not change system properties but overwrite other properties.
-* Read properties depending on the combination of "otap.stage" and the application server. They are in "StageSpecifics_${otap.stage}_${application.server.type}${application.server.type.custom}.properties. Do not change system properties.
+* Read properties depending on the combination of "otap.stage" and the application server. They are in "StageSpecifics_${otap.stage}_${application.server.type}". Do not change system properties.
 
 .. In AppConstants.properties the following sequence is defined:
    CompanySpecifics.properties,
