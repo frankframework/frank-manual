@@ -1,3 +1,5 @@
+.. _databaseInitialization:
+
 Database Initialization
 =======================
 

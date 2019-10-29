@@ -3,7 +3,9 @@
 Properties 
 ==========
 
-Properties are key/value pairs, both the key and the value being strings. There are
+Properties are key/value pairs, both the key and the value being strings. Keys
+are restricted to consist of letters separated by dots (".") and they
+are case insensitive. There are
 different ways to set properties, which is the subject of section
 :ref:`deploymentConfigureProperties`. This section focuses on the impact of
 setting properties. First, any string can be used as a property name and its value can be
@@ -58,6 +60,17 @@ Configuration properties of the frank!framework
 
 Here follows a list of properties with a predefined meaning:
 
+application.server.type
+  The application server used in your deployment. Here is
+  a list of possible values:
+
+  * "WAS" means "WebSphere Application Server".
+  * "TOMCAT" means "Apache Tomcat". You also get this value if you deploy with the Wearefrank! Quick Docker Installer.
+  * TODO: What is it for JBoss Application Server?
+
+application.server.type.custom
+  TODO: This property is referenced from "sprintContext.xml". How is it used to boot the frank!framework?
+
 log.dir
   The value of this property is the directory to which the frank!framework
   writes its log files.
@@ -79,6 +92,16 @@ jdbc.migrator.active
   https://www.liquibase.org/. With LiquiBase, the file
   "classes/DatabaseChangelog.xml" in your project directory is executed.
 
+otap.side
+  If your site has multiple networks or departments, you can use this
+  property to have specific properties for each. For example, if this property
+  has value "v", then additional properties are read from file
+  "SideSpecifics_v.properties". The default value is "xxx", causing
+  additional properties to be read from "SideSpecifics_xxx.properties"
+  if this file is present. See section
+  :ref:`deploymentConfigureProperties` for more details on how properties
+  are read.
+
 otap.stage
   Defines the DTAP stage of this deployment. Possible values are "LOC",
   "DEV", "TST", "ACC" and "PRD". These values are case insensitive. The
@@ -88,3 +111,6 @@ otap.stage
   :ref:`deploymentConfigureProperties` for more details on how properties
   are read.
 
+.. NOTE::
+
+   OTAP is the Duch equivalet of the DTAP acronym.
