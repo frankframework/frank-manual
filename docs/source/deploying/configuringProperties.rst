@@ -98,6 +98,7 @@ as shown in the following table:
    TST            DEBUG
    ACC            WARN
    PRD            WARN
+----------------  -----------------------
 
 This is a handy feature, because for "log.level" this
 is probably what you want. You get this behavior without
