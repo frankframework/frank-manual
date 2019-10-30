@@ -28,15 +28,9 @@ These differences are configured using properties, which are just key/value pair
 
 .. NOTE::
    Properties are not the only mechanism that allows the deployment environment
-   to manipulate the operation of the frank!framework and your Frank. For example when
-   you work with the Wearefrank! Quick Docker Installer, you have
-   a configuration file "properties.sh" with the following line: ::
-
-     DATABASE=h2
-
-   This line lets the Wearefrank! Quick Docker Installer set up a h2
-   database, but within the frank!framework you do not see a system
-   property called "DATABASE".
+   to manipulate the operation of the frank!framework and your Frank. See section
+   :ref:`deploymentConfigureProperties`. This applies to the mentioned example
+   of choosing the database.
 
 Section :ref:`deploymentProperties` introduces some specific properties, describing
 the impact of setting properties on the behavior of your Frank. Section :ref:`deploymentConfigureProperties` 
