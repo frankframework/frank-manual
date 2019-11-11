@@ -9,3 +9,4 @@ Ibis Adapter Framework Documentation
    debugging/debugging
    testing/testing
    deploying/deploying
+   wiki/wiki
