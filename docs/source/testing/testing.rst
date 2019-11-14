@@ -10,3 +10,8 @@ TODO: Write this section. It will deal with the following:
 * Larva, with details.
 * Command-line interfaces for CI/CD.
 
+.. toctree::
+   :maxdepth: 3
+
+    ladybug/ladybug
+    larva/larva
