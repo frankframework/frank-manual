@@ -9,7 +9,7 @@
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="./ibisdoc.xsd"
-    name="Ibis4DockerExample">
+    name="gettingStartedAndDeploy">
   <jmsRealms>
     <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
   </jmsRealms>
