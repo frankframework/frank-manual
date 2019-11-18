@@ -1,0 +1,37 @@
+<Adapter name="checkBooking">
+  <Receiver name="checkBooking">
+    <ApiListener name="checkBooking"
+        uriPattern="checkBooking"
+        method="POST" />
+  </Receiver>
+  <Pipeline firstPipe="checkBooking">
+    <Exit state="success" path="Valid" code="200" />
+    <Exit state="failure" path="Invalid" code="400" />
+    <XmlValidatorPipe
+        name="checkBooking"
+        root="booking"
+        schema="booking.xsd">
+      <Forward name="success" path="handleValid" />
+      <Forward name="failure" path="checkIsXml" />
+    </XmlValidatorPipe>
+    <FixedResultPipe
+        name="handleValid"
+        returnString="&lt;result&gt;&lt;status&gt;valid&lt;/status&gt;&lt;/result&gt;">
+      <Forward name="success" path="Valid"/>
+    </FixedResultPipe>
+    <XmlWellFormedCheckerPipe name="checkIsXml">
+      <Forward name="success" path="handleInvalid" />
+      <Forward name="failure" path="notXml" />
+    </XmlWellFormedCheckerPipe>
+    <XsltPipe
+        name="handleInvalid"
+        styleSheetName="./wrapFailureReason.xslt">
+      <Param name="failureReason" pattern="{failureReason}" />
+      <Forward name="success" path="Invalid"/>
+    </XsltPipe>
+    <FixedResultPipe name="notXml"
+        returnString="&lt;result&gt;&lt;status&gt;invalid&lt;/status&gt;&lt;message&gt;Not XML&lt;/message&gt;&lt;/result&gt;">
+      <forward name="success" path="Invalid" />
+    </FixedResultPipe>
+  </Pipeline>
+</Adapter>

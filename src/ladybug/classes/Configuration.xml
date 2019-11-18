@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration [
+  <!ENTITY CheckBooking SYSTEM "AdapterCheckBooking.xml">
+]>
+<Configuration
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="./ibisdoc.xsd"
+    name="ladybug">
+  <jmsRealms>
+    <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
+  </jmsRealms>
+  &CheckBooking;
+</Configuration>
