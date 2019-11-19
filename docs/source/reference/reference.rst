@@ -1,5 +1,8 @@
 .. _reference:
 
+Reference
+=========
+
 This is the reference guide.
 
 TODO: Write a better introduction to the reference guide.
