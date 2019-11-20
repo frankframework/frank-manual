@@ -1,4 +1,4 @@
-.. _ladyBug:
+.. _gettingStartedLadyBug:
 
 Console Ladybug
 ===============
