@@ -4,5 +4,6 @@
 target
 lib
 docs/build
-classes/ibisdoc.xsd
+ibisdoc.xsd
 *.xcf
+ladybugTransformation.xsl
