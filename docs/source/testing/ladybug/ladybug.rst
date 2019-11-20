@@ -15,6 +15,7 @@ Ladybug
    edit/edit
    remove/remove
    ignore/ignore
-   recognizeIgnore/recognizeIgnore
+   recognizeIgnores/recognizeIgnores
+   download/download
+   upload/upload
    schedule/schedule
-   
