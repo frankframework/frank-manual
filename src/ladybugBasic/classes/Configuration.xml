@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration [
+  <!ENTITY external SYSTEM "externalBasic.xml">
+]>
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="ibisdoc.xsd"
@@ -6,28 +9,7 @@
   <jmsRealms>
     <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
   </jmsRealms>
-  <Adapter name="internalArchive">
-    <Receiver name="internalArchive">
-      <JavaListener name="internalArchive"
-          serviceName="archive"/>
-    </Receiver>
-    <Pipeline firstPipe="internalArchive">
-      <Exit state="success" path="Exit" code="200" />
-      <FixedResultPipe name="internalArchive"
-          returnString="&lt;docid&gt;docid-12345&lt;/docid&gt;"/>
-    </Pipeline>
-  </Adapter>
-  <Adapter name="internalGet">
-    <Receiver name="internalGet">
-      <JavaListener name="internalGet"
-          serviceName="get"/>
-    </Receiver>
-    <Pipeline firstPipe="internalGet">
-      <Exit state="success" path="Exit" code="200"/>
-      <FixedResultPipe name="internalGet"
-          returnString="&lt;document&gt;This is the document&lt;/document&gt;"/>
-    </Pipeline>
-  </Adapter>
+  &external;
   <Adapter name="sutArchive">
     <Receiver name="sutArchive">
       <ApiListener name="sutArchive"
