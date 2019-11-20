@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration [
-  <!ENTITY external SYSTEM "externalBasic.xml">
+  <!ENTITY external SYSTEM "externalTime.xml">
 ]>
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
