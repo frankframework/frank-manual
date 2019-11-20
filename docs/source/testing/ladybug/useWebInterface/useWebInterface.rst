@@ -1,7 +1,7 @@
-.. _createLadybugTestScriptThroughPortal:
+.. _useWebInterface:
 
-Create Ladybug Test Script Through Portal
-=========================================
+Use Web Interface
+=================
 
 #. Start the Frank framework. You will see the following screen:
 
