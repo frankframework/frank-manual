@@ -9,22 +9,6 @@ Please do the following:
 
 #. Ensure that the Frank!framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
 #. Ensure that you have a report in Ladybug for running adapter "sutGet". If it misses, repeat the steps of :ref:`useTestPipeline`.
-#. Ensure that you have a report in Ladybug for running adapter "sutArchive". If you skipped :ref:`useWebInterface`, please run "sutArchive" in Test Pipeline as shown:
-
-   .. image:: sutArchiveInTestPipeline.jpg
-
-#. In the pull-down menu (number 1), select "sutArchive".
-#. In the message field (number 2), enter the following XML:
-
-   .. code-block: XML
-
-      <document>This is the document</document>
-
-#. Press "Send" (number 3).
-#. Ensure you are back in Ladybug and press Refresh:
-
-   .. image:: ../useWebInterface/ladybugRefresh.jpg
-
 #. Select the line corresponding to the execution of "sutGet". This is shown with number 1 in the picture below:
 
    .. image:: doCapture.jpg
