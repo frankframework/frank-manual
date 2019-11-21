@@ -33,7 +33,7 @@ Please do the following:
 
      <docid>docid-12345</docid>
 
-#. Open a webbrowser and open URL "localhost/ladybug/iaf/gui".
+#. Open a webbrowser and open URL http://localhost/ladybug/iaf/gui.
 #. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
 
    .. image:: ../../frankConsoleFindTestTools.jpg

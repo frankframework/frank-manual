@@ -36,7 +36,7 @@ Please do the following:
 
    There are tabs that allow you to see different features of the response (number 1). The body tab is selected, so you see the body of the response (number 2). And you see that the HTTP status code is 200 (number 3), which indicates success.
 
-#. Open a webbrowser and open URL "localhost/ladybug/iaf/gui".
+#. Open a webbrowser and open URL http://localhost/ladybug/iaf/gui.
 #. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
 
    .. image:: ../../frankConsoleFindTestTools.jpg
