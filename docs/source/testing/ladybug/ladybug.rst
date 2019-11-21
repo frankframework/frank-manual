@@ -10,8 +10,8 @@ Ladybug
    preparations/preparations
    useWebInterface/useWebInterface
    useTestPipeline/useTestPipeline
+   capture/capture
    organize/organize
-   run/run
    edit/edit
    remove/remove
    ignore/ignore
