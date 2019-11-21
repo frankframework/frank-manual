@@ -6,7 +6,8 @@
 
    .. image:: ladybugReport.jpg
 
-#. Click this line. You see a tree view of the execution of this Frank adapter (number 2). To the right, you see information about the selected node (number 3). In this case, it is the arbitrary XML message you passed through the body of your HTTP request.
+#. Click the line corresponding to your call to the electronic archive.
+You see a tree view of the execution of this Frank adapter (number 2). To the right, you see information about the selected node (number 3). In this case, it is the arbitrary XML message you passed through the body of your HTTP request.
 
 .. NOTE::
 
