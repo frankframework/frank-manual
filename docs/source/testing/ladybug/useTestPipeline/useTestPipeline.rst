@@ -24,7 +24,7 @@ Please call the the electronic archive as follows:
 
    .. NOTE::
 
-   The abbreviation SUT stands for "System Under Test".
+     The abbreviation SUT stands for "System Under Test".
 
 #. Enter the following text in the message field (number 2): ::
 
