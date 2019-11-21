@@ -20,5 +20,5 @@ go to :ref:`useWebInterfaceWindows` while Linux users go to
 .. toctree::
    :maxdepth: 3
    
-   useWebInterfaceWindows
-   useWebInterfaceLinux
+   windows
+   linux
