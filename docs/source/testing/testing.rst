@@ -8,7 +8,7 @@ but it is not necessary to study that section before this one.
 Larva and Ladybug can be found as follows:
 
 * Open the Frank console in your webbrowser. If you have a configuration named "yourconfig" then go to http://your-server/yourConfig/iaf/gui.
-* In the left-hand menu, double-click "Testing" as shown:
+* In the left-hand menu, click "Testing" as shown:
 
   .. image:: frankConsoleFindTestTools.jpg
 

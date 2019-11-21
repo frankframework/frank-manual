@@ -37,7 +37,7 @@ Please do the following:
    There are tabs that allow you to see different features of the response (number 1). The body tab is selected, so you see the body of the response (number 2). And you see that the HTTP status code is 200 (number 3), which indicates success.
 
 #. Open a webbrowser and open URL "localhost/ladybug/iaf/gui".
-#. Open Ladybug by double-clicking "Testing" and then clicking "Ladybug":
+#. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
 
    .. image:: ../../frankConsoleFindTestTools.jpg
 
@@ -46,4 +46,8 @@ Please do the following:
    .. image:: ladybugReport.jpg
 
 #. Click this line. You see a tree view of the execution of this Frank adapter (number 2). To the right, you see information about the selected node (number 3). In this case, it is the arbitrary XML message you passed through the body of your HTTP request.
+
+.. NOTE::
+
+   In the tree view you see the abbreviation SUT. This stands for System Under Test.
 
