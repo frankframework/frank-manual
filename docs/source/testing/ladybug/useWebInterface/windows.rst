@@ -10,6 +10,15 @@ instructions Windows users need to follow.
 
 Please do the following:
 
+#. Open the Frank!framework by browsing to http://localhost/ladybug/iaf/gui.
+#. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
+
+   .. image:: ../../frankConsoleFindTestTools.jpg
+
+#. Enable the report generator as shown:
+
+   .. image:: ladybugEnableReportGenerator.jpg
+
 #. Start Postman.
 #. Go to File | Settings, select tab General.
 #. Ensure that "SSL certificate verification" is not checked, see figure below:
@@ -36,12 +45,11 @@ Please do the following:
 
    There are tabs that allow you to see different features of the response (number 1). The body tab is selected, so you see the body of the response (number 2). And you see that the HTTP status code is 200 (number 3), which indicates success.
 
-#. Open a webbrowser and open URL http://localhost/ladybug/iaf/gui.
-#. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
+#. Switch back to Ladybug. Press "Refresh":
 
-   .. image:: ../../frankConsoleFindTestTools.jpg
+   .. image:: ladybugRefresh.jpg
 
-#. In Ladybug, you see a table in which your HTTP call appears (number 1):
+#. You see a table in which your HTTP call appears (number 1):
 
    .. image:: ladybugReport.jpg
 

@@ -12,12 +12,21 @@ instructions Linux users need to follow.
 
 Please do the following:
 
+#. Open the Frank!framework by browsing to http://localhost/ladybug/iaf/gui.
+#. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
+
+   .. image:: ../../frankConsoleFindTestTools.jpg
+
+#. Enable the report generator as shown:
+
+   .. image:: ladybugEnableReportGenerator.jpg
+
 #. Open a command prompt.
 #. Enter the following command:
 
    .. code-block:: bash
 
-      curl -i -X POST -H "Content-Type: application/xml" -d '<xxx/>' localhost/ladybug/api/archive
+      curl -i -X POST -H "Content-Type: application/xml" -d '<document>This is the document</document>' localhost/ladybug/api/archive
 
 #. The result will be something like this: ::
 
@@ -33,12 +42,11 @@ Please do the following:
 
      <docid>docid-12345</docid>
 
-#. Open a webbrowser and open URL http://localhost/ladybug/iaf/gui.
-#. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
+#. Switch back to Ladybug and press Refresh:
 
-   .. image:: ../../frankConsoleFindTestTools.jpg
+   .. image:: ladybugRefresh.jpg
 
-#. In Ladybug, you see a table in which your HTTP call appears (number 1):
+#. You see a table in which your HTTP call appears (number 1):
 
    .. image:: ladybugReport.jpg
 
