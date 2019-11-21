@@ -10,6 +10,8 @@ instructions Windows users need to follow.
 
 Please do the following:
 
+.. highlight:: none
+
 #. Open the Frank!framework by browsing to http://localhost/ladybug/iaf/gui.
 #. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
 
