@@ -39,5 +39,13 @@ Please call the the electronic archive as follows:
 
       This result is fixed as motivated in :ref:`introduction`.
 
-.. include:: ../useWebInterface/commonWindowsLinux.rst
+#. Go back to Ladybug and press Refresh:
 
+   .. image:: ../useWebInterface/ladybugRefresh.jpg
+
+#. You see a table in which your HTTP call appears (number 1):
+
+   .. image:: ladybugReport.jpg
+
+#. Click the line corresponding to your call to the electronic archive.
+You see a tree view of the execution of this Frank adapter (number 2). To the right, you see information about the selected node (number 3). In this case, it is the output XML message you saw before after pressing "Send" in Test Pipeline.
