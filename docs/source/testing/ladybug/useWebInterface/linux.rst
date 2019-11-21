@@ -3,6 +3,8 @@
 Linux
 =====
 
+.. highlight:: none
+
 This subsection explains how to do a HTTP call to
 the electronic archive introduced in :ref:`introduction`
 outside the Frank!framework. This subsection gives the
@@ -17,21 +19,19 @@ Please do the following:
 
       curl -i -X POST -H "Content-Type: application/xml" -d '<xxx/>' localhost/ladybug/api/archive
 
-#. The result will be something like this:
+#. The result will be something like this: ::
 
-   .. code-block: none
+   HTTP/1.1 200 OK
+   Server: Apache-Coyote/1.1
+   Last-Modified: Thu, 21 Nov 2019 10:29:55 GMT
+   Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+   Pragma: no-cache
+   Allow: OPTIONS, POST
+   Content-Type: */*;charset=UTF-8
+   Content-Length: 26
+   Date: Thu, 21 Nov 2019 10:29:55 GMT
 
-      HTTP/1.1 200 OK
-      Server: Apache-Coyote/1.1
-      Last-Modified: Thu, 21 Nov 2019 10:29:55 GMT
-      Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
-      Pragma: no-cache
-      Allow: OPTIONS, POST
-      Content-Type: */*;charset=UTF-8
-      Content-Length: 26
-      Date: Thu, 21 Nov 2019 10:29:55 GMT
-
-      <docid>docid-12345</docid>
+   <docid>docid-12345</docid>
 
 #. Open a webbrowser and open URL "localhost/ladybug/iaf/gui".
 #. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
