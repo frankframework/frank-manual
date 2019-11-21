@@ -36,11 +36,13 @@ Please do the following:
 
    .. image:: postmanHeaders.jpg
 
-#. Enter the following XML for the body: ::
+#. Enter the following XML for the body:
 
-     <document>This is the document</document>
+   .. code-block:: xml
+     
+      <document>This is the document</document>
 
-  .. image:: postmanBody.jpg
+   .. image:: postmanBody.jpg
 
 #. Press "Send".
 #. To the bottom, you should see the following response:
@@ -49,4 +51,17 @@ Please do the following:
 
    There are tabs that allow you to see different features of the response (number 1). The body tab is selected, so you see the body of the response (number 2). And you see that the HTTP status code is 200 (number 3), which indicates success.
 
-.. include:: commonWindowsLinux.rst
+#. Switch back to Ladybug and press Refresh:
+
+   .. image:: ladybugRefresh.jpg
+
+#. You see a table in which your HTTP call appears (number 1):
+
+   .. image:: ladybugReport.jpg
+
+#. Click the line corresponding to your call to the electronic archive. You see a tree view of the execution of this Frank adapter (number 2). To the right, you see information about the selected node (number 3). In this case, it is the XML message you passed through the body of your HTTP request.
+
+.. NOTE::
+
+   In the tree view you see the abbreviation SUT. This stands for System Under Test.
+

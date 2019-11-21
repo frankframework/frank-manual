@@ -47,5 +47,4 @@ Please call the the electronic archive as follows:
 
    .. image:: ladybugReport.jpg
 
-#. Click the line corresponding to your call to the electronic archive.
-You see a tree view of the execution of this Frank adapter (number 2). To the right, you see information about the selected node (number 3). In this case, it is the output XML message you saw before after pressing "Send" in Test Pipeline.
+#. Click the line corresponding to your call to the electronic archive. You see a tree view of the execution of this Frank adapter (number 2). To the right, you see information about the selected node (number 3). In this case, it is the output XML message you saw before after pressing "Send" in Test Pipeline.
