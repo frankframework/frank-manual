@@ -34,7 +34,9 @@ Please do the following:
 
    .. image:: postmanHeaders.jpg
 
-#. Enter some arbitrary XML for the body:
+#. Enter the following XML for the body: ::
+
+     <document>This is the document</document>
 
   .. image:: postmanBody.jpg
 
