@@ -15,7 +15,7 @@ the environment you need.
 
 This tutorial is based on an electronic archive that Wearefrank! built
 for one of their customers. The archive has a portal before it that
-handles requests from users. The portal does calls on the archive
+handles requests from users. The portal accesses the archive
 to service the user.
 
 Wearefrank! cannot give everyone access to the real archive. Therefore,
