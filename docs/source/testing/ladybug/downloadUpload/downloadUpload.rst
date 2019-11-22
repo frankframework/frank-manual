@@ -21,7 +21,7 @@ Please do the following:
 #. Sometimes the Frank!framework saves test scripts automatically, but you can not rely on this. In this tutorial we make sure that all test scripts are lost, such that we can properly demonstrate uploading.
 #. Please open a command prompt (Windows) or a terminal (Linux) and enter the issue the following command: ::
 
-  docker container rm ladybug
+   docker container rm ladybug
 
 #. Restart the Frank!framework.
 #. Browse to http://localhost/ladybug/iaf/gui.
