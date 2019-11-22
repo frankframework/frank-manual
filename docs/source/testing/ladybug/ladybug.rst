@@ -11,11 +11,10 @@ Ladybug
    useWebInterface/useWebInterface
    useTestPipeline/useTestPipeline
    capture/capture
+   downloadUpload/downloadUpload
    organize/organize
    edit/edit
    remove/remove
    ignore/ignore
    recognizeIgnores/recognizeIgnores
-   download/download
-   upload/upload
    schedule/schedule

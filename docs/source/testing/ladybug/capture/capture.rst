@@ -32,7 +32,3 @@ Please do the following:
    .. image:: seeRunOfCaptured.jpg
 
 #. Numbers 3 and 4 show the impact of running a captured test. Number 3 was the run of "sutGet" that was captured. Number 4 was introduced by running the captured test. Every execution of an adapter results in a table row.
-#. Go back to tab "Test". There is still one selected test script as shown in the picture before the last shown. Press "Download all" (number 2).
-#. A save file dialog appears allowing you to save a zip file. Press OK.
-#. Go to your Downloads folder and sort by creation date to see the downloaded file.
-#. Now you can safely stop the Frank!framework. You will be able to restore your captured scripts.
