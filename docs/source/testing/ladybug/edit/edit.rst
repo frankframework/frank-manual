@@ -63,13 +63,14 @@ Please do the following:
 
 #. Restart the Frank!framework and press the refresh button of your webbrowser. Probably you still see your test cases. If not, upload the test scripts you downloaded. Your screen should look as follows again:
 
-   .. image:: afterDescriptionAdded.jpg
+   .. image:: afterRestart.jpg
 
 #. Now select the topmost tree node (number 1 in the figure below). Then select all tests (numbers 2 and 3). Alternatively, you can use "Select all" (number 4). Then press "Run" (number 5)  and "Refresh" (number 6).
 
    .. image:: runAfterModification.jpg
 
-#. The test script with stub strategy "Always" succeeds (number 7), while the test script with stub strategy "Never" fails.
+#. If you want to investigate why a test failed, you can compare the expected result and the actual result. Use the "Compare" button (number 10).
+#. The test script with stub strategy "Always" succeeds (number 7), while he test script with stub strategy "Never" fails.
 
    .. NOTE::
 
@@ -95,7 +96,7 @@ Please do the following:
 
    .. image:: reset.png
 
-#. You are back in tab "Test" (number 1). Select the top-most node in the tree view (number 2). Select all test scripts (numbers 3 and 4). Then press "Refresh" (number 5). The green and red messages that were present before are gone (numbers 6 and 7).
+#. You are back in tab "Test" (number 1). Select the top-most node in the tree view (number 2). Select all test scripts (numbers 3 and 4). Then press "Reset" (number 5). The green and red messages that were present before are gone (numbers 6 and 7).
 
 #. Press "Run" (number 1 in figure below) and "Refresh" (number 2). Now both tests succeed again (numbers 3 and 4).
 
