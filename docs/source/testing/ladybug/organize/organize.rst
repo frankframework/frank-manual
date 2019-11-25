@@ -10,7 +10,7 @@ Please do the following:
 .. highlight:: none
 
 #. Ensure that the Frank!framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
-#. Ensure that you have a captured test script of runnint adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. Alternatively, you can redo subsection :ref:`capture`.
+#. Ensure that you have a captured test script of running adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. Alternatively, you can redo subsection :ref:`capture`.
 #. We capture another test script first. Click "Test Pipeline". Select adapter "sutArchive" (number 1 of the picture below):
 
    .. image: sutArchive.jpg
@@ -29,19 +29,19 @@ Please do the following:
 
 #. Press "Ladybug", then button "Refresh":
 
-   .. image: ../useWebInterface/ladybugRefresh.jpg
+   .. image:: ../useWebInterface/ladybugRefresh.jpg
 
 #. Select the line reporting about "sutArchive" (number 1 of picture below). Select the upper-most "Pipeline" node (number 2). Set the stub strategy to "Never" (number 3)and press "Copy" (number 4). Then press tab "Test" (number 5).
 
-   .. image: captureArchive.jpg
+   .. image:: captureArchive.jpg
 
 #. You see that you are in tab "Test" (number 1 of picture below). Press Refresh (number 2). You see two test scripts now, one about "sutGet" and one about "sutArchive" (number 3).
 
-   .. image: afterCapture.jpg
+   .. image:: afterCapture.jpg
 
 #. Press the "Open" button of "sutArchive" (number 4). You see the following:
 
-   .. image: afterOpen.jpg
+   .. image:: afterOpen.jpg
 
 #. A new tab has been created (number 1). Select the uppermost "Pipeline" node (number 2). You can see that the stub strategy was "Never" when the test script was captured (number 3). Press "Edit" (number 4). The following screen appears:
 
