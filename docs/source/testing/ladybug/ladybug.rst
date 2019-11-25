@@ -14,7 +14,6 @@ Ladybug
    downloadUpload/downloadUpload
    organize/organize
    edit/edit
-   remove/remove
    ignore/ignore
    recognizeIgnores/recognizeIgnores
    schedule/schedule

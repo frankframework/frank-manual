@@ -91,7 +91,7 @@ Now that you are prepared, you can learn how to organize your test scripts. Plea
 
    .. NOTE::
 
-      This description references the architecture of the simplified electronic archive as introduced in :ref:`introduction`. It emulates a real archive combined with a portal, the portal servicing the user and delegating user calls to the real archive. This set-up allows us to demonstrate the impact of the stub strategy in subsection TODO.
+      This description references the architecture of the simplified electronic archive as introduced in :ref:`introduction`. It emulates a real archive combined with a portal, the portal servicing the user and delegating user calls to the real archive. This set-up allows us to demonstrate the impact of the stub strategy in subsection :ref:`edit`.
 
 #. Press Save (number 3) and Close (number 4). You go back to the "Test" tab as shown with number 1 in the picture below:
 
