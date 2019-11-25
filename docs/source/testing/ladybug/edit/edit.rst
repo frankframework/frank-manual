@@ -44,13 +44,13 @@ Please do the following:
 
    .. image:: editDescription.jpg
 
-#. You are in the same tab (number 1). Click the uppermost "Pipeline" node (number 2). Edit the description to be `sutArchive, call to real archive stubbed`. Press "Save" (number 4) and "Close" (number 5). The following screen appears:
+#. You are in the same tab (number 1). Click the uppermost "Pipeline" node (number 2). Edit the description to be :code:`sutArchive, call to real archive stubbed`. Press "Save" (number 4) and "Close" (number 5). The following screen appears:
 
    .. image:: afterDescriptionAdded.jpg
 
-#. Select the topmost node (number 1). Press "Refresh" (number 2). Now you see two test scripts about "sutArchive". One of them has stub strategy "Never", the other has stub strategy "Always".
+#. Select the topmost node (number 1). Press "Refresh" (number 2). Now you see two test scripts about "sutArchive", both having their description (number 3).
 #. Press "Download all" (number 4). Then stop the Frank!framework.
-#. Now we change our System Under Test. It is the simplified electronic archive with a portal that calls the real electronic archive. We change the real electronic archive. In your project directory, open file `classes/Configuration.xml`. Edit the name of the included file to become `externalModified.xml`, as shown:
+#. Now we change our System Under Test. It is the simplified electronic archive with a portal that calls the real electronic archive. We change the real electronic archive. In your project directory, open file :code:`classes/Configuration.xml`. Edit the name of the included file to become :code:`externalModified.xml`, as shown:
 
    .. code-block:: xml
       :emphasize-lines: 3
@@ -59,6 +59,7 @@ Please do the following:
       <!DOCTYPE configuration [
           <!ENTITY external SYSTEM "externalModified.xml">
       ]>
+      ...
 
 #. Restart the Frank!framework and press the refresh button of your webbrowser. Probably you still see your test cases. If not, upload the test scripts you downloaded. Your screen should look as follows again:
 
@@ -78,11 +79,11 @@ Please do the following:
 
       Stub strategy "Always" is useful to reduce the scope of your test. Sometimes you just want to see whether your own adapter is right, regardless of changes in the outside world.
 
-#. Let's assume that the introduced change is not a bug. We edit the non-stubbed test script to fix the test. Press the "Open" button of the not-stubbed test script. You see the following:
+#. Let's assume that the introduced change is not a bug. We edit the non-stubbed test script to fix the test. Press the "Open" button of the not-stubbed test script (number 9). You see the following:
 
    .. image:: openFailedNonStubbed.jpg
 
-#. You are another tab (number 1). Select the topmost node in the tree view (number 2). Check that you have the test with stub strategy "Never" (number 3). Then press "Edit" (number 4). You see the following:
+#. You are in another tab (number 1). Select the topmost node in the tree view (number 2). Check that you have the test with stub strategy "Never" (number 3). Then press "Edit" (number 4). You see the following:
 
    .. image:: editingTheTest.jpg
 
