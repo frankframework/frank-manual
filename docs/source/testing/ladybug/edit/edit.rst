@@ -14,9 +14,9 @@ Please do the following:
 
    .. image:: ../../frankConsoleFindTestTools.jpg
 
-#. Select adapter "sutArchive" (number 1 in the picture below). Enter into the message field (number 2): `<document>This is the document</document>`. Press "Send" (number 3).
+#. Select adapter "sutArchive" (number 1 in the picture below). Enter into the message field (number 2): :code:`<document>This is the document</document>`. Press "Send" (number 3).
 
-   .. image:: ../organize/sutArchiveTestPipeline.jpg
+   .. image:: ../organize/sutArchiveInTestPipeline.jpg
 
 #. Below the send button, the response appears. Go back to Ladybug and press Refresh:
 
