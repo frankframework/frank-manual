@@ -27,7 +27,7 @@ Please do the following:
 #. Press "Send" (number 3).
 #. The result is shown below the send button:
 
-   .. image:: ../testPipeline/testPipelineResult.jpg
+   .. image:: ../useTestPipeline/testPipelineResult.jpg
 
 #. Go back to Ladybug.
 #. Select the line corresponding to the execution of "sutGet". This is shown with number 1 in the picture below:
@@ -102,7 +102,7 @@ Now that you are prepared, you can learn how to organize your test scripts. Plea
 
    .. image:: prepareMove.jpg
 
-#. Select the "sutArchive" test. Enter the following for the destination folder (number 2): ::
+#. Select the "sutArchive" test (number 1). Enter the following for the destination folder (number 2): ::
 
      /sutArchive/
 
