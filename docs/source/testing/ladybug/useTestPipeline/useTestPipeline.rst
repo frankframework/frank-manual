@@ -43,7 +43,7 @@ Please call the the electronic archive as follows:
 
    .. image:: ../useWebInterface/ladybugRefresh.jpg
 
-#. You see a table in which your HTTP call appears (number 1):
+#. You see a table in which your call to "sutGet"appears (number 1):
 
    .. image:: ladybugReport.jpg
 

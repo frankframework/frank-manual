@@ -10,7 +10,41 @@ Please do the following:
 .. highlight:: none
 
 #. Ensure that the Frank!framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
-#. Ensure that you have a captured test script of running adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. Alternatively, you can redo subsection :ref:`capture`.
+#. Ensure that you have a captured test script of running adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. In this case, you can proceed to :ref:`here <afterPrepared>`.
+#. If you do not have a test script of running "sutGet". Click "Testing" in the picture below:
+
+   .. image:: ../../frankConsoleFindTestTools.jpg
+
+#. Click "Test Pipeline". The following screen appears:
+
+   .. image:: ../testPipeline/testPipeline.jpg
+
+#. Select adapter "sutGet" (number 1)
+#. Enter the following text in the message field (number 2): ::
+
+     <docid>docid-12345</docid>
+
+#. Press "Send" (number 3).
+#. The result is shown below the send button:
+
+   .. image:: ../testPipeline/testPipelineResult.jpg
+
+#. Go back to Ladybug.
+#. Select the line corresponding to the execution of "sutGet". This is shown with number 1 in the picture below:
+
+   .. image:: ../capture/doCapture.jpg
+
+#. Select the upper-most "Pipeline" node (number 2).
+#. Select stub strategy "Never" in the pull down menu with number 3.
+#. Press "Copy" (number 4).
+#. Go to tab "Test" (number 5). This changes the screen as shown:
+
+   .. image:: ../capture/afterCapture.jpg
+
+#. You see you are in tab "Test" (number 1). Press "Refresh" (number 2). This causes your captured test script to appear (number 3).
+
+.. _afterPrepared:
+
 #. We capture another test script first. Click "Test Pipeline". Select adapter "sutArchive" (number 1 of the picture below):
 
    .. image:: sutArchiveInTestPipeline.jpg
@@ -31,7 +65,7 @@ Please do the following:
 
    .. image:: ../useWebInterface/ladybugRefresh.jpg
 
-#. Select the line reporting about "sutArchive" (number 1 of picture below). Select the upper-most "Pipeline" node (number 2). Set the stub strategy to "Never" (number 3)and press "Copy" (number 4). Then press tab "Test" (number 5).
+#. Select the line reporting about "sutArchive" (number 1 of picture below). Select the upper-most "Pipeline" node (number 2). Set the stub strategy to "Never" (number 3) and press "Copy" (number 4). Then press tab "Test" (number 5).
 
    .. image:: captureArchive.jpg
 
