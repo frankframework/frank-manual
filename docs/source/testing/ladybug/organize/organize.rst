@@ -3,7 +3,7 @@
 Organize Test Scripts
 =====================
 
-In subsection :ref:`capture` you learned how to capture test scripts and how to run them. If you have many test scripts, it useful to organize them. This section explains how to add a description to a test script, and shows you how to organize test scripts into folders.
+In subsection :ref:`capture` you learned how to capture test scripts and how to run them. If you have many test scripts, it is useful to organize them. This section explains how to add a description to a test script, and shows you how to organize test scripts into folders.
 
 Please do the following:
 
@@ -11,13 +11,13 @@ Please do the following:
 
 #. Ensure that the Frank!framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
 #. Ensure that you have a captured test script of running adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. In this case, you can proceed to :ref:`here <afterPrepared>`.
-#. If you do not have a test script of running "sutGet". Click "Testing" in the picture below:
+#. If you do not have a test script of running "sutGet", continue with this step. Click "Testing" in the picture below:
 
    .. image:: ../../frankConsoleFindTestTools.jpg
 
 #. Click "Test Pipeline". The following screen appears:
 
-   .. image:: ../testPipeline/testPipeline.jpg
+   .. image:: ../useTestPipeline/testPipeline.jpg
 
 #. Select adapter "sutGet" (number 1)
 #. Enter the following text in the message field (number 2): ::
@@ -43,7 +43,7 @@ Please do the following:
 
 #. You see you are in tab "Test" (number 1). Press "Refresh" (number 2). This causes your captured test script to appear (number 3).
 
-This steps finishes your preparations.
+This step finishes your preparations.
 
 .. _afterPrepared:
 
