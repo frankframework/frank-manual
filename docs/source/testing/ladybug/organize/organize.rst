@@ -43,7 +43,11 @@ Please do the following:
 
 #. You see you are in tab "Test" (number 1). Press "Refresh" (number 2). This causes your captured test script to appear (number 3).
 
+This steps finishes your preparations.
+
 .. _afterPrepared:
+
+Now that you are prepared, you can learn how to organize your test scripts. Please do the following:
 
 #. We capture another test script first. Click "Test Pipeline". Select adapter "sutArchive" (number 1 of the picture below):
 
