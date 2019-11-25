@@ -13,17 +13,17 @@ Please do the following:
 #. Ensure that you have a captured test script of running adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. Alternatively, you can redo subsection :ref:`capture`.
 #. We capture another test script first. Click "Test Pipeline". Select adapter "sutArchive" (number 1 of the picture below):
 
-   .. image: sutArchive.jpg
+   .. image:: sutArchive.jpg
 
 #. In the message field (number 2), enter the following XML:
 
-   .. code-block: XML
+   .. code-block:: XML
 
       <document>This is the document</document>
 
 #. Press Send (number 3). Below the send button, the following XML should appear:
 
-   .. code-block: XML
+   .. code-block:: XML
 
       <docid>docid-12345</docid>
 
