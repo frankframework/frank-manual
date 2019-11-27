@@ -5,7 +5,7 @@ Linux
 
 .. highlight:: none
 
-This subsection explains how to do a HTTP call to
+This sub-subsection explains how to do a HTTP call to
 the electronic archive introduced in :ref:`introduction`
 outside the Frank!framework. This subsection gives the
 instructions Linux users need to follow.

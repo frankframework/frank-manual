@@ -3,7 +3,7 @@
 Capture Test Scripts
 ====================
 
-In the preceeding subsections, two ways were demonstrated to access the simplified electronic archive introduced in :ref:`introduction`. In subsection :ref:`useWebInterface`, the HTTP interface of the System Under Test was accessed. In :ref:`useTestPipeline`, the HTTP interface was bypassed such that the input message was given directly to the business logic. We saw reports of these actions in Ladybug. In this subsection, we capture these reports into test scripts and demonstrated how these test scripts can be run.
+In the preceeding subsections, two ways were demonstrated to access the simplified electronic archive introduced in :ref:`introduction`. In subsection :ref:`useWebInterface`, the HTTP interface of the System Under Test was accessed. In :ref:`useTestPipeline`, the HTTP interface was bypassed such that the input message was given directly to the business logic. We saw reports of these actions in Ladybug. In this subsection, we capture these reports into test scripts and demonstrate how these test scripts can be run.
 
 Please do the following:
 

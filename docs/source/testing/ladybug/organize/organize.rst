@@ -3,7 +3,12 @@
 Organize Test Scripts
 =====================
 
-In subsection :ref:`capture` you learned how to capture test scripts and how to run them. If you have many test scripts, it is useful to organize them. This section explains how to add a description to a test script, and shows you how to organize test scripts into folders.
+In subsection :ref:`capture` you learned how to capture test scripts and how to run them. If you have many test scripts, it is useful to organize them. This subsection explains how to add a description to a test script, and shows you how to organize test scripts into folders.
+
+.. _organizePrepare:
+
+Preparations
+------------
 
 Please do the following:
 
@@ -46,6 +51,9 @@ Please do the following:
 This step finishes your preparations.
 
 .. _afterPrepared:
+
+Organize
+--------
 
 Now that you are prepared, you can learn how to organize your test scripts. Please do the following:
 

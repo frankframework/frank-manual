@@ -3,7 +3,7 @@
 Windows
 =======
 
-This subsection explains how to do a HTTP call to
+This sub-subsection explains how to do a HTTP call to
 the electronic archive introduced in :ref:`introduction`
 outside the Frank!framework. This subsection gives the
 instructions Windows users need to follow.

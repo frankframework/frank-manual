@@ -22,7 +22,7 @@ Wearefrank! cannot give everyone access to the real archive. Therefore,
 a very simple emulator of this archive is supplied within this
 manual. A download link is available in :ref:`preparations`. The code
 provides the portal and the archive. The archive is capable of
-archiving a document and searching a document by id. When you arechive
+archiving a document and searching a document by id. When you archive
 a document, you get the document id you need to find it back. When you
 request a document by id, you get the document.
 

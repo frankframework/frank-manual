@@ -3,9 +3,9 @@
 Use Test Pipeline
 =================
 
-In section :ref:`useWebInterface`, the electronic archive introduced in :ref:`introduction` was accessed. The electronic archive offers a HTTP interface and therefore HTTP requests were issued. We had to take care to provide the right HTTP headers along with the message we wanted to pass (header "Content-Type"). In general, satisfying the requirements of the interface can sometimes be complicated.
+In subsection :ref:`useWebInterface`, the electronic archive introduced in :ref:`introduction` was accessed. The electronic archive offers a HTTP interface and therefore HTTP requests were issued. We had to take care to provide the right HTTP headers along with the message we wanted to pass (header "Content-Type"). In general, satisfying the requirements of the interface can sometimes be complicated.
 
-This section explains an alternative way to access the System Under Test, the Test Pipeline screen of the Frank!framework. This way, you skip the interface of your Frank adapter (the HTTP interface of the electronic archive) and pass your message directly to the business logic.
+This subsection explains an alternative way to access the System Under Test, the Test Pipeline screen of the Frank!framework. This way, you skip the interface of your Frank adapter (the HTTP interface of the electronic archive) and pass your message directly to the business logic.
 
 Please call the the electronic archive as follows:
 

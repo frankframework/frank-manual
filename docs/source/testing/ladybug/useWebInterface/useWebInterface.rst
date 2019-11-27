@@ -5,7 +5,7 @@ Use Web Interface
 
 As explained in :ref:`introduction`, this tutorial demonstrates Ladybug
 by testing a simplified electronic archive. Subsection :ref:`preparations`
-explains how the electronic archive is installed. In this section we access
+explains how the electronic archive is installed. In this subsection we access
 the electronic archive outside the Frank!framework.
 
 The electronic archive, or more precisely its portal (see :ref:`introduction`)
