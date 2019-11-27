@@ -17,7 +17,13 @@ Please do the following:
      docker container rm ladybug
 
 #. Restart the Frank!framework. Open Ladybug and go to tab "Test" (number 1 in the figure below). Press "Upload" (number 2) and select file :code:`savedTestsAfterTransformation`. Finish the dialog. This restores your tests.
+
+   .. image:: uploadTests.jpg
+
 #. Go to tab "Debug" (number 1 in the figure below). Press "Options" (number 2) and "Transformation" (number 3). You can see that the change you did earlier is not restored.
+
+   .. image:: transformationGone.jpg
+
 #. We will not restore the global transformation, but we will examine test-specific ignores. Go to tab "Test" (number 1 in figure below). You can see that your uploaded test is present (number 2).
 
    .. image:: tabTestAfterUpload.jpg

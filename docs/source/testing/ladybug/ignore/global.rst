@@ -3,7 +3,7 @@
 Global ignore
 =============
 
-In sub-subsection :ref:`preparations`, we set the stage to examine the ignore feature of Ladybug. The purpose of this feature is introduce in :ref:`ignore`. We are going to do a global ignore. We will ignore the contents of an XML element for all test scripts.
+In sub-subsection :ref:`preparations`, we set the stage to examine the ignore feature of Ladybug. The purpose of this feature was introduced in :ref:`ignore`. In this sub-subsection we are going to do a global ignore. This means we will ignore the contents of an XML element for all test scripts.
 
 In :ref:`preparations`, we changed the System Under Test. It now produces an element :code:`<retrievalTime>` that has the current time as its contents. This contents will be different each time the "sutGet" adpater is run. We started the Frank!framework, ran adapter "sutGet" and captured a test script.
 
@@ -25,7 +25,7 @@ Please continue as follows:
 #. A dialog appears that mainly consists of a text field. That text field shows an XSLT transformation. Edit it as shown. The highlighted lines indicate the change.
 
    .. code-block:: XML
-      :emphasize-lines: 37, 38
+      :emphasize-lines: 35
 
       <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 	    <xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>
