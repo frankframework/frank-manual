@@ -3,7 +3,7 @@
 Edit Test Scripts
 =================
 
-This section shows how to edit Ladybug test scripts. This feature is useful if the behavior of your System Under Test (SUT) changes. These changes may be errors to be corrected, or they may be legitimate updates. In the latter case, you can adjust your test scripts to reflect the new reality. In some cases, editing is quicker than deleting the tests and recapturing them. This section also shows the meaning of the stub strategy.
+This subsection shows how to edit Ladybug test scripts. This feature is useful if the behavior of your System Under Test (SUT) changes. These changes may be errors to be corrected, or they may be legitimate updates. In the latter case, you can adjust your test scripts to reflect the new reality. In some cases, editing is quicker than deleting the tests and recapturing them. This subsection also shows the meaning of the stub strategy.
 
 We continue experimenting with the simplified archive introduced in :ref:`introduction`. We continue with the situation from section :ref:`organize`. There is one captured test script obtained from calling adapter "sutArchive" with stub strategy "Never". We will do another capture of "sutArchive" with a different stub strategy. This way, we demonstrate the use of this feature.
 
@@ -44,7 +44,7 @@ Please do the following:
 
    .. image:: editDescription.jpg
 
-#. You are in the same tab (number 1). Click the uppermost "Pipeline" node (number 2). Edit the description to be :code:`sutArchive, call to real archive stubbed`. Press "Save" (number 4) and "Close" (number 5). The following screen appears:
+#. You are in the same tab (number 1). Click the uppermost "Pipeline" node (number 2). Edit the description to be :code:`sutArchive, call to real archive stubbed` (number 3). Press "Save" (number 4) and "Close" (number 5). The following screen appears:
 
    .. image:: afterDescriptionAdded.jpg
 
@@ -70,7 +70,7 @@ Please do the following:
    .. image:: runAfterModification.jpg
 
 #. If you want to investigate why a test failed, you can compare the expected result and the actual result. Use the "Compare" button (number 10).
-#. The test script with stub strategy "Always" succeeds (number 7), while he test script with stub strategy "Never" fails.
+#. The test script with stub strategy "Always" succeeds (number 7), while he test script with stub strategy "Never" fails (number 8).
 
    .. NOTE::
 
@@ -84,7 +84,7 @@ Please do the following:
 
    .. image:: openFailedNonStubbed.jpg
 
-#. You are in another tab (number 1). Select the topmost node in the tree view (number 2). Check that you have the test with stub strategy "Never" (number 3). Then press "Edit" (number 4). You see the following:
+#. You are in another tab (number 1). Select the topmost "Pipeline" node in the tree view (number 2). Check that you have the test with stub strategy "Never" (number 3). Then press "Edit" (number 4). You see the following:
 
    .. image:: editingTheTest.jpg
 

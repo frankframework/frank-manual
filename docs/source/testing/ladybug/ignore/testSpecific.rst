@@ -12,6 +12,9 @@ Please do the following:
 .. highlight:: none
 
 #. In Ladybug, go to tab "Test" (number 1). Press "Download all" (number 2). Finish the file save dialog to save your tests. We will refer to this file as :code:`savedTestsAfterTransformation`.
+
+   .. image:: saveTestsHopefullyWithTransformation.jpg
+
 #. Stop the Frank!framework. Remove your docker container as follows. In a shell (Linux) or a command prompt (Windows), type the following: ::
 
      docker container rm ladybug
@@ -20,7 +23,7 @@ Please do the following:
 
    .. image:: uploadTests.jpg
 
-#. Go to tab "Debug" (number 1 in the figure below). Press "Options" (number 2) and "Transformation" (number 3). You can see that the change you did earlier is not restored.
+#. Go to tab "Debug" (number 1 in the figure below). Press "Options" (number 2) and "Transformation" (number 3). You can see that the change you did earlier is not restored (number 4).
 
    .. image:: transformationGone.jpg
 
