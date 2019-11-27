@@ -48,4 +48,6 @@ Please do the following:
       </result>
 
    You see that the current time is part of the result. This will be different each time the "sutGet" adapter is run.
-#. Go back to Ladybug. Click tab "Debug" (number 1 in the picture below). Click "Refresh" (number 2). Select the row with the report about running "sutGet" (number 3). Select the topmost "Pipeline" node in the tree view (number 4). Select stub strategy "Never" (number 5). Then press "Copy" (number 6)
+#. Go back to Ladybug. Click tab "Debug" (number 1 in the picture below). Click "Refresh" (number 2). Select the topmost row with a report about running "sutGet" (number 3). Select the topmost "Pipeline" node in the tree view (number 4). Select stub strategy "Never" (number 5). Then press "Copy" (number 6).
+
+   .. image:: capture.jpg

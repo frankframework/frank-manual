@@ -10,6 +10,9 @@ In :ref:`preparations`, we changed the System Under Test. It now produces an ele
 Please continue as follows:
 
 #. Open Ladybug and go to tab "Test" (number 1 in the figure below). Press "Refresh" (number 2). Your see the test script you captured. Press its "Run" button (number 3). You see a red message indicating that the test failed (number 4).
+
+   .. image:: afterCapture.jpg
+
 #. In subsection :ref:`edit` you saw that you can investigate why a test failed, but this was not shown in detail. This time, please press the "Compare" button (number 5). The following screen appears:
 
    .. image:: compare.jpg
