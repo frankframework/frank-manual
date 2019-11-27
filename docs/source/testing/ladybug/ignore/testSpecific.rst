@@ -28,7 +28,7 @@ Please do the following:
 
    .. image:: tabTestAfterUpload.jpg
 
-#. Press "Open" (number 3). You see the figure below. You are in a new tab (number 1). You are in a new tab (number 1). Select the topmost "Pipeline" node in the tree view (number 2).
+#. Press "Open" (number 3). You see the figure below. You are in a new tab (number 1). Select the topmost "Pipeline" node in the tree view (number 2).
 
    .. image:: afterUploadPrepareEdit.jpg
 
@@ -46,7 +46,7 @@ Please do the following:
 
    .. image:: runWithTestSpecificTransformation.jpg
 
-#. Press "Compare" (number 5). The screen becomes as shown below. You are in tab "Compare" (number 1). Select the topmost "Pipeline" node (number 2). You see the text "RETRIEVALTIME-IGNORED", both to the bottom-left and to the bottom-right.
+#. Press "Compare" (number 5). The screen becomes as shown below. You are in tab "Compare" (number 1). Select the topmost "Pipeline" node (number 2). You see the text "RETRIEVALTIME-IGNORED", both to the bottom-left and to the bottom-right (numbers 3 and 4).
 
    .. image:: testWithLocalTransformationSuccessComparison.jpg
 
