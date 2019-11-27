@@ -1,4 +1,0 @@
-.. _ignoreGlobal:
-
-Globally
-========

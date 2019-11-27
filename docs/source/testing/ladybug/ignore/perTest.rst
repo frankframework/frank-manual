@@ -1,4 +1,0 @@
-.. ignorePerTest:
-
-Per Test
-========

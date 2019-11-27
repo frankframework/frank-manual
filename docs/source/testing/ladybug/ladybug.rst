@@ -15,5 +15,4 @@ Ladybug
    organize/organize
    edit/edit
    ignore/ignore
-   recognizeIgnores/recognizeIgnores
    schedule/schedule

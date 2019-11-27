@@ -1,4 +1,0 @@
-.. _recognizeIgnores:
-
-Recognize Ignores
-=================
