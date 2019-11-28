@@ -60,10 +60,7 @@ When the frank!framework starts, it does the following:
    StageSpecifics_${otap.stage}_${application.server.type}${application.server.type.custom}.properties,
    Test.properties
 
-This chain of property files constitutes a hierarchy in which the most
-important property file determines the value. Seen this way the above list of property files should be read in reverse order, because the property file read last overwrites properties read in an earlier file. System pyou can give properties
-their value.roperties have the highest priority, because they are never changed when reading
-a property file.
+This chain of property files constitutes a hierarchy in which the most important property file determines the value. Seen this way the above list of property files should be read in reverse order, because the property file read last overwrites properties read in an earlier file. System properties have the highest priority, because they are never changed when reading a property file.
 
 Finally, a few properties can be changed at run time. An example is property "log.level".
 You can change this property in the Frank console. On the left hand menu, go to "Environment Variables":
@@ -122,13 +119,13 @@ system property within the frank!framework.
 An example is the database with which your Frank communicates.
 Suppose you want a H2 database. When you work with
 the Wearefrank! Quick Docker Installer you
-edit a file "properties.sh" and include for example with the following line: ::
+edit a file "properties.sh" and include for example the following line: ::
 
    DATABASE=h2
 
 You do not see a system property "DATABASE" within the frank!framework.
 The Wearefrank! Quick Docker Installer uses this Linux environment
-variable to spin up the frank!framework, but does not pass
+variable to spin up the frank!framework, but does not
 pass a system property like "DATABASE" to it.
 
 .. NOTE::
