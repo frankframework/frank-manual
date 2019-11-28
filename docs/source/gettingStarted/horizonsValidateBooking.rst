@@ -24,7 +24,7 @@ You can make a file "<project directory>/classes/AdapterHello.xml
 and copy from Configuration.xml the ``<Adapter>`` element and its
 contents. This results in:
 
-.. literalinclude:: ../../classes/AdapterHello.xml
+.. literalinclude:: ../../../src/gettingStartedAndDeploy/classes/AdapterHello.xml
    :language: xml
 
 Then you can change Configuration.xml to be:
@@ -61,7 +61,7 @@ This can be done using an XML Schema, see
 https://www.w3schools.com/xml/schema_intro.asp. You can make a document
 "<project directory>/classes/booking.xsd" and give it the following contents:
 
-.. literalinclude:: ../../classes/booking.xsd
+.. literalinclude:: ../../../src/gettingStartedAndDeploy/classes/booking.xsd
    :language: xml
 
 The frank!framework defines a pipe that checks the incoming message against

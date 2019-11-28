@@ -98,12 +98,7 @@ Finally, the two files "tests/Hello/scenario01/step01.xml" and "tests/Hello/scen
 are needed, the latter holding the expected response from the Hello World adapter and the former holding some
 arbitrary XML.
 
-Before you can run the Larva scenario, you need to reload your configuration.
-In the Adapter Status screen, press the refresh button (see the arrow)
-
-   .. image:: reloadConfiguration.jpg
-
-Now you can run the Larva scenario by pressing the Start button, as shown:
+You can run the Larva scenario by pressing the Start button, as shown:
 
    .. image:: larvaRun.jpg
 

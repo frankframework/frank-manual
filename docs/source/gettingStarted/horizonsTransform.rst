@@ -40,7 +40,7 @@ The frank!framework defines a pipe ``<XsltPipe>`` that does XSLT transformations
 You can make an XSLT stylesheet "<project directory>/classes/booking2destinations.xsl"
 and give it the following contents:
 
-.. literalinclude:: ../../classes/booking2destinations.xsl
+.. literalinclude:: ../../../src/gettingStartedAndDeploy/classes/booking2destinations.xsl
    :language: xml
 
 Then you can append the ingest booking adapter with the following:

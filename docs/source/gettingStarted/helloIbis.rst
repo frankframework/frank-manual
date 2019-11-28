@@ -80,7 +80,7 @@ Our receiver reads:
      ...
 
 It has name ``HelloDockerWorld``. Its further definition
-is provided by the tag within, ``<JavaListener>``. Listeners
+is provided by the tag within: ``<JavaListener>``. Listeners
 are building blocks that accept input. The choice for
 ``<JavaListener>`` means that the adapter "HelloDockerWorld" is
 called directly from Java code. This is a good choice if you

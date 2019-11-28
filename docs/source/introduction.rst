@@ -23,5 +23,7 @@ the simplest way is to run it within a docker container. To set this up, please
 visit https://github.com/ibissource/docker4ibis/ and follow the instructions.
 
 An enterprise applications created with the frank!framework is called a Frank.
-Franks are written in XML. Please read :ref:`gettingStarted`
-to learn how to write them and to learn what services the frank!framework provides.
+Franks are written in XML. Please read :ref:`gettingStarted` for an introduction to
+programming Franks and for an introdution to the services the Frank!framework offers.
+Detailed information can be found in the rest of this documentation.
+

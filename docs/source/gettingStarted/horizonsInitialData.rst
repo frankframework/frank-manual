@@ -34,7 +34,7 @@ The New Horizons database described in the previous section
 :ref:`horizonsInterfaces` is initialized with the following
 changelog:
 
-.. literalinclude:: ../../classes/DatabaseChangelog.xml
+.. literalinclude:: ../../../src/gettingStartedAndDeploy/classes/DatabaseChangelog.xml
    :language: xml
 
 For clarity we chose to use SQL statements in the changelog.
