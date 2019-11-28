@@ -68,7 +68,7 @@ Please continue as follows:
 
       </xsl:stylesheet>
 
-#. Using Ctrl-C and Ctrl-V, copy the updated transformation to a textfile on your PC. You will need it later. This textfile is referenced later as :code:`updatedTransformation.xsl`.
+#. Using Ctrl-C and Ctrl-V, copy the updated transformation to a textfile on your laptop. You will need it later. This textfile is referenced later as :code:`updatedTransformation.xsl`.
 #. Press "Save transformation" (number 1 in the figure below):
 
    .. image:: saveTransformation.jpg

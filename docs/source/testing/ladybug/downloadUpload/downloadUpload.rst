@@ -3,7 +3,7 @@
 Save and Load Test Scripts
 ==========================
 
-The previous subsection :ref:`capture` explained how reports in Ladybug can be captured into test scripts. Test scripts can be run any time, allowing you to do regression tests. This section explains how to save test scripts to your PC and how to upload saved tests again.
+The previous subsection :ref:`capture` explained how reports in Ladybug can be captured into test scripts. Test scripts can be run any time, allowing you to do regression tests. This section explains how to save test scripts to your laptop and how to upload saved tests again.
 
 Please do the following:
 

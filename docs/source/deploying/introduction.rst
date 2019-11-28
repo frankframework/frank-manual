@@ -18,7 +18,7 @@ When testing succeeds, the application is shipped to the
 customer. The customer has a test environment to do acceptance tests (A).
 When the customer accepts the application, it can finally be installed
 in the production environment (P). The frank!framework supports these
-DTAP stages, adding the L of Local for the PC of an individual Frank developer.
+DTAP stages, adding the L of Local for the laptop of an individual Frank developer.
 
 A Frank is typically deployed in multiple environments during its lifetime and
 has to behave slightly different for each deployment. For example a Frank may

@@ -101,7 +101,7 @@ The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests.
 defines the relative path to which the adapter listens.
 The frank!framework extends this path to be http://localhost/docker/api/booking.
 
-Then comes an ``<XmlValidatorPipe>`` . The attributes ``root`` and
+After the receiver comes an ``<XmlValidatorPipe>`` . The attributes ``root`` and
 ``schema`` are used to reference the expected root element of the incoming
 XML and to reference the XML schema file "booking.xsd" presented earlier
 in this section.
