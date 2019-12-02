@@ -24,21 +24,22 @@ def walkLines(fname, handler):
 
 def walkDirectory(theDirectory, handler):
     for folderName, subFolders, fileNames in os.walk(theDirectory):
+        for subFolder in subFolders:
+            handler(folderName, subFolder)
         for fname in fileNames:
             handler(folderName, fname)
 
 def stripParentPath(base, folderName, fname):
-    baseInZip = os.path.basename(base)
     subDirInZip = os.path.relpath(folderName, base)
-    return os.path.join(baseInZip, subDirInZip, fname)
+    return os.path.join(subDirInZip, fname)
 
 class ZipWriter:
     def __init__(self, base, zipObj):
         self._base = base
         self._zipObj = zipObj
-    def write(self, folderName, fname):
-        original = os.path.join(folderName, fname)
-        target = stripParentPath(self._base, folderName, fname)
+    def write(self, folderName, item):
+        original = os.path.join(folderName, item)
+        target = stripParentPath(self._base, folderName, item)
         self._zipObj.write(original, target)
 
 def createDownloadZip(target, sourceDir):
@@ -59,7 +60,7 @@ def createDownloadZip(target, sourceDir):
     print "Creating downloadable file {0} from directory {1}".format(target, sourceDir)
     with ZipFile(target, "w") as z:
         zipWriter = ZipWriter(sourceDir, z)
-        walkDirectory(sourceDir, lambda folderName, fname: zipWriter.write(folderName, fname))
+        walkDirectory(sourceDir, lambda folderName, item: zipWriter.write(folderName, item))
 
 def createDownloadZipFromLine(line):
     source = line.strip()
@@ -72,4 +73,3 @@ def createAllDownloadZips(descriptorFile):
 if not os.path.exists(targetDir):
     os.makedirs(targetDir)
 createAllDownloadZips(downloadsDescriptor)
-
