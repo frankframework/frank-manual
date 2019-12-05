@@ -1,5 +1,8 @@
 #!/usr/bin/python
-
+#
+# Please run this script from your checkout directory of
+# ibis4manual.
+#
 # This script is needed to build the manual for the Frank!framework.
 # Within the manual code we want download links to Frank code that
 # complements the explanations in the text. This script produces
@@ -7,11 +10,28 @@
 #
 # This script reads a file "buildDownloadZips.txt". This
 # file lists all subdirectories of ibis4manual that need
-# to be zipped. These zips appear in directory
+# to be zipped. Only files tracked with git are added to the
+# zips. These zips appear in directory
 # "docs/source/downloads".
-
+#
+# Why do we only add tracked files to the download zips? As
+# an example, consider ibisdoc.xsd, the XML schema that
+# defines the grammar of the Frank language. This file
+# is typically downloaded from the Frank!framework. Users
+# of the manual are advised to download ibisdoc.xsd
+# from there. Therefore, the download zips should not contain
+# ibisdoc.xsd.
+#
+# On the other hand, ibisdoc.xsd is useful for editors
+# of this ibis4manual project, because they want
+# support when they edit Frank code. Therefore,
+# ibisdoc.xsd appears in the checkout. The solution
+# is to add ibisdoc.xsd to .gitignore and to omit
+# ignored files from download zips.
+#
 import os
 import sys
+import subprocess
 from zipfile import ZipFile
 
 targetDir = os.path.normpath("docs/source/downloads")
@@ -25,23 +45,17 @@ def walkLines(fname, handler):
         for cnt, line in enumerate(f):
             handler(line)
 
-def walkDirectory(theDirectory, handlerFolder, handlerFile):
-    for folderName, subFolders, fileNames in os.walk(theDirectory):
-        for subFolder in subFolders:
-            handlerFolder(folderName, subFolder)
-        for fname in fileNames:
-            handlerFile(folderName, fname)
+def walkTrackedFilesInDirectory(theDirectory, handlerFile):
+    cmd = "git ls-files {0}".format(theDirectory)
+    trackedFiles = subprocess.check_output(cmd, shell=True).splitlines()
+    for relPath in trackedFiles:
+        folderName, fname = os.path.split(relPath)
+        handlerFile(folderName, fname)
 
 class ZipWriter:
     def __init__(self, base, zipObj):
         self._base = base
         self._zipObj = zipObj
-
-    def writeFolder(self, folderName, subFolder):
-        print "INFO: writeFolder folderName {0} subFolder {1}".format(folderName, subFolder)
-        original = os.path.join(folderName, subFolder)
-        target = self._getTarget(folderName, subFolder)
-        self._zipObj.write(original, target)
 
     def writeFile(self, folderName, fname):
         print "INFO: writeFile folderName {0} fname {1}".format(folderName, fname)
@@ -76,8 +90,7 @@ def createDownloadZip(target, sourceDir):
     print "INFO: Creating downloadable file {0} from directory {1}".format(target, sourceDir)
     with ZipFile(target, "w") as z:
         zipWriter = ZipWriter(sourceDir, z)
-        walkDirectory(sourceDir, \
-            lambda folderName, subFolder: zipWriter.writeFolder(folderName, subFolder), \
+        walkTrackedFilesInDirectory(sourceDir, \
             lambda folderName, fname: zipWriter.writeFile(folderName, fname))
 
 def createDownloadZipFromLine(line):
