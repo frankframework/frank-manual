@@ -11,7 +11,7 @@ Building the manual involves the following steps:
 
 ### Build download zips
 
-As said in [README.md], some Franks in directory `src` should be available as download
+As said in `README.md`, some Franks in directory `src` should be available as download
 links. Therefore, these subdirectories should be zipped and the zips should appear
 in directory `docs/source/downloads`. All download zips appear in the same directory
 to distinguish generated files from files edited manually. Please use
@@ -45,7 +45,7 @@ Here are some guidelines for updating the manual.
 
 ### Back up your statements with example code
 
-When you state things about the Frank!framework, it is wise to provide Frank code that proofs your statements. Every section of the manual should have its own Frank with backup code. Each Frank has its own subdirectory of the `src` directory as explained in `README.md`. Please keep your examples grouped by manual section. It would be confusing to have an example Frank that applies to multiple unrelated parts of the manual. The name of an example Frank should reveal to which manual text it applies.
+When you state things about the Frank!framework, it is wise to provide Frank code that proves your statements. Every section of the manual should have its own Frank with backup code. Each Frank has its own subdirectory of the `src` directory as explained in `README.md`. Please keep your examples grouped by manual section. It would be confusing to have an example Frank that applies to multiple unrelated parts of the manual. The name of an example Frank should reveal to which manual text it applies.
 
 ### Mind your audience
 
