@@ -4,16 +4,82 @@ This file explains how to contribute to this project.
 
 ## Building the Manual
 
-The manual is built automatically by http://readthedocs.io. The formatted manual can
-be found at http://ibis4manual.readthedocs.io. This is the official version, but
-when you work on this manual you also need to build it on your laptop. This is done
-using the script `make` (Linux) or the script `make.bat` (Windows). Before these
-scripts work, you need Python 2.7 and Pip. Information on how to install these is available
-on the internet.
+Building the manual involves the following steps:
 
-In addition, you need to install the following packages using pip:
+1. Build download zips using buildDownloadZips.py.
+2. Build the documentation locally or let ReadTheDocs build it.
+
+### Build download zips
+
+As said in [README.md], some Franks in directory `src` should be available as download
+links. Therefore, these subdirectories should be zipped and the zips should appear
+in directory `docs/source/downloads`. All download zips appear in the same directory
+to distinguish generated files from files edited manually. Please use
+`buildDownloadZips.py` to execute this step. Before pushing your changes,
+please run `buildDownloadZips.py` and include `docs/source/downloads`
+in your commit. These files are checked-in because ReadTheDocs cannot build them.
+
+Script `buildDownloadZips.py` requires Python 2.7. It works both for Windows and Linux.
+It replaces Windows line endings with Linux line endings for each file included in a
+download zip. This way, the same zips are produced from Windows or Linux checkouts
+of the `src` directory.
+
+### Building the documentation.
+
+You can build the documentation using http://readthedocs.io or locally on your laptop.
+The former happens automatically when you push your changes to GitHub, because the
+sever has a git hook to ReadTheDocs. The formatted manual can
+be found at http://ibis4manual.readthedocs.io. This is the official version. If you
+do not have permission to push directly to GitHub, then please make a pull request.
+
+Please check modifications to the manual first by reviewing them on your laptop.
+After building the download links as explained before, use `make html` (Linux) or the script `make.bat html` (Windows). Before these scripts work, please do the following:
+
+* Make sure you have Python 2.7 and Pip. Information on how to install these is available on the internet.
 * `pip install sphinx`
 * `pip install sphinx_rtd_theme`
 
-Then you can build the manual on your laptop using `make html` (Linux) or `make.bat html` (Windows).
+## Guidelines for the contents
 
+Here are some guidelines for updating the manual.
+
+### Back up your statements with example code
+
+When you state things about the Frank!framework, it is wise to provide Frank code that proofs your statements. Every section of the manual should have its own Frank with backup code. Each Frank has its own subdirectory of the `src` directory as explained in `README.md`. Please keep your examples grouped by manual section. It would be confusing to have an example Frank that applies to multiple unrelated parts of the manual. The name of an example Frank should reveal to which manual text it applies.
+
+### Mind your audience
+
+The manual is read by Frank developers, testers and system administrators. These professionals have very different backgrounds and ways of thinking. Developers want to understand language structures and details. Please do not only tell them to do something to get some result. Explain them the concepts behind. Testers and system administrators are different. They want to see a lot of pictures and they just want to see how to get the job done. They need to ask the right questions to developers, but they do not want to study the details. 
+
+### Support lazy readers
+
+Beginning users of the Frank!framework probably read the manual from cover to cover, but more advanced readers probably won't. They have a question, enter a search term in ReadTheDocs and land somewhere in the middle of a story. Therefore, each screen of the HTML version should be self contained. It needs a short introduction, which includes references to other sections with details about the context. After this introduction, the material of the screen can be presented. It is good to know that each screen of the manual corresponds to one .rst file in the git repository.
+
+### How to address the reader
+
+Much material can be formatted as a tutorial. This is a story in which the reader is asked to do something. The expected results of the reader's actions are described and explained. The reader is addressed as "you" and instructions are written using the (polite) imperative: "Please do this. You see that ...".
+
+When there is much material about the same topic, a long set of reader actions and expected results is involved. You need subsections, each having their own introduction. The introduction of a subsection should explain to the reader that she is in the middle of a larger story, and it should tell here at what point in the story she has arrived. Each subsection introduction should support the reader who wants to start the tutorial from that subsection instead of the beginning of the story. Of course, each tutorial should be independent. It should not be necessary to do a tutorial before another tutorial can be started.
+
+The reader should have the choice not to follow the directives but just read along. When a reader is smart or advanced, she should understand the story when she just reads on her webbrowser or even from her telephone. The manual writer should be careful not to omit anything relevant.
+
+There may be more detailed material that does not fit naturally in a tutorial. Such text still has an introduction about something the reader wants to achieve. Such an introduction should interest the reader in proceeding. For each detail mentioned, it should be clear why the reader would care to know.
+
+The only exception is reference material about individual Java classes. This material is allowed to just state the facts.
+
+### Consistent usage of words
+
+The manual should everywhere use the same word for the same thing, with the same spelling.
+
+#### Frank
+
+Many words follow from the name change from Integration Partners to WeAreFrank! Before that name change, the word Ibis was also common. WeAreFrank! defines some words related to the new name. This subsection will be updated with a dictionary.
+
+#### Cross references
+
+Do we write "This section explains..." or "This subsection explains..." or even "This sub-subsection explains..."? This should be uniform throughout the manual. Here is our choice:
+
+* Chapter: Top-level chapter, for example Getting Started.
+* Section: Second-level header, for example Getting Started | Hello World Source Code. Another example is Testing Frank Configurations | Ladybug.
+* Subsection: Third-level header, for example Getting Started | Hello World Source Code | Adapter. Another example is Testing Frank Configurations | Ladybug | Preparations.
+* Sub-subsection: Everything deeper.
