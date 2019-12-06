@@ -12,7 +12,7 @@ you do not need this environment and you can skip this section.
 Here are the instructions:
 
 * Install the Frank!framework using the Wearefrank! Quick Docker Installer. See https://github.com/ibissource/docker4ibis.
-* Download :download:`ladybug <ladybug2.zip>`.
+* Download :download:`ladybug <../../../downloads/ladybug.zip>`.
 * Unzip this file. This produces a directory called "ladybug".
 * Put directory "ladybug" as a brother of "docker4ibis".
 * When you work under Windows, you need Postman. Install it from https://www.getpostman.com/downloads/. Note that only one of the proceeding subsections requires you to use Postman. You can do the rest of this tutorial without.
