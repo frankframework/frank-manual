@@ -1,4 +1,6 @@
-# To be split in gettingStarted and deploy
-src/gettingStartedAndDeploy
+# List of directories that should be zipped for download
+# links in the manual. Comments and empty lines are
+# ignored.
 
+src/gettingStarted
 src/ladybug
