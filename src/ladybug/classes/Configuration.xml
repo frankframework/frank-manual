@@ -38,5 +38,4 @@
       </SenderPipe>
     </Pipeline>
   </Adapter>
-  <Adapter/>
 </Configuration>
