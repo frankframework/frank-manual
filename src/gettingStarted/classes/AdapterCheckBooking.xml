@@ -1,13 +1,28 @@
-<Adapter name="CheckBooking">
-  <Receiver name="getCheckBookingInput">
-    <ApiListener
-        name="getCheckBookingInputListener"
-        uriPattern="checkBooking"
-        method="POST"/>
-  </Receiver>
-  <Pipeline firstPipe="checkInput">
-    <Exit path="insertBooking" state="success" code="201" />
-    <Exit path="ServerError" state="failure" code="500" />
-    &checkInput;
-  </Pipeline>
-</Adapter>
+<Module
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+  <Adapter name="CheckBooking">
+    <Receiver name="getCheckBookingInput">
+      <ApiListener
+          name="getCheckBookingInputListener"
+          uriPattern="checkBooking"
+          method="POST"/>
+    </Receiver>
+    <Pipeline firstPipe="checkInput">
+      <Exit path="insertBooking" state="success" code="201" />
+      <Exit path="ServerError" state="failure" code="500" />
+      <XmlValidatorPipe
+          name="checkInput"
+          root="booking"
+          schema="booking.xsd">
+        <Forward name="success" path="insertBooking" />
+        <Forward name="failure" path="makeInvalidBookingError" />
+      </XmlValidatorPipe>
+      <FixedResultPipe
+          name="makeInvalidBookingError"
+          returnString="Input booking does not satisfy booking.xsd">
+        <Forward name="success" path="ServerError"/>
+      </FixedResultPipe>
+    </Pipeline>
+  </Adapter>
+</Module>

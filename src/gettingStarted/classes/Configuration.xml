@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration [
-  <!ENTITY checkInput SYSTEM "PipeCheckInput.xml">
   <!ENTITY Hello SYSTEM "AdapterHello.xml">
   <!ENTITY IngestBooking SYSTEM "AdapterIngestBooking.xml">
   <!ENTITY CheckBooking SYSTEM "AdapterCheckBooking.xml">
 ]>
-<Configuration
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="./ibisdoc.xsd"
-    name="gettingStartedAndDeploy">
+<Configuration name="gettingStarted">
   <jmsRealms>
     <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
   </jmsRealms>

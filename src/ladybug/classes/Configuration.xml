@@ -2,10 +2,7 @@
 <!DOCTYPE configuration [
   <!ENTITY external SYSTEM "externalBasic.xml">
 ]>
-<Configuration
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="ibisdoc.xsd"
-    name="ladybug">
+<Configuration name="ladybug">
   <jmsRealms>
     <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
   </jmsRealms>
