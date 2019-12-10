@@ -59,7 +59,7 @@ Beginning users of the Frank!framework probably read the manual from cover to co
 
 Much material can be formatted as a tutorial. This is a story in which the reader is asked to do something. The expected results of the reader's actions are described and explained. The reader is addressed as "you" and instructions are written using the (polite) imperative: "Please do this. You see that ...".
 
-When there is much material about the same topic, a long set of reader actions and expected results is involved. You need subsections, each having their own introduction. The introduction of a subsection should explain to the reader that she is in the middle of a larger story, and it should tell here at what point in the story she has arrived. Each subsection introduction should support the reader who wants to start the tutorial from that subsection instead of the beginning of the story. Of course, each tutorial should be independent. It should not be necessary to do a tutorial before another tutorial can be started.
+When there is much material about the same topic, a long set of reader actions and expected results is involved. You need subsections, each having their own introduction. The introduction of a subsection should explain to the reader that she is in the middle of a larger story, and it should tell her at what point in the story she has arrived. Each subsection introduction should support the reader who wants to start the tutorial from that subsection instead of the beginning of the story. Of course, each tutorial should be independent. It should not be necessary to do a tutorial before another tutorial can be started.
 
 The reader should have the choice not to follow the directives but just read along. When a reader is smart or advanced, she should understand the story when she just reads on her webbrowser or even from her telephone. The manual writer should be careful not to omit anything relevant.
 
@@ -71,9 +71,25 @@ The only exception is reference material about individual Java classes. This mat
 
 The manual should everywhere use the same word for the same thing, with the same spelling.
 
-#### Frank
+#### WeAreFrank! and their Products
 
-Many words follow from the name change from Integration Partners to WeAreFrank! Before that name change, the word Ibis was also common. WeAreFrank! defines some words related to the new name. This subsection will be updated with a dictionary.
+.. role:: strike
+    :class: strike
+
+In January 2020, the company Integration Partners changes their name to WeAreFrank!. Please use the right words to reference the company and their products, as listed below:
+
+* WeAreFrank!: The name of the company that produces the Frank!Framework. The exclamation sign is part of the company name, the colon isn't.
+* Frank!Framework: The product being documented in this manual. Note that the exclamation mark is part of the name and that there are two capitals. The colon is not part of the name.
+* Frank: A solution produced with the Frank!Framework that can be deployed to a customer. This is the combination of the Frank!Framework and Frank configs deployed on it.
+* Franks: Plural of Frank.
+* Frank config(uration): A set of XML files and property files that configures the Frank!Framework to provide a solution for a customer. A Frank config is typically created by a Frank developer. This word is also used for a set of adapters that is defined in or included from the same ``Configuration.xml`` file.
+* :strike:`Frank code`: For Java developers who edit this manual, it is tempting to use this phrase. We kindly ask them to write about "Frank config" instead. You do not have to be a programmer to use the Frank!Framework.
+* :strike:`Frank language`: Franks are written in XML, not in a propriatary programming language. You can say that Frank configurations are XML documents that satisfy the Frank configuration schema.
+* Frank config(uration) schema: The XML schema document that defines what XML code is valid for configuring the Frank!Framework.
+* Frank!Console: The graphical user interface of the Frank!Framework.
+* Frank!Doc: A complement to this manual that is shorter but provides better search capability. It can be accessed through the Frank!Console.
+* Frank developer: Engineer who writes Frank configs.
+* integration specialist: Engineer who wants to integrate software systems at a customer site. She may be interested in using the Frank!Framework to do her job.
 
 #### Cross references
 
