@@ -28,7 +28,7 @@ of the `src` directory.
 
 You can build the documentation using http://readthedocs.io or locally on your laptop.
 The former happens automatically when you push your changes to GitHub, because the
-sever has a git hook to ReadTheDocs. The formatted manual can
+server has a git hook to ReadTheDocs. The formatted manual can
 be found at http://ibis4manual.readthedocs.io. This is the official version. If you
 do not have permission to push directly to GitHub, then please make a pull request.
 
@@ -74,7 +74,7 @@ The manual should everywhere use the same word for the same thing, with the same
 #### WeAreFrank! and their Products
 
 .. role:: strike
-    :class: strike
+   :class: strike
 
 In January 2020, the company Integration Partners changes their name to WeAreFrank!. Please use the right words to reference the company and their products, as listed below:
 
