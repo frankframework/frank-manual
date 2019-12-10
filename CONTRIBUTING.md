@@ -73,9 +73,6 @@ The manual should everywhere use the same word for the same thing, with the same
 
 #### WeAreFrank! and their Products
 
-.. role:: strike
-   :class: strike
-
 In January 2020, the company Integration Partners changes their name to WeAreFrank!. Please use the right words to reference the company and their products, as listed below:
 
 * WeAreFrank!: The name of the company that produces the Frank!Framework. The exclamation sign is part of the company name, the colon isn't.
@@ -83,8 +80,8 @@ In January 2020, the company Integration Partners changes their name to WeAreFra
 * Frank: A solution produced with the Frank!Framework that can be deployed to a customer. This is the combination of the Frank!Framework and Frank configs deployed on it.
 * Franks: Plural of Frank.
 * Frank config(uration): A set of XML files and property files that configures the Frank!Framework to provide a solution for a customer. A Frank config is typically created by a Frank developer. This word is also used for a set of adapters that is defined in or included from the same ``Configuration.xml`` file.
-* :strike:`Frank code`: For Java developers who edit this manual, it is tempting to use this phrase. We kindly ask them to write about "Frank config" instead. You do not have to be a programmer to use the Frank!Framework.
-* :strike:`Frank language`: Franks are written in XML, not in a propriatary programming language. You can say that Frank configurations are XML documents that satisfy the Frank configuration schema.
+* ~Frank code~: For Java developers who edit this manual, it is tempting to use this phrase. We kindly ask them to write about "Frank config" instead. You do not have to be a programmer to use the Frank!Framework.
+* ~Frank language~: Franks are written in XML, not in a propriatary programming language. You can say that Frank configurations are XML documents that satisfy the Frank configuration schema.
 * Frank config(uration) schema: The XML schema document that defines what XML code is valid for configuring the Frank!Framework.
 * Frank!Console: The graphical user interface of the Frank!Framework.
 * Frank!Doc: A complement to this manual that is shorter but provides better search capability. It can be accessed through the Frank!Console.
