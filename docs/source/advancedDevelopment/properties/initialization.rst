@@ -10,12 +10,16 @@ As a Frank developer, you can reference these three properties to let your Frank
 As an example, assume that you deploy on your local laptop (``otap.stage = LOC``), that you use the WeAreFrank! Quick Docker Installer (``application.server.type = TOMCAT``) and that you chose to set ``otap.side = xxx``. Then the Frank!Framework reads the following properties, sorted from high priority to low priority:
 
 #. System properties: These are never overwritten by properties you define in your Frank configuration.
-#. ``StageSpecifics_LOC_TOMCAT.properties``
-#. ``StageSpecifics_LOC.properties``
-#. ``SideSpecifics_xxx_TOMCAT.properties``
-#. ``SideSpecifics_xxx.properties``
-#. ``ServerSpecifics_TOMCAT.properties``
-#. ``DeploymentSpecifics.properties``
+#. File ``StageSpecifics_LOC_TOMCAT.properties``.
+#. File ``StageSpecifics_LOC.properties``.
+#. File ``SideSpecifics_xxx_TOMCAT.properties``.
+#. File ``SideSpecifics_xxx.properties``.
+#. File ``ServerSpecifics_TOMCAT.properties``.
+#. File ``DeploymentSpecifics.properties``.
+
+.. NOTE::
+
+   When you use the WeAreFrank! Quick Docker Installer, these files are in subdirectory ``classes`` of your project directory. If you write your Frank config in a Maven project, you work in ``src/main/resources``. Your build environment (e.g. Maven) or your deployment environment (e.g. Apache Tomcat, the WeAreFrank! Quick Docker Installer) package these files to provide them to the Frank!Framework. The Frank!Framework is build on top of the Java Virtual Machine. The packaged files should appear on the Java classpath. The Frank!Framework expects the mentioned property files in the root directory of the classpath. It is the responsibility of your build environment and your deployment environment to get these files there. Please consult their documentation if you have any issues.
 
 The Frank!Framework does not require these property files to be present. If some of these files do not exist, the Frank!Framework initializes the properties based on the other files.
 
