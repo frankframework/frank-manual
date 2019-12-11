@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration [
+  <!ENTITY ReferenceProperties SYSTEM "ConfigurationReferenceProperties.xml">
+]>
+<Configuration>
+  <jmsRealms>
+    <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
+  </jmsRealms>    
+  &ReferenceProperties;
+</Configuration>

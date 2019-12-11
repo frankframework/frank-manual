@@ -3,4 +3,12 @@
 How To Reference Properties
 ===========================
 
-There are three ways for properties to take effect. First, you can reference properties within your XML configuration files. Second, some properties influence services provided by the Frank!Framework. Third, there are properties that express features of your deployment environment and that determine how other properties are initialized.
+The following ``Configuration.xml`` file demonstrates how to reference properties within you Frank configuration:
+
+.. include:: ../../../../src/advancedDevelopmentProperties/ConfigurationReferenceProperties.xml
+   :emphasize-lines: 8
+
+The highlighted line shows that properties are referenced by surrounding the property name with ``${`` and ``}``. The Frank!Framework replaces property references by the values of the referenced properties. If this configuration is deployed in DTAP stage ``LOC`` and if property ``my.text`` equals ``My text is Hello``, then the output will be: ::
+
+   From stage LOC, I say My text is Hello
+
