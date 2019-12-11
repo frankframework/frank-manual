@@ -1,4 +1,4 @@
-.. propertiesReference:
+.. _propertiesReference:
 
 How To Reference Properties
 ===========================
