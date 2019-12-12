@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="otherConfig">
+  <Adapter name="otherConfigHello">
+    <Receiver name="otherConfigHelloReceiver">
+      <JavaListener name="otherConfigHelloListener" />
+    </Receiver>
+    <Pipeline firstPipe="otherConfigHelloPipe">
+      <Exit path="EXIT" state="success"/>
+      <FixedResultPipe name="otherConfigHelloPipe" returnString="Hello from other config"/>
+    </Pipeline>
+  </Adapter>
+</Configuration>

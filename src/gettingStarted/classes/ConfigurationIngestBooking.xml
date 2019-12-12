@@ -47,7 +47,7 @@
       </XsltPipe>
       <ForEachChildElementPipe
           name="iterateDestinations"
-          elementXpathExpression="/destinations/destination">
+          elementXPathExpression="/destinations/destination">
         <FixedQuerySender
             name="insertVisitSender"
             query="INSERT INTO visit VALUES(?, ?, ?, ?, ?, ?, ?)"

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration [
-  <!ENTITY Hello SYSTEM "AdapterHello.xml">
-  <!ENTITY IngestBooking SYSTEM "AdapterIngestBooking.xml">
-  <!ENTITY CheckBooking SYSTEM "AdapterCheckBooking.xml">
+  <!ENTITY Hello SYSTEM "ConfigurationHello.xml">
+  <!ENTITY IngestBooking SYSTEM "ConfigurationIngestBooking.xml">
+  <!ENTITY CheckBooking SYSTEM "ConfigurationCheckBooking.xml">
 ]>
 <Configuration name="gettingStarted">
   <jmsRealms>
