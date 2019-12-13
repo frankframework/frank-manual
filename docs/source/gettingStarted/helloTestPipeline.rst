@@ -23,12 +23,12 @@ After following the instructions of :ref:`helloIbis`, please proceed as follows:
 
 #. Browse to http://localhost/ibis4dockerexample/iaf/gui. You see the Frank!Console as shown below. Click "Testing". The "Testing" link will expand to "Larva", "Ladybug", "Test Pipeline" and "Test serviceListener".
 
-   .. image:: frankConsoleFindTestTools.jpg
+     .. image:: frankConsoleFindTestTools.jpg
 
 #. Click "Test Pipeline". Select adapter "HelloDockerWorld" (number 1 in the picture below). Enter some
 arbitrary message in the Message field (number 2). Then Click "Send" (number 3). 
 
-   .. image:: frankTestPipeline.jpg
+     .. image:: frankTestPipeline.jpg
 
 #. The ``returnString`` you configured in the ``<FixedResultPipe>`` is printed
 at the bottom (number 4). To the top, you see a green bar with
