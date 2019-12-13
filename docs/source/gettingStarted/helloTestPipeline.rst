@@ -18,9 +18,10 @@ After following the instructions of :ref:`helloIbis`, please proceed as follows:
        franks\docker4ibis> docker4ibis.bat Ibis4DockerExample
 
    * On Linux, open a shell. Go to directory ``franks\docker4ibis``. Run the following command: ::
+       
        franks/docker4ibis> docker4ibis.sh Ibis4DockerExample
 
-#. Browse to http://localhost/docker/iaf/gui. You see the Frank!Console as shown below. Click "Testing". The "Testing" link will expand to "Larva", "Ladybug", "Test Pipeline" and "Test serviceListener".
+#. Browse to http://localhost/ibis4dockerexample/iaf/gui. You see the Frank!Console as shown below. Click "Testing". The "Testing" link will expand to "Larva", "Ladybug", "Test Pipeline" and "Test serviceListener".
 
    .. image:: frankConsoleFindTestTools.jpg
 
@@ -33,3 +34,5 @@ arbitrary message in the Message field (number 2). Then Click "Send" (number 3).
 at the bottom (number 4). To the top, you see a green bar with
 the word "success" (number 5). "success" is the state you configured
 in the ``<Exit>`` tag.
+
+The next section two sections are about testing.
