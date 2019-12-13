@@ -12,7 +12,6 @@ us to enter test input more easily.
 After following the instructions of :ref:`helloIbis`, please proceed as follows:
 
 #. Start the Frank!Framework. This is different for Windows and for Linux.
- using the command prompt (Windows) or a Linux shell (Linux). Go to directory ``franks/docker4ibis`` and do: ::
 
    * On Windows, open a command prompt. Go to directory ``franks\docker4ibis``. Run the following command: ::
 
