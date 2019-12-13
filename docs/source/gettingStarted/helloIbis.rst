@@ -3,33 +3,55 @@
 Hello World Source Code
 =======================
 
-In this section we study the example Frank provided in https://github.com/ibissource/docker4ibis/.
-During installation, you put it in "classes/Configuration.xml" relative to the folder that contains
-the "Ibis4DockerExample" Frank. It reads:
+In this section we study the example Frank provided with the WeAreFrank! Quick Docker Installer, found at https://github.com/ibissource/docker4ibis/. To be able to run this Frank, please do the following:
 
-.. code-block:: XML
+.. highlight:: none
 
-   <Configuration name="Ibis4DockerExample">
-	   <jmsRealms>
-		   <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
-	   </jmsRealms>
-	   <Adapter name="HelloDockerWorld">
-		   <Receiver name="HelloDockerWorld">
-			   <JavaListener name="HelloDockerWorld"/>
-		   </Receiver>
-		   <Pipeline firstPipe="HelloDockerWorld">
-			   <FixedResultPipe name="HelloDockerWorld" returnString="Hello Docker World">
-				   <Forward name="success" path="EXIT"/>
-			   </FixedResultPipe>
-			   <Exit path="EXIT" state="success"/>
-		   </Pipeline>
-	   </Adapter>
-   </Configuration>
+#. Follow the instructions at https://github.com/ibissource/docker4ibis/ to install the WeAreFrank! Quick Docker Installer.
+#. When your projects directory is ``franks``, you should arrive at the following directory structure: ::
 
-Frank
------
+     franks
+     |- docker4ibis
+        |- docker4ibis.bat
+        |- docker4ibis.properties
+        |- docker4ibis.should
+        |- ...
+        |- README.md
+     |- Ibis4DockerExample
+        |- classes
+           |- Configuration.xml
 
-The outer part of it reads:
+   ``docker4ibis`` is your git checkout of https://github.com/ibissource/docker4ibis/. You create ``Ibis4DockerExample`` by hand. The file ``Configuration.xml`` has the following contents:
+
+   .. code-block:: XML
+
+      <Configuration name="Ibis4DockerExample">
+	      <jmsRealms>
+		      <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
+	      </jmsRealms>
+	      <Adapter name="HelloDockerWorld">
+		      <Receiver name="HelloDockerWorld">
+			      <JavaListener name="HelloDockerWorld"/>
+		      </Receiver>
+		      <Pipeline firstPipe="HelloDockerWorld">
+			      <FixedResultPipe name="HelloDockerWorld" returnString="Hello Docker World">
+				      <Forward name="success" path="EXIT"/>
+			      </FixedResultPipe>
+			      <Exit path="EXIT" state="success"/>
+		      </Pipeline>
+	      </Adapter>
+      </Configuration>
+
+#. Ensure that your file ``frank/docker4ibis/docker4ibis.properties`` has the following contents: ::
+
+     projects_directory=..
+
+In the remainder of this section, we examine the contents of ``Configuration.xml`` in detail. This study introduces you to the basic concepts of Frank development.
+
+Frank configuration
+-------------------
+
+The outer part of ``Configuration.xml`` reads:
 
   .. code-block:: XML
 
@@ -40,14 +62,18 @@ The outer part of it reads:
          ...
      </Configuration>
 
-This part can be almost the same for each Frank. The only interesting thing here is
+This part can be almost the same for each Frank configuration. The only interesting thing here is
 the ``name`` attribute that gives
 this Frank the name ``Ibis4DockerExample``.
+
+.. NOTE::
+
+   The XML code within ``Configuration.xml`` is named a "Frank configuration". In section :ref:`multipleConfigurations` you will learn how to include multiple configurations within the same deployment of the Frank!Framework. We call the combination of the Frank!Framework and all Frank configurations deployed on it a "Frank". A Frank is the solution your customer needs.
 
 Adapter
 -------
 
-When we examine the ``<Configuration>`` tag, we find the following:
+When we examine the contents of the ``<Configuration>`` tag, we find the following:
 
   .. code-block:: XML
 
@@ -91,9 +117,8 @@ There are other listeners, for example ``<ApiListener>`` and
 listen to REST HTTP requests. ``DirectoryListener``
 triggers your adapter when a file is added
 to a chosen directory on a (server-side) local file system.
-For a complete list of all listeners, see
-https://ibis4example.ibissource.org/iaf/ibisdoc/.
-
+The Frank!Framework allows you to search the listener you
+need. This is explained in subsection :ref:`horizonsMultipleFiles`.
 
 Pipeline
 --------
@@ -143,7 +168,9 @@ attribute.
 
 In the remainder of the :ref:`gettingStarted`, we will see
 pipes with more interesting functions, like applying
-XSLT transformations and sending data to a database.
+XSLT transformations and sending data to a database. In
+subsection :ref:`horizonsMultipleFiles` you will learn
+how to search the pipe you need.
 
 The ``<forward>`` within a pipe tag defines what should happen after
 the execution of that pipe. A forward consists of a forward
