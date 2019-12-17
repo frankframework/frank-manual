@@ -18,9 +18,9 @@ Before doing something with a booking XML, the ingest booking adapter
 should check that this document is valid.
 This can be done using an XML Schema, see
 https://www.w3schools.com/xml/schema_intro.asp. You can make a document
-"<project directory>/classes/booking.xsd" and give it the following contents:
+"<project directory>/configurations/NewHorizons/booking.xsd" and give it the following contents:
 
-.. literalinclude:: ../../../src/gettingStarted/classes/booking.xsd
+.. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking.xsd
    :language: xml
 
 The frank!framework defines a pipe that checks the incoming message against

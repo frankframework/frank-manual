@@ -13,7 +13,7 @@ You can make a file "<project directory>/classes/AdapterHello.xml
 and copy from Configuration.xml the ``<Adapter>`` element and its
 contents. This results in:
 
-.. literalinclude:: ../../../src/gettingStarted/classes/ConfigurationHello.xml
+.. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/ConfigurationHello.xml
    :language: xml
 
 Then you can change Configuration.xml to be:

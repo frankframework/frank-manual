@@ -6,26 +6,24 @@ Console Ladybug
 The Frank!Framework offers a strong debugger called Ladybug.
 It gives detailed insight of how your message is processed,
 because the input and the output of every pipe is shown.
-The following picture shows how to access Ladybug:
 
-.. image:: xxx.jpg
+Please do the following:
 
-You see a table that shows all recent moments that your Frank
-was triggered. When testing, it is wise to remember the time
-when you run a test. You should press "Refresh" in Ladybug
-and check the time to verify that you are looking to the test
-you intend. The top row of the table shows a name field of
-"Pipeline HelloDockerWorld".
+#. Click the link "Testing" shown below. Then click "Ladybug".
 
-When you click a row, for example the top row, you see the
-corresponding pipeline. After expanding the top node, you
-get the following picture:
+   .. image:: frankConsoleFindTestTools.jpg
 
-.. image:: yyy.jpg
+#. You see you are in Ladybug (number 1 in the picture below). Click "Refresh" (number 2) to see the report of running your adapter.
 
-The left is a tree view of the pipeline, while the right
-gives information about the selected item. This way
-you can see all inputs and outputs of all pipes.
+   .. image:: ladybugAnnotated.jpg
+
+#. In the table of adapter runs, select the report you want to examine (number 3). The tree view to the bottom left then shows what happened when the adapter executed.
+#. Select the second "Pipeline" node (number 4). To the bottom right, you see the dummy message you entered (number 5).
+#. Select the bottom "Pipeline" node, with the arrow pointing left (number 1 in the picture below).
+
+   .. image:: ladybugAnnotated2.jpg
+
+#. Now you see the output message (number 2).
 
 .. NOTE::
 

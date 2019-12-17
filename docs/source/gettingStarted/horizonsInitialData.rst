@@ -29,12 +29,12 @@ to see how to select a database.
 LiquiBase expects a so-called
 changelog, an XML file that defines the data model and the initial data.
 The frank!framework expects it in the file
-"<project directory>/classes/DatabaseChangelog.xml".
+"<project directory>/configurations/NewHorizons/DatabaseChangelog.xml".
 The New Horizons database described in the previous section
 :ref:`horizonsInterfaces` is initialized with the following
 changelog:
 
-.. literalinclude:: ../../../src/gettingStarted/classes/DatabaseChangelog.xml
+.. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/DatabaseChangelog.xml
    :language: xml
 
 For clarity we chose to use SQL statements in the changelog.

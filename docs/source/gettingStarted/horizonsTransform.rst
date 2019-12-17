@@ -37,10 +37,10 @@ If there were multiple destinations, the second ``<destination>`` would contain
 
 This can be done with an XSLT transformation, see https://www.w3schools.com/xml/xsl_intro.asp.
 The frank!framework defines a pipe ``<XsltPipe>`` that does XSLT transformations.
-You can make an XSLT stylesheet "<project directory>/classes/booking2destinations.xsl"
+You can make an XSLT stylesheet "<project directory>/configurations/NewHorizons/booking2destinations.xsl"
 and give it the following contents:
 
-.. literalinclude:: ../../../src/gettingStarted/classes/booking2destinations.xsl
+.. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking2destinations.xsl
    :language: xml
 
 Then you can append the ingest booking adapter with the following:
