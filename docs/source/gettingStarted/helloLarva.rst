@@ -1,3 +1,5 @@
+.. _gettingStartedLarva:
+
 Console Larva
 =============
 

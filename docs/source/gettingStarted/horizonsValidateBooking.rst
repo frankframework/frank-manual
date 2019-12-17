@@ -20,7 +20,7 @@ This can be done using an XML Schema, see
 https://www.w3schools.com/xml/schema_intro.asp. You can make a document
 "<project directory>/classes/booking.xsd" and give it the following contents:
 
-.. literalinclude:: ../../../src/gettingStartedAndDeploy/classes/booking.xsd
+.. literalinclude:: ../../../src/gettingStarted/classes/booking.xsd
    :language: xml
 
 The frank!framework defines a pipe that checks the incoming message against

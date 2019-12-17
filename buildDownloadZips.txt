@@ -2,5 +2,6 @@
 # links in the manual. Comments and empty lines are
 # ignored.
 
+src/Ibis4DockerExample
 src/gettingStarted
 src/ladybug

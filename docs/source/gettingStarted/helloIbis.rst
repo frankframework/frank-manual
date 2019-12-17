@@ -3,7 +3,9 @@
 Hello World Source Code
 =======================
 
-In this section we study the example Frank provided with the WeAreFrank! Quick Docker Installer, found at https://github.com/ibissource/docker4ibis/. To be able to run this Frank, please do the following:
+In this section we study the example Frank provided with the WeAreFrank! Quick Docker Installer, found at https://github.com/ibissource/docker4ibis/. The solutions for this section and sections :ref:`helloTestPipeline`, :ref:`gettingStartedLadybug`, :ref:`gettingStartedLarva` can be downloaded: :download:`solution <../downloads/Ibis4DockerExample.zip>`. 
+
+To be able to run the example Frank, please do the following:
 
 .. highlight:: none
 
@@ -42,7 +44,7 @@ In this section we study the example Frank provided with the WeAreFrank! Quick D
 	      </Adapter>
       </Configuration>
 
-#. Ensure that your file ``frank/docker4ibis/docker4ibis.properties`` has the following contents: ::
+#. Ensure that your file ``franks/docker4ibis/docker4ibis.properties`` has the following contents: ::
 
      projects_directory=..
 
@@ -172,7 +174,7 @@ XSLT transformations and sending data to a database. In
 subsection :ref:`horizonsMultipleFiles` you will learn
 how to search the pipe you need.
 
-The ``<forward>`` within a pipe tag defines what should happen after
+The ``<Forward>`` within a pipe tag defines what should happen after
 the execution of that pipe. A forward consists of a forward
 name and a path. Each pipe predefines the forward names from which
 it can send the output. For the fixed result pipe, the only

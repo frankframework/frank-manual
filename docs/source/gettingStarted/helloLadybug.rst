@@ -3,12 +3,12 @@
 Console Ladybug
 ===============
 
-The frank!framework offers a strong debugger called Ladybug.
+The Frank!Framework offers a strong debugger called Ladybug.
 It gives detailed insight of how your message is processed,
 because the input and the output of every pipe is shown.
 The following picture shows how to access Ladybug:
 
-.. image:: ladybugGeneral.jpg
+.. image:: xxx.jpg
 
 You see a table that shows all recent moments that your Frank
 was triggered. When testing, it is wise to remember the time
@@ -21,7 +21,7 @@ When you click a row, for example the top row, you see the
 corresponding pipeline. After expanding the top node, you
 get the following picture:
 
-.. image:: ladybugTreeview.jpg
+.. image:: yyy.jpg
 
 The left is a tree view of the pipeline, while the right
 gives information about the selected item. This way
