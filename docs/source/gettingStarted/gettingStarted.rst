@@ -14,10 +14,10 @@ This chapter can be studied in two ways. First, it is a tutorial. There are inst
    helloTestPipeline
    helloLadybug
    helloLarva
+   configurationManagement1
    newHorizons
    horizonsInterfaces
    horizonsInitialData
-   horizonsMultipleFiles
    horizonsValidateBooking
    horizonsInsertDb
    horizonsTransform
