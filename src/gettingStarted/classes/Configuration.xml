@@ -1,14 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration [
-  <!ENTITY Hello SYSTEM "ConfigurationHello.xml">
-  <!ENTITY IngestBooking SYSTEM "ConfigurationIngestBooking.xml">
-  <!ENTITY CheckBooking SYSTEM "ConfigurationCheckBooking.xml">
-]>
-<Configuration name="gettingStarted">
-  <jmsRealms>
-    <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
-  </jmsRealms>
-  &Hello;
-  &IngestBooking;
-  &CheckBooking;
+<Configuration name="${instance.name}">
+	<jmsRealms>
+		<jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
+	</jmsRealms>
 </Configuration>
