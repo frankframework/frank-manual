@@ -10,5 +10,4 @@ Ibis Adapter Framework Documentation
    testing/testing
    deploying/deploying
    advancedDevelopment/advancedDevelopment
-   integrationPatterns/integrationPatterns
    reference/reference
