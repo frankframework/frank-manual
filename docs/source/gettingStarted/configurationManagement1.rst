@@ -6,7 +6,7 @@ Configuration Management (1)
 Introduction
 ------------
 
-In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the tomcat4ibis project to run the Frank!Framework and you worked with the example configurations in that project. You got a basic understanding of writing configurations by studying these configurations. You ran the framework and learned how configurations can be executed and tested.
+In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the tomcat4ibis project to run the Frank!Framework and you worked with the example configurations in that project. You learned the basic concepts by studying these configurations. You ran the framework and learned how configurations can be executed and tested.
 
 In this section you start your own project and you build your first configuration. Frank configurations are written in XML. They satisfy an XML Schema that can be downloaded from the Frank!Framework. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
 
@@ -99,9 +99,6 @@ Now that you have your project, you can add your real Frank configuration to you
         <!ENTITY Hello SYSTEM "ConfigurationHello.xml">
       ]>
       <Configuration name="NewHorizons">
-        <jmsRealms>
-          <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
-        </jmsRealms>
         &Hello;
       </Configuration>
 
