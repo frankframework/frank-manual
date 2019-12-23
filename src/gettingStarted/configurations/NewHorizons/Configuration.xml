@@ -5,9 +5,6 @@
   <!ENTITY CheckBooking SYSTEM "ConfigurationCheckBooking.xml">
 ]>
 <Configuration name="NewHorizons">
-  <jmsRealms>
-    <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
-  </jmsRealms>
   &Hello;
   &IngestBooking;
   &CheckBooking;

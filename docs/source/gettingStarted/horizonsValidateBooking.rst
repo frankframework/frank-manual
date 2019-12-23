@@ -58,7 +58,7 @@ This adapter starts with a ``<Receiver>`` that contains an ``<ApiListener>``.
 The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests. The attribute
 ``method="POST"`` makes it listen to HTTP POST requests. The ``uriPattern="booking"`` attribute
 defines the relative path to which the adapter listens.
-The frank!framework extends this path to be http://localhost/docker/api/booking.
+The frank!framework extends this path to be http://localhost/ibis/api/booking.
 
 After the receiver comes an ``<XmlValidatorPipe>`` . The attributes ``root`` and
 ``schema`` are used to reference the expected root element of the incoming
@@ -90,7 +90,7 @@ You can test your adapter as follows. Copy the valid booking XML to some file
 on your computer, say ``validBooking.xml``. Then execute the following
 Linux shell command: ::
 
-  curl -i -X POST -H 'Content-Type: application/xml' -d @validBooking.xml http://localhost/docker/api/booking
+  curl -i -X POST -H 'Content-Type: application/xml' -d @validBooking.xml http://localhost/ibis/api/booking
 
 The output will be something like the following: ::
 
@@ -124,7 +124,7 @@ To the bottom, you see that the incoming XML is echoed in the body of the respon
 
 You can also test what happens with an invalid input, as follows: ::
 
-  curl -i -X POST -H 'Content-Type: application/xml' -d "xxx" http://localhost/docker/api/booking
+  curl -i -X POST -H 'Content-Type: application/xml' -d "xxx" http://localhost/ibis/api/booking
 
 This results in the following output: ::
 

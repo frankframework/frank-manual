@@ -21,7 +21,7 @@ After following the instructions of :ref:`helloIbis`, please proceed as follows:
        
        franks/docker4ibis> docker4ibis.sh Ibis4DockerExample
 
-#. Browse to http://localhost/ibis4dockerexample/iaf/gui.
+#. Browse to http://localhost/ibis/iaf/gui.
 
    .. WARNING::
 

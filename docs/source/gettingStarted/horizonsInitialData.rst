@@ -50,6 +50,6 @@ is specific for H2 databases.
   your changelog.
 
   You can do this as follows. Start the frank!framework and browse
-  to http://localhost/docker/iaf/gui. On the left-hand menu
+  to http://localhost/ibis/iaf/gui. On the left-hand menu
   select "JDBC" and then "Execute Query". Issue the following
   SQL: "DROP ALL OBJECTS". Finally restart the frank!framework.
