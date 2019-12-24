@@ -3,7 +3,7 @@
 How Properties Are Set
 ======================
 
-In subsection :ref:`propertiesDeploymentEnvironment`, the characteristics of the deployment environment of a Frank were explained. Franks can be deployed on different types of application servers. The Frank!Framework detects the type of application server and automatically sets the property ``application.server.type``. System administrators can configure the properties ``otap.stage`` and ``otap.side``. We do not tell here how to set system properties because this information is specific to each deployment environment. See chapter :ref:`deploying`. A consequence of the boot process of the Frank!Framework was explained, namely the difference between system properties, classpath properties and configuration properties. It was said that some properties can only be supplied as system properties, while some others can only be supplied as system properties or classpath properties.
+In subsection :ref:`propertiesDeploymentEnvironment`, the characteristics of the deployment environment of a Frank were explained. Franks can be deployed on different types of application servers. The Frank!Framework detects the type of application server and automatically sets the property ``application.server.type``. System administrators can configure the properties ``otap.stage`` and ``otap.side`` as system properties, for example by setting Java properties as explained in subsection :ref:`propertiesReference`. A consequence of the boot process of the Frank!Framework was explained, namely the difference between system properties, classpath properties and configuration properties. It was said that some properties can only be supplied as system properties, while some others can only be supplied as system properties or classpath properties.
 
 Precedence Order
 ----------------
@@ -16,14 +16,14 @@ There is a precedence order between the three property sources. For each configu
 #. Configuration properties specific for the configuration.
 #. Classpath properties.
 
-As a consequence, the system administrator can tweak a Frank by changing properties that were defined in the Frank as classpath property or configuration property. Furthermore, you can set default values for properties in your ``classes`` folder and override them for some of your configurations.
+As a consequence, the system administrator can tweak a Frank by changing properties that were defined in the Frank as classpath property or configuration property. You tried this at the end of subsection :ref:`propertiesReference`. Furthermore, you can set default values for properties in your ``classes`` folder and override them for some of your configurations.
 
 Property files
 --------------
 
 You can set properties specific to a configuration by adding property files to the subdirectory of that configuration. For example if you have a configuration Xyz, then you can define properties in a file ``configurations/Xyz/DeploymentSpecifics.properties``. You can also define properties in other property files in directory ``configurations/Xyz/``. The Frank!Framework then chooses what property files to consider. The Frank!Framework bases this choice on the values of properties ``application.server.type``, ``otap.stage`` and ``otap.side``, the properties that reflect your deployment environment.
 
-As an example, assume that you deploy on your local laptop (``otap.stage = LOC``), that you use the WeAreFrank! Quick Docker Installer (``application.server.type = TOMCAT``) and that you chose to set ``otap.side = xxx``. Then the Frank!Framework reads the following property files, sorted from high priority to low priority:
+As an example, assume that you deploy on your local laptop (``otap.stage = LOC``), that you use Tomcat4Ibis (``application.server.type = TOMCAT``) and that you chose to set ``otap.side = xxx``. Then the Frank!Framework reads the following property files, sorted from high priority to low priority:
 
 #. ``StageSpecifics_LOC_TOMCAT.properties``.
 #. ``StageSpecifics_LOC.properties``.
@@ -32,7 +32,7 @@ As an example, assume that you deploy on your local laptop (``otap.stage = LOC``
 #. ``ServerSpecifics_TOMCAT.properties``.
 #. ``DeploymentSpecifics.properties``.
 
-The Frank!Framework does not require these property files to be present. If some of these files do not exist, the Frank!Framework initializes the properties based on the other files.
+The Frank!Framework does not require these property files to be present. If some of these files do not exist, the Frank!Framework initializes the properties based on the other sources.
 
 You can use these property files to configure your properties differently for different deployment environments. As an example, suppose that your Frank calls a REST service hosted on https://someservice.io. If this service manages sensitive data, you do not want to access it during testing. You want clones of the REST service that work with fake data, so-called stubs. Within your company (DTAP stages local, development and test), you may want testdata that differs from the test data the customer has (DTAP stage acceptance). These two different stubs could be hosted on https://dev.someservice.io and https://acc.someservice.io.
 

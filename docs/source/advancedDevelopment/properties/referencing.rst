@@ -33,10 +33,9 @@ Both in property files and in XML Frank config files, you can reference properti
 
 4. Please add file ``classes/Configuration.xml`` with the following contents:
 
-   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/classes/ConfigurationReferenceProperties.xml
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/classes/Configuration.xml
       :language: xml
-      :emphasize-lines: 8
-
+   
    This file is very similar to the ``Configuration.xml`` examples shown in section :ref:`horizonsMultipleFiles`. The only difference is that we fill the classpath configuration to keep our example small.
 
 #. Please create file ``classes/ConfigurationReferenceProperties.xml`` with the following contents:
@@ -45,9 +44,25 @@ Both in property files and in XML Frank config files, you can reference properti
       :language: xml
       :emphasize-lines: 8
 
-The highlighted line shows that properties are referenced by surrounding the property name with ``${`` and ``}`` as said before.
+   The highlighted line shows that properties are referenced by surrounding the property name with ``${`` and ``}`` as said before.
 
 #. Execute adapter ``AccessProperties`` using the Test Pipeline screen, see :ref:`helloTestPipeline`.
 #. The Frank!Framework replaces property references by the values of the referenced properties. The default value for ``otap.stage`` is ``LOC``. Check that the output is: ::
 
      From stage LOC, I say My text is Hello
+
+#. For some application servers, you can also set Java properties like ``-Dproperty=value``. These properties are then defined within the Frank!Framework. This applies to Apache Tomcat and also for Tomcat4Ibis. Please stop Tomcat4Ibis. Restart Tomcat4Ibis with an argument to set a Java property. This is different for Windows and Linux:
+
+   * Windows users start Tomcat4Ibis as follows: ::
+
+       projects\tomcat4ibis> tomcat4ibis.bat -Dmy.hello="Hello there"
+   
+   * Linux users start Tomcat4Ibis as follows: ::
+
+       projects/tomcat4ibis> tomcat4ibis.sh -Dmy.hello="Hello there"
+
+#. When Tomcat4Ibis is running again, please return to the Test Pipeline screen. Run adapter ``AccessProperties``. The output should now be as follows: ::
+
+    From stage LOC, I say My text is Hello there
+
+Depending on your application server, there are different ways to set system properties. Details can be fond in chapter :ref:`deploying`.

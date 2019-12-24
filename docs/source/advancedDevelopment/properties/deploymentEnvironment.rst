@@ -3,7 +3,7 @@
 Deployment Environment Characteristics
 ======================================
 
-The introduction of this chapter introduced properties as the communication mechanism between a Frank and its deployment environment. In this subsection, we examine characteristics of this deployment environment.
+The introduction of this chapter introduced properties as the communication mechanism between a Frank and its deployment environment. The previous subsection introduced properties with a short tutorial in which you defined and referenced properties. In this subsection, we link properties to characteristics of your deployment environment.
 
 Infrastructure
 --------------
@@ -20,7 +20,7 @@ Please remember that a Frank configuration consists of three directories ``class
 
 This stack is relevant for Frank developers because it limits the way properties can be used. When the application server is started, it gets property definitions from the operating system and from command-line arguments (system properties). The application server then boots the Frank!Framework. During this process, properties are read from the classpath. Next, the Frank!Framework reads configurations from outside the classpath and reads properties from them (configuration properties).
 
-Some properties can only be defined as system properties. An example is property ``log.dir``, the directory in which the Frank!Framework should store log files. When it is defined as classpath property, it will not work: the value is not applied by the Frank!Framework to store log information, but references to it in Frank configurations do produce the configured value. There are also properties that only work as system property or classpath property, but not as configuration property. See subsection :ref:`propertiesFramework` for more examples.
+Some properties can only be defined as system properties. An example is property ``log.dir``, the directory in which the Frank!Framework should store log files. When it is defined as classpath property, it will not work: the value is not applied by the Frank!Framework to store log information, but references to it in Frank configurations do produce the configured value. There are also properties that only work as system property or classpath property, but not as configuration property. See subsection :ref:`propertiesFramework` for more examples. This limitation can only apply to properties that are interpreted by the Frank!Framework. Other properties (e.g. ``my.hello`` in subsection :ref:`propertiesReference`) can be freely defined as configuration properties, classpath properties or system properties.
 
 The Frank!Framework detects the type of application server used to host it. This information appears in property ``application.server.type``. The following table shows for each application server the resulting value of ``application.server.type``:
 

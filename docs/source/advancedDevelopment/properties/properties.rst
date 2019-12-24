@@ -9,7 +9,7 @@ A Frank often has to operate differently during different phases of its life cyc
 
 This section explains to Frank developers how properties allow a Frank to be fine-tuned. Properties are just name/value pairs. You may know properties from other applications like Windows batch files or UNIX shell scripts. You encounter them in phrases like ``name=value``, ``set name=value``, ``export name=value`` or ``-Dname="value"`` when Java programs are being called.
 
-This section first explains how characteristics of your deployment environment are expressed using properties (subsection :ref:`propertiesDeploymentEnvironment`). Then an overview is given about the ways that properties are set (subsection :ref:`propertiesInitialization`). After this, the impact of properties on your Frank is explained. First, it is explained how you can reference properties within your XML configuration files (subsection :ref:`propertiesReference`). Second, it is explained how properties influence the services offered by the Frank!Framework (subsection :ref:`propertiesFramework`).
+This section first clarifies what properties are with a short tutorial (subsection :ref:`propertiesReference`). Then, properties are linked to characteristics of your deployment environment (subsection :ref:`propertiesDeploymentEnvironment`). Then more details are given about setting properties (subsection :ref:`propertiesInitialization`). Finally, it is explained how properties influence the services offered by the Frank!Framework (subsection :ref:`propertiesFramework`).
 
 Here is the table of contents for this section:
 
