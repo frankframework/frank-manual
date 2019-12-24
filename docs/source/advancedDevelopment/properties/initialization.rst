@@ -50,8 +50,6 @@ Look below the heading "Dynamic Parameters". Changes done at runtime will be und
 
 An example is the log level, which determines how much logging data is produced. On production you normally set it to ``ERROR`` or ``WARN``. If there is an incident, you can temporarily put it to ``INFO`` or ``DEBUG`` to collect data about the issue.
 
-The next subsection explains how to reference properties within your Frank configs.
-
 .. In AppConstants.properties the following sequence is defined:
    CompanySpecifics.properties,
    CompanySpecifics_${otap.side}.properties,

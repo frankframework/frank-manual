@@ -52,7 +52,7 @@ Both in property files and in XML Frank config files, you can reference properti
 
      From stage LOC, I say My text is Hello
 
-#. For some application servers, you can also set Java properties like ``-Dproperty=value``. These properties are then defined within the Frank!Framework. This applies to Apache Tomcat and also for Tomcat4Ibis. Please stop Tomcat4Ibis. Restart Tomcat4Ibis with an argument to set a Java property. This is different for Windows and Linux:
+#. For some application servers, you can also set Java properties like ``-Dproperty="value"``. These properties are then defined within the Frank!Framework. This applies to Apache Tomcat and also for Tomcat4Ibis. Please stop Tomcat4Ibis. Restart Tomcat4Ibis with an argument to set a Java property. This is different for Windows and Linux:
 
    * Windows users start Tomcat4Ibis as follows: ::
 
