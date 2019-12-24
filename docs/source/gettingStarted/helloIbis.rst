@@ -70,7 +70,7 @@ this Frank the name ``Ibis4DockerExample``.
 
 .. NOTE::
 
-   The XML code within ``Configuration.xml`` is named a "Frank configuration". In section :ref:`multipleConfigurations` you will learn how to include multiple configurations within the same deployment of the Frank!Framework. We call the combination of the Frank!Framework and all Frank configurations deployed on it a "Frank". A Frank is the solution your customer needs.
+   The XML code within ``Configuration.xml`` is named a "Frank configuration". In section :ref:`horizonsMultipleFiles` you will learn how to include multiple configurations within the same deployment of the Frank!Framework. We call the combination of the Frank!Framework and all Frank configurations deployed on it a "Frank". A Frank is the solution your customer needs.
 
 Adapter
 -------

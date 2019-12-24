@@ -1,7 +1,7 @@
 .. _horizonsMultipleFiles:
 
-Configuration Management (1)
-============================
+Configuration Management
+========================
 
 Introduction
 ------------
