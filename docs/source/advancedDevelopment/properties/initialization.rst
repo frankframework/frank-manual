@@ -13,7 +13,7 @@ Each configuration in your ``configurations`` folder has its own set of properti
 There is a precedence order between the three property sources. For each configuration, the order or precedence is as follows:
 
 #. System properties.
-#. Configuration properties.
+#. Configuration properties specific for the configuration.
 #. Classpath properties.
 
 As a consequence, the system administrator can tweak a Frank by changing properties that were defined in the Frank as classpath property or configuration property. Furthermore, you can set default values for properties in your ``classes`` folder and override them for some of your configurations.
