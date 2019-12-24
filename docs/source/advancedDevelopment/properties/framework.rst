@@ -7,6 +7,9 @@ In subsection :ref:`propertiesReference` it was explained how you can reference 
 
 Below, the most important Frank properties are listed.
 
+instance.name
+  The name of your Frank. You always have to set this property. Prefarably ``instance.name`` should equal the name of the parent directory of your ``classes`` folder. The Frank!Framework issues a warning if ``instance.name`` has another value. Only works as a system property or classpath property.
+
 application.server.type
   The application server used in your deployment. Set automatically by the Frank!Framework. This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for all possible values.
 
@@ -14,7 +17,7 @@ otap.side
   Use this to characterize your deployment environment as explained in subsection :ref:`propertiesDeploymentEnvironment`. Only works as system property. The default value is ``xxx``. This default is sufficient if the deployment server and the DTAP stage fully characterize your deployment. This property determines what property files are read by the Frank!Framework to set other properties.
 
 otap.stage
-  Defines the DTAP stage of this deployment. Only works as system property. Possible values are "LOC", "DEV", "TST", "ACC" and "PRD". This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for more details.
+  Defines the DTAP stage of this deployment. Only works as system property. Possible values are "LOC", "DEV", "TST", "ACC" and "PRD". The default value is ``LOC``. This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for more details.
 
 configurations.names
   The value should be a comma-separated list of all configurations. For example, if your Frank contains the classpath configuration and a configuration ``MyConfig``, then the value of this property should be ``${instance.name},MyConfig``. Only works as system property or classpath property, unless you work with nested configurations. Nested configurations are beyond the scope of this manual at the moment. If you only have the classpath configuration, this property can be omitted.

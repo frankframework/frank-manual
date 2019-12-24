@@ -5,3 +5,4 @@
 src/Ibis4DockerExample
 src/gettingStarted
 src/ladybug
+src/advancedDevelopmentProperties

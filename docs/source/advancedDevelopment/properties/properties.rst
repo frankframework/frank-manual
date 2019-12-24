@@ -16,7 +16,7 @@ Here is the table of contents for this section:
 .. toctree::
    :maxdepth: 3
 
+   referencing
    deploymentEnvironment
    initialization
-   referencing
    framework

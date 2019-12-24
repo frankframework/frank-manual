@@ -1,16 +1,53 @@
 .. _propertiesReference:
 
-How To Reference Properties
-===========================
+Setting and referencing properties
+==================================
 
-The following adapter demonstrates how to reference properties within you Frank configuration:
+As said in the introduction of this section, properties are name/value pairs. This subsection gives basic information about setting and referencing properties. This subsection is written as a tutorial to allow you to get hands-on experience. You can check your work against the :download:`solution <../../downloads/advancedDevelopmentProperties.zip>`.
 
-.. literalinclude:: ../../../../src/advancedDevelopmentProperties/classes/ConfigurationReferenceProperties.xml
-   :language: xml
-   :emphasize-lines: 8
+Please perform the following steps:
 
 .. highlight:: none
 
-The highlighted line shows that properties are referenced by surrounding the property name with ``${`` and ``}``. The Frank!Framework replaces property references by the values of the referenced properties. If this configuration is deployed in DTAP stage ``LOC`` and if property ``my.text`` equals ``My text is Hello``, then the output will be: ::
+#. Please install Tomcat4Ibis from https://github.com/ibissource/tomcat4ibis if you have not done so already. You should have the following directory structure: ::
 
-   From stage LOC, I say My text is Hello
+     projects
+     |- tomcat4ibis
+        |- build.properties
+        |- tomcat4ibis.bat
+        |- tomcat4ibis.sh
+      |- ...
+
+#. Please make a subdirectory ``advancedDevelopmentProperties`` within ``projects``. Then open ``build.properties`` and give it the following contents: ::
+
+     project.dir=advancedDevelopmentProperties
+
+#. Within ``advancedDevelopmentProperties``, please make a file ``classes/DeploymentSpecifics.properties``. Give it the following contents:
+
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/classes/DeploymentSpecifics.properties
+      :language: xml
+   
+The file ``DeploymentSpecifics.properties`` allows you to set properties. The key is to the left of the ``=`` sign, while the value is to the right. Property names are words separated by dots. Lines starting with ``#`` are comments, which are ignored by the Frank!Framework.
+
+Both in property files and in XML Frank config files, you can reference properties. To do this, surround the property name with ``${`` and ``}``. In the property file above, property ``my.text`` is defined with value ``My text is ${my.hello}``. Note that property ``my.hyello`` can be defined after a property that references it, in this case ``my.text``.
+
+4. Please add file ``classes/Configuration.xml`` with the following contents:
+
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/classes/ConfigurationReferenceProperties.xml
+      :language: xml
+      :emphasize-lines: 8
+
+   This file is very similar to the ``Configuration.xml`` examples shown in section :ref:`horizonsMultipleFiles`. The only difference is that we fill the classpath configuration to keep our example small.
+
+#. Please create file ``classes/ConfigurationReferenceProperties.xml`` with the following contents:
+
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/classes/ConfigurationReferenceProperties.xml
+      :language: xml
+      :emphasize-lines: 8
+
+The highlighted line shows that properties are referenced by surrounding the property name with ``${`` and ``}`` as said before.
+
+#. Execute adapter ``AccessProperties`` using the Test Pipeline screen, see :ref:`helloTestPipeline`.
+#. The Frank!Framework replaces property references by the values of the referenced properties. The default value for ``otap.stage`` is ``LOC``. Check that the output is: ::
+
+     From stage LOC, I say My text is Hello
