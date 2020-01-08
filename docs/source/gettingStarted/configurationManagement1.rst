@@ -27,11 +27,6 @@ After installing tomcat4ibis, you should have a folder ``projects`` with a folde
         |- tests
 
 #. The directory ``classes`` contains code that is common to all Frank configurations within your Frank. The ``tests`` folder holds Larva tests while each configuration is within a subdirectory of ``configurations``.
-
-   .. NOTE::
-
-      The Frank!Framework is built on top of Java and Spring. The Java Virtual Machine has its own internal file system, the classpath. Directory "classes" gets this name because its contents is put on the Java classpath of the running Frank!Framework.
-
 #. You want the Frank!Framework to run ``gettingStarted`` when you start it. To achieve this, create file ``build.properties`` within the ``tomcat4ibis`` directory. Give ``build.properties`` the following contents: ::
 
      project.dir=gettingStarted

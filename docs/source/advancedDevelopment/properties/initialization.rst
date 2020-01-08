@@ -8,7 +8,7 @@ In subsection :ref:`propertiesDeploymentEnvironment`, the characteristics of the
 Precedence Order
 ----------------
 
-Each configuration in your ``configurations`` folder has its own set of properties, which you typically put in the subdirectory of that configuration. There is exactly one configuration on the classpath, which you best leave empty (see section :ref:`horizonsMultipleFiles`). It does not have its own property definitions but uses the system properties and classpath properties. The system properties and classpath properties are common to all configurations.
+Each configuration in your ``configurations`` folder has its own set of properties, which you typically put in the subdirectory of that configuration. There is exactly one configuration within the deployment on your application server, which typically appears in your ``classes`` folder. This configuration is referenced as the classpath configuration. You best leave it empty (see section :ref:`horizonsMultipleFiles`). It does not have its own property definitions but uses the system properties and classpath properties. The system properties and classpath properties are common to all configurations.
 
 There is a precedence order between the three property sources. For each configuration, the order or precedence is as follows:
 
@@ -21,7 +21,7 @@ As a consequence, the system administrator can tweak a Frank by changing propert
 Property files
 --------------
 
-You can set properties specific to a configuration by adding property files to the subdirectory of that configuration. For example if you have a configuration Xyz, then you can define properties in a file ``configurations/Xyz/DeploymentSpecifics.properties``. You can also define properties in other property files in directory ``configurations/Xyz/``. The Frank!Framework then chooses what property files to consider. The Frank!Framework bases this choice on the values of properties ``application.server.type``, ``otap.stage`` and ``otap.side``, the properties that reflect your deployment environment.
+You can set properties specific to a configuration by adding property files to the subdirectory of that configuration. For example if you have a configuration Xyz, then you can define properties in a file ``configurations/Xyz/DeploymentSpecifics.properties``. You can also define properties in other property files in directory ``configurations/Xyz/``. The Frank!Framework then chooses what property files to consider. The Frank!Framework bases this choice on the values of ``application.server.type``, ``otap.stage`` and ``otap.side``, the properties that reflect your deployment environment.
 
 As an example, assume that you deploy on your local laptop (``otap.stage = LOC``), that you use Tomcat4Ibis (``application.server.type = TOMCAT``) and that you chose to set ``otap.side = xxx``. Then the Frank!Framework reads the following property files, sorted from high priority to low priority:
 
@@ -38,7 +38,7 @@ You can use these property files to configure your properties differently for di
 
 You can use properties to call the right service URL from your Frank. In your adapters, you can reference a property ``serviceURL`` to find the URL of your service. In ``DeploymentSpecifics.properties``, you include the line ``serviceURL=https://dev.someservice.io``. In ``StageSpecifics_ACC.properties``, you include the line ``serviceURL=https://acc.someservice.io``. Finally in ``StageSpecifics_PRD.properties`` you set the real service URL: ``serviceURL=https://someservice.io``. In DTAP stages local, development or test, the service URL defined in ``DeploymentSpecifics.properties`` is applied. In DTAP stage acceptance, this value is superseeded by the definition in ``StageSpecifics_ACC.properties``. In production, the service URL found in ``StageSpecifics_PRD.properties`` is taken. 
 
-The mentioned files ``StageSpecifics_LOC_TOMCAT.properties`` ... ``DeploymentSpecifics.properties`` can also exist on the classpath. Then they have the same order of precedence, but they have a lower precedence then the configuration specific property files. Please remember that system properties always take precedence over properties configured in your Frank config.
+The mentioned files ``StageSpecifics_LOC_TOMCAT.properties`` ... ``DeploymentSpecifics.properties`` can also exist within the deployment on your application server (your ``classes`` folder). Then they have the same order of precedence, but they have a lower precedence than the configuration specific property files. Please remember that system properties always take precedence over properties configured in your Frank config.
 
 In addition to the chain of system properties and property files, some properties have default values. These default values are listed in subsection :ref:`propertiesFramework`. If some property is not configured by the system administrator and if it is not defined in the property files read by the Frank!Framework, then the default value is applied.
 
