@@ -68,7 +68,10 @@ class ZipWriter:
 
     def _getTarget(self, folderName, item):
         subDirInZip = os.path.relpath(folderName, self._base)
-        target = os.path.join(subDirInZip, item)
+        if subDirInZip == "." :
+            target = item
+        else :
+            target = os.path.join(subDirInZip, item)
         print "INFO: target {0}".format(target)
         return target
 
