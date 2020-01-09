@@ -3,6 +3,9 @@
 Deploying with a H2 database
 ============================
 
+Preparations
+------------
+
 .. highlight: none
 
 This subsection is the first tutorial about manually deploying a Frank on an Apache Tomcat application server. It uses an in-memory H2 database. In this tutorial we do not set up an external database.
@@ -34,6 +37,9 @@ When you are done with these preparations, please do the following:
      > docker start tomcat-frank
 
    Please note that Apache Tomcat is started automatically. You cannot run the container without running Apache Tomcat inside of it.
+
+Deploy the Frank!Framework
+--------------------------
 
 Now you need to deploy the Frank!Framework within your Tomcat instance. The table below shows which files you need and where they need to be stored:
 
@@ -103,10 +109,13 @@ You do not have to download these files manually. For your convenience, we added
 
 #. Enter ``exit`` to exit your container.
 
+Add your Frank configuration
+----------------------------
+
 With these steps, you have deployed the Frank!Framework on your Docker container. It will not work properly yet because you do not have a configuration. Please continue as follows:
 
 15. Enter your Docker container with the command documented earlier.
-#. Within your container, copy your ``/home/root/Downloads/classes`` folder to your deployment: ::
+#. The contents of your ``classes`` folder must be stored inside the deployment on your application server. Within your container, copy your ``/home/root/Downloads/classes`` folder to your deployment: ::
 
      >> cd /home/root/Downloads/work/classes
      >> mkdir -p /usr/local/tomcat/webapps/frankframework/WEB-INF/classes
@@ -115,14 +124,9 @@ With these steps, you have deployed the Frank!Framework on your Docker container
      >> ls
 
    You should see the copied files within your deployment.
-#. You have to tell the Frank!Framework that you chose a custom directory to store configuration ``myConfig`` by setting a system property. Please enter the following commands: ::
+#. The ``configurations`` directory is stored outside the deployment on your application server. You can use the copy you stored in ``/home/root/Downloads/work/configurations``. This is not the default location expected by the Frank!Framework. You have to tell the Frank!Framework that you chose a custom directory for configuration ``myConfig``. You will do this by setting a system property. You can set system properties in Tomcat by defining them in file ``/usr/local/tomcat/conf/catalina.properties``. Please add the following line to this file: ::
 
-     >> cd /usr/local/tomcat/conf
-     >> echo "configurations.myConfig.directory=/home/root/Downloads/work/configurations" >> catalina.properties
-
-   .. WARNING::
-
-      Please take care to use ``>>`` in the previous command. If you use ``>``, you will delete the existing contents of ``catalina.properties``. The ``>>`` symbol appends the echoed text to the existing contents.
+     configurations.myConfig.directory=/home/root/Downloads/work/configurations
 
 #. Finally configure your database by configuring a JNDI resource, see https://tomcat.apache.org/tomcat-7.0-doc/jndi-resources-howto.html for more information. Please add the following lines to ``/usr/local/tomcat/conf/context.xml``:
 
@@ -138,11 +142,16 @@ With these steps, you have deployed the Frank!Framework on your Docker container
 
    .. NOTE::
 
-      The JNDI name ``jdbc/deploymenttomcat`` is referenced in the example Frank configuration in ``classes/Configuration.xml``. The line ``<jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>`` defines it, because the value of property ``instance.name.lc`` is ``deploymenttomcat``. The property ``instance.name.lc`` is generated automatically by the Frank!Framework from property ``instance.name`` by replacing upper-case letters with lower-case letters. In file ``classes/DeploymentSpecifics.properties`` you can see that property ``instance.name`` is ``deploymentTomcat``.
+      The JNDI name ``jdbc/deploymenttomcat`` is referenced in the example Frank configuration in ``classes/Configuration.xml``. The line ``<jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>`` references it, because the value of property ``instance.name.lc`` is ``deploymenttomcat``. The property ``instance.name.lc`` is generated automatically by the Frank!Framework from property ``instance.name`` by replacing upper-case letters with lower-case letters. In file ``classes/DeploymentSpecifics.properties`` you can see that property ``instance.name`` is ``deploymentTomcat``.
 
 #. Enter ``exit`` to exit from your Docker container.
 
-With these steps you have added your Frank configuration and you have configured its database. You can test your work with the following steps:
+With these steps you have added your Frank configuration and you have configured its database.
+
+Test your work
+--------------
+
+You can test your work with the following steps:
 
 20. Restart your docker container with the following commands: ::
 
@@ -155,6 +164,7 @@ With these steps you have added your Frank configuration and you have configured
 
 #. You are in the Adapter Status screen (number 1). Please click "Configuration messages" (number 2) to see that there are no error messages. You should see tabs "myConfig" (number 3) and "deploymentTomcat" (number 4).
 #. If you have errors, you can click "Environment Variables" (number 5). Using Ctrl-F you can check whether property ``configurations.myConfig.directory`` is defined.
+#. If you have errors, you can also examine the output produced by Tomcat. If you are using docker, use the command ``docker logs tomcat-frank``.
 #. If you have no errors, you can proceed to testing your deployed configuration. Press "Testing" in the figure below. The "Testing" menu item expands as shown:
 
    .. image:: frankConsoleFindTestTools.jpg
