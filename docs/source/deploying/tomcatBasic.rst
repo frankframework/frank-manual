@@ -30,8 +30,8 @@ When you are done with these preparations, please do the following:
 
      > docker run --name tomcat-frank -p 8080:8080 tomcat:7.0.99
 
-   This creates a Docker container named ``tomcat-frank``. The ``-p 8080:8080`` is added to export port 8080 to the host PC, making the Frank!Framework reachable by a webbrowser.
-
+   This creates a Docker container named ``tomcat-frank``. The ``-p 8080:8080`` is added to export port 8080 to the host computer, making the Frank!Framework reachable by a webbrowser. This command does not stop by itself, so:
+#. When you see the output like ``INFO: Server startup in 40 ms``, press Ctrl-C to stop.
 #. Start the Docker image with the following command: ::
 
      > docker start tomcat-frank
@@ -58,19 +58,11 @@ Source                                                    Destination
 
    If you wonder what files you need, please look at the Docker4Frank project, https://github.com/ibissource/docker4ibis. In file ``IAF_Image/Dockerfile``, you see the commands that Docker4Frank uses to deploy the Frank!Framework automatically. You see the commands there that download the files. You can omit the drivers for databases you do not need, but the rest of the download commands tell you which files you need.
 
-You do not have to download these files manually. For your convenience, we added a script ``downloadLibraries.sh`` to the example configuration. Please deploy the Frank!Framework as follows.
+You do not have to download these files manually. For your convenience, we added a script ``downloadLibraries.sh`` to the example configuration. Please deploy the Frank!Framework as follows:
 
-4. You need a home directory on your Docker container. To do this, you need to run interactive commands within your Docker container. Therefore you need to start an interactive bash session. This is done differently depending on the operating system of your host computer:
-
-   * On Linux, enter the following command: ::
+5. You need a home directory on your Docker container. To do this, you need to run interactive commands within your Docker container. Please run the following command in a command prompt (Windows) or a shell (Linux): ::
   
-       > docker exec -it tomcat-frank bash
-
-   * On Windows, enter the following command: ::
-
-       > winpty docker exec -it tomcat-frank bash
-
-     You may have to install ``winpty`` before this works.
+     > docker exec -it tomcat-frank bash
 
 #. Your prompt changes, indicating you are within your container. Create a home directory by executing the following command: ::
 
@@ -107,6 +99,10 @@ You do not have to download these files manually. For your convenience, we added
      >> unzip /usr/local/tomcat/lib/jtds-1.3.1.zip -d /usr/local/tomcat/lib
      >> rm /usr/local/tomcat/lib/jtds-1.3.1.zip
 
+   .. NOTE::
+
+      You may get an error that file ``jtds-1.3.1.zip`` does not exist. This happens when the file is extracted automatically during the download. If you do have file ``/usr/local/tomcat/lib/jtds-1.3.1.jar``, you can safely continue.
+ 
 #. Enter ``exit`` to exit your container.
 
 Add your Frank configuration
@@ -114,7 +110,7 @@ Add your Frank configuration
 
 With these steps, you have deployed the Frank!Framework on your Docker container. It will not work properly yet because you do not have a configuration. Please continue as follows:
 
-15. Enter your Docker container with the command documented earlier.
+16. Enter your Docker container with the command documented earlier.
 #. The contents of your ``classes`` folder must be stored inside the deployment on your application server. Within your container, copy your ``/home/root/Downloads/classes`` folder to your deployment: ::
 
      >> cd /home/root/Downloads/work/classes
@@ -124,7 +120,7 @@ With these steps, you have deployed the Frank!Framework on your Docker container
      >> ls
 
    You should see the copied files within your deployment.
-#. The ``configurations`` directory is stored outside the deployment on your application server. You can use the copy you stored in ``/home/root/Downloads/work/configurations``. This is not the default location expected by the Frank!Framework. You have to tell the Frank!Framework that you chose a custom directory for configuration ``myConfig``. You will do this by setting a system property. You can set system properties in Tomcat by defining them in file ``/usr/local/tomcat/conf/catalina.properties``. Please add the following line to this file: ::
+#. The ``configurations`` directory is stored outside the deployment on your application server. You can use the copy you stored in ``/home/root/Downloads/work/configurations``. This is not the default location expected by the Frank!Framework. You have to tell the Frank!Framework that you choose a custom directory for configuration ``myConfig``. You will do this by setting a system property. You can set system properties in Tomcat by defining them in file ``/usr/local/tomcat/conf/catalina.properties``. Please add the following line to this file: ::
 
      configurations.myConfig.directory=/home/root/Downloads/work/configurations
 
@@ -153,7 +149,7 @@ Test your work
 
 You can test your work with the following steps:
 
-20. Restart your docker container with the following commands: ::
+21. Restart your docker container with the following commands: ::
 
      > docker stop tomcat-frank
      > docker start tomcat-frank
@@ -165,6 +161,11 @@ You can test your work with the following steps:
 #. You are in the Adapter Status screen (number 1). Please click "Configuration messages" (number 2) to see that there are no error messages. You should see tabs "myConfig" (number 3) and "deploymentTomcat" (number 4).
 #. If you have errors, you can click "Environment Variables" (number 5). Using Ctrl-F you can check whether property ``configurations.myConfig.directory`` is defined.
 #. If you have errors, you can also examine the output produced by Tomcat. If you are using docker, use the command ``docker logs tomcat-frank``.
+
+   .. NOTE::
+
+      Also if everything is well, you will probably see a lot of errors. The reason is that Apache Tomcat was already running while you were deploying your Frank. The errors were produced when your Frank was not complete. Please look for the moment that you restarted your container. Only errors after that monent are relevant.
+
 #. If you have no errors, you can proceed to testing your deployed configuration. Press "Testing" in the figure below. The "Testing" menu item expands as shown:
 
    .. image:: frankConsoleFindTestTools.jpg
