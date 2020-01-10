@@ -32,7 +32,7 @@ When you are done with these preparations, please do the following:
 
    This creates a Docker container named ``tomcat-frank``. The ``-p 8080:8080`` is added to export port 8080 to the host computer, making the Frank!Framework reachable by a webbrowser. This command does not stop by itself, so:
 #. When you see the output like ``INFO: Server startup in 40 ms``, press Ctrl-C to stop.
-#. Start the Docker image with the following command: ::
+#. Start the Docker container with the following command: ::
 
      > docker start tomcat-frank
 
@@ -48,7 +48,7 @@ Source                                                    Destination
 --------------------------------------------------------  ---------------------------------------------------------
 ``ibis-adapterframework-webapp-7.5-20191211.175453.war``  ``/usr/local/tomcat/webapps/frankframework.war``
 ``h2-1.4.199.jar``                                        ``/usr/local/tomcat/lib/h2.jar``
-``jtds-1.3.1.jar.zip``                                    ``/usr/local/tomcat/lib/jtds-1.3.1.zip``
+``jtds-1.3.1.jar``                                        ``/usr/local/tomcat/lib/jtds-1.3.1.jar``
 ``geronimo-jms_1.1_spec-1.1.1.jar``                       ``/usr/local/tomcat/lib/geronimo-jms_1.1_spec-1.1.1.jar``
 ``commons-dbcp-1.4.jar``                                  ``/usr/local/tomcat/lib/commons-dbcp-1.4.jar``
 ``commons-pool-1.5.6.jar``                                ``/usr/local/tomcat/lib/commons-pool-1.5.6.jar``
@@ -94,15 +94,6 @@ You do not have to download these files manually. For your convenience, we added
      >> ls
 
    You should see that this directory exists and that it is not empty.
-#. Unzip the only .zip file you have: ::
-
-     >> unzip /usr/local/tomcat/lib/jtds-1.3.1.zip -d /usr/local/tomcat/lib
-     >> rm /usr/local/tomcat/lib/jtds-1.3.1.zip
-
-   .. NOTE::
-
-      You may get an error that file ``jtds-1.3.1.zip`` does not exist. This happens when the file is extracted automatically during the download. If you do have file ``/usr/local/tomcat/lib/jtds-1.3.1.jar``, you can safely continue.
- 
 #. Enter ``exit`` to exit your container.
 
 Add your Frank configuration
@@ -110,7 +101,7 @@ Add your Frank configuration
 
 With these steps, you have deployed the Frank!Framework on your Docker container. It will not work properly yet because you do not have a configuration. Please continue as follows:
 
-16. Enter your Docker container with the command documented earlier.
+15. Enter your Docker container with the command documented earlier.
 #. The contents of your ``classes`` folder must be stored inside the deployment on your application server. Within your container, copy your ``/home/root/Downloads/classes`` folder to your deployment: ::
 
      >> cd /home/root/Downloads/work/classes
@@ -149,7 +140,7 @@ Test your work
 
 You can test your work with the following steps:
 
-21. Restart your docker container with the following commands: ::
+20. Restart your docker container with the following commands: ::
 
      > docker stop tomcat-frank
      > docker start tomcat-frank
