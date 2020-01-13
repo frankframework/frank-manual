@@ -26,6 +26,10 @@ As a starting point you need a Linux PC, a Linux virtual machine or a Docker con
 When you are done with these preparations, please do the following:
 
 #. Please make an account on Dockerhub, https://hub.docker.com/.
+#. On the command prompt, login to Dockerhub: ::
+
+     docker login
+
 #. Create a Docker container from the Tomcat 7.0.99 image hosted on Dockerhub. Use the following command: ::
 
      > docker run --name tomcat-frank -p 8080:8080 tomcat:7.0.99
@@ -60,7 +64,7 @@ Source                                                    Destination
 
 You do not have to download these files manually. For your convenience, we added a script ``downloadLibraries.sh`` to the example configuration. Please deploy the Frank!Framework as follows:
 
-5. You need a home directory on your Docker container. To do this, you need to run interactive commands within your Docker container. Please run the following command in a command prompt (Windows) or a shell (Linux): ::
+6. You need a home directory on your Docker container. To do this, you need to run interactive commands within your Docker container. Please run the following command in a command prompt (Windows) or a shell (Linux): ::
   
      > docker exec -it tomcat-frank bash
 
@@ -101,7 +105,7 @@ Add your Frank configuration
 
 With these steps, you have deployed the Frank!Framework on your Docker container. It will not work properly yet because you do not have a configuration. Please continue as follows:
 
-15. Enter your Docker container with the command documented earlier.
+16. Enter your Docker container with the command documented earlier.
 #. The contents of your ``classes`` folder must be stored inside the deployment on your application server. Within your container, copy your ``/home/root/Downloads/classes`` folder to your deployment: ::
 
      >> cd /home/root/Downloads/work/classes
@@ -142,7 +146,7 @@ Test your work
 
 You can test your work with the following steps:
 
-20. Restart your docker container with the following commands: ::
+21. Restart your docker container with the following commands: ::
 
      > docker stop tomcat-frank
      > docker start tomcat-frank

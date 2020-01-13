@@ -12,8 +12,18 @@ This subsection is the second tutorial about manually deploying a Frank on an Ap
 
 If you are using Docker, you can skip the first tutorial. In this case you should do the following preparations to catch up:
 
+#. Please make an account on Dockerhub, https://hub.docker.com/.
+#. On the command prompt, login to Dockerhub: ::
+
+     docker login
+
 #. Choose some directory to work in, say ``work``.
 #. Download the :download:`example Frank config <../downloads/deploymentTomcat.zip>`; this is the same file as is used in the first tutorial. This zipfile also contains a file ``Dockerfile``. After unzipping, you should have a file ``work/deploymentTomcat/Dockerfile``.
+
+   .. WARNING::
+
+      If you are doing this second tutorial after the first tutorial, please note that ``work`` has changed meaning. The ``work`` of the first tutorial is now ``work/deploymentTomcat``.
+
 #. Create a Docker image ``tomcat-frank-img`` with the Frank!Framework and the configuration of the first tutorial. Enter directory ``work/deploymentTomcat`` and then run the following (same for Windows and Linux): ::
 
    > docker build -t tomcat-frank-img .
@@ -61,7 +71,7 @@ Migrate the database
 
 Please migrate the Frank!Framework to the new database, as follows:
 
-5. Enter the server on which you installed the Frank!Framework. If you are using Docker, you can do this with the following command: ::
+7. Enter the server on which you installed the Frank!Framework. If you are using Docker, you can do this with the following command: ::
 
    > docker exec -it tomcat-frank bash
 
