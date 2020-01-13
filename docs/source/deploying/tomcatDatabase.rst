@@ -61,7 +61,7 @@ Migrate the database
 
 Please migrate the Frank!Framework to the new database, as follows:
 
-#. Enter the server on which you installed the Frank!Framework. If you are using Docker, you can do this with the following command: ::
+5. Enter the server on which you installed the Frank!Framework. If you are using Docker, you can do this with the following command: ::
 
    > docker exec -it tomcat-frank bash
 
