@@ -13,8 +13,8 @@ This subsection is the second tutorial about manually deploying a Frank on an Ap
 If you are using Docker, you can skip the first tutorial. In this case you should do the following preparations to catch up:
 
 #. Choose some directory to work in, say ``work``.
-#. Download the :download:`example Frank config <../downloads/deploymentTomcat.zip>`; this is the same file as is used in the first tutorial. This zipfile also contains a file ``Dockerfile``. After unzipping, you should have a file ``work/Dockerfile``.
-#. Create a Docker image ``tomcat-frank-img`` with the Frank!Framework and the configuration of the first tutorial. Enter directory ``work`` and then run the following (same for Windows and Linux): ::
+#. Download the :download:`example Frank config <../downloads/deploymentTomcat.zip>`; this is the same file as is used in the first tutorial. This zipfile also contains a file ``Dockerfile``. After unzipping, you should have a file ``work/deploymentTomcat/Dockerfile``.
+#. Create a Docker image ``tomcat-frank-img`` with the Frank!Framework and the configuration of the first tutorial. Enter directory ``work/deploymentTomcat`` and then run the following (same for Windows and Linux): ::
 
    > docker build -t tomcat-frank-img .
 
