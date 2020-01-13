@@ -85,6 +85,8 @@ Please migrate the Frank!Framework to the new database, as follows:
           maxIdle="3"
           validationQuery="select 1" />
 
+   In the first tutorial you installed text editor ``nano``, so you can use it now if you want.
+
 #. Enter ``exit`` to leave the Frank!Framework container. Restart it using the following commands: ::
 
    > docker stop tomcat-frank
