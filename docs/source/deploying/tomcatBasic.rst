@@ -135,6 +135,8 @@ With these steps, you have deployed the Frank!Framework on your Docker container
 
 With these steps you have added your Frank configuration and you have configured its database.
 
+.. _deploymentTomcatBasicTest:
+
 Test your work
 --------------
 
