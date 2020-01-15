@@ -37,7 +37,7 @@ Please perform the following steps:
    
 The file ``DeploymentSpecifics.properties`` allows you to set properties. The key is to the left of the ``=`` sign, while the value is to the right. Property names are words separated by dots. Lines starting with ``#`` are comments, which are ignored by the Frank!Framework.
 
-Both in property files and in XML Frank config files, you can reference properties. To do this, surround the property name with ``${`` and ``}``. In the property file above, property ``my.text`` is defined with value ``My text is ${my.hello}``, which means that the value of property ``my.hello`` should be substituted to get the value of property ``my.text``. Note that property ``my.hyello`` can be defined after a property that references it, in this case ``my.text``.
+Both in property files and in XML Frank config files, you can reference properties. To do this, surround the property name with ``${`` and ``}``. In the property file above, property ``my.text`` is defined with value ``My text is ${my.hello}``, which means that the value of property ``my.hello`` should be substituted to get the value of property ``my.text``. Note that property ``my.hello`` can be defined after a property that references it, in this case ``my.text``.
 
 5. Please create file ``classes/ConfigurationReferenceProperties.xml`` with the following contents:
 
