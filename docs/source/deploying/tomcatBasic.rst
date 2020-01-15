@@ -100,6 +100,8 @@ You do not have to download these files manually. For your convenience, we added
    You should see that this directory exists and that it is not empty.
 #. Enter ``exit`` to exit your container.
 
+.. _deploymentTomcatBasicAddFrankConfiguration:
+
 Add your Frank configuration
 ----------------------------
 

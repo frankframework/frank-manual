@@ -9,3 +9,5 @@ Chapter :ref:`gettingStarted` provides the basics of Frank development. This cha
    :maxdepth: 3
 
    properties/properties
+   database/database
+   

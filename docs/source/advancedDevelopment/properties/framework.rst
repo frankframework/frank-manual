@@ -26,13 +26,16 @@ configurations.MyConfig.classLoaderType
   If you have a configuration ``MyConfig``, then this property defines how configuration ``MyConfig`` is read. When you use Tomcat4Ibis and when you have the configuration in your ``configurations`` directory, you should set the value to ``DirectoryClassLoader``, indicating that ``MyConfig`` is stored on the local file system of the server. This property should exist for every configuration. Replace ``MyConfig`` with the configuration name to get the property name. This property only works as a system property or a classpath property, unless you are working with nested configurations. Nested configurations are beyond the scope of this manual.
 
 jdbc.migrator.active
-  Can be "true" or "false" (the default). Works only as system property or classpath property. When true, database initialization is switched on. The default behavior is to do this with LiquiBase, see https://www.liquibase.org/. With LiquiBase, the file ``DatabaseChangelog.xml`` is executed.
+  Can be "true" or "false" (the default). Works only as system property or classpath property. When true, database initialization is switched on. The default behavior is to do this with Liquibase, see https://www.liquibase.org/. With Liquibase, the file ``DatabaseChangelog.xml`` is executed.
 
 log.dir
   The directory to which the Frank!Framework writes its log files. Only works as system property. Usually you do not have to set this property because the Frank!Framework can automatically choose a suitable directory.
 
 log.level
   Determines the amount of log messages written. Only works as system property. Possible values are ``ERROR``, ``WARN``, ``INFO`` and ``DEBUG``.
+
+instance.name.lc
+  Derived automatically by the Frank!Framework from ``instance.name`` by replacing uppercase letters by lowercase letters. For example if ``instance.name`` is ``GettingStarted``, then ``instance.name.lc`` is ``gettingstarted``.
 
 .. NOTE::
 

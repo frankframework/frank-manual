@@ -66,6 +66,8 @@ If you are using Docker, you can create your database server as follows:
 
 You should have a running container ``external-db`` with a MySQL server running. The server should have a database named ``db``. It is assumed that this server has IP address ``172.17.0.2``, but this can be different for you. Please use the real IP address instead of ``172.17.0.2`` in the remainder of this tutorial. You will use the ``root`` database user in this tutorial, although it is not wise to do so in production. You gave this user password ``mypwd``.
 
+.. _deploymentTomcatDatabaseMigrate:
+
 Migrate the database
 --------------------
 

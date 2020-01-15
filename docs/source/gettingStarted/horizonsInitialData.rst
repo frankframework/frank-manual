@@ -9,7 +9,7 @@ for the first time. When an enterprise application is restarted later,
 database initialization should be omitted because data in the
 database should be persistent.
 
-The frank!framework internally uses LiquiBase, see http://www.liquibase.org/,
+The Frank!Framework internally uses Liquibase, see http://www.liquibase.org/,
 to initialize the database. To use LiqueBase, it has to be switched on. There are multiple ways to
 to this. One possibility is as follows:
 
@@ -26,7 +26,7 @@ this database is embedded within the frank!framework and does not
 require a process external to it. Please see https://github.com/ibissource/docker4ibis/
 to see how to select a database.
 
-LiquiBase expects a so-called
+Liquibase expects a so-called
 changelog, an XML file that defines the data model and the initial data.
 The frank!framework expects it in the file
 "<project directory>/configurations/NewHorizons/DatabaseChangelog.xml".
