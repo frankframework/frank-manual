@@ -7,7 +7,7 @@ In the preceeding subsections, two ways were demonstrated to access the simplifi
 
 Please do the following:
 
-#. Ensure that the Frank!framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
+#. Ensure that the Frank!Framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
 #. Ensure that you have a report in Ladybug for running adapter "sutGet". If it misses, repeat the steps of :ref:`useTestPipeline`.
 #. Select the line corresponding to the execution of "sutGet". This is shown with number 1 in the picture below:
 

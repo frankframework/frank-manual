@@ -5,7 +5,7 @@ Global ignore
 
 In sub-subsection :ref:`ignorePreparations`, we set the stage to examine the ignore feature of Ladybug. The purpose of this feature was introduced in :ref:`ignore`. In this sub-subsection we are going to do a global ignore. This means we will ignore the contents of an XML element for all test scripts.
 
-In :ref:`ignorePreparations`, we changed the System Under Test. It now produces an element :code:`<retrievalTime>` that has the current time as its contents. This contents will be different each time the "sutGet" adpater is run. We started the Frank!framework, ran adapter "sutGet" and captured a test script.
+In :ref:`ignorePreparations`, we changed the System Under Test. It now produces an element :code:`<retrievalTime>` that has the current time as its contents. This contents will be different each time the "sutGet" adpater is run. We started the Frank!Framework, ran adapter "sutGet" and captured a test script.
 
 Please continue as follows:
 

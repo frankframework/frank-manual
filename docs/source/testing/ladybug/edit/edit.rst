@@ -9,7 +9,7 @@ We continue experimenting with the simplified archive introduced in :ref:`introd
 
 Please do the following:
 
-#. Start the Frank!framework if it is not running, see :ref:`preparations`. Recreate the situation of :ref:`organize`. You may have a download of these test scripts that you can upload (see :ref:`downloadUpload`). It is important that you have a capture of running "sutArchive" with stub strategy "Never", and that this test script has a description indicating this stub strategy.
+#. Start the Frank!Framework if it is not running, see :ref:`preparations`. Recreate the situation of :ref:`organize`. You may have a download of these test scripts that you can upload (see :ref:`downloadUpload`). It is important that you have a capture of running "sutArchive" with stub strategy "Never", and that this test script has a description indicating this stub strategy.
 #. We do another capture of running "sutArchive". Click "Testing" and "Test Pipeline":
 
    .. image:: ../../frankConsoleFindTestTools.jpg
@@ -49,7 +49,7 @@ Please do the following:
    .. image:: afterDescriptionAdded.jpg
 
 #. Select the topmost node (number 1). Press "Refresh" (number 2). Now you see two test scripts about "sutArchive", both having their description (number 3).
-#. Press "Download all" (number 4). Then stop the Frank!framework.
+#. Press "Download all" (number 4). Then stop the Frank!Framework.
 #. Now we change our System Under Test. It is the simplified electronic archive with a portal that calls the real electronic archive. We change the real electronic archive. In your project directory, open file :code:`classes/Configuration.xml`. Edit the name of the included file to become :code:`externalModified.xml`, as shown:
 
    .. code-block:: xml
@@ -61,7 +61,7 @@ Please do the following:
       ]>
       ...
 
-#. Restart the Frank!framework and press the refresh button of your webbrowser. Probably you still see your test cases. If not, upload the test scripts you downloaded. Your screen should look as follows again:
+#. Restart the Frank!Framework and press the refresh button of your webbrowser. Probably you still see your test cases. If not, upload the test scripts you downloaded. Your screen should look as follows again:
 
    .. image:: afterRestart.jpg
 
@@ -74,7 +74,7 @@ Please do the following:
 
    .. NOTE::
 
-      The stub strategy determines whether calls to external systems are stubbed or not. The call from the portal to the real archive (see :ref:`introduction`) is an example. When such a call is stubbed (stub strategy "Always"), the Frank!framework does not perform the call but uses a saved result of this call. The stubbed test script is not influenced by the modification of the external system and thus still succeeds. The not-stubbed test fails because you just changed the external system.
+      The stub strategy determines whether calls to external systems are stubbed or not. The call from the portal to the real archive (see :ref:`introduction`) is an example. When such a call is stubbed (stub strategy "Always"), the Frank!Framework does not perform the call but uses a saved result of this call. The stubbed test script is not influenced by the modification of the external system and thus still succeeds. The not-stubbed test fails because you just changed the external system.
 
    .. Note::
 

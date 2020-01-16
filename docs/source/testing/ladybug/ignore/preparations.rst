@@ -9,7 +9,7 @@ Please do the following:
 
 .. highlight:: none
 
-#. Stop the Frank!framework.
+#. Stop the Frank!Framework.
 #. Edit :code:`classes/Configuration.xml` to become:
 
    .. code-block:: XML
@@ -20,12 +20,12 @@ Please do the following:
       ]>
       ...
 
-#. Restart the Frank!framework.
+#. Restart the Frank!Framework.
 #. Open Ladybug by clicking "Testing" and then "Ladybug" as shown below:
 
    .. image:: ../../frankConsoleFindTestTools.jpg
 
-#. We delete all existing texts because they are no longer relevant. Click tab "Test" (number 1 in the picture below). Select the top node in the tree view (number 2). Press "Select all" (number 3) to select all tests (number 4). Then press "Delete" (number 5).
+#. We delete all existing tests because they are no longer relevant. Click tab "Test" (number 1 in the picture below). Select the top node in the tree view (number 2). Press "Select all" (number 3) to select all tests (number 4). Then press "Delete" (number 5).
 
    .. image:: prepareDeleteOld.jpg
 

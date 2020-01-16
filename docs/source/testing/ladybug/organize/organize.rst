@@ -14,7 +14,7 @@ Please do the following:
 
 .. highlight:: none
 
-#. Ensure that the Frank!framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
+#. Ensure that the Frank!Framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
 #. Ensure that you have a captured test script of running adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. In this case, you can proceed to :ref:`afterPrepared`.
 #. If you do not have a test script of running "sutGet", continue with this step. Click "Testing" in the picture below:
 

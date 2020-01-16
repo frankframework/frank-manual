@@ -9,7 +9,7 @@ Please do the following:
 
 .. highlight:: none
 
-#. Ensure that the Frank!framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
+#. Ensure that the Frank!Framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
 #. Ensure that you have captured test scripts in tab "Test". If not, you can redo subsection :ref:`capture`.
 #. Go to tab "Test". Press "Download all" (number 2 of the picture below):
 
@@ -17,13 +17,13 @@ Please do the following:
 
 #. A save file dialog appears allowing you to save a zip file. Press OK.
 #. Go to your Downloads folder and sort by creation date to see the downloaded file.
-#. Stop the Frank!framework. You will restore your captured scripts soon.
-#. Sometimes the Frank!framework saves test scripts automatically, but you can not rely on this. In this tutorial we make sure that all test scripts are lost, such that we can properly demonstrate uploading.
+#. Stop the Frank!Framework. You will restore your captured scripts soon.
+#. Sometimes the Frank!Framework saves test scripts automatically, but you can not rely on this. In this tutorial we make sure that all test scripts are lost, such that we can properly demonstrate uploading.
 #. Please open a command prompt (Windows) or a terminal (Linux) and enter the issue the following command: ::
 
      docker container rm ladybug
 
-#. Restart the Frank!framework.
+#. Restart the Frank!Framework.
 #. Browse to http://localhost/ladybug/iaf/gui.
 #. Click "Testing":
 
