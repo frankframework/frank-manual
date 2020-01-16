@@ -3,7 +3,7 @@
 Sending to Database
 ===================
 
-The frank!framework can send data to external systems.
+The Frank!Framework can send data to external systems.
 This is done by pipe ``<SenderPipe>``.
 Within this pipe, you add a sender to specify the
 destination. We use ``<FixedQuerySender>`` to specify
@@ -40,8 +40,8 @@ These XPath expressions are applied to the incoming message. Xpath is
 explained here: https://www.w3schools.com/xml/xpath_intro.asp.
 
 As it stands, the added pipe is never reached. Before this works,
-the "success" forward of the pipe with ``name`` attribute "checkInput" has to be
-updated. The path of this forward should be changed to "insertBooking".
+the ``success`` forward of the pipe with ``name`` attribute ``checkInput`` has to be
+updated. The path of this forward should be changed to ``insertBooking``.
 
 The intermediate version you have reached now can be tested as follows:
 
