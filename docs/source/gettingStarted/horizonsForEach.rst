@@ -63,5 +63,5 @@ You can insert the following sender:
      <Param name="price" xpathExpression="/destination/price" />
    </FixedQuerySender>
 
-Finally, the pipe with ``name`` attribute "getDestinations" should
-be updated. Its "success" forward should point to "iterateDestinations".
+Finally, the pipe with ``name`` attribute ``getDestinations`` should
+be updated. Its ``success`` forward should point to ``iterateDestinations``.
