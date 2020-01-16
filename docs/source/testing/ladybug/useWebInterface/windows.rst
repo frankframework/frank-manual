@@ -12,7 +12,7 @@ Please do the following:
 
 .. highlight:: none
 
-#. Open the Frank!framework by browsing to http://localhost/ladybug/iaf/gui.
+#. Open the Frank!Framework by browsing to http://localhost/ladybug/iaf/gui.
 #. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
 
    .. image:: ../../frankConsoleFindTestTools.jpg
@@ -28,11 +28,11 @@ Please do the following:
    .. image:: postmanSettings.jpg
 
 #. Close this dialog.
-#. Select tab Params. Select method POST and type URL "localhost/ladybug/api/archive" (without quotes). See figure below:
+#. Select tab Params. Select method POST and type URL ``localhost/ladybug/api/archive``. See figure below:
 
    .. image:: postmanParams.jpg
 
-#. Add header "Content-Type" with value "application/xml" and select it, as shown:
+#. Add header ``Content-Type`` with value ``application/xml`` and select it, as shown:
 
    .. image:: postmanHeaders.jpg
 

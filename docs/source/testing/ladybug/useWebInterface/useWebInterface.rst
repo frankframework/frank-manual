@@ -6,7 +6,7 @@ Use Web Interface
 As explained in :ref:`introduction`, this tutorial demonstrates Ladybug
 by testing a simplified electronic archive. Subsection :ref:`preparations`
 explains how the electronic archive is installed. In this subsection we access
-the electronic archive outside the Frank!framework.
+the electronic archive outside the Frank!Framework.
 
 The electronic archive, or more precisely its portal (see :ref:`introduction`)
 provides a HTTP interface. Windows users can access it using Postman, while Linux users use curl.

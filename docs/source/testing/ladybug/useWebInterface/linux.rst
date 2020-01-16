@@ -7,12 +7,12 @@ Linux
 
 This sub-subsection explains how to do a HTTP call to
 the electronic archive introduced in :ref:`introduction`
-outside the Frank!framework. This subsection gives the
+outside the Frank!Framework. This subsection gives the
 instructions Linux users need to follow.
 
 Please do the following:
 
-#. Open the Frank!framework by browsing to http://localhost/ladybug/iaf/gui.
+#. Open the Frank!Framework by browsing to http://localhost/ladybug/iaf/gui.
 #. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
 
    .. image:: ../../frankConsoleFindTestTools.jpg

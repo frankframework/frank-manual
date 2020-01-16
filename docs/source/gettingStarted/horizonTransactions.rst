@@ -31,9 +31,9 @@ file "AdapterIngestBooking.xml" becomes:
      </Pipeline>
    </Adapter>
 
-The value "RequiresNew" means that a new transaction is started
+The value ``RequiresNew`` means that a new transaction is started
 for executing the ``<Pipeline>``. There are other possible values.
-The value "Mandatory" for example requires that a transaction
+The value ``Mandatory`` for example requires that a transaction
 is expected to exist when pipeline execution starts; the pipeline
 will fail otherwise. This value is useful when
 you want to execute multiple adapters within a single transaction.
@@ -52,5 +52,5 @@ with the user. Before a booking is accepted, the user logs in and
 searches destinations. That functionality would be needed before
 restricting access would make sense.
 
-Security is easy to implement using the frank!framework. This manual will be extended with another
+Security is easy to implement using the Frank!Framework. This manual will be extended with another
 user story of New Horizons to cover this topic.
