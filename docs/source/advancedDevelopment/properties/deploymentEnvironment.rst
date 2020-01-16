@@ -31,6 +31,8 @@ The Frank!Framework detects the type of application server used to host it. This
    TIBCOAMX                    Tibco AMX
 ==========================  ======================================
 
+.. _propertiesDeploymentEnvironmentLogicalCharacteristics:
+
 Logical characteristics
 -----------------------
 
