@@ -18,12 +18,12 @@ Before doing something with a booking XML, the ingest booking adapter
 should check that this document is valid.
 This can be done using an XML Schema, see
 https://www.w3schools.com/xml/schema_intro.asp. You can make a document
-"<project directory>/configurations/NewHorizons/booking.xsd" and give it the following contents:
+``<project directory>/configurations/NewHorizons/booking.xsd`` and give it the following contents:
 
 .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking.xsd
    :language: xml
 
-The frank!framework defines a pipe that checks the incoming message against
+The Frank!Framework defines a pipe that checks the incoming message against
 an XML Schema. Using this pipe, we can can produce an intermediate version
 of the file AdapterIngestBooking.xml:
 
@@ -58,33 +58,33 @@ This adapter starts with a ``<Receiver>`` that contains an ``<ApiListener>``.
 The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests. The attribute
 ``method="POST"`` makes it listen to HTTP POST requests. The ``uriPattern="booking"`` attribute
 defines the relative path to which the adapter listens.
-The frank!framework extends this path to be http://localhost/ibis/api/booking.
+The Frank!Framework extends this path to be http://localhost/ibis/api/booking.
 
 After the receiver comes an ``<XmlValidatorPipe>`` . The attributes ``root`` and
 ``schema`` are used to reference the expected root element of the incoming
-XML and to reference the XML schema file "booking.xsd" presented earlier
+XML and to reference the XML schema file ``booking.xsd`` presented earlier
 in this section.
 
 In section :ref:`helloIbis`, the concept of a forward was introduced.
 We see here an example of a pipe that can exit with two different
-forward names. Forward name "success" is followed if the incoming XML
-satisfies "booking.xsd". Otherwise, forward "failure" is followed.
+forward names. Forward name ``success`` is followed if the incoming XML
+satisfies ``booking.xsd``. Otherwise, forward ``failure`` is followed.
 This is predefined behavior of the ``<XmlValidatorPipe>`` .
 
 The ``<Forward>`` tags link the forward names to paths. On success,
-we go to the pipeline exit having path "Exit", finishing execution.
+we go to the pipeline exit having path ``Exit``, finishing execution.
 The ``<Pipeline>`` tag contains an ``<Exit>`` tag that links
-path "Exit" to exit state "success" and code 201. The ``<XmlValidatorPipe>`` echos
+path ``Exit`` to exit state ``success`` and code ``201``. The ``<XmlValidatorPipe>`` echos
 its input message to its output message, both if validation succeeds and
 if validation fails. Therefore, the output
 message of the ingest booking adapter equals the incoming booking if it is valid.
 
 For testing, it is wise to produce an error message if validation fails.
-Therefore, forward name "failure" is linked to the pipe named
-"makeInvalidBookingError". This pipe replaces the incoming message
+Therefore, forward name ``failure`` is linked to the pipe named
+``makeInvalidBookingError``. This pipe replaces the incoming message
 by an error message. The fixed result pipe never fails and
-follows its (predefined) forward name "success". That forward points to
-path "ServerError", corresponding to exit state "failure" and code 500.
+follows its (predefined) forward name ``success``. That forward points to
+path ``ServerError``, corresponding to exit state ``failure`` and code ``500``.
 
 You can test your adapter as follows. Copy the valid booking XML to some file
 on your computer, say ``validBooking.xml``. Then execute the following
@@ -106,19 +106,19 @@ The output will be something like the following: ::
 
   <booking id="1">  <travelerId>2</travelerId>  <price>500.00</price>  <fee>100.00</fee>  <destination hostId="3" productId="4">    <price>400.00</price>    <startDate>2018-12-27</startDate>    <endDate>2019-01-02</endDate>  </destination></booking>
 
-The HTTP status code "201" is the ``code`` attribute defined with exit state "success".
+The HTTP status code ``201`` is the ``code`` attribute defined with exit state ``success``.
 To the bottom, you see that the incoming XML is echoed in the body of the response.
 
 .. NOTE::
 
-   The HTTP request includes a HTTP header "Content-Type: application/xml". You need
+   The HTTP request includes a HTTP header ``Content-Type: application/xml``. You need
    this header because the ingest booking adapter uses listener ``<ApiListener>``. Use
    another listener if you want to omit the header from the request.
 
 .. NOTE::
 
-   The exit path "Exit" corresponds to code 201 and state "success". This exit
-   state "success" does not appear in the HTTP response. You can see it
+   The exit path ``Exit`` corresponds to code ``201`` and state ``success``. This exit
+   state ``success`` does not appear in the HTTP response. You can see it
    if you use the "Test Pipeline" page in the console, see section
    :ref:`helloTestPipeline`.
 
@@ -141,8 +141,8 @@ This results in the following output: ::
 
   Input booking does not satisfy booking.xsd
 
-From the HTTP status code 500, we see that processing exited with exit state
-"failure". This exit state has path "ServerError", which is reached through
-the pipe named "makeInvalidBookingError". The adapter thus detected that
-the incoming message did not satisfy XML schema "booking.xsd". This is also
+From the HTTP status code ``500``, we see that processing exited with exit state
+``failure``. This exit state has path ``ServerError``, which is reached through
+the pipe named ``makeInvalidBookingError``. The adapter thus detected that
+the incoming message did not satisfy XML schema ``booking.xsd``. This is also
 clear from the body of the HTTP response.
