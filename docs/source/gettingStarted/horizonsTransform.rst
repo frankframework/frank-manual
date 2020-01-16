@@ -36,8 +36,8 @@ If there were multiple destinations, the second ``<destination>`` would contain
 ``<seq>2</seq>``, the third would contain ``<seq>3</seq>``, etc.
 
 This can be done with an XSLT transformation, see https://www.w3schools.com/xml/xsl_intro.asp.
-The frank!framework defines a pipe ``<XsltPipe>`` that does XSLT transformations.
-You can make an XSLT stylesheet "<project directory>/configurations/NewHorizons/booking2destinations.xsl"
+The Frank!Framework defines a pipe ``<XsltPipe>`` that does XSLT transformations.
+You can make an XSLT stylesheet ``<project directory>/configurations/NewHorizons/booking2destinations.xsl``
 and give it the following contents:
 
 .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking2destinations.xsl
@@ -61,10 +61,10 @@ Then you can append the ingest booking adapter with the following:
    You may remember session keys from section :ref:`gettingStartedLadyBug`. They are
    name/value pairs that accompany the message flowing through the pipeline.
    The ``<XsltPipe>`` should not use the output of its predecessor with
-   ``name`` attribute "insertBooking". The output of that pipe is
+   ``name`` attribute ``insertBooking``. The output of that pipe is
    an XML coming from the database that expresses the result of
-   the INSERT query. Session key "originalMessage" points to
+   the INSERT query. Session key ``originalMessage`` points to
    the original input message of the pipeline, which is what we need.
 
-Finally, update the pipe with ``name`` attribute "insertBooking".
-Update its "success" forward to have ``path`` "getDestinations".
+Finally, update the pipe with ``name`` attribute ``insertBooking``.
+Update its ``success`` forward to have ``path`` ``getDestinations``.
