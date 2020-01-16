@@ -6,7 +6,7 @@ Configuration Management
 Introduction
 ------------
 
-In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the tomcat4ibis project to run the Frank!Framework and you worked with the example configurations in that project. You learned the basic concepts by studying these configurations. You ran the framework and learned how configurations can be executed and tested.
+In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the Tomcat4Ibis project to run the Frank!Framework and you worked with the example configurations in that project. You learned the basic concepts by studying these configurations. You ran the framework and learned how configurations can be executed and tested.
 
 In this section you start your own project and you build your first configuration. Frank configurations are written in XML. They satisfy an XML Schema that can be downloaded from the Frank!Framework. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
 
@@ -15,7 +15,7 @@ Initialize your project
 
 .. highlight:: none
 
-After installing tomcat4ibis, you should have a folder ``projects`` with a folder ``tomcat4ibis`` inside. This ``tomcat4ibis`` folder is your checkout of Tomcat4Ibis. Please continue as follows:
+After installing Tomcat4Ibis, you should have a folder ``projects`` with a folder ``tomcat4ibis`` inside. This ``tomcat4ibis`` folder is your checkout of Tomcat4Ibis. Please continue as follows:
 
 #. Within the ``projects`` directory, create a subdirectory ``gettingStarted``. Please create subdirectories of ``gettingStarted`` to arrive at the following directory structure: ::
 
@@ -106,7 +106,7 @@ Now that you have your project, you can add your real Frank configuration to you
 #. Please look at ``ConfigurationHello.xml`` for a moment. Line 1 wraps your adapter in the ``<Module>`` tag. This tag does not have a meaning. Its purpose is to arrive at valid XML, also if your include file has multiple adapters. The ``<Module>`` tag is also expected by the XML schema ``ibisdoc.xsd``. Code completion will not work without the ``<Module>`` tag.
 #. Lines 2 and 3 are needed to tell your text editor to check against XML schema file ``ibisdoc.xsd``. You downloaded that file earlier. Please copy it now to ``configurations\NewHorizons\ibisdoc.xsd``, making it a brother of ``ConfigurationHello.xml``.
 #. Line 9 (also highlighted) holds the output string of your Hello World adapter. It reads ``Hello Docker World``.
-#. Please restart tomcat4ibis. Run your "HelloDockerWorld" adapter in the Test Pipeline screen and check that the output is ``Hello Docker World``. If this is the case, you succeeded doing this tutorial.
+#. Please restart Tomcat4Ibis. Run your "HelloDockerWorld" adapter in the Test Pipeline screen and check that the output is ``Hello Docker World``. If this is the case, you succeeded doing this tutorial.
 #. If something is wrong, please compare your files with the examples of docker4ibis, or with the :download:`solution <../downloads/gettingStarted.zip>`.
 
 Try code completion
