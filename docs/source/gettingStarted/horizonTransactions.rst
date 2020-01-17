@@ -37,7 +37,7 @@ The value ``Mandatory`` for example requires that a transaction
 is expected to exist when pipeline execution starts; the pipeline
 will fail otherwise. This value is useful when
 you want to execute multiple adapters within a single transaction.
-See https://ibis4example.ibissource.org/iaf/ibisdoc/ for details.
+See the Frank!Doc (section :ref:`horizonsMultipleFiles`) for details.
 
 This completes the implementation of the requirements of section
 :ref:`horizonsInterfaces` . We have a REST HTTP service listening

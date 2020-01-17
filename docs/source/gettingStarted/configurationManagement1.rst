@@ -8,7 +8,7 @@ Introduction
 
 In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the Tomcat4Ibis project to run the Frank!Framework and you worked with the example configurations in that project. You learned the basic concepts by studying these configurations. You ran the framework and learned how configurations can be executed and tested.
 
-In this section you start your own project and you build your first configuration. Frank configurations are written in XML. They satisfy an XML Schema that can be downloaded from the Frank!Framework. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
+In this section you start your own project and you build your first configuration. You will gain access to an additional source of documentation, the Frank!Doc, which you can reach through the web interface of the Frank!Framework. Frank configurations are written in XML. They satisfy an XML Schema, the Frank configuration schema, which can be downloaded from the Frank!Framework. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
 
 Initialize your project
 -----------------------
@@ -59,7 +59,12 @@ After installing Tomcat4Ibis, you should have a folder ``projects`` with a folde
      jdbc.migrator.active=true
      stub4testtool.configuration=true
 
-#. You will download the Frank configuration schema now. Please start the Frank!Framework by running ``tomcat4ibis\tomcat4ibis.bat`` (Windows) or ``tomcat4ibis/tomcat4ibis.sh`` (Linux).
+Frank configuration schema
+--------------------------
+
+You will download the Frank configuration schema now.
+
+8. Please start the Frank!Framework by running ``tomcat4ibis\tomcat4ibis.bat`` (Windows) or ``tomcat4ibis/tomcat4ibis.sh`` (Linux).
 #. Click "Webservices" as shown in the figure below:
 
    .. image:: webservicesMenu.jpg
@@ -68,11 +73,24 @@ After installing Tomcat4Ibis, you should have a folder ``projects`` with a folde
 
    .. image:: webservicesPage.jpg
 
-#. Right-click "ibisdoc.xsd" as shown below:
+#. Right-click "ibisdoc.xsd" (number 1 in the picture below):
 
    .. image:: ibisDocFiles.jpg
 
 #. A menu appears that lets you choose what to do with "ibisdoc.xsd". Please choose to download it. You will need it later.
+
+Frank!Doc
+---------
+
+From the screen shown at step 11, you can access the Frank!Doc, an additional source of documentation. It lets you search pipes, senders and receivers and it gives you detailed information.
+
+13. In the picture of step 11, press "The new ibisdoc application" (number 2). The following screen appears:
+
+     .. image:: frankDoc.jpg
+
+#. As an example, we want to see detailed information about the ``<FixedResultPipe>``. To the top-left, click "Pipes" (number 1). To the bottom-left, all available pipes are listed.
+#. Click "FixedResultPipe" (number 2). To the right, a page with detailed information appears. To the top it confirmst that it is about FixedResultPipe (number 3). You see the attribute you know already, "returnString" (number 4).
+#. Each pipe, sender or receiver corresponds to a Java class in the source code of the Frank!Framework. You can see the Javadoc documentation of this class by clicking "Javadoc" (number 5). This information is written for Java developers, but it may be useful sometimes for Frank developers.
 
 Add your configuration
 ----------------------
