@@ -2,7 +2,7 @@
 # links in the manual. Comments and empty lines are
 # ignored.
 
-src/Ibis4DockerExample
+src/gettingStartedExample
 src/gettingStarted
 src/ladybug
 src/advancedDevelopmentProperties

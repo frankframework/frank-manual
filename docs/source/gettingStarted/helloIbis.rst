@@ -3,50 +3,43 @@
 Hello World Source Code
 =======================
 
-In this section we study the example Frank provided with the WeAreFrank! Quick Docker Installer, found at https://github.com/ibissource/docker4ibis/. The solutions for this section and sections :ref:`helloTestPipeline`, :ref:`gettingStartedLadybug`, :ref:`gettingStartedLarva` can be downloaded: :download:`solution <../downloads/Ibis4DockerExample.zip>`. 
+Preparations
+------------
 
-To be able to run the example Frank, please do the following:
+In this section we study an example Frank. To be able to run the example Frank, please do the following:
 
 .. highlight:: none
 
-#. Follow the instructions at https://github.com/ibissource/docker4ibis/ to install the WeAreFrank! Quick Docker Installer.
-#. When your projects directory is ``franks``, you should arrive at the following directory structure: ::
+#. Follow the instructions at https://github.com/ibissource/tomcat4ibis/ to install Tomcat4Frank.
+
+   .. NOTE::
+
+      You will encounter words like Ibis and IAF a lot. WeAreFrank! was recently renamed, which was a good moment to rename their products. Implementing these name changes is not yet finished. The words are related to the old names.
+
+   .. NOTE::
+
+      Tomcat4Frank does not work on Linux yet. If you use Linux, you can use Docker4Frank instead, see https://github.com/ibissource/docker4ibis. Please apply the instructions differently in this case such that they work with Docker4Frank.
+
+#. Download the :download:`example Frank config <../downloads/gettingStartedExample.zip>`.
+#. Unzip the file you downloaded within your projects directory. When your projects directory is ``franks``, you should arrive at the following directory structure: ::
 
      franks
-     |- docker4ibis
-        |- docker4ibis.bat
-        |- docker4ibis.properties
-        |- docker4ibis.should
-        |- ...
+     |- tomcat4ibis
         |- README.md
-     |- Ibis4DockerExample
+        |- tomcat4ibis.bat
+        |- ...
+     |- gettingStartedExample
         |- classes
            |- Configuration.xml
 
-   ``docker4ibis`` is your git checkout of https://github.com/ibissource/docker4ibis/. You create ``Ibis4DockerExample`` by hand. The file ``Configuration.xml`` has the following contents:
+   ``tomcat4ibis`` is your git checkout of https://github.com/ibissource/tomcat4ibis/. You created ``gettingStartedExample`` by hand. The file ``Configuration.xml`` has the following contents:
 
-   .. code-block:: XML
+   .. literalinclude:: ../../../src/gettingStartedExample/classes/Configuration.xml
+      :language: XML
 
-      <Configuration name="Ibis4DockerExample">
-	      <jmsRealms>
-		      <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
-	      </jmsRealms>
-	      <Adapter name="HelloDockerWorld">
-		      <Receiver name="HelloDockerWorld">
-			      <JavaListener name="HelloDockerWorld"/>
-		      </Receiver>
-		      <Pipeline firstPipe="HelloDockerWorld">
-			      <FixedResultPipe name="HelloDockerWorld" returnString="Hello Docker World">
-				      <Forward name="success" path="EXIT"/>
-			      </FixedResultPipe>
-			      <Exit path="EXIT" state="success"/>
-		      </Pipeline>
-	      </Adapter>
-      </Configuration>
+#. Create file ``franks/tomcat4ibis/build.properties`` with the following contents: ::
 
-#. Ensure that your file ``franks/docker4ibis/docker4ibis.properties`` has the following contents: ::
-
-     projects_directory=..
+     project.dir=gettingStartedExample
 
 In the remainder of this section, we examine the contents of ``Configuration.xml`` in detail. This study introduces you to the basic concepts of Frank development.
 
@@ -57,16 +50,15 @@ The outer part of ``Configuration.xml`` reads:
 
   .. code-block:: XML
 
-     <Configuration name="Ibis4DockerExample">
+     <Configuration name="gettingStartedExample">
          <jmsRealms>
              <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
          </jmsRealms>
          ...
      </Configuration>
 
-This part can be almost the same for each Frank configuration. The only interesting thing here is
-the ``name`` attribute that gives
-this Frank the name ``Ibis4DockerExample``.
+This part can be almost the same for many Frank configuration. The most interesting thing here is
+the ``name`` attribute that gives this Frank the name ``gettingStartedExample``. Details about the ``<jmsRealm>`` tag are in section :ref:`advancedDevelopmentDatabase`, but please finish this chapter before studying that.
 
 .. NOTE::
 
@@ -168,7 +160,7 @@ the (ignored) incoming message is the message we got from the
 receiver. The fixed output string we want is in the ``returnString``
 attribute.
 
-In the remainder of the :ref:`gettingStarted`, we will see
+In the remainder of the :ref:`gettingStarted` chapter, we will see
 pipes with more interesting functions, like applying
 XSLT transformations and sending data to a database. In
 subsection :ref:`horizonsMultipleFiles` you will learn

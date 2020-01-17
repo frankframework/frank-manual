@@ -1,4 +1,4 @@
-<Configuration name="Ibis4DockerExample">
+<Configuration name="gettingStartedExample">
     <jmsRealms>
             <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
     </jmsRealms>
