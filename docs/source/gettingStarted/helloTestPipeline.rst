@@ -11,21 +11,11 @@ us to enter test input more easily.
 
 After following the instructions of :ref:`helloIbis`, please proceed as follows:
 
-#. Start the Frank!Framework. This is different for Windows and for Linux.
+#. Start the Frank!Framework:
 
-   * On Windows, open a command prompt. Go to directory ``franks\docker4ibis``. Run the following command: ::
-
-       franks\docker4ibis> docker4ibis.bat Ibis4DockerExample
-
-   * On Linux, open a shell. Go to directory ``franks/docker4ibis``. Run the following command: ::
-       
-       franks/docker4ibis> docker4ibis.sh Ibis4DockerExample
+     franks\\tomcat4ibis> tomcat4ibis.bat
 
 #. Browse to http://localhost/ibis/iaf/gui.
-
-   .. WARNING::
-
-      In the URL you do not enter ``Ibis4DockerExample``, but ``ibis4dockerexample``. In the URL you enter the name of your Frank configuration in lower case.
 
 #. You see the Frank!Console as shown below. Click "Testing". The "Testing" link will expand to "Larva", "Ladybug", "Test Pipeline" and "Test serviceListener".
 

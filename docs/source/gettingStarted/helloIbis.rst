@@ -16,7 +16,7 @@ In this section we study an example Frank. To be able to run the example Frank, 
 
       You will encounter words like Ibis and IAF a lot. WeAreFrank! was recently renamed, which was a good moment to rename their products. Implementing these name changes is not yet finished. The words are related to the old names.
 
-   .. NOTE::
+   .. WARNING::
 
       Tomcat4Frank does not work on Linux yet. If you use Linux, you can use Docker4Frank instead, see https://github.com/ibissource/docker4ibis. Please apply the instructions differently in this case such that they work with Docker4Frank.
 

@@ -4,7 +4,7 @@ Console Larva
 =============
 
 This is the final section about the Hello World adapter presented
-in https://github.com/ibissource/docker4ibis/. In application development,
+in section :ref:`helloIbis`. In application development,
 it is common to have automated tests. You cannot rely
 on interactive testing only, because performing these
 takes much more time than running automated tests.
@@ -52,7 +52,7 @@ following screen:
 .. image:: testtoolHello.jpg
 
 You see here that the HelloDockerWorld adapter presented in
-https://github.com/ibissource/docker4ibis/ now
+:ref:`helloIbis` now
 has two receivers. One of them is named ``testtool-HelloDockerWorld``.
 
 Larva tests are added to the ``tests`` subdirectory of your
