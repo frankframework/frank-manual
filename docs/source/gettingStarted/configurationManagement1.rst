@@ -10,6 +10,8 @@ In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic u
 
 In this section you start your own project and you build your first configuration. You will gain access to an additional source of documentation, the Frank!Doc, which you can reach through the web interface of the Frank!Framework. Frank configurations are written in XML. They satisfy an XML Schema, the Frank configuration schema, which can be downloaded from the Frank!Framework. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
 
+If you want to check your work in this sections and in the remaining sections of chapter :ref:`gettingStarted`, you can download the :download:`solution <../downloads/gettingStarted.zip>`.
+
 Initialize your project
 -----------------------
 
