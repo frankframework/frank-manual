@@ -193,7 +193,7 @@ multiple ``<Exit>`` tags within a ``<Pipeline>``.
 Conclusion
 ----------
 
-We implemented a simple adapter. It has a receiver that allows
+You studied a simple adapter. It has a receiver that allows
 us to trigger it. We have a pipeline with a single pipe that
 outputs a fixed message. In the next section, :ref:`helloTestPipeline`, we
 will see our adapter in action.
