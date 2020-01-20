@@ -9,14 +9,17 @@ Please perform the following steps:
 
 .. highlight:: none
 
-#. Please install Tomcat4Ibis from https://github.com/ibissource/tomcat4ibis if you have not done so already. You should have the following directory structure: ::
+#. Please install Tomcat4Frank from https://github.com/ibissource/tomcat4ibis if you have not done so already. You should have the following directory structure: ::
 
      projects
      |- tomcat4ibis
         |- build.properties
         |- tomcat4ibis.bat
-        |- tomcat4ibis.sh
       |- ...
+
+   .. WARNING::
+
+      Tomcat4Frank currently only works for Windows. If you use Linux, please work with Docker4Frank (https://www.github.com/ibissource/docker4ibis). Apply these instructions differently when needed.
 
 #. Please make a subdirectory ``advancedDevelopmentProperties`` within ``projects``. Then open ``build.properties`` and give it the following contents: ::
 
@@ -52,17 +55,11 @@ Both in property files and in XML Frank config files, you can reference properti
 
      From stage LOC, I say My text is Hello
 
-#. For some application servers, you can also set Java properties like ``-Dproperty="value"``. These properties are then defined within the Frank!Framework. This applies to Apache Tomcat and also for Tomcat4Ibis. Please stop Tomcat4Ibis. Restart Tomcat4Ibis with an argument to set a Java property. This is different for Windows and Linux:
+#. For some application servers, you can also set Java properties like ``-Dproperty="value"``. These properties are then defined within the Frank!Framework. This applies to Apache Tomcat and also for Tomcat4Frank. Please stop Tomcat4Frank. Restart Tomcat4Frank with an argument to set a Java property: ::
 
-   * Windows users start Tomcat4Ibis as follows: ::
-
-       projects\tomcat4ibis> tomcat4ibis.bat -Dmy.hello="Hello there"
+     projects\tomcat4ibis> tomcat4ibis.bat -Dmy.hello="Hello there"
    
-   * Linux users start Tomcat4Ibis as follows: ::
-
-       projects/tomcat4ibis> tomcat4ibis.sh -Dmy.hello="Hello there"
-
-#. When Tomcat4Ibis is running again, please return to the Test Pipeline screen. Run adapter ``AccessProperties``. The output should now be as follows: ::
+#. When Tomcat4Frank is running again, please return to the Test Pipeline screen. Run adapter ``AccessProperties``. The output should now be as follows: ::
 
     From stage LOC, I say My text is Hello there
 

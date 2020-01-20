@@ -6,7 +6,7 @@ Configuration Management
 Introduction
 ------------
 
-In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the Tomcat4Ibis project to run the Frank!Framework and you worked with the example configurations in that project. You learned the basic concepts by studying these configurations. You ran the framework and learned how configurations can be executed and tested.
+In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the Tomcat4Frank project to run the Frank!Framework and you worked with the example configurations in that project. You learned the basic concepts by studying these configurations. You ran the framework and learned how configurations can be executed and tested.
 
 In this section you start your own project and you build your first configuration. You will gain access to an additional source of documentation, the Frank!Doc, which you can reach through the web interface of the Frank!Framework. Frank configurations are written in XML. They satisfy an XML Schema, the Frank configuration schema, which can be downloaded from the Frank!Framework. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
 
@@ -15,7 +15,7 @@ Initialize your project
 
 .. highlight:: none
 
-After installing Tomcat4Ibis, you should have a folder ``projects`` with a folder ``tomcat4ibis`` inside. This ``tomcat4ibis`` folder is your checkout of Tomcat4Ibis. Please continue as follows:
+After installing Tomcat4Frank, you should have a folder ``projects`` with a folder ``tomcat4ibis`` inside. This ``tomcat4ibis`` folder is your checkout of Tomcat4Frank. Please continue as follows:
 
 #. Within the ``projects`` directory, create a subdirectory ``gettingStarted``. Please create subdirectories of ``gettingStarted`` to arrive at the following directory structure: ::
 
@@ -64,7 +64,7 @@ Frank configuration schema
 
 You will download the Frank configuration schema now.
 
-8. Please start the Frank!Framework by running ``tomcat4ibis\tomcat4ibis.bat`` (Windows) or ``tomcat4ibis/tomcat4ibis.sh`` (Linux).
+8. Please start the Frank!Framework by running ``tomcat4ibis\tomcat4ibis.bat``.
 #. Click "Webservices" as shown in the figure below:
 
    .. image:: webservicesMenu.jpg
@@ -124,8 +124,8 @@ Now that you have your project, you can add your real Frank configuration to you
 #. Please look at ``ConfigurationHello.xml`` for a moment. Line 1 wraps your adapter in the ``<Module>`` tag. This tag does not have a meaning. Its purpose is to arrive at valid XML, also if your include file has multiple adapters. The ``<Module>`` tag is also expected by the XML schema ``ibisdoc.xsd``. Code completion will not work without the ``<Module>`` tag.
 #. Lines 2 and 3 are needed to tell your text editor to check against XML schema file ``ibisdoc.xsd``. You downloaded that file earlier. Please copy it now to ``configurations\NewHorizons\ibisdoc.xsd``, making it a brother of ``ConfigurationHello.xml``.
 #. Line 9 (also highlighted) holds the output string of your Hello World adapter. It reads ``Hello Docker World``.
-#. Please restart Tomcat4Ibis. Run your "HelloDockerWorld" adapter in the Test Pipeline screen and check that the output is ``Hello Docker World``. If this is the case, you succeeded doing this tutorial.
-#. If something is wrong, please compare your files with the examples of docker4ibis, or with the :download:`solution <../downloads/gettingStarted.zip>`.
+#. Please restart Tomcat4Frank. Run your "HelloDockerWorld" adapter in the Test Pipeline screen and check that the output is ``Hello Docker World``. If this is the case, you succeeded doing this tutorial.
+#. If something is wrong, please compare your files with the examples of Docker4Frank, or with the :download:`solution <../downloads/gettingStarted.zip>`.
 
 Try code completion
 -------------------
