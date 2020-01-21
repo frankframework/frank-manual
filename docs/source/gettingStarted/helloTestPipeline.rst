@@ -3,9 +3,7 @@
 Console Test Pipeline
 =====================
 
-In the previous section :ref:`helloIbis` , we examined the
-Frank presented in the installation instructions
-https://github.com/ibissource/docker4ibis/. We want
+In the previous section :ref:`helloIbis` , we examined an example Frank that you downloaded from there. We want
 to test the pipeline while ignoring the receiver, allowing
 us to enter test input more easily.
 
