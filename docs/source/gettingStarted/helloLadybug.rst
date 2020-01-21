@@ -31,3 +31,5 @@ Please do the following:
    store information that complements the incoming message, for
    example tsReceived for the time that the input message was
    received (timezone UTC!).
+
+If you want to learn more about Ladybug, you can study section :ref:`ladybug`. This tool also has features to automate testing.
