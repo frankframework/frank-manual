@@ -51,7 +51,7 @@ Both in property files and in XML Frank config files, you can reference properti
    The highlighted line shows that properties are referenced by surrounding the property name with ``${`` and ``}`` as said before.
 
 #. Execute adapter ``AccessProperties`` using the Test Pipeline screen, see :ref:`helloTestPipeline`.
-#. The Frank!Framework replaces property references by the values of the referenced properties. The default value for ``otap.stage`` is ``LOC``. Check that the output is: ::
+#. The Frank!Framework replaces property references by the values of the referenced properties. The default value for ``otap.stage`` is ``LOC`` (only if you are using Tomcat4Frank, otherwise there is no default). Check that the output is: ::
 
      From stage LOC, I say My text is Hello
 
