@@ -129,3 +129,4 @@ Now that you are prepared, you can learn how to organize your test scripts. Plea
    .. image:: afterDelete.jpg
 
 #. If you want to pause, you may do "Download all". Then you can upload later when you have time to continue.
+
