@@ -21,7 +21,14 @@ As a starting point you need a Linux PC, a Linux virtual machine or a Docker con
         |- Configuration.xml
         |- ConfigurationReferenceProperties.xml
         |- DeploymentSpecifics.properties
+  |- tests
+     |- myConfig
+        |- scenario01.properties
+        |- step1.txt
+        |- step2.txt
   |- downloadLibraries.sh
+  |- Dockerfile
+  |- resorceDef
 
 When you are done with these preparations, please do the following:
 
@@ -117,9 +124,24 @@ With these steps, you have deployed the Frank!Framework on your Docker container
      >> ls
 
    You should see the copied files within your deployment.
-#. The ``configurations`` directory is stored outside the deployment on your application server. You can use the copy you stored in ``/home/root/Downloads/work/configurations``. This is not the default location expected by the Frank!Framework. You have to tell the Frank!Framework that you choose a custom directory for configuration ``myConfig``. You will do this by setting a system property. You can set system properties in Tomcat by defining them in file ``/usr/local/tomcat/conf/catalina.properties``. Please add the following line to this file: ::
+#. You need to set the DTAP stage as a system property. You can set system properties in Tomcat by defining them in file ``/usr/local/tomcat/conf/catalina.properties``. Please add the following line to this file:
+
+   .. code-block:: none
+      
+      otap.stage=LOC
+
+   .. WARNING::
+
+      It is not realistic that we do a manual deployment on Tomcat but that we have DTAP stage LOC. If you are developing, use Tomcat4Frank or Docker4Frank if possible. We choose DTAP stage LOC because we are including a Larva test in our deployment, which is not realistic in a production environment.
+
+#. The ``configurations`` directory is stored outside the deployment on your application server. You can use the copy you stored in ``/home/root/Downloads/work/configurations``. This is not the default location expected by the Frank!Framework. You have to tell the Frank!Framework that you choose a custom directory for configuration ``myConfig``. You will do this by setting a system property. Please add the following line to ``catalina.properties``: ::
 
      configurations.myConfig.directory=/home/root/Downloads/work/configurations
+
+#. Franks have a ``tests`` directory. This directory contains automated tests that can be executed using the Larva service. The Frank!Framework needs two system properties to be able to find them. Please append the following to ``catalina.properties``: ::
+
+     scenariosroot1.directory=/home/root/Downloads/work/tests/
+     scenariosroot1.description=My Larva tests
 
 #. Finally configure your database by configuring a JNDI resource, see https://tomcat.apache.org/tomcat-7.0-doc/jndi-resources-howto.html for more information. Please add the following lines to ``/usr/local/tomcat/conf/context.xml``:
 
@@ -148,7 +170,7 @@ Test your work
 
 You can test your work with the following steps:
 
-21. Restart your docker container with the following commands: ::
+23. Restart your docker container with the following commands: ::
 
      > docker stop tomcat-frank
      > docker start tomcat-frank
@@ -173,4 +195,14 @@ You can test your work with the following steps:
 
    .. image:: testPipeline.jpg
 
-#. Check that you get the result message ``From stage PRD, I say My text is Hello`` (number 5) and that processing was successful. You should see a green bar with the word "success" (number 6).
+#. Check that you get the result message ``From stage LOC, I say My text is Hello`` (number 5) and that processing was successful. You should see a green bar with the word "success" (number 6).
+
+#. Please click "Larva" as shown in the screen below:
+
+   .. image:: frankConsoleFindTestTools.jpg
+
+#. You see you are in the Larva screen (number 1 in the figure below). Please enter "/" (number 2) to select all tests into your scenario root (number 3). Please note that you see the name here you configured using system property ``scenariosroot1.description``. Press "start" (number 4) to run your tests.
+
+   .. image:: larva.jpg
+
+#. Check that your tests succeed (number 5).
