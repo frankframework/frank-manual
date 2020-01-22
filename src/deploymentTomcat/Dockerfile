@@ -1,7 +1,7 @@
 FROM tomcat:7.0.99
 ENV IAF_VERSION=7.5-20191211.175453
 ENV HOME=/home/root/Downloads/work
-ENV CATALINA_OPTS="-Dconfigurations.myConfig.directory=${HOME}/configurations"
+ENV CATALINA_OPTS="-Dotap.stage=LOC -Dconfigurations.myConfig.directory=${HOME}/configurations -Dscenariosroot1.directory=/home/root/Downloads/work/tests/ -Dscenariosroot1.description=\"My Larva tests\""
 ENV CONTEXT_FILE=/usr/local/tomcat/conf/context.xml
 WORKDIR /usr/local/tomcat/webapps
 
