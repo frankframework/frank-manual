@@ -45,7 +45,7 @@ Here are some guidelines for updating the manual.
 
 ### Back up your statements with example code
 
-When you state things about the Frank!framework, it is wise to provide Frank code that proves your statements. Every section of the manual should have its own Frank with backup code. Each Frank has its own subdirectory of the `src` directory as explained in `README.md`. Please keep your examples grouped by manual section. It would be confusing to have an example Frank that applies to multiple unrelated parts of the manual. The name of an example Frank should reveal to which manual text it applies.
+When you state things about the Frank!Framework, it is wise to provide Frank code that proves your statements. Every section of the manual should have its own Frank with backup code. Each Frank has its own subdirectory of the `src` directory as explained in `README.md`. Please keep your examples grouped by manual section. It would be confusing to have an example Frank that applies to multiple unrelated parts of the manual. The name of an example Frank should reveal to which manual text it applies.
 
 ### Mind your audience
 
@@ -75,11 +75,11 @@ The manual should everywhere use the same word for the same thing, with the same
 
 In January 2020, the company Integration Partners changes their name to WeAreFrank!. Please use the right words to reference the company and their products, as listed below:
 
-* WeAreFrank!: The name of the company that produces the Frank!Framework. The exclamation sign is part of the company name, the colon isn't.
-* Frank!Framework: The product being documented in this manual. Note that the exclamation mark is part of the name and that there are two capitals. The colon is not part of the name.
+* WeAreFrank!: The name of the company that produces the Frank!Framework. The exclamation sign is part of the company name, the dot isn't.
+* Frank!Framework: The product being documented in this manual. Note that the exclamation mark is part of the name and that there are two capitals. The dot is not part of the name.
 * Frank: A solution produced with the Frank!Framework that can be deployed to a customer. This is the combination of the Frank!Framework and Frank configs deployed on it.
 * Franks: Plural of Frank.
-* Frank config(uration): A set of XML files and property files that configures the Frank!Framework to provide a solution for a customer. A Frank config is typically created by a Frank developer. This word is also used for a set of adapters that is defined in or included from the same ``Configuration.xml`` file.
+* Frank config(uration): A set of XML files and property files that configures the Frank!Framework to provide a solution for a customer. A Frank config is typically created by a Frank developer. This word is also used for a set of adapters that is defined in or included from the same ``Configuration.xml`` file. When you have multiple ``Configuration.xml`` files within your Frank, you have multiple Frank configs within your Frank.
 * ~Frank code~: For Java developers who edit this manual, it is tempting to use this phrase. We kindly ask them to write about "Frank config" instead. You do not have to be a programmer to use the Frank!Framework.
 * ~Frank language~: Franks are written in XML, not in a propriatary programming language. You can say that Frank configurations are XML documents that satisfy the Frank configuration schema.
 * Frank config(uration) schema: The XML schema document that defines what XML code is valid for configuring the Frank!Framework.
