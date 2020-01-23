@@ -5,26 +5,28 @@
 #
 # This script is needed to build the manual for the Frank!framework.
 # Within the manual code we want download links to Frank code that
-# complements the explanations in the text. This script produces
-# these zip files from the subdirectories of the src directory.
+# complements the explanations in the text.
 #
 # This script reads a file "buildDownloadZips.txt". This
 # file lists all subdirectories of ibis4manual that need
-# to be zipped. Only files tracked with git are added to the
+# to be zipped. Optionally, you can add a target file name
+# (no directory, omit the .zip extension).
+#
+# Only files tracked with git are added to the
 # zips. These zips appear in directory
 # "docs/source/downloads".
 #
 # Why do we only add tracked files to the download zips? As
 # an example, consider ibisdoc.xsd, the XML schema that
 # defines the grammar of the Frank language. This file
-# is typically downloaded from the Frank!framework. Users
+# is typically downloaded from the Frank!Framework. Users
 # of the manual are advised to download ibisdoc.xsd
 # from there. Therefore, the download zips should not contain
 # ibisdoc.xsd.
 #
 # On the other hand, ibisdoc.xsd is useful for editors
 # of this ibis4manual project, because they want
-# support when they edit Frank code. Therefore,
+# support when they edit Frank config. Therefore,
 # ibisdoc.xsd appears in the checkout. The solution
 # is to add ibisdoc.xsd to .gitignore and to omit
 # ignored files from download zips.
@@ -97,8 +99,16 @@ def createDownloadZip(target, sourceDir):
             lambda folderName, fname: zipWriter.writeFile(folderName, fname))
 
 def createDownloadZipFromLine(line):
-    source = line
-    target = os.path.join(targetDir, os.path.basename(source) + ".zip")
+    words = line.strip().split()
+    if len(words) == 1:
+        source = words[0]
+        targetBase = os.path.basename(source)
+    elif len(words) == 2:
+        source = words[0]
+        targetBase = words[1]
+    else:
+        print "ERROR: Invalid line: " + line
+    target = os.path.join(targetDir, targetBase + ".zip")
     createDownloadZip(target, source)
 
 def handleLine(line):

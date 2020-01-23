@@ -3,6 +3,7 @@
 # ignored.
 
 src/gettingStartedExample
+src2/gettingStartedExample gettingStartedExample-SolutionLarva
 src/gettingStarted
 src/ladybug
 src/advancedDevelopmentProperties
