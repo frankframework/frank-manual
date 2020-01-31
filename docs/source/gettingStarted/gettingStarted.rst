@@ -19,6 +19,7 @@ This chapter can be studied in two ways. First, it is a tutorial. There are inst
    horizonsInterfaces
    horizonsInitialData
    horizonsValidateBooking
+   horizonsLarvaExercise
    horizonsInsertDb
    horizonsTransform
    horizonsForEach
