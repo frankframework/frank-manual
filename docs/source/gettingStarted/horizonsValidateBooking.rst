@@ -15,17 +15,29 @@ The ingest booking adapter
 --------------------------
 
 Before doing something with a booking XML, the ingest booking adapter
-should check that this document is valid.
-This can be done using an XML Schema, see
-https://www.w3schools.com/xml/schema_intro.asp. You can make a document
-``<project directory>/configurations/NewHorizons/booking.xsd`` and give it the following contents:
+should check that this document is valid. In this section you will write a first version of the ingest booking adapter that only does that. Please do the following:
 
-.. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking.xsd
-   :language: xml
+#. The validity of an XML documents is usually checked using an XML schema, see https://www.w3schools.com/xml/schema_intro.asp. Please make a document ``<project directory>/configurations/NewHorizons/booking.xsd`` and give it the following contents:
 
-The Frank!Framework defines a pipe that checks the incoming message against
-an XML Schema. Using this pipe, we can can produce an intermediate version
-of the file AdapterIngestBooking.xml:
+   .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking.xsd
+      :language: xml
+
+#. We will write our adapter in its own file that will be named ``ConfigurationIngestBooking.xml``. The Frank!Framework will read file ``Configuration.xml``, so that file needs to include ``ConfigurationIngestBooking.xml``. Please open ``<project directory>/configurations/NewHorizons/Configuration.xml`` and give it the following contents (highlighted lines are new):
+
+   .. code-block:: XML
+      :emphasize-lines: 4, 8
+
+      <?xml version="1.0" encoding="UTF-8" ?>
+      <!DOCTYPE configuration [
+        <!ENTITY Hello SYSTEM "ConfigurationHello.xml">
+        <!ENTITY IngestBooking SYSTEM "ConfigurationIngestBooking.xml">
+      ]>
+      <Configuration name="NewHorizons">
+        &Hello;
+        &IngestBooking;
+      </Configuration>
+
+#. The Frank!Framework defines a pipe ``<XmlValidatorPipe>`` that checks the incoming message against an XML Schema. We use it to write our adapter. Please create file ``<project directory>/configurations/NewHorizons/Configuration.xml`` and give it the following contents:
 
 .. code-block:: XML
 
@@ -60,16 +72,12 @@ The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests.
 defines the relative path to which the adapter listens.
 The Frank!Framework extends this path to be http://localhost/ibis/api/booking.
 
-After the receiver comes an ``<XmlValidatorPipe>`` . The attributes ``root`` and
+After the receiver comes the mentioned ``<XmlValidatorPipe>`` . The attributes ``root`` and
 ``schema`` are used to reference the expected root element of the incoming
-XML and to reference the XML schema file ``booking.xsd`` presented earlier
-in this section.
+XML and to reference the XML schema file ``booking.xsd`` presented in step 1.
 
-In section :ref:`helloIbis`, the concept of a forward was introduced.
-We see here an example of a pipe that can exit with two different
-forward names. Forward name ``success`` is followed if the incoming XML
-satisfies ``booking.xsd``. Otherwise, forward ``failure`` is followed.
-This is predefined behavior of the ``<XmlValidatorPipe>`` .
+In section :ref:`helloIbis`, the concept of a forward was introduced. We see here an example of a pipe that can exit with two different
+forward names. Forward name ``success`` is followed if the incoming XML satisfies ``booking.xsd``. Otherwise, forward ``failure`` is followed. This is predefined behavior of the ``<XmlValidatorPipe>`` .
 
 The ``<Forward>`` tags link the forward names to paths. On success,
 we go to the pipeline exit having path ``Exit``, finishing execution.
@@ -86,63 +94,74 @@ by an error message. The fixed result pipe never fails and
 follows its (predefined) forward name ``success``. That forward points to
 path ``ServerError``, corresponding to exit state ``failure`` and code ``500``.
 
-You can test your adapter as follows. Copy the valid booking XML to some file
-on your computer, say ``validBooking.xml``. Then execute the following
-Linux shell command: ::
+Testing (Windows)
+-----------------
 
-  curl -i -X POST -H 'Content-Type: application/xml' -d @validBooking.xml http://localhost/ibis/api/booking
+Your adapter listens to REST HTTP requests. If you are working under Windows, you can use Postman to send HTTP requests to your adapter. Please do the following:
 
-The output will be something like the following: ::
+#. Install Postman from https://www.getpostman.com/downloads/ if you do not have it.
+#. Start Postman.
+#. Go to File | Settings, select tab General.
+#. Ensure that "SSL certificate verification" is not checked, see figure below:
 
-  HTTP/1.1 201 Created
-  Server: Apache-Coyote/1.1
-  Last-Modified: Wed, 16 Oct 2019 12:39:06 GMT
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
-  Pragma: no-cache
-  Allow: OPTIONS, POST
-  Content-Type: */*;charset=UTF-8
-  Content-Length: 247
-  Date: Wed, 16 Oct 2019 12:39:06 GMT
+   .. image:: postmanSettings.jpg
 
-  <booking id="1">  <travelerId>2</travelerId>  <price>500.00</price>  <fee>100.00</fee>  <destination hostId="3" productId="4">    <price>400.00</price>    <startDate>2018-12-27</startDate>    <endDate>2019-01-02</endDate>  </destination></booking>
+#. Close this dialog.
+#. Select method POST (number 1 in the figure below) and type URL ``http://localhost/ibis/api/booking`` (number 2).
+
+   .. image:: postmanUrl.jpg
+
+#. Select tab "Headers" (number1 in the figure below). Add header ``Content-Type`` (number 2) with value ``application/xml`` (number 3) and select it (number 1):
+
+   .. image:: postmanHeaders.jpg
+
+#. Select tab "Body" (number 1 in the figure below).
+
+   .. image:: postmanSend.jpg
+
+#. In the message field (number 2), copy/paste the following XML:
+
+   .. literalinclude:: ../../../src/gettingStarted/tests/CheckBooking/scenario01/validBooking.xml
+      :language: XML
+
+#. Press "Send" (number 3 in the figure).
+#. Check the response. Go to the "Body" tab (number 1 in the figure below). You should see that the response equals the original XML message (number 2). You should have status code ``201`` (number 3).
+
+   .. image:: postmanResponse.jpg
+
+Testing (Linux)
+---------------
+
+Under Linux, you can test your adapter as follows:
+
+#. Copy the valid booking XML listed above and (subsection "Testing (Windows)") to some file on your computer, say ``validBooking.xml``.
+#. Execute the following Linux shell command: ::
+
+     curl -i -X POST -H 'Content-Type: application/xml' -d @validBooking.xml http://localhost/ibis/api/booking
+
+#. The output will be something like the following: ::
+
+     HTTP/1.1 201 Created
+     Server: Apache-Coyote/1.1
+     Last-Modified: Wed, 16 Oct 2019 12:39:06 GMT
+     Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
+     Pragma: no-cache
+     Allow: OPTIONS, POST
+     Content-Type: */*;charset=UTF-8
+     Content-Length: 247
+     Date: Wed, 16 Oct 2019 12:39:06 GMT
+
+     <booking id="1">  <travelerId>2</travelerId>  <price>500.00</price>  <fee>100.00</fee>  <destination hostId="3" productId="4">    <price>400.00</price>    <startDate>2018-12-27</startDate>    <endDate>2019-01-02</endDate>  </destination></booking>
 
 The HTTP status code ``201`` is the ``code`` attribute defined with exit state ``success``.
 To the bottom, you see that the incoming XML is echoed in the body of the response.
 
-.. NOTE::
+Final remarks (Windows and Linux)
+---------------------------------
 
-   The HTTP request includes a HTTP header ``Content-Type: application/xml``. You need
-   this header because the ingest booking adapter uses listener ``<ApiListener>``. Use
-   another listener if you want to omit the header from the request.
+The HTTP request includes a HTTP header ``Content-Type: application/xml``. You need this header because the ingest booking adapter uses listener ``<ApiListener>``. Use another listener if you want to omit the header from the request.
 
-.. NOTE::
+The exit path ``Exit`` corresponds to code ``201`` and state ``success``. This exit state ``success`` does not appear in the HTTP response. You can see it if you use the "Test Pipeline" page in the console, see section :ref:`helloTestPipeline`.
 
-   The exit path ``Exit`` corresponds to code ``201`` and state ``success``. This exit
-   state ``success`` does not appear in the HTTP response. You can see it
-   if you use the "Test Pipeline" page in the console, see section
-   :ref:`helloTestPipeline`.
+Please test your adapter with XML documents that do not satisfy ``booking.xsd`` or with text that is not valid XML. You should see the message ``Input booking does not satisfy booking.xsd`` and HTTP status code ``500``.
 
-You can also test what happens with an invalid input, as follows: ::
-
-  curl -i -X POST -H 'Content-Type: application/xml' -d "xxx" http://localhost/ibis/api/booking
-
-This results in the following output: ::
-
-  HTTP/1.1 500 Internal Server Error
-  Server: Apache-Coyote/1.1
-  Last-Modified: Wed, 16 Oct 2019 12:48:43 GMT
-  Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0
-  Pragma: no-cache
-  Allow: OPTIONS, POST
-  Content-Type: */*;charset=UTF-8
-  Content-Length: 42
-  Date: Wed, 16 Oct 2019 12:48:43 GMT
-  Connection: close
-
-  Input booking does not satisfy booking.xsd
-
-From the HTTP status code ``500``, we see that processing exited with exit state
-``failure``. This exit state has path ``ServerError``, which is reached through
-the pipe named ``makeInvalidBookingError``. The adapter thus detected that
-the incoming message did not satisfy XML schema ``booking.xsd``. This is also
-clear from the body of the HTTP response.
