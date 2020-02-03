@@ -10,7 +10,7 @@ As an exercise, please write Larva tests to test your XML Schema ``booking.xsd``
 
 Here are a few hints:
 
-#. First lookup the ``XmlValidatorPipe`` in the Frank!Doc. What forward names does it have (you may need the Javadoc link)?
-#. Write an adapter around the ``XmlValidatorPipe``. It should produce a meaningful output for valid bookings, invalid bookings that are valid XML and also for non-XML input messages.
+#. Remember the forward names that the ``<XmlValidatorPipe>`` defines: ``success`` and ``failure``.
+#. Write a new adapter around the ``XmlValidatorPipe``. The adapter you already have may do the job now, but you will extend it later. Your new adapter should produce a meaningful output for valid bookings, invalid bookings that are valid XML and also for non-XML input messages.
 #. Please review section :ref:`gettingStartedLarva`. Write a test that reads a valid booking and checks that the same message is returned as output.
 #. Add additional write and read statements to do the other tests required in this exercise. You also need to write input files for these tests and files with expected output.

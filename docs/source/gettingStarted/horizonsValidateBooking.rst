@@ -37,34 +37,24 @@ should check that this document is valid. In this section you will write a first
         &IngestBooking;
       </Configuration>
 
-#. The Frank!Framework defines a pipe ``<XmlValidatorPipe>`` that checks the incoming message against an XML Schema. We use it to write our adapter. Please create file ``<project directory>/configurations/NewHorizons/Configuration.xml`` and give it the following contents:
+#. Please create file ``<project directory>/configurations/NewHorizons/Configuration.xml``. Start editing it by putting the following contents:
 
-.. code-block:: XML
+   .. code-block:: XML
 
-   <Adapter name="IngestBooking">
-     <Receiver name="input">
-       <ApiListener
-           name="inputListener"
-           uriPattern="booking"
-           method="POST"/>
-     </Receiver>
-     <Pipeline firstPipe="checkInput">
-       <Exit path="Exit" state="success" code="201" />
-       <Exit path="ServerError" state="failure" code="500" />
-       <XmlValidatorPipe
-           name="checkInput"
-           root="booking"
-           schema="booking.xsd">
-         <Forward name="success" path="Exit" />
-         <Forward name="failure" path="makeInvalidBookingError" />
-       </XmlValidatorPipe>
-       <FixedResultPipe
-           name="makeInvalidBookingError"
-           returnString="Input booking does not satisfy booking.xsd">
-         <Forward name="success" path="ServerError"/>
-       </FixedResultPipe>
-     </Pipeline>
-   </Adapter>
+      <Module
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+        <Adapter name="IngestBooking">
+          <Receiver name="input">
+            <ApiListener
+               name="inputListener"
+               uriPattern="booking"
+               method="POST"/>
+          </Receiver>
+        </Adapter>
+      </Module>
+
+You start with a ``<Module>`` tag. It is there to satisfy XML schema ``ibisdoc.xsd``, which allows your text editor to provide automatic code completion.
 
 This adapter starts with a ``<Receiver>`` that contains an ``<ApiListener>``.
 The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests. The attribute
@@ -72,26 +62,51 @@ The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests.
 defines the relative path to which the adapter listens.
 The Frank!Framework extends this path to be http://localhost/ibis/api/booking.
 
-After the receiver comes the mentioned ``<XmlValidatorPipe>`` . The attributes ``root`` and
-``schema`` are used to reference the expected root element of the incoming
-XML and to reference the XML schema file ``booking.xsd`` presented in step 1.
+4. The Frank!Framework defines a pipe ``<XmlValidatorPipe>`` that checks the incoming message against an XML Schema. We use it in our adapter. Please extend ``ConfigurationIngestBooking.xml`` as follows:
 
-In section :ref:`helloIbis`, the concept of a forward was introduced. We see here an example of a pipe that can exit with two different
-forward names. Forward name ``success`` is followed if the incoming XML satisfies ``booking.xsd``. Otherwise, forward ``failure`` is followed. This is predefined behavior of the ``<XmlValidatorPipe>`` .
+.. code-block:: XML
 
-The ``<Forward>`` tags link the forward names to paths. On success,
-we go to the pipeline exit having path ``Exit``, finishing execution.
-The ``<Pipeline>`` tag contains an ``<Exit>`` tag that links
-path ``Exit`` to exit state ``success`` and code ``201``. The ``<XmlValidatorPipe>`` echos
-its input message to its output message, both if validation succeeds and
-if validation fails. Therefore, the output
-message of the ingest booking adapter equals the incoming booking if it is valid.
+   ...
+       </Receiver>
+       <Pipeline firstPipe="checkInput">
+         <Exit path="Exit" state="success" code="201" />
+         <Exit path="ServerError" state="failure" code="500" />
+         <XmlValidatorPipe
+             name="checkInput"
+             root="booking"
+             schema="booking.xsd">
+           <Forward name="success" path="Exit" />
+         </XmlValidatorPipe>
+       </Pipeline>
+     </Adapter>
+   </Module>
 
-For testing, it is wise to produce an error message if validation fails.
-Therefore, forward name ``failure`` is linked to the pipe named
-``makeInvalidBookingError``. This pipe replaces the incoming message
-by an error message. The fixed result pipe never fails and
-follows its (predefined) forward name ``success``. That forward points to
+The attributes ``root`` and ``schema`` are used to reference the expected root element of the incoming XML and to reference the XML schema file ``booking.xsd`` presented in step 1. A ``<Forward>`` tag links a forward name to a path. On success, we go to the pipeline exit having path ``Exit``, finishing execution. The ``<Pipeline>`` tag contains an ``<Exit>`` tag that links path ``Exit`` to exit state ``success`` and code ``201``.
+
+5. The ``<XmlValidatorPipe>`` echos its input message to its output message, both if validation succeeds and if validation fails. We want an error message if we receive an invalid booking message. The ``<XmlValidatorPipe>`` supports another forward name ``failure`` that is followed in this case. Please extend ``ConfigurationIngestBooking.xml`` as follows:
+
+   .. code-block:: XML
+      :emphasize-lines: 7, 9, 10, 11, 12, 13
+
+      ...
+            <XmlValidatorPipe
+                name="checkInput"
+                root="booking"
+                schema="booking.xsd">
+              <Forward name="success" path="Exit" />
+              <Forward name="failure" path="makeInvalidBookingError" />
+            </XmlValidatorPipe>
+            <FixedResultPipe
+                  name="makeInvalidBookingError"
+                  returnString="Input booking does not satisfy booking.xsd">
+              <Forward name="success" path="ServerError"/>
+            </FixedResultPipe>
+          </Pipeline>
+        </Adapter>
+      </Module>
+
+Forward name ``failure`` is linked to the pipe named ``makeInvalidBookingError``. This pipe replaces the incoming message
+by an error message. The fixed result pipe never fails and follows its (predefined) forward name ``success``. That forward points to
 path ``ServerError``, corresponding to exit state ``failure`` and code ``500``.
 
 Testing (Windows)
