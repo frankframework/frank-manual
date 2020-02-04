@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema
+     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+     vc:minVersion="1.1">
   <xs:element name="booking">
     <xs:complexType>
       <xs:sequence>
@@ -17,12 +20,13 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="destination">
-    <xs:all>
+    <xs:sequence>
       <xs:element name="price" type="money"/>
       <xs:element name="startDate" type="xs:date"/>
       <xs:element name="endDate" type="xs:date"/>
-    </xs:all>
+    </xs:sequence>
     <xs:attribute name="hostId" type="xs:integer"/>
     <xs:attribute name="productId" type="xs:integer"/>
+    <xs:assert test="startDate &lt; endDate" />
   </xs:complexType>
 </xs:schema> 
