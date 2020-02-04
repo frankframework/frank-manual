@@ -8,10 +8,7 @@ So far we have inserted a booking in the two tables "booking" and "visit".
 In this section we add transactionality. The inserts in these two
 tables should either all succeed, or all fail.
 
-This last requirement can be implemented very easily. To the
-``<Pipeline>`` tag, you can add the attribute
-``transactionAttribute="RequiresNew"``. With this update,
-file "AdapterIngestBooking.xml" becomes:
+This last requirement can be implemented very easily. Please update the ``<Pipeline>`` tag by inserting the attribute ``transactionAttribute="RequiresNew"``. Here is the update:
 
 .. code-block:: XML
    :emphasize-lines: 9
@@ -34,7 +31,7 @@ file "AdapterIngestBooking.xml" becomes:
 The value ``RequiresNew`` means that a new transaction is started
 for executing the ``<Pipeline>``. There are other possible values.
 The value ``Mandatory`` for example requires that a transaction
-is expected to exist when pipeline execution starts; the pipeline
+exists when pipeline execution starts; the pipeline
 will fail otherwise. This value is useful when
 you want to execute multiple adapters within a single transaction.
 See the Frank!Doc (section :ref:`horizonsMultipleFiles`) for details.
@@ -45,6 +42,8 @@ to booking XML documents. The XML is validated and all data
 is written to the database. To do this, multiple INSERT
 statements are needed. These are executed within a transaction,
 which means that either all inserts succeed or all inserts fail.
+
+At this point, please test your work with the tools you found in this Getting Started tutorial. Windows users can use Postman to send HTTP requests to the adapter and Linux users can use ``curl`` as explained in section :ref:`validateBooking`. You can also use the Test Pipeline screen as explained in section :ref:`helloTestPipeline`. Mind the primary key constraint of the database. Either give each booking document a unique ``id``, or apply SQL query ``DROP ALL OBJECTS`` to clean your database (requires restarting the Frank!Framework).
 
 There is one open end: security. Ingest booking is not the right user
 story to explain security, because it is part of a larger interaction
