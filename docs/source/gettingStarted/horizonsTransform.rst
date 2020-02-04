@@ -36,35 +36,39 @@ If there were multiple destinations, the second ``<destination>`` would contain
 ``<seq>2</seq>``, the third would contain ``<seq>3</seq>``, etc.
 
 This can be done with an XSLT transformation, see https://www.w3schools.com/xml/xsl_intro.asp.
-The Frank!Framework defines a pipe ``<XsltPipe>`` that does XSLT transformations.
-You can make an XSLT stylesheet ``projects/gettingStarted/configurations/NewHorizons/booking2destinations.xsl``
-and give it the following contents:
+The Frank!Framework defines a pipe ``<XsltPipe>`` that does XSLT transformations. You will use the ``<XsltPipe>`` to extend your adapter to apply the transformation outlined above. Please do the following:
 
-.. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking2destinations.xsl
-   :language: xml
+#. Create file ``projects/gettingStarted/configurations/NewHorizons/booking2destinations.xsl`` and give it the following contents:
 
-Then you can append the ingest booking adapter with the following:
+   .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking2destinations.xsl
+      :language: xml
 
-.. code-block:: XML
+#. The ``<SenderPipe>`` you added in the previous section points to path ``Exit`` now. Please update it to point to the pipe you will add in this section. Here is the update:
 
-   <XsltPipe
-       name="getDestinations"
-       styleSheetName="booking2destinations.xsl"
-       getInputFromSessionKey="originalMessage">
-     <Forward name="success" path="Exit"/>
-     <Forward name="failure" path="ServerError"/>
-   </XsltPipe>
+   .. code-block:: XML
+      :emphasize-lines: 3
 
-.. NOTE::
+      ...
+        </FixedQuerySender>
+        <Forward name="success" path="getDestinations" />
+        <Forward name="failure" path="ServerError" />
+      </SenderPipe>
+      ...
 
-   The pipe shown above has attribute ``getInputFromSessionKey="originalMessage"``.
-   You may remember session keys from section :ref:`gettingStartedLadyBug`. They are
-   name/value pairs that accompany the message flowing through the pipeline.
-   The ``<XsltPipe>`` should not use the output of its predecessor with
-   ``name`` attribute ``insertBooking``. The output of that pipe is
-   an XML coming from the database that expresses the result of
-   the INSERT query. Session key ``originalMessage`` points to
-   the original input message of the pipeline, which is what we need.
+#. Insert the following pipe:
 
-Finally, update the pipe with ``name`` attribute ``insertBooking``.
-Update its ``success`` forward to have ``path`` ``getDestinations``.
+   .. code-block:: XML
+
+      ...
+        </SenderPipe>
+        <XsltPipe
+            name="getDestinations"
+            styleSheetName="booking2destinations.xsl"
+            getInputFromSessionKey="originalMessage">
+          <Forward name="success" path="Exit"/>
+          <Forward name="failure" path="ServerError"/>
+        </XsltPipe>
+      </Pipeline>
+
+The pipe shown above has attribute ``getInputFromSessionKey="originalMessage"``. You may remember session keys from section :ref:`gettingStartedLadyBug`. They are name/value pairs that accompany the message flowing through the pipeline. The ``<XsltPipe>`` should not use the output of its predecessor with ``name`` attribute ``insertBooking``. As said in the previous section, the output of that pipe is an XML coming from the database that expresses the result of the INSERT query. Session key ``originalMessage`` points to    the original input message of the pipeline, which is what we need.
+
