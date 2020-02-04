@@ -17,12 +17,12 @@ The ingest booking adapter
 Before doing something with a booking XML, the ingest booking adapter
 should check that this document is valid. In this section you will write a first version of the ingest booking adapter that only does that. Please do the following:
 
-#. The validity of an XML documents is usually checked using an XML schema, see https://www.w3schools.com/xml/schema_intro.asp. Please make a document ``<project directory>/configurations/NewHorizons/booking.xsd`` and give it the following contents:
+#. The validity of an XML documents is usually checked using an XML schema, see https://www.w3schools.com/xml/schema_intro.asp. Please make a document ``projects/gettingStarted/configurations/NewHorizons/booking.xsd`` and give it the following contents:
 
    .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking.xsd
       :language: xml
 
-#. We will write our adapter in its own file that will be named ``ConfigurationIngestBooking.xml``. The Frank!Framework will read file ``Configuration.xml``, so that file needs to include ``ConfigurationIngestBooking.xml``. Please open ``<project directory>/configurations/NewHorizons/Configuration.xml`` and give it the following contents (highlighted lines are new):
+#. We will write our adapter in its own file that will be named ``ConfigurationIngestBooking.xml``. The Frank!Framework will read file ``Configuration.xml``, so that file needs to include ``ConfigurationIngestBooking.xml``. Please open ``projects/gettingStarted/configurations/NewHorizons/Configuration.xml`` and give it the following contents (highlighted lines are new):
 
    .. code-block:: XML
       :emphasize-lines: 4, 8
@@ -37,7 +37,7 @@ should check that this document is valid. In this section you will write a first
         &IngestBooking;
       </Configuration>
 
-#. Please create file ``<project directory>/configurations/NewHorizons/Configuration.xml``. Start editing it by putting the following contents:
+#. Please create file ``projects/gettingStarted/configurations/NewHorizons/Configuration.xml``. Start editing it by putting the following contents:
 
    .. code-block:: XML
 
