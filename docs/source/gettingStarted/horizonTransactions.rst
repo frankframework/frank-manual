@@ -8,7 +8,7 @@ So far we have inserted a booking in the two tables "booking" and "visit".
 In this section we add transactionality. The inserts in these two
 tables should either all succeed, or all fail.
 
-This last requirement can be implemented very easily. Please update the ``<Pipeline>`` tag by inserting the attribute ``transactionAttribute="RequiresNew"``. Here is the update:
+This last requirement can be implemented very easily. In file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``,  please update the ``<Pipeline>`` tag by inserting the attribute ``transactionAttribute="RequiresNew"``. Here is the update:
 
 .. code-block:: XML
    :emphasize-lines: 9

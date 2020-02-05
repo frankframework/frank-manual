@@ -43,6 +43,7 @@ The Frank!Framework defines a pipe ``<XsltPipe>`` that does XSLT transformations
    .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking2destinations.xsl
       :language: xml
 
+#. Open file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``, you will continue editing it.
 #. The ``<SenderPipe>`` you added in the previous section points to path ``Exit`` now. Please update it to point to the pipe you will add in this section. Here is the update:
 
    .. code-block:: XML

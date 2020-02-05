@@ -37,7 +37,7 @@ should check that this document is valid. In this section you will write a first
         &IngestBooking;
       </Configuration>
 
-#. Please create file ``projects/gettingStarted/configurations/NewHorizons/Configuration.xml``. Start editing it by putting the following contents:
+#. Please create file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``. Start editing it by putting the following contents:
 
    .. code-block:: XML
 

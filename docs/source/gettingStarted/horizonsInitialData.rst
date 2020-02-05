@@ -12,16 +12,14 @@ database should be persistent.
 The Frank!Framework internally uses Liquibase, see http://www.liquibase.org/,
 to initialize the database. Please switch on Liquebase as follows:
 
-#. Add the following line to ``projects/gettingStarted/classes/DeploymentSpecifics.properties``: ::
+#. Add the following line to ``projects/gettingStarted/classes\StageSpecifics_LOC.properties``: ::
 
     jdbc.migrator.active=true
-
-#. Restart the Frank!Framework.
 
 We illustrate database initialization here for H2 databases, because this database is embedded within the Frank!Framework and does not
 require a process external to it. More information about databases is available in section :ref:`advancedDevelopmentDatabase`. Liquibase expects a so-called changelog, an XML file that defines the data model and the initial data.
 
-3. Please create file ``projects/gettingStarted/configurations/NewHorizons/DatabaseChangelog.xml`` and add XML to initialize the database described in the previous section :ref:`horizonsInterfaces`. Here is the XML to add:
+2. Please create file ``projects/gettingStarted/configurations/NewHorizons/DatabaseChangelog.xml`` and add XML to initialize the database described in the previous section :ref:`horizonsInterfaces`. Here is the XML to add:
 
    .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/DatabaseChangelog.xml
       :language: xml

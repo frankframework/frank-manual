@@ -52,13 +52,8 @@ After installing Tomcat4Frank, you should have a folder ``projects`` with a fold
 
       There is much to know about properties, which is explained in section :ref:`properties`. If you read this chapter for the first time, please finish it first. For now, just note that property ``configuration.names`` contains a list of all your configurations. The empty configuration you just added is referenced as ``${instance.name}``, the value of property ``instance.name``.
 
-#. The Frank!Framework can be configured differently for different stages in your development cycle (local, development, test, acceptance and production). During development, you want to initialize your database automatically. To do this, introduce file ``classes\StageSpecifics_LOC.properties``. Add the following line: ::
+#. During development, you also want to run Larva tests. To run Larva tests, the Frank!Framework needs to process changed versions of your Frank configurations (your files are not changed; they are changed in memory after the Frank!Framework reads them). Please add ``classes\StageSpecifics_LOC.properties`` to tell the Frank!Framework you want this. The contents should be: ::
 
-     jdbc.migrator.active=true
-
-#. During development, you also want to run Larva tests. To run Larva tests, the Frank!Framework needs to process changed versions of your Frank configurations (your files are not changed; they are changed in memory after the Frank!Framework reads them). Please extend ``classes\StageSpecifics_LOC.properties`` to tell the Frank!Framework you want this. The file should be updated to: ::
-
-     jdbc.migrator.active=true
      stub4testtool.configuration=true
 
 Frank configuration schema
@@ -66,7 +61,7 @@ Frank configuration schema
 
 You will download the Frank configuration schema now.
 
-8. Please start the Frank!Framework by running ``tomcat4ibis\tomcat4ibis.bat``.
+7. Please start the Frank!Framework by running ``tomcat4ibis\tomcat4ibis.bat``.
 #. With your webbrowser, browse to http://localhost/ibis/iaf/gui.
 #. Click "Webservices" as shown in the figure below:
 
@@ -87,7 +82,7 @@ Frank!Doc
 
 From the screen shown at step 11, you can access the Frank!Doc, an additional source of documentation. It lets you search pipes, senders and receivers and it gives you detailed information.
 
-14. In the picture of step 11, press "The new ibisdoc application" (number 2). The following screen appears:
+13. In the picture of step 11, press "The new ibisdoc application" (number 2). The following screen appears:
 
      .. image:: frankDoc.jpg
 

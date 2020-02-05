@@ -14,6 +14,7 @@ A booking can have multiple destinations, each appearing in their
 own ``<destination>`` element. These elements can be iterated
 with the ``<ForEachChildElementPipe>``. Within this pipe you include a sender that is applied to each element, in our case a ``<destination>`` element. Please do the following to do the inserts in table "visit":
 
+#. Please open ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``.
 #. The ``<XsltPipe>`` you added in the previous section now points to path ``Exit``. Update it to point to a new pipe, as follows:
 
    .. code-block:: XML
@@ -32,14 +33,14 @@ with the ``<ForEachChildElementPipe>``. Within this pipe you include a sender th
         </XsltPipe>
         <ForEachChildElementPipe
             name="iterateDestinations"
-            elementXpathExpression="/destinations/destination">
+            elementXPathExpression="/destinations/destination">
           <!-- You will add your sender here -->
           <Forward name="success" path="Exit"/>
           <Forward name="failure" path="ServerError"/>
         </ForEachChildElementPipe>
       </Pipeline>
 
-The ``<ForEachChildElementPipe>`` applies the ``elementXpathExpression`` to the incoming message and iterates over the result set. In the transformed example booking shown in :ref:`transform`, there is one match:
+The ``<ForEachChildElementPipe>`` applies the ``elementXPathExpression`` to the incoming message and iterates over the result set. In the transformed example booking shown in :ref:`transform`, there is one match:
 
 .. code-block:: XML
 
@@ -53,7 +54,7 @@ The ``<ForEachChildElementPipe>`` applies the ``elementXpathExpression`` to the 
      <price>400.00</price>
    </destination>
 
-3. Replace the ``<!-- You will add your sender here -->`` line with the following XML:
+4. Replace the ``<!-- You will add your sender here -->`` line with the following XML:
 
    .. code-block:: XML
 
@@ -70,4 +71,4 @@ The ``<ForEachChildElementPipe>`` applies the ``elementXpathExpression`` to the 
         <Param name="price" xpathExpression="/destination/price" />
       </FixedQuerySender>
 
-This sender is similar to the sender of section :ref:`insertDb`. There is an INSERT query with a question mark for each inserted value. The inserted values are fetched using XPath expressions, which act on the current match of the ``elementXpathExpression`` as shown at step 2.
+This sender is similar to the sender of section :ref:`insertDb`. There is an INSERT query with a question mark for each inserted value. The inserted values are fetched using XPath expressions, which act on the current match of the ``elementXPathExpression`` as shown at step 2.
