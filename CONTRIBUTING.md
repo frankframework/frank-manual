@@ -24,7 +24,7 @@ It replaces Windows line endings with Linux line endings for each file included 
 download zip. This way, the same zips are produced from Windows or Linux checkouts
 of the `src` directory.
 
-If you edit files in the `docs` directory that contain Frank config, please sync it with the Frank configs in the `src` directory and vice versa. Also please sync directories `src/gettingStarted` and `src/gettingStartedAfterConfig` and the download zips produced from them.
+If you edit files in the `docs` directory that contain Frank config, please sync it with the Frank configs in the `src` directory and vice versa. If you work on section Getting Started | Configuration Management, also please sync directories `src/gettingStarted` and `src/gettingStartedAfterConfig` and the download zips produced from them. The former is the solution of doing section Configuration Management and the subsequent sections on New Horizons. The latter is the solution of only doing Configuration Management.
 
 ### Building the documentation.
 
