@@ -5,6 +5,7 @@
 src/gettingStartedExample
 src/gettingStartedExample-SolutionLarva
 src/gettingStarted
+src/gettingStartedAfterConfig
 src/ladybug
 src/advancedDevelopmentProperties
 src/deploymentTomcat

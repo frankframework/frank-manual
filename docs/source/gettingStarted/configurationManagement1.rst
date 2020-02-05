@@ -10,7 +10,7 @@ In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic u
 
 In this section you start your own project and you build your first configuration. You will gain access to an additional source of documentation, the Frank!Doc, which you can reach through the web interface of the Frank!Framework. Frank configurations are written in XML. They satisfy an XML Schema, the Frank configuration schema, which can be downloaded from the Frank!Framework. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
 
-If you want to check your work in this section and in the remaining sections of chapter :ref:`gettingStarted`, you can download the :download:`solution <../downloads/gettingStarted.zip>`.
+If you want to check your work in this section and in the remaining sections of chapter :ref:`gettingStarted`, you can download the :download:`solution <../downloads/gettingStarted.zip>`. You can also download the :download:`result of doing only this page <../downloads/gettingStartedAfterConfig.zip>`.
 
 Initialize your project
 -----------------------
@@ -67,6 +67,7 @@ Frank configuration schema
 You will download the Frank configuration schema now.
 
 8. Please start the Frank!Framework by running ``tomcat4ibis\tomcat4ibis.bat``.
+#. With your webbrowser, browse to http://localhost/ibis/iaf/gui.
 #. Click "Webservices" as shown in the figure below:
 
    .. image:: webservicesMenu.jpg
@@ -86,7 +87,7 @@ Frank!Doc
 
 From the screen shown at step 11, you can access the Frank!Doc, an additional source of documentation. It lets you search pipes, senders and receivers and it gives you detailed information.
 
-13. In the picture of step 11, press "The new ibisdoc application" (number 2). The following screen appears:
+14. In the picture of step 11, press "The new ibisdoc application" (number 2). The following screen appears:
 
      .. image:: frankDoc.jpg
 
@@ -103,6 +104,7 @@ Now that you have your project, you can add your real Frank configuration to you
 
      instance.name=gettingStarted
      configurations.names=${instance.name},NewHorizons
+     configurations.NewHorizons.classLoaderType=DirectoryClassLoader
 
 #. Within your ``configurations`` directory, please add subdirectory ``NewHorizons``.
 #. A configuration usually requires many lines of XML. It is good practice to split a configuration over multiple files. This is done using entity references. Please create ``configurations\NewHorizons\Configuration.xml`` with the following contents:
@@ -127,7 +129,7 @@ Now that you have your project, you can add your real Frank configuration to you
 #. Lines 2 and 3 are needed to tell your text editor to check against XML schema file ``ibisdoc.xsd``. You downloaded that file earlier. Please copy it now to ``configurations\NewHorizons\ibisdoc.xsd``, making it a brother of ``ConfigurationHello.xml``.
 #. Line 9 (also highlighted) holds the output string of your Hello World adapter. It reads ``Hello Docker World``.
 #. Please restart Tomcat4Frank. Run your "HelloDockerWorld" adapter in the Test Pipeline screen and check that the output is ``Hello Docker World``. If this is the case, you succeeded initializing your project.
-#. If something is wrong, please compare your files with the examples of Docker4Frank, or with the :download:`solution <../downloads/gettingStarted.zip>`.
+#. If something is wrong, please compare your files with the examples of Docker4Frank, or with the :download:`result of only doing this page <../downloads/gettingStartedAfterConfig.zip>`.
 
 Try code completion
 -------------------
