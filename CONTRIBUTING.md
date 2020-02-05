@@ -24,6 +24,8 @@ It replaces Windows line endings with Linux line endings for each file included 
 download zip. This way, the same zips are produced from Windows or Linux checkouts
 of the `src` directory.
 
+If you edit files in the `docs` directory that contain Frank config, please sync it with the Frank configs in the `src` directory and vice versa. Also please sync directories `src/gettingStarted` and `src/gettingStartedAfterConfig` and the download zips produced from them.
+
 ### Building the documentation.
 
 You can build the documentation using http://readthedocs.io or locally on your laptop.
