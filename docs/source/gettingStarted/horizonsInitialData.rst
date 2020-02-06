@@ -27,14 +27,25 @@ require a process external to it. More information about databases is available 
 For clarity we chose to use SQL statements in the changelog. As a consequence, it is not database independent as would
 be the case if it were pure XML. The shown changelog is specific for H2 databases.
 
-.. NOTE ::
+You can test your work by querying the tables you created, "booking" and "visit". Please continue as follows:
 
-  If you are working on the changelog within your own project,
-  you will probably make some errors. In this situation, you
-  want to remove all database tables to rerun all change sets within
-  your changelog.
+3. Click "JDBC" (number 1 in the figure below). This link will expand.
 
-  You can do this as follows. Start the Frank!Framework and browse
-  to http://localhost/ibis/iaf/gui. On the left-hand menu
-  select "JDBC" and then "Execute Query". Issue the following
-  SQL: "DROP ALL OBJECTS". Finally restart the Frank!Framework.
+   .. image:: jdbcExecuteQuery.jpg
+
+#. Click "Execute Query" (number 2). The following screen appears:
+
+   .. image:: jdbcExecuteQueryNoRowsYet.jpg
+
+#. You see you are in the JDBC Execute Query screen (number 1). Select "JMS realm" "jdbc" (number 2). You can choose to have comma-separated (csv) output instead of XML (number 3).
+#. Enter query ``SELECT * FROM booking`` (number 4).
+#. Press "Send". You will see the result ``"ID","TRAVELERID","PRICE","FEE"`` (number 6). You have verified that the "booking" table exists.
+#. Verify that table "visit" exists by executing the query ``SELECT * FROM visit``. Check that the result of this query is ``"BOOKINGID","SEQ","HOSTID","PRODUCTID","STARTDATE","ENDDATE","PRICE"``.
+
+.. NOTE::
+
+   Please do not modify existing change sets. When you have new requirements for initial data, please add new change sets. On start-up, the Frank!Framework checks which change sets have been executed and which change sets are new. Only new change sets are executed. This only works when existing change sets never change.
+ 
+.. NOTE::
+
+   If you are developing on the changelog within your own project, you will probably make some errors. In this situation, you want to remove all database tables to rerun all change sets within your changelog. You can do this using the query ``DROP ALL OBJECTS``. After running it, restart the Frank!Framework.
