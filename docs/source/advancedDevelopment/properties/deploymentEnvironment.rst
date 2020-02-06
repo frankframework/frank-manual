@@ -40,13 +40,16 @@ There are also logical characteristics of your deployment environment. These are
 
 First, it is wise to differentiate between test environments and production environments. In general, an enterprise application is first tested by the development team on a development environment (D). If the development team considers a release, the application is deployed and tested on a test environment (T). If these tests are successful, the application is delivered to the customer. The customer deploys the application on a test environment for acceptance testing (A). Only when the acceptance tests succeed, the application is deployed on the production environment (P). This story explains the meaning of the DTAP acronym. At WeAreFrank!, we add the L (Local) for development testing on the laptop of an individual developer.
 
-The Frank!Framework expects that the deployer sets property ``otap.stage`` to one of the following values: ``LOC``, ``DEV``, ``TST``, ``ACC`` or ``PRD``. Details on how to do this are in chapter :ref:`deploying`.
+The Frank!Framework expects that the deployer sets property ``dtap.stage`` to one of the following values: ``LOC``, ``DEV``, ``TST``, ``ACC`` or ``PRD``. Details on how to do this are in chapter :ref:`deploying`.
 
 .. NOTE::
 
-   OTAP is the Dutch version of the DTAP acronym. 
+   Older versions of the Frank!Framework did not support ``dtap.stage`` but ``otap.stage``. OTAP is the Dutch version of the DTAP acronym. Presently, the Frank!Framework supports both ``otap.stage`` and ``dtap.stage``, both having the same meaning.
 
+Second, the customer may have multiple departments or networks, each requiring its own fine-tuning. You can make your Frank configurable by using the property ``dtap.side``. The default value of this property is ``xxx``. The system administrator deploying your Frank can freely choose a value for this property.
 
-Second, the customer may have multiple departments or networks, each requiring its own fine-tuning. You can make your Frank configurable by using the property ``otap.side``. The default value of this property is ``xxx``. The system administrator deploying your Frank can freely choose a value for this property.
+.. NOTE::
 
-The three properties ``otap.stage``, ``application.server.type`` and ``otap.side`` influence the way that other property values are initialized. This is explained in the next subsection.
+   Older versions of the Frank!Framework did not support ``dtap.side`` but ``otap.side``. Presently, the Frank!Framework supports both ``otap.side`` and ``dtap.side``, both having the same meaning.
+
+The three properties ``dtap.stage``, ``application.server.type`` and ``dtap.side`` influence the way that other property values are initialized. This is explained in the next subsection.

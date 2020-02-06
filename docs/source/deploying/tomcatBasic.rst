@@ -128,7 +128,7 @@ With these steps, you have deployed the Frank!Framework on your Docker container
 
    .. code-block:: none
       
-      otap.stage=LOC
+      dtap.stage=LOC
 
    .. WARNING::
 

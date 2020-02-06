@@ -5,7 +5,7 @@
   <Pipeline firstPipe="accessProperties">
     <Exit state="success" path="Exit" />
     <FixedResultPipe name="accessProperties"
-        returnString="From stage ${otap.stage}, I say ${my.text}" >
+        returnString="From stage ${dtap.stage}, I say ${my.text}" >
       <Forward name="success" path="Exit" />
     </FixedResultPipe>
   </Pipeline>

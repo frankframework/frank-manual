@@ -13,11 +13,17 @@ instance.name
 application.server.type
   The application server used in your deployment. Set automatically by the Frank!Framework. This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for all possible values.
 
-otap.side
+dtap.side
   Use this to characterize your deployment environment as explained in subsection :ref:`propertiesDeploymentEnvironment`. Only works as system property. The default value is ``xxx``. This default is sufficient if the deployment server and the DTAP stage fully characterize your deployment. This property determines what property files are read by the Frank!Framework to set other properties.
 
-otap.stage
+dtap.stage
   Defines the DTAP stage of this deployment. Only works as system property. Possible values are ``LOC``, ``DEV``, ``TST``, ``ACC`` and ``PRD``. If you are using Tomcat4Frank then there is a default value, namely ``LOC``. This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for more details.
+
+otap.side
+  Has the same meaning as ``dtap.side``, exists for backward compatibility.
+
+otap.stage
+  Has the same meaning as ``dtap.stage``, exists for backward compatibility.
 
 configurations.names
   The value should be a comma-separated list of all configurations. For example, if your Frank contains the classpath configuration and a configuration ``MyConfig``, then the value of this property should be ``${instance.name},MyConfig``. Only works as system property or classpath property, unless you work with nested configurations. Nested configurations are beyond the scope of this manual at the moment. If you only have the classpath configuration, this property can be omitted.
