@@ -35,7 +35,7 @@ When you are done with these preparations, please do the following:
 #. Please make an account on Dockerhub, https://hub.docker.com/.
 #. On the command prompt, login to Dockerhub: ::
 
-     docker login
+     > docker login
 
 #. Create a Docker container from the Tomcat 7.0.99 image hosted on Dockerhub. Use the following command: ::
 
