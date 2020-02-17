@@ -132,7 +132,7 @@ With these steps, you have deployed the Frank!Framework on your Docker container
 
    .. WARNING::
 
-      It is not realistic that we do a manual deployment on Tomcat but that we have DTAP stage LOC. If you are developing, use Tomcat4Frank or Docker4Frank if possible. We choose DTAP stage LOC because we are including a Larva test in our deployment, which is not realistic in a production environment.
+      It is not realistic that we do a manual deployment on Tomcat but that we have DTAP stage LOC. If you are developing, use Frank!Runner or Docker4Frank if possible. We choose DTAP stage LOC because we are including a Larva test in our deployment, which is not realistic in a production environment.
 
 #. The ``configurations`` directory is stored outside the deployment on your application server. You can use the copy you stored in ``/home/root/Downloads/work/configurations``. This is not the default location expected by the Frank!Framework. You have to tell the Frank!Framework that you choose a custom directory for configuration ``myConfig``. You will do this by setting a system property. Please add the following line to ``catalina.properties``: ::
 
