@@ -60,7 +60,7 @@ This adapter starts with a ``<Receiver>`` that contains an ``<ApiListener>``.
 The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests. The attribute
 ``method="POST"`` makes it listen to HTTP POST requests. The ``uriPattern="booking"`` attribute
 defines the relative path to which the adapter listens.
-The Frank!Framework extends this path to be http://localhost/ibis/api/booking.
+The Frank!Framework extends this path to be http://localhost/api/booking.
 
 4. The Frank!Framework defines a pipe ``<XmlValidatorPipe>`` that checks the incoming message against an XML Schema. We use it in our adapter. Please extend ``ConfigurationIngestBooking.xml`` as follows:
 
@@ -122,7 +122,7 @@ Your adapter listens to REST HTTP requests. If you are working under Windows, yo
    .. image:: postmanSettings.jpg
 
 #. Close this dialog.
-#. Select method POST (number 1 in the figure below) and type URL ``http://localhost/ibis/api/booking`` (number 2).
+#. Select method POST (number 1 in the figure below) and type URL ``http://localhost/api/booking`` (number 2).
 
    .. image:: postmanUrl.jpg
 
@@ -152,7 +152,7 @@ Under Linux, you can test your adapter as follows:
 #. Copy the valid booking XML listed above and (subsection "Testing (Windows)") to some file on your computer, say ``validBooking.xml``.
 #. Execute the following Linux shell command: ::
 
-     curl -i -X POST -H 'Content-Type: application/xml' -d @validBooking.xml http://localhost/ibis/api/booking
+     curl -i -X POST -H 'Content-Type: application/xml' -d @validBooking.xml http://localhost/api/booking
 
 #. The output will be something like the following: ::
 
