@@ -71,4 +71,4 @@ The ``<ForEachChildElementPipe>`` applies the ``elementXPathExpression`` to the 
         <Param name="price" xpathExpression="/destination/price" />
       </FixedQuerySender>
 
-This sender is similar to the sender of section :ref:`insertDb`. There is an INSERT query with a question mark for each inserted value. The inserted values are fetched using XPath expressions, which act on the current match of the ``elementXPathExpression`` as shown at step 2.
+This sender is similar to the sender of section :ref:`insertDb`. There is an INSERT query with a question mark for each inserted value. The inserted values are fetched using XPath expressions, which act on the current match of the ``elementXPathExpression`` as shown at step 3.
