@@ -6,9 +6,9 @@ Configuration Management
 Introduction
 ------------
 
-In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the Tomcat4Frank project to run the Frank!Framework with an example configuration. You learned the basic concepts by studying this configuration. You also learned how configurations can be tested.
+In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the Frank!Runner project to run the Frank!Framework with an example configuration. You learned the basic concepts by studying this configuration. You also learned how configurations can be tested.
 
-In this section you start your own project and you build your first configuration. You will gain access to an additional source of documentation, the Frank!Doc, which you can reach through the web interface of the Frank!Framework. Frank configurations are written in XML. They satisfy an XML Schema, the Frank configuration schema, which can be downloaded from the Frank!Framework. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
+In this section you start your own project and you build your first configuration. You will gain access to an additional source of documentation, the Frank!Doc, which you can reach through the web interface of the Frank!Framework, the Frank!Console. Frank configurations are written in XML. They satisfy an XML Schema, the Frank configuration schema, which can be downloaded from the Frank!Console. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
 
 If you want to check your work in this section and in the remaining sections of chapter :ref:`gettingStarted`, you can download the :download:`solution <../downloads/gettingStarted.zip>`. You can also download the :download:`result of doing only this page <../downloads/gettingStartedAfterConfig.zip>`.
 
@@ -17,19 +17,19 @@ Initialize your project
 
 .. highlight:: none
 
-After installing Tomcat4Frank, you should have a folder ``projects`` with a folder ``tomcat4ibis`` inside. This ``tomcat4ibis`` folder is your checkout of Tomcat4Frank. Please continue as follows:
+After installing Frank!Runner, you should have a folder ``projects`` with a folder ``frank-runner`` inside. This ``frank-runner`` folder is your checkout of Frank!Runner. Please continue as follows:
 
 #. Within the ``projects`` directory, create a subdirectory ``gettingStarted``. Please create subdirectories of ``gettingStarted`` to arrive at the following directory structure: ::
 
      projects
-     |- tomcat4ibis
+     |- frank-runner
      |- gettingStarted
         |- classes
         |- configurations
         |- tests
 
 #. The directory ``classes`` contains code that is common to all Frank configurations within your Frank. The ``tests`` folder holds Larva tests while each configuration is within a subdirectory of ``configurations``.
-#. You want the Frank!Framework to run ``gettingStarted`` when you start it. To achieve this, create file ``build.properties`` within the ``tomcat4ibis`` directory. Give ``build.properties`` the following contents: ::
+#. You want the Frank!Framework to run ``gettingStarted`` when you start it. To achieve this, create file ``build.properties`` within the ``frank-runner`` directory. Give ``build.properties`` the following contents: ::
 
      project.dir=gettingStarted
 
@@ -61,8 +61,8 @@ Frank configuration schema
 
 You will download the Frank configuration schema now.
 
-7. Please start the Frank!Framework by running ``tomcat4ibis\tomcat4ibis.bat``.
-#. With your webbrowser, browse to http://localhost/ibis/iaf/gui.
+7. Please start the Frank!Framework by running ``frank-runner\start.bat``.
+#. With your webbrowser, browse to http://localhost.
 #. Click "Webservices" as shown in the figure below:
 
    .. image:: webservicesMenu.jpg
@@ -123,8 +123,8 @@ Now that you have your project, you can add your real Frank configuration to you
 #. Please look at ``ConfigurationHello.xml`` for a moment. Line 1 wraps your adapter in the ``<Module>`` tag. This tag does not have a meaning. Its purpose is to arrive at valid XML, also if your include file has multiple adapters. The ``<Module>`` tag is also expected by the XML schema ``ibisdoc.xsd``. Code completion will not work without the ``<Module>`` tag.
 #. Lines 2 and 3 are needed to tell your text editor to check against XML schema file ``ibisdoc.xsd``. You downloaded that file earlier. Please copy it now to ``configurations\NewHorizons\ibisdoc.xsd``, making it a brother of ``ConfigurationHello.xml``.
 #. Line 9 (also highlighted) holds the output string of your Hello World adapter. It reads ``Hello Docker World``.
-#. Please restart Tomcat4Frank. Run your "HelloDockerWorld" adapter in the Test Pipeline screen and check that the output is ``Hello Docker World``. If this is the case, you succeeded initializing your project.
-#. If something is wrong, please compare your files with the examples of Docker4Frank, or with the :download:`result of only doing this page <../downloads/gettingStartedAfterConfig.zip>`.
+#. Please restart Frank!Runner. Run your "HelloDockerWorld" adapter in the Test Pipeline screen and check that the output is ``Hello Docker World``. If this is the case, you succeeded initializing your project.
+#. If something is wrong, please compare your files with the examples of Frank!Runner, or with the :download:`result of only doing this page <../downloads/gettingStartedAfterConfig.zip>`.
 
 Try code completion
 -------------------
