@@ -32,7 +32,7 @@ Please do the following:
 
       The properties set in ``StageSpecifics_LOC.properties`` only apply in your local development environment. You use other property files for properties specific to a DTAP stage. Use ``StageSpecifics_DEV.properties`` for D, ``StageSpecifics_TST.properties`` for T,``StageSpecifics_ACC.properties`` for A and ``StageSpecifics_PRD.properties`` for P. See sub-subsection :ref:`propertiesDeploymentEnvironmentLogicalCharacteristics` for an explanation of DTAP stages.
 
-#. Check what stubs have been created, as follows. Start the Frank!Framework using ``tomcat4ibis.bat``. Browse http://localhost/ibis/iaf/gui/. Yôu are in the Adapter Status page. Press the expand all button as shown below:
+#. Check what stubs have been created, as follows. Start the Frank!Framework using ``start.bat``. Browse http://localhost. Yôu are in the Adapter Status page. Press the expand all button as shown below:
 
    .. image:: expandAll.jpg
 

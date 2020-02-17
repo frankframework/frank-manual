@@ -11,9 +11,9 @@ After following the instructions of :ref:`helloIbis`, please proceed as follows:
 
 #. Start the Frank!Framework:
 
-     franks\\tomcat4ibis> tomcat4ibis.bat
+     franks\\frank-runner> start.bat
 
-#. Browse to http://localhost/ibis/iaf/gui.
+#. Browse to http://localhost.
 
 #. You see the Frank!Console as shown below. Click "Testing". The "Testing" link will expand to "Larva", "Ladybug", "Test Pipeline" and "Test serviceListener".
 

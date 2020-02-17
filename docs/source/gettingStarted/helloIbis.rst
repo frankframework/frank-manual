@@ -10,7 +10,7 @@ In this section we study an example Frank. To be able to run the example Frank, 
 
 .. highlight:: none
 
-#. Follow the instructions at https://github.com/ibissource/tomcat4ibis/ to install Tomcat4Frank.
+#. Follow the instructions at https://github.com/ibissource/frank-runner to install Frank!Runner.
 
    .. NOTE::
 
@@ -18,26 +18,27 @@ In this section we study an example Frank. To be able to run the example Frank, 
 
    .. WARNING::
 
-      Tomcat4Frank does not work on Linux yet. If you use Linux, you can use Docker4Frank instead, see https://github.com/ibissource/docker4ibis. Please apply the instructions differently in this case such that they work with Docker4Frank.
+      Frank!Runner does not work on Linux yet. If you use Linux, you can use Docker4Frank instead, see https://github.com/ibissource/docker4ibis. Please apply the instructions differently in this case such that they work with Docker4Frank.
 
 #. Download the :download:`example Frank config <../downloads/gettingStartedExample.zip>`.
 #. Unzip the file you downloaded within your projects directory. When your projects directory is ``franks``, you should arrive at the following directory structure: ::
 
      franks
-     |- tomcat4ibis
+     |- frank-runner
         |- README.md
-        |- tomcat4ibis.bat
+        |- start.bat
+        |- stop.bat
         |- ...
      |- gettingStartedExample
         |- classes
            |- Configuration.xml
 
-   ``tomcat4ibis`` is your git checkout of https://github.com/ibissource/tomcat4ibis/. You created ``gettingStartedExample`` by hand. The file ``Configuration.xml`` has the following contents:
+   ``frank-runner`` is your git checkout of https://github.com/ibissource/frank-runner/. You created ``gettingStartedExample`` by hand. The file ``Configuration.xml`` has the following contents:
 
    .. literalinclude:: ../../../src/gettingStartedExample/classes/Configuration.xml
       :language: XML
 
-#. Create file ``franks/tomcat4ibis/build.properties`` with the following contents: ::
+#. Create file ``franks/frank-runner/build.properties`` with the following contents: ::
 
      project.dir=gettingStartedExample
 
