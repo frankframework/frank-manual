@@ -4,12 +4,11 @@ Testing Frank Configurations
 ============================
 
 This section is about testing Frank configurations. There are two tools to do this,
-:ref:`ladybug` and :ref:`larva`. These tools have been introduced in :ref:`gettingStarted`,
-but it is not necessary to study that section before this one.
+:ref:`ladybug` and :ref:`larva`. These tools have been introduced in :ref:`gettingStarted`. You can study Ladybug without studying :ref:`gettingStarted` before.
 
 Larva and Ladybug can be found as follows:
 
-* Open the Frank console in your webbrowser. If you have a configuration named "yourconfig" then go to http://your-server/yourConfig/iaf/gui.
+* Open the Frank console in your webbrowser. The URL depends on the way your Frank has been deployed. If the Frank!Runner is used, it is just http://your-server in which "your-server" is the name or ip address of your host. The Frank!Runner running on your development computer can be reached at http://localhost. The URL may also be http://your-server/yourConfig/iaf/gui if your configuration is named ``yourconfig``.
 * In the left-hand menu, click "Testing" as shown:
 
   .. image:: frankConsoleFindTestTools.jpg
