@@ -22,6 +22,12 @@ should check that this document is valid. In this section you will write a first
    .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking.xsd
       :language: xml
 
+   .. NOTE::
+
+      This schema does not check all possible requirements for a booking to be valid. It does not check that the start date of a visit is before its end date. More advanced checks are possible, but then you need features that are new in XML Schema version 1.1. These features are explained at https://www.altova.com/blog/what-s-new-in-xml-schema-11/. The Frank!Framework supports XML Schema 1.1, but you need a commercial text editor to use the new features. With a free text editor, you will not have syntax checking while working on your advanced XSD file.
+
+      To have syntax checking as explained at the end of section :ref:`horizonsMultipleFiles` with a free text exitor, you have to stick to XML Schema version 1.0. We do so in this tutorial.
+
 #. We will write our adapter in its own file that will be named ``ConfigurationIngestBooking.xml``. The Frank!Framework will read file ``Configuration.xml``, so that file needs to include ``ConfigurationIngestBooking.xml``. Please open ``projects/gettingStarted/configurations/NewHorizons/Configuration.xml`` and give it the following contents (highlighted lines are new):
 
    .. code-block:: XML
