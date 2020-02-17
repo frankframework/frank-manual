@@ -9,7 +9,7 @@ Please perform the following steps:
 
 .. highlight:: none
 
-#. Please install Tomcat4Frank from https://github.com/ibissource/tomcat4ibis if you have not done so already. You should have the following directory structure: ::
+#. Please install Frank!Runner from https://github.com/ibissource/frank-runner if you have not done so already. You should have the following directory structure: ::
 
      projects
      |- tomcat4ibis
