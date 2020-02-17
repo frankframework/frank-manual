@@ -32,6 +32,7 @@ In this section we study an example Frank. To be able to run the example Frank, 
      |- gettingStartedExample
         |- classes
            |- Configuration.xml
+           |- DeploymentSpecifics.properties
 
    ``frank-runner`` is your git checkout of https://github.com/ibissource/frank-runner/. You created ``gettingStartedExample`` by hand. The file ``Configuration.xml`` has the following contents:
 

@@ -9,9 +9,9 @@ us to enter test input more easily.
 
 After following the instructions of :ref:`helloIbis`, please proceed as follows:
 
-#. Start the Frank!Framework:
+#. Start the Frank!Framework: ::
 
-     franks\\frank-runner> start.bat
+     franks\frank-runner> start.bat
 
 #. Browse to http://localhost.
 
