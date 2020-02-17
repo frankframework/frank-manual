@@ -1,14 +1,14 @@
-# IBIS4MANUAL
+# Frank!Manual
 
-This project documents the Ibis Adapter Framework for software integration. The IAF itself is hosted on GitHub at https://github.com/ibissource/iaf. The audience for this manual about the IAF is developers, testers and system administrators. It first explains what the IAF is and how it can be used. Developers can learn from this manual how to write Ibisses, which are programs written to be deployed on the Ibis Adapter Framework. Testers can learn what features the IAF offers to support testing and debugging. The Ibis Adapter Framework hosts ibisses and adds features for system administration. These features are also explained in this manual.
+This project documents the Frank!Framework for software integration. The Frank!Framework itself is hosted on GitHub at https://github.com/ibissource/iaf. The audience for this manual about the Frank!Framework is developers, testers and system administrators. It first explains what the Frank!Framework is and how it can be used. Developers can learn from this manual how to write Franks, which are programs written to be deployed on the Frank!Framework. Testers can learn what features the Frank!Framework offers to support testing and debugging. The Frank!Framework hosts Frank configurations and adds features for system administration. These features are also explained in this manual.
 
-This project contains restructured text files with explanations and Frank code that complements these explanations. Restructured text files are plain text files with extension .rst. These files should be processed by the Sphinx tool to produce the formatted manual. This is achieved using the website www.readthedocs.io. This GitHub repository has a Git hook pointing that site, triggering an automated build each time a commit is added. The result can be read at http://ibis4manual.readthedocs.io.
+This project contains restructured text files with explanations and Frank code that complements these explanations. Restructured text files are plain text files with extension .rst. These files should be processed by the Sphinx tool to produce the formatted manual. This is achieved using the website www.readthedocs.io. This GitHub repository has a Git hook pointing that site, triggering an automated build each time a commit is added. The result can be read at https://frank-manual.readthedocs.io/.
 
 The Frank code that complements the explanations has two purposes. First, Frank code is provided as the solution of a tutorial. Some sections of the manual request the reader to type Frank code and try it. These sections provide a download link for the expected Frank code. Second, editors of the manual should check statements about the Frank!framework using examples. These examples also appear within this git project.
 
 Here is the directory structure:
 
-    ibis4manual: The checkout directory.
+    frank-manual: The checkout directory.
     |- docs: Subdirectory with explanations.
        |- make.bat: Build script for Windows.
        |- Makefile: Read by UNIX tool "make", used bo build for Unix.
