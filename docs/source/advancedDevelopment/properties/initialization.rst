@@ -23,7 +23,7 @@ Property files
 
 You can set properties specific to a configuration by adding property files to the subdirectory of that configuration. For example if you have a configuration Xyz, then you can define properties in a file ``configurations/Xyz/DeploymentSpecifics.properties``. You can also define properties in other property files in directory ``configurations/Xyz/``. The Frank!Framework then chooses what property files to consider. The Frank!Framework bases this choice on the values of ``application.server.type``, ``dtap.stage`` and ``dtap.side``, the properties that reflect your deployment environment.
 
-As an example, assume that you deploy on your local laptop (``dtap.stage = LOC``), that you use Tomcat4Frank (``application.server.type = TOMCAT``) and that you chose to set ``dtap.side = xxx``. Then the Frank!Framework reads the following property files, sorted from high priority to low priority:
+As an example, assume that you deploy on your local laptop (``dtap.stage = LOC``), that you use Frank!Runner (``application.server.type = TOMCAT``) and that you chose to set ``dtap.side = xxx``. Then the Frank!Framework reads the following property files, sorted from high priority to low priority:
 
 #. ``StageSpecifics_LOC_TOMCAT.properties``.
 #. ``StageSpecifics_LOC.properties``.
