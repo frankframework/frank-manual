@@ -12,14 +12,15 @@ Please perform the following steps:
 #. Please install Frank!Runner from https://github.com/ibissource/frank-runner if you have not done so already. You should have the following directory structure: ::
 
      projects
-     |- tomcat4ibis
+     |- frank-runner
         |- build.properties
-        |- tomcat4ibis.bat
+        |- start.bat
+        |- stop.bat
       |- ...
 
    .. WARNING::
 
-      Tomcat4Frank currently only works for Windows. If you use Linux, please work with Docker4Frank (https://www.github.com/ibissource/docker4ibis). Apply these instructions differently when needed.
+      Frank!Runner currently only works for Windows. If you use Linux, please work with Docker4Frank (https://www.github.com/ibissource/docker4ibis). Apply these instructions differently when needed.
 
 #. Please make a subdirectory ``advancedDevelopmentProperties`` within ``projects``. Then open ``build.properties`` and give it the following contents: ::
 
@@ -51,15 +52,15 @@ Both in property files and in XML Frank config files, you can reference properti
    The highlighted line shows that properties are referenced by surrounding the property name with ``${`` and ``}`` as said before.
 
 #. Execute adapter ``AccessProperties`` using the Test Pipeline screen, see :ref:`helloTestPipeline`.
-#. The Frank!Framework replaces property references by the values of the referenced properties. The default value for ``dtap.stage`` is ``LOC`` (only if you are using Tomcat4Frank, otherwise there is no default). Check that the output is: ::
+#. The Frank!Framework replaces property references by the values of the referenced properties. The default value for ``dtap.stage`` is ``LOC`` (only if you are using Frank!Runner, otherwise there is no default). Check that the output is: ::
 
      From stage LOC, I say My text is Hello
 
-#. For some application servers, you can also set Java properties like ``-Dproperty="value"``. These properties are then defined within the Frank!Framework. This applies to Apache Tomcat and also for Tomcat4Frank. Please stop Tomcat4Frank. Restart Tomcat4Frank with an argument to set a Java property: ::
+#. For some application servers, you can also set Java properties like ``-Dproperty="value"``. These properties are then defined within the Frank!Framework. This applies to Apache Tomcat and also for Frank!Runner. Please stop Frank!Runner. Restart Frank!Runner with an argument to set a Java property: ::
 
-     projects\tomcat4ibis> tomcat4ibis.bat -Dmy.hello="Hello there"
+     projects\frank-runner> start.bat -Dmy.hello="Hello there"
    
-#. When Tomcat4Frank is running again, please return to the Test Pipeline screen. Run adapter ``AccessProperties``. The output should now be as follows: ::
+#. When Frank!Runner is running again, please return to the Test Pipeline screen. Run adapter ``AccessProperties``. The output should now be as follows: ::
 
     From stage LOC, I say My text is Hello there
 
