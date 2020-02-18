@@ -19,7 +19,7 @@ This chapter provides the information you need as a Frank developer to support t
 The application server
 ----------------------
 
-In chapter :ref:`deploying`, it is explained how the Frank!Framework is deployed. The Frank!Framework is a Java webapplication that is served by an application server. Examples of application servers are Apache Tomcat and Websphere Application Server. The Frank!Framework is deployed as a webapplication on your application server. You may have missed this when you studied chapter :ref:`gettingStarted`, because you used the Tomcat4Frank tool that automates interaction with the application server. Using Tomcat4Frank is fine during development, but probably not on production. On production, the system administrator wants control over the application server. The role of the application server is explained in more detail in subsection :ref:`propertiesDeploymentEnvironment`.
+In chapter :ref:`deploying`, it is explained how the Frank!Framework is deployed. The Frank!Framework is a Java webapplication that is served by an application server. Examples of application servers are Apache Tomcat and Websphere Application Server. The Frank!Framework is deployed as a webapplication on your application server. You may have missed this when you studied chapter :ref:`gettingStarted`, because you used the Frank!Runner tool that automates interaction with the application server. Using Frank!Runner is fine during development, but probably not on production. On production, the system administrator wants control over the application server. The role of the application server is explained in more detail in subsection :ref:`propertiesDeploymentEnvironment`.
 
 Datasource names
 ----------------
@@ -83,7 +83,7 @@ If you would write into a database with JNDI name ``jdbc/alternative``, you woul
 
 .. WARNING::
 
-   Tomcat4Frank and Docker4Frank (see sections :ref:`deploymentDocker4Frank` and :ref:`deploymentDocker4Frank`) do not support multiple databases. These tools automate deploying the Frank!Framework and they automatically create a database for your Frank. You cannot use these projects to connect to an existing database or to use multiple databases.
+   Frank!Runner and Docker4Frank (see sections :ref:`deploymentTomcat4Frank` and :ref:`deploymentDocker4Frank`) do not support multiple databases. These tools automate deploying the Frank!Framework and they automatically create a database for your Frank. You cannot use these projects to connect to an existing database or to use multiple databases.
 
 If you are using an Apache Tomcat application server, then the Frank!Framework expects that there is a database with JNDI name ``jdbc/${instance.name.lc}`` with ``${instance.name.lc}`` a property reference as explained. The expected database name depends on property ``instance.name``.
 
@@ -120,4 +120,4 @@ If you have multiple databases, what database is selected? By default, it is the
 Conclusion
 ----------
 
-If you have only one database, please give it JNDI name ``jdbc/${instance.name.lc}`` and make a ``<jmsRealm>`` for it, like you did in chapter :ref:`gettingStarted`. If you have another database, you can reference it by another JNDI name, leaving it to the system administrator to link that name to a concrete database. You cannot use Tomcat4Frank or Docker4Frank with multiple databases. You can wrap the other database in a ``<jmsRealm>`` to make referencing it easier. If you have multiple databases that each have their own initial data, please have each of them managed by its own Frank config. Each Frank config then has its own ``DatabaseChangelog.xml`` file. Each Frank config sets property ``jdbc.migrator.dataSource`` to the JNDI name of the database it manages.
+If you have only one database, please give it JNDI name ``jdbc/${instance.name.lc}`` and make a ``<jmsRealm>`` for it, like you did in chapter :ref:`gettingStarted`. If you have another database, you can reference it by another JNDI name, leaving it to the system administrator to link that name to a concrete database. You cannot use Frank!Runner or Docker4Frank with multiple databases. You can wrap the other database in a ``<jmsRealm>`` to make referencing it easier. If you have multiple databases that each have their own initial data, please have each of them managed by its own Frank config. Each Frank config then has its own ``DatabaseChangelog.xml`` file. Each Frank config sets property ``jdbc.migrator.dataSource`` to the JNDI name of the database it manages.
