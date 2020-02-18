@@ -18,7 +18,7 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'Frank!Framework Manual'
+project = 'Frank!Manual'
 copyright = '2019, WeAreFrank!'
 author = 'WeAreFrank!'
 
