@@ -17,7 +17,7 @@ dtap.side
   Use this to characterize your deployment environment as explained in subsection :ref:`propertiesDeploymentEnvironment`. Only works as system property. The default value is ``xxx``. This default is sufficient if the deployment server and the DTAP stage fully characterize your deployment. This property determines what property files are read by the Frank!Framework to set other properties.
 
 dtap.stage
-  Defines the DTAP stage of this deployment. Only works as system property. Possible values are ``LOC``, ``DEV``, ``TST``, ``ACC`` and ``PRD``. If you are using Tomcat4Frank then there is a default value, namely ``LOC``. This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for more details.
+  Defines the DTAP stage of this deployment. Only works as system property. Possible values are ``LOC``, ``DEV``, ``TST``, ``ACC`` and ``PRD``. If you are using Frank!Runner then there is a default value, namely ``LOC``. This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for more details.
 
 otap.side
   Has the same meaning as ``dtap.side``, exists for backward compatibility.
@@ -29,7 +29,7 @@ configurations.names
   The value should be a comma-separated list of all configurations. For example, if your Frank contains the classpath configuration and a configuration ``MyConfig``, then the value of this property should be ``${instance.name},MyConfig``. Only works as system property or classpath property, unless you work with nested configurations. Nested configurations are beyond the scope of this manual at the moment. If you only have the classpath configuration, this property can be omitted.
 
 configurations.MyConfig.classLoaderType
-  If you have a configuration ``MyConfig``, then this property defines how configuration ``MyConfig`` is read. When you use Tomcat4Frank and when you have the configuration in your ``configurations`` directory, you should set the value to ``DirectoryClassLoader``, indicating that ``MyConfig`` is stored on the local file system of the server. This property should exist for every configuration. Replace ``MyConfig`` with the configuration name to get the property name. This property only works as a system property or a classpath property, unless you are working with nested configurations. Nested configurations are beyond the scope of this manual.
+  If you have a configuration ``MyConfig``, then this property defines how configuration ``MyConfig`` is read. When you use Frank!Runner and when you have the configuration in your ``configurations`` directory, you should set the value to ``DirectoryClassLoader``, indicating that ``MyConfig`` is stored on the local file system of the server. This property should exist for every configuration. Replace ``MyConfig`` with the configuration name to get the property name. This property only works as a system property or a classpath property, unless you are working with nested configurations. Nested configurations are beyond the scope of this manual.
 
 jdbc.migrator.active
   Can be "true" or "false" (the default). Works only as system property or classpath property. When true, database initialization is switched on. The default behavior is to do this with Liquibase, see https://www.liquibase.org/. With Liquibase, the file ``DatabaseChangelog.xml`` is executed.
