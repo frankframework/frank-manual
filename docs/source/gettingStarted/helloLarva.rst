@@ -32,15 +32,20 @@ Please do the following:
 
       The properties set in ``StageSpecifics_LOC.properties`` only apply in your local development environment. You use other property files for properties specific to a DTAP stage. Use ``StageSpecifics_DEV.properties`` for D, ``StageSpecifics_TST.properties`` for T,``StageSpecifics_ACC.properties`` for A and ``StageSpecifics_PRD.properties`` for P. See sub-subsection :ref:`propertiesDeploymentEnvironmentLogicalCharacteristics` for an explanation of DTAP stages.
 
-#. Check what stubs have been created, as follows. Start the Frank!Framework using ``start.bat``. Browse http://localhost. Yôu are in the Adapter Status page. Press the expand all button as shown below:
+#. Check what stubs have been created, as follows:
 
-   .. image:: expandAll.jpg
+   a. Start the Frank!Framework using ``start.bat``.
+   #. Browse http://localhost. Yôu are in the Adapter Status page.
+   #. Press the expand all button as shown below:
 
-#. Then enter Ctrl-F in your browser and search for "testtool". You get the following screen:
+      .. image:: expandAll.jpg
 
-   .. image:: testtoolHello.jpg
+   #. Then enter Ctrl-F in your browser and search for "testtool". You get the following screen:
 
-#. Check that the HelloDockerWorld adapter now has two receivers. One of them should be named ``testtool-HelloDockerWorld``.
+      .. image:: testtoolHello.jpg
+
+   #. Check that the HelloDockerWorld adapter now has two receivers. One of them should be named ``testtool-HelloDockerWorld``.
+
 #. Create a text file ``gettingStartedExample/tests/Hello/scenario01.properties``. You will edit this file in the next steps. Directory ``tests`` is the directory in which all Larva tests are stored. Directory ``Hello`` groups some tests. The scenario name ``scenario01`` can be chosen freely.
 #. Within your scenario, you need a service that writes to the ``testtool-HelloDockerWorld`` receiver and reads responses from it. For  historic reasons, a service has a name consisting of two words separated by a dot. Please enter the following in ``scenario01.properties``: ::
 
