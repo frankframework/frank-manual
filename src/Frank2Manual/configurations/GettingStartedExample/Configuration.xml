@@ -1,7 +1,9 @@
-<Configuration name="gettingStartedExample">
+<Module>
+    <!--
     <jmsRealms>
             <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
     </jmsRealms>
+    -->
     <Adapter name="HelloDockerWorld">
             <Receiver name="HelloDockerWorld">
                     <JavaListener name="HelloDockerWorld"/>
@@ -13,4 +15,4 @@
                     <Exit path="EXIT" state="success"/>
             </Pipeline>
     </Adapter>
-</Configuration>
+</Module>

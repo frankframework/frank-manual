@@ -101,8 +101,12 @@ def createDownloadZip(target, sourceDir):
             lambda folderName, fname: zipWriter.writeFile(folderName, fname))
 
 def createDownloadZipFromLine(line):
-    source = line
-    target = os.path.join(targetDir, os.path.basename(source) + ".zip")
+    fields = line.split()
+    source = fields[0]
+    if len(fields) == 1 :
+        target = os.path.join(targetDir, os.path.basename(source) + ".zip")
+    else :
+        target = os.path.join(targetDir, fields[1] + ".zip")
     createDownloadZip(target, source)
 
 def handleLine(line):

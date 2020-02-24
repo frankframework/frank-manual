@@ -2,8 +2,8 @@
 # links in the manual. Comments and empty lines are
 # ignored.
 
-src/gettingStartedExample
-src/gettingStartedExample-SolutionLarva
+src/Frank2Manual/configurations/GettingStartedExample configurations/GettingStartedExample
+src/Frank2Manual/tests/GettingStartedExample tests/GettingStartedExample
 src/gettingStarted
 src/gettingStartedAfterConfig
 src/ladybug
