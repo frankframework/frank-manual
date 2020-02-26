@@ -10,9 +10,9 @@ This chapter can be studied in two ways. First, it is a tutorial. There are inst
 .. toctree::
    :maxdepth: 3
 
+   examineExample
    helloIbis
    helloTestPipeline
-   helloLadybug
    helloLarva
    configurationManagement1
    newHorizons
