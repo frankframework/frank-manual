@@ -15,6 +15,7 @@ This chapter can be studied in two ways. First, it is a tutorial. There are inst
    helloTestPipeline
    helloLarva
    configurationManagement1
+   configurationSyntaxChecking
    newHorizons
    horizonsInterfaces
    horizonsInitialData

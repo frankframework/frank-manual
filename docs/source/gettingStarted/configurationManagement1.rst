@@ -6,160 +6,128 @@ Configuration Management
 Introduction
 ------------
 
-In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the Frank!Runner project to run the Frank!Framework with an example configuration. You learned the basic concepts by studying this configuration. You also learned how configurations can be tested.
+In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic understanding of the Frank!Framework. You used the Frank!Runner with its example Frank configurations to run the Frank!Framework. You learned the basic concepts by studying these configurations. You also learned how configurations can be tested.
 
-In this section you start your own project and you build your first configuration. You will gain access to an additional source of documentation, the Frank!Doc, which you can reach through the web interface of the Frank!Framework, the Frank!Console. Frank configurations are written in XML. They satisfy an XML Schema, the Frank configuration schema, which can be downloaded from the Frank!Console. You will learn how to use this schema when you type your Frank configuration. You will have automatic code completion and tooltips in your text editor.
+It was explained that Frank configurations are independent of the Frank!Framework instance on which they are deployed. In this section you setup your own instance of the Frank!Framework for development, resulting in a common directory tree for everything you do while studying the Frank!Manual. You will test your setup by deploying the "Example1" configuration of the Frank!Runner on your instance. This "Example1" config has all XML in one file, namely ``Configuration.xml``. For larger Frank configs it is better to divide the XML of a config over multiple files, such that each adapter has its own XML file. You will practice this by modifying your deployment of "Example1".
 
-If you want to check your work in this section and in the remaining sections of chapter :ref:`gettingStarted`, you can download the :download:`solution <../downloads/gettingStarted.zip>`. You can also download the :download:`result of doing only this page <../downloads/gettingStartedAfterConfig.zip>`.
-
-Initialize your project
------------------------
+Set up your instance
+--------------------
 
 .. highlight:: none
 
-After installing Frank!Runner, you should have a folder ``projects`` with a folder ``frank-runner`` inside. This ``frank-runner`` folder is your checkout of Frank!Runner. Please continue as follows:
+To set up your instance, please do the following:
 
-#. Within the ``projects`` directory, create a subdirectory ``gettingStarted``. Please create subdirectories of ``gettingStarted`` to arrive at the following directory structure: ::
+#. If you did not do so, install the Frank!Runner as explained in :ref:`frankRunnerInstallation`.
+#. Create the root directory of your instance, ``Frank2Manual`` as a brother of your ``frank-runner`` directory. Give it two subdirectories ``configurations`` and ``tests``. You should arrive at the following directory tree: ::
 
-     projects
+     franks
      |- frank-runner
-     |- gettingStarted
-        |- classes
+        |- examples
+           |- Frank2Example1
+              |- configurations
+                 |- Example1
+                    |- ...
+                 |- ...
+              |- tests
+                 |- Example1
+                    |- ...
+                 |- ...
+           |- ...
+        |- ...
+     |- Frank2Manual
         |- configurations
         |- tests
 
-#. The directory ``classes`` contains code that is common to all Frank configurations within your Frank. The ``tests`` folder holds Larva tests while each configuration is within a subdirectory of ``configurations``.
-#. You want the Frank!Framework to run ``gettingStarted`` when you start it. To achieve this, create file ``build.properties`` within the ``frank-runner`` directory. Give ``build.properties`` the following contents: ::
+   .. NOTE::
 
-     project.dir=gettingStarted
+      WeAreFrank! encourages you to name all your instances like "Frank2Something". You express that you are frank, honest, open to the subject of your work.
 
-#. The Frank!Framework expects a Frank configuration within the ``classes`` directory for historical reasons. You do not want your real Frank configurations there because the ``classes`` folder is for common code of all your configurations. Within your ``classes`` directory, add a ``Configuration.xml`` file with the following contents:
+#. Create file ``franks/frank-runner/build.properties`` and give it the following contents: ::
+
+     project.dir=Frank2Manual
+
+#. Deploy configuration "Example1" of the Frank!Runner on your instance by copying ``franks/frank-runner/examples/Frank2Example1/configurations/Example1`` to ``franks/Frank2Manual/configurations/Example1``.
+#. Deploy the corresponding tests by copying ``franks/frank-runner/examples/Frank2Example1/tests/Example1`` to ``franks/Frank2Manual/tests/Example1``. After this step, your ``Frank2Manual`` directory should look as follows: ::
+
+     Frank2Manual
+     |- configurations
+        |- Example1
+           |- ...
+     |- tests
+        |- Example1
+           |- ...
+
+#. Start the Frank!Runner as explained before. You may use ``franks/frank-runner/start.bat``.
+#. Browse to http://localhost. You should see the Adapter Status page as shown:
+
+   .. image:: configurationManagementVerifyInstance.jpg
+
+#. Verify that the name of your instance is "Frank2Manual" (number 1).
+#. Verify that you have configuration "Example1" (number 2).
+#. In the main menu, expand "Testing" and select "Larva". You see the shown page:
+
+   .. image:: runLarva.jpg
+
+#. You see you are in Larva (number 1). Select directory "Example1" (number 2).
+#. Press "start" (number 3).
+#. Verify that your tests succeeded (number 5).
+
+Give Example1Adapter its own XML file
+-------------------------------------
+
+You will split ``Frank2Manual/configurations/Example1/Configuration.xml`` now such that each adapter gets its own file. Please do the following:
+
+#. Create file ``Frank2Manual/configurations/Example1/ConfigurationExample1Adapter.xml``. Fill it by copying a part of ``Frank2Manual/configurations/Example1/Configuration.xml``. You need the text of the ``<Adapter>`` element, including the opening ``<Adapter>``, the closing ``</Adapter>`` and everything in between.
+#. Before this text, add the following:
 
    .. code-block:: XML
 
-      <Configuration name="${instance.name}">
-        <jmsRealms>
-          <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
-        </jmsRealms>
-      </Configuration>
+      <Module
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
 
-#. The Frank!Framework does not automatically detect what configurations you have. In your ``classes`` directory, please add property file ``DeploymentSpecifics.properties`` with the following contents: ::
-
-     instance.name=gettingStarted
-     configurations.names=${instance.name}
+   You need this text in the next section to have syntax checking in our text editor. It does not influence the way the Frank config works.
    
    .. NOTE::
 
-      There is much to know about properties, which is explained in section :ref:`properties`. If you read this chapter for the first time, please finish it first. For now, just note that property ``configuration.names`` contains a list of all your configurations. The empty configuration you just added is referenced as ``${instance.name}``, the value of property ``instance.name``.
+      These lines mean the following. First comes a namespace declaration to define namespace prefix "xsi". Then the attribute "noNamespaceSchemaLocation" within namespace "http://www.w3.org/2001/XMLSchema-instance" is set to reference an XML schema file named "./ibisdoc.xsd". In the next section you will download this schema file. For more information on XML namespaces see http://www.xmlmaster.org/en/article/d01/c10/#declaration.
 
-#. During development, you also want to run Larva tests. To run Larva tests, the Frank!Framework needs to process changed versions of your Frank configurations (your files are not changed; they are changed in memory after the Frank!Framework reads them). Please add ``classes\StageSpecifics_LOC.properties`` to tell the Frank!Framework you want this. The contents should be: ::
+#. To the end, add the closing ``</Module>`` tag.
 
-     stub4testtool.configuration=true
+   .. WARNING..
 
-Frank configuration schema
---------------------------
+      Do not add an ``<?xml ... ?>`` declaration. The ``ConfigurationExample1Adapter.xml`` will be included literally, which would result in invalid syntax for the total XML.
 
-You will download the Frank configuration schema now.
-
-7. Please start the Frank!Framework by running ``frank-runner\start.bat``.
-#. With your webbrowser, browse to http://localhost.
-#. Click "Webservices" as shown in the figure below:
-
-   .. image:: webservicesMenu.jpg
-
-#. Click "IbisDoc":
-
-   .. image:: webservicesPage.jpg
-
-#. Right-click "ibisdoc.xsd" (number 1 in the picture below):
-
-   .. image:: ibisDocFiles.jpg
-
-#. A menu appears that lets you choose what to do with "ibisdoc.xsd". Please choose to download it. You will need it later.
-
-Frank!Doc
----------
-
-From the screen shown at step 11, you can access the Frank!Doc, an additional source of documentation. It lets you search pipes, senders and receivers and it gives you detailed information.
-
-13. In the picture of step 11, press "The new ibisdoc application" (number 2). The following screen appears:
-
-     .. image:: frankDoc.jpg
-
-#. As an example, we want to see detailed information about the ``<FixedResultPipe>``. To the top-left, click "Pipes" (number 1). To the bottom-left, all available pipes are listed.
-#. Click "FixedResultPipe" (number 2). To the right, a page with detailed information appears. To the top it confirmst that it is about FixedResultPipe (number 3). You see the attribute you know already, "returnString" (number 4).
-#. Each pipe, sender or receiver corresponds to a Java class in the source code of the Frank!Framework. You can see the Javadoc documentation of this class by clicking "Javadoc" (number 5). This information is written for Java developers, but it may be useful sometimes for Frank developers.
-
-Add your configuration
-----------------------
-
-Now that you have your project, you can add your real Frank configuration to your ``gettingStarted`` project. Please proceed as follows:
-
-#. Update your file ``classes\DeploymentSpecifics.properties`` to list a new configuration ``NewHorizons``. It should become as follows: ::
-
-     instance.name=gettingStarted
-     configurations.names=${instance.name},NewHorizons
-     configurations.NewHorizons.classLoaderType=DirectoryClassLoader
-
-#. Within your ``configurations`` directory, please add subdirectory ``NewHorizons``.
-#. A configuration usually requires many lines of XML. It is good practice to split a configuration over multiple files. This is done using entity references. Please create ``configurations\NewHorizons\Configuration.xml`` with the following contents:
+#. Replace the contents of ``Frank2Manual/configurations/Example1/Configuration.xml`` with the following:
 
    .. code-block:: XML
 
       <?xml version="1.0" encoding="UTF-8" ?>
       <!DOCTYPE configuration [
-        <!ENTITY Hello SYSTEM "ConfigurationHello.xml">
+        <!ENTITY ConfigurationExample1Adapter SYSTEM "ConfigurationExample1Adapter.xml">
       ]>
-      <Configuration name="NewHorizons">
-        &Hello;
+      <Configuration name="Example1">
+        &ConfigurationExample1Adapter;
       </Configuration>
 
-#. This Configuration.xml does a literal include of file ``ConfigurationHello.xml``. Please add ``configurations\NewHorizons\ConfigurationHello.xml`` with the following contents:
+   You see an XML entity declaration and a reference to it. For more information see https://xmlwriter.net/xml_guide/entity_declaration.shtml.
 
-   .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/ConfigurationHello.xml
-      :language: xml
-      :emphasize-lines: 1, 2, 3, 9
+#. Refresh your configuration in the Adapter Status screen with the button annotated with number 1:
 
-#. Please look at ``ConfigurationHello.xml`` for a moment. Line 1 wraps your adapter in the ``<Module>`` tag. This tag does not have a meaning. Its purpose is to arrive at valid XML, also if your include file has multiple adapters. The ``<Module>`` tag is also expected by the XML schema ``ibisdoc.xsd``. Code completion will not work without the ``<Module>`` tag.
-#. Lines 2 and 3 are needed to tell your text editor to check against XML schema file ``ibisdoc.xsd``. You downloaded that file earlier. Please copy it now to ``configurations\NewHorizons\ibisdoc.xsd``, making it a brother of ``ConfigurationHello.xml``.
-#. Line 9 (also highlighted) holds the output string of your Hello World adapter. It reads ``Hello Docker World``.
-#. Please restart Frank!Runner. Run your "HelloDockerWorld" adapter in the Test Pipeline screen and check that the output is ``Hello Docker World``. If this is the case, you succeeded initializing your project.
-#. If something is wrong, please compare your files with the examples of Frank!Runner, or with the :download:`result of only doing this page <../downloads/gettingStartedAfterConfig.zip>`.
+   .. image:: adapterStatusTopRight.jpg
 
-Try code completion
--------------------
+#. Using Testing | Test Pipeline (see section :ref:`helloTestPipeline`), check that adapter "Example1Adapter" still works.
+#. You can lookup the source code loaded by the Frank!Runner to check that refreshing succeeded. In the main menu, expand "Configuration" (number 1 in the figure below) and select "Show Configuration" (number 2).
 
-For code completion, you need to configure your text editor. Below, Visual Studio Code and Eclipse are covered.
+   .. image:: mainMenuConfiguration.jpg
 
-Visual Studio Code
-------------------
+#. You see the page shown below. You get confirmation that you are on the right page (number 1). Please select the tab of configuration "Example1" (number 2).
 
-Please do the following to configure Visual Studio Code for code completion:
+   .. image:: configurationModifiedExample1.jpg
 
-#. Press the plugin menu item (number 1 in the figure below).
+#. Select "Original Configuration" (number 3).
+#. Check that there is a ``<Module>`` tag (number 4). The original "Example1" configuration does not have this tag, so the ``<Module>`` tag confirms that your modifications have been loaded.
 
-   .. image:: visualStudioCodePlugins.jpg
+   .. NOTE::
 
-#. Install the two plugins shown (number 2).
-#. Open ``ConfigurationHello.xml``. After the ``</Adapter>`` element close tag, start typing ``<A``. The editor should give you a hint that you mean ``<Adapter>``. You should also see a "i" icon to get more information.
-
-Eclipse
--------
-
-Please do the following to configure Eclipse for code completion:
-
-#. Open Eclipse and choose the workspace you want.
-#. In the menu, choose File | New | Project... . The New Project dialog appears (number 1 in the figure below):
-
-   .. image:: eclipseNewProject.jpg
-
-#. Choose "Project" (number 2) and press "Next".
-#. Enter a project name (number 1 in the figure below). Uncheck "Use default location" (number 2). Browse (number 3) to ``projects\gettingStarted``. Press "Finish".
-
-   .. image:: eclipseNewProjectNext.jpg
-
-#. A new project has appeared in your project explorer (number 1 in the fingure below). Please open ``ConfigurationHello.xml`` (number 2).
-
-   .. image:: eclipseProjectExplorer.jpg
-
-#. After the ``</Adapter>`` closing tag, please start typing ``<Ad``. Eclipse should present a hint that you mean ``<Adapter>``.
+      You see here the result of replacing the entity reference ``&ConfigurationExample1Adapter;`` with the included file. The entity declaration has been removed. If file ``ConfigurationExample1Adapter.xml`` had an ``<?xml ... ?>`` declaration, then the expanded XML would have this declaration twice, corrupting the XML syntax.
