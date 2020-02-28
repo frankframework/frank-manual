@@ -29,7 +29,7 @@
         <FixedQuerySender
             name="insertBookingSender"
             query="INSERT INTO booking VALUES(?, ?, ?, ?)"
-            jmsRealm="jdbc">
+            datasourceName="jdbc/${instance.name.lc}">
           <Param name="id" xpathExpression="/booking/@id" />
           <Param name="travelerId" xpathExpression="/booking/travelerId" />
           <Param name="price" xpathExpression="/booking/price" />
@@ -51,7 +51,7 @@
         <FixedQuerySender
             name="insertVisitSender"
             query="INSERT INTO visit VALUES(?, ?, ?, ?, ?, ?, ?)"
-            jmsRealm="jdbc">
+            datasourceName="jdbc/${instance.name.lc}">
           <Param name="bookingId" xpathExpression="/destination/bookingId" />
           <Param name="seq" xpathExpression="/destination/seq" />
           <Param name="hostId" xpathExpression="/destination/hostId" />
