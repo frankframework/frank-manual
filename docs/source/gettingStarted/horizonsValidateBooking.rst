@@ -19,7 +19,7 @@ should check that this document is valid. In this section you will write a first
 
 #. The validity of an XML documents is usually checked using an XML schema, see https://www.w3schools.com/xml/schema_intro.asp. Please make a document ``projects/gettingStarted/configurations/NewHorizons/booking.xsd`` and give it the following contents:
 
-   .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking.xsd
+   .. literalinclude:: ../../../src/Frank2Manual/configurations/NewHorizons/booking.xsd
       :language: xml
 
    .. NOTE::
@@ -142,7 +142,7 @@ Your adapter listens to REST HTTP requests. If you are working under Windows, yo
 
 #. In the message field (number 2), copy/paste the following XML:
 
-   .. literalinclude:: ../../../src/gettingStarted/tests/CheckBooking/scenario01/validBooking.xml
+   .. literalinclude:: ../../../src/Frank2Manual/tests/NewHorizons/scenario01/validBooking.xml
       :language: XML
 
 #. Press "Send" (number 3 in the figure).

@@ -21,7 +21,7 @@ require a process external to it. More information about databases is available 
 
 2. Please create file ``projects/gettingStarted/configurations/NewHorizons/DatabaseChangelog.xml`` and add XML to initialize the database described in the previous section :ref:`horizonsInterfaces`. Here is the XML to add:
 
-   .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/DatabaseChangelog.xml
+   .. literalinclude:: ../../../src/Frank2Manual/configurations/NewHorizons/DatabaseChangelog.xml
       :language: xml
 
 For clarity we chose to use SQL statements in the changelog. As a consequence, it is not database independent as would

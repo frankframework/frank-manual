@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration [
-  <!ENTITY Hello SYSTEM "ConfigurationHello.xml">
+  <!ENTITY Database SYSTEM "ConfigurationDatabase.xml">
   <!ENTITY IngestBooking SYSTEM "ConfigurationIngestBooking.xml">
   <!ENTITY CheckBooking SYSTEM "ConfigurationCheckBooking.xml">
 ]>
 <Configuration name="NewHorizons">
-  &Hello;
+  &Database;
   &IngestBooking;
   &CheckBooking;
 </Configuration>

@@ -2,10 +2,8 @@
 # links in the manual. Comments and empty lines are
 # ignored.
 
-src/Frank2Manual/configurations/GettingStartedExample configurations/GettingStartedExample
-src/Frank2Manual/tests/GettingStartedExample tests/GettingStartedExample
-src/gettingStarted
-src/gettingStartedAfterConfig
+src/Frank2Manual/configurations/NewHorizons configurations/NewHorizons
+src/Frank2Manual/tests/NewHorizons tests/NewHorizons
 src/ladybug
 src/advancedDevelopmentProperties
 src/deploymentTomcat

@@ -52,6 +52,6 @@ the host id and the product id can appear in the incoming message for
 accepted bookings. We finish this section with an example of an
 accepted booking:
 
-.. literalinclude:: ../../../src/gettingStarted/tests/CheckBooking/scenario01/validBooking.xml
+.. literalinclude:: ../../../src/Frank2Manual/tests/NewHorizons/scenario01/validBooking.xml
    :language: xml
 

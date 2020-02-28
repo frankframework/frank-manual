@@ -40,7 +40,7 @@ The Frank!Framework defines a pipe ``<XsltPipe>`` that does XSLT transformations
 
 #. Create file ``projects/gettingStarted/configurations/NewHorizons/booking2destinations.xsl`` and give it the following contents:
 
-   .. literalinclude:: ../../../src/gettingStarted/configurations/NewHorizons/booking2destinations.xsl
+   .. literalinclude:: ../../../src/Frank2Manual/configurations/NewHorizons/booking2destinations.xsl
       :language: xml
 
 #. Open file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``, you will continue editing it.
