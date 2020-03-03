@@ -203,6 +203,18 @@ if __name__ == "__main__":
 
     import unittest
 
+    class TestGetIndentAndCheck(unittest.TestCase):
+        def test_if_properly_indented_then_get_indent(self):
+            indent, err = getIndentAndCheck("   text")
+            self.assertTrue(err is None)
+            self.assertEquals(3, indent)
+            indent, err = getIndentAndCheck("text")
+            self.assertTrue(err is None)
+            self.assertEqual(0, indent)
+        def test_if_has_tab_then_error(self):
+            indent, err = getIndentAndCheck(" \t text")
+            self.assertTrue(type(err) is str)
+
     class TestComparators(unittest.TestCase):
         def test_comparatorIndentInsensitive(self):
             self.assertTrue(comparatorIndentInsensitive("  monkey  ", " monkey   "))
