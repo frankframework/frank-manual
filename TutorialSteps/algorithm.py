@@ -1,7 +1,23 @@
 comparatorIndentInsensitive = lambda first, second: first.strip() == second.strip()
 comparatorIndentSensitive = lambda first, second: first == second
 
+def checkNonEmptyStringList(stringList):
+    if not type(stringList) is list:
+        raise TypeError("Not a list: " + str(stringList))
+    if not all([type(line) is str for line in str(stringList)]):
+        raise TypeError("List should contain only strings: " + str(stringList))
+    if len(stringList) == 0:
+        raise ValueError("String list should contain at least one line")
+
+def checkNonNegativeInt(i):
+    if not type(i) is int:
+        raise TypeError("Should be int")
+    if i < 0:
+        raise ValueError("Should not be negative")
+
 def getIndentAndCheck(line):
+    if not type(line) is str:
+        raise TypeError("line should be string")
     numIndent = 0
     for c in line:
         if c == " ":
@@ -18,19 +34,16 @@ def getIndentAndCheck(line):
         else:
             return numIndent, None
 
-def checkNonEmptyStringList(stringList):
-    if not type(stringList) is list:
-        raise TypeError("Not a list: " + str(stringList))
-    if not all([type(line) is str for line in str(stringList)]):
-        raise TypeError("List should contain only strings: " + str(stringList))
-    if len(stringList) == 0:
-        raise ValueError("String list should contain at least one line")
-
-def checkNonNegativeInt(i):
-    if not type(i) is int:
-        raise TypeError("Should be int")
-    if i < 0:
-        raise ValueError("Should not be negative")
+def unindentAndCheck(lines):
+    checkNonEmptyStringList(lines)
+    lineIndents = []
+    for line in lines:
+        indent, err = getIndentAndCheck(line)
+        if err is not None:
+            return None, err
+        lineIndents.append(indent)
+    minIndent = min(lineIndents)
+    return [line[minIndent:] for line in lines], None
 
 class ExpectedUpdate:
     def __init__(self, numOldLines, numNewLines):
@@ -64,6 +77,10 @@ class Window:
         self._last = last
     def getLines(self):
         return [self._lines[i] for i in range(self._first, self._last + 1)]
+    def isWindowContainsFirstLine(self):
+        return self._first == 0
+    def isWindowContainsLastLine(self):
+        return self._last == len(self._lines) - 1
     def widen(self, numContext):
         checkNonNegativeInt(numContext)
         newFirst = max(self._first - numContext, 0)
@@ -111,6 +128,11 @@ class Highlight:
     def getHighlights(self):
         return range(self._relFirst, self._relLast + 1)
 
+def copyHighlight(h):
+    if not isinstance(h, Highlight):
+        raise TypeError("Highlight expected")
+    return Highlight(h._relFirst, h._relLast)
+
 def windowToHighlight(w):
     return Highlight(0, w._last - w._first)
 
@@ -122,12 +144,15 @@ class HighlightedWindow:
         self._highlights = []
     def getLines(self):
         return self._window.getLines()
+    def isWindowContainsFirstLine(self):
+        return self._window.isWindowContainsFirstLine()
+    def isWindowContainsLastLine(self):
+        return self._window.isWindowContainsLastLine()
     def getHighlights(self):
         result = []
         for h in self._highlights:
             result.extend(h.getHighlights())
         return result
-
     def highlightAll(self):
         h = windowToHighlight(self._window)
         self._highlights.append(h)
@@ -143,7 +168,7 @@ class HighlightedWindow:
         for h in self._highlights:
             result._highlights.append(h)
         for h in other._highlights:
-            newHighlight = Highlight(h._relFirst, h._relLast)
+            newHighlight = copyHighlight(h)
             newHighlight.shift(numPrepended)
             result._highlights.append(newHighlight)
         return result
