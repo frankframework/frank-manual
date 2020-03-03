@@ -34,6 +34,10 @@ def checkNonNegativeInt(i):
 
 class ExpectedUpdate:
     def __init__(self, numOldLines, numNewLines):
+        checkNonNegativeInt(numOldLines)
+        checkNonNegativeInt(numNewLines)
+        if numOldLines == 0 and numNewLines == 0:
+            raise ValueError("An ExpectedUpdate should have old lines or new lines")
         self._numOldLines = numOldLines
         self._numNewLines = numNewLines
     def getNumOldLines(self):
@@ -70,6 +74,8 @@ class Window:
     def hasOverlap(self, other):
         if not isinstance(other, Window):
             raise TypeError("Should be Window")
+        if self._lines != other._lines:
+            raise ValueError("Windows should be about the same list of strings")
         return other._first <= self._last + 1
     def join(self, other):
         if not isinstance(other, Window):
@@ -174,9 +180,12 @@ class Comparison:
                 currentNewLine += actualUpdate.getNumNewLines()
                 currentExpectedUpdate += 1
                 self._actualUpdates.append(actualUpdate)
-        if currentExpectedUpdate != len(self._expectedUpdates):
-            self._comparisonError = "Expected {0} updates, but less updates found".format(len(self._expectedUpdates))
-            return
+        while currentExpectedUpdate < len(self._expectedUpdates):
+            actualUpdate = ActualUpdate(self._expectedUpdates[currentExpectedUpdate], currentNewLine)
+            currentOldLine += actualUpdate.getNumOldLines()
+            currentNewLine += actualUpdate.getNumNewLines()
+            currentExpectedUpdate += 1
+            self._actualUpdates.append(actualUpdate)
         if currentOldLine != len(self._oldLines):
             self._comparisonError = "Not all existing lines have been explained by the expected updates"
             return
@@ -248,6 +257,56 @@ if __name__ == "__main__":
             comparison = Comparison(["monkey"], ["  monkey  "], [], comparatorIndentSensitive)
             comparison.compare()
             self.assertTrue(comparison.hasComparisonError())
+        def test_if_expected_insert_satisfied_at_end_then_ok(self):
+            comparison = Comparison(["monkey"], ["monkey", "added"], [ExpectedUpdate(0, 1)], comparatorIndentSensitive)
+            comparison.compare()
+            self.assertFalse(comparison.hasComparisonError())
+        def test_if_delete_satisfied_at_end_then_ok(self):
+            comparison = Comparison(["monkey", "removed"], ["monkey"], [ExpectedUpdate(1, 0)], comparatorIndentSensitive)
+            comparison.compare()
+            self.assertFalse(comparison.hasComparisonError())
+
+    class TestWindow(unittest.TestCase):
+        def test_winden_window_can_take_one_line(self):
+            w = Window(["zero", "one", "two", "three", "four"], 2, 3)
+            w.widen(1)
+            self.assertEquals(w.getLines(), ["one", "two", "three", "four"])
+        def test_window_widen_respects_end_of_file(self):
+            w = Window(["zero", "one", "two", "three", "four"], 2, 3)
+            w.widen(2)
+            self.assertEquals(w.getLines(), ["zero", "one", "two", "three", "four"])
+        def test_window_widen_respects_start_of_file(self):
+            w = Window(["zero", "one", "two", "three", "four"], 1, 2)
+            w.widen(2)
+            self.assertEquals(w.getLines(), ["zero", "one", "two", "three", "four"])
+        def test_if_windows_dont_touch_then_no_overlap(self):
+            lines = ["zero", "one", "two", "three", "four"]
+            firstWindow = Window(lines, 0, 1)
+            secondWindow = Window(lines, 3, 4)
+            self.assertFalse(firstWindow.hasOverlap(secondWindow))
+        def test_if_windows_touch_then_overlap_and_can_join(self):
+            lines = ["zero", "one", "two", "three", "four", "five"]
+            firstWindow = Window(lines, 1, 2)
+            secondWindow = Window(lines, 3, 4)
+            self.assertTrue(firstWindow.hasOverlap(secondWindow))
+            joinResult, numPrepended = firstWindow.join(secondWindow)
+            self.assertEqual(["one", "two", "three", "four"], joinResult.getLines())
+            self.assertEquals(2, numPrepended)
+        def test_if_windows_overlap_then_overlap_and_can_join(self):
+            lines = ["zero", "one", "two", "three", "four", "five"]
+            firstWindow = Window(lines, 1, 2)
+            secondWindow = Window(lines, 2, 4)
+            self.assertTrue(firstWindow.hasOverlap(secondWindow))
+            joinResult, numPrepended = firstWindow.join(secondWindow)
+            self.assertEqual(["one", "two", "three", "four"], joinResult.getLines())
+            self.assertEquals(1, numPrepended)
+
+    class TestHighlight(unittest.TestCase):
+        def test_it(self):
+            h = Highlight(3, 5)
+            self.assertEquals([3, 4, 5], h.getHighlights())
+            h.shift(3)
+            self.assertEquals([6, 7, 8], h.getHighlights())
 
     class TestHighlightedWindow(unittest.TestCase):
         def test_when_two_windows_touch_then_joined_correctly_first_highlight(self):
