@@ -1,8 +1,8 @@
-from algorithm import HighlightedWindow
-from algorithm import Window
-from algorithm import Highlight
-from algorithm import unindentAndCheck
-from algorithm import copyHighlight
+from stringListCompare import HighlightedWindow
+from stringListCompare import Window
+from stringListCompare import Highlight
+from stringListCompare import unindentAndCheck
+from stringListCompare import copyHighlight
 
 def makeRst(w, markupLanguage):
     if not isinstance(w, HighlightedWindow):
