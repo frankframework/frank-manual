@@ -5,6 +5,7 @@ from stringListCompare import ExpectedUpdate
 from stringListCompare import HighlightedWindow
 from stringListCompare import comparatorIndentInsensitive
 from stringListCompare import comparatorIndentSensitive
+from stringListCompare import sortedByFirst
 from rst import makeRst
 
 class GeneratedSnippet:
@@ -28,13 +29,9 @@ class Snippet:
         self._markupLanguage = "none"
     def getSnippetName(self):
         return self._snippetName
-    def getNumContext(self):
-        return self._numContext
     def setNumContext(self, numContext):
         checkNonNegativeInt(numContext)
         self._numContext = numContext
-    def getMarkupLanguage(self):
-        return self._markupLanguage
     def setMarkupLanguage(self, markupLanguage):
         if not type(markupLanguage) is str:
             raise TypeError("markupLanguage should be str")
@@ -51,13 +48,13 @@ class Snippet:
         joinResult = windowList[0]
         for w in windowList[1:]:
             if not joinResult.hasOverlap(w):
-                return None, "Modifications to combine in this snippet do not touch"
+                return None, None, "Modifications to combine in this snippet do not touch"
             joinResult = joinResult.join(w)
         lines, error = makeRst(joinResult, self._markupLanguage)
         result = None
         if lines is not None:
             result = GeneratedSnippet(self._snippetName, lines)
-        return result, error
+        return result, joinResult, error
 
 # We want to compare relative paths. We do not want
 # confusion over Windows or Linux path separators.
@@ -148,21 +145,28 @@ class FileModifyDifference(FileDifference):
         if comparison.hasComparisonError():
             return None, comparison.getComparisonError()
         windows = comparison.getWindows()
-        for i in range(0, len(self._changes)):
-            if self._changes[i].isHighlighted():
-                windows[i].highlightAll()
+        self._applyRequestedHighlights(windows)
         snippetNames = self.getWrittenSnippetNames()
         snippetsByName, error = self._getSnippetsByName()
         if error is not None:
             return None, error
         result = []
+        editRegions = []
         for snippetName in snippetNames:
             snippetWindows = [windows[i] for i in range(0, len(windows)) if self._changes[i].getSnippetName() == snippetName]
-            snippet, error = snippetsByName[snippetName].apply(snippetWindows)
+            snippet, editRegion, error = snippetsByName[snippetName].apply(snippetWindows)
             if error is not None:
                 return None, error
             result.append(snippet)
+            editRegions.append(editRegion)
+        error = self._checkEditRegionsOfDifferentSnippetsDontOverlap(editRegions)
+        if error is not None:
+            return None, error
         return result, None
+    def _applyRequestedHighlights(self, windows):
+        for i in range(0, len(self._changes)):
+            if self._changes[i].isHighlighted():
+                windows[i].highlightAll()
     def _getSnippetsByName(self):
         result = dict()
         for c in self._changes:
@@ -173,6 +177,16 @@ class FileModifyDifference(FileDifference):
             else:
                 result[key] = c.getSnippet()
         return result, None
+    def _checkEditRegionsOfDifferentSnippetsDontOverlap(self, editRegions):
+        erl = sortedByFirst(editRegions)
+        if len(erl) <= 1:
+            return None
+        else:
+            noOverlap = all([not erl[i-1].hasOverlap(erl[i]) for i in range(1, len(erl))])
+            if noOverlap:
+                return None
+            else:
+                return "The snippets generated from this file are not independent"
 
 class TreeCompareItem:
     def __init__(self, relPath):
@@ -254,7 +268,7 @@ class TreeComparison:
         pathsOfActualFileDiffs = set(self._items.keys())
         pathsOfExpectedFileDiffs = set([d.getRelFileName() for d in self._fileDifferences])
         pathsOnlyExpected = pathsOfExpectedFileDiffs - pathsOfActualFileDiffs
-        errors = ["Expected update not matches about file: {0}".format(p) for p in pathsOnlyExpected]
+        errors = ["Expected update not matched about file: {0}".format(p) for p in pathsOnlyExpected]
         if len(errors) >= 1:
             return errors
         for fd in self._fileDifferences:
@@ -268,7 +282,7 @@ class TreeComparison:
             names = fd.getWrittenSnippetNames()
             duplicates = names & existingSnippets
             for d in duplicates:
-                errors.append("Duplicate definition of snippet {0)".format(d))
+                errors.append("Duplicate definition of snippet {0}".format(d))
             existingSnippets = existingSnippets | names
         return errors
 
@@ -299,6 +313,33 @@ line 2""".replace("\r\n", "\n").split("\n")
     different = """other line 1
 other line 2
 other line 3""".replace("\r\n", "\n").split("\n")
+
+    oldTwoWindows = """line 1
+line 2
+line 3""".replace("\r\n", "\n").split("\n")
+
+    newTwoWindows = """line 1
+inserted
+line 2
+replaced""".replace("\r\n", "\n").split("\n")
+
+    twoWindowsCombinedRst = """.. code-block:: none
+
+   line 1
+   inserted
+   line 2
+   replaced""".replace("\r\n", "\n").split("\n")
+
+    twoWindowsFirstRst = """.. code-block:: none
+
+   ...
+   inserted
+   ...""".replace("\r\n", "\n").split("\n")
+
+    twoWindowsSecondRst = """.. code-block:: none
+
+   ...
+   replaced""".replace("\r\n", "\n").split("\n")
 
     class TestTreeComparison(unittest.TestCase):
         def test_when_no_expectations_and_equal_file_then_no_errors(self):
@@ -343,6 +384,24 @@ other line 3""".replace("\r\n", "\n").split("\n")
             self.assertEquals(len(snippets), 1)
             self.assertEquals(snippets[0].getName(), "mySnippet")
             self.assertEquals(snippets[0].getLines(), snippetBase2ExtraLineHighlightContextXml)
+        def test_when_file_modify_expected_but_delete_found_then_error(self):
+            mySnippet = Snippet("mySnippet")
+            change = Change(0, 1, False, mySnippet)
+            fileDiff = FileModifyDifference(RelPath(["fileName"]))
+            fileDiff.addChange(change)
+            comparison = TreeComparison([fileDiff])
+            comparison.addOld(RelPath(["fileName"]), base)
+            snippets, errors = comparison.run()
+            self.assertNonEmptyStringList(errors)
+        def test_when_file_modify_expected_but_add_found_then_error(self):
+            mySnippet = Snippet("mySnippet")
+            change = Change(0, 1, False, mySnippet)
+            fileDiff = FileModifyDifference(RelPath(["fileName"]))
+            fileDiff.addChange(change)
+            comparison = TreeComparison([fileDiff])
+            comparison.addNew(RelPath(["fileName"]), base)
+            snippets, errors = comparison.run()
+            self.assertNonEmptyStringList(errors)
         def test_when_file_add_expected_and_satisfied_then_no_error(self):
             fileDiff = FileAddDifference(RelPath(["fileName"]))
             comparison = TreeComparison([fileDiff])
@@ -371,11 +430,95 @@ other line 3""".replace("\r\n", "\n").split("\n")
             comparison.addNew(RelPath(["fileName"]), base)
             snippets, errors = comparison.run()
             self.assertNonEmptyStringList(errors)
-
+        def test_when_expectation_about_unknown_file_then_error(self):
+            fileDiff = FileDeleteDifference(RelPath(["fileName"]))
+            comparison = TreeComparison([fileDiff])
+            comparison.addOld(RelPath(["otherFileName"]), base)
+            snippets, errors = comparison.run()
+            self.assertNonEmptyStringList(errors)
+        def test_two_windows_when_one_rst_requested_and_overlap_then_rst_from_join(self):
+            mySnippet = Snippet("mySnippet")
+            mySnippet.setNumContext(2)
+            firstChange = Change(0, 1, False, mySnippet)
+            secondChange = Change(1, 1, False, mySnippet)
+            fileDiff = FileModifyDifference(RelPath(["fileName"]))
+            fileDiff.addChange(firstChange)
+            fileDiff.addChange(secondChange)
+            comparison = TreeComparison([fileDiff])
+            comparison.addOld(RelPath(["fileName"]), oldTwoWindows)
+            comparison.addNew(RelPath(["fileName"]), newTwoWindows)
+            snippets, errors = comparison.run()
+            self.assertIsNone(errors)
+            self.assertEquals(len(snippets), 1)
+            self.assertEquals(snippets[0].getName(), "mySnippet")
+            self.assertEquals(snippets[0].getLines(), twoWindowsCombinedRst)
+        def test_two_windows_when_one_rst_requested_and_no_overlap_then_error(self):
+            mySnippet = Snippet("mySnippet")
+            mySnippet.setNumContext(0)
+            firstChange = Change(0, 1, False, mySnippet)
+            secondChange = Change(1, 1, False, mySnippet)
+            fileDiff = FileModifyDifference(RelPath(["fileName"]))
+            fileDiff.addChange(firstChange)
+            fileDiff.addChange(secondChange)
+            comparison = TreeComparison([fileDiff])
+            comparison.addOld(RelPath(["fileName"]), oldTwoWindows)
+            comparison.addNew(RelPath(["fileName"]), newTwoWindows)
+            snippets, errors = comparison.run()
+            self.assertNonEmptyStringList(errors)
+        def test_two_windows_when_two_rst_requested_and_no_overlap_then_two_rst(self):
+            myFirstSnippet = Snippet("myFirstSnippet")
+            mySecondSnippet = Snippet("mySecondSnippet")
+            myFirstSnippet.setNumContext(0)
+            mySecondSnippet.setNumContext(0)
+            firstChange = Change(0, 1, False, myFirstSnippet)
+            secondChange = Change(1, 1, False, mySecondSnippet)
+            fileDiff = FileModifyDifference(RelPath(["fileName"]))
+            fileDiff.addChange(firstChange)
+            fileDiff.addChange(secondChange)
+            comparison = TreeComparison([fileDiff])
+            comparison.addOld(RelPath(["fileName"]), oldTwoWindows)
+            comparison.addNew(RelPath(["fileName"]), newTwoWindows)
+            snippets, errors = comparison.run()
+            self.assertIsNone(errors)
+            self.assertEquals(len(snippets), 2)
+            self.assertEquals(snippets[0].getName(), "myFirstSnippet")
+            self.assertEquals(snippets[0].getLines(), twoWindowsFirstRst)
+            self.assertEquals(snippets[1].getName(), "mySecondSnippet")
+            self.assertEquals(snippets[1].getLines(), twoWindowsSecondRst)
+        def test_two_windows_when_two_rst_requested_but_overlap_then_error(self):
+            myFirstSnippet = Snippet("myFirstSnippet")
+            mySecondSnippet = Snippet("mySecondSnippet")
+            myFirstSnippet.setNumContext(2)
+            mySecondSnippet.setNumContext(2)
+            firstChange = Change(0, 1, False, myFirstSnippet)
+            secondChange = Change(1, 1, False, mySecondSnippet)
+            fileDiff = FileModifyDifference(RelPath(["fileName"]))
+            fileDiff.addChange(firstChange)
+            fileDiff.addChange(secondChange)
+            comparison = TreeComparison([fileDiff])
+            comparison.addOld(RelPath(["fileName"]), oldTwoWindows)
+            comparison.addNew(RelPath(["fileName"]), newTwoWindows)
+            snippets, errors = comparison.run()
+            self.assertNonEmptyStringList(errors)
+        def test_when_same_snippet_used_for_multiple_files_then_error(self):
+            mySnippet = Snippet("mySnippet")
+            firstChange = Change(0, 1, False, mySnippet)
+            firstFileDiff = FileModifyDifference(RelPath(["fileName"]))
+            firstFileDiff.addChange(firstChange)
+            secondChange = Change(0, 1, False, mySnippet)
+            secondFileDiff = FileModifyDifference(RelPath(["otherFileName"]))
+            secondFileDiff.addChange(secondChange)
+            comparison = TreeComparison([firstFileDiff, secondFileDiff])
+            comparison.addOld(RelPath(["fileName"]), base)
+            comparison.addNew(RelPath(["fileName"]), extraLine)
+            comparison.addOld(RelPath(["otherFileName"]), base)
+            comparison.addNew(RelPath(["otherFileName"]), extraLine)
+            snippets, errors = comparison.run()
+            self.assertNonEmptyStringList(errors)
         def assertNonEmptyStringList(self, sl):
             self.assertIs(type(sl), list)
             self.assertTrue(len(sl) >= 1)
             for item in sl:
                 self.assertIs(type(item), str)
-
+            
     unittest.main()

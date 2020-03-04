@@ -75,6 +75,8 @@ class Window:
         self._lines = lines
         self._first = first
         self._last = last
+    def getNumFirst(self):
+        return self._first
     def getLines(self):
         return [self._lines[i] for i in range(self._first, self._last + 1)]
     def isWindowContainsFirstLine(self):
@@ -142,6 +144,8 @@ class HighlightedWindow:
             raise TypeError("Should be Window")
         self._window = w
         self._highlights = []
+    def getNumFirst(self):
+        return self._window.getNumFirst()
     def getLines(self):
         return self._window.getLines()
     def isWindowContainsFirstLine(self):
@@ -172,6 +176,13 @@ class HighlightedWindow:
             newHighlight.shift(numPrepended)
             result._highlights.append(newHighlight)
         return result
+
+def sortedByFirst(windows):
+    if not type(windows) is list:
+        raise TypeError("List expected, which should have Window instances")
+    if not all([isinstance(w, HighlightedWindow) for w in windows]):
+        raise TypeError("Not all elements are HighlightedWindow")
+    return sorted(windows, key=lambda w: w.getNumFirst())
 
 class Comparison:
     def __init__(self, oldLines, newLines, expectedUpdates, comparator):
@@ -390,5 +401,10 @@ if __name__ == "__main__":
             windows[0].widen(1)
             windows[1].widen(1)
             self.assertFalse(windows[0].hasOverlap(windows[1]))
-
+        def test_sort(self):
+            lines = ["aap", "noot", "mies"]
+            w1 = HighlightedWindow(Window(lines, 1, 1))
+            w2 = HighlightedWindow(Window(lines, 2, 2))
+            self.assertEquals(sortedByFirst([w2, w1]), [w1, w2])
+            self.assertEquals(sortedByFirst([w1, w2]), [w1, w2])
     unittest.main()
