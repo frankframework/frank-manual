@@ -1,0 +1,2 @@
+dir1/f1 line 0
+dir1/f1 line 1
