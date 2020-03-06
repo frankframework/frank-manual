@@ -45,6 +45,8 @@
 #
 from buildDownloadZips import createAllDownloadZips
 from createSnippets import createAllSnippets
+from createSnippets import META_YML
+
 import os
 
 downloadZipsDir = "docs/source/downloads"
@@ -52,5 +54,5 @@ downloadsDescriptor = "buildDownloadZips.txt"
 tutorialStepsDir = "srcSteps"
 snippetsDir = "docs/source/snippets"
 
-createAllDownloadZips(downloadsDescriptor, downloadZipsDir)
+createAllDownloadZips(downloadsDescriptor, downloadZipsDir, set([META_YML]))
 createAllSnippets(tutorialStepsDir, snippetsDir)

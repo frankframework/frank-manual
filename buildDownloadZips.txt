@@ -7,3 +7,4 @@ src/Frank2Manual/tests/NewHorizons tests/NewHorizons
 src/ladybug
 src/advancedDevelopmentProperties
 src/deploymentTomcat
+srcSteps/sandbox/v01 sandbox/v01

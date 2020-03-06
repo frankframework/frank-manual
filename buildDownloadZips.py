@@ -24,8 +24,11 @@ class ZipWriter:
         self._base = base
         self._zipObj = zipObj
 
-    def writeFile(self, folderName, fname):
+    def writeFile(self, folderName, fname, toOmit):
         print "INFO: writeFile folderName {0} fname {1}".format(folderName, fname)
+        if fname in toOmit:
+            print "INFO: Omit from zip: folderName {0} fname {1}".format(folderName, fname)
+            return
         original = os.path.join(folderName, fname)
         target = self._getTarget(folderName, fname)
         with open(original, 'rb') as fileToInclude:
@@ -42,7 +45,7 @@ class ZipWriter:
         print "INFO: target {0}".format(target)
         return target
 
-def createDownloadZip(target, sourceDir):
+def createDownloadZip(target, sourceDir, toOmit):
     target = os.path.normpath(target)
     sourceDir = os.path.normpath(sourceDir)
     if not os.path.exists(sourceDir):
@@ -61,7 +64,7 @@ def createDownloadZip(target, sourceDir):
     with ZipFile(target, "w") as z:
         zipWriter = ZipWriter(sourceDir, z)
         walkTrackedFilesInDirectory(sourceDir, \
-            lambda folderName, fname: zipWriter.writeFile(folderName, fname))
+            lambda folderName, fname: zipWriter.writeFile(folderName, fname, toOmit))
 
 def makeTargetSubdir(targetFileName, targetDir):
     if not type(targetFileName) is str:
@@ -83,7 +86,7 @@ def makeTargetSubdir(targetFileName, targetDir):
 
     makeDirectoryIfNotPresent("/".join(subdirComponents), targetDir)
 
-def createDownloadZipFromLine(line, targetDir):
+def createDownloadZipFromLine(line, targetDir, toOmit):
     fields = line.split()
     source = fields[0]
     if len(fields) == 1 :
@@ -94,16 +97,16 @@ def createDownloadZipFromLine(line, targetDir):
         targetFileName = fields[1] + ".zip"
         makeTargetSubdir(targetFileName, targetDir)
         target = os.path.join(targetDir, targetFileName)
-    createDownloadZip(target, source)
+    createDownloadZip(target, source, toOmit)
 
-def handleLine(line, targetDir):
+def handleLine(line, targetDir, toOmit):
     line = line.strip()
     if len(line) == 0:
         return
     if line[0] == "#":
         return
-    createDownloadZipFromLine(line, targetDir)
+    createDownloadZipFromLine(line, targetDir, toOmit)
 
-def createAllDownloadZips(descriptorFile, targetDir):
+def createAllDownloadZips(descriptorFile, targetDir, toOmit):
     makeDirectoryIfNotPresent(targetDir)
-    walkLines(descriptorFile, lambda line: handleLine(line, targetDir))
+    walkLines(descriptorFile, lambda line: handleLine(line, targetDir, toOmit))
