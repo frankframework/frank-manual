@@ -1,5 +1,6 @@
 import os
 import TutorialSteps
+from fileUtils import makeDirectoryIfNotPresent
 
 META_YML = "meta.yml"
 
@@ -25,7 +26,8 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
         for error in errors:
             print "ERROR: " + error
     for snippet in snippets:
-        outputFileName = os.path.join(snippetsDir, configName, stepName, snippet.getName() + ".txt")
+        makeDirectoryIfNotPresent("/".join([configName, stepName]), os.path.abspath(snippetsDir))
+        outputFileName = os.path.join(os.path.abspath(snippetsDir), configName, stepName, snippet.getName() + ".txt")
         with open(outputFileName, "w") as f:
             for line in snippet.getLines():
                 f.write(line + "\n")
@@ -40,6 +42,7 @@ def createFrankConfigSnippets(configRoot, snippetsDir):
         createStepSnippets(name, stepName, stepDirs[stepIdx-1], stepDirs[stepIdx], snippetsDir)
 
 def createAllSnippets(tutorialStepsDir, snippetsDir):
+    makeDirectoryIfNotPresent(snippetsDir)
     tutorialStepsRoot = TutorialSteps.GitDirectoryTree(tutorialStepsDir)
     for frankConfigDir in tutorialStepsRoot.getSubdirs():
         createFrankConfigSnippets(frankConfigDir, snippetsDir)

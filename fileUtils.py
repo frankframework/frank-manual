@@ -4,7 +4,7 @@
 
 import os
 
-def makeDirectoryIfNotPresent(linuxStyleRelativePath):
+def makeDirectoryIfNotPresent(linuxStyleRelativePath, parent=os.getcwd()):
     if not type(linuxStyleRelativePath) is str:
         raise TypeError("String expected")
     if linuxStyleRelativePath == "":
@@ -17,8 +17,7 @@ def makeDirectoryIfNotPresent(linuxStyleRelativePath):
         raise ValueError("Path is not relative")
     if "." in linuxStyleRelativePath:
         raise ValueError("Paths with . or .. not supported")
-    cmd = "mkdir -p {0}".format(linuxStyleRelativePath)
-    curPath = os.getcwd()
+    curPath = parent
     for component in linuxStyleRelativePath.split("/"):
         curPath = os.path.join(curPath, component)
         if not os.path.exists(curPath):

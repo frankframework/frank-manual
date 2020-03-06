@@ -47,7 +47,7 @@ from buildDownloadZips import createAllDownloadZips
 from createSnippets import createAllSnippets
 import os
 
-downloadZipsDir = os.path.normpath("docs/source/downloads")
+downloadZipsDir = "docs/source/downloads"
 downloadsDescriptor = "buildDownloadZips.txt"
 tutorialStepsDir = "srcSteps"
 snippetsDir = "docs/source/snippets"

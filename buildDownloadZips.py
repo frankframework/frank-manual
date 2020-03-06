@@ -2,6 +2,7 @@ import os
 import sys
 import subprocess
 from zipfile import ZipFile
+from fileUtils import makeDirectoryIfNotPresent
 
 WINDOWS_LINE_ENDING = b'\r\n'
 UNIX_LINE_ENDING = b'\n'
@@ -62,13 +63,37 @@ def createDownloadZip(target, sourceDir):
         walkTrackedFilesInDirectory(sourceDir, \
             lambda folderName, fname: zipWriter.writeFile(folderName, fname))
 
+def makeTargetSubdir(targetFileName, targetDir):
+    if not type(targetFileName) is str:
+        raise TypeError("String expected")
+    if targetFileName == "":
+        raise ValueError("Path should not be empty")
+    if "\\" in targetFileName:
+        raise ValueError("Path is not Linux-style")
+    if targetFileName != targetFileName.strip():
+        raise ValueError("Path is not stripped")
+    if targetFileName[0] == "/":
+        raise ValueError("Path is not relative")
+    components = targetFileName.split("/")
+    if len(components) <= 1:
+        return
+    subdirComponents = components[0:-1]
+    if any(["." in c for c in subdirComponents]):
+        raise ValueError("Paths with . or .. not supported")
+
+    makeDirectoryIfNotPresent("/".join(subdirComponents), targetDir)
+
 def createDownloadZipFromLine(line, targetDir):
     fields = line.split()
     source = fields[0]
     if len(fields) == 1 :
-        target = os.path.join(targetDir, os.path.basename(source) + ".zip")
+        targetFileName = os.path.basename(source) + ".zip"
+        makeTargetSubdir(targetFileName, targetDir)
+        target = os.path.join(targetDir, targetFileName)
     else :
-        target = os.path.join(targetDir, fields[1] + ".zip")
+        targetFileName = fields[1] + ".zip"
+        makeTargetSubdir(targetFileName, targetDir)
+        target = os.path.join(targetDir, targetFileName)
     createDownloadZip(target, source)
 
 def handleLine(line, targetDir):
@@ -80,4 +105,5 @@ def handleLine(line, targetDir):
     createDownloadZipFromLine(line, targetDir)
 
 def createAllDownloadZips(descriptorFile, targetDir):
+    makeDirectoryIfNotPresent(targetDir)
     walkLines(descriptorFile, lambda line: handleLine(line, targetDir))
