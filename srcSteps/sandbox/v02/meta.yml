@@ -1,0 +1,10 @@
+- file:
+    path: charm.txt
+    change:
+        - insert: 1
+          highlight: True
+          snippet: addLatin
+- snippet:
+    name: addLatin
+    context: 20
+    markup: none

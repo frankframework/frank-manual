@@ -14,4 +14,3 @@ Below you see the table of contents:
    deploying/deploying
    advancedDevelopment/advancedDevelopment
    reference/reference
-

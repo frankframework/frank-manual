@@ -1,45 +1,7 @@
-#!/usr/bin/python
-#
-# Please run this script from your checkout directory of
-# ibis4manual.
-#
-# This script is needed to build the manual for the Frank!Framework.
-# Within the manual code we want download links to Frank code that
-# complements the explanations in the text. This script produces
-# these zip files from the subdirectories of the src directory.
-#
-# The produced zips appear in download links within the manual.
-# ReadTheDocs thus needs access to the .zip files during its build.
-# Please run this script before executing the ReadTheDocs build.
-#
-# This script reads a file "buildDownloadZips.txt". This
-# file lists all subdirectories of ibis4manual that need
-# to be zipped. Only files tracked with git are added to the
-# zips. These zips appear in directory
-# "docs/source/downloads".
-#
-# Why do we only add tracked files to the download zips? As
-# an example, consider ibisdoc.xsd, the XML schema that
-# defines the grammar of the Frank language. This file
-# is typically downloaded from the Frank!Framework. Users
-# of the manual are advised to download ibisdoc.xsd
-# from there. Therefore, the download zips should not contain
-# ibisdoc.xsd.
-#
-# On the other hand, ibisdoc.xsd is useful for editors
-# of this ibis4manual project, because they want
-# support when they edit Frank code. Therefore,
-# ibisdoc.xsd appears in the checkout. The solution
-# is to add ibisdoc.xsd to .gitignore and to omit
-# ignored files from download zips.
-#
 import os
 import sys
 import subprocess
 from zipfile import ZipFile
-
-targetDir = os.path.normpath("docs/source/downloads")
-downloadsDescriptor = "buildDownloadZips.txt"
 
 WINDOWS_LINE_ENDING = b'\r\n'
 UNIX_LINE_ENDING = b'\n'
@@ -100,7 +62,7 @@ def createDownloadZip(target, sourceDir):
         walkTrackedFilesInDirectory(sourceDir, \
             lambda folderName, fname: zipWriter.writeFile(folderName, fname))
 
-def createDownloadZipFromLine(line):
+def createDownloadZipFromLine(line, targetDir):
     fields = line.split()
     source = fields[0]
     if len(fields) == 1 :
@@ -109,17 +71,13 @@ def createDownloadZipFromLine(line):
         target = os.path.join(targetDir, fields[1] + ".zip")
     createDownloadZip(target, source)
 
-def handleLine(line):
+def handleLine(line, targetDir):
     line = line.strip()
     if len(line) == 0:
         return
     if line[0] == "#":
         return
-    createDownloadZipFromLine(line)
+    createDownloadZipFromLine(line, targetDir)
 
-def createAllDownloadZips(descriptorFile):
-    walkLines(descriptorFile, handleLine)
-
-if not os.path.exists(targetDir):
-    os.makedirs(targetDir)
-createAllDownloadZips(downloadsDescriptor)
+def createAllDownloadZips(descriptorFile, targetDir):
+    walkLines(descriptorFile, lambda line: handleLine(line, targetDir))
