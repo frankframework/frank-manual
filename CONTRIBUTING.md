@@ -1,53 +1,24 @@
 # CONTRIBUTING
 
-This file explains how to contribute to this project.
+This file explains how to contribute to the Frank!Manual. Before investing your time, you should know whether you have the right build environment. Therefore we start by listing the basic characteristics of the build environment you need. Then we give some guidelines for the contents of the manual. To write the manual, you also have to understand how the work on the manual is automated. First we explain what automation tools we have and what they do. Finally it is explained how to use these tools.
 
-## Building the Manual
+## Built Environment
 
-Building the manual involves the following steps:
+The manual is developed with the following build environment:
+* Windows
+* Git (version control)
+* MinGW (command prompt)
+* Python 2.7 (programming language)
+* Pip (package manager for Python libraries)
 
-1. Build download zips using buildDownloadZips.py.
-2. Build the documentation locally or let ReadTheDocs build it.
+You can download Git from the following link: https://git-scm.com/download/win. The installer of Git also installs MinGW. You also need to install some Python packages usign pip:
 
-### Build download zips
-
-As said in `README.md`, some Franks in directory `src` should be available as download
-links. Therefore, these subdirectories should be zipped and the zips should appear
-in directory `docs/source/downloads`. All download zips appear in the same directory
-to distinguish generated files from files edited manually. Please use
-`buildDownloadZips.py` to execute this step. Before pushing your changes,
-please run `buildDownloadZips.py` and include `docs/source/downloads`
-in your commit. These files are checked-in because ReadTheDocs cannot build them.
-
-Script `buildDownloadZips.py` requires Python 2.7. It works both for Windows and Linux.
-It replaces Windows line endings with Linux line endings for each file included in a
-download zip. This way, the same zips are produced from Windows or Linux checkouts
-of the `src` directory.
-
-If you edit files in the `docs` directory that contain Frank config, please sync it with the Frank configs in the `src` directory and vice versa. If you work on section Getting Started | Configuration Management, also please sync directories `src/gettingStarted` and `src/gettingStartedAfterConfig` and the download zips produced from them. The former is the solution of doing section Configuration Management and the subsequent sections on New Horizons. The latter is the solution of only doing Configuration Management.
-
-### Building the documentation.
-
-You can build the documentation using http://readthedocs.io or locally on your laptop.
-The former happens automatically when you push your changes to GitHub, because the
-server has a git hook to ReadTheDocs. The formatted manual can
-be found at http://frank-manual.readthedocs.io. This is the official version. If you
-do not have permission to push directly to GitHub, then please make a pull request.
-
-Please check modifications to the manual first by reviewing them on your laptop.
-After building the download links as explained before, use `make html` (Linux) or the script `make.bat html` (Windows). Before these scripts work, please do the following:
-
-* Make sure you have Python 2.7 and Pip. Information on how to install these is available on the internet.
 * `pip install sphinx`
 * `pip install sphinx_rtd_theme`
 
+You may be able to use Linux instead of Windows and you may be able to do without MinGW. When using other tools, please check carefully whether everything works well.
+
 ## Guidelines for the contents
-
-Here are some guidelines for updating the manual.
-
-### Back up your statements with example code
-
-When you state things about the Frank!Framework, it is wise to provide Frank code that proves your statements. Every section of the manual should have its own Frank with backup code. Each Frank has its own subdirectory of the `src` directory as explained in `README.md`. Please keep your examples grouped by manual section. It would be confusing to have an example Frank that applies to multiple unrelated parts of the manual. The name of an example Frank should reveal to which manual text it applies.
 
 ### Mind your audience
 
@@ -79,9 +50,9 @@ In January 2020, the company Integration Partners changes their name to WeAreFra
 
 * WeAreFrank!: The name of the company that produces the Frank!Framework. The exclamation sign is part of the company name, the dot isn't.
 * Frank!Framework: The product being documented in this manual. Note that the exclamation mark is part of the name and that there are two capitals. The dot is not part of the name.
-* Frank: A solution produced with the Frank!Framework that can be deployed to a customer. This is the combination of the Frank!Framework and Frank configs deployed on it.
+* Frank: A solution produced with the Frank!Framework. This is the combination of the Frank!Framework and Frank configs deployed on it.
 * Franks: Plural of Frank.
-* Frank config(uration): A set of XML files and property files that configures the Frank!Framework to provide a solution for a customer. A Frank config is typically created by a Frank developer. This word is also used for a set of adapters that is defined in or included from the same ``Configuration.xml`` file. When you have multiple ``Configuration.xml`` files within your Frank, you have multiple Frank configs within your Frank.
+* Frank config(uration): A set of XML files and property files that configures the Frank!Framework to provide a solution for a customer. A Frank config is typically created by a Frank developer. This word is also used for a set of adapters that is defined in or included from the same ``Configuration.xml`` file. When you have multiple ``Configuration.xml`` files within your Frank, you have multiple Frank configs.
 * ~Frank code~: For Java developers who edit this manual, it is tempting to use this phrase. We kindly ask them to write about "Frank config" instead. You do not have to be a programmer to use the Frank!Framework.
 * ~Frank language~: Franks are written in XML, not in a propriatary programming language. You can say that Frank configurations are XML documents that satisfy the Frank configuration schema.
 * Frank config(uration) schema: The XML schema document that defines what XML code is valid for configuring the Frank!Framework.
@@ -98,3 +69,37 @@ Do we write "This section explains..." or "This subsection explains..." or even 
 * Section: Second-level header, for example Getting Started | Hello World Source Code. Another example is Testing Frank Configurations | Ladybug.
 * Subsection: Third-level header, for example Getting Started | Hello World Source Code | Adapter. Another example is Testing Frank Configurations | Ladybug | Preparations.
 * Sub-subsection: Everything deeper.
+
+## Automation tools
+
+### Sphinx and ReadTheDocs
+
+The manual text is written in the markup language reStructuredText. In the directory ``docs/source`` there are text files with extension ``.rst``. These files contain text and formatting directives. There are many sources with additional information on the internet. The Python tool Sphinx processes these text files. Sphinx interprets the formatting directives within the ``.rst`` files to make up section headings, to build cross references, to import pictures, etc. Sphinx can make up the document in HTML and PDF. There is an options to build a single HTML page from all reStructuredText files, and another option to create a separate page for each reStructuredText file. Until now we only tested multi-page HTML. With this option, Sphinx builds a file ``index.html`` to hold the table of contents, providing links to the chapter/section/subsection pages.
+
+When you have set up your build environment, you can run Sphinx on your development PC to get a test version of the Frank!Manual. Building also happens automatically when you push your changes to GitHub. When a new commit is pushed, GitHub does a HTTP request to http://www.readthedocs.io, the website of ReadTheDocs. That site picks up the latest version of the manual files and runs Sphinx on them. The result is the manual you can see on http://frank-manual.readthedocs.io.
+
+### TutorialSteps
+
+Please remember the guideline to write text about the Frank!Framework as a tutorial. You invite the reader to do things with the Frank!Framework and to check the results of her action. This way of writing comes with an additional responsibility for you as a technical writer. The work that the reader does should have the effect you intend. As a technical writer, you should do the work you request from the reader and test the resulting Frank configs yourself.
+
+These Frank configs are checked in into this Git repository, but before we can tell how an additional issue has to be addressed. The Frank configs for the manual that you tested once will change, for example because the Frank!Framework is improved. When this happens, you have to update the Frank config backed up in this Git repository and also all related manual text. Doing this manually would be time-consuming and error-prone. Therefore, additional Python scripts have been created to automate this synchronisation. They are implemented in directory "TutorialSteps".
+
+TutorialSteps requires that you do not only check-in the final tested Frank config that a manual reader produces, but also all intermediate versions that the reader will produce while making the tutorial. TutorialSteps then compares subsequent intermediate versions and produces reStructuredText code snippets. These snippets can be included using reStructuredText directives. To summarize, you do not write out updates to Frank configs in the manual source code, which would be code duplication. You store a list of snapshots and from them you generate the reStructuredText that explains each update step the reader should execute.
+
+TutorialSteps has an additional feature. It checks whether the differences between subsequent versions are as expected. With each version, you add a YAML file named "meta.yml" that specifies what files are different from the previous version and also the nature of these differences. If you accidently introduce other differences, TutorialSteps will warn you. You can use this feature to see whether your manual text is complete. Compare the updates you explain to the difference expressed in "meta.yml". TutorialSteps makes sure that the description in "meta.yml" is in agreement with the actual differences with the previous snapshot.
+
+### Download zips
+
+The reader wants to download Frank configurations that you as a technical writer create. The manual has download links that provide these Frank configs as zip files. These zips are created by the script "buildDownloadZips.py". In the file "buildDownloadZips.txt" you configure the directories to zip and the output files to produce. Please do not call "buildDownloadZips.py" directly, but use the "generateAll.py" script instead.
+
+## Building the Frank!Manual
+
+Building the manual involves the following steps:
+
+1. Run Python script "generateAll.py". This will run TutorialSteps and generate the download zips.
+2. Build the documentation locally using "make.bat html".
+3. If you are satisfied, check-in your work and push your changes. ReadTheDocs will build a new version of the Frank!Manual.
+
+What files and directories do you have to check in into Git and how do you know whether a file is generated? To answer this question, you have to know that ReadTheDocs does not know "generateAll.py", the entry point to TutorialSteps and producing download zips. Therefore, the results of "generateAll.py" should be checked in. All generated files appear in "docs/source/downloads" (download zips) and "docs/source/snippets" (generated snippets of reStructuredText).
+
+There is only one directory you do not check in, and it is "docs/build". This directory contains the output of Sphinx, which can also be generated by ReadTheDocs.
