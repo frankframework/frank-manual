@@ -1,0 +1,12 @@
+- file:
+    path: configurations/NewHorizons/ConfigurationIngestBooking.xml
+    change:
+        - old: 1
+          new: 2
+          highlight: true
+          snippet: addTransactionAttribute
+- snippet:
+    name: addTransactionAttribute
+    markup: xml
+    before: 5
+    after: 8

@@ -45,20 +45,24 @@ class ZipWriter:
         print "INFO: target {0}".format(target)
         return target
 
-def createDownloadZip(target, sourceDir, toOmit):
+def createDownloadZip(target, sourceDir, toOmit, onError):
     target = os.path.normpath(target)
     sourceDir = os.path.normpath(sourceDir)
     if not os.path.exists(sourceDir):
         print "ERROR: directory does not exist: {0}".format(sourceDir)
+        onError()
         return
     if not os.path.isdir(sourceDir):
         print "ERROR: not a directory: {0}".format(sourceDir)
+        onError()
         return
     if not os.listdir(sourceDir):
         print "ERROR: empty directory {0}".format(sourceDir)
+        onError()
         return
     if target[-4:] != ".zip":
         print "ERROR: not a .zip file: {0}".format(target)
+        onError()
         return
     print "INFO: Creating downloadable file {0} from directory {1}".format(target, sourceDir)
     with ZipFile(target, "w") as z:
@@ -86,7 +90,7 @@ def makeTargetSubdir(targetFileName, targetDir):
 
     makeDirectoryIfNotPresent("/".join(subdirComponents), targetDir)
 
-def createDownloadZipFromLine(line, targetDir, toOmit):
+def createDownloadZipFromLine(line, targetDir, toOmit, onError):
     fields = line.split()
     source = fields[0]
     if len(fields) == 1 :
@@ -97,15 +101,15 @@ def createDownloadZipFromLine(line, targetDir, toOmit):
         targetFileName = fields[1] + ".zip"
         makeTargetSubdir(targetFileName, targetDir)
         target = os.path.join(targetDir, targetFileName)
-    createDownloadZip(target, source, toOmit)
+    createDownloadZip(target, source, toOmit, onError)
 
-def handleLine(line, targetDir, toOmit):
+def handleLine(line, targetDir, toOmit, onError):
     line = line.strip()
     if len(line) == 0:
         return
     if line[0] == "#":
         return
-    createDownloadZipFromLine(line, targetDir, toOmit)
+    createDownloadZipFromLine(line, targetDir, toOmit, onError)
 
 def createAllDownloadZips(descriptorFile, targetDir, toOmit):
     """
@@ -138,4 +142,12 @@ Produce download zips for the Frank!Manual.
     have the same line endings.
     """
     makeDirectoryIfNotPresent(targetDir)
-    walkLines(descriptorFile, lambda line: handleLine(line, targetDir, toOmit))
+    # Workaround because Python 2.7 does not have the nonlocal keyword.
+    # In Python 3, we could just have a boolean.
+    dictionaryContainingHasErrors = {"hasErrors": False}
+    def onError():
+        dictionaryContainingHasErrors["hasErrors"] = True
+    walkLines(descriptorFile, lambda line: handleLine(line, targetDir, toOmit, onError))
+    if dictionaryContainingHasErrors["hasErrors"]:
+        print "*** There were errors creating the download zips!"
+    return dictionaryContainingHasErrors["hasErrors"]

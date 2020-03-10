@@ -10,6 +10,8 @@ In subsections :ref:`helloIbis` to :ref:`gettingStartedLarva`, you got a basic u
 
 It was explained that Frank configurations are independent of the Frank!Framework instance on which they are deployed. In this section you setup your own instance of the Frank!Framework for development, resulting in a common directory tree for everything you do while studying the Frank!Manual. You will test your setup by deploying the "Example1" configuration of the Frank!Runner on your instance. This "Example1" config has all XML in one file, namely ``Configuration.xml``. For larger Frank configs it is better to divide the XML of a config over multiple files, such that each adapter has its own XML file. You will practice this by modifying your deployment of "Example1".
 
+.. _horizonsMultipleFilesSetUpYourInstance:
+
 Set up your instance
 --------------------
 
@@ -71,6 +73,8 @@ To set up your instance, please do the following:
 #. You see you are in Larva (number 1). Select directory "Example1" (number 2).
 #. Press "start" (number 3).
 #. Verify that your tests succeeded (number 5).
+
+.. _horizonsMultipleFilesEntityReference:
 
 Give Example1Adapter its own XML file
 -------------------------------------

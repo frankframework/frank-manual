@@ -1,0 +1,17 @@
+- file:
+    path: configurations/NewHorizons/Configuration.xml
+    change:
+        - insert: 3
+          highlight: true
+          snippet: configurationEntityDatabase
+        - insert: 1
+          highlight: true
+          snippet: configurationEntityDatabase
+- file:
+    path: configurations/NewHorizons/ConfigurationDatabase.xml
+    change: add
+- snippet:
+    name: configurationEntityDatabase
+    markup: xml
+    context: 20
+    

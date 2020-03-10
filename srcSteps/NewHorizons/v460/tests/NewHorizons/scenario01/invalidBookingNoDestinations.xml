@@ -1,0 +1,5 @@
+<booking id="1">
+  <travelerId>2</travelerId>
+  <price>500.00</price>
+  <fee>100.00</fee>
+</booking>

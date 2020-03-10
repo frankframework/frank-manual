@@ -40,36 +40,13 @@ The Frank!Framework defines a pipe ``<XsltPipe>`` that does XSLT transformations
 
 #. Create file ``projects/gettingStarted/configurations/NewHorizons/booking2destinations.xsl`` and give it the following contents:
 
-   .. literalinclude:: ../../../src/Frank2Manual/configurations/NewHorizons/booking2destinations.xsl
+   .. literalinclude:: ../../../srcSteps/NewHorizons/v470/configurations/NewHorizons/booking2destinations.xsl
       :language: xml
 
-#. Open file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``, you will continue editing it.
-#. The ``<SenderPipe>`` you added in the previous section points to path ``Exit`` now. Please update it to point to the pipe you will add in this section. Here is the update:
+#. Open file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``.
+#. Add the ``<XsltPipe>`` as shown:
 
-   .. code-block:: XML
-      :emphasize-lines: 3
-
-      ...
-        </FixedQuerySender>
-        <Forward name="success" path="getDestinations" />
-        <Forward name="failure" path="ServerError" />
-      </SenderPipe>
-      ...
-
-#. Insert the following pipe:
-
-   .. code-block:: XML
-
-      ...
-        </SenderPipe>
-        <XsltPipe
-            name="getDestinations"
-            styleSheetName="booking2destinations.xsl"
-            getInputFromSessionKey="originalMessage">
-          <Forward name="success" path="Exit"/>
-          <Forward name="failure" path="ServerError"/>
-        </XsltPipe>
-      </Pipeline>
+   .. include:: ../snippets/NewHorizons/v470/addXsltPipe.txt
 
 The pipe shown above has attribute ``getInputFromSessionKey="originalMessage"``. You may remember session keys from section :ref:`helloTestPipeline`. They are name/value pairs that accompany the message flowing through the pipeline. The ``<XsltPipe>`` should not use the output of its predecessor with ``name`` attribute ``insertBooking``. As said in the previous section, the output of that pipe is an XML coming from the database that expresses the result of the INSERT query. Session key ``originalMessage`` points to    the original input message of the pipeline, which is what we need.
 

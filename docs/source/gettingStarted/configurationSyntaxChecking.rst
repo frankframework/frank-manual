@@ -1,4 +1,4 @@
-.. configurationSyntaxChecking:
+.. _configurationSyntaxChecking:
 
 Syntax Checking and the Frank!Doc
 =================================

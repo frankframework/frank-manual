@@ -1,0 +1,13 @@
+- file:
+    path: configurations/NewHorizons/booking.xsd
+    change: add
+- file:
+    path: configurations/NewHorizons/ConfigurationIngestBooking.xml
+    change:
+        - insert: 11
+          highlight: true
+          snippet: addPipeline
+- snippet:
+    name: addPipeline
+    markup: xml
+    context: 50

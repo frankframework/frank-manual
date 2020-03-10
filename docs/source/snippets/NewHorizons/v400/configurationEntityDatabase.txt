@@ -1,0 +1,10 @@
+.. code-block:: xml
+   :emphasize-lines: 2, 3, 4, 6
+
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <!DOCTYPE configuration [
+     <!ENTITY Database SYSTEM "ConfigurationDatabase.xml">
+   ]>
+   <Configuration name="NewHorizons">
+     &Database;
+   </Configuration>

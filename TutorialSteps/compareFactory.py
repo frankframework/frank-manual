@@ -20,23 +20,41 @@ def createFileDifferences(openedYamlFile):
         return None, "In YAML, every top-level line should be like ' - file|snippet:'"
     snippetItems = []
     fileItems = []
+    predecessorItems = []
     for itemDict in parsedYaml:
         if "snippet" in itemDict:
             snippetItems.append(itemDict)
         elif "file" in itemDict:
             fileItems.append(itemDict)
+        elif "predecessor" in itemDict:
+            predecessorItems.append(itemDict)
         else:
             error = "At top level, only '- snippet' or '- file' allowed"
             return
+    predecessor, error = _getPredecessor(predecessorItems)
+    if error is not None:
+        return None, None, error
     snippets, error = _getSnippets(snippetItems)
     if error is not None:
-        return None, error
-    return _getFileComparisons(fileItems, snippets)
+        return None, predecessor, error
+    result, error = _getFileComparisons(fileItems, snippets)
+    return result, predecessor, error
+
+def _getPredecessor(predecessorItems):
+    if len(predecessorItems) >= 2:
+        return None, "Duplicate predecessor"
+    if len(predecessorItems) == 0:
+        return None, None
+    predecessor = predecessorItems[0]["predecessor"]
+    if not type(predecessor) is str:
+        return None, "Predecessor should be a string"
+    return predecessor, None
+
 def _getSnippets(origSnippetItems):
     snippetItems = [orig["snippet"] for orig in origSnippetItems]
     if not all(type(item) is dict for item in snippetItems):
         return None, "Within a snippet, only key: value items are allowed"
-    allowedKeys = {"name", "markup", "context"}
+    allowedKeys = {"name", "markup", "context", "before", "after"}
     snippets = dict()
     for item in snippetItems:
         actualKeys = set(item.keys())
@@ -47,8 +65,22 @@ def _getSnippets(origSnippetItems):
             return None, "Snippet should have a name"
         if item["name"] in snippets:
             return None, "Dupplicate snippet definition for name {0}".format(item["name"])
+        hasContext = "context" in actualKeys
+        hasBeforeAndAfter = "before" in actualKeys and "after" in actualKeys
+        isBeforeAndAfterOmitted = (not "before" in actualKeys) and (not "after" in actualKeys)
+        if not (hasBeforeAndAfter or isBeforeAndAfterOmitted):
+            return None, "Either omit 'before' and 'after' or add them both"
+        if hasContext and hasBeforeAndAfter:
+            return None, "Adding 'context' and 'before' and 'after' is ambiguous"
+        if (not hasContext) and (not hasBeforeAndAfter):
+            return None, "Add 'context' or 'before' and 'after'"
         newSnippet = Snippet(item["name"])
-        newSnippet.setNumContext(item["context"])
+        if hasContext:
+            newSnippet.setNumBefore(item["context"])
+            newSnippet.setNumAfter(item["context"])
+        else:
+            newSnippet.setNumBefore(item["before"])
+            newSnippet.setNumAfter(item["after"])
         newSnippet.setMarkupLanguage(item["markup"])
         snippets[item["name"]] = newSnippet
     return snippets, None
@@ -132,6 +164,7 @@ if __name__ == "__main__":
 - file:
     path: deletedFile
     change: del
+- predecessor: thePredecessor
 - file:
     path: someDir/modifiedFile
     change:
@@ -148,14 +181,16 @@ if __name__ == "__main__":
 - snippet:
     name: secondSnippet
     markup: none
-    context: 2"""
+    before: 2
+    after: 3"""
 
     class TestCreateFileDifferences(unittest.TestCase):
         def test_example(self):
             IO = StringIO(example)
-            fileComparisons, error = createFileDifferences(IO)
+            fileComparisons, predecessor, error = createFileDifferences(IO)
             IO.close()
             self.assertIsNone(error)
+            self.assertEquals(predecessor, "thePredecessor")
             self.assertEquals(len(fileComparisons), 3)
             self.assertIs(type(fileComparisons[0]), FileAddDifference)
             self.assertIs(type(fileComparisons[1]), FileDeleteDifference)
@@ -172,13 +207,15 @@ if __name__ == "__main__":
             self.assertEquals(changes[0]._numOld, 0)
             self.assertEquals(changes[0]._numNew, 1)
             self.assertFalse(changes[0]._doHighlight)
-            self.assertEquals(changes[0].getSnippet()._numContext, 1)
+            self.assertEquals(changes[0].getSnippet()._numLinesBefore, 1)
+            self.assertEquals(changes[0].getSnippet()._numLinesAfter, 1)
             self.assertEquals(changes[0].getSnippet()._markupLanguage, "xml")
             self.assertEquals(changes[1].getSnippetName(), "secondSnippet")
             self.assertTrue(changes[1]._doHighlight)
             self.assertEquals(changes[1]._numOld, 1)
             self.assertEquals(changes[1]._numNew, 1)
-            self.assertEquals(changes[1].getSnippet()._numContext, 2)
+            self.assertEquals(changes[1].getSnippet()._numLinesBefore, 2)
+            self.assertEquals(changes[1].getSnippet()._numLinesAfter, 3)
             self.assertEquals(changes[1].getSnippet()._markupLanguage, "none")
 
     unittest.main()

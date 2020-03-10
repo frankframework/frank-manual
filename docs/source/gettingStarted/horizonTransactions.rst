@@ -10,23 +10,7 @@ tables should either all succeed, or all fail.
 
 This last requirement can be implemented very easily. In file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``,  please update the ``<Pipeline>`` tag by inserting the attribute ``transactionAttribute="RequiresNew"``. Here is the update:
 
-.. code-block:: XML
-   :emphasize-lines: 9
-
-   <Adapter name="IngestBooking">
-     <Receiver name="input">
-       <ApiListener
-           name="inputListener"
-           uriPattern="booking"
-           method="POST"/>
-     </Receiver>
-     <Pipeline firstPipe="checkInput"
-         transactionAttribute="RequiresNew" >
-       <Exit path="Exit" state="success" code="201" />
-       <Exit path="ServerError" state="failure" code="500" />
-       ...
-     </Pipeline>
-   </Adapter>
+.. include:: ../snippets/NewHorizons/v500/addTransactionAttribute.txt
 
 The value ``RequiresNew`` means that a new transaction is started
 for executing the ``<Pipeline>``. There are other possible values.
@@ -41,7 +25,7 @@ This completes the implementation of the requirements of section
 to booking XML documents. The XML is validated and all data
 is written to the database. To do this, multiple INSERT
 statements are needed. These are executed within a transaction,
-which means that either all inserts succeed or all inserts fail.
+which means that either all inserts succeed or all inserts fail. If you are having troubles, you can download the solution. Please find the download link at the beginning of this chapter: :ref:`gettingStarted`.
 
 At this point, please test your work with the tools you found in this Getting Started tutorial. Windows users can use Postman to send HTTP requests to the adapter and Linux users can use ``curl`` as explained in section :ref:`validateBooking`. You can also use the Test Pipeline screen as explained in section :ref:`helloTestPipeline`. Mind the primary key constraint of the database. Either give each booking document a unique ``id``, or apply SQL query ``DROP ALL OBJECTS`` to clean your database (requires restarting the Frank!Framework).
 

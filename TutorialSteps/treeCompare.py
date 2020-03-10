@@ -36,13 +36,17 @@ class Snippet:
         if not type(name) is str:
             raise TypeError("Snippet name should be string")
         self._snippetName = name
-        self._numContext = 0
+        self._numLinesBefore = 0
+        self._numLinesAfter = 0
         self._markupLanguage = "none"
     def getSnippetName(self):
         return self._snippetName
-    def setNumContext(self, numContext):
+    def setNumBefore(self, numContext):
         checkNonNegativeInt(numContext)
-        self._numContext = numContext
+        self._numLinesBefore = numContext
+    def setNumAfter(self, numContext):
+        checkNonNegativeInt(numContext)
+        self._numLinesAfter = numContext
     def setMarkupLanguage(self, markupLanguage):
         if not type(markupLanguage) is str:
             raise TypeError("markupLanguage should be str")
@@ -55,7 +59,8 @@ class Snippet:
         if len(windowList) == 0:
             raise ValueError("Expected at least one Window")
         for w in windowList:
-            w.widen(self._numContext)
+            w.prepend(self._numLinesBefore)
+            w.append(self._numLinesAfter)
         joinResult = windowList[0]
         for w in windowList[1:]:
             if not joinResult.hasOverlap(w):
@@ -383,7 +388,8 @@ replaced""".replace("\r\n", "\n").split("\n")
         def test_when_file_modify_expected_and_satisfied_then_snippet_with_context_highlight_language(self):
             mySnippet = Snippet("mySnippet")
             mySnippet.setMarkupLanguage("xml")
-            mySnippet.setNumContext(1)
+            mySnippet.setNumBefore(1)
+            mySnippet.setNumAfter(1)
             change = Change(0, 1, True, mySnippet)
             fileDiff = FileModifyDifference(RelPath(["fileName"]))
             fileDiff.addChange(change)
@@ -449,7 +455,8 @@ replaced""".replace("\r\n", "\n").split("\n")
             self.assertNonEmptyStringList(errors)
         def test_two_windows_when_one_rst_requested_and_overlap_then_rst_from_join(self):
             mySnippet = Snippet("mySnippet")
-            mySnippet.setNumContext(2)
+            mySnippet.setNumBefore(2)
+            mySnippet.setNumAfter(2)
             firstChange = Change(0, 1, False, mySnippet)
             secondChange = Change(1, 1, False, mySnippet)
             fileDiff = FileModifyDifference(RelPath(["fileName"]))
@@ -465,7 +472,8 @@ replaced""".replace("\r\n", "\n").split("\n")
             self.assertEquals(snippets[0].getLines(), twoWindowsCombinedRst)
         def test_two_windows_when_one_rst_requested_and_no_overlap_then_error(self):
             mySnippet = Snippet("mySnippet")
-            mySnippet.setNumContext(0)
+            mySnippet.setNumBefore(0)
+            mySnippet.setNumAfter(0)
             firstChange = Change(0, 1, False, mySnippet)
             secondChange = Change(1, 1, False, mySnippet)
             fileDiff = FileModifyDifference(RelPath(["fileName"]))
@@ -479,8 +487,10 @@ replaced""".replace("\r\n", "\n").split("\n")
         def test_two_windows_when_two_rst_requested_and_no_overlap_then_two_rst(self):
             myFirstSnippet = Snippet("myFirstSnippet")
             mySecondSnippet = Snippet("mySecondSnippet")
-            myFirstSnippet.setNumContext(0)
-            mySecondSnippet.setNumContext(0)
+            myFirstSnippet.setNumBefore(0)
+            myFirstSnippet.setNumAfter(0)
+            mySecondSnippet.setNumBefore(0)
+            mySecondSnippet.setNumAfter(0)
             firstChange = Change(0, 1, False, myFirstSnippet)
             secondChange = Change(1, 1, False, mySecondSnippet)
             fileDiff = FileModifyDifference(RelPath(["fileName"]))
@@ -499,8 +509,10 @@ replaced""".replace("\r\n", "\n").split("\n")
         def test_two_windows_when_two_rst_requested_but_overlap_then_error(self):
             myFirstSnippet = Snippet("myFirstSnippet")
             mySecondSnippet = Snippet("mySecondSnippet")
-            myFirstSnippet.setNumContext(2)
-            mySecondSnippet.setNumContext(2)
+            myFirstSnippet.setNumBefore(2)
+            myFirstSnippet.setNumAfter(2)
+            mySecondSnippet.setNumBefore(2)
+            mySecondSnippet.setNumAfter(2)
             firstChange = Change(0, 1, False, myFirstSnippet)
             secondChange = Change(1, 1, False, mySecondSnippet)
             fileDiff = FileModifyDifference(RelPath(["fileName"]))

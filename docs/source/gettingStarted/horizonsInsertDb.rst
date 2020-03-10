@@ -13,40 +13,11 @@ As an example, we extend the New Horizons case by writing the "booking" table in
 #. Please open file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml`` again.
 #. The ``<XmlValidatorPipe>`` you included in the previous section points to path ``Exit`` now. Update it to point to the pipe that will write the database. The highlighted line shows the update:
 
-   .. code-block:: XML
-      :emphasize-lines: 6
-
-      ...
-      <XmlValidatorPipe
-          name="checkInput"
-          root="booking"
-          schema="booking.xsd">
-        <Forward name="success" path="insertBooking" />
-        <Forward name="failure" path="makeInvalidBookingError" />
-      </XmlValidatorPipe>
-      ...
+   .. include:: ../snippets/NewHorizons/v460/refSenderPipe.txt
 
 #. Insert the new pipe before the ``</Pipeline>`` tag:
 
-   .. code-block:: XML
-
-      ...
-        </FixedResultPipe>
-        <SenderPipe
-            name="insertBooking">
-          <FixedQuerySender
-              name="insertBookingSender"
-              query="INSERT INTO booking VALUES(?, ?, ?, ?)"
-              jmsRealm="jdbc">
-            <Param name="id" xpathExpression="/booking/@id" />
-            <Param name="travelerId" xpathExpression="/booking/travelerId" />
-            <Param name="price" xpathExpression="/booking/price" />
-            <Param name="fee" xpathExpression="/booking/fee" />
-          </FixedQuerySender>
-          <Forward name="success" path="Exit" />
-          <Forward name="failure" path="ServerError" />
-        </SenderPipe>
-      </Pipeline>
+   .. include:: ../snippets/NewHorizons/v460/addSenderPipe.txt
 
 You see that we send an INSERT query to the database with parameters. The parameters appear with question marks in the SQL statement. The values of the parameters are provided through the ``<Param>`` tags. These tags contain XPath expressions to select the values from the incoming message. Xpath is explained here: https://www.w3schools.com/xml/xpath_intro.asp. You can see that elements are selected through ``/`` while attributes are selected through ``/@``. We know that the incoming message is a valid booking, because it passed the ``<XmlValidatorPipe>``.
 
@@ -57,21 +28,7 @@ Named query parameters
 
 In the update above, you used query string ``INSERT INTO booking VALUES(?, ?, ?, ?)``. Instead of using anonymous parameters with ``?``, you can also reference the parameters by the name you give them in the ``<Param>`` elements. If you want to try this, you can update your adapter as shown:
 
-.. code-block:: XML
-   :emphasize-lines: 4, 5
-
-   ...
-   <FixedQuerySender
-       name="insertBookingSender"
-       query="INSERT INTO booking VALUES(?{id}, ?{travelerId}, ?{price}, ?{fee})"
-       useNamedParams="true"
-       jmsRealm="jdbc">
-     <Param name="id" xpathExpression="/booking/@id" />
-     <Param name="travelerId" xpathExpression="/booking/travelerId" />
-     <Param name="price" xpathExpression="/booking/price" />
-     <Param name="fee" xpathExpression="/booking/fee" />
-   </FixedQuerySender>
-   ...
+.. include:: ../snippets/NewHorizons/v465/namedQueryParameters.txt
 
 This update is optional; it does not change the results produced by your adapter. It presents an alternative approach however that is useful in more advanced queries. This update is not applied in the solution download of this tutorial.
 
@@ -110,3 +67,8 @@ The output message is no longer the incoming booking XML. Please remember this w
 
 The presented version of the ingest booking adapter only inserts in table "booking". In the coming sections, you will extend
 the adapter to also insert into table "visit".
+
+solution
+--------
+
+If you are having troubles, you can :download:`download <../downloads/configurations/NewHorizonsOnlyTableBooking.zip>` the solution.

@@ -1,0 +1,10 @@
+- file:
+    path: configurations/NewHorizons/ConfigurationIngestBooking.xml
+    change:
+        - old: 1
+          new: 12
+          snippet: addSenderInsertTableVisit
+- snippet:
+    name: addSenderInsertTableVisit
+    markup: xml
+    context: 0

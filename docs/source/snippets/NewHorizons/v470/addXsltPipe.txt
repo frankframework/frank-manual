@@ -1,0 +1,22 @@
+.. code-block:: xml
+   :emphasize-lines: 7, 10, 11, 12, 13, 14, 15, 16
+
+   ...
+             <Param name="id" xpathExpression="/booking/@id" />
+             <Param name="travelerId" xpathExpression="/booking/travelerId" />
+             <Param name="price" xpathExpression="/booking/price" />
+             <Param name="fee" xpathExpression="/booking/fee" />
+           </FixedQuerySender>
+           <Forward name="success" path="getDestinations" />
+           <Forward name="failure" path="ServerError" />
+         </SenderPipe>
+         <XsltPipe
+             name="getDestinations"
+             styleSheetName="booking2destinations.xsl"
+             getInputFromSessionKey="originalMessage">
+           <Forward name="success" path="Exit"/>
+           <Forward name="failure" path="ServerError"/>
+         </XsltPipe>
+       </Pipeline>
+     </Adapter>
+   </Module>

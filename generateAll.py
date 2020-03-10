@@ -36,5 +36,6 @@ tutorialStepsDir = "srcSteps"
 # are stored.
 snippetsDir = "docs/source/snippets"
 
-createAllDownloadZips(downloadsDescriptor, downloadZipsDir, set([META_YML]))
-createAllSnippets(tutorialStepsDir, snippetsDir)
+hasErrors = createAllDownloadZips(downloadsDescriptor, downloadZipsDir, set([META_YML]))
+if not hasErrors:
+    createAllSnippets(tutorialStepsDir, snippetsDir)

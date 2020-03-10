@@ -1,0 +1,18 @@
+- file:
+    path: configurations/NewHorizons/ConfigurationIngestBooking.xml
+    change:
+        - old: 1
+          new: 1
+          highlight: true
+          snippet: refSenderPipe
+        - insert: 14
+          highlight: true
+          snippet: addSenderPipe
+- snippet:
+    name: refSenderPipe
+    markup: xml
+    context: 2
+- snippet:
+    name: addSenderPipe
+    markup: xml
+    context: 2

@@ -3,6 +3,29 @@
 Database Initialization
 =======================
 
+Introduction
+------------
+
+We continue our case study about the imaginary firm NewHorizons, see :ref:`newHorizons` and :ref:`horizonsInterfaces`. In section :ref:`newHorizons` you started development by creating the file ``franks/Frank2Manual/configurations/NewHorizons/Configuration.xml``. You will extend this configuration by adding files to your directory ``NewHorizons``.
+
+Configure database access
+-------------------------
+
+First you have to extend your configuration to support database access. WeAreFrank! plans to update the Frank!Framework such that this step will not be necessary in the future.
+
+#. Please create file ``ConfigurationDatabase.xml`` with the following contents:
+
+   .. literalinclude:: ../../../srcSteps/NewHorizons/v400/configurations/NewHorizons/ConfigurationDatabase.xml
+      :language: xml
+
+   We do not explain the meaning of this text, because it will not be needed with future versions of the Frank!Framework.
+#. As it stands, your file ``ConfigurationDatabase.xml`` is not used. You need to include it in ``Configuration.xml`` with an entity reference as explained in :ref:`horizonsMultipleFilesEntityReference`. Please update ``Configuration.xml`` as shown:
+
+  .. include:: ../snippets/NewHorizons/v400/configurationEntityDatabase.txt
+
+Enable Liquibase
+----------------
+
 The Frank!Framework can take care of database initialization. 
 Database initialization should happen when an enterprise application starts
 for the first time. When an enterprise application is restarted later,
@@ -10,26 +33,34 @@ database initialization should be omitted because data in the
 database should be persistent.
 
 The Frank!Framework internally uses Liquibase, see http://www.liquibase.org/,
-to initialize the database. Please switch on Liquebase as follows:
+to initialize the database. Please switch on Liquibase as follows:
 
-#. Add the following line to ``projects/gettingStarted/classes\StageSpecifics_LOC.properties``: ::
+3. Add file ``StageSpecifics_LOC.properties`` and give it the following contents:
 
-    jdbc.migrator.active=true
+   .. literalinclude:: ../../../srcSteps/NewHorizons/v410/configurations/NewHorizons/StageSpecifics_LOC.properties
+      :language: none
+
+   .. NOTE::
+
+      You can use many different property files to configure properties. When you choose ``StageSpecifics_LOC.properties``, your settings will not be applied when your configuration is deployed on production. If you would choose ``DeploymentSpecifics.properties``, you settings would also be used in production, provided they are not overruled. More details are in section :ref:`properties`, but before reading that section please finish this chapter first.
 
 We illustrate database initialization here for H2 databases, because this database is embedded within the Frank!Framework and does not
 require a process external to it. More information about databases is available in section :ref:`advancedDevelopmentDatabase`. Liquibase expects a so-called changelog, an XML file that defines the data model and the initial data.
 
-2. Please create file ``projects/gettingStarted/configurations/NewHorizons/DatabaseChangelog.xml`` and add XML to initialize the database described in the previous section :ref:`horizonsInterfaces`. Here is the XML to add:
+4. Please create file ``DatabaseChangelog.xml`` and add XML to initialize the database described in the previous section :ref:`horizonsInterfaces`. Here is the XML to add:
 
-   .. literalinclude:: ../../../src/Frank2Manual/configurations/NewHorizons/DatabaseChangelog.xml
+   .. literalinclude:: ../../../srcSteps/NewHorizons/v410/configurations/NewHorizons/DatabaseChangelog.xml
       :language: xml
 
 For clarity we chose to use SQL statements in the changelog. As a consequence, it is not database independent as would
 be the case if it were pure XML. The shown changelog is specific for H2 databases.
 
+Test your database
+------------------
+
 You can test your work by querying the tables you created, "booking" and "visit". Please continue as follows:
 
-3. Click "JDBC" (number 1 in the figure below). This link will expand.
+5. Click "JDBC" (number 1 in the figure below). This link will expand.
 
    .. image:: jdbcExecuteQuery.jpg
 
@@ -49,3 +80,8 @@ You can test your work by querying the tables you created, "booking" and "visit"
 .. NOTE::
 
    If you are developing on the changelog within your own project, you will probably make some errors. In this situation, you want to remove all database tables to rerun all change sets within your changelog. You can do this using the query ``DROP ALL OBJECTS``. After running it, restart the Frank!Framework.
+
+Solution
+--------
+
+If you did not get your database working, you can :download:`download <../downloads/configurations/NewHorizonsDatabase.zip>` the solution for the work you did so far.

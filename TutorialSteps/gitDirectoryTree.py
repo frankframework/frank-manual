@@ -35,6 +35,8 @@ class GitDirectoryTree:
             rawLines = f.readlines()
             lines = [line.replace("\r\n", "\n").rstrip() for line in rawLines]
         handler(relPath, lines)
+    def fileExists(self, path):
+        return os.path.isfile(os.path.join(self._absPath, path))
     def openFile(self, path):
         return open(os.path.join(self._absPath, path))
     def getSubdirIfPresent(self, subdir):
@@ -78,6 +80,10 @@ dir2/f1.txt: dir2/f1 line 2""".replace("\r\n", "\n").split("\n"))
             instance = GitDirectoryTree("testdata")
             subDir = instance.getSubdirIfPresent("nonExistingDir")
             self.assertIsNone(subDir)
+        def test_file_exists(self):
+            instance = GitDirectoryTree("testdata")
+            self.assertTrue(instance.fileExists("f1.txt"))
+            self.assertFalse(instance.fileExists("doesNotExist.txt"))
         def test_open_file(self):
             instance = GitDirectoryTree("testdata")
             with instance.openFile("f1.txt") as f:

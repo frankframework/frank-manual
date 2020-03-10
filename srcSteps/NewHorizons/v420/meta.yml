@@ -1,0 +1,16 @@
+- file:
+    path: configurations/NewHorizons/ConfigurationIngestBooking.xml
+    change: add
+- file:
+    path: configurations/NewHorizons/Configuration.xml
+    change:
+        - insert: 1
+          highlight: true
+          snippet: snippetAddConfigurationIngestBooking
+        - insert: 1
+          highlight: true
+          snippet: snippetAddConfigurationIngestBooking
+- snippet:
+    name: snippetAddConfigurationIngestBooking
+    markup: xml
+    context: 50

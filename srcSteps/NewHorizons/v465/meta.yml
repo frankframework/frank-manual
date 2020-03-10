@@ -1,0 +1,11 @@
+- file:
+    path: configurations/NewHorizons/ConfigurationIngestBooking.xml
+    change:
+        - old: 1
+          new: 2
+          highlight: true
+          snippet: namedQueryParameters
+- snippet:
+    name: namedQueryParameters
+    markup: xml
+    context: 5

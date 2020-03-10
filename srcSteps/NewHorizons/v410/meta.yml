@@ -1,0 +1,6 @@
+- file:
+    path: configurations/NewHorizons/DatabaseChangelog.xml
+    change: add
+- file:
+    path: configurations/NewHorizons/StageSpecifics_LOC.properties
+    change: add

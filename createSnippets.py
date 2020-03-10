@@ -1,8 +1,7 @@
 import os
-import TutorialSteps
 from fileUtils import makeDirectoryIfNotPresent
-
-META_YML = "meta.yml"
+import TutorialSteps
+from TutorialSteps import META_YML
 
 def handlerAddOld(comparison, relPath, lines):
     if relPath != META_YML:
@@ -22,7 +21,8 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
                 Holds the root directory of the previous version.
             newDir: Object of type GitDirectoryTree. Holds the root directory
                 of the current version.
-    
+            snippetsDir: Root directories for storing snippets.
+
     This member function does the following:
     - Parse meta.yml of the current version into a list of FileDifference object.
       Class FileDifference is defined in treeCompare.py.
@@ -37,12 +37,19 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
       configName/stepName/snippetName.txt (not .rst because that would
       produce warnings from Sphinx).
     """
-    print "Doing Frank config {0} step {1}".format(configName, stepName)
+    print "Doing Frank config {0} step {1}, predecessor {2}".format(configName, stepName, \
+        oldDir.getLastComponent() if oldDir is not None else "<none>")
     hasErrors = False
+    if not newDir.fileExists(META_YML):
+        print "ERROR: No file {0} present.".format(META_YML)
+        hasErrors = True
+        return hasErrors
     with newDir.openFile(META_YML) as f:
-        diffs, error = expectedDifferences = TutorialSteps.createFileDifferences(f)
+        diffs, dummyPredecessor, error = TutorialSteps.createFileDifferences(f)
     if error is not None:
-        raise Exception("Did not understand meta.yml for config {0} and step {1}".format(configName, stepName))
+        print "ERROR: Did not understand meta.yml for config {0} and step {1}, error is {2}".format(configName, stepName, error)
+        hasErrors = True
+        return hasErrors
     compare = TutorialSteps.TreeComparison(diffs)
     if oldDir is not None:
         oldDir.browse(lambda relPath, lines: handlerAddOld(compare, relPath, lines))
@@ -52,23 +59,29 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
         for error in errors:
             hasErrors = True
             print "ERROR: " + error
-    for snippet in snippets:
-        makeDirectoryIfNotPresent("/".join([configName, stepName]), os.path.abspath(snippetsDir))
-        outputFileName = os.path.join(os.path.abspath(snippetsDir), configName, stepName, snippet.getName() + ".txt")
-        with open(outputFileName, "w") as f:
-            for line in snippet.getLines():
-                f.write(line + "\n")
+    if snippets is None:
+        hasErrors = True
+    else:
+        for snippet in snippets:
+            makeDirectoryIfNotPresent("/".join([configName, stepName]), os.path.abspath(snippetsDir))
+            outputFileName = os.path.join(os.path.abspath(snippetsDir), configName, stepName, snippet.getName() + ".txt")
+            with open(outputFileName, "w") as f:
+                for line in snippet.getLines():
+                    f.write(line + "\n")
     return hasErrors
 
 def createFrankConfigSnippets(configRoot, snippetsDir):
     name = configRoot.getLastComponent()
     stepDirs = configRoot.getSubdirs()
+    print "INFO: Step dirs are: {0}".format(", ".join([item.getLastComponent() for item in stepDirs]))
     hasErrors = False
-    if len(stepDirs) >= 1:
-        hasErrors = createStepSnippets(name, stepDirs[0].getLastComponent(), None, stepDirs[0], snippetsDir)
-    for stepIdx in range(1, len(stepDirs)):
-        stepName = stepDirs[stepIdx].getLastComponent()
-        hasErrors = hasErrors or createStepSnippets(name, stepName, stepDirs[stepIdx-1], stepDirs[stepIdx], snippetsDir)
+    steps, error = TutorialSteps.sortDirectories(stepDirs)
+    if error is not None:
+        print "ERROR: configuration {0} while getting predecessor graph: {1}".format(name, error)
+        return True
+    for step in steps:
+        stepName = step.getNew().getLastComponent()
+        hasErrors = createStepSnippets(name, stepName, step.getOld(), step.getNew(), snippetsDir) or hasErrors
     return hasErrors
 
 def createAllSnippets(tutorialStepsDir, snippetsDir):
@@ -118,12 +131,18 @@ YAML see wikipedia, https://en.wikipedia.org/wiki/YAML. A YAML
 defines a nested structure of lists, dictionaries and scalars.
 
 The top-level structure of each meta.yml is a list of dictionaries,
-each having one key. This key is "snippet" or "file".
+each having one key. This key is "predecessor", "snippet" or "file".
 
-A "snippet" item defines an reStructuredText snippet produce and gives
+A "predecessor" key can be used to define another reference directory
+for this step. The default is the previous directory according to the
+alphabetical sort order. The value of this key should be a string when
+defined. This feature is useful for explaining optional changes to a
+configuration, which are not relevant for the remainder of your story.
+
+A "snippet" item defines a reStructuredText snippet to produce and gives
 it a name. The value of the "snippet" key is itself a dictionary. The
-following keys are supported: "name", "markup" and "context". They
-have the following meaning:
+following keys are supported: "name", "markup", "context", "before"
+and "after". They have the following meaning:
 
     - name: The name, use this to reference a snippet in a "file" item.
     - markup: The markup language (none or XML). Use this to manage syntax
@@ -134,6 +153,11 @@ have the following meaning:
       include additional lines around it that are not different. This property
       defines the number of additional unchanged lines to add before and after
       the difference.
+    - before: Like context, but lines are only added before the change.
+    - after: Like context, but lines are only added after the change.
+
+Note, either use "context" and not "before" or "after", or omit "context"
+and use both "before" and "after".
 
 For a "file" item, the value of the "file" key is itself a dictionary with
 two keys:

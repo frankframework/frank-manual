@@ -1,0 +1,15 @@
+<booking id="10">
+  <travelerId>2</travelerId>
+  <price>500.00</price>
+  <fee>100.00</fee>
+  <destination hostId="3" productId="4">
+    <price>350.00</price>
+    <startDate>2018-12-27</startDate>
+    <endDate>2019-01-02</endDate>
+  </destination>
+  <destination hostId="3" productId="5">
+    <price>50.00</price>
+    <startDate>2019-01-03</startDate>
+    <endDate>2019-01-04</endDate>
+  </destination>
+</booking>

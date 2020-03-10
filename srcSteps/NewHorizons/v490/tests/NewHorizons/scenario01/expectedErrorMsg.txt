@@ -1,0 +1,1 @@
+Input booking does not satisfy booking.xsd

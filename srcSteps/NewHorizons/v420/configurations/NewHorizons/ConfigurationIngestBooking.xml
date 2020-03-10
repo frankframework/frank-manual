@@ -1,0 +1,12 @@
+<Module
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+  <Adapter name="IngestBooking">
+    <Receiver name="input">
+      <ApiListener
+          name="inputListener"
+          uriPattern="booking"
+          method="POST"/>
+    </Receiver>
+  </Adapter>
+</Module>
