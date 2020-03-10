@@ -1,5 +1,5 @@
 @ECHO OFF
-
+# komt er ook een unix variant (make.sh)?
 pushd %~dp0
 
 REM Command file for Sphinx documentation
