@@ -108,5 +108,34 @@ def handleLine(line, targetDir, toOmit):
     createDownloadZipFromLine(line, targetDir, toOmit)
 
 def createAllDownloadZips(descriptorFile, targetDir, toOmit):
+    """
+Produce download zips for the Frank!Manual.
+
+    Parameters:
+        descriptorFile: Path to configuration file that specifies which
+            input directories to zip and which output files to produce.
+            See comments in the provided descriptorFile for details on the
+            syntax and semantics.
+        targetDir: Directory in which download zips are stored.
+        toOmit (set): Files to ignore when producing download zips.
+            These should be simple filenames without a path. When
+            an input file within this set is encountered, it is not
+            added to the corresponding zip file.
+
+    Only files tracked with git are added to the download zips. Why? As an
+    example, consider ibisdoc.xsd, the XML schema that defines the grammar
+    of the Frank language. This file is typically downloaded from the
+    Frank!Framework. Users of the manual are advised to download ibisdoc.xsd
+    from there. Therefore, the download zips should not contain ibisdoc.xsd.
+
+    On the other hand, ibisdoc.xsd is useful for editors of this ibis4manual
+    project, because they want support when they edit Frank code. Therefore,
+    ibisdoc.xsd appears in the checkout. The solution is to add ibisdoc.xsd to
+    .gitignore and to omit ignored files from download zips.
+
+    This function also replaces Windows line endings by Linux line endings. This way,
+    Windows and Linux users will produce download files in which the text files
+    have the same line endings.
+    """
     makeDirectoryIfNotPresent(targetDir)
     walkLines(descriptorFile, lambda line: handleLine(line, targetDir, toOmit))

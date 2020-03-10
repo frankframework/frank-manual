@@ -1,3 +1,14 @@
+# This file compares two directories for TutorialSteps without
+# accessing the file system. This is done by an instance of class
+# TreeComparison. That class receives the relevant file names
+# and their contents from the outside world. It also receives from
+# the outside world the list of expected differences. These
+# differences are encoded as FileDifference objects.
+#
+# Class TreeComparison does not access the file system.
+# This makes it easy to write extensive unit tests that
+# you can find at the end of this file.
+
 from stringListCompare import checkNonNegativeInt
 from stringListCompare import checkNonEmptyStringList
 from stringListCompare import Comparison

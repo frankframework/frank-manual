@@ -1,3 +1,7 @@
+# Used by treeCompare.py to compare the contents of two files.
+# For each file, the contents is provided as a list of strings.
+# Each of these strings represents one line in a file.
+
 comparatorIndentInsensitive = lambda first, second: first.strip() == second.strip()
 comparatorIndentSensitive = lambda first, second: first == second
 
