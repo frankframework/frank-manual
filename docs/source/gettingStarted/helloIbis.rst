@@ -58,7 +58,7 @@ When we examine the contents of the ``<Configuration>`` tag, we find the followi
    ...
    
 An adapter is a service that is triggered by a receiver and executes a pipeline in response. The ``<Receiver>`` tag
-defines the receiver, while the ``<Pipeline>`` tag defines the pipeline. You encountered adapters and receivers in the previous section on the Adapter Status webpage. This webpage shows their names and their state (e.g. started, stopped, error).
+defines the receiver, while the ``<Pipeline>`` tag defines the pipeline. You encountered adapters and receivers in the previous section on the Adapter Status webpage. That webpage shows their names and their state (e.g. started, stopped, error).
 
 Receiver
 --------
@@ -77,7 +77,7 @@ It has name ``Example2Receiver``. Its further definition is provided by the tag 
 are building blocks that accept input. The choice for ``<JavaListener>`` means that the adapter "Example2Adapter" is
 called directly from Java code. This is a good choice if you only want to call your adapter from other adapters.
 
-There are other listeners, for example ``<ApiListener>`` and ``<DirectoryListener>``. ``ApiListener`` makes your adapter listen to REST HTTP requests. ``DirectoryListener`` triggers your adapter when a file is added to a chosen directory on a (server-side) local file system. The Frank!Framework allows you to search the listener you need. This is explained in subsection :ref:`horizonsMultipleFiles`.
+There are other listeners, for example ``<ApiListener>`` and ``<DirectoryListener>``. ``ApiListener`` makes your adapter listen to REST HTTP requests. ``DirectoryListener`` triggers your adapter when a file is added to a chosen directory on a (server-side) local file system. The Frank!Framework allows you to search the listener you need. This is explained in subsection :ref:`configurationSyntaxChecking`.
 
 Pipeline
 --------
@@ -112,7 +112,7 @@ It reads:
 
 Pipes are predefined functions that can be performed on the incoming message. The ``<FixedResultPipe>`` ignores the input and outputs a fixed string that can be configured. We configure the ``name`` to be "Example". This satisfies the reference made in the ``firstPipe`` attribute in the ``<Pipeline>`` tag. Therefore, the (ignored) incoming message is the message we got from the receiver. The fixed output string we want is in the ``returnString`` attribute.
 
-In the remainder of the :ref:`gettingStarted` chapter, we will see pipes with more interesting functions, like applying XSLT transformations and sending data to a database. In subsection :ref:`horizonsMultipleFiles` you will learn how to search the pipe you need.
+In the remainder of the :ref:`gettingStarted` chapter, we will see pipes with more interesting functions, like applying XSLT transformations and sending data to a database. In subsection :ref:`configurationSyntaxChecking` you will learn how to search the pipe you need.
 
 The ``<Forward>`` within a pipe tag defines what should happen after the execution of that pipe. A forward consists of a forward
 name and a path. Each pipe predefines the forward names from which it can send the output. For the fixed result pipe, the only
