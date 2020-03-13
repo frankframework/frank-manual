@@ -29,5 +29,3 @@ request a document by id, you get the document.
 This emulator is very simple. In practice there is no error checking
 whatsoever and the responses are fixed values. But this is good
 anough for demonstrating Ladybug. Let's continue!
-
-GB: Plaatjes en tekst zijn dik ok
