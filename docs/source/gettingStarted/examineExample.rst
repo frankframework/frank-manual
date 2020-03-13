@@ -36,6 +36,8 @@ Please do the following:
               |- tests
                  |- ...
            |- Frank2Example2
+              |- classes
+                 |- ...
               |- configurations
                  |- ...
               |- tests
@@ -88,7 +90,7 @@ You as a Frank developer develop a Frank config, which plays the role of a softw
     .. image:: adapterStatusExample2.jpg
 
 #. Please hover over the icons shown as number 1 to number 5. They mean "Started", "Starting", "Stopped", "Stopping", "Error". You see here how many adapters you have and you see for each state how many are in that state. You get a general overview of the health of your configuration.
-#. In the row "Adapters", you see "Example2Adapter". An adapter is comparable to a subroutine or method in a programming language. An adapter processes an incoming message, typically an XML document, and produces output. The meaning of "Receivers" will be explained in the next section.
+#. In the row "Adapters", you see "Example2Adapter" (number 6). An adapter is comparable to a subroutine or method in a programming language. An adapter processes an incoming message, typically an XML document, and produces output. The meaning of "Receivers" will be explained in the next section.
 #. As a Frank developer, you will be very glad with the following feature. You can reload Frank configs without restarting the Frank!Framework. To do this, press the button labeled with number 1 in the figure below:
 
    .. image:: adapterStatusTopRight.jpg
@@ -113,7 +115,7 @@ System administrators may want to check the sources of the Frank configs they se
 
 #. Property "configurations.names" has value "Example1,Example2", confirming that you have these two Frank configs (excluding the predefined configurations).
 #. Property "configurations.Example1.classLoaderType" has value "DirectoryClassLoader". This means that configuration "Example1" comes from the file system of the computer running the Frank!Framework. Frank configurations can also be deployed on the database, resulting in a different value for this property. Property "configurations.Example2.classLoaderType" also has value "DirectoryClassLoader", confirming that Frank config "Example2" also comes from the local file system.
-#. Property "configurations.directory" has value ``absolute-path-of-directory-franks\frank-runner\..\frank-runner\examples\Frank2Example1\configurations``, the "configurations" directory under the "examples/Frank2Example1" directory. This is the default directory for Frank configs with classLoaderType "DirectoryClassLoader".
+#. Property "configurations.directory" has value ``absolute-path-of-directory-franks\frank-runner\..\frank-runner\examples\Frank2Example1\configurations``, the "configurations" directory under the "examples/Frank2Example1" instance. This is the default directory for Frank configs with classLoaderType "DirectoryClassLoader".
 
 Summary
 -------
