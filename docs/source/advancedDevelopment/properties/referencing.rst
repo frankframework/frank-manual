@@ -9,43 +9,25 @@ Please perform the following steps:
 
 .. highlight:: none
 
-#. Please install Frank!Runner from https://github.com/ibissource/frank-runner if you have not done so already. You should have the following directory structure: ::
+#. Please install Frank!Runner and set up your instance as explained in :ref:`gettingStarted` if you did not do so already.
+#. Within ``Frank2Manual/configurations``, create a subdirectory ``properties`` to start a new configuration with that name.
+#. Please add file ``Configuration.xml`` with the following contents:
 
-     projects
-     |- frank-runner
-        |- build.properties
-        |- start.bat
-        |- stop.bat
-      |- ...
-
-   .. WARNING::
-
-      Frank!Runner currently only works for Windows. If you use Linux, please work with Docker4Frank (https://www.github.com/ibissource/docker4ibis). Apply these instructions differently when needed.
-
-#. Please make a subdirectory ``advancedDevelopmentProperties`` within ``projects``. Then open ``build.properties`` and give it the following contents: ::
-
-     project.dir=advancedDevelopmentProperties
-
-#. Please add file ``classes/Configuration.xml`` with the following contents:
-
-   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/classes/Configuration.xml
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/Configuration.xml
       :language: xml
    
-   This file is very similar to the ``Configuration.xml`` examples shown in section :ref:`horizonsMultipleFiles`. The only difference is that we fill the classpath configuration to keep our example small.
+#. Please make a file ``DeploymentSpecifics.properties``. Give it the following contents:
 
-
-#. Within ``advancedDevelopmentProperties``, please make a file ``classes/DeploymentSpecifics.properties``. Give it the following contents:
-
-   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/classes/DeploymentSpecifics.properties
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/DeploymentSpecifics.properties
       :language: xml
    
 The file ``DeploymentSpecifics.properties`` allows you to set properties. The key is to the left of the ``=`` sign, while the value is to the right. Property names are words separated by dots. Lines starting with ``#`` are comments, which are ignored by the Frank!Framework.
 
 Both in property files and in XML Frank config files, you can reference properties. To do this, surround the property name with ``${`` and ``}``. In the property file above, property ``my.text`` is defined with value ``My text is ${my.hello}``, which means that the value of property ``my.hello`` should be substituted to get the value of property ``my.text``. Note that property ``my.hello`` can be defined after a property that references it, in this case ``my.text``.
 
-5. Please create file ``classes/ConfigurationReferenceProperties.xml`` with the following contents:
+5. Please create file ``ConfigurationReferenceProperties.xml`` with the following contents:
 
-   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/classes/ConfigurationReferenceProperties.xml
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/ConfigurationReferenceProperties.xml
       :language: xml
       :emphasize-lines: 8
 
@@ -58,7 +40,7 @@ Both in property files and in XML Frank config files, you can reference properti
 
 #. For some application servers, you can also set Java properties like ``-Dproperty="value"``. These properties are then defined within the Frank!Framework. This applies to Apache Tomcat and also for Frank!Runner. Please stop Frank!Runner. Restart Frank!Runner with an argument to set a Java property: ::
 
-     projects\frank-runner> start.bat -Dmy.hello="Hello there"
+     frank-runner> start.bat -Dmy.hello="Hello there"
    
 #. When Frank!Runner is running again, please return to the Test Pipeline screen. Run adapter ``AccessProperties``. The output should now be as follows: ::
 
