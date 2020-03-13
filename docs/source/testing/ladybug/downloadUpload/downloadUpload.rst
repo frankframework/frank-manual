@@ -18,11 +18,7 @@ Please do the following:
 #. A save file dialog appears allowing you to save a zip file. Press OK.
 #. Go to your Downloads folder and sort by creation date to see the downloaded file.
 #. Stop the Frank!Framework. You will restore your captured scripts soon.
-#. Sometimes the Frank!Framework saves test scripts automatically, but you can not rely on this. In this tutorial we make sure that all test scripts are lost, such that we can properly demonstrate uploading.
-#. Please open a command prompt (Windows) or a terminal (Linux) and enter the issue the following command: ::
-
-     docker container rm ladybug
-
+#. Sometimes the Frank!Framework saves test scripts automatically, but you can not rely on this. In this tutorial we make sure that all test scripts are lost, such that we can properly demonstrate uploading. Remove the ``build`` directory within your ``frank-runner`` directory. This will delete all data from previous runs of the Frank!Runner.
 #. Restart the Frank!Framework.
 #. Browse to http://localhost/ladybug/iaf/gui.
 #. Click "Testing":
