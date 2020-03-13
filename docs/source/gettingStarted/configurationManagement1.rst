@@ -72,7 +72,7 @@ To set up your instance, please do the following:
 
 #. You see you are in Larva (number 1). Select directory "Example1" (number 2).
 #. Press "start" (number 3).
-#. Verify that your tests succeeded (number 5).
+#. Verify that your tests succeeded (number 4).
 
 .. _horizonsMultipleFilesEntityReference:
 
