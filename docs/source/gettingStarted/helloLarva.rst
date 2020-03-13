@@ -23,7 +23,7 @@ To see what Larva is about, please try it. Please do the following:
 #. You see you are in Larva (number 1). Select folder "Example1" (number 2). This is the same name as configuration "Example1", suggesting that these are tests of Frank config "Example1".
 #. Press "start" (number 3).
 #. Check that all scenarios passed (number 4).
-#. Please note the subheading about "Example1\\scenario01". There is a hierarchy. You have (nested) groups of scenarios. Each scenario should be independent, which means that the operation of one scenario should not have impact on another. Each scenario consists of steps that are dependent on each other. Scenario "Example1\\scenario01" has two steps, "step1" and "step2" (text above number 5).
+#. Please note the subheading about "Example1\\scenario01" (number 5). There is a hierarchy. You have (nested) groups of scenarios. Each scenario should be independent, which means that the operation of one scenario should not have impact on another. Each scenario consists of steps that are dependent on each other. Scenario "Example1\\scenario01" has two steps, "step1" and "step2" (text above number 5).
 
 Where are the test scripts?
 ---------------------------
@@ -32,7 +32,7 @@ To find test scripts, please do the following:
 
 #. In the main menu, choose "Environment Variables".
 #. Press Ctrl-F to search on the page. Search for ``scenariosroot``.
-#. Iterate over the results until you see property "scenariosroot1.directory". Check that its value points to ``absolute-path-of-directory-franks\frank-runner\examples\Frank2Example1\tests`` (see directory structure at :ref:`frankRunnerInstallationInstallation`).
+#. Iterate over the results until you see property "scenariosroot1.directory". Check that its value points to ``path-of-directory-franks\frank-runner\examples\Frank2Example1\tests`` (see directory structure at :ref:`frankRunnerInstallationInstallation`).
 
 You selected subdirectory "Example1". You have verified that the test scripts you ran are in the following files: ::
 
@@ -139,7 +139,7 @@ The answer can be found in the second file of configuration "Example1", namely `
 
    stub4testtool.configuration=true
 
-This property directs the Frank!Framework to create stubs some listeners and senders. This is a useful feature, because some listeners are difficult to access. For example, to access an ``<ApiListener>``, you need to set up a HTTP connection and you need to do a HTTP request. When stubbing is enabled, pipelines having an ``<ApiListener>`` in front of them automatically get an additional receiver with a ``<JavaListener>``. This allows you to make a Larva test that uses a service of class ``nl.nn.adapterframework.senders.IbisJavaSender``. That service can now access the pipeline through the new listener. Listeners of type ``<JavaListener>`` are copied in the same way when stubbing is enabled.
+This property directs the Frank!Framework to create stubs for some listeners and senders. This is a useful feature, because some listeners are difficult to access. For example, to access an ``<ApiListener>``, you need to set up a HTTP connection and you need to do a HTTP request. When stubbing is enabled, pipelines having an ``<ApiListener>`` in front of them automatically get an additional receiver with a ``<JavaListener>``. This allows you to make a Larva test that uses a service of class ``nl.nn.adapterframework.senders.IbisJavaSender``. That service can now access the pipeline through the new listener. Listeners of type ``<JavaListener>`` are copied in the same way when stubbing is enabled.
 
 Stubbing has a different effect for different types of listeners and senders. Some types of listeners are replaced by their stubs instead of being copied. Other listeners are left as-is. Details are beyond the scope of this section.
 
