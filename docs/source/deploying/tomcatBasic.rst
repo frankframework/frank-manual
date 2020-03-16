@@ -65,10 +65,6 @@ Source                                                    Destination
 ``commons-pool-1.5.6.jar``                                ``/usr/local/tomcat/lib/commons-pool-1.5.6.jar``
 ========================================================  =========================================================
 
-.. NOTE::
-
-   If you wonder what files you need, please look at the Docker4Frank project, https://github.com/ibissource/docker4ibis. In file ``IAF_Image/Dockerfile``, you see the commands that Docker4Frank uses to deploy the Frank!Framework automatically. You see the commands there that download the files. You can omit the drivers for databases you do not need, but the rest of the download commands tell you which files you need.
-
 You do not have to download these files manually. For your convenience, we added a script ``downloadLibraries.sh`` to the example configuration. Please deploy the Frank!Framework as follows:
 
 6. You need a home directory on your Docker container. To do this, you need to run interactive commands within your Docker container. Please run the following command in a command prompt (Windows) or a shell (Linux): ::
@@ -132,7 +128,7 @@ With these steps, you have deployed the Frank!Framework on your Docker container
 
    .. WARNING::
 
-      It is not realistic that we do a manual deployment on Tomcat but that we have DTAP stage LOC. If you are developing, use Frank!Runner or Docker4Frank if possible. We choose DTAP stage LOC because we are including a Larva test in our deployment, which is not realistic in a production environment.
+      It is not realistic that we do a manual deployment on Tomcat but that we have DTAP stage LOC. If you are developing, use Frank!Runner if possible. We choose DTAP stage LOC because we are including a Larva test in our deployment, which is not realistic in a production environment.
 
 #. The ``configurations`` directory is stored outside the deployment on your application server. You can use the copy you stored in ``/home/root/Downloads/work/configurations``. This is not the default location expected by the Frank!Framework. You have to tell the Frank!Framework that you choose a custom directory for configuration ``myConfig``. You will do this by setting a system property. Please add the following line to ``catalina.properties``: ::
 

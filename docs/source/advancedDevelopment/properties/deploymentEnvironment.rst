@@ -28,7 +28,6 @@ The Frank!Framework detects the type of application server used to host it. This
    WAS                         WebSphere Application Server.
    TOMCAT                      Apache Tomcat.
    TOMCAT                      Frank!Runner.
-   TOMCAT                      Docker4Frank.
    JBOSS                       JBoss Application Server (WildFly)
    TIBCOAMX                    Tibco AMX
 ==========================  ======================================

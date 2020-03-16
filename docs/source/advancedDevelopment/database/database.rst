@@ -19,7 +19,7 @@ This knowledge allows you to use multiple databases. If you have a second databa
 
 .. WARNING::
 
-   Frank!Runner and Docker4Frank (see sections :ref:`deploymentTomcat4Frank` and :ref:`deploymentDocker4Frank`) do not support multiple databases. These tools automate deploying the Frank!Framework and they automatically create a database for your Frank. You cannot use these projects to connect to an existing database or to use multiple databases.
+   The Frank!Runner (see section :ref:`deploymentTomcat4Frank`) does not support multiple databases. This tool automates deploying the Frank!Framework and it automatically creates a database for your Frank. You cannot use this project to connect to an existing database or to use multiple databases.
 
 If you are using an Apache Tomcat application server, then the Frank!Framework expects that there is a database with JNDI name ``jdbc/${instance.name.lc}`` with ``${instance.name.lc}`` a property reference as explained. The expected database name depends on property ``instance.name``.
 
