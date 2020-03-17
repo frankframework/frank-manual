@@ -26,7 +26,7 @@ The manual is read by Frank developers, testers and system administrators. These
 
 ### Support lazy readers
 
-Beginning users of the Frank!framework probably read the manual from cover to cover, but more advanced readers probably won't. They have a question, enter a search term in ReadTheDocs and land somewhere in the middle of a story. Therefore, each screen of the HTML version should be self contained. It needs a short introduction, which includes references to other sections with details about the context. After this introduction, the material of the screen can be presented. It is good to know that each screen of the manual corresponds to one .rst file in the git repository.
+Beginning users of the Frank!Framework probably read the manual from cover to cover, but more advanced readers probably won't. They have a question, enter a search term in ReadTheDocs and land somewhere in the middle of a story. Therefore, each screen of the HTML version should be self contained. It needs a short introduction, which includes references to other sections with details about the context. After this introduction, the material of the screen can be presented. It is good to know that each screen of the manual corresponds to one .rst file in the git repository.
 
 ### How to address the reader
 
