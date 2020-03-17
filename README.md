@@ -27,6 +27,7 @@ Here is the directory structure:
     |- buildDownloadZips.py: Script to builds .zip files for download links in manual. Do not call this directly.
     |- buildDownloadZips.txt: Configuration file for buildDownloadZips.py.
     |- createSnippets.py: Calls TutorialSteps. Do not call this script directly.
+    |- TutorialSteps: Python module to create .rst include files (snippets). See CONTRIBUTING.md.
     |- README.md: This README file.
     |- CONTRIBUTING.md: Explains how to contribute to this manual.
     |- buildspec.yml: It is not clear whether this file is really needed.
