@@ -10,7 +10,13 @@ Preparations
 
 This subsection is the first tutorial about manually deploying a Frank on an Apache Tomcat application server. It uses an in-memory H2 database. In this tutorial we do not set up an external database.
 
-As a starting point you need a Linux PC, a Linux virtual machine or a Docker container with a clean installation of Apache Tomcat. This tutorial assumes you use a Docker container. If you have a virtual machine or a real Linux server, please apply these instructions differently such that they work for your environment. You also need to download the :download:`example Frank config <../downloads/deploymentTomcat.zip>` that you will deploy in this tutorial. Please extract this .zip into a directory of your choice; we refer to it as ``work``. You should have the following directory structure: ::
+As a starting point you need a Linux PC, a Linux virtual machine or a Docker container with a clean installation of Apache Tomcat. This tutorial assumes you use a Docker container. If you have a virtual machine or a real Linux server, please apply these instructions differently such that they work for your environment. You also need to download the :download:`example Frank <../downloads/deploymentTomcat.zip>` that you will deploy in this tutorial.
+
+.. NOTE::
+
+   You are downloading a Frank here, not a Frank configuration like the download links of :ref:`gettingStarted`. You have one directory here that holds all the data the Frank!Framework should process. You are learning how to deploy the Frank!Framework on an Apache Tomcat application server, while :ref:`gettingStarted` covered deploying Frank configs on the Frank!Framework.
+
+Please extract the .zip into a directory of your choice; we refer to it as ``work``. You should have the following directory structure: ::
 
   work
   |- classes
