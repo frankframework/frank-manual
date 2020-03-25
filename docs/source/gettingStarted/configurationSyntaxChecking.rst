@@ -59,14 +59,14 @@ Please do the following to download the Frank configuration schema:
 Frank!Doc
 ---------
 
-From the screen shown at step 2, you can access the Frank!Doc, an additional source of documentation. It lets you search pipes, senders and receivers and it gives you detailed information.
+From the screen shown at step 3, you can access the Frank!Doc, an additional source of documentation. It lets you search pipes, senders and receivers and it gives you detailed information.
 
 6. In the picture of step 3, press "The new ibisdoc application" (number 2). The following screen appears:
 
    .. image:: frankDoc.jpg
 
 #. As an example, we want to see detailed information about the ``<FixedResultPipe>``. To the top-left, click "Pipes" (number 1). To the bottom-left, all available pipes are listed.
-#. Click "FixedResultPipe" (number 2). To the right, a page with detailed information appears. To the top it confirmst that it is about FixedResultPipe (number 3). You see the attribute you know already, "returnString" (number 4).
+#. Click "FixedResult" (number 2). To the right, a page with detailed information appears. To the top it confirmst that it is about FixedResult (number 3). You see the attribute you know already, "returnString" (number 4).
 #. Each pipe, sender or receiver corresponds to a Java class in the source code of the Frank!Framework. You can see the Javadoc documentation of this class by clicking "Javadoc" (number 5). This information is written for Java developers, but it may be useful sometimes for Frank developers.
 
 Try code completion
