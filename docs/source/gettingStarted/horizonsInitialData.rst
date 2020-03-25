@@ -11,7 +11,9 @@ We continue our case study about the imaginary firm NewHorizons, see :ref:`newHo
 Configure database access
 -------------------------
 
-First you have to extend your configuration to support database access. WeAreFrank! plans to update the Frank!Framework such that this step will not be necessary in the future.
+First you have to extend your configuration to support database access. WeAreFrank! plans to update the Frank!Framework such that this step will not be necessary in the future (see `change request`_).
+
+.. _change request: https://github.com/ibissource/iaf/issues/510
 
 #. Please create file ``ConfigurationDatabase.xml`` with the following contents:
 
