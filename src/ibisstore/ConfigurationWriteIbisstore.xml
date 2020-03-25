@@ -1,0 +1,54 @@
+<Module
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+    <Adapter name="writeIbisstore">
+        <Receiver name="writeIbisstoreReceiver">
+            <JavaListener name="writeIbisstoreListener" />
+        </Receiver>
+        <Pipeline firstPipe="sendMessagePipe">
+            <SenderPipe name="sendMessagePipe">
+                <sender
+                    className="nl.nn.adapterframework.jdbc.MessageStoreSender"
+                    jmsRealm="jdbc"
+                    slotId="${instance.name}/ServiceName"
+                    sessionKeys="key1,key2">
+                    <param name="messageId" xpathExpression="/Envelope/Header/MessageID"/>
+                </sender>
+                <!-- DummyTransactionalStorage to enable messagestore browser in the console (JdbcTransactionalStorage would store an extra record in the ibisstore) -->
+                <messageLog
+                    className="nl.nn.adapterframework.jdbc.DummyTransactionalStorage"
+                    jmsRealm="jdbc"
+                    slotId="${instance.name}/ServiceName"
+                    type="M"/>
+                <Forward name="success" path="EXIT"/>
+            </SenderPipe>
+            <Exit path="EXIT" state="success" code="200"></Exit>
+        </Pipeline>
+    </Adapter>
+    <Adapter name="readIbisstore">
+        <Receiver name="readIbisstoreReceiver">
+            <listener
+                name="MyListener"
+                className="nl.nn.adapterframework.jdbc.MessageStoreListener"
+                jmsRealm="jdbc"
+                slotId="${instance.name}/ServiceName"
+                sessionKeys="key1,key2"/>
+            <messageLog
+                className="nl.nn.adapterframework.jdbc.DummyTransactionalStorage"
+                jmsRealm="jdbc"
+                slotId="${instance.name}/ServiceName"
+            />
+            <!--
+            <JdbcMessageLog name="writeIbisstoreListenerMessageLog"
+                slotId="${instance.name}/WriteIbisstoreReceiver"
+                datasourceName="jdbc/${instance.name.lc}" />
+            -->
+        </Receiver>
+        <Pipeline firstPipe="DoIt">
+            <Exit state="success" path="EXIT" code="200"/>
+            <FixedResultPipe name="DoIt" returnString="Hello World">
+                <Forward name="success" path="EXIT"/>
+            </FixedResultPipe>
+        </Pipeline>
+    </Adapter>
+</Module>
