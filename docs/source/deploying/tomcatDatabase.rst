@@ -81,12 +81,12 @@ Please migrate the Frank!Framework to the new database, as follows:
 
    >> wget -O /usr/local/tomcat/lib/mysql-connector-java-5.1.44.jar https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar
 
-#. You will change the definition of JNDI name ``jdbc/deploymenttomcat``, see https://tomcat.apache.org/tomcat-7.0-doc/jndi-resources-howto.html, to point to the new database. Please edit ``/usr/local/tomcat/conf/context.xml`` such that the ``<Resource>`` element become as follows:
+#. You will change the definition of JNDI name ``jdbc/frank2tomcat``, see https://tomcat.apache.org/tomcat-7.0-doc/jndi-resources-howto.html, to point to the new database. Please edit ``/usr/local/tomcat/conf/context.xml`` such that the ``<Resource>`` element become as follows:
 
    .. code-block:: xml
 
       <Resource
-          name="jdbc/deploymenttomcat"
+          name="jdbc/frank2tomcat"
           auth="Container"
           type="javax.sql.DataSource"
           username="root"
@@ -97,14 +97,14 @@ Please migrate the Frank!Framework to the new database, as follows:
           maxIdle="3"
           validationQuery="select 1" />
 
-   In the first tutorial you installed text editor ``nano``, so you can use it now if you want.
+   In the first tutorial you installed text editor ``nano``, so you can use it now if you want. Please apply the real IP address instead of ``172.17.0.2`` like written above.
 
 #. Enter ``exit`` to leave the Frank!Framework container. Restart it using the following commands: ::
 
    > docker stop tomcat-frank
    > docker start tomcat-frank
 
-#. The Frank!Framework should be available as a website on URL http://localhost:8080/frankframework/iaf/gui. You can test it exactly as shown in the first tutorial, see :ref:`deploymentTomcatBasicTest`.
+#. The Frank!Framework should be available as a website on URL http://localhost:8080/frankframework. You can test it exactly as shown in the first tutorial, see :ref:`deploymentTomcatBasicTest`.
 #. In addition, you can check that the Frank!Framework is indeed running on the MySQL database. You can check that some new tables have been created, as follows:
 
    a. Start a new MySQL client: ::
@@ -123,12 +123,7 @@ Please migrate the Frank!Framework to the new database, as follows:
         +-----------------------+
         | DATABASECHANGELOG     |
         | DATABASECHANGELOGLOCK |
-        | IBISCONFIG            |
-        | IBISLOCK              |
-        | IBISPROP              |
-        | IBISSCHEDULES         |
-        | IBISSTORE             |
         +-----------------------+
-        7 rows in set (0.01 sec)
+        2 rows in set (0.00 sec)
 
-This finishes the tutorials on manually installing the Frank!Framework on Apache Tomcat. Remember that you should deploy the Frank!Framework as a webapplication. Next you should download additional libraries including the database driver for the database you choose. Finally you should configure the JNDI name of your database as a resource in ``context.xml``. The Frank developer who programmed the Frank configuration should know the name you need to configure (in this tutorial it is ``jdbc/deploymenttomcat``).
+This finishes the tutorials on manually installing the Frank!Framework on Apache Tomcat. Remember that you should deploy the Frank!Framework as a webapplication. Next you should download additional libraries including the database driver for the database you choose. You need to set some properties to reference the Frank configs you will deploy, and you need to deploy them. Finally you should configure the JNDI name of your database as a resource in ``context.xml``.

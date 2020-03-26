@@ -23,6 +23,7 @@ Please extract the .zip into a directory of your choice; we refer to it as ``wor
      |- myConfig
         |- Configuration.xml
         |- ConfigurationReferenceProperties.xml
+        |- DatabaseChangelog.xml
         |- DeploymentSpecifics.properties
         |- StageSpecifics_LOC.properties
   |- tests
