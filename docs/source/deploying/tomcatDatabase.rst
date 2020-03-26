@@ -131,4 +131,4 @@ Please migrate the Frank!Framework to the new database, as follows:
         +-----------------------+
         7 rows in set (0.01 sec)
 
-This finishes the tutorials on manually installing the Frank!Framework on Apache Tomcat. Remember that you should deploy the Frank!Framework as a webapplication. Next you should download additional libraries including the database driver for the database you choose. Finally you should configure the JNDI name of your database as a resource in ``context.xml>``. The Frank developer who programmed the Frank configuration should know the name you need to configure (in this tutorial it is ``jdbc/deploymenttomcat``).
+This finishes the tutorials on manually installing the Frank!Framework on Apache Tomcat. Remember that you should deploy the Frank!Framework as a webapplication. Next you should download additional libraries including the database driver for the database you choose. Finally you should configure the JNDI name of your database as a resource in ``context.xml``. The Frank developer who programmed the Frank configuration should know the name you need to configure (in this tutorial it is ``jdbc/deploymenttomcat``).
