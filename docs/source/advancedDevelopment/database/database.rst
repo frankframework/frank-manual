@@ -34,6 +34,8 @@ Liquibase allows multiple deployments of your Frank to share the same database. 
 
    If you want to undo initialization by Liquibase, you can execute SQL query ``DROP ALL OBJECTS`` in the JDBC | Execute Query screen.
 
-The Frank!Framework only does database initialization when property ``jdbc.migrator.active`` is true. This property only works as a system property or a classpath property. It follows that the system administrator decides whether automatic database initialization is switched on.
-
 If you have multiple databases, what database is selected? By default, it is the database with JNDI name ``jdbc/${instance.name.lc}``. You can override this by setting property ``jdbc.migrator.dataSource``.
+
+The Frank!Framework only does database initialization when property ``jdbc.migrator.active`` is true. There is a subtle point with this property. It has a different effect as a system property or classpath property on the one hand, or as a configuration property on the other hand. The Frank!Framework needs database tables to perform some advanced services like the message store (not yet explained in the Frank!Manual). These tables are only created when the Frank!Framework starts with property ``jdbc.migrator.active`` set as a system property or classpath property. If ``jdbc.migrator.active`` is only set within a configuration, then these system tables are not created and some advanced features of the Frank!Framework will not work.
+
+When ``jdbc.migrator.active`` is true for a configuration, then that configuration can always create and initialize its own database tables using a ``DatabaseChangelog.xml``. This is the case when ``jdbc.migrator.active`` is a system property, a classpath property or a configuration property.
