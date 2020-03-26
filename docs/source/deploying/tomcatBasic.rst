@@ -19,14 +19,12 @@ As a starting point you need a Linux PC, a Linux virtual machine or a Docker con
 Please extract the .zip into a directory of your choice; we refer to it as ``work``. You should have the following directory structure: ::
 
   work
-  |- classes
-     |- Configuration.xml
-     |- DeploymentSpecifics.properties
   |- configurations
      |- myConfig
         |- Configuration.xml
         |- ConfigurationReferenceProperties.xml
         |- DeploymentSpecifics.properties
+        |- StageSpecifics_LOC.properties
   |- tests
      |- myConfig
         |- scenario01.properties
@@ -34,7 +32,7 @@ Please extract the .zip into a directory of your choice; we refer to it as ``wor
         |- step2.txt
   |- downloadLibraries.sh
   |- Dockerfile
-  |- resorceDef
+  |- resourceDef
 
 When you are done with these preparations, please do the following:
 
@@ -63,7 +61,7 @@ Now you need to deploy the Frank!Framework within your Tomcat instance. The tabl
 ========================================================  =========================================================
 Source                                                    Destination
 --------------------------------------------------------  ---------------------------------------------------------
-``ibis-adapterframework-webapp-7.5-20191211.175453.war``  ``/usr/local/tomcat/webapps/frankframework.war``
+``ibis-adapterframework-webapp-7.6-20200325.131312.war``  ``/usr/local/tomcat/webapps/frankframework.war``
 ``h2-1.4.199.jar``                                        ``/usr/local/tomcat/lib/h2.jar``
 ``jtds-1.3.1.jar``                                        ``/usr/local/tomcat/lib/jtds-1.3.1.jar``
 ``geronimo-jms_1.1_spec-1.1.1.jar``                       ``/usr/local/tomcat/lib/geronimo-jms_1.1_spec-1.1.1.jar``
@@ -117,16 +115,11 @@ Add your Frank configuration
 With these steps, you have deployed the Frank!Framework on your Docker container. It will not work properly yet because you do not have a configuration. Please continue as follows:
 
 16. Enter your Docker container with the command documented earlier.
-#. The contents of your ``classes`` folder must be stored inside the deployment on your application server. Within your container, copy your ``/home/root/Downloads/classes`` folder to your deployment: ::
+#. You need to set some system properties. You can define them by editing the file ``/usr/local/tomcat/conf/catalina.properties``. Please open this file with text editor ``nano``: ::
 
-     >> cd /home/root/Downloads/work/classes
-     >> mkdir -p /usr/local/tomcat/webapps/frankframework/WEB-INF/classes
-     >> cp -r * /usr/local/tomcat/webapps/frankframework/WEB-INF/classes
-     >> cd /usr/local/tomcat/webapps/frankframework/WEB-INF/classes
-     >> ls
+     >> nano /usr/local/tomcat/conf/catalina.properties
 
-   You should see the copied files within your deployment.
-#. You need to set the DTAP stage as a system property. You can set system properties in Tomcat by defining them in file ``/usr/local/tomcat/conf/catalina.properties``. Please add the following line to this file:
+#. You need to set the DTAP stage as a system property. Please add the following line to ``catalina.properties``:
 
    .. code-block:: none
       
@@ -134,9 +127,23 @@ With these steps, you have deployed the Frank!Framework on your Docker container
 
    .. WARNING::
 
-      It is not realistic that we do a manual deployment on Tomcat but that we have DTAP stage LOC. If you are developing, use Frank!Runner if possible. We choose DTAP stage LOC because we are including a Larva test in our deployment, which is not realistic in a production environment.
+      It is not realistic that we do a manual deployment on Tomcat but that we have DTAP stage LOC. If you are developing, use the Frank!Runner if possible. We choose DTAP stage LOC because we are including a Larva test in our deployment, which is not realistic in a production environment.
 
-#. The ``configurations`` directory is stored outside the deployment on your application server. You can use the copy you stored in ``/home/root/Downloads/work/configurations``. This is not the default location expected by the Frank!Framework. You have to tell the Frank!Framework that you choose a custom directory for configuration ``myConfig``. You will do this by setting a system property. Please add the following line to ``catalina.properties``: ::
+By default, the Frank!Framework expects that there is one configuration, and that the name of this configuration equals the value of property ``instance.name.lc``. This default configuration is expected to be part of the webapplication.
+
+.. WARNING::
+
+   Do not confuse this default behavior of the Frank!Framework with the Frank!Runner. The Frank!Runner overrides this default behavior, which is why you do not read about this in chapter :ref:`gettingStarted`.
+
+19. You are going to tell the Frank!Framework what configurations you have, overriding the default behavior explained above. Please add the following to ``catalina.properties``: ::
+
+     configurations.names=myConfig
+
+#. Frank configs can be stored in multiple ways. Storing them within a directory is only one of the possibilities. Alternatively, Frank configs can be stored in the database of the Frank!Framework. Please tell the Frank!Framework that configuration ``myConfig`` appears in a directory by adding the following to ``catalina.properties``: ::
+
+     configurations.myConfig.classLoaderType=DirectoryClassLoader
+
+#. The ``configurations`` directory is stored outside the deployment on your application server. You can use the copy you stored in ``/home/root/Downloads/work/configurations``. This is not the default location expected by the Frank!Framework. You have to tell the Frank!Framework that you choose a custom directory for your configurations. Please add the following line to ``catalina.properties``: ::
 
      configurations.myConfig.directory=/home/root/Downloads/work/configurations
 
@@ -145,22 +152,21 @@ With these steps, you have deployed the Frank!Framework on your Docker container
      scenariosroot1.directory=/home/root/Downloads/work/tests/
      scenariosroot1.description=My Larva tests
 
+#. Each deployment of the Frank!Framework needs to define property ``instance.name``. When you use the Frank!Runner this is handled automatically, but now you have to set this property yourself. Please add the following line to ``catalina.properties``: ::
+
+     instance.name=Frank2Tomcat
+
 #. Finally configure your database by configuring a JNDI resource, see https://tomcat.apache.org/tomcat-7.0-doc/jndi-resources-howto.html for more information. Please add the following lines to ``/usr/local/tomcat/conf/context.xml``:
 
-   .. code-block:: XML
-
-      <Resource
-          name="jdbc/deploymenttomcat"
-          type="org.h2.jdbcx.JdbcDataSource"
-          factory="org.apache.naming.factory.BeanFactory"
-          URL="jdbc:h2:/usr/local/tomcat/logs/ibisname" />
+   .. literalinclude:: ../../../src/deploymentTomcat/resourceDef
+      :language: xml
 
    These lines should be placed to the end of the file, right before the last line ``</Context>``. It is important that the ``<Resource>`` tag is inside of the ``<Context>`` tag.
 
    .. NOTE::
 
-      The JNDI name ``jdbc/deploymenttomcat`` is referenced in the example Frank configuration in ``classes/Configuration.xml``. The line ``<jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>`` references it, because the value of property ``instance.name.lc`` is ``deploymenttomcat``. The property ``instance.name.lc`` is generated automatically by the Frank!Framework from property ``instance.name`` by replacing upper-case letters with lower-case letters. In file ``classes/DeploymentSpecifics.properties`` you can see that property ``instance.name`` is ``deploymentTomcat``.
-
+      The JNDI name ``jdbc/frank2tomcat`` is referenced automatically by the Frank!Framework to initialize the database. This is the referenced JNDI name because you gave property ``instance.name`` the value ``Frank2Tomcat``. The Frank!Framework automatically calculates property ``instance.name.lc`` by converting all characters of the value of ``instance.name`` to lower case. Property ``instance.name.lc`` gets the value ``frank2tomcat``. The JNDI name of the database is obtained by prepending ``jdbc/``. For detauls see section :ref:`advancedDevelopmentDatabase`.
+      
 #. Enter ``exit`` to exit from your Docker container.
 
 With these steps you have added your Frank configuration and you have configured its database.
@@ -172,20 +178,26 @@ Test your work
 
 You can test your work with the following steps:
 
-23. Restart your docker container with the following commands: ::
+26. Restart your docker container with the following commands: ::
 
      > docker stop tomcat-frank
      > docker start tomcat-frank
 
-#. Remember that you exported port 8080 of your container. When you access port 8080 of your host computer, you reach into your container. Please start a webbrowser and go to http://localhost:8080/frankframework/iaf/gui. You should see the following.
+#. Remember that you exported port 8080 of your container. When you access port 8080 of your host computer, you reach into your container. Please start a webbrowser and go to http://localhost:8080/frankframework. You should see the following.
 
    .. image:: frankHome.jpg
 
-#. You are in the Adapter Status screen (number 1). Please click "Configuration messages" (number 2) to see that there are no error messages. You should see tabs "myConfig" (number 3) and "deploymentTomcat" (number 4).
-#. If you have errors, you can click "Environment Variables" (number 5). Using Ctrl-F you can check whether property ``configurations.myConfig.directory`` is defined.
-#. If you have errors, you can also examine the output produced by Tomcat. If you are using docker, use the command ``docker logs tomcat-frank``.
+#. You are in the Adapter Status screen (number 1). The instance name is "Frank2Tomcat" (number 3). Your configuration "myConfig" appears as a tab (number 4).
 
    .. NOTE::
+
+      Please note the difference between the URL (number 2) and the instance name (number 3). The word "frankframework" in the URL is there because you deployed the Frank!Framework in file "frankframework.war". You configured the instance name in file "catalina.properties".
+
+#. Please click "Configuration messages" (number 5) to see that there are no error messages.
+#. If you have errors, you can click "Environment Variables" (number 6). Using Ctrl-F you can search for properties. Do you see all properties you should have defined in "catalina.properties"?
+#. If you have errors, you can also examine the output produced by Tomcat. If you are using docker, use the command ``docker logs tomcat-frank``.
+
+   .. WARNING::
 
       Also if everything is well, you will probably see a lot of errors. The reason is that Apache Tomcat was already running while you were deploying your Frank. The errors were produced when your Frank was not complete. Please look for the moment that you restarted your container. Only errors after that monent are relevant.
 
@@ -203,7 +215,7 @@ You can test your work with the following steps:
 
    .. image:: frankConsoleFindTestTools.jpg
 
-#. You see you are in the Larva screen (number 1 in the figure below). Please enter "/" (number 2) to select all tests into your scenario root (number 3). Please note that you see the name here you configured using system property ``scenariosroot1.description``. Press "start" (number 4) to run your tests.
+#. You see you are in the Larva screen (number 1 in the figure below). Please choose "/myConfig/" (number 2) and "My Larva tests" (number 3) to select all tests. Number 3 shows the value you configured in system property ``scenariosroot1.description``. Press "start" (number 4) to run your tests.
 
    .. image:: larva.jpg
 

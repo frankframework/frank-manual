@@ -1,7 +1,7 @@
 FROM tomcat:7.0.99
-ENV IAF_VERSION=7.5-20191211.175453
+ENV IAF_VERSION=7.6-20200325.131312
 ENV HOME=/home/root/Downloads/work
-ENV CATALINA_OPTS="-Ddtap.stage=LOC -Dconfigurations.myConfig.directory=${HOME}/configurations -Dscenariosroot1.directory=/home/root/Downloads/work/tests/ -Dscenariosroot1.description=\"My Larva tests\""
+ENV CATALINA_OPTS="-Dinstance.name=Frank2Tomcat -Ddtap.stage=LOC -Dconfigurations.directory=${HOME}/configurations -Dscenariosroot1.directory=${HOME}/tests/ -Dscenariosroot1.description=\"My Larva tests\" -Dconfigurations.names=myConfig -Dconfigurations.myConfig.classLoaderType=DirectoryClassLoader"
 ENV CONTEXT_FILE=/usr/local/tomcat/conf/context.xml
 WORKDIR /usr/local/tomcat/webapps
 
@@ -19,8 +19,6 @@ RUN mkdir -p ${HOME}
 COPY . ${HOME}
 RUN apt-get update
 RUN apt-get install nano
-RUN mkdir -p /usr/local/tomcat/webapps/frankframework/WEB-INF/classes
-RUN cp -r ${HOME}/classes /usr/local/tomcat/webapps/frankframework/WEB-INF
 RUN sed -i -e "s|</Context>||g" ${CONTEXT_FILE}
 RUN cat ${HOME}/resourceDef >> ${CONTEXT_FILE}
 RUN echo "</Context>" >> ${CONTEXT_FILE}

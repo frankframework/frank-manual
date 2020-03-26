@@ -1,5 +1,5 @@
 #!/bin/bash
-IAF_VERSION=7.5-20191211.175453
+IAF_VERSION=7.6-20200325.131312
 wget -O /usr/local/tomcat/webapps/frankframework.war "https://nexus.ibissource.org/content/groups/public/org/ibissource/ibis-adapterframework-webapp/${IAF_VERSION}/ibis-adapterframework-webapp-${IAF_VERSION}.war"
 wget -O /usr/local/tomcat/lib/h2.jar "https://repo1.maven.org/maven2/com/h2database/h2/1.4.199/h2-1.4.199.jar"
 wget -O /usr/local/tomcat/lib/jtds-1.3.1.zip "http://www.java2s.com/Code/JarDownload/jtds/jtds-1.3.1.jar.zip"
