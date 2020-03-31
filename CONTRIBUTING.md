@@ -92,6 +92,14 @@ TutorialSteps has an additional feature. It checks whether the differences betwe
 
 The reader wants to download Frank configurations that you as a technical writer create. The manual has download links that provide these Frank configs as zip files. These zips are created by the script "buildDownloadZips.py". In the file "buildDownloadZips.txt" you configure the directories to zip and the output files to produce. Please do not call "buildDownloadZips.py" directly, but use the "generateAll.py" script instead.
 
+### Contributing to automation software
+
+Before contributing to the automation software, please study the source code carefully. Here are some general statements about the software architecture:
+
+* Many Python files have unit tests. If a file f.py has unit tests, you can call it like "python f.py" to run them. The unit tests are ignored when f.py is included by other Python files. This is achieved by wrapping the unit tests within `if __name__ == "__main__"`.
+* Each piece of code is as focussed as possible. We try to avoid intermixing code that performs multiple duties. For example, in buildDownloadZips.py, browsing a directory tree is done in method "walkTrackedFilesInDirectory". This method gets as a parameter a function object. For each file found, walkTrackedFilesInDirectory calls that other function. The Python code within waldTrackedFilesInDirectory is focussed to doing the browsing.
+* The code is documented extensively. Documentation focusses on what has to be achieved. Documenting implementation details is avoided when possible. The code should speak for itself. The code can speak for itself if variable names are chosen well and if code is focussed to one duty as explained above.
+
 ## Building the Frank!Manual
 
 Building the manual involves the following steps:
