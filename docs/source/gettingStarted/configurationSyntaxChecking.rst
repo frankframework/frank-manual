@@ -101,8 +101,42 @@ Please do the following to configure Eclipse for code completion:
 
    .. image:: eclipseNewProjectNext.jpg
 
-#. A new project has appeared in your project explorer (number 1 in the fingure below). Please open ``ConfigurationExample1Adapter.xml`` (number 2).
+#. A new project has appeared in your project explorer (number 1 in the fingure below). You may see a cross before your XML files (number 2). If this is the case, you are using the standard XML editor of Eclipse.
 
    .. image:: eclipseProjectExplorer.jpg
 
+The standard XML editor of Eclipse may crash if you use it with XML schema ``ibisdoc.xsd``. This XML schema may be too large for the XML editor. You can fix this by installing the Wild Web Developer plugin, which enhances the generic text editor to properly process XML. Please continue as follows:
+
+6. Update your Eclipse plugins. If you use outdated plugins, your installation may fail.
+#. In the Eclipse main menu, choose Help | Eclipse Marketplace... . The dialog shown below opens.
+
+   .. image:: installWWD.jpg
+
+#. You see your are in the right dialog (number 1). Type ``wild web developer`` in the search field (number 2).
+#. You should see the plugin in the search results (number 3). Press "install" (number 4).
+#. Follow the dialog to do the installation.
+#. Restart Eclipse.
+#. In the Eclipse main menu, choose Window | Preferences.
+#. You can see you are in the Preferences dialog (number 1). Go to "File Associations" (number 4). You find it under "General" (number 2) and "Editors" (number 3).
+
+   .. image:: goToFileAssociations.jpg
+
+#. You can verify you have the right screen (number 1 in the figure below). Here you can link file types to editors provided by Eclipse. Go to "\*.xml" (number 2). If you do not see it, you can use the "Add..." button (number 3).
+
+   .. image:: fileAssociationsFileTypes.jpg
+
+#. Make the "Generic Text Editor" (number 1 in the figure below) the default using the button (number 2).
+
+   .. image:: chooseDefaultEditor.jpg
+
+#. Restart Eclipse.
+#. In your project explorer, you see that the new editor is used for your XML files, see below:
+
+   .. image:: verificationNewEditor.jpg
+
+#. You can see what editor is being used in an editor tab, see below. To use the newly chosen text editor, you have to close all your open XML files and reopen them again.
+
+   .. image:: oldEclipseEditor.jpg
+
+#. Open "ConfigurationExample1Adapter.xml".
 #. After the ``</Adapter>`` closing tag, please start typing ``<Ad``. Eclipse should present a hint that you mean ``<Adapter>``.
