@@ -1,5 +1,5 @@
-from gitDirectoryTree import GitDirectoryTree
-from compareFactory import createFileDifferences
+from .gitDirectoryTree import GitDirectoryTree
+from .compareFactory import createFileDifferences
 
 META_YML = "meta.yml"
 
@@ -71,21 +71,21 @@ if __name__ == "__main__":
             theDirectories = root.getSubdirs()
             result, error = sortDirectories(theDirectories)
             if error is not None:
-                print error
+                print(error)
             self.assertIsNone(error)
-            self.assertEquals(len(result), 3)
+            self.assertEqual(len(result), 3)
             resultAsTable = [[item.getOld().getLastComponent() if item.getOld() is not None else "none", item.getNew().getLastComponent()] \
                 for item in result]
-            self.assertEquals(resultAsTable, [["none", "first"], ["first", "second"], ["first", "third"]])
+            self.assertEqual(resultAsTable, [["none", "first"], ["first", "second"], ["first", "third"]])
         def test_when_first_dir_has_predecessor_then_error(self):
             root = GitDirectoryTree("testDataSortDirectoriesFirstHasPredecessor")
             theDirectories = root.getSubdirs()
             result, error = sortDirectories(theDirectories)
-            self.assertEquals(error, "First directory should not have a predecessor")
+            self.assertEqual(error, "First directory should not have a predecessor")
         def test_when_predecessor_references_forward_then_error(self):
             root = GitDirectoryTree("testDataSortDirectoriesForwardPredecessor")
             theDirectories = root.getSubdirs()
             result, error = sortDirectories(theDirectories)
-            self.assertEquals(error, "Predecessors cannot come after the present directory")
+            self.assertEqual(error, "Predecessors cannot come after the present directory")
 
     unittest.main()

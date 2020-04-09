@@ -136,7 +136,7 @@ class Highlight:
         self._relFirst += numLines
         self._relLast += numLines
     def getHighlights(self):
-        return range(self._relFirst, self._relLast + 1)
+        return list(range(self._relFirst, self._relLast + 1))
 
 def copyHighlight(h):
     if not isinstance(h, Highlight):
@@ -253,7 +253,7 @@ if __name__ == "__main__":
         def test_if_properly_indented_then_get_indent(self):
             indent, err = getIndentAndCheck("   text")
             self.assertTrue(err is None)
-            self.assertEquals(3, indent)
+            self.assertEqual(3, indent)
             indent, err = getIndentAndCheck("text")
             self.assertTrue(err is None)
             self.assertEqual(0, indent)
@@ -328,15 +328,15 @@ if __name__ == "__main__":
         def test_winden_window_can_take_one_line(self):
             w = Window(["zero", "one", "two", "three", "four"], 2, 3)
             w.widen(1)
-            self.assertEquals(w.getLines(), ["one", "two", "three", "four"])
+            self.assertEqual(w.getLines(), ["one", "two", "three", "four"])
         def test_window_widen_respects_end_of_file(self):
             w = Window(["zero", "one", "two", "three", "four"], 2, 3)
             w.widen(2)
-            self.assertEquals(w.getLines(), ["zero", "one", "two", "three", "four"])
+            self.assertEqual(w.getLines(), ["zero", "one", "two", "three", "four"])
         def test_window_widen_respects_start_of_file(self):
             w = Window(["zero", "one", "two", "three", "four"], 1, 2)
             w.widen(2)
-            self.assertEquals(w.getLines(), ["zero", "one", "two", "three", "four"])
+            self.assertEqual(w.getLines(), ["zero", "one", "two", "three", "four"])
         def test_if_windows_dont_touch_then_no_overlap(self):
             lines = ["zero", "one", "two", "three", "four"]
             firstWindow = Window(lines, 0, 1)
@@ -349,7 +349,7 @@ if __name__ == "__main__":
             self.assertTrue(firstWindow.hasOverlap(secondWindow))
             joinResult, numPrepended = firstWindow.join(secondWindow)
             self.assertEqual(["one", "two", "three", "four"], joinResult.getLines())
-            self.assertEquals(2, numPrepended)
+            self.assertEqual(2, numPrepended)
         def test_if_windows_overlap_then_overlap_and_can_join(self):
             lines = ["zero", "one", "two", "three", "four", "five"]
             firstWindow = Window(lines, 1, 2)
@@ -357,14 +357,14 @@ if __name__ == "__main__":
             self.assertTrue(firstWindow.hasOverlap(secondWindow))
             joinResult, numPrepended = firstWindow.join(secondWindow)
             self.assertEqual(["one", "two", "three", "four"], joinResult.getLines())
-            self.assertEquals(1, numPrepended)
+            self.assertEqual(1, numPrepended)
 
     class TestHighlight(unittest.TestCase):
         def test_it(self):
             h = Highlight(3, 5)
-            self.assertEquals([3, 4, 5], h.getHighlights())
+            self.assertEqual([3, 4, 5], h.getHighlights())
             h.shift(3)
-            self.assertEquals([6, 7, 8], h.getHighlights())
+            self.assertEqual([6, 7, 8], h.getHighlights())
 
     class TestHighlightedWindow(unittest.TestCase):
         def test_when_prepended_then_highlights_shifted(self):
@@ -376,21 +376,21 @@ if __name__ == "__main__":
             comparison.compare()
             self.assertFalse(comparison.hasComparisonError())
             windows = comparison.getWindows()
-            self.assertEquals(len(windows), 1)
+            self.assertEqual(len(windows), 1)
             windows[0].highlightAll()
-            self.assertEquals(windows[0].getNumFirst(), 1)
-            self.assertEquals(len(windows[0].getLines()), 2)
+            self.assertEqual(windows[0].getNumFirst(), 1)
+            self.assertEqual(len(windows[0].getLines()), 2)
             highlights = windows[0]._highlights
-            self.assertEquals(len(highlights), 1)
-            self.assertEquals(highlights[0]._relFirst, 0)
-            self.assertEquals(highlights[0]._relLast, 1)
+            self.assertEqual(len(highlights), 1)
+            self.assertEqual(highlights[0]._relFirst, 0)
+            self.assertEqual(highlights[0]._relLast, 1)
             windows[0].prepend(1)
-            self.assertEquals(windows[0].getNumFirst(), 0)
-            self.assertEquals(len(windows[0].getLines()), 3)
+            self.assertEqual(windows[0].getNumFirst(), 0)
+            self.assertEqual(len(windows[0].getLines()), 3)
             highlights = windows[0]._highlights
-            self.assertEquals(len(highlights), 1)
-            self.assertEquals(highlights[0]._relFirst, 1)
-            self.assertEquals(highlights[0]._relLast, 2)
+            self.assertEqual(len(highlights), 1)
+            self.assertEqual(highlights[0]._relFirst, 1)
+            self.assertEqual(highlights[0]._relLast, 2)
         def test_when_two_windows_touch_then_joined_correctly_first_highlight(self):
             comparison = Comparison( \
                 ["one",                 "four", "five",        "seven"], \
@@ -408,8 +408,8 @@ if __name__ == "__main__":
             windows[1].append(1)
             self.assertTrue(windows[0].hasOverlap(windows[1]))
             joinWindow = windows[0].join(windows[1])
-            self.assertEquals(joinWindow.getLines(), ["one", "two", "three", "four", "five", "six", "seven"])
-            self.assertEquals([n+1 for n in joinWindow.getHighlights()], [2, 3])
+            self.assertEqual(joinWindow.getLines(), ["one", "two", "three", "four", "five", "six", "seven"])
+            self.assertEqual([n+1 for n in joinWindow.getHighlights()], [2, 3])
         def test_when_two_windows_touch_then_joined_correctly_second_highlight(self):
             comparison = Comparison( \
                 ["one",        "three", "four",                "seven"], \
@@ -426,8 +426,8 @@ if __name__ == "__main__":
             windows[1].append(1)
             self.assertTrue(windows[0].hasOverlap(windows[1]))
             joinWindow = windows[0].join(windows[1])
-            self.assertEquals(joinWindow.getLines(), ["one", "two", "three", "four", "five", "six", "seven"])
-            self.assertEquals([n+1 for n in joinWindow.getHighlights()], [5, 6])
+            self.assertEqual(joinWindow.getLines(), ["one", "two", "three", "four", "five", "six", "seven"])
+            self.assertEqual([n+1 for n in joinWindow.getHighlights()], [5, 6])
         def test_when_two_windows_dont_touch_then_not_joinable(self):
             comparison = Comparison( \
                 ["one",        "three", "four", "five",        "seven"], \
@@ -446,6 +446,6 @@ if __name__ == "__main__":
             lines = ["aap", "noot", "mies"]
             w1 = HighlightedWindow(Window(lines, 1, 1))
             w2 = HighlightedWindow(Window(lines, 2, 2))
-            self.assertEquals(sortedByFirst([w2, w1]), [w1, w2])
-            self.assertEquals(sortedByFirst([w1, w2]), [w1, w2])
+            self.assertEqual(sortedByFirst([w2, w1]), [w1, w2])
+            self.assertEqual(sortedByFirst([w1, w2]), [w1, w2])
     unittest.main()

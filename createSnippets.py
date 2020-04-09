@@ -37,17 +37,17 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
       configName/stepName/snippetName.txt (not .rst because that would
       produce warnings from Sphinx).
     """
-    print "Doing Frank config {0} step {1}, predecessor {2}".format(configName, stepName, \
-        oldDir.getLastComponent() if oldDir is not None else "<none>")
+    print("Doing Frank config {0} step {1}, predecessor {2}".format(configName, stepName, \
+        oldDir.getLastComponent() if oldDir is not None else "<none>"))
     hasErrors = False
     if not newDir.fileExists(META_YML):
-        print "ERROR: No file {0} present.".format(META_YML)
+        print("ERROR: No file {0} present.".format(META_YML))
         hasErrors = True
         return hasErrors
     with newDir.openFile(META_YML) as f:
         diffs, dummyPredecessor, error = TutorialSteps.createFileDifferences(f)
     if error is not None:
-        print "ERROR: Did not understand meta.yml for config {0} and step {1}, error is {2}".format(configName, stepName, error)
+        print("ERROR: Did not understand meta.yml for config {0} and step {1}, error is {2}".format(configName, stepName, error))
         hasErrors = True
         return hasErrors
     compare = TutorialSteps.TreeComparison(diffs)
@@ -58,7 +58,7 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
     if errors is not None:
         for error in errors:
             hasErrors = True
-            print "ERROR: " + error
+            print("ERROR: " + error)
     if snippets is None:
         hasErrors = True
     else:
@@ -73,11 +73,11 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
 def createFrankConfigSnippets(configRoot, snippetsDir):
     name = configRoot.getLastComponent()
     stepDirs = configRoot.getSubdirs()
-    print "INFO: Step dirs are: {0}".format(", ".join([item.getLastComponent() for item in stepDirs]))
+    print("INFO: Step dirs are: {0}".format(", ".join([item.getLastComponent() for item in stepDirs])))
     hasErrors = False
     steps, error = TutorialSteps.sortDirectories(stepDirs)
     if error is not None:
-        print "ERROR: configuration {0} while getting predecessor graph: {1}".format(name, error)
+        print("ERROR: configuration {0} while getting predecessor graph: {1}".format(name, error))
         return True
     for step in steps:
         stepName = step.getNew().getLastComponent()

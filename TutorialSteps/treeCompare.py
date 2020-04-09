@@ -9,15 +9,15 @@
 # This makes it easy to write extensive unit tests that
 # you can find at the end of this file.
 
-from stringListCompare import checkNonNegativeInt
-from stringListCompare import checkNonEmptyStringList
-from stringListCompare import Comparison
-from stringListCompare import ExpectedUpdate
-from stringListCompare import HighlightedWindow
-from stringListCompare import comparatorIndentInsensitive
-from stringListCompare import comparatorIndentSensitive
-from stringListCompare import sortedByFirst
-from rst import makeRst
+from .stringListCompare import checkNonNegativeInt
+from .stringListCompare import checkNonEmptyStringList
+from .stringListCompare import Comparison
+from .stringListCompare import ExpectedUpdate
+from .stringListCompare import HighlightedWindow
+from .stringListCompare import comparatorIndentInsensitive
+from .stringListCompare import comparatorIndentSensitive
+from .stringListCompare import sortedByFirst
+from .rst import makeRst
 
 class GeneratedSnippet:
     def __init__(self, name, lines):
@@ -271,7 +271,7 @@ class TreeComparison:
             return None, errors
         errors = []
         snippets = []
-        for item in self._items.values():
+        for item in list(self._items.values()):
             itemSnippets, error = item.run()
             if error is not None:
                 errors.append(error)
@@ -308,7 +308,7 @@ if __name__ == "__main__":
     class TestRelPath(unittest.TestCase):
         def test_it(self):
             r = RelPath(["parent", "child"])
-            self.assertEquals("parent/child", str(r))
+            self.assertEqual("parent/child", str(r))
 
     base = """line 1""".replace("\r\n", "\n").split("\n")
 
@@ -364,7 +364,7 @@ replaced""".replace("\r\n", "\n").split("\n")
             comparison.addNew(RelPath(["fileName"]), base)
             snippets, errors = comparison.run()
             self.assertIsNotNone(snippets)
-            self.assertEquals([], snippets)
+            self.assertEqual([], snippets)
             self.assertIsNone(errors)
         def test_when_no_expectations_and_modified_file_then_errors(self):
             comparison = TreeComparison([])
@@ -382,9 +382,9 @@ replaced""".replace("\r\n", "\n").split("\n")
             comparison.addNew(RelPath(["fileName"]), extraLine)
             snippets, errors = comparison.run()
             self.assertIsNone(errors)
-            self.assertEquals(len(snippets), 1)
-            self.assertEquals(snippets[0].getName(), "mySnippet")
-            self.assertEquals(snippets[0].getLines(), snippetBase2ExtraLine)
+            self.assertEqual(len(snippets), 1)
+            self.assertEqual(snippets[0].getName(), "mySnippet")
+            self.assertEqual(snippets[0].getLines(), snippetBase2ExtraLine)
         def test_when_file_modify_expected_and_satisfied_then_snippet_with_context_highlight_language(self):
             mySnippet = Snippet("mySnippet")
             mySnippet.setMarkupLanguage("xml")
@@ -398,9 +398,9 @@ replaced""".replace("\r\n", "\n").split("\n")
             comparison.addNew(RelPath(["fileName"]), extraLine)
             snippets, errors = comparison.run()
             self.assertIsNone(errors)
-            self.assertEquals(len(snippets), 1)
-            self.assertEquals(snippets[0].getName(), "mySnippet")
-            self.assertEquals(snippets[0].getLines(), snippetBase2ExtraLineHighlightContextXml)
+            self.assertEqual(len(snippets), 1)
+            self.assertEqual(snippets[0].getName(), "mySnippet")
+            self.assertEqual(snippets[0].getLines(), snippetBase2ExtraLineHighlightContextXml)
         def test_when_file_modify_expected_but_delete_found_then_error(self):
             mySnippet = Snippet("mySnippet")
             change = Change(0, 1, False, mySnippet)
@@ -425,7 +425,7 @@ replaced""".replace("\r\n", "\n").split("\n")
             comparison.addNew(RelPath(["fileName"]), base)
             snippets, errors = comparison.run()
             self.assertIsNotNone(snippets)
-            self.assertEquals([], snippets)
+            self.assertEqual([], snippets)
             self.assertIsNone(errors)
         def test_when_file_add_expected_but_file_deleted_then_error(self):
             fileDiff = FileAddDifference(RelPath(["fileName"]))
@@ -439,7 +439,7 @@ replaced""".replace("\r\n", "\n").split("\n")
             comparison.addOld(RelPath(["fileName"]), base)
             snippets, errors = comparison.run()
             self.assertIsNotNone(snippets)
-            self.assertEquals([], snippets)
+            self.assertEqual([], snippets)
             self.assertIsNone(errors)
         def test_when_file_delete_expected_but_file_added_then_error(self):
             fileDiff = FileDeleteDifference(RelPath(["fileName"]))
@@ -467,9 +467,9 @@ replaced""".replace("\r\n", "\n").split("\n")
             comparison.addNew(RelPath(["fileName"]), newTwoWindows)
             snippets, errors = comparison.run()
             self.assertIsNone(errors)
-            self.assertEquals(len(snippets), 1)
-            self.assertEquals(snippets[0].getName(), "mySnippet")
-            self.assertEquals(snippets[0].getLines(), twoWindowsCombinedRst)
+            self.assertEqual(len(snippets), 1)
+            self.assertEqual(snippets[0].getName(), "mySnippet")
+            self.assertEqual(snippets[0].getLines(), twoWindowsCombinedRst)
         def test_two_windows_when_one_rst_requested_and_no_overlap_then_error(self):
             mySnippet = Snippet("mySnippet")
             mySnippet.setNumBefore(0)
@@ -501,11 +501,12 @@ replaced""".replace("\r\n", "\n").split("\n")
             comparison.addNew(RelPath(["fileName"]), newTwoWindows)
             snippets, errors = comparison.run()
             self.assertIsNone(errors)
-            self.assertEquals(len(snippets), 2)
-            self.assertEquals(snippets[0].getName(), "myFirstSnippet")
-            self.assertEquals(snippets[0].getLines(), twoWindowsFirstRst)
-            self.assertEquals(snippets[1].getName(), "mySecondSnippet")
-            self.assertEquals(snippets[1].getLines(), twoWindowsSecondRst)
+            self.assertEqual(len(snippets), 2)
+            sortedSnippets = sorted(snippets, key=lambda s: s.getName())
+            self.assertEqual(sortedSnippets[0].getName(), "myFirstSnippet")
+            self.assertEqual(sortedSnippets[0].getLines(), twoWindowsFirstRst)
+            self.assertEqual(sortedSnippets[1].getName(), "mySecondSnippet")
+            self.assertEqual(sortedSnippets[1].getLines(), twoWindowsSecondRst)
         def test_two_windows_when_two_rst_requested_but_overlap_then_error(self):
             myFirstSnippet = Snippet("myFirstSnippet")
             mySecondSnippet = Snippet("mySecondSnippet")

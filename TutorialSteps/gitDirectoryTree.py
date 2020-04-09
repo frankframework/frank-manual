@@ -25,7 +25,8 @@ class GitDirectoryTree:
     def _browsePaths(self, handler):
         cmd = "git ls-files {0}".format(self._absPath)
         trackedFiles = subprocess.check_output(cmd, shell=True, cwd=self._absPath).splitlines()
-        for relPath in trackedFiles:
+        for relPathBytes in trackedFiles:
+            relPath = relPathBytes.decode(encoding='UTF-8')
             handler(relPath)
     def browse(self, handler):
         self._browsePaths(lambda relPath: self._handleBrowsePath(relPath, handler))
@@ -54,9 +55,9 @@ if __name__ == "__main__":
         def test_get_correct_subdir_names(self):
             instance = GitDirectoryTree("testdata")
             subDirs = instance.getSubdirs()
-            self.assertEquals(len(subDirs), 2)
-            self.assertEquals("dir1", subDirs[0].getLastComponent())
-            self.assertEquals("dir2", subDirs[1].getLastComponent())
+            self.assertEqual(len(subDirs), 2)
+            self.assertEqual("dir1", subDirs[0].getLastComponent())
+            self.assertEqual("dir2", subDirs[1].getLastComponent())
         def test_browse_gives_correct_relpaths_and_line_lists(self):
             expected = sorted("""f1.txt: f1 line 0
 f1.txt: f1 line 1
@@ -69,13 +70,13 @@ dir2/f1.txt: dir2/f1 line 2""".replace("\r\n", "\n").split("\n"))
             actual = []
             instance.browse(lambda relPath, lines: actual.extend([relPath + ": " + line for line in lines]))
             actual.sort()
-            self.assertEquals(actual, expected)
+            self.assertEqual(actual, expected)
         def test_if_subdir_present_then_returned(self):
             instance = GitDirectoryTree("testdata")
             subDir = instance.getSubdirIfPresent("dir1")
             self.assertIsNotNone(subDir)
             self.assertTrue(isinstance(subDir, GitDirectoryTree))
-            self.assertEquals(subDir.getLastComponent(), "dir1")
+            self.assertEqual(subDir.getLastComponent(), "dir1")
         def test_if_subdir_not_present_then_none_returned(self):
             instance = GitDirectoryTree("testdata")
             subDir = instance.getSubdirIfPresent("nonExistingDir")
@@ -89,6 +90,6 @@ dir2/f1.txt: dir2/f1 line 2""".replace("\r\n", "\n").split("\n"))
             with instance.openFile("f1.txt") as f:
                 actualLines = [line.replace("\r\n", "\n").rstrip() for line in f.readlines()]
             expectedLines = ["f1 line 0", "f1 line 1"]
-            self.assertEquals(actualLines, expectedLines)
+            self.assertEqual(actualLines, expectedLines)
 
     unittest.main()
