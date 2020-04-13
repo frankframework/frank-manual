@@ -23,11 +23,12 @@ class GitDirectoryTree:
 
         return [GitDirectoryTree(item, self._absPath) for item in subdirsSortedList]
     def _browsePaths(self, handler):
-        cmd = "git ls-files {0}".format(self._absPath)
-        trackedFiles = subprocess.check_output(cmd, shell=True, cwd=self._absPath).splitlines()
-        for relPathBytes in trackedFiles:
-            relPath = relPathBytes.decode(encoding='UTF-8')
-            handler(relPath)
+        for dirname, _, filenames in os.walk(self._absPath):
+            for filename in filenames:
+                absPath = os.path.join(dirname, filename)
+                relPath = os.path.relpath(absPath, self._absPath)
+                relPath = relPath.replace(os.sep, "/")
+                handler(relPath)
     def browse(self, handler):
         self._browsePaths(lambda relPath: self._handleBrowsePath(relPath, handler))
     def _handleBrowsePath(self, relPath, handler):

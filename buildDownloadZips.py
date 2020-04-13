@@ -12,14 +12,11 @@ def walkLines(fname, handler):
         for cnt, line in enumerate(f):
             handler(line)
 
-def walkTrackedFilesInDirectory(theDirectory, handlerFile):
-    cmd = "git ls-files {0}".format(theDirectory)
-    trackedFiles = subprocess.check_output(cmd, shell=True).splitlines()
-    for relPathBytes in trackedFiles:
-        relPath = relPathBytes.decode("UTF-8")
-        folderName, fname = os.path.split(relPath)
-        handlerFile(folderName, fname)
-
+def walkFilesInDirectory(theDirectory, handlerFile):
+    for dirname, _, filenames in os.walk(theDirectory):
+        for filename in filenames:
+            handlerFile(dirname, filename)
+    
 class ZipWriter:
     def __init__(self, base, zipObj):
         self._base = base
@@ -68,7 +65,7 @@ def createDownloadZip(target, sourceDir, toOmit, onError):
     print("INFO: Creating downloadable file {0} from directory {1}".format(target, sourceDir))
     with ZipFile(target, "w") as z:
         zipWriter = ZipWriter(sourceDir, z)
-        walkTrackedFilesInDirectory(sourceDir, \
+        walkFilesInDirectory(sourceDir, \
             lambda folderName, fname: zipWriter.writeFile(folderName, fname, toOmit))
 
 def makeTargetSubdir(targetFileName, targetDir):
