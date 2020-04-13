@@ -31,5 +31,6 @@ Here is the directory structure:
     |- README.md: This README file.
     |- CONTRIBUTING.md: Explains how to contribute to this manual.
     |- buildspec.yml: It is not clear whether this file is really needed.
+    |- runTests.bat: Windows batch file to run all unit tests. These test Python code invoked by generateAll.py.
 
 To contribute to this project, see CONTRIBUTING.md

@@ -8,13 +8,16 @@ The manual is developed with the following build environment:
 * Windows
 * Git (version control)
 * MinGW (command prompt)
-* Python 2.7 (programming language)
+* Python 3.8.2 (programming language)
 * Pip (package manager for Python libraries)
 
-You can download Git from the following link: https://git-scm.com/download/win. The installer of Git also installs MinGW. You also need to install some Python packages usign pip:
+You can download Git from the following link: https://git-scm.com/download/win. The installer of Git also installs MinGW.
+
+You can download Python and Pip from https://www.python.org/downloads/. You also need to install some Python packages usign pip:
 
 * `pip install sphinx`
 * `pip install sphinx_rtd_theme`
+* `pip install pyyaml`
 
 You may be able to use Linux instead of Windows and you may be able to do without MinGW. When using other tools, please check carefully whether everything works well.
 
@@ -96,7 +99,7 @@ The reader wants to download Frank configurations that you as a technical writer
 
 Before contributing to the automation software, please study the source code carefully. Here are some general statements about the software architecture:
 
-* Many Python files have unit tests. If a file f.py has unit tests, you can call it like "python f.py" to run them. The unit tests are ignored when f.py is included by other Python files. This is achieved by wrapping the unit tests within `if __name__ == "__main__"`.
+* Many Python files have unit tests. Please run them all by invoking the script  ``runTests.bat``. This script expects that you run it from the ``frank-manual`` checkout directory.
 * Each piece of code is as focussed as possible. We try to avoid intermixing code that performs multiple duties. For example, in buildDownloadZips.py, browsing a directory tree is done in method "walkTrackedFilesInDirectory". This method gets as a parameter a function object. For each file found, walkTrackedFilesInDirectory calls that other function. The Python code within waldTrackedFilesInDirectory is focussed to doing the browsing.
 * The code is documented extensively. Documentation focusses on what has to be achieved. Documenting implementation details is avoided when possible. The code should speak for itself. The code can speak for itself if variable names are chosen well and if code is focussed to one duty as explained above.
 
