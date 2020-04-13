@@ -152,3 +152,4 @@ Produce download zips for the Frank!Manual.
     if dictionaryContainingHasErrors["hasErrors"]:
         print("*** There were errors creating the download zips!")
     return dictionaryContainingHasErrors["hasErrors"]
+
