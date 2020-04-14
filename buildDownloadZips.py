@@ -124,24 +124,14 @@ Produce download zips for the Frank!Manual.
             an input file within this set is encountered, it is not
             added to the corresponding zip file.
 
-    Only files tracked with git are added to the download zips. Why? As an
-    example, consider ibisdoc.xsd, the XML schema that defines the grammar
-    of the Frank language. This file is typically downloaded from the
-    Frank!Framework. Users of the manual are advised to download ibisdoc.xsd
-    from there. Therefore, the download zips should not contain ibisdoc.xsd.
-
-    On the other hand, ibisdoc.xsd is useful for editors of this ibis4manual
-    project, because they want support when they edit Frank code. Therefore,
-    ibisdoc.xsd appears in the checkout. The solution is to add ibisdoc.xsd to
-    .gitignore and to omit ignored files from download zips.
-
     This function also replaces Windows line endings by Linux line endings. This way,
     Windows and Linux users will produce download files in which the text files
     have the same line endings.
     """
     makeDirectoryIfNotPresent(targetDir)
     # Workaround because Python 2.7 does not have the nonlocal keyword.
-    # In Python 3, we could just have a boolean.
+    # In Python 3, we could just have a boolean. Now we use Python 3,
+    # so the code can be simplified when time permits.
     dictionaryContainingHasErrors = {"hasErrors": False}
     def onError():
         dictionaryContainingHasErrors["hasErrors"] = True

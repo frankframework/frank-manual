@@ -7,7 +7,7 @@
 #
 # Class TreeComparison does not access the file system.
 # This makes it easy to write extensive unit tests that
-# you can find at the end of this file.
+# you can find in file testTreeCompare.py.
 
 from .stringListCompare import checkNonNegativeInt
 from .stringListCompare import checkNonEmptyStringList

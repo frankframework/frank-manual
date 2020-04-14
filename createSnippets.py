@@ -27,11 +27,9 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
     - Parse meta.yml of the current version into a list of FileDifference object.
       Class FileDifference is defined in treeCompare.py.
     - Create a TreeComparison object from this list.
-    - Feed the TreeComparison with the files of the previous version. Only add
-      files under version control and omit meta.yml.
-    - Feed the TreeComparison with the files of the current version. Only add
-      files under version control and omit meta.yml.
-    - Run the TreeComparison to get check the claims of meta.yml
+    - Feed the TreeComparison with the files of the previous version. Omit meta.yml.
+    - Feed the TreeComparison with the files of the current version. Omit meta.yml.
+    - Run the TreeComparison to check the claims of meta.yml
       and generate the snippets.
     - Write the snippets to disk. Each snippet is written to a file
       configName/stepName/snippetName.txt (not .rst because that would
@@ -118,9 +116,7 @@ adds. TutorialSteps checks whether the actual differences between
 versions agree with the meta.yml files.
 
 When checking the actual differences between two consecutive versions,
-only files checked in to Git are considered. This is useful, because
-it allows file ibisdoc.xsd to be ignored. In addition, the meta.yml
-files are excluded from the comparison.
+the files meta.yml are excluded from the comparison.
 
 You can use directories with a meta.yml to generate download zips. The
 meta.yml files will automatically be omitted from the zips.

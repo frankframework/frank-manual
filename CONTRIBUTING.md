@@ -100,7 +100,7 @@ The reader wants to download Frank configurations that you as a technical writer
 Before contributing to the automation software, please study the source code carefully. Here are some general statements about the software architecture:
 
 * Many Python files have unit tests. Please run them all by invoking the script  ``runTests.bat``. This script expects that you run it from the ``frank-manual`` checkout directory.
-* Each piece of code is as focussed as possible. We try to avoid intermixing code that performs multiple duties. For example, in buildDownloadZips.py, browsing a directory tree is done in method "walkTrackedFilesInDirectory". This method gets as a parameter a function object. For each file found, walkTrackedFilesInDirectory calls that other function. The Python code within waldTrackedFilesInDirectory is focussed to doing the browsing.
+* Each piece of code is as focussed as possible. We try to avoid intermixing code that performs multiple duties. For example, in buildDownloadZips.py, browsing a directory tree is done in method "walkFilesInDirectory". This method gets as a parameter a function object. For each file found, walkFilesInDirectory calls that other function. The Python code within walkFilesInDirectory is focussed to doing the browsing.
 * The code is documented extensively. Documentation focusses on what has to be achieved. Documenting implementation details is avoided when possible. The code should speak for itself. The code can speak for itself if variable names are chosen well and if code is focussed to one duty as explained above.
 
 ## Building the Frank!Manual
