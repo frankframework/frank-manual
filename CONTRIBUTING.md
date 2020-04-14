@@ -19,7 +19,7 @@ You can download Python and Pip from https://www.python.org/downloads/. You also
 * `pip install sphinx_rtd_theme`
 * `pip install pyyaml`
 
-You may be able to use Linux instead of Windows and you may be able to do without MinGW. When using other tools, please check carefully whether everything works well.
+You may be able to use Linux instead of Windows and you may be able to do without MinGW. When using other tools, please check carefully whether everything works well. Make sure that you check-in all text files with UNIX-style line endings (not \r\n but \n).
 
 ## Guidelines for the contents
 
