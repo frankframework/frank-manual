@@ -1,6 +1,6 @@
 __all__ = ["treeCompare"]
 
-from .gitDirectoryTree import GitDirectoryTree
+from .directoryTree import DirectoryTree
 from .compareFactory import createFileDifferences
 from .treeCompare import TreeComparison
 from .treeCompare import RelPath

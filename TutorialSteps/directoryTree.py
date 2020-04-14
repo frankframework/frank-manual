@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-class GitDirectoryTree:
+class DirectoryTree:
     def __init__(self, relPath, base=os.getcwd()):
         if not type(relPath) is str:
             raise TypeError("relPath should be string")
@@ -21,7 +21,7 @@ class GitDirectoryTree:
         subdirsSet = {item for item in fileAndDirSet if os.path.isdir(os.path.join(self._absPath, item))}
         subdirsSortedList = sorted(list(subdirsSet))
 
-        return [GitDirectoryTree(item, self._absPath) for item in subdirsSortedList]
+        return [DirectoryTree(item, self._absPath) for item in subdirsSortedList]
     def _browsePaths(self, handler):
         for dirname, _, filenames in os.walk(self._absPath):
             for filename in filenames:

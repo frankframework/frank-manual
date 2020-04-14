@@ -1,14 +1,14 @@
-from .gitDirectoryTree import GitDirectoryTree
+from .directoryTree import DirectoryTree
 from .compareFactory import createFileDifferences
 
 META_YML = "meta.yml"
 
 class OldAndNew:
     def __init__(self, old, new):
-        if not (old is None or isinstance(old, GitDirectoryTree)):
-            raise TypeError("GitDirectoryTree expected")
-        if not isinstance(new, GitDirectoryTree):
-            raise TypeError("GitDirectoryTree expected")
+        if not (old is None or isinstance(old, DirectoryTree)):
+            raise TypeError("DirectoryTree expected")
+        if not isinstance(new, DirectoryTree):
+            raise TypeError("DirectoryTree expected")
         self._old = old
         self._new = new
     def getOld(self):
@@ -18,8 +18,8 @@ class OldAndNew:
 
 class SortItem:
     def __init__(self, directory, index):
-        if not isinstance(directory, GitDirectoryTree):
-            raise TypeError("GitDirectoryTree expected")
+        if not isinstance(directory, DirectoryTree):
+            raise TypeError("DirectoryTree expected")
         if not type(index) is int:
             raise TypeError("index should be int")
         self._directory = directory
@@ -34,9 +34,9 @@ class SortItem:
 
 def sortDirectories(directories):
     if not type(directories) is list:
-        raise TypeError("List expected, should hold GitDirectoryTree")
-    if not all([isinstance(item, GitDirectoryTree) for item in directories]):
-        raise TypeError("Every list item should be a GitDirectoryTree")
+        raise TypeError("List expected, should hold DirectoryTree")
+    if not all([isinstance(item, DirectoryTree) for item in directories]):
+        raise TypeError("Every list item should be a DirectoryTree")
     sortItems = dict()
     for i in range(0, len(directories)):
         name = directories[i].getLastComponent()

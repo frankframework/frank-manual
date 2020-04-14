@@ -9,3 +9,4 @@ docs/build
 ibisdoc.xsd
 *.xcf
 ladybugTransformation.xsl
+venv

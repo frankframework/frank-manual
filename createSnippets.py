@@ -17,9 +17,9 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
         Parameters:
             configName: The name of the Frank!Config.
             stepName: The name of the current version.
-            oldDir: Object of type GitDirectoryTree as defined in gitDirectoryTree.py.
+            oldDir: Object of type DirectoryTree as defined in directoryTree.py.
                 Holds the root directory of the previous version.
-            newDir: Object of type GitDirectoryTree. Holds the root directory
+            newDir: Object of type DirectoryTree. Holds the root directory
                 of the current version.
             snippetsDir: Root directories for storing snippets.
 
@@ -200,7 +200,7 @@ adjacent or overlapping, an error is produced. You have to change the
 manual or you need another intermediate version.
 """
     makeDirectoryIfNotPresent(snippetsDir)
-    tutorialStepsRoot = TutorialSteps.GitDirectoryTree(tutorialStepsDir)
+    tutorialStepsRoot = TutorialSteps.DirectoryTree(tutorialStepsDir)
     hasErrors = False
     for frankConfigDir in tutorialStepsRoot.getSubdirs():
         hasErrors = hasErrors or createFrankConfigSnippets(frankConfigDir, snippetsDir)
