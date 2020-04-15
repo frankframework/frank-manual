@@ -9,7 +9,7 @@ Below you see the table of contents:
    :maxdepth: 2
     
    gettingStarted/gettingStarted
-   debugging/debugging
+   operator/operator
    testing/testing
    deploying/deploying
    advancedDevelopment/advancedDevelopment
