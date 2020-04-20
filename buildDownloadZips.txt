@@ -25,4 +25,5 @@ srcSteps/NewHorizons/v460/configurations/NewHorizons configurations/NewHorizonsO
 src/ladybug
 src/advancedDevelopmentProperties
 src/deploymentTomcat
+src/forFrankConsole/configurations/NewHorizons configurations/forFrankConsole
 srcSteps/sandbox/v01 sandbox/v01
