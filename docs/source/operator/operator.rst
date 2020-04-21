@@ -19,6 +19,7 @@ Here is the table of contents:
    adapterStatus
    ladybug
    logs
+   database
    managing
    scheduling
    security
