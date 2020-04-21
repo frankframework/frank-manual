@@ -12,18 +12,18 @@ As said in section :ref:`frankConsoleNewHorizons`, this chapter on the Frank!Con
      franks> git clone https://github.com/ibissource/frank-runner
 
 #. Check that your directory ``franks`` has a subdirectory ``frank-runner``. 
-#. Within ``franks``, create a subdirectory ``Frank2Console``.
-#. Within ``franks/Frank2Console``, create two subdirectories ``classes`` and ``configurations``.
-#. Create file ``franks/Frank2Console/classes/Configuration.xml`` and give it the following contents:
+#. Within ``franks``, create a subdirectory ``Frank2Manual``.
+#. Within ``franks/Frank2Manual``, create two subdirectories ``classes`` and ``configurations``.
+#. Create file ``franks/Frank2Manual/classes/Configuration.xml`` and give it the following contents:
 
    .. literalinclude:: ../../../src/forFrankConsole/classes/Configuration.xml
       :language: XML
 
 #. Download the :download:`Frank config <../downloads/configurations/forFrankConsole.zip>` that you will deploy on the Frank!Framework.
-#. Unzip ``forFrankConsole.zip`` within ``franks/Frank2Console/configurations``. You should arrive at the following directory structure: ::
+#. Unzip ``forFrankConsole.zip`` within ``franks/Frank2Manual/configurations``. You should arrive at the following directory structure: ::
 
      franks
-     |- Frank2Console
+     |- Frank2Manual
         |- configurations
            |- NewHorizons
               |- Configuration.xml
@@ -31,14 +31,14 @@ As said in section :ref:`frankConsoleNewHorizons`, this chapter on the Frank!Con
               ...
      |- frank-runner
 
-As said in section :ref:`frankConsoleNewHorizons`, the Frank config you are deploying processes .csv files. The directory in which they are expected is configurable by setting a property named ``work``. You will set property ``work`` to the value ``work``, a directory relative to ``franks/frank-runner``. You also need to set a property named ``jdbc.migrator.active``, indicating that the Frank!Framework should create initial data as specified by the deployed configurations. Without this property, no database table ``product`` is created.
+As said in section :ref:`frankConsoleNewHorizons`, the Frank config you are deploying processes ``.csv`` files. The directory in which they are expected is configurable by setting a property named ``work``. You will set property ``work`` to the value ``work``, a directory relative to ``franks/frank-runner``. You also need to set a property named ``jdbc.migrator.active``, indicating that the Frank!Framework should create initial data as specified by the deployed configurations. The example configuration will create table ``product`` when ``jdbc.migrator.active`` is ``true``.
 
-#. Start the Frank!Runner with the following command: ::
+10. Start the Frank!Runner with the following command: ::
 
-     > start.bat -Djdbc.migrator.active=true -Dwork=work
+      > start.bat -Djdbc.migrator.active=true -Dwork=work
 
-   .. NOTE::
+    .. NOTE::
 
-      The Frank!Runner is using Apache Tomcat under the hood. Apache Tomcat is a Java application. The arguments ``-Djdbc.migrator.active=true`` and  ``-Dwork=work`` are added to a shell command that starts up the Java Virtual Machine (JVM).
+       The Frank!Runner is using Apache Tomcat under the hood. Apache Tomcat is a Java application. The arguments ``-Djdbc.migrator.active=true`` and  ``-Dwork=work`` are added to a shell command that starts up the Java Virtual Machine (JVM). If you are not using the Frank!Runner to start the Frank!Framework, there may be a different way to set properties.
 
 #. Open a webbrowser and browse to http://localhost.
