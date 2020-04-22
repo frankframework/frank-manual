@@ -38,7 +38,7 @@ First examine the execution of ``example.csv``, which went well. Please do the f
    .. image:: ladybugBottomRightHappy_1.jpg
 
 #. Select node 2 in the figure of step 4. The item "tsReceived" is a session key, a data item accompanying the incoming message. To the bottom-right, you should see that the value of this session key is a timestamp. The Frank!Framework automatically adds this session key to the incoming message. It is the time that the incoming message was received.
-#. Select node 3 in the figure of step 4. This is the first pipe in the pipeline. From the figure of step 4, you can see that this pipeline has pipes "pipeParseCSV" (number 3) and "pipeSendApartments" (number 4). To the bottom-right, you see the same file path to ``example.csv`` that you saw in the previous step. The input of the first pipe equals the input of the pipeline.
+#. Select node 3 in the figure of step 4. This is the first pipe in the pipeline. From the figure of step 4, you can see that this pipeline has pipes "pipeParseCSV" (number 3) and "pipeSendApartments" (number 4). To the bottom-right, you see the same file path to ``example.csv`` that you saw in step 5. The input of the first pipe equals the input of the pipeline.
 #. Select node 4 in the figure of step 4 to select the second pipe. The bottom-right looks like shown below. The input of this pipe is the output of the previous pipe. You can see that file ``example.csv`` has been read and that the contents has been transformed to eXtensible Markup Language (XML). There is much information about XML on the internet.
 
    .. image:: ladybugBottomRightHappy_4.jpg
@@ -65,8 +65,39 @@ First examine the execution of ``example.csv``, which went well. Please do the f
 
 #. In the bottom-left, please select the "Parameter" nodes you saw two pictures back (number 3 in that figure). Select them one-by-one to get the values of the query parameters. This shows you what values are being written to the database.
 
-This research can be summarized as follows. The adapter named "adapterGetDestinations" parses a CSV file. It transforms the records to XML, each record being wrapped in a tag ``<apartment>``. For each apartment, the adapter named "adapterProcessDestination" is invoked. The input message of this second adapter is the current `<apartment>` XML element. For the first apartment, you saw that an SQL Update statement has been performed to write to the database. You found the values being written.
+This research can be summarized as follows. The adapter named "adapterGetDestinations" parses a CSV file. It transforms the records to XML, each record being wrapped in a tag ``<apartment>``. For each apartment, the adapter named "adapterProcessDestination" is invoked. The input message of this second adapter is the current ``<apartment>`` XML element. For the first apartment, you saw that an SQL Update statement has been performed to write to the database. You found the values being written.
 
 An unhappy flow
 ---------------
+
+Second, examine the execution of ``example2.csv``, which resulted in an error. Please do the following:
+
+#. Look at the top-left of Ladybug again as shown below. Select the top-most row having a CorrelationId containing ``example2.csv``. Its Status column should be "Error".
+
+   .. image:: ladybugTopLeft_example2.jpg
+
+#. The bottom-left looks like shown below. Please expand/collapse the nodes as is done in the figure. You are focussing on the error this way.
+
+   .. image:: ladybugBottomLeftUnhappy.jpg
+
+   .. WARNING::
+
+      A red cross means that a Java exception occurred while processing the incoming message. Adapters can also handle errors without a Java exception happening. In such cases, you will not see a red cross, even though processing was not successful. You will not detect all errors when you only search for a red cross.
+
+#. Select the node numbered 1. You see that the incoming file, ``example2.csv``, has been read and that the contents has been transformed to the following XML:
+
+   .. image:: ladybugBottomRightUnhappy_1.jpg
+
+#. Remember that the contents of file ``example2.csv`` was ``xxx``. This is only one field instead of the expected four. You see that three empty fields "address", "description" and "price" have been invented by the transformation to XML.
+#. Now select node number 2 from the second-last figure. The bottom-right looks as shown:
+
+   .. image:: ladybugBottomRightUnhappy_2.jpg
+
+#. We highlight a few keywords within the error. You see the string "FixedQuerySender" at the end of a Java class name. This identifies the Java class that produces the error. It is a class that executes queries on the database. You can see that this sender tries to convert the string ``xxx`` to a numerical value, which fails.
+
+This example should warn you that this configuration is not ready for production. It does not check whether the input is valid. It just carries on with invalid input and it luckily fails somewhere. If ``example2.csv`` would have contained the text ``1``, then updating the database might have succeeded, corrupting your data.
+
+.. NOTE::
+
+   If you are a Frank developer, you may want to know how to check the input. In chapter :ref:`gettingStarted`, you can read how to check whether an XML document satisfies an XML schema. After the pipe named "pipeParseCSV", you can insert a pipe to check whether your XML satisfies an XML schema. In this XML schema, you can check that there are exactly four fields and that the productId and the price are numerical values.
 
