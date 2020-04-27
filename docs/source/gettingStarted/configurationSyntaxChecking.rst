@@ -84,7 +84,39 @@ Please do the following to configure Visual Studio Code for code completion:
    .. image:: visualStudioCodePlugins.jpg
 
 #. Install the two plugins shown (number 2).
-#. Open ``ConfigurationExample1Adapter.xml``. After the ``</Adapter>`` element close tag, start typing ``<A``. The editor should give you a hint that you mean ``<Adapter>``. You should also see a "i" icon to get more information.
+#. Open ``ConfigurationExample1Adapter.xml``.
+#. Please look at the bottom-right corner. Do you see the following dialog?
+
+   .. image:: vsCodeJava8Required.jpg
+
+#. If you see this dialog, you have to install the Java Development Kit version 8 as is explained in the following steps. If you do not see the dialog, you can proceed to step 9.
+#. If you already have Java 8, proceed to step 8.
+#. Press the button and follow the instructions to download the Red Hat OpenJDK. Alternatively, you may following the instructions of https://code.visualstudio.com/docs/java/java-tutorial.
+#. The instructions in the previous step should have asked you to set the ``JAVA_HOME`` environment variable. You may have missed that, so we also tell you how to set ``JAVA_HOME`` here. Please do the following:
+
+   a. Figure out the path of your ``java.exe`` executable. This path should end with ``\bin\java.exe``. Please omit this last part to get the value you need for ``JAVA_HOME``. For example, if the path is ``C:\Program Files\Java\jdk1.8.0_251\bin\java.exe``, then the value you need is ``C:\Program Files\Java\jdk1.8.0_251``. Remember this value.
+   #. If you have Windows 10, go to Windows Settings. You should see the page shown below. Type "environment" in the search field (if your Windows language is English) and select "Edit the system environment variables".
+
+      .. image:: windowsSettings.jpg
+
+   #. You see the dialog shown below. 
+
+      .. image:: systemProperties.jpg
+
+   #. Click "Environment Variables...". You should see the dialog shown below:
+
+      .. image:: environmentVariables.jpg
+   
+   #. Select one of the "New..." buttons. You see the dialog shown below:
+
+      .. image:: javaHome.jpg
+   
+   #. In the "Variable name" field, fill in ``JAVA_HOME``.
+   #. In the "Variable value" field, fill in the value you determined in step a).
+   #. Press "OK". Close all the dialogs by pressing "OK".
+   #. If you are opening Visual Studio Code from a command prompt, please restart that command prompt. Otherwise, your new environment variable is not applied. Also restart Visual Studio Code itself.
+
+#. After the ``</Adapter>`` element close tag, start typing ``<A``. The editor should give you a hint that you mean ``<Adapter>``. You should also see a "i" icon to get more information.
 
 Eclipse
 -------
