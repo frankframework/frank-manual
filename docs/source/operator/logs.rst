@@ -10,10 +10,6 @@ In section :ref:`frankConsoleAdapterStatus`, you learned how to monitor the gene
 
 To follow the instructions of this section, you should first have done section :ref:`frankConsoleAdapterStatus`. In particular, you should have processed files ``example.csv`` and ``example2.csv``. You should still have the Frank!Runner open.
 
-.. WARNING::
-
-   At the time of writing, you cannot do this section when you are viewing the Frank!Console with Microsoft Edge. See the following issue of the Frank!Framework: https://github.com/ibissource/iaf/issues/628. If this issue has been closed by the time you are reading this, you may be able to do this section with Microsoft Edge again.
-
 General information
 -------------------
 
@@ -24,10 +20,6 @@ In the main menu, please click "Logging" as shown below:
 Your screen should look like shown below. You see the version of the Frank!Framework you are using (number 1), like you do in every screen of the Frank!Console. You also see the instance name of your deployment (number 2). You have it confirmed that you are looking to the logging (number 3). All logfiles appear in the same directory on the server and the full path of this directory is shown (number 4).
 
 .. image:: loggingOverview.jpg
-
-.. WARNING::
-
-   The directory name (number 4) is quite relevant, because you cannot copy the contents of a logfile from the Frank!Console to the clipboard. An issue has been created about this on GitHub, see https://github.com/ibissource/iaf/issues/638. As a workaround, you can open logfiles in a text editor. You need the directory to find the file you want to open.
 
 Below this general information, a directory listing follows. To the top of this listing, you see a file with prefix ``catalina`` (number 5). The name ``catalina`` is used by Apache Tomcat, the application server on which the Frank!Framework is deployed. Apache Tomcat is used under the hood when you use the Frank!Runner, like you are doing in this tutorial. The contents of the ``catalina`` files equals the output you see when you start the Frank!Framework: on Windows, look at the new command window that is created when the Frank!Runner boots. If your production site is not set up using the Frank!Runner, you may be using aother application server. In that case there are no ``catalina`` files. More information on the role of the application server can be found in chapter :ref:`deploying`.
 
