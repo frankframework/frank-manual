@@ -91,7 +91,7 @@ Please do the following to configure Visual Studio Code for code completion:
 
 #. If you see this dialog, you have to install the Java Development Kit version 8 as is explained in the following steps. If you do not see the dialog, you can proceed to step 9.
 #. If you already have Java 8, proceed to step 8.
-#. Press the button and follow the instructions to download the Red Hat OpenJDK. Alternatively, you may following the instructions of https://code.visualstudio.com/docs/java/java-tutorial.
+#. Press the button and follow the instructions to download the Red Hat OpenJDK. Alternatively, you may follow the instructions of https://code.visualstudio.com/docs/java/java-tutorial.
 #. The instructions in the previous step should have asked you to set the ``JAVA_HOME`` environment variable. You may have missed that, so we also tell you how to set ``JAVA_HOME`` here. Please do the following:
 
    a. Figure out the path of your ``java.exe`` executable. This path should end with ``\bin\java.exe``. Please omit this last part to get the value you need for ``JAVA_HOME``. For example, if the path is ``C:\Program Files\Java\jdk1.8.0_251\bin\java.exe``, then the value you need is ``C:\Program Files\Java\jdk1.8.0_251``. Remember this value.
