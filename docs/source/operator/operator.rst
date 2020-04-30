@@ -21,5 +21,5 @@ Here is the table of contents:
    logs
    database
    managing
+   configsDatabase
    scheduling
-   security
