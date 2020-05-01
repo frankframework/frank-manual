@@ -11,13 +11,13 @@ def createFileDifferences(openedYamlFile):
     try:
         parsedYaml = yaml.safe_load(openedYamlFile)
     except yaml.YAMLError as ex:
-        return None, "Invalid YAML syntax"
+        return None, None, "Invalid YAML syntax: " + str(ex)
     if not type(parsedYaml) is list:
-        return None, "YAML should be a list"
+        return None, None, "YAML should be a list"
     if not all([type(item) is dict for item in parsedYaml]):
-        return None, "In YAML, all top-level list items should be a dictionary"
+        return None, None, "In YAML, all top-level list items should be a dictionary"
     if not all([len(itemDict) == 1 for itemDict in parsedYaml]):
-        return None, "In YAML, every top-level line should be like ' - file|snippet:'"
+        return None, None, "In YAML, every top-level line should be like ' - file|snippet:'"
     snippetItems = []
     fileItems = []
     predecessorItems = []
