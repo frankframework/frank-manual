@@ -1,0 +1,45 @@
+<Module
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../ibisdoc.xsd">
+    <Adapter name="adapterGetDestinations">
+        <Receiver name="receiverGetDestinations">
+            <DirectoryListener
+                name="listenerDestinationsDirectory"
+                root="${work}"
+                inputFolder="input"
+                inProcessFolder="processing"
+                processedFolder="processed"
+                errorFolder="error"
+                createFolders="false"/>
+        </Receiver>
+        <Pipeline firstPipe="pipeParseCSV">
+            <BatchFileTransformerPipe
+                name="pipeParseCSV">
+                <recordHandler
+                    name="recordHandlerGetDestinations"
+                    className="nl.nn.adapterframework.batch.RecordXmlTransformer"
+                    inputSeparator=";"
+                    outputFields="
+                        productId,
+                        address,
+                        description,
+                        price
+                    "
+                    rootTag="apartment"
+                />
+                <resultHandler
+                    name="resultHandlerGetDestinations"
+                    className="nl.nn.adapterframework.batch.Result2StringWriter"/>
+                <Forward name="success" path="pipeSendApartments"/>
+            </BatchFileTransformerPipe>
+            <ForEachChildElementPipe
+                name="pipeSendApartments"
+                elementXPathExpression="/document/apartment">
+                <IbisJavaSender
+                    name="senderSendApartments"
+                    serviceName="listenerProcessDestination"/>
+            </ForEachChildElementPipe>
+            <Exit path="EXIT" state="success" code="200"/>
+        </Pipeline>
+    </Adapter>
+</Module>

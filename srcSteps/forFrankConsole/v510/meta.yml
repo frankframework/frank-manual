@@ -1,0 +1,22 @@
+- file:
+    path: configurations/NewHorizons/ConfigurationProcessDestination.xml
+    change:
+      - old: 1
+        new: 1
+        snippet: updateConfigurationProcessDestination
+      - old: 1
+        new: 1
+        snippet: updateConfigurationProcessDestination
+- file:
+    path: configurations/NewHorizons/DatabaseChangelog.xml
+    change:
+      - insert: 15
+        snippet: updateDatabaseChangelog
+- snippet:
+    name: updateConfigurationProcessDestination
+    markup: xml
+    context: 1000
+- snippet:
+    name: updateDatabaseChangelog
+    markup: xml
+    context: 1000
