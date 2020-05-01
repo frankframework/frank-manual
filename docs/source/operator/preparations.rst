@@ -18,7 +18,7 @@ As said in section :ref:`frankConsoleNewHorizons`, this chapter on the Frank!Con
 #. Within ``franks/Frank2Manual``, create two subdirectories ``classes`` and ``configurations``.
 #. Create file ``franks/Frank2Manual/classes/Configuration.xml`` and give it the following contents:
 
-   .. literalinclude:: ../../../src/forFrankConsole/classes/Configuration.xml
+   .. literalinclude:: ../../../srcSteps/forFrankConsole/v500/classes/Configuration.xml
       :language: XML
 
 #. Within directory ``franks/frank-runner``, create text file ``build.properties`` and give it the following contents: ::

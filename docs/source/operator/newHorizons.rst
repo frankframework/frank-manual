@@ -16,7 +16,7 @@ Our example configuration provides a user interface to hosts, allowing them to u
 
 Here is an example:
 
-.. literalinclude:: ../../../src/forFrankConsole/example.csv
+.. literalinclude:: ../../../srcSteps/forFrankConsole/v500/example.csv
    :language: none
 
 The example configuration processes these ``.csv`` files and writes the records in a H2 database. The configuration uses database table ``product``. The configuration expects incoming ``.csv`` files in a specific directory that is configurable by setting a property named ``work``.

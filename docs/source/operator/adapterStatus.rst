@@ -74,7 +74,7 @@ You will see now how to detect errors using the Adapter Status page. Please do t
 
 #. Open a text editor and fill it with the following contents:
 
-   .. literalinclude:: ../../../src/forFrankConsole/example.csv
+   .. literalinclude:: ../../../srcSteps/forFrankConsole/v500/example.csv
 
 #. Save the text to file ``franks/frank-runner/work/input/example.csv``.
 #. In the configuration messages panel, open adapter "adapterGetDestinations". From the figure below, you see that a message has been processed.

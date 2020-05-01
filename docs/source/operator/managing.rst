@@ -68,7 +68,7 @@ You have cleaned up your system. It is like it was before you processed your fir
 
 #. Open a text editor and fill it with the following contents:
 
-   .. literalinclude:: ../../../src/forFrankConsole/example.csv
+   .. literalinclude:: ../../../srcSteps/forFrankConsole/v500/example.csv
 
 #. Save the text to file ``franks/frank-runner/work/input/example.csv``.
 

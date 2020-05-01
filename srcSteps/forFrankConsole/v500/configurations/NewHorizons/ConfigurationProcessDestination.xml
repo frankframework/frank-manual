@@ -1,6 +1,6 @@
 <Module
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+    xsi:noNamespaceSchemaLocation="../../../ibisdoc.xsd">
     <Adapter name="adapterProcessDestination">
         <Receiver name="receiverProcessDestination">
             <JavaListener name="listenerProcessDestination" serviceName="listenerProcessDestination"/>

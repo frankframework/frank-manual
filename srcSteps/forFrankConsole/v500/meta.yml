@@ -1,0 +1,27 @@
+- file:
+    path: example.csv
+    change: add
+- file:
+    path: classes/Configuration.xml
+    change: add
+- file:
+    path: configurations/NewHorizons/BuildInfo.properties
+    change: add
+- file:
+    path: configurations/NewHorizons/Configuration.xml
+    change: add
+- file:
+    path: configurations/NewHorizons/ConfigurationDatabase.xml
+    change: add
+- file:
+    path: configurations/NewHorizons/ConfigurationDestinations.xml
+    change: add
+- file:
+    path: configurations/NewHorizons/ConfigurationProcessDestination.xml
+    change: add
+- file:
+    path: configurations/NewHorizons/DatabaseChangelog.xml
+    change: add
+- file:
+    path: configurations/NewHorizons/DeploymentSpecifics.properties
+    change: add
