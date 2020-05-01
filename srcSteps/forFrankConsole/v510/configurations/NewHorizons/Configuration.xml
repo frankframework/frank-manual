@@ -3,9 +3,11 @@
   <!ENTITY Database SYSTEM "ConfigurationDatabase.xml">
   <!ENTITY Destinations SYSTEM "ConfigurationDestinations.xml">
   <!ENTITY ProcessDestination SYSTEM "ConfigurationProcessDestination.xml">
+  <!ENTITY CheckExpiration SYSTEM "ConfigurationCheckExpiration.xml">
 ]>
 <Configuration name="NewHorizons">
   &Database;
   &Destinations;
   &ProcessDestination;
+  &CheckExpiration;
 </Configuration>

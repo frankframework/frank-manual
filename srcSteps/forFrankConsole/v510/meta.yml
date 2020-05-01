@@ -1,4 +1,14 @@
 - file:
+    path: configurations/NewHorizons/Configuration.xml
+    change:
+      - insert: 1
+        snippet: updateConfiguration
+      - insert: 1
+        snippet: updateConfiguration
+- file:
+    path: configurations/NewHorizons/ConfigurationCheckExpiration.xml
+    change: add
+- file:
     path: configurations/NewHorizons/ConfigurationProcessDestination.xml
     change:
       - old: 1
@@ -12,6 +22,10 @@
     change:
       - insert: 15
         snippet: updateDatabaseChangelog
+- snippet:
+    name: updateConfiguration
+    markup: xml
+    context: 1000
 - snippet:
     name: updateConfigurationProcessDestination
     markup: xml
