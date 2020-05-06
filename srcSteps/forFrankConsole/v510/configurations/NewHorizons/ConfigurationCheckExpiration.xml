@@ -12,7 +12,46 @@
                   datasourceName="jdbc/${instance.name.lc}"
                   queryType="select"
                   query="SELECT COUNT(*) AS cnt FROM product WHERE DATEDIFF(SECOND, modificationDate, NOW()) >= 120"/>
-                  <Forward name="success" path="EXIT"/>
+              <Forward name="success" path="pipeStoreNumExpired"/>
+          </SenderPipe>
+          <XsltPipe
+              name="pipeStoreNumExpired"
+              xpathExpression="/result/rowset/row/field"
+              outputType="xml"
+              storeResultInSessionKey="numExpired">
+              <Forward name="success" path="pipeProduceLogMessage"/>
+          </XsltPipe>
+          <XsltPipe
+              name="pipeProduceLogMessage"
+              xpathExpression="concat('There were ', /field, ' expired apartments')"
+              storeResultInSessionKey="logMessage">
+              <Forward name="success" path="pipeChooseLogWriter"/>
+          </XsltPipe>
+          <XmlIfPipe
+              name="pipeChooseLogWriter"
+              xpathExpression="/field"
+              expressionValue="0"
+              getInputFromSessionKey="numExpired"
+              thenForwardName="noneExpired"
+              elseForwardName="someExpired">
+              <Forward name="noneExpired" path="pipeWriteLogMessageInfo"/>
+              <Forward name="someExpired" path="pipeWriteLogMessageError"/>
+          </XmlIfPipe>
+          <SenderPipe
+              name="pipeWriteLogMessageError"
+              getInputFromSessionKey="logMessage">
+              <LogSender
+                  name="senderWriteLogMessageError"
+                  logLevel="ERROR"/>
+              <Forward name="success" path="EXIT"/>
+          </SenderPipe>
+          <SenderPipe
+              name="pipeWriteLogMessageInfo"
+              getInputFromSessionKey="logMessage">
+              <LogSender
+                  name="senderWriteLogMessageInfo"
+                  logLevel="INFO"/>
+              <Forward name="success" path="EXIT"/>
           </SenderPipe>
           <Exit state="success" path="EXIT" code="200"/>
       </Pipeline>
