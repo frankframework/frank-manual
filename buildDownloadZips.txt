@@ -2,7 +2,7 @@
 # links in the manual. Comments and empty lines are
 # ignored.
 #
-# A relevant line has one or two fields separated by a space.
+# A relevant line has one, two or three fields separated by a space.
 # If there are two fields, the first field is the input directory
 # and the second field is the output filename. A ".zip" extension
 # will be added to the output filename. These are relative
@@ -14,6 +14,11 @@
 #
 # If there is only one field, the output directory will be the
 # last component of the input directory.
+#
+# If there are three fields, the last field is the parent directory name to be
+# used within the output .zip file. No path separators are allowed in this field.
+# If this third field is omitted, all files to zip are added directly to the root of the
+# .zip archive.
 
 srcSteps/NewHorizons/v500/configurations/NewHorizons configurations/NewHorizons
 srcSteps/NewHorizons/v500/tests/NewHorizons tests/NewHorizons
@@ -25,5 +30,6 @@ srcSteps/NewHorizons/v460/configurations/NewHorizons configurations/NewHorizonsO
 src/ladybug
 src/advancedDevelopmentProperties
 src/deploymentTomcat
-srcSteps/forFrankConsole/v500 configurations/forFrankConsole
+srcSteps/forFrankConsole/v500/configurations/NewHorizons configurations/forFrankConsole NewHorizons
+srcSteps/forFrankConsole/v510/configurations/NewHorizons configurations/forFrankConsole_2 NewHorizons
 srcSteps/sandbox/v01 sandbox/v01

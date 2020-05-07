@@ -18,9 +18,10 @@ def walkFilesInDirectory(theDirectory, handlerFile):
             handlerFile(dirname, filename)
     
 class ZipWriter:
-    def __init__(self, base, zipObj):
+    def __init__(self, base, zipObj, baseDirInZip):
         self._base = base
         self._zipObj = zipObj
+        self._baseDirInZip = baseDirInZip
 
     def writeFile(self, folderName, fname, toOmit):
         print("INFO: writeFile folderName {0} fname {1}".format(folderName, fname))
@@ -40,10 +41,12 @@ class ZipWriter:
             target = item
         else :
             target = os.path.join(subDirInZip, item)
+        if self._baseDirInZip is not None:
+            target = os.path.join(self._baseDirInZip, target)
         print("INFO: target {0}".format(target))
         return target
 
-def createDownloadZip(target, sourceDir, toOmit, onError):
+def createDownloadZip(target, sourceDir, baseDirInZip, toOmit, onError):
     target = os.path.normpath(target)
     sourceDir = os.path.normpath(sourceDir)
     if not os.path.exists(sourceDir):
@@ -62,9 +65,20 @@ def createDownloadZip(target, sourceDir, toOmit, onError):
         print("ERROR: not a .zip file: {0}".format(target))
         onError()
         return
-    print("INFO: Creating downloadable file {0} from directory {1}".format(target, sourceDir))
+    if baseDirInZip is not None:
+        if "\\" in baseDirInZip:
+            print("ERROR: Found windows path separator in baseDirInZip, no path separators allowed: " + baseDirInZip)
+            onError()
+            return
+        if "/" in baseDirInZip:
+            print("ERROR: Found Linux path separator in baseDirInZip, no path separators allowed: " + baseDirInZip)
+            onError()
+            return
+        print("INFO: Creating downloadable file {0} from directory {1}, base dir in zip {2}".format(target, sourceDir, baseDirInZip))
+    else:
+        print("INFO: Creating downloadable file {0} from directory {1}, without base dir in zip".format(target, sourceDir))
     with ZipFile(target, "w") as z:
-        zipWriter = ZipWriter(sourceDir, z)
+        zipWriter = ZipWriter(sourceDir, z, baseDirInZip)
         walkFilesInDirectory(sourceDir, \
             lambda folderName, fname: zipWriter.writeFile(folderName, fname, toOmit))
 
@@ -91,15 +105,18 @@ def makeTargetSubdir(targetFileName, targetDir):
 def createDownloadZipFromLine(line, targetDir, toOmit, onError):
     fields = line.split()
     source = fields[0]
-    if len(fields) == 1 :
-        targetFileName = os.path.basename(source) + ".zip"
-        makeTargetSubdir(targetFileName, targetDir)
-        target = os.path.join(targetDir, targetFileName)
-    else :
+    if len(fields) >= 2 :
         targetFileName = fields[1] + ".zip"
         makeTargetSubdir(targetFileName, targetDir)
         target = os.path.join(targetDir, targetFileName)
-    createDownloadZip(target, source, toOmit, onError)
+    else :
+        targetFileName = os.path.basename(source) + ".zip"
+        makeTargetSubdir(targetFileName, targetDir)
+        target = os.path.join(targetDir, targetFileName)
+    baseDirInZip = None
+    if len(fields) == 3:
+        baseDirInZip = fields[2]
+    createDownloadZip(target, source, baseDirInZip, toOmit, onError)
 
 def handleLine(line, targetDir, toOmit, onError):
     line = line.strip()
