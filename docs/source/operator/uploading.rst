@@ -102,7 +102,7 @@ Please continue as follows:
 
    .. WARNING::
 
-      The adapters should become green in the Configuration Messages panel, but the "Could not get config" error does not vanish. See GitHub issue https://github.com/ibissource/iaf/issues/704. If you do not want to see this message anymore, you have to restart the Frank!Runner.
+      The adapters should become green in the Configuration Messages panel, but the "Could not get config" error does not vanish, because messages in the Configuration Messages panel are only removed after restarting the Frank!Framework.
 
 #. Go back to Configuration | Manage Configuration. You see the page shown below:
 
