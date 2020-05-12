@@ -25,8 +25,19 @@ As said in section :ref:`frankConsoleNewHorizons`, this chapter on the Frank!Con
 
      project.dir=Frank2Manual
 
-#. Download the :download:`Frank config <../downloads/configurations/forFrankConsole.zip>` that you will deploy on the Frank!Framework.
-#. Unzip ``forFrankConsole.zip`` within ``franks/Frank2Manual/configurations``. You should arrive at the following directory structure: ::
+#. Download the :download:`Frank config <../downloads/configurations/forFrankConsole.zip>` that you will deploy on the Frank!Framework. Save it as ``franks/Frank2Manual/configurations/forFrankConsole.zip``.
+#. Right-click this file and choose "Extract All...". You see the dialog shown below:
+
+   .. image:: extractOmittingComponentForFrankConsole.jpg
+
+#. Within this dialog, remove the last path component ``forFrankConsole`` like indicated with number 1. The zipfile itself already contains subdirectory "NewHorizons".
+
+   .. WARNING::
+
+      Many zipfiles you download from this tutorial are different. Those others do not wrap their files within a root directory. In those cases you do not remove the last path component. In this chapter we use download zips with a root directory because we need them that way in section :ref:`frankConsoleConfigsUploading`.
+
+#. Press "Extract" (number 2).
+#. Check your directory structure. It should be as shown: ::
 
      franks
      |- Frank2Manual
@@ -41,7 +52,7 @@ As said in section :ref:`frankConsoleNewHorizons`, this chapter on the Frank!Con
 
 As said in section :ref:`frankConsoleNewHorizons`, the Frank config you are deploying processes ``.csv`` files. The directory in which they are expected is configurable by setting a property named ``work``. You will set property ``work`` to the value ``work``, a directory relative to ``franks/frank-runner``. When you do this, the example Frank configuration expects input files in directory ``work/input``. The example configuration expects that this directory exists, and also that some other directories exist.
 
-11. Create the following directories:
+14. Create the following directories:
 
     * ``franks/frank-runner/work/input``
     * ``franks/frank-runner/work/processing``
@@ -50,7 +61,7 @@ As said in section :ref:`frankConsoleNewHorizons`, the Frank config you are depl
 
 When you start the Frank!Runner you also need to set a property named ``jdbc.migrator.active``, indicating that the Frank!Framework should create initial data. With this property set, the example configuration will create table ``product``.
 
-12. Start the Frank!Runner with the following command: ::
+15. Start the Frank!Runner with the following command: ::
 
       > start.bat -Djdbc.migrator.active=true -Dwork=work
 

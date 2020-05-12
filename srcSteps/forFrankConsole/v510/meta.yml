@@ -6,6 +6,12 @@
       - insert: 1
         snippet: updateConfiguration
 - file:
+    path: configurations/NewHorizons/BuildInfo.properties
+    change:
+      - old: 2
+        new: 2
+        snippet: updateBuildInfo
+- file:
     path: configurations/NewHorizons/ConfigurationCheckExpiration.xml
     change: add
 - file:
@@ -34,3 +40,8 @@
     name: updateDatabaseChangelog
     markup: xml
     context: 1000
+- snippet:
+    name: updateBuildInfo
+    markup: xml
+    context: 1000
+    
