@@ -18,6 +18,7 @@ Here is the table of contents:
    preparations
    adapterStatus
    ladybug
+   environmentVariables
    logs
    database
    managing

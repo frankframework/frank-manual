@@ -6,7 +6,7 @@ Logs
 Introduction
 ------------
 
-In section :ref:`frankConsoleAdapterStatus`, you learned how to monitor the general state of the Frank!Framework. In the previous section :ref:`frankConsoleLadybug`, you learned about the Ladybug debugger. Ladybug produces test reports. A test report is a tree view, and each time you open a node, you see more details on the way the incoming message was processed. The present section provides an additional source of information you can use for monitoring and debugging. The Frank!Framework produces many messages during its operation that are written to text files with extension ".log". These are the logfiles, the subject of this section.
+In section :ref:`frankConsoleAdapterStatus`, you learned how to monitor the general state of the Frank!Framework. In section :ref:`frankConsoleLadybug`, you learned about the Ladybug debugger. Ladybug produces test reports. A test report is a tree view, and each time you open a node, you see more details on the way the incoming message was processed. The present section provides an additional source of information you can use for monitoring and debugging. The Frank!Framework produces many messages during its operation that are written to text files with extension ".log". These are the logfiles, the subject of this section.
 
 To follow the instructions of this section, you should first have done section :ref:`frankConsoleAdapterStatus`. In particular, you should have processed files ``example.csv`` and ``example2.csv``. You should still have the Frank!Runner open.
 
@@ -78,7 +78,7 @@ As an exercise, please do the following:
 
 #. Open logfile "frank2manual-messages.log".
 #. Duplicate your browser tab.
-#. In your new tab, go to Testing | Ladybug as explained in the previous section :ref:`frankConsoleLadybug`.
+#. In your new tab, go to Testing | Ladybug as explained in section :ref:`frankConsoleLadybug`.
 #. Compare the two tabs. Can you relate every line in "frank2manual-messages.log" to a node in a Ladybug test report?
 
 Logfile
