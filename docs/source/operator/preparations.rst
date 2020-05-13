@@ -34,7 +34,7 @@ As said in section :ref:`frankConsoleNewHorizons`, this chapter on the Frank!Con
 
    .. WARNING::
 
-      Many zipfiles you download from this tutorial are different. Those others do not wrap their files within a root directory. In those cases you do not remove the last path component. In this chapter we use download zips with a root directory because we need them that way in section :ref:`frankConsoleConfigsUploading`.
+      Many zipfiles you download from other places in the Frank!Manual are different. Those others do not wrap their files within a root directory. In those cases you do not remove the last path component. In this chapter we use download zips with a root directory because we need them that way in section :ref:`frankConsoleConfigsUploading`.
 
 #. Press "Extract" (number 2).
 #. Check your directory structure. It should be as shown: ::
