@@ -70,9 +70,15 @@ You can test your work by querying the tables you created, "booking" and "visit"
 
    .. image:: jdbcExecuteQueryNoRowsYet.jpg
 
-#. You see you are in the JDBC Execute Query screen (number 1). Select "JMS realm" "jdbc" (number 2). You can choose to have comma-separated (csv) output instead of XML (number 3).
+#. You see you are in the JDBC Execute Query screen (number 1). Select "Datasource" "jdbc/frank2manual" (number 2).
+
+   .. NOTE::
+
+      For more information, see section :ref:`advancedDevelopmentDatabase`.
+
+#. You can choose to have comma-separated (csv) output instead of XML (number 3).
 #. Enter query ``SELECT * FROM booking`` (number 4).
-#. Press "Send". You will see the result ``"ID","TRAVELERID","PRICE","FEE"`` (number 6). You have verified that the "booking" table exists.
+#. Press "Send" (number 5). You will see the result ``"ID","TRAVELERID","PRICE","FEE"`` (number 6). You have verified that the "booking" table exists.
 #. Verify that table "visit" exists by executing the query ``SELECT * FROM visit``. Check that the result of this query is ``"BOOKINGID","SEQ","HOSTID","PRODUCTID","STARTDATE","ENDDATE","PRICE"``.
 
 .. NOTE::
