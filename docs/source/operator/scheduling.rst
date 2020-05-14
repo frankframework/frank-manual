@@ -12,7 +12,7 @@ In section :ref:`frankConsoleConfigsUploading`, you saw two versions of the NewH
 If you just did the previous section :ref:`frankConsoleConfigsUploading`, you do not have to do anything to prepare yourself. Otherwise please do the following:
 
 #. Ensure that the second version of the NewHorizons config is running. Here is the :download:`download link <../downloads/configurations/forFrankConsole_2.zip>` again. It is not important whether you are uploading your config to the database or whether you have it on the file system.
-#. Ensure that the directories ``work\input``, ``work\processing``, ``work\processed`` and ``work\error`` do exist and are empty.
+#. Ensure that the directories ``work\input``, ``work\processing``, ``work\processed`` and ``work\error`` do exist and are empty. See :ref:`frankConsolePreparations` for more information.
 #. Ensure that database table "product" is empty.
 
 Now that you are prepared, please continue as follows:
