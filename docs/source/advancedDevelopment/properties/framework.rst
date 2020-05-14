@@ -38,10 +38,21 @@ log.dir
   The directory to which the Frank!Framework writes its log files. Only works as system property. Usually it is not necessary to set this property because the Frank!Framework can automatically choose a suitable directory.
 
 log.level
-  Determines the amount of log messages written. Only works as system property. Possible values are ``ERROR``, ``WARN``, ``INFO`` and ``DEBUG``.
+  Determines the amount of log messages written by defining the minimum log level. Only works as system property. Possible values are ``ERROR``, ``WARN``, ``INFO`` and ``DEBUG``. The default value depends on ``dtap.stage``, as follows:
+
+  * If ``dtap.stage`` = ``LOC``, then the default value of ``log.level`` is ``DEBUG``.
+  * If ``dtap.stage`` = ``DEV``, then the default value of ``log.level`` is ``DEBUG``.
+  * If ``dtap.stage`` = ``TST``, then the default value of ``log.level`` is ``DEBUG``.
+  * If ``dtap.stage`` = ``ACC``, then the default value of ``log.level`` is ``WARN``.
+  * If ``dtap.stage`` = ``PRD``, then the default value of ``log.level`` is ``WARN``.
+
+  This setting can be adjusted at runtime, see :ref:`frankConsoleDiskUsage`.
 
 instance.name.lc
   Derived automatically by the Frank!Framework from ``instance.name`` by replacing uppercase letters by lowercase letters. For example if ``instance.name`` is ``GettingStarted``, then ``instance.name.lc`` is ``gettingstarted``.
+
+testtool.enabled
+  Defines whether a Ladybug testreport is created when an adapter executes. The default value is ``true``. The value of this property is applied after the Frank!Framework has been restarted. This setting can be adjusted at runtime, see :ref:`frankConsoleDiskUsage`.
 
 .. NOTE::
 
