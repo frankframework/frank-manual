@@ -21,7 +21,7 @@ As an example, we extend the New Horizons case by writing the "booking" table in
 
 You see that we send an INSERT query to the database with parameters. The parameters appear with question marks in the SQL statement. The values of the parameters are provided through the ``<Param>`` tags. These tags contain XPath expressions to select the values from the incoming message. Xpath is explained here: https://www.w3schools.com/xml/xpath_intro.asp. You can see that elements are selected through ``/`` while attributes are selected through ``/@``. We know that the incoming message is a valid booking, because it passed the ``<XmlValidatorPipe>``.
 
-The database is selected in an indirect way; the line ``jmsRealm="jdbc"`` does the trick. Its meaning is explained in depth in section :ref:`advancedDevelopmentDatabase`. If you are reading this section for the first time, please finish it before studying database details.
+The database is selected in an indirect way; the line ``datasourceName="jdbc/${instance.name.lc}"`` does the trick. Its meaning is explained in depth in section :ref:`advancedDevelopmentDatabase`. If you are reading this section for the first time, please finish it before studying database details.
 
 Named query parameters
 ----------------------
@@ -61,7 +61,7 @@ The output message is no longer the incoming booking XML. Please remember this w
 
    .. image:: executeJdbcQuery.jpg
 
-#. You see you are in the execute screen (number 1). Select "JMS realm" "jdbc" (number 2). If you want, you can choose to see comma-separated output instead of XML (number 3).
+#. You see you are in the execute screen (number 1). Select "Datasource" "jdbc/frank2manual" (number 2). If you want, you can choose to see comma-separated output instead of XML (number 3).
 #. Type the following query: ``SELECT * FROM booking`` (number 4).
 #. Press "Send" (number 5). Check that the query result (number 6) shows some of the data you entered in step 2, in particular the "id" you chose.
 
