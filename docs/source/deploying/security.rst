@@ -8,7 +8,7 @@ Introduction
 
 The previous section was about fine-tuning the Frank!Framework. You learned about the DTAP stage and about setting properties. This section continues about fine-tuning the Frank!Framework. You will learn how to restrict access to the Frank!Console. On your production environment this is important, because you want to protect the integrity of your data and you do not want unauthorized users to read customer data.
 
-In this section you will edit configuration files of Apache Tomcat. You do not need a manual deployment of the Frank!Framework. Instead you will use the Frank!Runner which installs Apache Tomcat automatically, and then you will change the Apache Tomcat files manually. This section is a tutorial: you can follow the instructions below to get hands-on experience. Alternatively, you can just read along. All information you need will be provided in the Frank!Manual.
+When you use Apache Tomcat as your application server, you configure security by editing the Apache Tomcat configuration files. You do not need a manual deployment of Apache Tomcat to practice. Instead you will use the Frank!Runner which installs Apache Tomcat automatically, and then you will change the Apache Tomcat files manually. Please do not take this approach for your production environment. The Frank!Runner sometimes overwrites your security edits.
 
 Tutorial on setting up security
 -------------------------------
@@ -17,7 +17,7 @@ Tutorial on setting up security
 
 Please set up security as follows:
 
-#. We recommend that you create a new directory for this directory. You are going to tweak files managed by the Frank!Runner. and you do not want your existing configurations to break. Let us call your directory ``security``.
+#. We recommend that you create a new directory to do this section. You are going to tweak files managed by the Frank!Runner. and you do not want your existing configurations to break. Let us call your directory ``security``.
 #. On a command prompt, please change directory to ``security`` and clone the Frank!Framework as follows: ::
 
      security> git clone https://github.com/ibissource/frank-runner
@@ -136,11 +136,12 @@ Now you can start the Frank!Runner.
 
    .. image:: testPipelineAccessDenied.jpg
 
-#. Select adapter "Example1Adapter" (number 1). Enter some dummy text in the Message field (number 2). Press "Send" (number 3). You will see a red bar (number 4).
+#. Select adapter "Example1Adapter" (number 1). Enter some dummy text in the Message field (number 2). Press "Send" (number 3).
+#. To the top-right, the following message appears:
 
-   .. WARNING::
+   .. image:: accessDeniedFlag.jpg
 
-      When this text was written, no proper error message resulted from unauthorized access of Test Pipeline. Therefore, an issues has been created on GitHub, see https://github.com/ibissource/iaf/issues/617. You may be doing this tutorial after this issue has been solved. In this case, you see a clear message indicating that access is denied.
+#. This message will normally be removed in about five seconds. You can see it longer by hovering over it.
 
    .. WARNING::
 
