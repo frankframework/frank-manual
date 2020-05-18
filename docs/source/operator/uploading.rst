@@ -115,10 +115,6 @@ Please continue as follows:
 
 #. Configuration "NewHorizons" is no longer red (number 2). You also see a version string (number 1). Remember that you can have multiple versions of the same Frank config in your database. Only one version can be running, though.
 
-   .. WARNING::
-
-      You may have to refresh your browser page. See GitHub issue https://github.com/ibissource/iaf/issues/705.
-
    .. NOTE::
 
       The version string is derived from a file that should be present in the uploaded configuration. The uploaded configuration should contain the file ``BuildInfo.properties``. Adding this file is the responsibility of Frank developers.
