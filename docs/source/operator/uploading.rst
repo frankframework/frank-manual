@@ -150,7 +150,7 @@ Now you are ready to upload the next version of the NewHorizons configuration. P
 
    .. WARNING::
 
-      The "Active Config" config has become checked. This is an error of the Frank!Console that you can ignore, see https://github.com/ibissource/iaf/issues/698.
+      The "Active Config" config has become checked. This is the initial state of this checkbox. Apart from the success bar the page has been reset, allowing you to easily upload another Frank config.
 
 #. Press the "Back" button (not shown).
 #. Click "NewHorizons" to go to the "Manage NewHorizons" page.
