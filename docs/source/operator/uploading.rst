@@ -90,11 +90,6 @@ Please continue as follows:
 #. Select your database by its JNDI name (number 1), like you did in the JDBC | Execute Query page in section :ref:`frankConsoleDatabase`. You have only one choice.
 #. Next to number 2 you have a "Browse..."  button. Press it and select the zipfile you just downloaded.
 #. Check "Activate Config" (number 3).
-
-   .. WARNING::
-
-      You also see a checkbox "Automatic Reload". When you check this checkbox, it should not be necessary to manually reload your config as is explained below. This feature does not work properly, however. See https://github.com/ibissource/iaf/issues/717. When you upload the first version of a Frank config, this checkbox has no effect.
-
 #. Press "Send" (number 4). To the top, a green bar should appear indicating success (number 5).
 #. To the top-right, there is a button named "Back" (not shown). Please press it.
 #. You return to the screen shown in step 4. The NewHorizons configuration (number 2) is still red!
