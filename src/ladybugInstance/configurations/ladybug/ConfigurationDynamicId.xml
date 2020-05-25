@@ -38,8 +38,13 @@ xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
                   <Param name="subject" xpathExpression="/message/subject"/>
                   <Param name="message" xpathExpression="/message/message"/>
               </FixedQuerySender>
-              <Forward name="success" path="EXIT"/>
+              <Forward name="success" path="returnUuid"/>
           </SenderPipe>
+          <EchoPipe
+          name="returnUuid"
+          getInputFromSessionKey="uuid">
+              <Forward name="success" path="EXIT"/>
+          </EchoPipe>
           <Exit path="EXIT" state="success" code="200" />
           <Exit path="ServerError" state="failure" code="400"/>
       </Pipeline>
