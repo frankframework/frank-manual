@@ -1,12 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration [
-  <!ENTITY external SYSTEM "externalBasic.xml">
-]>
-<Configuration name="ladybug">
-  <jmsRealms>
-    <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
-  </jmsRealms>
-  &external;
+<Module>
   <Adapter name="sutArchive">
     <Receiver name="sutArchive">
       <ApiListener name="sutArchive"
@@ -35,4 +27,4 @@
       </SenderPipe>
     </Pipeline>
   </Adapter>
-</Configuration>
+</Module>
