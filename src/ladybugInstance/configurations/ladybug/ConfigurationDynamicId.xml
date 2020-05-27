@@ -40,11 +40,14 @@ xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
               </FixedQuerySender>
               <Forward name="success" path="returnUuid"/>
           </SenderPipe>
-          <EchoPipe
+          <XsltPipe
           name="returnUuid"
-          getInputFromSessionKey="uuid">
+          omitXmlDeclaration="true"
+          outputType="text"
+          xpathExpression="concat(concat('&lt;uuid&gt;', $uuid), '&lt;/uuid&gt;')">
+              <Param name="uuid" sessionKey="uuid" type="string"/>
               <Forward name="success" path="EXIT"/>
-          </EchoPipe>
+          </XsltPipe>
           <Exit path="EXIT" state="success" code="200" />
           <Exit path="ServerError" state="failure" code="400"/>
       </Pipeline>
