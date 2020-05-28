@@ -52,4 +52,39 @@ xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
           <Exit path="ServerError" state="failure" code="400"/>
       </Pipeline>
   </Adapter>
+  <Adapter name="adapterGetIngestedMessage">
+    <Receiver name="receiverGetIngestedMessage">
+        <JavaListener name="listenerGetIngestedMessage" serviceName="listenerGetIngestedMessage"/>
+    </Receiver>
+    <Pipeline firstPipe="pipeCheckIncomingRequest">
+        <XmlValidatorPipe
+        name="pipeCheckIncomingRequest"
+        root="uuid"
+        schema="uuid.xsd">
+            <Forward name="success" path="pipeGetMessage"/>
+            <Forward name="parseError" path="ServerError"/>
+            <Forward name="illegalRoot" path="ServerError"/>
+            <Forward name="failure" path="ServerError"/>
+        </XmlValidatorPipe>
+        <SenderPipe
+        name="pipeGetMessage">
+            <FixedQuerySender
+            name="senderGetMessage"
+            datasourceName="jdbc/${instance.name.lc}"
+            queryType="select"
+            query="SELECT id, customer, subject, message FROM message WHERE id = ?">
+                <Param name="id" xpathExpression="/uuid"/>
+            </FixedQuerySender>
+            <Forward name="success" path="buildMessage"/>
+        </SenderPipe>
+        <XsltPipe
+        name="buildMessage"
+        styleSheetName="buildMessage.xsl"
+        omitXmlDeclaration="true">
+            <Forward name="success" path="EXIT"/>
+        </XsltPipe>
+        <Exit path="EXIT" state="success" code="200" />
+        <Exit path="ServerError" state="failure" code="400"/>
+    </Pipeline>
+  </Adapter>
 </Module>
