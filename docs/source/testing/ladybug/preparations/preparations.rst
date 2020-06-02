@@ -23,9 +23,7 @@ Here are the instructions:
      |- configurations
         |- ladybug
            |- Configuration.xml
-           |- externalBasic.xml
-           |- externalModified.xml
-           |- externalTime.xml
+           ...
 
 #. When you work under Windows (the only possibility right now, but this will change), you need Postman. Install it from https://www.getpostman.com/downloads/. Note that only one of the proceeding subsections requires you to use Postman. You can do the rest of this tutorial without.
 #. When you work under Linux, you need curl. If you do not have curl, there is one section you cannot do. The other sections do not require curl.
