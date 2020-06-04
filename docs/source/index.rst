@@ -17,4 +17,4 @@ Below you see the table of contents of the Frank!Manual:
    advancedDevelopment/advancedDevelopment
    reference/reference
    troubleshooting/troubleshooting
-
+   disclaimer/disclaimer
