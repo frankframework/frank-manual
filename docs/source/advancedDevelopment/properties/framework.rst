@@ -57,6 +57,9 @@ testtool.enabled
 warnings.suppress.defaultvalue
   In a Frank config, you can assign values to properties. Some properties have a default value. When you assign to a property its default value, the Frank!Framework detects this redundant assignment. When this property is false (the default), the Frank!Framework issues a warning in the status page of the Frank!Console. When this property is true, the warning is suppressed.
 
+loadDatabaseSchedules.active
+  If true, the Frank!Console allows its users to upload Frank configs to the database. See section :ref:`frankConsoleScheduling`. The default value is ``false``.
+
 .. NOTE::
 
    Some features of a Frank are configured through the application server on which the Frank!Framework is deployed. An example is the database used by the Frank. In the Frank!Console there is no property that specifies the database being accessed.
