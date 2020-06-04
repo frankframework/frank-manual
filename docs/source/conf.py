@@ -58,3 +58,7 @@ html_static_path = ['_static']
 
 
 master_doc = 'index'
+
+# Added by Martijn according to: https://stackoverflow.com/questions/32079200/how-do-i-set-up-custom-styles-for-restructuredtext-sphinx-readthedocs-etc
+def setup(app):
+  app.add_css_file( "css/custom.css" )
