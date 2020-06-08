@@ -1,0 +1,45 @@
+- file:
+    path: classes/Configuration.xml
+    change: add
+- file:
+    path: classes/DeploymentSpecifics.properties
+    change: add
+- file:
+    path: classes/springIbisTestToolCustom.xml
+    change: add
+- file:
+    path: /configurations/ladybug/buildMessage.xsl
+    change: add
+- file:
+    path: /configurations/ladybug/Configuration.xml
+    change: add
+- file:
+    path: /configurations/ladybug/ConfigurationDynamicId.xml
+    change: add
+- file:
+    path: /configurations/ladybug/DatabaseChangelog.xml
+    change: add
+- file:
+    path: /configurations/ladybug/externalBasic.xml
+    change: add
+- file:
+    path: /configurations/ladybug/externalModified.xml
+    change: add
+- file:
+    path: /configurations/ladybug/externalTime.xml
+    change: add
+- file:
+    path: /configurations/ladybug/ibisdoc.xsd
+    change: add
+- file:
+    path: /configurations/ladybug/message.xsd
+    change: add
+- file:
+    path: /configurations/ladybug/messageDefaults.xsl
+    change: add
+- file:
+    path: /configurations/ladybug/sut.xml
+    change: add
+- file:
+    path: /configurations/ladybug/uuid.xsd
+    change: add
