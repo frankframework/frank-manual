@@ -1,0 +1,11 @@
+- file:
+    path: configurations/ladybug/Configuration.xml
+    change:
+        - old: 1
+          new: 1
+          highlight: true
+          snippet: referenceExternalModified
+- snippet:
+    name: referenceExternalModified
+    markup: xml
+    context: 100

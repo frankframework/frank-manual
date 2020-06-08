@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans classpath:xml/xsd/spring-beans-3.2.xsd"
+	>
+
+	<import resource="springIbisTestTool.xml"/>
+
+	<bean name="metadataExtractor" class="nl.nn.testtool.MetadataExtractor">
+		<property name="extraMetadataFieldExtractors">
+			<list>
+                <bean class="nl.nn.ibistesttool.metadata.StatusExtractor"/>
+                <bean class="nl.nn.testtool.metadata.XpathMetadataFieldExtractor">
+					<property name="name" value="customer"/>
+                    <property name="label" value="Customer"/>
+                    <!-- <property name="extractFrom" value="first"/> -->
+                    <property name="xpath" value="/message/customer" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="whiteBoxViewMetadataNames" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>storageId</value>
+				<value>endTime</value>
+				<value>duration</value>
+				<value>name</value>
+				<value>correlationId</value>
+				<value>status</value>
+				<value>numberOfCheckpoints</value>
+				<value>estimatedMemoryUsage</value>
+                <value>storageSize</value>
+                <value>customer</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+</beans>

@@ -8,38 +8,38 @@
     path: classes/springIbisTestToolCustom.xml
     change: add
 - file:
-    path: /configurations/ladybug/buildMessage.xsl
+    path: configurations/ladybug/buildMessage.xsl
     change: add
 - file:
-    path: /configurations/ladybug/Configuration.xml
+    path: configurations/ladybug/Configuration.xml
     change: add
 - file:
-    path: /configurations/ladybug/ConfigurationDynamicId.xml
+    path: configurations/ladybug/ConfigurationDynamicId.xml
     change: add
 - file:
-    path: /configurations/ladybug/DatabaseChangelog.xml
+    path: configurations/ladybug/DatabaseChangelog.xml
     change: add
 - file:
-    path: /configurations/ladybug/externalBasic.xml
+    path: configurations/ladybug/externalBasic.xml
     change: add
 - file:
-    path: /configurations/ladybug/externalModified.xml
+    path: configurations/ladybug/externalModified.xml
     change: add
 - file:
-    path: /configurations/ladybug/externalTime.xml
+    path: configurations/ladybug/externalTime.xml
     change: add
 - file:
-    path: /configurations/ladybug/ibisdoc.xsd
+    path: configurations/ladybug/ibisdoc.xsd
     change: add
 - file:
-    path: /configurations/ladybug/message.xsd
+    path: configurations/ladybug/message.xsd
     change: add
 - file:
-    path: /configurations/ladybug/messageDefaults.xsl
+    path: configurations/ladybug/messageDefaults.xsl
     change: add
 - file:
-    path: /configurations/ladybug/sut.xml
+    path: configurations/ladybug/sut.xml
     change: add
 - file:
-    path: /configurations/ladybug/uuid.xsd
+    path: configurations/ladybug/uuid.xsd
     change: add

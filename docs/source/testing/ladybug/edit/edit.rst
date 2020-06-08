@@ -50,16 +50,9 @@ Please do the following:
 
 #. Select the topmost node (number 1). Press "Refresh" (number 2). Now you see two test scripts about "sutArchive", both having their description (number 3).
 #. Press "Download all" (number 4). Then stop the Frank!Framework.
-#. Now we change our System Under Test. It is the simplified electronic archive with a portal that calls the real electronic archive. We change the real electronic archive. In your project directory, open file :code:`classes/Configuration.xml`. Edit the name of the included file to become :code:`externalModified.xml`, as shown:
+#. Now we change our System Under Test. It is the simplified electronic archive with a portal that calls the real electronic archive. We change the real electronic archive. In your project directory, open file :code:`configurations/ladybug/Configuration.xml`. Edit the name of the included file to become :code:`externalModified.xml`, as shown by the highlighted line:
 
-   .. code-block:: xml
-      :emphasize-lines: 3
-
-      <?xml version="1.0" encoding="UTF-8" ?>
-      <!DOCTYPE configuration [
-          <!ENTITY external SYSTEM "externalModified.xml">
-      ]>
-      ...
+   .. include:: ../../../snippets/ladybugInstance/v510/referenceExternalModified.txt
 
 #. Restart the Frank!Framework and press the refresh button of your webbrowser. Probably you still see your test cases. If not, upload the test scripts you downloaded. Your screen should look as follows again:
 

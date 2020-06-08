@@ -1,0 +1,17 @@
+.. code-block:: xml
+   :emphasize-lines: 3
+
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <!DOCTYPE configuration [
+     <!ENTITY external SYSTEM "externalModified.xml">
+     <!ENTITY sut SYSTEM "sut.xml">
+     <!ENTITY dynamicId SYSTEM "ConfigurationDynamicId.xml">
+   ]>
+   <Configuration name="ladybug">
+     <jmsRealms>
+       <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
+     </jmsRealms>
+     &external;
+     &sut;
+     &dynamicId;
+   </Configuration>
