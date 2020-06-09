@@ -119,4 +119,4 @@ In subsection :ref:`organize`, you learned how to copy test reports. You learned
 
 .. WARNING::
 
-   What happens if you use "Copy" instead of "Clone" on a test report with variables? In that case, the references to the variables return in your copy, but your copy looses the values of the variables. You have to edit your copy to enter the variables and their values again.
+   What happens if you use "Copy" instead of "Clone" on a test report with variables? In that case, the references to the variables return in your copy, but your copy looses the values of the variables (empty variables panel when you edit the test report). You have to edit your copy to enter the variables and their values again.
