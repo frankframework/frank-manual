@@ -116,7 +116,13 @@ Please remember that tests also have a name that you can edit (number 4). In old
 
      /sutArchive/
 
-#. Press "Move" (number 3). The new folder is selected as shown in the figure below.
+#. Press "Move" (number 3).
+
+   .. NOTE::
+
+      Next to the "Move" button, there is a "Copy" button. This button is like the "Move" button but duplicates the test report instead of moving it. This is useful, because you can also edit test scripts as you will see in the next subsection :ref:`edit`. You can thus copy test reports and then edit the copy. This way, you can easily create similar test reports. You do not always have to do a test manually to automate it.
+
+#. The new folder is selected as shown in the figure below.
 
    .. image:: afterMove.jpg
 

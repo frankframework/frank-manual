@@ -3,7 +3,9 @@
 Edit Test Scripts
 =================
 
-This subsection shows how to edit Ladybug test scripts. This feature is useful if the behavior of your System Under Test (SUT) changes. These changes may be errors to be corrected, or they may be legitimate updates. In the latter case, you can adjust your test scripts to reflect the new reality. In some cases, editing is quicker than deleting the tests and recapturing them. This subsection also shows the meaning of the stub strategy.
+This subsection shows how to edit Ladybug test scripts. You can use this feature to create test reports without capturing interactive tests. In the previous subsection you saw that you can copy test reports. When you edit the copy, you end up with two different test reports without having to capture a manual test two times.
+
+Editing test scripts is also useful if the behavior of your System Under Test (SUT) changes. These changes may be errors to be corrected, or they may be legitimate updates. In the latter case, you can adjust your test scripts to reflect the new reality. In some cases, editing is quicker than deleting the tests and recapturing them. This subsection also shows the meaning of the stub strategy.
 
 We continue experimenting with the simplified archive introduced in :ref:`introduction`. We continue with the situation from section :ref:`organize`. There is one captured test script obtained from calling adapter "sutArchive" with stub strategy "Never". We will do another capture of "sutArchive" with a different stub strategy. This way, we demonstrate the use of this feature.
 

@@ -15,3 +15,6 @@ Ladybug
    organize/organize
    edit/edit
    ignore/ignore
+   variables/variables
+   reference/reference
+   extendTable/extendTable
