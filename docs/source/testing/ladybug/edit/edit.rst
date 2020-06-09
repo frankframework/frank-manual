@@ -62,7 +62,8 @@ Please do the following:
 
    .. image:: runAfterModification.jpg
 
-#. If you want to investigate why a test failed, you can compare the expected result and the actual result. Use the "Compare" button (number 10).
+#. If you want to investigate why a test failed, you can compare the expected result and the actual result. You can do this with the "Compare" button (number 10). This will be explained later in this tutorial.
+
 #. The test script with stub strategy "Always" succeeds (number 7), while he test script with stub strategy "Never" fails (number 8).
 
    .. NOTE::
@@ -88,6 +89,10 @@ Please do the following:
 #. Press "Save" (number 4) and "Close" (number 5). Here is the result:
 
    .. image:: reset.png
+
+   .. NOTE::
+
+      There is a shortcut for the last steps you performed. In tab "Test", a button named "Replace" appears behind a test report when it is executed, see the figure of step 15, number 11. When you press this "Replace" button, the test script is edited such that the actual output becomes the expected output.
 
 #. You are back in tab "Test" (number 1). Select the top-most node in the tree view (number 2). Select all test scripts (numbers 3 and 4). Then press "Reset" (number 5). The green and red messages that were present before are gone (numbers 6 and 7).
 
