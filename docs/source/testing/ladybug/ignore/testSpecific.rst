@@ -50,4 +50,4 @@ Please do the following:
 
    .. image:: testWithLocalTransformationSuccessComparison.jpg
 
-#. If you save your test scripts now, the transformation will be included.
+#. Please save your test scripts. The updated transformation will now be included. We will refer to your saved test scripts as ``savedTestsWithNewTransformation``.
