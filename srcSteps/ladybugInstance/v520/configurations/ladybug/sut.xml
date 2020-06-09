@@ -1,0 +1,30 @@
+<Module>
+  <Adapter name="sutArchive">
+    <Receiver name="sutArchive">
+      <ApiListener name="sutArchive"
+          uriPattern="archive"
+          method="POST"/>
+    </Receiver>
+    <Pipeline firstPipe="sutArchive">
+      <Exit state="success" path="Exit" code="200"/>
+      <SenderPipe name="sutArchive">
+        <IbisJavaSender name="sutArchiveSender"
+            serviceName="archive"/>
+      </SenderPipe>
+    </Pipeline>
+  </Adapter>
+  <Adapter name="sutGet">
+    <Receiver name="sutGet">
+      <ApiListener name="sutGet"
+          uriPattern="get"
+          method="POST"/>
+    </Receiver>
+    <Pipeline firstPipe="sutGet">
+      <Exit state="success" path="Exit" code="200"/>
+      <SenderPipe name="sutGet">
+        <IbisJavaSender name="sutGetSender"
+            serviceName="get"/>
+      </SenderPipe>
+    </Pipeline>
+  </Adapter>
+</Module>

@@ -10,15 +10,9 @@ Please do the following:
 .. highlight:: none
 
 #. Stop the Frank!Framework.
-#. Edit :code:`classes/Configuration.xml` to become:
+#. Edit :code:`configurations/ladybug/Configuration.xml` as shown by the highlighted line:
 
-   .. code-block:: XML
-
-      <?xml version="1.0" encoding="UTF-8" ?>
-      <!DOCTYPE configuration [
-          <!ENTITY external SYSTEM "externalTime.xml">
-      ]>
-      ...
+   .. include:: ../../../snippets/ladybugInstance/v520/referenceExternalTime.txt
 
 #. Restart the Frank!Framework.
 #. Open Ladybug by clicking "Testing" and then "Ladybug" as shown below:

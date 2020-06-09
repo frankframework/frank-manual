@@ -1,0 +1,90 @@
+<Module
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+  <Adapter name="adapterIngestMessage">
+      <Receiver name="receiverIngestMessage">
+          <JavaListener name="listenerIngestMessage" serviceName="listenerIngestMessage"/>
+      </Receiver>
+      <Pipeline firstPipe="pipeCheckIncomingMessage">
+          <XmlValidatorPipe
+          name="pipeCheckIncomingMessage"
+          root="message"
+          schema="message.xsd">
+              <Forward name="success" path="pipeAddDefaults"/>
+              <Forward name="parseError" path="ServerError"/>
+              <Forward name="illegalRoot" path="ServerError"/>
+              <Forward name="failure" path="ServerError"/>
+          </XmlValidatorPipe>
+          <XsltPipe
+          name="pipeAddDefaults"
+          styleSheetName="messageDefaults.xsl">
+              <Forward name="success" path="pipeCreateUuid"/>
+          </XsltPipe>
+          <UUIDGeneratorPipe
+          name="pipeCreateUuid"
+          type="numeric"
+          storeResultInSessionKey="uuid"
+          preserveInput="true">
+              <Forward name="success" path="pipeStoreMessage"/>
+          </UUIDGeneratorPipe>
+          <SenderPipe
+          name="pipeStoreMessage">
+              <FixedQuerySender
+              name="senderStoreMessage"
+              datasourceName="jdbc/${instance.name.lc}"
+              query="INSERT INTO message VALUES(?, ?, ?, ?)">
+                  <Param name="id" sessionKey="uuid"/>
+                  <Param name="customer" xpathExpression="/message/customer"/>
+                  <Param name="subject" xpathExpression="/message/subject"/>
+                  <Param name="message" xpathExpression="/message/message"/>
+              </FixedQuerySender>
+              <Forward name="success" path="returnUuid"/>
+          </SenderPipe>
+          <XsltPipe
+          name="returnUuid"
+          omitXmlDeclaration="true"
+          outputType="text"
+          xpathExpression="concat(concat('&lt;uuid&gt;', $uuid), '&lt;/uuid&gt;')">
+              <Param name="uuid" sessionKey="uuid" type="string"/>
+              <Forward name="success" path="EXIT"/>
+          </XsltPipe>
+          <Exit path="EXIT" state="success" code="200" />
+          <Exit path="ServerError" state="failure" code="400"/>
+      </Pipeline>
+  </Adapter>
+  <Adapter name="adapterGetIngestedMessage">
+    <Receiver name="receiverGetIngestedMessage">
+        <JavaListener name="listenerGetIngestedMessage" serviceName="listenerGetIngestedMessage"/>
+    </Receiver>
+    <Pipeline firstPipe="pipeCheckIncomingRequest">
+        <XmlValidatorPipe
+        name="pipeCheckIncomingRequest"
+        root="uuid"
+        schema="uuid.xsd">
+            <Forward name="success" path="pipeGetMessage"/>
+            <Forward name="parseError" path="ServerError"/>
+            <Forward name="illegalRoot" path="ServerError"/>
+            <Forward name="failure" path="ServerError"/>
+        </XmlValidatorPipe>
+        <SenderPipe
+        name="pipeGetMessage">
+            <FixedQuerySender
+            name="senderGetMessage"
+            datasourceName="jdbc/${instance.name.lc}"
+            queryType="select"
+            query="SELECT id, customer, subject, message FROM message WHERE id = ?">
+                <Param name="id" xpathExpression="/uuid"/>
+            </FixedQuerySender>
+            <Forward name="success" path="buildMessage"/>
+        </SenderPipe>
+        <XsltPipe
+        name="buildMessage"
+        styleSheetName="buildMessage.xsl"
+        omitXmlDeclaration="true">
+            <Forward name="success" path="EXIT"/>
+        </XsltPipe>
+        <Exit path="EXIT" state="success" code="200" />
+        <Exit path="ServerError" state="failure" code="400"/>
+    </Pipeline>
+  </Adapter>
+</Module>

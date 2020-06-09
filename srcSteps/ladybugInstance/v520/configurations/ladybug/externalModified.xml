@@ -1,0 +1,22 @@
+  <Adapter name="externalArchive">
+    <Receiver name="externalArchive">
+      <JavaListener name="externalArchive"
+          serviceName="archive"/>
+    </Receiver>
+    <Pipeline firstPipe="externalArchive">
+      <Exit state="success" path="Exit" code="200" />
+      <FixedResultPipe name="externalArchive"
+          returnString="&lt;docid&gt;docid-67890&lt;/docid&gt;"/>
+    </Pipeline>
+  </Adapter>
+  <Adapter name="externalGet">
+    <Receiver name="externalGet">
+      <JavaListener name="externalGet"
+          serviceName="get"/>
+    </Receiver>
+    <Pipeline firstPipe="externalGet">
+      <Exit state="success" path="Exit" code="200"/>
+      <FixedResultPipe name="externalGet"
+          returnString="&lt;document&gt;This is the document&lt;/document&gt;"/>
+    </Pipeline>
+  </Adapter>

@@ -1,0 +1,30 @@
+  <Adapter name="externalArchive">
+    <Receiver name="externalArchive">
+      <JavaListener name="externalArchive"
+          serviceName="archive"/>
+    </Receiver>
+    <Pipeline firstPipe="getArchiveTime">
+      <Exit state="success" path="Exit" code="200" />
+      <PutSystemDateInSessionPipe name="getArchiveTime"
+          sessionKey="archiveTime"/>
+      <XsltPipe name="externalArchive"
+          xpathExpression="concat('&lt;result&gt;&lt;docid&gt;docid-12345&lt;/docid&gt;&lt;archiveTime&gt;', $archiveTime, '&lt;/archiveTime&gt;&lt;/result&gt;')">
+        <Param name="archiveTime" sessionKey="archiveTime" />
+      </XsltPipe>
+    </Pipeline>
+  </Adapter>
+  <Adapter name="externalGet">
+    <Receiver name="externalGet">
+      <JavaListener name="externalGet"
+          serviceName="get"/>
+    </Receiver>
+    <Pipeline firstPipe="getRetrievalTime">
+      <Exit state="success" path="Exit" code="200"/>
+      <PutSystemDateInSessionPipe name="getRetrievalTime"
+          sessionKey="retrievalTime"/>
+      <XsltPipe name="externalGet"
+          xpathExpression="concat('&lt;result&gt;&lt;document&gt;This is the document&lt;/document&gt;&lt;retrievalTime&gt;', $retrievalTime, '&lt;/retrievalTime&gt;&lt;/result&gt;')">
+        <Param name="retrievalTime" sessionKey="retrievalTime" />
+      </XsltPipe>      
+    </Pipeline>
+  </Adapter>
