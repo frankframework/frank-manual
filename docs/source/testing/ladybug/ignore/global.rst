@@ -78,7 +78,7 @@ Please continue as follows:
    .. image:: runTestWithGlobalTransformation.jpg
 
 #. Click "Reset" (number 2) to erase old test results. Press "Run" (number 3). You see that the test succeeds (number 4).
-#. Press "Compare" (number 5). You come in the "Compare" tab (number 1 in the figure below). Select the last "sutGet" node (number 2) to the top-left. The same node is selected in the top-right (number 3).
+#. Press "Compare" (number 5). You come in the "Compare" tab (number 1 in the figure below). Select the upper "sutGet" node (number 2) to the top-left. The same node is selected in the top-right (number 3).
 
    .. image:: compareWithTransformation.jpg
 
