@@ -28,6 +28,7 @@ srcSteps/NewHorizons/v450/configurations/NewHorizons configurations/NewHorizonsL
 srcSteps/NewHorizons/v450/tests/NewHorizons tests/NewHorizonsLarva
 srcSteps/NewHorizons/v460/configurations/NewHorizons configurations/NewHorizonsOnlyTableBooking
 srcSteps/ladybugInstance/v500/configurations/ladybug
+srcSteps/ladybugInstance/v500/classes extendLadybugTable
 src/advancedDevelopmentProperties
 src/deploymentTomcat
 srcSteps/forFrankConsole/v500/configurations/NewHorizons configurations/forFrankConsole NewHorizons
