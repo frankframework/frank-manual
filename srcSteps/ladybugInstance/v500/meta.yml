@@ -1,7 +1,4 @@
 - file:
-    path: classes/Configuration.xml
-    change: add
-- file:
     path: classes/DeploymentSpecifics.properties
     change: add
 - file:
