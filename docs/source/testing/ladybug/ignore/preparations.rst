@@ -23,7 +23,7 @@ Please do the following:
 
    .. image:: prepareDeleteOld.jpg
 
-#. A confirmation dialog appears, proceed. Press "Refresh" (number 6). All test scripts should be gone.
+#. A confirmation dialog appears, proceed. Press "Refresh" (number 6). All test reports should be gone.
 #. Go to "Test Pipeline". To the top, you see you are indeed in the Test Pipeline screen (number 1 in the picture below). Select adapter "sutGet" (number 2). In the message field (number 3), enter the following XML: :code:`<docid>docid-12345</docid>`. Then press "Send" (number 4). You see that execution was successful (number 5) and you see a result (number 6).
 
    .. image:: sutGetTestPipeline.jpg

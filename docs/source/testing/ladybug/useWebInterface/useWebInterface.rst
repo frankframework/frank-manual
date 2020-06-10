@@ -1,6 +1,6 @@
 .. _useWebInterface:
 
-Use Web Interface
+Use web interface
 =================
 
 As explained in :ref:`introduction`, this tutorial demonstrates Ladybug

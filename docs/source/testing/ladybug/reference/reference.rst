@@ -12,7 +12,7 @@ Get the raw test reports
 
 Please do the following to get the raw test reports:
 
-#. Preparing yourself is easy this time. You do not need test scripts you captured in earlier sections. Please do the general preparations of this tutorial before proceeding, see :ref:`preparations`.
+#. Preparing yourself is easy this time. You do not need test reports you captured in earlier sections. Please do the general preparations of this tutorial before proceeding, see :ref:`preparations`.
 #. Until now, you started the Frank!Runner with the command ``start.bat``. For this subsection, you need another command: ``start.bat -Djdbc.migrator.active=true``. Please make sure you started the Frank!Runner with this last command.
 #. Please go to Testing | Test Pipeline. Select adapter "adapterIngestMessage". In the Message field, please enter the following:
 
@@ -47,11 +47,11 @@ Please do the following to get the raw test reports:
    This is the message you stored with all meaningless spaces omitted.
 
 #. Please go to Testing | Ladybug and press Refresh. The test report table to the top should satisfy the following. The top row is about adapter "adapterGetIngestedMessage", while the next row is about adapter "adapterIngestMessage". To see this, you may have to sort by column "StorageId" or "EndTime".
-#. Copy these two test scripts. IMPORTANT: Use stub strategy "Never"!
+#. Copy these two test reports. IMPORTANT: Use stub strategy "Never"!
 
    .. WARNING::
 
-      If you use stub strategy "Stub all senders", your tests will be less powerfull. In this case, your captured test scripts will not really access the database, output from the database being simulated by data within the captured test reports. We want to include real database access in our tests.
+      If you use stub strategy "Stub all senders", your tests will be less powerfull. In this case, your captured test reports will not really access the database, output from the database being simulated by data within the captured test reports. We want to include real database access in our tests.
 
 #. Go to tab "Test" and press "Refresh". You should see the following:
 
@@ -147,7 +147,7 @@ When you are here, you have verified the following. Running your captured "adapt
    * Below this, another execution of this adapter.
    * Further down, an execution of "Sender QuerySender". This row reflects that you executed query "delete from message".
 
-   You have verified that you executed both test scripts two times after deleting all stored messages.
+   You have verified that you executed both test reports two times after deleting all stored messages.
 #. For both rows of "adapterGetIngestedMessage", select the node shown below. After selecting the node, look at the input message, something like ``<uuid>1921681780121591783348250481958</uuid>``. Check that the input message is different for the two rows you consider.
 
    .. image:: tabDebugSelectInputNode.jpg

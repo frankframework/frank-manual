@@ -1,9 +1,9 @@
 .. _capture:
 
-Capture Test Scripts
+Capture test reports
 ====================
 
-In the preceeding subsections, two ways were demonstrated to access the simplified electronic archive introduced in :ref:`introduction`. In subsection :ref:`useWebInterface`, the HTTP interface of the System Under Test was accessed. In :ref:`useTestPipeline`, the HTTP interface was bypassed such that the input message was given directly to the business logic. We saw reports of these actions in Ladybug. In this subsection, we capture these reports into test scripts and demonstrate how these test scripts can be run.
+In the preceeding subsections, two ways were demonstrated to access the simplified electronic archive introduced in :ref:`introduction`. In subsection :ref:`useWebInterface`, the HTTP interface of the System Under Test was accessed. In :ref:`useTestPipeline`, the HTTP interface was bypassed such that the input message was given directly to the business logic. We saw reports of these actions in Ladybug. In this subsection, we capture these reports and demonstrate how they can be run again. In subsection :ref:`edit`, you will change captured test reports.
 
 Please do the following:
 
@@ -20,7 +20,7 @@ Please do the following:
 
    .. image:: afterCapture.jpg
 
-#. You see you are in tab "Test" (number 1). Press "Refresh" (number 2). This causes your captured test script to appear (number 3).
+#. You see you are in tab "Test" (number 1). Press "Refresh" (number 2). This causes your captured test reports to appear (number 3).
 #. Select your test (number 4).
 #. Run your test by pressing "Run" (number 6). The other "Run" (button 5) can be used to run individual tests.
 #. Press "Refresh". A message appears showing that the test succeeded (number 1 in the figure below):

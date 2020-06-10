@@ -1,6 +1,6 @@
 .. _useTestPipeline:
 
-Use Test Pipeline
+Use test pipeline
 =================
 
 In subsection :ref:`useWebInterface`, the electronic archive introduced in :ref:`introduction` was accessed. The electronic archive offers a HTTP interface and therefore HTTP requests were issued. We had to take care to provide the right HTTP headers along with the message we wanted to pass (header "Content-Type"). In general, satisfying the requirements of the interface can sometimes be complicated.

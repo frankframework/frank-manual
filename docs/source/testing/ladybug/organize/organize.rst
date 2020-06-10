@@ -1,9 +1,9 @@
 .. _organize:
 
-Organize Test Scripts
+Organize test reports
 =====================
 
-In subsection :ref:`capture` you learned how to capture test scripts and how to run them. If you have many test scripts, it is useful to organize them. This subsection explains how to add a description to a test script, and shows you how to organize test scripts into folders.
+In subsection :ref:`capture` you learned how to capture test reports and how to run them. If you have many test reports, it is useful to organize them. This subsection explains how to add a description to a test report, and shows you how to organize test reports into folders.
 
 .. _organizePrepare:
 
@@ -15,8 +15,8 @@ Please do the following:
 .. highlight:: none
 
 #. Ensure that the Frank!Framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
-#. Ensure that you have a captured test script of running adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. In this case, you can proceed to :ref:`afterPrepared`.
-#. If you do not have a test script of running "sutGet", continue with this step. Click "Testing" in the picture below:
+#. Ensure that you have a captured test report of running adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. In this case, you can proceed to :ref:`afterPrepared`.
+#. If you do not have a test report of running "sutGet", continue with this step. Click "Testing" in the picture below:
 
    .. image:: ../../frankConsoleFindTestTools.jpg
 
@@ -46,7 +46,7 @@ Please do the following:
 
    .. image:: ../capture/afterCapture.jpg
 
-#. You see you are in tab "Test" (number 1). Press "Refresh" (number 2). This causes your captured test script to appear (number 3).
+#. You see you are in tab "Test" (number 1). Press "Refresh" (number 2). This causes your captured test report to appear (number 3).
 
 This step finishes your preparations.
 
@@ -55,9 +55,9 @@ This step finishes your preparations.
 Organize
 --------
 
-Now that you are prepared, you can learn how to organize your test scripts. Please do the following:
+Now that you are prepared, you can learn how to organize your test reports. Please do the following:
 
-#. We capture another test script first. Click "Test Pipeline". Select adapter "sutArchive" (number 1 of the picture below):
+#. We capture another test report first. Click "Test Pipeline". Select adapter "sutArchive" (number 1 of the picture below):
 
    .. image:: sutArchiveInTestPipeline.jpg
 
@@ -81,7 +81,7 @@ Now that you are prepared, you can learn how to organize your test scripts. Plea
 
    .. image:: captureArchive.jpg
 
-#. You see that you are in tab "Test" (number 1 of picture below). Press Refresh (number 2). You see two test scripts now, one about "sutGet" and one about "sutArchive" (number 3).
+#. You see that you are in tab "Test" (number 1 of picture below). Press Refresh (number 2). You see two test reports now, one about "sutGet" and one about "sutArchive" (number 3).
 
    .. image:: afterCapture.jpg
 
@@ -89,7 +89,7 @@ Now that you are prepared, you can learn how to organize your test scripts. Plea
 
    .. image:: afterOpen.jpg
 
-#. A new tab has been created (number 1). Select the uppermost "Pipeline" node (number 2). You can see that the stub strategy was "Never" when the test script was captured (number 3). Press "Edit" (number 4). The following screen appears:
+#. A new tab has been created (number 1). Select the uppermost "Pipeline" node (number 2). You can see that the stub strategy was "Never" when the test report was captured (number 3). Press "Edit" (number 4). The following screen appears:
 
    .. image:: editDescriptionSutArchive.jpg
 
@@ -120,18 +120,18 @@ Please remember that tests also have a name that you can edit (number 4). In old
 
    .. NOTE::
 
-      Next to the "Move" button, there is a "Copy" button. This button is like the "Move" button but duplicates the test report instead of moving it. This is useful, because you can also edit test scripts as you will see in the next subsection :ref:`edit`. You can thus copy test reports and then edit the copy. This way, you can easily create similar test reports. You do not always have to do a test manually to automate it.
+      Next to the "Move" button, there is a "Copy" button. This button is like the "Move" button but duplicates the test report instead of moving it. This is useful, because you can also edit test reports as you will see in the next subsection :ref:`edit`. You can thus copy test reports and then edit the copy. This way, you can easily create similar test reports. You do not always have to do a test manually to automate it.
 
 #. The new folder is selected as shown in the figure below.
 
    .. image:: afterMove.jpg
 
-#. As shown in the figure below, select the top node of the tree view (number 1). Now you see all test cases again. You see the folder names as part of the test script names (number 2).
+#. As shown in the figure below, select the top node of the tree view (number 1). Now you see all test cases again. You see the folder names as part of the test report names (number 2).
 
    .. image:: afterMoveSeeAll.jpg
 
-#. Finally, you can remove test scripts. Ensure that "sutGet" is selected and "sutArchive" is deselected as shown. Then press "Delete" (number 3).
-#. You get a confirmation dialog. After proceeding, you see that test script "sutGet" is gone:
+#. Finally, you can remove test reports. Ensure that "sutGet" is selected and "sutArchive" is deselected as shown. Then press "Delete" (number 3).
+#. You get a confirmation dialog. After proceeding, you see that test report "sutGet" is gone:
 
    .. image:: afterDelete.jpg
 

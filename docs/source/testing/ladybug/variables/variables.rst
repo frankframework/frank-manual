@@ -91,7 +91,7 @@ Clone test report
 
 In subsection :ref:`organize`, you learned how to copy test reports. You learned that this features is useful for creating similar test reports without having to do each of them manually. This section shows a very similar feature that works well with variables. Next to the "Copy" button in tab "Test", there is a "Clone" button. This clone button makes copying a bit more efficient. In this sub-subsection you learn how to use this button. Please continue as follows:
 
-#. Select your test script. Then enter folder name ``/clones`` and finally press "Clone" as shown below.
+#. Select your test report. Then enter folder name ``/clones`` and finally press "Clone" as shown below.
 
    .. image:: clone.jpg
 

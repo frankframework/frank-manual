@@ -5,7 +5,7 @@ Test-Specific Ignore
 
 In the previous sub-subsection we demonstrated global ignores. In tab "Debug" we opened Options | Transformation and updated the XSLT transformation we found there. We saved our updated transformation in file :code:`updatedTransformation.xsl`.
 
-In this sub-subsection we demonstrate that this global XSLT transformation is not saved along with your test scripts. After this, we do a test-specific ignore.
+In this sub-subsection we demonstrate that this global XSLT transformation is not saved along with your test reports. After this, we do a test-specific ignore.
 
 Please do the following:
 
@@ -40,9 +40,9 @@ Please do the following:
 
    .. NOTE::
 
-      In the Options | Transformation dialog, a default XSLT transaction was available. It had comments telling you how to update the transformation. The edit screen of a test script has an empty Transformation field. It is good to know that you can paste the transformation from Options | Transformation there.
+      In the Options | Transformation dialog, a default XSLT transaction was available. It had comments telling you how to update the transformation. The edit screen of a test report has an empty Transformation field. It is good to know that you can paste the transformation from Options | Transformation there.
 
-#. You are back in tab "Test" (number 1 in the figure below). Press "Reset" (number 2) and the "Run" button of your test script (number 3). You see that your test succeeds again (number 4).
+#. You are back in tab "Test" (number 1 in the figure below). Press "Reset" (number 2) and the "Run" button of your test report (number 3). You see that your test succeeds again (number 4).
 
    .. image:: runWithTestSpecificTransformation.jpg
 
@@ -50,4 +50,4 @@ Please do the following:
 
    .. image:: testWithLocalTransformationSuccessComparison.jpg
 
-#. Please save your test scripts. The updated transformation will now be included. We will refer to your saved test scripts as ``savedTestsWithNewTransformation``.
+#. Please save your test reports. The updated transformation will now be included. We will refer to your saved test scripts as ``savedTestsWithNewTransformation``.
