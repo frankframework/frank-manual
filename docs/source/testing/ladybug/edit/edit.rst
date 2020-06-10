@@ -84,7 +84,7 @@ Please do the following:
 
    .. image:: editingTheTest.jpg
 
-#. You are in the same tab (number 1). Expand the bottom "Pipeline" node and select the bottom child node (number 2). Then edit the text field (number 3) to be: ::
+#. You are in the same tab (number 1). Expand all "Pipeline" nodes and select the bottom child node (number 2). Then edit the text field (number 3) to be: ::
 
      <docid>docid-67890</docid>
 

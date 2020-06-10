@@ -71,7 +71,7 @@ Introduce a variable
 
    .. image:: compareWithVariableValueUpper.jpg
 
-#. Select the bottom "sutGet" (number 3 of the previous figure). You see the variable name to the bottom-left.
+#. Select the second "sutGet" (number 3 of the previous figure). You see the variable name to the bottom-left.
 
    .. image:: compareWithVariableValueLowerLeft.jpg
 
