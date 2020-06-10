@@ -26,6 +26,4 @@ archiving a document and searching a document by id. When you archive
 a document, you get the document id you need to find it back. When you
 request a document by id, you get the document.
 
-This emulator is very simple. In practice there is no error checking
-whatsoever and the responses are fixed values. But this is good
-anough for demonstrating Ladybug. Let's continue!
+The archive and the portal have very simple implementations. There is no error checking whatsoever and the responses are fixed values. For the beginning of this tutorial, this is good enough. In practice, archiving a document returns a unique id that is needed to find the document again. This unique id is different each time a new document is archived. This has been implemented in two additional adapters that will be used by the end of this tutorial; these adapters leave the idea of a portal for simplicity.
