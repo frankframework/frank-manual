@@ -1,6 +1,6 @@
 .. _testSpecific:
 
-Test-Specific Ignore
+Test-specific ignore
 ====================
 
 In the previous sub-subsection we demonstrated global ignores. In tab "Debug" we opened Options | Transformation and updated the XSLT transformation we found there. We saved our updated transformation in file :code:`updatedTransformation.xsl`.
