@@ -12,7 +12,7 @@ instructions Linux users need to follow.
 
 Please do the following:
 
-#. Open the Frank!Framework by browsing to http://localhost/ladybug/iaf/gui.
+#. Open the Frank!Framework by browsing to http://localhost.
 #. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
 
    .. image:: ../../frankConsoleFindTestTools.jpg
@@ -26,7 +26,7 @@ Please do the following:
 
    .. code-block:: bash
 
-      curl -i -X POST -H "Content-Type: application/xml" -d '<document>This is the document</document>' localhost/ladybug/api/archive
+      curl -i -X POST -H "Content-Type: application/xml" -d '<document>This is the document</document>' localhost/api/archive
 
 #. The result will be something like this: ::
 

@@ -12,7 +12,7 @@ Please do the following:
 
 .. highlight:: none
 
-#. Open the Frank!Framework by browsing to http://localhost/ladybug/iaf/gui.
+#. Open the Frank!Framework by browsing to http://localhost.
 #. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
 
    .. image:: ../../frankConsoleFindTestTools.jpg
@@ -28,19 +28,23 @@ Please do the following:
    .. image:: postmanSettings.jpg
 
 #. Close this dialog.
-#. Select tab Params. Select method POST and type URL ``localhost/ladybug/api/archive``. See figure below:
+#. Select tab Params. Select method POST and type URL ``localhost/api/archive``. See figure below:
 
    .. image:: postmanParams.jpg
 
+#. Go to tab "Headers".
 #. Add header ``Content-Type`` with value ``application/xml`` and select it, as shown:
 
    .. image:: postmanHeaders.jpg
 
-#. Enter the following XML for the body:
+#. Go to tab "Body".
+#. Select radio button "raw". Then enter the following XML for the body:
 
    .. code-block:: xml
      
       <document>This is the document</document>
+
+   See the figure below:
 
    .. image:: postmanBody.jpg
 
@@ -59,7 +63,7 @@ Please do the following:
 
    .. image:: ladybugReport.jpg
 
-#. Click the line corresponding to your call to the electronic archive. You see a tree view of the execution of this Frank adapter (number 2). To the right, you see information about the selected node (number 3). In this case, it is the XML message you passed through the body of your HTTP request.
+#. Click the line corresponding to your call to the electronic archive (number 1). You see a tree view of the execution of this Frank adapter (number 2). To the right, you see information about the selected node (number 3). In this case, it is the XML message you passed through the body of your HTTP request.
 
 .. NOTE::
 

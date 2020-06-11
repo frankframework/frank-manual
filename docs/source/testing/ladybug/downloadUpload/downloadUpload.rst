@@ -20,7 +20,7 @@ Please do the following:
 #. Stop the Frank!Framework. You will restore your captured reports soon.
 #. Sometimes the Frank!Framework saves test reports automatically, but you can not rely on this. In this tutorial we make sure that all captured test reports are lost, such that we can properly demonstrate uploading. Remove the ``build`` directory within your ``frank-runner`` directory. This will delete all data from previous runs of the Frank!Runner.
 #. Restart the Frank!Framework.
-#. Browse to http://localhost/ladybug/iaf/gui.
+#. Browse to http://localhost.
 #. Click "Testing":
 
    .. image:: ../../frankConsoleFindTestTools.jpg
