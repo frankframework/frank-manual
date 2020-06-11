@@ -32,3 +32,17 @@ Please do the following:
    .. image:: seeRunOfCaptured.jpg
 
 #. Numbers 3 and 4 show the impact of running a captured test. Number 3 was the run of "sutGet" that was captured. Number 4 was introduced by running the captured test. Every execution of an adapter results in a table row.
+
+.. NOTE::
+
+   Frank developers may be interested in the following. When you use the Frank!Runner, then the test reports you have in tab "Test" are stored within your instance directory. In this example, the directory is ``Frank2Manual/tests``. When you have another instance directory, then your test reports are stored in subdirectory ``tests`` of that instance directory. You can save your test reports by copying them from directory ``tests`` to some other directory. You can restore the test reports by putting the files back.
+
+   This ``tests`` directory is shared with Larva tests, which are explained in section :ref:`gettingStartedLarva`. You need to distinguish Larva files from Ladybug files, because you have to keep your Ladybug files together. You can recognize your Ladybug test report files as follows:
+
+   * ``testtool4frank2manual.xml`` is part of your Ladybug test reports. If you have another instance name  than ``Frank2Manual``, then that instance name is part of the filename, making the filename a little bit different.
+   * Every file ending with ``.report.xml`` belongs to the Ladybug test reports.
+   * All other files in directory ``tests`` are not related to Ladybug.
+
+   Saving and loading test reports can also be achieved by downloading and uploading test reports as will be explained in subsection :ref:`downloadUpload`. Please do not skip that subsection, because the user interface explained there will also work when you do not use the Frank!Runner. The Frank!Runner is not intended to be used in your production environment.
+   
+   The advantage of using the ``tests`` directory is as follows. The Ladybug test reports in directory ``tests`` are text files, allowing them to be analyzed by version control software. Frank developers can thus capture test reports during development, and they can include these test reports in their release to the customer.
