@@ -58,54 +58,54 @@ File ``scenario01.properties`` reads as follows: ::
 
    include = common.properties
 
-   step1.java.Example1.write = scenario01/in.txt
-   step2.java.Example1.read = scenario01/out.txt
+   step1.adapter.Example1.write = scenario01/in.txt
+   step2.adapter.Example1.read = scenario01/out.txt
 
 This is a properties file having the keys and the values separated by ``=``. First consider the following line: ::
 
-   step1.java.Example1.write = scenario01/in.txt
+   step1.adapter.Example1.write = scenario01/in.txt
 
-The right-hand-side references file ``in.txt``. What happens with that file? To see this, you have to know that the left-hand-side consists of three components: ``step1``, ``java.Example1`` and ``write``. ``java.Example1`` is a service name. Service names always consist of two words separated by a ``.``. In ``step1`` of the scenario, file ``in.txt`` is written to this service.
+The right-hand-side references file ``in.txt``. What happens with that file? To see this, you have to know that the left-hand-side consists of three components: ``step1``, ``adapter.Example1`` and ``write``. ``adapter.Example1`` is a service name. Service names always consist of two words separated by a ``.``. In ``step1`` of the scenario, file ``in.txt`` is written to this service.
 
 Now consider the next line: ::
 
-   step2.java.Example1.read = scenario01/out.txt
+   step2.adapter.Example1.read = scenario01/out.txt
 
-This line has the same syntax as its predecessor. The left-hand-side has components ``step2``, ``java.Example1`` and ``read``. The right-hand-side references file ``out.txt``. In ``step2`` of the scenario, data is read from service ``java.Example1``. The test verifies that the data equals the contents of file ``out.txt``. The contents of file ``out.txt`` is ``Hello World1``. This is the output of adapter "Example1Adapter" as you verified in section :ref:`helloTestPipeline`. This explains why the test succeeds.
+This line has the same syntax as its predecessor. The left-hand-side has components ``step2``, ``adapter.Example1`` and ``read``. The right-hand-side references file ``out.txt``. In ``step2`` of the scenario, data is read from service ``adapter.Example1``. The test verifies that the data equals the contents of file ``out.txt``. The contents of file ``out.txt`` is ``Hello World1``. This is the output of adapter "Example1Adapter" as you verified in section :ref:`helloTestPipeline`. This explains why the test succeeds.
 
-How is service ``java.Example1`` defined? To see this, consider the following line: ::
+How is service ``adapter.Example1`` defined? To see this, consider the following line: ::
 
    include = common.properties
 
 This line speaks for itself. When the Frank!Framework interprets the test script, it replaces the line by the contents of file ``common.properties``.  File ``common.properties`` reads as follows: ::
 
-   java.Example1.className=nl.nn.adapterframework.senders.IbisJavaSender
-   java.Example1.serviceName=testtool-Example1Adapter
+   adapter.Example1.className=nl.nn.adapterframework.senders.IbisJavaSender
+   adapter.Example1.serviceName=testtool-Example1Adapter
 
 This means that the shown scripts are equivalent to the following: ::
 
    scenario.description = Example 1
 
-   java.Example1.className=nl.nn.adapterframework.senders.IbisJavaSender
-   java.Example1.serviceName=testtool-Example1Adapter
+   adapter.Example1.className=nl.nn.adapterframework.senders.IbisJavaSender
+   adapter.Example1.serviceName=testtool-Example1Adapter
 
-   step1.java.Example1.write = scenario01/in.txt
-   step2.java.Example1.read = scenario01/out.txt
+   step1.adapter.Example1.write = scenario01/in.txt
+   step2.adapter.Example1.read = scenario01/out.txt
 
-The disadvantage is that script is that the lines in ``common.properties`` cannot be reused over multiple scenarios.
+The disadvantage of that script is that the lines in ``common.properties`` cannot be reused over multiple scenarios.
 
 Back to ``common.properties``: ::
 
-   java.Example1.className=nl.nn.adapterframework.senders.IbisJavaSender
-   java.Example1.serviceName=testtool-Example1Adapter
+   adapter.Example1.className=nl.nn.adapterframework.senders.IbisJavaSender
+   adapter.Example1.serviceName=testtool-Example1Adapter
 
-These lines define the service ``java.Example1``. Consider the first line first: ::
+These lines define the service ``adapter.Example1``. Consider the first line first: ::
 
-   java.Example1.className=nl.nn.adapterframework.senders.IbisJavaSender
+   adapter.Example1.className=nl.nn.adapterframework.senders.IbisJavaSender
 
-The left-hand-side has two components, namely ``java.Example1`` and ``className``. This line thus defines the ``className`` property of the ``java.Example1`` service. The right-hand-side references Java class ``nl.nn.adapterframework.senders.IbisJavaSender``, which is part of the Java source code of the Frank!Framework. This line links the service ``java.Example1`` to the behavior implemented in the mentioned Java class. This class defines what other properties can be configured for the ``java.Example1`` service, and it defines the meaning of the ``read`` and ``write`` directives that are applied to it in ``scenario01.properties``.
+The left-hand-side has two components, namely ``adapter.Example1`` and ``className``. This line thus defines the ``className`` property of the ``adapter.Example1`` service. The right-hand-side references Java class ``nl.nn.adapterframework.senders.IbisJavaSender``, which is part of the Java source code of the Frank!Framework. This line links the service ``adapter.Example1`` to the behavior implemented in the mentioned Java class. This class defines what other properties can be configured for the ``adapter.Example1`` service, and it defines the meaning of the ``read`` and ``write`` directives that are applied to it in ``scenario01.properties``.
 
-Services of class ``nl.nn.adapterframework.senders.IbisJavaSender`` communicate with listeners of type ``JavaListener``. Such listeners receive their message through a direct Java call. There are other listeners, for example ``ApiListener`` which gets its message from the body of a RESTful HTTP request. Services of class ``nl.nn.adapterframework.senders.IbisJavaSender`` have an additional property ``serviceName`` that defines the name of the listener to communicate with. The second line on ``common.properties`` gives property ``serviceName`` of service ``java.Example1`` the value ``testtool-Example1Adapter``.
+Services of class ``nl.nn.adapterframework.senders.IbisJavaSender`` communicate with listeners of type ``JavaListener``. Such listeners receive their message through a direct Java call. There are other listeners, for example ``ApiListener`` which gets its message from the body of a RESTful HTTP request. Services of class ``nl.nn.adapterframework.senders.IbisJavaSender`` have an additional property ``serviceName`` that defines the name of the listener to communicate with. The second line on ``common.properties`` gives property ``serviceName`` of service ``adapter.Example1`` the value ``testtool-Example1Adapter``.
 
 Please verify that listener ``testtool-Example1Adapter`` exists by doing the following:
 
@@ -157,8 +157,8 @@ When we reverse the above analysis of our Larva test, we arrive at a receipe to 
 #. If you have such a listener, you can proceed.
 #. Add a file ``common.properties`` with the following contents: ::
 
-     java.your-service-name.className=nl.nn.adapterframework.senders.IbisJavaSender
-     java.your-service-name.serviceName=your-testtool-listener
+     adapter.your-service-name.className=nl.nn.adapterframework.senders.IbisJavaSender
+     adapter.your-service-name.serviceName=your-testtool-listener
 
    .. NOTE::
 
@@ -166,7 +166,7 @@ When we reverse the above analysis of our Larva test, we arrive at a receipe to 
 
    .. NOTE::
 
-      Remember that a service name consists of two words separated by a dot. It is good practice to use the first word as a reminder for the ``className`` being applied. When you use ``nl.nn.adapterframework.senders.IbisJavaSender``, the first word should be ``ijs`` or ``java``.
+      Remember that a service name consists of two words separated by a dot. It is good practice to use ``adapter`` or ``stub`` for the first word. The word ``stub`` is reserved for services that are called by the adapter that you are testing. This does not happen in this hello world example. Therefore the service name starts with ``adapter``. More explanation will soon be added to this manual.
 
 #. Now you can write your scenarios. Each scenario includes your ``common.properties`` file to have access to the service. It has write directives to write data to your service, and the pipeline behind the referenced listener. It also has read directives to the same service to get the responses from the referenced pipeline.
 
