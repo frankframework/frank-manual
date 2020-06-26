@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration [
+  <!ENTITY Main SYSTEM "ConfigurationMain.xml">
+  <!ENTITY Delegate SYSTEM "ConfigurationDelegate.xml">
+]>
+<Configuration name="NewHorizons">
+  &Main;
+  &Delegate;
+</Configuration>

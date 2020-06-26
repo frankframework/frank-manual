@@ -1,0 +1,15 @@
+<Module
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+  <Adapter name="adapterDelegate">
+    <Receiver name="receiverDelegate">
+      <JavaListener name="listenerDelegate" serviceName="listenerDelegate"/>
+    </Receiver>
+    <Pipeline firstPipe="pipeResult">
+      <FixedResultPipe name="pipeResult" returnString="Hello world">
+        <Forward name="success" path="Exit"/>
+      </FixedResultPipe>
+      <Exit path="Exit" state="success" code="200"/>
+    </Pipeline>
+  </Adapter>
+</Module>
