@@ -1,0 +1,19 @@
+<address>
+  <relationId>1053247</relationId>
+  <name>
+    <firstName>Jan</firstName>
+    <surName>Jansen</surName>  
+  </name>
+  <address>
+    <street>Mooie Rozenlaan</street>
+    <houseNumber>40</houseNumber>  
+  </address>
+  <city>Rotterdam</city>
+  <postalCode>
+    <dutch>
+      <digids>3012</digids>
+      <letters>BP</letters>
+    </dutch>
+  </postalCode>
+  <country>the Netherlands</country>
+</address>

@@ -1,0 +1,35 @@
+<Module
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+  <Adapter name="adapterToConscience">
+    <Receiver name="receiverToConscience">
+      <ApiListener 
+      name="listenerToConscience"
+      uriPattern="/adapter/hermes/address"
+      method="GET"/>
+    </Receiver>
+    <Pipeline firstPipe="pipeTranslateRequest">
+      <XsltPipe
+      name="pipeTranslateRequest"
+      styleSheetName="hermesRequest2ConscienceRequest.xsl"
+      xsltVersion="2">
+        <Forward name="success" path="pipeCallConscience"/>
+      </XsltPipe>
+      <SenderPipe name="pipeCallConscience">
+        <RestSender
+          name="senderCallConscience"
+          url="conscience/address"
+          methodType="GET">
+        </RestSender>
+        <Forward name="success" path="pipeTranslateAddress"/>
+      </SenderPipe>
+      <XsltPipe
+      name="pipeTranslateAddress"
+      styleSheetName="conscienceAddres2HermesAddress.xsl"
+      xsltVersion="2">
+        <Forward name="success" path="Exit"/>
+      </XsltPipe>
+      <Exit path="Exit" state="success" code="200"/>
+    </Pipeline>
+  </Adapter>
+</Module>
