@@ -39,7 +39,7 @@ Please do the following:
 
    This ``tests`` directory is shared with Larva tests, which are explained in section :ref:`gettingStartedLarva`. You need to distinguish Larva files from Ladybug files, because you have to keep your Ladybug files together. You can recognize your Ladybug test report files as follows:
 
-   * ``testtool4frank2manual.xml`` is part of your Ladybug test reports. If you have another instance name  than ``Frank2Manual``, then that instance name is part of the filename, making the filename a little bit different.
+   * ``metadata.xml`` is part of your Ladybug test reports.
    * Every file ending with ``.report.xml`` belongs to the Ladybug test reports.
    * All other files in directory ``tests`` are not related to Ladybug.
 
