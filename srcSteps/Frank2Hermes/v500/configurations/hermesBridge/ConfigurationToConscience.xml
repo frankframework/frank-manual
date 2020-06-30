@@ -25,7 +25,7 @@
       </SenderPipe>
       <XsltPipe
       name="pipeTranslateAddress"
-      styleSheetName="conscienceAddres2HermesAddress.xsl"
+      styleSheetName="conscienceAddress2HermesAddress.xsl"
       xsltVersion="2">
         <Forward name="success" path="Exit"/>
       </XsltPipe>

@@ -33,4 +33,5 @@ src/advancedDevelopmentProperties
 src/deploymentTomcat
 srcSteps/forFrankConsole/v500/configurations/NewHorizons configurations/forFrankConsole NewHorizons
 srcSteps/forFrankConsole/v510/configurations/NewHorizons configurations/forFrankConsole_2 NewHorizons
+srcSteps/Frank2Hermes/v500/configurations/hermesBridge configurations/hermesBridge
 srcSteps/sandbox/v01 sandbox/v01

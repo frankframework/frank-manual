@@ -1,0 +1,15 @@
+- file:
+    path: configurations/hermesBridge/Configuration.xml
+    change: add
+- file:
+    path: configurations/hermesBridge/ConfigurationToConscience.xml
+    change: add
+- file:
+    path: configurations/hermesBridge/conscienceAddress2HermesAddress.xsl
+    change: add
+- file:
+    path: configurations/hermesBridge/hermesRequest2ConscienceRequest.xsl
+    change: add
+- file:
+    path: configurations/hermesBridge/ibisdoc.xsd
+    change: add
