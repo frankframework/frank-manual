@@ -15,3 +15,8 @@ In this section, you will see a fictive integration project. You will learn how 
 
 Here is the table of contents:
 
+.. toctree::
+   :maxdepth: 3
+
+   stubbingAndServices.rst
+
