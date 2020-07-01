@@ -25,3 +25,4 @@ Here is the table of contents:
    uploading
    scheduling
    diskUsage
+   managingProcessedMessages

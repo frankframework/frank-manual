@@ -1,0 +1,4 @@
+.. _manageProcessedMessagesStore:
+
+Message Stores
+==============

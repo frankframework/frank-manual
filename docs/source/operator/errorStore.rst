@@ -1,0 +1,4 @@
+.. _managingProcessedMessagesError:
+
+Error Stores
+============
