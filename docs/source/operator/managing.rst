@@ -1,6 +1,6 @@
-.. _frankConsoleManagement:
-
 .. highlight:: none
+
+.. _frankConsoleManagement:
 
 Management
 ==========

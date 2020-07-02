@@ -3,9 +3,17 @@
 Message Logs
 ============
 
-Many companies are legally required to prove that their internal control and financial reporting systems are adequate. They are required to prove this to external auditors. In the United State, this legal requirement is stated in the Sarbanes-Oxley Act, and other countries have similar laws. The adequacy of financial systems can be proved by retaining messages. When a system processes a message by routing it through a chain of subsystems, then each subsystem must save a copy of the message it sends. These messages do not have to be stored forever; only retaining messages for a finite time period, for example 30 days, is required.
+Purpose
+-------
 
-The Frank!Framework supports this kind of requirements through a message log. Frank developers can add a ``<messageLog>`` element to a sender. As a result, all messages sent by the chosen sender are stored. They are removed when their configured retention period is over. You as a site owner get the option to browse the stored messages. In this section you learn how to do this. Please do the following:
+Many companies are legally required to prove that their internal control and financial reporting systems are adequate. They are required to prove this to external auditors. In the United States, this legal requirement is stated in the Sarbanes-Oxley Act, and other countries have similar laws. The adequacy of financial systems can be proved by retaining messages. When a system processes a message by routing it through a chain of subsystems, then each subsystem must save a copy of the message it sends. These messages do not have to be stored forever; only retaining messages for a finite time period, for example 30 days, is required.
+
+The Frank!Framework supports this kind of requirements through a message log. Frank developers can add a ``<messageLog>`` element to a sender. As a result, all messages sent by the chosen sender are stored. They are removed when their configured retention period is over.
+
+Tutorial
+--------
+
+You as a site owner get the option to browse the stored messages. In this section you learn how to do this. Please do the following:
 
 #. Please remember to do the preparations of :ref:`operatorManagingProcessedMessages`.
 #. Start the Frank!Runner.
