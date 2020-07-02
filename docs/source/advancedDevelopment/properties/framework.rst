@@ -54,6 +54,9 @@ instance.name.lc
 testtool.enabled
   Defines whether a Ladybug testreport is created when an adapter executes. The default value is ``true``. The value of this property is applied after the Frank!Framework has been restarted. This setting can be adjusted at runtime, see :ref:`frankConsoleDiskUsage`.
 
+ibistesttool.directory
+  Defines the directory used by Ladybug to store test reports. See the note at the end of subsection :ref:`capture`.
+
 warnings.suppress.defaultvalue
   In a Frank config, you can assign values to properties. Some properties have a default value. When you assign to a property its default value, the Frank!Framework detects this redundant assignment. When this property is false (the default), the Frank!Framework issues a warning in the status page of the Frank!Console. When this property is true, the warning is suppressed.
 
