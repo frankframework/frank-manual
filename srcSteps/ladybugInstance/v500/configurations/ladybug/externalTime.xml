@@ -1,3 +1,4 @@
+<Module>
   <Adapter name="externalArchive">
     <Receiver name="externalArchive">
       <JavaListener name="externalArchive"
@@ -28,3 +29,4 @@
       </XsltPipe>      
     </Pipeline>
   </Adapter>
+</Module>

@@ -1,3 +1,4 @@
+<Module>
   <Adapter name="externalArchive">
     <Receiver name="externalArchive">
       <JavaListener name="externalArchive"
@@ -20,3 +21,4 @@
           returnString="&lt;document&gt;This is the document&lt;/document&gt;"/>
     </Pipeline>
   </Adapter>
+</Module>

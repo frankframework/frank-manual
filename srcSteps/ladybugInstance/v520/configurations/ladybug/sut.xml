@@ -5,9 +5,9 @@
           uriPattern="archive"
           method="POST"/>
     </Receiver>
-    <Pipeline firstPipe="sutArchive">
+    <Pipeline firstPipe="sutArchiveSenderPipe">
       <Exit state="success" path="Exit" code="200"/>
-      <SenderPipe name="sutArchive">
+      <SenderPipe name="sutArchiveSenderPipe">
         <IbisJavaSender name="sutArchiveSender"
             serviceName="archive"/>
       </SenderPipe>
@@ -19,9 +19,9 @@
           uriPattern="get"
           method="POST"/>
     </Receiver>
-    <Pipeline firstPipe="sutGet">
+    <Pipeline firstPipe="sutGetSenderPipe">
       <Exit state="success" path="Exit" code="200"/>
-      <SenderPipe name="sutGet">
+      <SenderPipe name="sutGetSenderPipe">
         <IbisJavaSender name="sutGetSender"
             serviceName="get"/>
       </SenderPipe>
