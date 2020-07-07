@@ -6,18 +6,28 @@ Message Stores
 Purpose
 -------
 
-When someone accesses one of your web services, she expects a quick reply. If the web service needs to do complex processing, it has to produce a HTTP response before the real processing is done. Such a HTTP response does not provide the answer the customer needs. This situation can be handled as follows. The customer is allowed to send the same request multiple times, until the desired response is received. The web service then has to ensure that the repeated request is handled only once.
+When someone accesses one of your web services, she expects a quick reply. If the web service needs to do complex processing, it has to produce a HTTP response before the real processing is done. A positive HTTP response indicates that the request has been received. The opposite is not true: when there is no positive response, the request may have been received nevertheless. Without a positive response, it is not clear whether or not the request has been received.
 
-The web service takes this responsibility by storing each incoming message with a unique id. When the webservice receives the same id again, it does not start a new calculation. Stored messages appear in a queue that is read by some backend processing system. When the web service gets a request, it checks whether the backend process has produced a result. If no result is available, an empty success response is given. If there is a result, it is included in the body of the response. When that happens, the customer is satisfied.
+This situation can be handled as follows. The customer is allowed to send the same request multiple times, until a positive HTTP response is received. The web service then has to ensure that the repeated request is handled exactly once. The web service takes this responsibility by storing each incoming message with a unique id. When the webservice receives the same id again, it does not store a new request. Stored messages appear in a queue that is read by some backend processing system. The backend process removes each processed item from the queue. This way, it is not processed again.
 
-This pattern can also be described in terms of integration patterns. Modifying data is often done with the fire-and-forget integration pattern. Modification is requested by some request, but no response is expected. The sender trusts that the receiving system will handle the request, and that the request will be handled only once. Modification is often requested through HTTP requests though, typically HTTP PUT or HTTP POST requests. The HTTP protocol was designed for the request-reply pattern. A bridge is thus needed between the request-reply pattern and the fire-and-forget pattern. This bridge is implementd using a message queue. The request-reply side repeats the same request until the desired response is received. The fire-and-forget side is fed by the message queue. The bridge ensures that  each incoming copy of a request is stored only once.
+This pattern can also be described in terms of integration patterns. Modifying data is often done with the fire-and-forget integration pattern. Modification is requested by some request, but no response is expected. The sender trusts that the receiving system will handle the request, and that the request will be handled exactly once. Modification is often requested through HTTP requests though, typically HTTP PUT or HTTP POST requests. The HTTP protocol was designed for the request-reply pattern. A bridge is thus needed between the request-reply pattern and the fire-and-forget pattern. This bridge is implementd using a message queue. The request-reply side repeats the same request until a positive response received, which indicates successful receipt of the request. The fire-and-forget side is fed by the message queue. The bridge ensures that each incoming request is stored only once.
 
-The Frank!Framework offers a component for this queuing solution that bridges the request-reply and the fire-and-forget pattern: a message store. Frank configurations write to a message store using a "MessageStoreSender". Frank configurations read messages from the message store using a "MessageStoreListener".
+The Frank!Framework offers a component for this queuing solution that bridges the request-reply and the fire-and-forget pattern: a message store. The message store uses a queue, which is often implemented using the database. Frank configurations write to the message store using a "MessageStoreSender". Frank configurations read from the message store using a "MessageStoreListener".
 
 .. NOTE::
 
    Frank developers may be interested in the following. To display in the Frank!Console the messages that are currently in the message store, a ``<messageLog>`` is included in the Frank config. This tag should have attribute ``className="nl.nn.adapterframework.jdbc.DummyTransactionalStorage``. This is a special type of message log that does not write to the message store. If you would use another type of message log, the config would write each message twice because writing is already done by the "MessageStoreSender".
-   
+
+.. NOTE::
+
+   Message logs and message stores are often implemented using the database. There is a database table "ibisstore" that holds all database-managed message logs, message stores and error stores. The field "type" distinguishes between a message log, a message store or an error store: The values "L" and "A" indicate a message log; the value "M" indicates a message store and the value "E" indicates an error store. The field "slotid" is used to identify a specific message log, message store or error store.
+
+.. NOTE::
+
+   With a message store, what happens when a new copy of a request is received after an earlier copy has been processed by the backend processing system? The message is no longer in the message store, so how does the Frank!Framework know that the request is a duplicate? The answer is that the message is still in the database. The message has been moved from the message store to a message log. This is implemented by changing the type from "M" to "A".
+
+   This analysis demonstrates the difference between a message log with type "L" and a message log with type "A". Message logs intended for auditing, see subsection :ref:`managingProcessedMessagesLog`, use type code "L". Message logs that hold processed messages coming from a message store use type code "A".
+
 Tutorial
 --------
 
