@@ -12,12 +12,12 @@ The web service takes this responsibility by storing each incoming message with 
 
 This pattern can also be described in terms of integration patterns. Modifying data is often done with the fire-and-forget integration pattern. Modification is requested by some request, but no response is expected. The sender trusts that the receiving system will handle the request, and that the request will be handled only once. Modification is often requested through HTTP requests though, typically HTTP PUT or HTTP POST requests. The HTTP protocol was designed for the request-reply pattern. A bridge is thus needed between the request-reply pattern and the fire-and-forget pattern. This bridge is implementd using a message queue. The request-reply side repeats the same request until the desired response is received. The fire-and-forget side is fed by the message queue. The bridge ensures that  each incoming copy of a request is stored only once.
 
-The Frank!Framework offers a component for this queuing solution that bridges the request-reply and the fire-and-forget pattern: a message store. Frank configurations write to a message store using a "MessageStoreSender". Frank configurations read messages from the queue using a "MessageStoreListener".
+The Frank!Framework offers a component for this queuing solution that bridges the request-reply and the fire-and-forget pattern: a message store. Frank configurations write to a message store using a "MessageStoreSender". Frank configurations read messages from the message store using a "MessageStoreListener".
 
 .. NOTE::
 
-   Frank developers may be confused, because they need to include a ``<messageLog>`` tag with attribute ``className=nl.nn.adapterframework.jdbc.DummyTransactionalStorage``. This has the following background. The sender writes the message to the queue, but the sender does not tell the Frank!Console that the queue exists. In general, ``<messageLog>`` tags are used to define queues and also to write to them. If a normal message log is included next to a sender, writing to the queue happens twice. The ``DummyTransactionalStorage`` is a special kind of message log for which writing to the queue is suppressed. Combining a ``DummyTransactionalStorage`` with a "MessageStoreSender" declares a message store without writing to it twice.
-
+   Frank developers may be interested in the following. To display in the Frank!Console the messages that are currently in the message store, a ``<messageLog>`` is included in the Frank config. This tag should have attribute ``className="nl.nn.adapterframework.jdbc.DummyTransactionalStorage``. This is a special type of message log that does not write to the message store. If you would use another type of message log, the config would write each message twice because writing is already done by the "MessageStoreSender".
+   
 Tutorial
 --------
 
