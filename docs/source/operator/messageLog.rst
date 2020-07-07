@@ -26,7 +26,7 @@ You as a site owner get the option to browse the stored messages. In this sectio
 
    .. image:: managingProcessedMessagesTheExampleAdapters.jpg
 
-#. Expand adapter "TestMessageLog" again, see below. You see a heading "Senders" and below it the sender named "TestMessageStoreSender". Next to this, you see an envelope. As indicated by the blue line, the envelope appears to the far right of the screen; in reality, the ends of the blue line are at the same height.
+#. Expand adapter "TestMessageLog" again, see below. You see a heading "Senders" and below it the sender named "TestMessageStoreSender". Next to this, you see an envelope. As indicated by the red arrow (imagine it is a cue that pushes the envelope), the envelope appears to the far right of the screen.
 
    .. image:: managingProcessedMessageMessageLogEnvelope.jpg
 
