@@ -159,7 +159,7 @@ IbisObserver
   Can look in configurations, statistics and log files.
 
 IbisDataAdmin
-  Can browse the error queue and resend or delete the messages in it, reload configurations, start and stop adapters, has all IbisObserver permissions too.
+  Can browse message logs, message stores and error stores, see section :ref:`operatorManagingProcessedMessages`. Can resend or delete the messages in them. Can reload configurations and start and stop adapters. Has all IbisObserver permissions too.
 
 IbisAdmin
   Can do a full reload and test a pipeline, has all IbisDataAdmin permissions too.
