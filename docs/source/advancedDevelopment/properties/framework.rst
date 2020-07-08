@@ -54,11 +54,28 @@ instance.name.lc
 testtool.enabled
   Defines whether a Ladybug testreport is created when an adapter executes. The default value is ``true``. The value of this property is applied after the Frank!Framework has been restarted. This setting can be adjusted at runtime, see :ref:`frankConsoleDiskUsage`.
 
+ibistesttool.directory
+  Defines the directory used by Ladybug to store test reports. See the note at the end of subsection :ref:`capture`.
+
 warnings.suppress.defaultvalue
   In a Frank config, you can assign values to properties. Some properties have a default value. When you assign to a property its default value, the Frank!Framework detects this redundant assignment. When this property is false (the default), the Frank!Framework issues a warning in the status page of the Frank!Console. When this property is true, the warning is suppressed.
 
 loadDatabaseSchedules.active
   If true, the Frank!Console allows its users to upload Frank configs to the database. See section :ref:`frankConsoleConfigsUploading`. The default value is ``false``.
+
+warnings.suppress.sqlInjections.ManageDatabase
+  This property helps you when you are seeing the following warning in the Adapter Status page:
+
+  .. code-block:: none
+
+     The class [nl.nn.adapterframework.jdbc.XmlQuerySender] is used one or more times. Please change to [nl.nn.adapterframework.jdbc.FixedQuerySender] to avoid potential SQL injections!
+    
+  This warning expresses the following. Some of your adapters are using the sender "XmlQuerySender". This sender can execute SQL queries that are generated based on user input. This causes a potential security risk. If an attacker can write SQL queries and have them executed by the Frank!Framework, she can corrupt the database.
+
+  From section :ref:`databaseInitialization`, remember that the Frank!Console offers the JDBC | Execute Query page, a service to Frank develpers to enter SQL queries and have them executed! In DTAP stage LOC, the option to inject SQL is not a security risk. In this case, you want to suppress the warning. You can do this by setting this property to true.
+
+warnings.suppress.sqlInjections.<your adapter>
+   Set this property to true if you want your adapter to execute dynamic SQL on your database. Dynamic SQL statements are SQL statements that are generated based on user input. Such queries may be a security risk, because they may allow attackers to corrupt the database. In some situations, executing dynamic SQL statement is a useful service, however. An example is the "ManageDatabase" adapter provided by WeAreFrank!. This adapter is used to provide the JDBC | Execute Query page of the Frank!Console, see the description of the previous property ``warnings.suppress.sqlInjections.ManageDatabase``. If your adapter, say "myAdapter", was designed to process dynamic SQL, then suppress the warning by setting property ``warnings.suppress.sqlInjections.myAdapter`` to true.
 
 .. NOTE::
 

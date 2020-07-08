@@ -50,6 +50,10 @@ Next comes information about the receivers feeding "adapterGetDestinations". The
 
 Below the receivers you see the pipes that send output. There is one, "pipeSendApartments" (number 7). Finally you see six messages (number 8). If you open the other adapter you see also six messages. These add up to 12 messages, the number you are seeing in the configuration summary panel. The numbers add because there are no error and no warning messages. If there are error and warning messages, the individual error messages add up to the number of error messages and the same holds for the warnings and the info messages.
 
+.. NOTE::
+
+   Next to senders and receivers, the Frank!Console also shows message logs, message stores and error stores. These are not in the NewHorizons configuration. These items are explained using another example configuration, see section :ref:`operatorManagingProcessedMessages`.
+
 Error detection
 ---------------
 

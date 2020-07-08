@@ -1,11 +1,13 @@
-.. _frankConsoleManagement:
-
 .. highlight:: none
+
+.. _frankConsoleManagement:
 
 Management
 ==========
 
-In the preceeding sections, you have learned how to monitor the status of the Frank!Framework and how to investigate issues. In this section you will start learning what you can do as a site owner. This section is about temporarily stopping adapters and receivers. The next section :ref:`frankConsoleConfigsUploading` is about uploading new versions of a Frank config. If you are also a system administrator, you also need to read chapter :ref:`deploying`, in particular subsections :ref:`deploymentDtapAndProperties` and :ref:`deploymentSecurity`. The final section of this chapter is about :ref:`frankConsoleScheduling` task for periodic execution.
+In the preceeding sections, you have learned how to monitor the status of the Frank!Framework and how to investigate issues. In this section you will start learning what you can do as a site owner. This section is about temporarily stopping adapters and receivers. The next section :ref:`frankConsoleConfigsUploading` is about uploading new versions of a Frank config. If you are also a system administrator, you also need to read chapter :ref:`deploying`, in particular subsections :ref:`deploymentDtapAndProperties` and :ref:`deploymentSecurity`.
+
+In this chapter, you continue learning about :ref:`frankConsoleScheduling` a task for periodic execution. The final section :ref:`operatorManagingProcessedMessages` is also important; you learn about auditing and about fixing messages for which processing has failed. Finally, section :ref:`frankConsoleDiskUsage` gives you some tricks to reduce the amount of data stored by the Frank!Framework.
 
 If your site is experiencing issues, you may want to temporarily stop receivers or adapters. To investigate this function of the Frank!Console, we continue with the example configuration about the imaginary company New Horizons. In the preceeding sections, you first deployed this configuration on your instance of the Frank!Framework. Then you learned the following about this configuration:
 
