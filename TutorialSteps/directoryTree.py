@@ -17,20 +17,30 @@ class DirectoryTree:
         return self._lastPathComponent
     def getSubdirs(self):
         fileAndDirSet = set([])
-        self._browsePaths(lambda p: fileAndDirSet.add(p.split("/")[0]))
+        self._browsePaths(lambda p: fileAndDirSet.add(p.split("/")[0]), [])
         subdirsSet = {item for item in fileAndDirSet if os.path.isdir(os.path.join(self._absPath, item))}
         subdirsSortedList = sorted(list(subdirsSet))
-
         return [DirectoryTree(item, self._absPath) for item in subdirsSortedList]
-    def _browsePaths(self, handler):
+
+    def _browsePaths(self, handler, ignored):
         for dirname, _, filenames in os.walk(self._absPath):
             for filename in filenames:
                 absPath = os.path.join(dirname, filename)
                 relPath = os.path.relpath(absPath, self._absPath)
                 relPath = relPath.replace(os.sep, "/")
-                handler(relPath)
-    def browse(self, handler):
-        self._browsePaths(lambda relPath: self._handleBrowsePath(relPath, handler))
+                lastComponent = relPath.split("/")[-1]
+                if not lastComponent in ignored:
+                    handler(relPath)
+                
+    def browse(self, handler, ignored=[]):
+        if ignored is None:
+            ignored = []
+        else:
+            if not type(ignored) is list:
+                raise TypeError("Not a list: " + str(ignored))
+            if not all([type(item) is str for item in str(ignored)]):
+                raise TypeError("List should contain only strings: " + str(ignored))
+        self._browsePaths(lambda relPath: self._handleBrowsePath(relPath, handler), ignored)
     def _handleBrowsePath(self, relPath, handler):
         toOpen = os.path.join(self._absPath, relPath)
         with open(toOpen, "r") as f:

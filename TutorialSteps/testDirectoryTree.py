@@ -5,6 +5,9 @@ if __name__ == "__main__":
     import unittest
 
     class TestDirectoryTree(unittest.TestCase):
+        def setUp(self):
+            self._combineFileNameAndLines = lambda relPath, lines, cumulativeResult: cumulativeResult.extend([relPath + ": " + line for line in lines])
+
         def test_get_correct_subdir_names(self):
             instance = DirectoryTree("TutorialSteps/testdata")
             subDirs = instance.getSubdirs()
@@ -21,9 +24,17 @@ dir2/f1.txt: dir2/f1 line 1
 dir2/f1.txt: dir2/f1 line 2""".replace("\r\n", "\n").split("\n"))
             instance = DirectoryTree("TutorialSteps/testdata")
             actual = []
-            instance.browse(lambda relPath, lines: actual.extend([relPath + ": " + line for line in lines]))
+            instance.browse(lambda relPath, lines: self._combineFileNameAndLines(relPath, lines, actual))
             actual.sort()
             self.assertEqual(actual, expected)
+
+        def test_if_browse_ignores_file_then_file_omitted(self):
+            instance = DirectoryTree("TutorialSteps/testdata")
+            actual = []
+            instance.browse(lambda relPath, lines: self._combineFileNameAndLines(relPath, lines, actual), ["f1.txt"])
+            actual.sort()
+            self.assertEqual(actual, [])
+
         def test_if_subdir_present_then_returned(self):
             instance = DirectoryTree("TutorialSteps/testdata")
             subDir = instance.getSubdirIfPresent("dir1")

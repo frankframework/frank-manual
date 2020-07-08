@@ -26,9 +26,6 @@
     path: configurations/ladybug/externalTime.xml
     change: add
 - file:
-    path: configurations/ladybug/ibisdoc.xsd
-    change: add
-- file:
     path: configurations/ladybug/message.xsd
     change: add
 - file:
