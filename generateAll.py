@@ -36,6 +36,8 @@ tutorialStepsDir = "srcSteps"
 # are stored.
 snippetsDir = "docs/source/snippets"
 
-hasErrors = createAllDownloadZips(downloadsDescriptor, downloadZipsDir, set([META_YML, "ibisdoc.xsd"]))
+IBISDOC_XSD = "ibisdoc.xsd"
+
+hasErrors = createAllDownloadZips(downloadsDescriptor, downloadZipsDir, set([META_YML, IBISDOC_XSD]))
 if not hasErrors:
-    createAllSnippets(tutorialStepsDir, snippetsDir)
+    createAllSnippets(tutorialStepsDir, snippetsDir, [IBISDOC_XSD])

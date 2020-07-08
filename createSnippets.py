@@ -10,7 +10,7 @@ def handlerAddNew(comparison, relPath, lines):
     if relPath != META_YML:
         comparison.addNew(TutorialSteps.RelPath(relPath.split("/")), lines)
 
-def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
+def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir, ignored):
     """
     Handle two consecutive versions, say the previous and the current, of a Frank config.
     
@@ -22,6 +22,7 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
             newDir: Object of type DirectoryTree. Holds the root directory
                 of the current version.
             snippetsDir: Root directories for storing snippets.
+            ignored: List of files to ignore, typically ibisdoc.xsd
 
     This member function does the following:
     - Parse meta.yml of the current version into a list of FileDifference object.
@@ -50,8 +51,8 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
         return hasErrors
     compare = TutorialSteps.TreeComparison(diffs)
     if oldDir is not None:
-        oldDir.browse(lambda relPath, lines: handlerAddOld(compare, relPath, lines))
-    newDir.browse(lambda relPath, lines: handlerAddNew(compare, relPath, lines))
+        oldDir.browse(lambda relPath, lines: handlerAddOld(compare, relPath, lines), ignored)
+    newDir.browse(lambda relPath, lines: handlerAddNew(compare, relPath, lines), ignored)
     snippets, errors = compare.run()
     if errors is not None:
         for error in errors:
@@ -68,7 +69,7 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir):
                     f.write(line + "\n")
     return hasErrors
 
-def createFrankConfigSnippets(configRoot, snippetsDir):
+def createFrankConfigSnippets(configRoot, snippetsDir, ignored):
     name = configRoot.getLastComponent()
     stepDirs = configRoot.getSubdirs()
     print("INFO: Step dirs are: {0}".format(", ".join([item.getLastComponent() for item in stepDirs])))
@@ -79,10 +80,10 @@ def createFrankConfigSnippets(configRoot, snippetsDir):
         return True
     for step in steps:
         stepName = step.getNew().getLastComponent()
-        hasErrors = createStepSnippets(name, stepName, step.getOld(), step.getNew(), snippetsDir) or hasErrors
+        hasErrors = createStepSnippets(name, stepName, step.getOld(), step.getNew(), snippetsDir, ignored) or hasErrors
     return hasErrors
 
-def createAllSnippets(tutorialStepsDir, snippetsDir):
+def createAllSnippets(tutorialStepsDir, snippetsDir, ignored):
     """
 Run TutorialSteps.
 
@@ -91,6 +92,7 @@ Run TutorialSteps.
             and all versions to process. These are the input files.
         snippetsDir: Root directory for all generated reStructuredText
             snippets.
+        ignored: List of file names for which no snippets should be created.
 
 TutorialSteps expects a directory tree like the following:
 
@@ -199,6 +201,6 @@ manual or you need another intermediate version.
     tutorialStepsRoot = TutorialSteps.DirectoryTree(tutorialStepsDir)
     hasErrors = False
     for frankConfigDir in tutorialStepsRoot.getSubdirs():
-        hasErrors = hasErrors or createFrankConfigSnippets(frankConfigDir, snippetsDir)
+        hasErrors = hasErrors or createFrankConfigSnippets(frankConfigDir, snippetsDir, ignored)
     if hasErrors:
         print("*** ERRORS CHECKING srcSteps AND GENERATING SNIPPETS")
