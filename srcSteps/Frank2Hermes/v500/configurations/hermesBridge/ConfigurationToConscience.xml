@@ -5,7 +5,7 @@
     <Receiver name="receiverToConscience">
       <ApiListener 
       name="listenerToConscience"
-      uriPattern="/adapter/hermes/address"
+      uriPattern="adapter/hermes/address"
       method="GET"/>
     </Receiver>
     <Pipeline firstPipe="pipeTranslateRequest">
@@ -18,7 +18,7 @@
       <SenderPipe name="pipeCallConscience">
         <RestSender
           name="senderCallConscience"
-          url="conscience/address"
+          url="http://localhost/conscience/address"
           methodType="GET">
         </RestSender>
         <Forward name="success" path="pipeTranslateAddress"/>
