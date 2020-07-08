@@ -172,7 +172,3 @@ IbisTester
    "What is 'Ibis'?", you might ask. WeAreFrank! used this brand before they acquired their name. Before, the company was called "Integration Partners". In that time, they used the brands "Ibis" and "Ibis Adapter Framework". These names have not all been replaced by their Frank! equivalents.
 
 You can assign these roles to users, as you did when you edited ``tomcat-users.xml``. You assign a value to the ``roles`` attribute that is a comma-separated list of roles. Each role should be taken from the list.
-
-.. NOTE::
-
-   You may wonder why you would assign multiple roles to a user, because the IbisObserver, IbisDataAdmin, IbisAdmin and IbisTester are cumulative. For example, an IbisAdmin can do everything an IbisDataAdmin can do. Actually, there is no reason to do this. The possibility to assign multiple roles is a feature of Apache Tomcat.
