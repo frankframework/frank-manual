@@ -18,3 +18,5 @@ Below you see the table of contents of the Frank!Manual:
    reference/reference
    troubleshooting/troubleshooting
    disclaimer/disclaimer
+   searchHelpIndex/searchHelpIndex
+   
