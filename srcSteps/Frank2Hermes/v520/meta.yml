@@ -1,0 +1,10 @@
+- file:
+    path: tests/hermesBridge/scenario01.properties
+    change:
+        - insert: 2
+          highlight: true
+          snippet: scenario01AddInclude
+- snippet:
+    name: scenario01AddInclude
+    markup: none
+    context: 50

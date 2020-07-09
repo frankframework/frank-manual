@@ -1,0 +1,14 @@
+- file:
+    path: tests/hermesBridge/scenario01.properties
+    change:
+        - insert: 2
+          highlight: true
+          snippet: scenario01Message1
+- file:
+    path: tests/hermesBridge/scenario01/hermesAddressRequest.xml
+    change: add
+- snippet:
+    name: scenario01Message1
+    markup: none
+    context: 50
+    

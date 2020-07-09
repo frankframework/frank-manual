@@ -18,5 +18,6 @@ Here is the table of contents:
 .. toctree::
    :maxdepth: 3
 
-   stubbingAndServices.rst
+   stubbing
+   services
 

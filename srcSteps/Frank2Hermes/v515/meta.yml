@@ -1,0 +1,3 @@
+- file:
+    path: tests/hermesBridge/scenario01.properties
+    change: add
