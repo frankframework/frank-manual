@@ -15,6 +15,10 @@ if __name__ == "__main__":
         def test_if_has_tab_then_error(self):
             indent, err = getIndentAndCheck(" \t text")
             self.assertTrue(type(err) is str)
+        def test_if_empty_line_then_indent_none(self):
+            indent, err = getIndentAndCheck("")
+            self.assertIsNone(err)
+            self.assertIsNone(indent)
 
     class TestComparators(unittest.TestCase):
         def test_comparatorIndentInsensitive(self):

@@ -22,6 +22,8 @@ def checkNonNegativeInt(i):
 def getIndentAndCheck(line):
     if not type(line) is str:
         raise TypeError("line should be string")
+    if len(line) == 0:
+        return None, None
     numIndent = 0
     for c in line:
         if c == " ":
@@ -45,7 +47,8 @@ def unindentAndCheck(lines):
         indent, err = getIndentAndCheck(line)
         if err is not None:
             return None, err
-        lineIndents.append(indent)
+        if indent is not None:
+            lineIndents.append(indent)
     minIndent = min(lineIndents)
     return [line[minIndent:] for line in lines], None
 
