@@ -1,21 +1,10 @@
 - file:
-    path: classes/StageSpecifics_LOC.properties
-    change: add
-- file:
     path: tests/hermesBridge/common.properties
-    change: add
-- file:
-    path: tests/hermesBridge/scenario01.properties
-    change: add
-- file:
-    path: tests/hermesBridge/scenario01/conscienceAddress.xml
-    change: add
-- file:
-    path: tests/hermesBridge/scenario01/conscienceAddressRequest.xml
-    change: add
-- file:
-    path: tests/hermesBridge/scenario01/hermesAddress.xml
-    change: add
-- file:
-    path: tests/hermesBridge/scenario01/hermesAddressRequest.xml
-    change: add
+    change:
+        - insert: 3
+          highlight: true
+          snippet: completeCommonProperties
+- snippet:
+    name: completeCommonProperties
+    markup: none
+    context: 50

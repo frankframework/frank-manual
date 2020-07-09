@@ -1,0 +1,6 @@
+- file:
+    path: classes/StageSpecifics_LOC.properties
+    change: add
+- file:
+    path: tests/hermesBridge/common.properties
+    change: add
