@@ -82,4 +82,8 @@ The new listener shows the name "testtool-adapterToConscience". You should refer
 
 .. image:: larvaRequestReply.jpeg
 
-Your test will take the role of Hermes, sending a request for an address (message 1). The request is sent to the new receiver, so no HTTP request will be needed. The original adapter within Frank2Hermes will still processes the request, but the sender that accesses Conscience has been replaced. The new sender will access a stub service named "testtool-pipeCallConscience". You will write this stub service. The stub service receives the Conscience-formatted address request (message 2) and responds with some Conscience-formatted address (response 3). Frank2Hermes continues by processing this response. In the end, Frank2Hermes response with the Hermes-formatted address (response 4). Your test will finish by checking this response.
+Your test will take the role of Hermes, sending a request for an address (message 1). The request is sent to the new receiver, so no HTTP request will be needed. The original adapter within Frank2Hermes will still processes the request, but the sender that accesses Conscience will have been replaced. The new sender will access a stub service named "testtool-pipeCallConscience". You will write this stub service. The stub service will receive the Conscience-formatted address request (message 2) and will respond with some Conscience-formatted address (response 3). Frank2Hermes will continue by processing this response. In the end, Frank2Hermes will respond with the Hermes-formatted address (response 4). Your test will finish by checking this response.
+
+Services
+--------
+
