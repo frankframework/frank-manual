@@ -13,5 +13,5 @@ errorstorage :ref:`managingProcessedMessagesError`.
 errorstore :ref:`managingProcessedMessagesError`.
 messagelog :ref:`managingProcessedMessagesLog`.
 messagestore :ref:`manageProcessedMessagesStore`.
-sql injection :ref:`propertiesFramework`.
-sql injections :ref:`propertiesFramework`.
+sql injection --- :ref:`propertiesFramework`.
+sql injections --- :ref:`propertiesFramework`.
