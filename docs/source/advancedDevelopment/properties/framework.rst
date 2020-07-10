@@ -64,7 +64,7 @@ loadDatabaseSchedules.active
   If true, the Frank!Console allows its users to upload Frank configs to the database. See section :ref:`frankConsoleConfigsUploading`. The default value is ``false``.
 
 warnings.suppress.sqlInjections.ManageDatabase
-  This property helps you when you are seeing the following warning in the Adapter Status page:
+  This property helps you when you are seeing a warning about SQL injections. You see it in the Adapter Status page. It reads:
 
   .. code-block:: none
 

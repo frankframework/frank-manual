@@ -12,7 +12,7 @@ This situation can be handled as follows. The customer is allowed to send the sa
 
 This pattern can also be described in terms of integration patterns. Modifying data is often done with the fire-and-forget integration pattern. Modification is requested by some request, but no response is expected. The sender trusts that the receiving system will handle the request, and that the request will be handled exactly once. Modification is often requested through HTTP requests though, typically HTTP PUT or HTTP POST requests. The HTTP protocol was designed for the request-reply pattern. A bridge is thus needed between the request-reply pattern and the fire-and-forget pattern. This bridge is implementd using a message queue. The request-reply side repeats the same request until a positive response received, which indicates successful receipt of the request. The fire-and-forget side is fed by the message queue. The bridge ensures that each incoming request is stored only once.
 
-The Frank!Framework offers a component for this queuing solution that bridges the request-reply and the fire-and-forget pattern: a message store. The message store uses a queue, which is often implemented using the database. Frank configurations write to the message store using a "MessageStoreSender". Frank configurations read from the message store using a "MessageStoreListener".
+The Frank!Framework offers a component for this queuing solution that bridges the request-reply and the fire-and-forget pattern: a message store. The message store uses a database table to queue the requests. Frank configurations write to the message store using a "MessageStoreSender". Frank configurations read from the message store using a "MessageStoreListener".
 
 .. NOTE::
 
@@ -20,7 +20,9 @@ The Frank!Framework offers a component for this queuing solution that bridges th
 
 .. NOTE::
 
-   Message logs and message stores are often implemented using the database. There is a database table "ibisstore" that holds all database-managed message logs, message stores and error stores. The field "type" distinguishes between a message log, a message store or an error store: The values "L" and "A" indicate a message log; the value "M" indicates a message store and the value "E" indicates an error store. The field "slotid" is used to identify a specific message log, message store or error store.
+   Message logs and message stores are implemented using the database. There is a database table "ibisstore" that holds all database-managed message logs, message stores and error stores. The field "type" distinguishes between a message log, a message store or an error store: The values "L" and "A" indicate a message log; the value "M" indicates a message store and the value "E" indicates an error store. The field "slotid" is used to identify a specific message log, message store or error store.
+   
+   More information can be accessed through the Frank!Doc. Please search sender "MessageStoreSender" and open its Javadoc link. Please search for listener "MessageStoreListener" and also open its Javadoc link.
 
 .. NOTE::
 
