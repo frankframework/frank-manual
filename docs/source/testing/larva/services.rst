@@ -64,10 +64,10 @@ You will continue with message 2 of the figure of subsection :ref:`testingLarvaS
 
 #. Create file ``Frank2Manual/tests/hermesBridge/scenario01/conscienceAddressRequest.xml``. Fill it with the example Conscience address request you can find in subsection :ref:`testingLarvaStubbing`.
 
-You have seen all Larva syntax you need to finish your test. You need to write message 3, the response to "Frank2Hermes" that is the Conscience-formatted address. The writing has to be done by service ``stub.conscience``. Finally need to read message 4, the Hermes-formatted address, comparing it with the address you expect. Please continue as follows:
+You have seen all Larva syntax you need to finish your test. You need to write message 3, the response to "Frank2Hermes" that is the Conscience-formatted address. The writing has to be done by service ``stub.conscience``. Finally your test needs to read message 4, the Hermes-formatted address, comparing it with the address you expect. Please continue as follows:
 
 12. Create file ``Frank2Manual/tests/hermesBridge/scenario01/conscienceAddress.xml``. Fill it with the example of a Conscience address.
-#. Create file ``Frank2Manual/tests/hermesBridge/scenario01/hermesAddressRequest.xml``. Fill it with the example of a Hermes address.
+#. Create file ``Frank2Manual/tests/hermesBridge/scenario01/hermesAddress.xml``. Fill it with the example of a Hermes address.
 #. Finish ``scenario01.properties`` as shown:
 
     .. include:: ../../snippets/Frank2Hermes/v550/scenario01Complete.txt
@@ -81,7 +81,7 @@ Please try your test as follows:
 
     .. image:: runRequestReplyTest.jpg
 
-#. You see you are in Larva (number 1). Select that you want to run all your tests ("\" in number 2) and press "start" (number 3).
+#. You see you are in Larva (number 1). Select that you want to run all your tests ("\\\\" in number 2) and press "start" (number 3).
 #. All your tests should succeed. Please check this (see number 4).
 #. A test scenario is a sequence of steps that depend on each other. You should have one scenario named "hermesBridge/scenario01". Please check that you see the decription you entered earlier.
 #. You see all four steps of your scenario (number 6 shows step 1). If a step fails it becomes red, showing you where the problem occurs.
@@ -98,7 +98,7 @@ Scenario description
   Each scenario defines property ``scenario.description``, providing a description of the scenario. This description is shown in the user interface of Larva.
 
 Include statement
-  Each scenario can include files using the syntax ``include = <file name>``. The file name is a relative path, relative to the directory of your scenario properties file (e.g. ``scenario01.properties``).
+  Each scenario can include files using the syntax ``include = <file name>``. The file name is a relative path, relative to the directory of your scenario properties file (e.g. ``scenario01.properties``). You can have multiple lines like ``include =`` to include multiple files.
 
 Test command
   Your test consists of commands like ``step<n>.service.name.<read or write> = <file name>``. The file name is either the file to write, or the file to compare with the read result. The file name is a relative path, relative to the scenario properties file.
