@@ -70,6 +70,10 @@ Please continue as follows:
 
       It is not realistic to use the Frank!Runner when you store your Frank configs in the database. The Frank!Runner is meant for development. During development, it is much easier to have your files on your local filesystem. For this tutorial, however, using the Frank!Runner is the easiest way to demonstrate uploading configurations to the database.
 
+   .. NOTE::
+
+      There will be another way, but only when issue https://github.com/ibissource/iaf/issues/927 will have been fixed.
+
 #. Go to the Adapter Status page. You should see a message that configuration "NewHorizons" was not found in the database, see below:
 
    .. image:: adapterStatusConfigNotInDb.jpg

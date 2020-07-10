@@ -31,6 +31,13 @@ configurations.names
 configurations.MyConfig.classLoaderType
   If there is a configuration ``MyConfig``, then this property defines how configuration ``MyConfig`` is read. For example, ``DirectoryClassLoader`` indicates that ``MyConfig`` is stored on the local file system of the server. Configurations can also be stored in the database; then this property has another value. This property should exist for every configuration. ``MyConfig`` should be replaced with the configuration name to get the property name. This property only works as a system property or a classpath property, unless nested configurations are used. Nested configurations are beyond the scope of this manual.
 
+configurations.autoDatabaseClassLoader
+  If this property is false (the default), only configurations mentioned in ``configurations.names`` can be uploaded to the database and only if their ``configurations.<config name>.classLoaderType`` property is ``DatabaseClassLoader``. This requires you to set a lot of properties. If you do not need this strict control for uploading configurations, then set this property to true. You can then upload any configuration to the database. The only exceptions are the configs mentioned in ``configurations.names`` in this case. 
+
+  .. WARNING::
+
+     Do not set this property right now because of issue https://github.com/ibissource/iaf/issues/927.
+
 jdbc.migrator.active
   Can be "true" or "false" (the default). When true, database initialization is switched on. The default behavior is to do this with Liquibase, see https://www.liquibase.org/. With Liquibase, the file ``DatabaseChangelog.xml`` is executed. This property behaves differently as a system property or classpath property on the one hand, or as a configuration property on the other hand. See section :ref:`advancedDevelopmentDatabase` for details.
 
