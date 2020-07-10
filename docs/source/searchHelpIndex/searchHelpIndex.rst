@@ -9,13 +9,9 @@ If you want to find something, please use this search field.
 
 WeAreFrank! discovered that some search words did not produce the desired result. These words are added here, with a reference to the proper section of this manual.
 
-============== ====
-word           Reference
-============== ====
-errorstorage   :ref:`managingProcessedMessagesError`.
-errorstore     :ref:`managingProcessedMessagesError`.
-messagelog     :ref:`managingProcessedMessagesLog`.
-messagestore   :ref:`manageProcessedMessagesStore`.
-sql injection  :ref:`propertiesFramework`.
-sql injections :ref:`propertiesFramework`.
-============== ====
+* :ref:`errorstorage <managingProcessedMessagesError>`.
+* :ref:`errorstore <managingProcessedMessagesError>`.
+* :ref:`messagelog <managingProcessedMessagesLog>`.
+* :ref:`messagestore <manageProcessedMessagesStore>`.
+* :ref:`sql injection <propertiesFramework>`.
+* :ref:`sql injections <propertiesFramework>`.
