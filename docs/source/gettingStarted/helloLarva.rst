@@ -8,7 +8,7 @@ Automated Tests with Larva
 Introduction
 ------------
 
-This is the final section about the example Frank configs provided by the Frank!Runner. In application development, it is common to have automated tests. You cannot rely on interactive testing only, because performing these takes much more time than running automated tests. Furthermore, interactive testing is tedious work and therefore error-prone, especially when the same tests have to be performed over and over again for new releases. Automatic tests of Frank configs can be created using the Larva service.
+This is the final section about the example Frank configs provided by the Frank!Runner. In application development, it is common to have automated tests. You cannot rely on interactive testing only, because performing these takes much more time than running automated tests. Furthermore, interactive testing is tedious work and therefore error-prone, especially when the same tests have to be performed over and over again for new releases. Automatic tests of Frank configs can be created using the Larva test tool.
 
 Larva in action
 ---------------
@@ -139,7 +139,7 @@ The answer can be found in the second file of configuration "Example1", namely `
 
    stub4testtool.configuration=true
 
-This property directs the Frank!Framework to create stubs for some listeners and senders. This is a useful feature, because some listeners are difficult to access. For example, to access an ``<ApiListener>``, you need to set up a HTTP connection and you need to do a HTTP request. When stubbing is enabled, pipelines having an ``<ApiListener>`` in front of them automatically get an additional receiver with a ``<JavaListener>``. This allows you to make a Larva test that uses a service of class ``nl.nn.adapterframework.senders.IbisJavaSender``. That service can now access the pipeline through the new listener. Listeners of type ``<JavaListener>`` are copied in the same way when stubbing is enabled.
+This property instructs the Frank!Framework to create stubs for some listeners and senders. This is a useful feature, because some listeners are difficult to access. For example, to access an ``<ApiListener>``, you need to set up a HTTP connection and you need to do a HTTP request. When stubbing is enabled, pipelines having an ``<ApiListener>`` in front of them automatically get an additional receiver with a ``<JavaListener>``. This allows you to make a Larva test that uses a service of class ``nl.nn.adapterframework.senders.IbisJavaSender``. That service can now access the pipeline through the new listener. Listeners of type ``<JavaListener>`` are copied in the same way when stubbing is enabled.
 
 Stubbing has a different effect for different types of listeners and senders. Some types of listeners are replaced by their stubs instead of being copied. Other listeners are left as-is. Details are beyond the scope of this section.
 
