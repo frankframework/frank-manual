@@ -166,8 +166,10 @@ When we reverse the above analysis of our Larva test, we arrive at a receipe to 
 
    .. NOTE::
 
-      Remember that a service name consists of two words separated by a dot. It is good practice to use ``adapter`` or ``stub`` for the first word. The word ``stub`` is reserved for services that are called by the adapter that you are testing. This does not happen in this hello world example. Therefore the service name starts with ``adapter``. More explanation will soon be added to this manual.
+      Remember that a service name consists of two words separated by a dot. It is good practice to use ``adapter`` or ``stub`` for the first word. The word ``stub`` is reserved for services that are called by the adapter that you are testing. This does not happen in this hello world example. Therefore the service name starts with ``adapter``. For more information see section :ref:`testingLarva`.
 
 #. Now you can write your scenarios. Each scenario includes your ``common.properties`` file to have access to the service. It has write directives to write data to your service, and the pipeline behind the referenced listener. It also has read directives to the same service to get the responses from the referenced pipeline.
 
 You can write more complicated Larva tests when you apply test services with different behavior. Such services have another value for their ``className`` property. Details will be given in a future version of the Frank!Manual.
+
+More information about Larva is available in section :ref:`testingLarva`.
