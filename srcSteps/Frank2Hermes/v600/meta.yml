@@ -1,0 +1,6 @@
+- file:
+    path: tests/printBridge/scenario01/hermesStatementOfAccount.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario01/printedStatementOfAccount.xml
+    change: add
