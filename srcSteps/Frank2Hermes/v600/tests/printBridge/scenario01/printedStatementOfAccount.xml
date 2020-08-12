@@ -10,10 +10,10 @@
         </address>
     </envelope>
     <content>
-        <line>                     NL32RONL2321454511</line>
-        <line>                     Jan Jansen</line>
-        <line>                     Mooie Rozenlaan 40</line>
-        <line>                     3012 BP Rotterdam</line>
+        <line spaces="62">NL32RONL2321454511</line>
+        <line spaces="62">Jan Jansen</line>
+        <line spaces="62">Mooie Rozenlaan 40</line>
+        <line spaces="62">3012 BP Rotterdam</line>
         <line></line>
         <line></line>
         <line>23-03-2020 VERGEET-ME-NIET BLOEMEN SCHIEDAM  -45,25</line>
