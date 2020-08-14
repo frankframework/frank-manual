@@ -1,0 +1,22 @@
+<report>
+    <numRight>2</numRight>
+    <right>
+        <min>3</min>
+        <max>4</max>
+    </right>
+    <table>
+        <numCols>3</numCols>
+        <column>
+            <min>10</min>
+            <max>10</max>
+        </column>
+        <column>
+            <min>2</min>
+            <max>5</max>
+        </column>
+        <column>
+            <min>5</min>
+            <max>6</max>
+        </column>
+    </table>
+</report>
