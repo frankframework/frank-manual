@@ -1,1 +1,7 @@
-<Configuration name="printBridge"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration [
+  <!ENTITY ConfigurationCheckValidity SYSTEM "./ConfigurationCheckValidity.xml">
+]>
+<Configuration name="printBridge">
+  &ConfigurationCheckValidity;
+</Configuration>
