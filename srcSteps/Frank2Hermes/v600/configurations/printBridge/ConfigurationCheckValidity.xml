@@ -5,7 +5,20 @@
     <Receiver name="receiverCheckPrintRequestValidity">
       <JavaListener name="listenerCheckPrintRequestValidity" serviceName="listenerCheckPrintRequestValidity"/>
     </Receiver>
-    <Pipeline firstPipe="reportValid">
+    <Pipeline firstPipe="checkNumAddressLines">
+      <XmlIfPipe 
+          name="checkNumAddressLines"
+          xpathExpression="/report/numRight/text()"
+          expressionValue="4"
+          xsltVersion="2">
+        <Forward name="then" path="reportValid"/>
+        <Forward name="else" path="reportWrongNumAddressLines"/>
+      </XmlIfPipe>
+      <FixedResultPipe
+          name="reportWrongNumAddressLines"
+          fileName="validityInvalidAddressLineCount.xml">
+        <Forward name="success" path="EXIT"/>
+      </FixedResultPipe>
       <FixedResultPipe 
           name="reportValid"
           fileName="validityOk.xml">
