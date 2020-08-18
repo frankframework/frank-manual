@@ -10,11 +10,11 @@ In the previous section :ref:`manageProcessedMessagesStore`, the fire-and-forget
 
 When the fire-and-forget pattern is applied, errors cannot be communicated to the request sender. Error handling is still required, however. One aspect of error handling is transactionality. This means that processing a request should either fully succeeds, or that no data should have changed when an error has occurred.
 
-A classical example is when some person A pays some person B. The balance of A needs to be decreased while the balance of B needs to be increased. These two steps are typically grouped in a transaction. The transaction ensures the following: either both the decrement and the increment succeed, or no saldo is changed. Without a transaction, it would be possible that A's saldo is decremented without B's saldo being incremented.
+A classical example is when some person A pays some person B. The balance of A needs to be decreased while the balance of B needs to be increased. These two steps are typically grouped in a transaction. The transaction ensures the following: either both the decrement and the increment succeed, or no balance is changed. Without a transaction, it would be possible that A's balance is decremented without B's balance being incremented.
 
 Implementing transactionality is the job of Frank developers and system administrators; you will not find features for that in the Frank!Console. When you are involved in acceptance testing, you should certainly test that your backend processes are correctly grouped into transactions, but this is beyond the scope of this chapter.
 
-When you apply the fire-and-forget pattern and when an error occurs, your transaction ensures that no data has been changed. The request sender still wants the request to be processed, however. This is the purpose of an error store. A Frank developer can add an ``<errorStorage>`` tag to a receiver. If the adapter behind the receiver fails to process a message, then the message is stored in the error store. In the Frank!Console, you can browse this error store to see for which messages processing failed. You can then investigate these errors and have your infrastructure fixed. When you know the issue has been resolved, you can use the Frank!Console to reissue the stored message. Or you can delete the message when processing is no longer relevant.
+When you apply the fire-and-forget pattern and when an error occurs, your transaction ensures that no data has been changed. The request sender still wants the request to be processed, however. This is the purpose of an error store. A Frank developer can add an error store tag (for example ``<JdbcErrorStorage>``) to a receiver. If the adapter behind the receiver fails to process a message, then the message is stored in the error store. In the Frank!Console, you can browse this error store to see for which messages processing failed. You can then investigate these errors and have your infrastructure fixed. When you know the issue has been resolved, you can use the Frank!Console to reissue the stored message. Or you can delete the message when processing is no longer relevant.
 
 In this section, you will learn how to use an error store in the Frank!Console.
 
@@ -42,7 +42,7 @@ You have verified that no errors have been created yet. Please continue by intro
 
    .. image:: errorStoreMessages.jpg
 
-#. You see a table of error messages. Each message has four buttons (number 1): "View", "Resend", "Delete" and "Download". You also see explanation of the error (number 2). Each message has an id (number 3).
+#. You see a table of error messages. Each message has four buttons (number 1): "View", "Resend", "Delete" and "Download". You also see an explanation of the error (number 2). Each message has an id (number 3).
 
 You know the buttons "View" and "Download" already: they allow you to view or download the message. The explanation of the error is more interesting. It reads: "too many retries; Pipe [Send] msgId [5] caught exception: could not find JavaListener [TestFailureAndSuccess]". This allows you to verify that the error was caused by stopping adapter 4. Please do the following:
 

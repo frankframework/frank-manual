@@ -12,11 +12,11 @@ This situation can be handled as follows. The customer is allowed to send the sa
 
 This pattern can also be described in terms of integration patterns. Modifying data is often done with the fire-and-forget integration pattern. Modification is requested by some request, but no response is expected. The sender trusts that the receiving system will handle the request, and that the request will be handled exactly once. Modification is often requested through HTTP requests though, typically HTTP PUT or HTTP POST requests. The HTTP protocol was designed for the request-reply pattern. A bridge is thus needed between the request-reply pattern and the fire-and-forget pattern. This bridge is implementd using a message queue. The request-reply side repeats the same request until a positive response received, which indicates successful receipt of the request. The fire-and-forget side is fed by the message queue. The bridge ensures that each incoming request is stored only once.
 
-The Frank!Framework offers a component for this queuing solution that bridges the request-reply and the fire-and-forget pattern: a message store. The message store uses a database table to queue the requests. Frank configurations write to the message store using a "MessageStoreSender". Frank configurations read from the message store using a "MessageStoreListener".
+The Frank!Framework offers a component for this queuing solution that bridges the request-reply and the fire-and-forget pattern: a message store. The message store uses a database table to queue the requests. Frank configurations write to the message store using a ``<MessageStoreSender>``. Frank configurations read from the message store using a ``<MessageStoreListener>``.
 
 .. NOTE::
 
-   Frank developers may be interested in the following. To display in the Frank!Console the messages that are currently in the message store, a ``<messageLog>`` is included in the Frank config. This tag should have attribute ``className="nl.nn.adapterframework.jdbc.DummyTransactionalStorage``. This is a special type of message log that does not write to the message store. If you would use another type of message log, the config would write each message twice because writing is already done by the "MessageStoreSender".
+   Frank developers may be interested in the following. To display in the Frank!Console the messages that are currently in the message store, a ``<DummyMessageLog>`` is included in the Frank config. This is a special type of message log that does not write to the message store. If you would use another type of message log, the config would write each message twice because writing is already done by the ``<MessageStoreSender>``.
 
 .. NOTE::
 
@@ -51,9 +51,9 @@ You have verified that reading from the message store happens in adapter 3. Plea
 
    .. image:: theEnvelope.jpg
 
-Please note that a message log looks the same as a message store, even though they have a very different purpose. You see also that there are no messages in the message log. There is a number "0" next to the envelope. This can be explained as follows. Adapter 1 sends its incoming messages to adapter 2, which puts them in the message store. They are no longer there however, because adapter 3 reads them.
+Please note that a message store looks the same as a message log, even though they have a very different purpose. You see also that there are no messages in the message store. There is a number "0" next to the envelope. This can be explained as follows. Adapter 1 sends its incoming messages to adapter 2, which puts them in the message store. They are no longer there however, because adapter 3 reads them.
 
-To see something in the message log, you will stop adapter 3. Please continue as follows:
+To see something in the message store, you will stop adapter 3. Please continue as follows:
 
 8. Expand adapter 3 and press its stop button. For more information, please see section :ref:`frankConsoleManagement`.
 #. Using Test Pipeline, send some message to Adapter 1. For more information, see the previous subsection :ref:`managingProcessedMessagesLog`. Please do not send the same message, though.
