@@ -1,6 +1,66 @@
 - file:
-    path: tests/printBridge/scenario01/hermesStatementOfAccount.xml
+    path: configurations/printBridge/Configuration.xml
     change: add
 - file:
-    path: tests/printBridge/scenario01/printedStatementOfAccount.xml
+    path: configurations/printBridge/ConfigurationCheckValidity.xml
+    change: add
+- file:
+    path: configurations/printBridge/createValidityData.xsl
+    change: add
+- file:
+    path: configurations/printBridge/formatTableRow.xsl
+    change: add
+- file:
+    path: configurations/printBridge/validityInvalidAddressLineCount.xml
+    change: add
+- file:
+    path: configurations/printBridge/validityOk.xml
+    change: add
+- file:
+    path: configurations/printBridge/validValidityData.xml
+    change: add
+- file:
+    path: tests/printBridge/common.properties
+    change: add
+- file:
+    path: tests/printBridge/scenario01.properties
+    change: add
+- file:
+    path: tests/printBridge/scenario02.properties
+    change: add
+- file:
+    path: tests/printBridge/scenario03.properties
+    change: add
+- file:
+    path: tests/printBridge/scenario01/exampleRow.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario01/testFormatTableRow.xsl
+    change: add
+- file:
+    path: tests/printBridge/scenario01/transformedExampleRow.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario02/exampleHermes.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario02/resultingReport.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario03/invalidAddressLineCount.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario03/validityInvalidAddressLineCount.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario03/validityOk.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario03/validValidityData.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario04/hermesStatementOfAccount.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario04/printedStatementOfAccount.xml
     change: add
