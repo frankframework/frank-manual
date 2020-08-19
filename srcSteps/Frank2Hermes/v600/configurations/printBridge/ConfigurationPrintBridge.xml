@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+  <Adapter name="adapterHermes2Print">
+    <Receiver name="receiverHermes2Print">
+      <JavaListener name="listenerHermes2Print" serviceName="hermes2Print"/>
+    </Receiver>
+    <Pipeline firstPipe="getStatistics">
+      <XsltPipe
+        name="getStatistics"
+        styleSheetName="createValidityData.xsl"
+        omitXmlDeclaration="true"
+        xsltVersion="2"
+        storeResultInSessionKey="statistics">
+        <Forward name="success" path="transformHermesMessage"/>
+      </XsltPipe>
+      <XsltPipe
+        name="transformHermesMessage"
+        styleSheetName="printBridge.xsl"
+        omitXmlDeclaration="true"
+        xsltVersion="2"
+        getInputFromSessionKey="originalMessage">
+        <Param
+          name="statistics"
+          sessionKey="statistics"
+          type="domdoc"/>
+        <Forward name="success" path="sendToPrintBridge"/>
+      </XsltPipe>
+      <SenderPipe
+        name="sendToPrintBridge">
+        <RestSender
+          name="senderSendToPrintBridge">
+        </RestSender>
+        <Forward name="success" path="EXIT"/>
+      </SenderPipe>
+      <Exit state="success" path="EXIT" code="200"/>
+    </Pipeline>
+  </Adapter>
+</Module>

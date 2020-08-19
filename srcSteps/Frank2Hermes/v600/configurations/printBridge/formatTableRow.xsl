@@ -22,7 +22,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
           <xsl:with-param name="align" select="'right'"/>
         </xsl:call-template>
       </xsl:variable>
-    <xsl:value-of select="string-join(($first, $second, $third), ' ')"/>
+    <xsl:value-of select="string-join(($first, $second, $third), '  ')"/>
     </line>
   </xsl:template>
   <xsl:template name="padString">

@@ -1,20 +1,22 @@
-<text>
-    <right>
-        <line>Jan</line>
-        <line>Roos</line>
-    </right>
-    <left>
-        <table>
-            <row>
-                <field>23-04-2020</field>
-                <field>ab</field>
-                <field>12345</field>
-            </row>
-            <row>
-                <field>24-04-2020</field>
-                <field>abcde</field>
-                <field>123456</field>
-            </row>
-        </table>
-    </left>
-</text>
+<statementOfAccount>
+    <text>
+        <right>
+            <line>Jan</line>
+            <line>Roos</line>
+        </right>
+        <left>
+            <table>
+                <row>
+                    <field>23-04-2020</field>
+                    <field>ab</field>
+                    <field>12345</field>
+                </row>
+                <row>
+                    <field>24-04-2020</field>
+                    <field>abcde</field>
+                    <field>123456</field>
+                </row>
+            </table>
+        </left>
+    </text>
+</statementOfAccount>
