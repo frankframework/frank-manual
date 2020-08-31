@@ -7,11 +7,8 @@
       <JavaListener name="listenerHermes2Print" serviceName="hermes2Print"/>
     </Receiver>
     <Pipeline firstPipe="getStatistics">
-      <XsltPipe
-        name="getStatistics"
-        styleSheetName="createValidityData.xsl"
+      <XsltPipe name="getStatistics" styleSheetName="createValidityData.xsl"
         omitXmlDeclaration="true"
-        xsltVersion="2"
         storeResultInSessionKey="statistics">
         <Forward name="success" path="transformHermesMessage"/>
       </XsltPipe>
