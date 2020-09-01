@@ -1,0 +1,17 @@
+<Module
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../ibisdoc.xsd">>
+  <Adapter name="AdapterWithCustom">
+      <Receiver name="receiverWithCustom">
+          <JavaListener name="listenerWithCustom" serviceName="listenerWithCustom"/>
+      </Receiver>
+      <Pipeline firstPipe="customPipe">
+          <pipe
+              name="customPipe"
+              className="org.ibissource.custom.CustomPipe">
+              <Forward name="success" path="EXIT"/>
+          </pipe>
+          <Exit path="EXIT" state="success" code="200"/>
+      </Pipeline>
+  </Adapter>
+</Module>
