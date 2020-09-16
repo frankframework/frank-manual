@@ -38,6 +38,23 @@ configurations.autoDatabaseClassLoader
 
      Do not set this property right now because of issue https://github.com/ibissource/iaf/issues/927.
 
+configurations.directory
+  The directory where the Frank!Framework expects to find configurations. This directory is applied when a property ``configurations.SomeConfig.classLoaderType`` is set to ``DirectoryClassLoader`` for some configuration ``SomeConfig``. In this case, configuration ``SomeConfig`` is expected in a subdirectory of the value of ``configurations.directory``. This property can be overruled for a configuration ``MyConfig`` by setting ``configurations.MyConfig.directory``. When you do that for all your configurations, you do not have to define ``configurations.directory``.
+
+  .. NOTE::
+
+     The Frank!Runner sets this property for you.
+
+configurations.MyConfig.directory
+  Use this property to overrule ``configurations.directory`` for a configuration ``MyConfig``. This property specifies the directory that contains ``Configuration.xml``.
+
+configurations.directory.autoLoad
+  If this property is ``true``, then you can load configurations without specifying them in property ``configurations.names`` and without specifying their classLoaderType. The value of property ``configurations.directory`` is used to find your configurations. Each subdirectory of this directory is expected to be a configuration, and the Frank!Framework tries to load it. The default value is ``false``.
+
+  .. NOTE::
+
+     When you use the Frank!Runner, this property is ``false``. Nevertheless you do not have to specify property ``configurations.names``, because the Frank!Runner sets this property for you.
+
 jdbc.migrator.active
   Can be "true" or "false" (the default). When true, database initialization is switched on. The default behavior is to do this with Liquibase, see https://www.liquibase.org/. With Liquibase, the file ``DatabaseChangelog.xml`` is executed. This property behaves differently as a system property or classpath property on the one hand, or as a configuration property on the other hand. See section :ref:`advancedDevelopmentDatabase` for details.
 
