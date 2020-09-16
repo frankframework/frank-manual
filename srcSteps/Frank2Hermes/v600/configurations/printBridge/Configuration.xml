@@ -4,6 +4,9 @@
   <!ENTITY ConfigurationPrintBridge SYSTEM "./ConfigurationPrintBridge.xml">
 ]>
 <Configuration name="printBridge">
+  <jmsRealms>
+    <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
+  </jmsRealms>
   &ConfigurationCheckValidity;
   &ConfigurationPrintBridge;
 </Configuration>

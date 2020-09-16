@@ -1,0 +1,5 @@
+<Configuration name="init">
+    <jmsRealms>
+        <jmsRealm datasourceName="jdbc/${instance.name.lc}" realmName="jdbc"/>
+    </jmsRealms>
+</Configuration>
