@@ -2,6 +2,9 @@
     path: configurations/printBridge/Configuration.xml
     change: add
 - file:
+    path: configurations/printBridge/ConfigurationPrintBridge.xml
+    change: add
+- file:
     path: configurations/printBridge/ConfigurationCheckValidity.xml
     change: add
 - file:
@@ -12,6 +15,9 @@
     change: add
 - file:
     path: configurations/printBridge/validityInvalidAddressLineCount.xml
+    change: add
+- file:
+    path: configurations/printBridge/printBridge.xsl
     change: add
 - file:
     path: configurations/printBridge/validityOk.xml
@@ -63,4 +69,10 @@
     change: add
 - file:
     path: tests/printBridge/scenario04/printedStatementOfAccount.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario4.properties
+    change: add
+- file:
+    path: tests/printBridge/scenario04/sendResult.xml
     change: add
