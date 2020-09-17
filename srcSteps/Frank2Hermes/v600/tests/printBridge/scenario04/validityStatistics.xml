@@ -1,0 +1,22 @@
+<report xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <numRight>4</numRight>
+    <right>
+       <min>10</min>
+       <max>18</max>
+    </right>
+    <table>
+       <numCols>3</numCols>
+       <column>
+          <min>10</min>
+          <max>10</max>
+       </column>
+       <column>
+          <min>22</min>
+          <max>32</max>
+       </column>
+       <column>
+          <min>6</min>
+          <max>6</max>
+        </column>
+    </table>
+</report>

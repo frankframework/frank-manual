@@ -10,8 +10,19 @@
       <XsltPipe name="getStatistics" styleSheetName="createValidityData.xsl"
         omitXmlDeclaration="true"
         storeResultInSessionKey="statistics">
-        <Forward name="success" path="transformHermesMessage"/>
+        <Forward name="success" path="checkValidity"/>
       </XsltPipe>
+      <SenderPipe name="checkValidity">
+        <IbisJavaSender name="senderCheckValidity" serviceName="listenerCheckPrintRequestValidity"/>
+        <Forward name="success" path="handleCheckValidityResult"/>
+      </SenderPipe>
+      <XmlIfPipe name="handleCheckValidityResult"
+        xpathExpression="/validity/valid/text()"
+        expressionValue="true"
+        xsltVersion="2">
+        <Forward name="then" path="transformHermesMessage"/>
+        <Forward name="else" path="EXIT"/>
+      </XmlIfPipe>
       <XsltPipe
         name="transformHermesMessage"
         styleSheetName="printBridge.xsl"
@@ -29,6 +40,11 @@
         <RestSender
           name="senderSendToPrintBridge">
         </RestSender>
+        <Forward name="success" path="archive"/>
+      </SenderPipe>
+      <SenderPipe name="archive"
+        getInputFromSessionKey="originalMessage">
+        <IbisJavaSender name="senderArchive" serviceName="archive"/>
         <Forward name="success" path="EXIT"/>
       </SenderPipe>
       <Exit state="success" path="EXIT" code="200"/>

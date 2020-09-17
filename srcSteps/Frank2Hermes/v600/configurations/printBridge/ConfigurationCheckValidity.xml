@@ -6,8 +6,7 @@
       <JavaListener name="listenerCheckPrintRequestValidity" serviceName="listenerCheckPrintRequestValidity"/>
     </Receiver>
     <Pipeline firstPipe="checkNumAddressLines">
-      <XmlIfPipe 
-          name="checkNumAddressLines"
+      <XmlIfPipe name="checkNumAddressLines"
           xpathExpression="/report/numRight/text()"
           expressionValue="4"
           xsltVersion="2">

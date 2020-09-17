@@ -1,0 +1,5 @@
+.. code-block:: none
+   :emphasize-lines: 2
+
+   stub4testtool.configuration=true
+   jdbc.migrator.active=true
