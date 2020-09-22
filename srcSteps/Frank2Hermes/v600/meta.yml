@@ -11,6 +11,9 @@
     path: configurations/printBridge/Configuration.xml
     change: add
 - file:
+    path: configurations/printBridge/ConfigurationArchive.xml
+    change: add
+- file:
     path: configurations/printBridge/ConfigurationCheckValidity.xml
     change: add
 - file:
@@ -77,7 +80,7 @@
     path: tests/printBridge/scenario03/validValidityData.xml
     change: add
 - file:
-    path: tests/printBridge/scenario4.properties
+    path: tests/printBridge/scenario04.properties
     change: add
 - file:
     path: tests/printBridge/scenario04/archiveSuccess.xml
@@ -96,6 +99,27 @@
     change: add
 - file:
     path: tests/printBridge/scenario04/validityStatistics.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario05.properties
+    change: add
+- file:
+    path: tests/printBridge/scenario05/archiveResponse.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario05/hermesStatementOfAccount.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario05/queryCheckArchived.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario05/queryClearStatementOfAccount.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario05/responseCheckArchived.xml
+    change: add
+- file:
+    path: tests/printBridge/scenario05/responseClearStatementOfAccount.xml
     change: add
 - snippet:
     name: addJdbcMigrator
