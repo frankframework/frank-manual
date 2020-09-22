@@ -1,0 +1,16 @@
+<manageDatabaseREQ>
+  <select>
+    <tableName>StatementOfAccount</tableName>
+    <columns>
+      <column>
+        <name>timestamp</name>
+      </column>
+      <column>
+        <name>relationId</name>
+      </column>
+      <column>
+        <name>accountId</name>
+      </column>
+    </columns>
+  </select>
+</manageDatabaseREQ>

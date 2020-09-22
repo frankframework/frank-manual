@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+  <Adapter name="adapterArchive">
+    <Receiver name="receiverArchive">
+      <JavaListener name="listenerArchive" serviceName="archive"/>
+    </Receiver>
+    <Pipeline firstPipe="writeDatabaseRecord">
+      <SenderPipe name="writeDatabaseRecord">
+        <FixedQuerySender name="senderWriteDatabaseRecord"
+          datasourceName="jdbc/${instance.name.lc}"
+          query="INSERT INTO StatementOfAccount(timestamp, relationId, accountId) VALUES(NOW(), ?, ?)">
+          <Param name="relationId" xpathExpression="/statementOfAccount/meta/relationId"/>
+          <Param name="accountId" xpathExpression="/statementOfAccount/meta/accountId"/>
+        </FixedQuerySender>
+        <Forward name="success" path="EXIT"/>
+      </SenderPipe>
+      <Exit path="EXIT" state="success" code="200"/>
+    </Pipeline>
+  </Adapter>
+</Module>

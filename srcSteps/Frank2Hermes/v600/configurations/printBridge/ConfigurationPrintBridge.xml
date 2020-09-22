@@ -23,27 +23,18 @@
         <Forward name="then" path="transformHermesMessage"/>
         <Forward name="else" path="EXIT"/>
       </XmlIfPipe>
-      <XsltPipe
-        name="transformHermesMessage"
-        styleSheetName="printBridge.xsl"
+      <XsltPipe name="transformHermesMessage" styleSheetName="printBridge.xsl"
         omitXmlDeclaration="true"
         xsltVersion="2"
         getInputFromSessionKey="originalMessage">
-        <Param
-          name="statistics"
-          sessionKey="statistics"
-          type="domdoc"/>
+        <Param name="statistics" sessionKey="statistics" type="domdoc"/>
         <Forward name="success" path="sendToPrintBridge"/>
       </XsltPipe>
-      <SenderPipe
-        name="sendToPrintBridge">
-        <RestSender
-          name="senderSendToPrintBridge">
-        </RestSender>
+      <SenderPipe name="sendToPrintBridge">
+        <RestSender name="senderSendToPrintBridge"/>
         <Forward name="success" path="archive"/>
       </SenderPipe>
-      <SenderPipe name="archive"
-        getInputFromSessionKey="originalMessage">
+      <SenderPipe name="archive" getInputFromSessionKey="originalMessage">
         <IbisJavaSender name="senderArchive" serviceName="archive"/>
         <Forward name="success" path="EXIT"/>
       </SenderPipe>

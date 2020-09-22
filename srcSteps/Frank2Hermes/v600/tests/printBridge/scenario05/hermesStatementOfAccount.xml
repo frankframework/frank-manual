@@ -1,0 +1,47 @@
+<statementOfAccount>
+    <meta>
+        <relationId>1053247</relationId>
+        <accountId>NL32RONL2321454511</accountId>
+        <address>
+            <relationId>1053247</relationId>
+            <name>
+                <firstName>Jan</firstName>
+                <surName>Jansen</surName>  
+            </name>
+            <address>
+                <street>Mooie Rozenlaan</street>
+                <houseNumber>40</houseNumber>  
+            </address>
+            <city>Rotterdam</city>
+            <postalCode>
+                <dutch>
+                    <digids>3012</digids>
+                    <letters>BP</letters>
+                </dutch>
+            </postalCode>
+            <country>the Netherlands</country>
+        </address>
+    </meta>
+    <text>
+        <right>
+            <line>NL32RONL2321454511</line>
+            <line>Jan Jansen</line>
+            <line>Mooie Rozenlaan 40</line>
+            <line>3012 BP Rotterdam</line>
+        </right>
+        <left>
+            <table>
+                <row>
+                    <field>23-03-2020</field>
+                    <field>VERGEET-ME-NIET BLOEMEN SCHIEDAM</field>
+                    <field>-45,25</field>
+                </row>
+                <row>
+                    <field>20-03-2020</field>
+                    <field>COOP DE ROOS ROTTERDAM</field>
+                    <field>-21,20</field>
+                </row>
+            </table>
+        </left>
+    </text>
+</statementOfAccount>
