@@ -8,8 +8,7 @@
     </Receiver>
     <Pipeline firstPipe="writeDatabaseRecord">
       <SenderPipe name="writeDatabaseRecord">
-        <FixedQuerySender name="senderWriteDatabaseRecord"
-          datasourceName="jdbc/${instance.name.lc}"
+        <FixedQuerySender name="senderWriteDatabaseRecord" datasourceName="jdbc/${instance.name.lc}"
           query="INSERT INTO StatementOfAccount(timestamp, relationId, accountId) VALUES(NOW(), ?, ?)">
           <Param name="relationId" xpathExpression="/statementOfAccount/meta/relationId"/>
           <Param name="accountId" xpathExpression="/statementOfAccount/meta/accountId"/>

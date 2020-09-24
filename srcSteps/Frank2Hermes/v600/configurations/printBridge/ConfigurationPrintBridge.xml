@@ -16,8 +16,7 @@
         <IbisJavaSender name="senderCheckValidity" serviceName="listenerCheckPrintRequestValidity"/>
         <Forward name="success" path="handleCheckValidityResult"/>
       </SenderPipe>
-      <XmlIfPipe name="handleCheckValidityResult"
-        xpathExpression="/validity/valid/text()"
+      <XmlIfPipe name="handleCheckValidityResult" xpathExpression="/validity/valid/text()"
         expressionValue="true"
         xsltVersion="2">
         <Forward name="then" path="transformHermesMessage"/>
