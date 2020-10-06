@@ -81,3 +81,103 @@ What is wrong?
 All SQL within a changeset is interpreted by the database engine. The shown example uses a H2 database, so the SQL dialect of H2 databases is being applied. A ``;`` is needed between the ``CREATE TABLE`` and the ``ALTER TABLE`` statements, right after the closing ``)`` of the ``CREATE TABLE`` statement.
 
 You can see which ``<changeSet>`` has the SQL syntax error. Higher-up in the Java stack trace, there was a line ``Migration failed for change set DatabaseChangelog.xml::2::martijn:``. Here you see it was the change set with id  ``2``.
+
+Passing XML parameter to XSLT
+-----------------------------
+
+**Question:** I have an XSLT transformation that expects a parameter of type XML. When I pass the parameter from my Frank config, it is interpreted as a string. How can I fix this?
+
+**Answer:** To execute an XSLT transformation with parameters, you use an ``<XsltPipe>`` with ``<Param>`` tags. Within a ``<Param>`` tag, you can provide the value that will be passed to the XSLT transformation. For passing strings, this is all you have to know; you can find the details in the Frank!Doc. If your value is XML, you need one more trick. Within your ``<Param>`` tag, set ``type="domdoc"``. Here is an example:
+
+.. code-block:: XML
+
+   <XsltPipe
+       name="transformHermesMessage"
+       styleSheetName="printBridge.xsl"
+       omitXmlDeclaration="true"
+       xsltVersion="2"
+       getInputFromSessionKey="originalMessage">
+     <Param
+         name="statistics"
+         sessionKey="statistics"
+         type="domdoc"/>
+     <Forward name="success" path="sendToPrintBridge"/>
+   </XsltPipe>
+
+Using an Oracle database
+------------------------
+
+**Question:** How to use the Frank!Framework with an Oracle database?
+
+**Answer:** You may be used to installing Oracle on your development computer, but this is more complicated than necessary. For example if you have a corporate laptop, you should remember to use the right user account. On a corporate laptop you might have an admin account (WSA account) with administrator rights beside your normal user account. If you log in with your normal account and install Oracle, giving the installer administrator rights, then it does not work. You should log in with your admin account and then install Oracle.
+ 
+You can avoid such issues by using a Docker container for your Oracle database. See the sources of the Frank!Framework for an example. Checkout https://github.com/ibissource/iaf and see directory ``test/src/main/tools/setupDB/Oracle``.
+
+Inserting from XPath expression, default value null
+---------------------------------------------------
+
+**Question:** How to insert a table row from an XPath expression while using default value ``null``?
+
+**Answer:** You can use a FixedQuerySender to insert rows in a table. The values to insert are given in ``<Param>`` elements. The value to insert can be given by an XPath expression, for example ``<Param name="myParam" xpathExpression="/BIJKANT/PK/PK_NUMMER"/>``. You cannot use the ``defaultValue`` attribute to use a default value of ``null``, but you do not need to. When you omit the ``defaultValue`` attribute, you will have ``null`` when your XPath expression does not find anything.
+
+Custom logging with log4j
+-------------------------
+
+You can write extra logging to (custom) log files using the ``<LogSender>``. When you do not set the logCategory, the message will be appended to the default Ibis4Name.log.
+ 
+Currently the following log categories are available:
+ 
+* ``file`` (ibis4name.log)
+* ``XML`` (ibis4name-xml.log)
+* ``galm`` (ibis4name-galm.log)
+* ``msg`` (ibis4name-messages.log)
+* ``security`` (ibis4name-security.log)
+* ``heartbeat`` (ibis4name-heartbeat.log)
+
+You can also create additional log categories by configuring a custom ``log4jibis.xml`` in your ``src/main/resources`` (``classes`` folder for non Maven projects) folder.
+
+XSLT Testing with Larva
+-----------------------
+
+**Question:** How to test XSLT stylesheets with Larva?
+
+**Answer:** Here is an example:
+
+.. code-block:: none
+
+   scenario.description = adapt input ldap insert into functionally expired passwords
+   
+   xpl.MaakLdapInput.className   = nl.nn.adapterframework.testtool.XsltProviderListener
+   xpl.MaakLdapInput.filename    = ../../../JavaSource/CheckPasswordFunctionalExpired/xsl/AdaptInputLdapInsertIntoPasswordFunctionalExpired.xsl
+
+   step1.xpl.MaakLdapInput.read              = scenario01/step1.xml
+   step1.xpl.MaakLdapInput.read.param1.name  = userType
+   step1.xpl.MaakLdapInput.read.param1.value = WN
+   step2.xpl.MaakLdapInput.write             = scenario01/step2.xml
+
+No adapter restart needed after editing Larva tests
+---------------------------------------------------
+
+**Question:** I edited my Larva tests. Do I have to restart the Frank!Runner or reload my configurations?
+
+**Answer:** No. When you edit your Larva tests, you can run them immediately and the Frank!Framework will use the updated files.
+
+Parameters in Larva tests
+-------------------------
+
+**Question:** How to pass parameters to Larva services?
+
+**Answer:** You can pass a parameter by referencing the value from a file, or you can put the value directly in your scenario. Here is an example of the latter:
+
+.. code-block:: none
+
+   adapter.TitanGET.param1.name=uniqueIdentifier
+   adapter.TitanGET.param1.value=abc
+
+​And here is an example of fetching the value from a file:
+
+.. code-block:: none
+
+   adapter.TitanGET.param1.name=uniqueIdentifier
+   adapter.TitanGET.param1.valuefile=01/input.xml
+ 
