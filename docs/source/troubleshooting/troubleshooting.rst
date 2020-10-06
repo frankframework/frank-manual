@@ -1,23 +1,21 @@
-Troubleshooting
-===============
+Questions and Answers
+=====================
 
-This chapter lists some errors you may encounter and presents how to fix them.
+This chapter lists questions and answers about the Frank!Framework.
 
 Adapter status page ManageDatabase error
 ----------------------------------------
 
-**Problem:** This section is about an error you may see in the Adapter Status page. The error is as shown below:
+**Question:** Why do I see an error in adapter ManageDatabase, saying that there is no datasource? See below:
 
 .. image:: manageDatabaseErrorInitializingPipeline.jpg
 
-The adapter named ``ManageDatabase`` gives an error.
-
-**Solution:** You did not add this adapter yourself. This adapter is part of the Frank!Framework. You see here that the Frank!Framework fails to start. This happens when your file names are lowercase. For example, when your files are named ``deploymentspecifics.properties`` and ``configuration.xml`` instead of ``DeploymentSpecifics.properties`` and ``Configuration.xml``, then this error occurs. Correct your file names to fix the issue.
+**Answer:** You did not add this adapter yourself. This adapter is part of the Frank!Framework. You see here that the Frank!Framework fails to start. This happens when your file names are lowercase. For example, when your files are named ``deploymentspecifics.properties`` and ``configuration.xml`` instead of ``DeploymentSpecifics.properties`` and ``Configuration.xml``, then this error occurs. Correct your file names to fix the issue.
 
 On startup, syntax error in SQL
 -------------------------------
 
-**Problem:** In the output of the Frank!Runner you see a Java exception like the following:
+**Question:** In the output of the Frank!Runner I see a Java stacktrace of a JdbcSQLSyntaxErrorException, as shown below:
 
 .. code-block:: none
 
@@ -58,7 +56,9 @@ On startup, syntax error in SQL
            at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:307)
            ... 35 more
 
-**Solution:** The SQL statements shown are in ``DatabaseChangelog.xml``. The error says that these statements have syntax errors. In the present case, this error is misleading. The error is in the following snippet of ``DatabaseChangelog.xml``:
+What is wrong?
+
+**Answer:** The SQL statements shown are in ``DatabaseChangelog.xml``. The error says that these statements have syntax errors. The error is in the following snippet of ``DatabaseChangelog.xml``:
 
 .. code-block:: XML
 
