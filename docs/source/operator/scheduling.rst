@@ -37,7 +37,7 @@ Now that you are prepared, please continue as follows:
 
    .. WARNING::
 
-      Presently, the Pause button number 2 does not work. See GitHub issue https://github.com/ibissource/iaf/issues/718.
+      The Pause button number 2 may not work in your version of the Frank!Framework. See GitHub issue https://github.com/ibissource/iaf/issues/718. This issue has been fixed in version 7.6-SNAPSHOT, the latest version available on October 15 2020.
 
 #. You need a string that defines how often you want to run your adapter. To get that string, you have to know that the scheduler of the Frank!Framework uses a Java component called "quartz". When you search the internet for "quartz expression", you may find the following site: https://www.freeformatter.com/cron-expression-generator-quartz.html.
 #. Here you can specify that you want to run your task every minute. The site will give you the string ``0 * * ? * * *``. You will use it later.
@@ -108,8 +108,8 @@ The first run is at the beginning of a new minute. In this minute, you paused th
 
 .. WARNING::
 
-   When you pause a job and later resume it, the scheduler checks whether a scheduled moment passed during the job pause. If so, the scheduler executes the job immediately on resume. Otherwise, resuming the job does not caause immediate execution. When a job is resumed before the next scheduled moment, the scheduler awaits that moment, executing the job at its due time.
+   WeAreFrank! has changed the behavior of the Resume button of a scheduled job. From version 7.6-SNAPSHOT (snapshot versions from around October 15 2020 and later), the behavior is as follows. After you resume a scheduled job, it fires automatically at the next scheduled moment. If you want to run it immediately after resume, you can do this by triggering it manually.
 
-.. WARNING::
+   Older versions of the Frank!Framework have different behavior. When you pause a job and later resume it, the scheduler checks whether a scheduled moment passed during the job pause. If so, the scheduler executes the job immediately on resume. Otherwise, resuming the job does not caause immediate execution. When a job is resumed before the next scheduled moment, the scheduler awaits that moment, executing the job at its due time.
 
-   WeAreFrank! considers changing the scheduler. It may be better when a resumed job would not be executed automatically, because the operator has the option to manually trigger it. This consideration is expressed in the following GitHub issue: https://github.com/ibissource/iaf/issues/764.
+   If you want to know more about this change, you may look at the related GitHub issue: https://github.com/ibissource/iaf/issues/764.
