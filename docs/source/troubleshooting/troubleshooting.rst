@@ -180,4 +180,10 @@ Parameters in Larva tests
 
    adapter.TitanGET.param1.name=uniqueIdentifier
    adapter.TitanGET.param1.valuefile=01/input.xml
- 
+
+Transaction attribute on receiver or pipeline?
+----------------------------------------------
+
+**Question:** Both the ``<Receiver>`` and the ``<Pipeline>`` tag has attribute ``transactionAttribute``. Which element should you choose?
+
+**Answer:** Normally you should choose the ``<Receiver>``. There are two reasons for this. First, the purpose of a transaction is that all data modifications should succeed or none should happen. The ``<Receiver>`` already does part of the work, for example accepting a message from a queue. The second reason is that a pipeline can be fed by multiple receivers. Typically, some receivers support transactions and some do not. If a receivers that supports transactions has the ``transactionAttribute``, the pipeline after the receiver will inherit the transaction. If another receiver does not support transactions, then that receiver does not have a ``transactionAttribute``. In that case, there is no transaction as intended, because there is no ``transactionAttribute`` on the pipeline and the pipeline does not inherit a transaction.
