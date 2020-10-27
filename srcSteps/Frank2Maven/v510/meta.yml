@@ -1,0 +1,9 @@
+- file:
+    path: pom.xml
+    change: add
+- file:
+    path: frank-runner.properties
+    change: add
+- file:
+    path: .gitignore
+    change: add

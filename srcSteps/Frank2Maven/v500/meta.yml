@@ -1,0 +1,10 @@
+- file:
+    path: build.xml
+    change:
+        - old: 2
+          new: 2
+          snippet: modifyAntTaskName
+- snippet:
+    name: modifyAntTaskName
+    markup: xml
+    context: 5
