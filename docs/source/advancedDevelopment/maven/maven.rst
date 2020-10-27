@@ -17,7 +17,7 @@ There are two ways to integrate the Frank!Runner with Maven. First, you can deve
 Starting the Frank!Runner from Visual Studio Code
 -------------------------------------------------
 
-First, you learn how to start the Frank!Runner from within your text editor. We present the approach for Visual Studio Code, but it also works for Eclipse. Please do the following:
+First, you learn how to start the Frank!Runner from within your text editor. We present the approach for Visual Studio Code, but it also works for Eclipse. Please start with the following preparations:
 
 #. Create an empty directory where you can develop a Frank, say ``Frank2Maven``.
 
@@ -36,3 +36,12 @@ First, you learn how to start the Frank!Runner from within your text editor. We 
 #. A new window opens in your editor that is named "Settings". It shows many options for the Task Explorer plugin. Check the option "Enable Ant".
 #. Lookup "Path to Ant". In that text field, enter the full path of the file ``ant.bat``. You can find that file in your ``frank-runner`` directory.
 
+To start the Frank!Runner from within your text editor, be it Visual Studio Code or Eclipse, you need an Ant task. Please do the following:
+
+9. The documentation of the Frank!Runner also explains how to start the Frank!Runner from within your text editor. It shows a file ``build.xml`` that you should add to your project. It reads as follows:
+
+   .. literalinclude:: ../../../../srcSteps/Frank2Maven/v490/build.xml
+
+   Please put this ``build.xml`` file in your ``Frank2Maven`` directory.
+
+   
