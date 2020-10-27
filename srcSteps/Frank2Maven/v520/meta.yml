@@ -1,0 +1,3 @@
+- file:
+    path: src/main/resources/DeploymentSpecifics.properties
+    change: add

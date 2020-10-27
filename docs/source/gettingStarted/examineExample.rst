@@ -60,6 +60,8 @@ The main menu
 #. You will soon examine the "Webservices" page (number 4). Here you can find some resources that help you to write proper Frank configurations.
 #. Finally, the "Environment Variables" page (number 5) is relevant. Here you can find many properties configured within your Frank.
 
+.. _frankRunnerInstallationGeneralStructure:
+
 General structure of the example Frank
 --------------------------------------
 
