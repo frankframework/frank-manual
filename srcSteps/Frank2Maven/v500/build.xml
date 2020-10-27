@@ -1,0 +1,8 @@
+<project default="restart-frank2maven">
+	<target name="restart-frank2maven">
+		<basename property="project.dir" file="${basedir}"/>
+		<exec executable="../frank-runner/restart.bat" vmlauncher="false" failonerror="true">
+			<arg value="-Dproject.dir=${project.dir}"/>
+		</exec>
+	</target>
+</project>
