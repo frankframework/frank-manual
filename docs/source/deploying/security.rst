@@ -153,7 +153,7 @@ Overview of security roles
 With the above tutorial, you learned how security is configured. Now we explain what options you have to restrict access to the Frank!Console. Your options follow from the roles that are defined within the Frank!Framework. See the following list:
 
 IbisWebService
-  Can call Ibis WebServices.
+  Can call an Ibis WebserviceListener.
 
 IbisObserver
   Can look in configurations, statistics and log files.
