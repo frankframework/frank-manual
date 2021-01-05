@@ -187,3 +187,26 @@ Transaction attribute on receiver or pipeline?
 **Question:** Both the ``<Receiver>`` and the ``<Pipeline>`` tag has attribute ``transactionAttribute``. Which element should you choose?
 
 **Answer:** Normally you should choose the ``<Receiver>``. There are two reasons for this. First, the purpose of a transaction is that all data modifications should succeed or none should happen. The ``<Receiver>`` already does part of the work, for example accepting a message from a queue. The second reason is that a pipeline can be fed by multiple receivers. Typically, some receivers support transactions and some do not. If a receivers that supports transactions has the ``transactionAttribute``, the pipeline after the receiver will inherit the transaction. If another receiver does not support transactions, then that receiver does not have a ``transactionAttribute``. In that case, there is no transaction as intended, because there is no ``transactionAttribute`` on the pipeline and the pipeline does not inherit a transaction.
+
+Load multiple configs at once
+-----------------------------
+
+**Question:** I have about 20 different jars that I want to upload. How can I use the "Multiple Configurations" checkbox in the "Upload Configuration" screen (see below) to upload them all at once?
+
+.. image:: configurationUpload.jpg
+
+**Answer:** Pack all your configuration jar files into a single .zip, check the box and upload the zip file containing all the configurations you would like to upload.
+
+Property configurations.<configname>.parentConfig
+-------------------------------------------------
+
+**Question:** What  is the use of the property configurations.<configname>.parentConfig exactly?
+
+**Answer:** It changes the classloading of files and properties. In simpler terms, for every file or property the framework has to load, it will first look it up as a global setting (eq. classpath) then in the local configuration, then (if specified) the parent configuration, and lastly the war (``src/main/resources``). Class loading is described in subsection :ref:`propertiesInitialization`, but that section needs some editing because the phrases "system property" and "classpath property" are used in a confusing way.
+
+Authorization to turn on Ladybug
+--------------------------------
+
+**Question:** Which role do you need at least to turn on Ladybug?
+
+**Answer:** IbisDataAdmin, IbisAdmin or IbisTester. IbisDataAdmin might only work in snapshots that include https://github.com/ibissource/iaf/pull/1294 (all after 26-11-2020). See also :ref:`deploymentSecurity`.
