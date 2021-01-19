@@ -210,3 +210,19 @@ Authorization to turn on Ladybug
 **Question:** Which role do you need at least to turn on Ladybug?
 
 **Answer:** IbisDataAdmin, IbisAdmin or IbisTester. IbisDataAdmin might only work in snapshots that include https://github.com/ibissource/iaf/pull/1294 (all after 26-11-2020). See also :ref:`deploymentSecurity`.
+
+Flow diagram images
+-------------------
+
+**Question:** The Frank!Console shows flow diagrams of Frank configurations. Where can I find image files of these diagrams?
+ 
+**Answer:** There is a property ``flow.adapter.dir``. It holds the directory where the diagrams are saved as images. The Frank!Framework sets this property automatically. You can find the value of this property by choosing "Environment Variables" from the main menu of the Frank!Console.
+
+XmlSwitchPipe exception "Premature end of file"
+-----------------------------------------------
+
+**Question:** Why does ``XmlSwitchPipe`` throw "Premature end of file"?
+
+**Answer:** As the pipe name indicates, it expects the input message to be valid XML. When the input is not in XML format or if the XML is invalid, this error is thrown. You have to configure an XSLT stylesheet that is applied to the incoming message. The pipe uses the result of the transformation as the forward to follow. See also GitHub issue https://github.com/ibissource/iaf/issues/1020.
+
+**Additional:** But with the attribute ``sessionKey``, the XmlSwitchPipe can work without an XSLT transformation, the attribute value being used directly as the forward to follow.
