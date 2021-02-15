@@ -1,14 +1,12 @@
 .. code-block:: xml
-   :emphasize-lines: 5, 10
+   :emphasize-lines: 4, 8
 
    <?xml version="1.0" encoding="UTF-8" ?>
    <!DOCTYPE configuration [
-     <!ENTITY Database SYSTEM "ConfigurationDatabase.xml">
      <!ENTITY IngestBooking SYSTEM "ConfigurationIngestBooking.xml">
      <!ENTITY CheckBooking SYSTEM "ConfigurationCheckBooking.xml">
    ]>
    <Configuration name="NewHorizons">
-     &Database;
      &IngestBooking;
      &CheckBooking;
    </Configuration>

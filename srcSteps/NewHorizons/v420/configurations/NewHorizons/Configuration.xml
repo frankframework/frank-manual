@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration [
-  <!ENTITY Database SYSTEM "ConfigurationDatabase.xml">
   <!ENTITY IngestBooking SYSTEM "ConfigurationIngestBooking.xml">
 ]>
 <Configuration name="NewHorizons">
-  &Database;
   &IngestBooking;
 </Configuration>

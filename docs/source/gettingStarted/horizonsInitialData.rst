@@ -8,23 +8,6 @@ Introduction
 
 We continue our case study about the imaginary firm NewHorizons, see :ref:`newHorizons` and :ref:`horizonsInterfaces`. In section :ref:`newHorizons` you started development by creating the file ``franks/Frank2Manual/configurations/NewHorizons/Configuration.xml``. You will extend this configuration by adding files to your directory ``NewHorizons``.
 
-Configure database access
--------------------------
-
-First you have to extend your configuration to support database access. WeAreFrank! plans to update the Frank!Framework such that this step will not be necessary in the future (see `change request`_).
-
-.. _change request: https://github.com/ibissource/iaf/issues/510
-
-#. Please create file ``ConfigurationDatabase.xml`` with the following contents:
-
-   .. literalinclude:: ../../../srcSteps/NewHorizons/v400/configurations/NewHorizons/ConfigurationDatabase.xml
-      :language: xml
-
-   We do not explain the meaning of this text, because it will not be needed with future versions of the Frank!Framework.
-#. As it stands, your file ``ConfigurationDatabase.xml`` is not used. You need to include it in ``Configuration.xml`` with an entity reference as explained in :ref:`horizonsMultipleFilesEntityReference`. Please update ``Configuration.xml`` as shown:
-
-  .. include:: ../snippets/NewHorizons/v400/configurationEntityDatabase.txt
-
 Enable Liquibase
 ----------------
 
@@ -37,7 +20,7 @@ database should be persistent.
 The Frank!Framework internally uses Liquibase, see http://www.liquibase.org/,
 to initialize the database. Please switch on Liquibase as follows:
 
-3. Add file ``StageSpecifics_LOC.properties`` and give it the following contents:
+#. Add file ``StageSpecifics_LOC.properties`` and give it the following contents:
 
    .. literalinclude:: ../../../srcSteps/NewHorizons/v410/configurations/NewHorizons/StageSpecifics_LOC.properties
       :language: none
@@ -49,7 +32,7 @@ to initialize the database. Please switch on Liquibase as follows:
 We illustrate database initialization here for H2 databases, because this database is embedded within the Frank!Framework and does not
 require a process external to it. More information about databases is available in section :ref:`advancedDevelopmentDatabase`. Liquibase expects a so-called changelog, an XML file that defines the data model and the initial data.
 
-4. Please create file ``DatabaseChangelog.xml`` and add XML to initialize the database described in the previous section :ref:`horizonsInterfaces`. Here is the XML to add:
+2. Please create file ``DatabaseChangelog.xml`` and add XML to initialize the database described in the previous section :ref:`horizonsInterfaces`. Here is the XML to add:
 
    .. literalinclude:: ../../../srcSteps/NewHorizons/v410/configurations/NewHorizons/DatabaseChangelog.xml
       :language: xml
@@ -62,7 +45,7 @@ Test your database
 
 You can test your work by querying the tables you created, "booking" and "visit". Please continue as follows:
 
-5. Click "JDBC" (number 1 in the figure below). This link will expand.
+3. Click "JDBC" (number 1 in the figure below). This link will expand.
 
    .. image:: jdbcExecuteQuery.jpg
 

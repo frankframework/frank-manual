@@ -4,7 +4,7 @@
 - file:
     path: configurations/NewHorizons/Configuration.xml
     change:
-        - insert: 1
+        - insert: 3
           highlight: true
           snippet: snippetAddConfigurationIngestBooking
         - insert: 1
