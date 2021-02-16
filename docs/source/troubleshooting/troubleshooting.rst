@@ -226,3 +226,24 @@ XmlSwitchPipe exception "Premature end of file"
 **Answer:** As the pipe name indicates, it expects the input message to be valid XML. When the input is not in XML format or if the XML is invalid, this error is thrown. You have to configure an XSLT stylesheet that is applied to the incoming message. The pipe uses the result of the transformation as the forward to follow. See also GitHub issue https://github.com/ibissource/iaf/issues/1020.
 
 **Additional:** But with the attribute ``sessionKey``, the XmlSwitchPipe can work without an XSLT transformation, the attribute value being used directly as the forward to follow.
+
+Test ApiListener with authentication (without Larva)
+----------------------------------------------------
+
+**Question:** How can I locally test an ApiListener with authentication (without Larva)?
+
+**Answer:** In the configuration, make the authenticationMethod a configurable property (for example ``${​​​​api.authMethod}​​​​​​​​​​​``.
+ 
+In StageSpecifics_LOC.properties, configure:
+
+.. code-block:: none 
+
+   api.authMethod=NONE
+   servlet.ApiListenerServlet.securityroles=
+ 
+Liquibase logging
+-----------------
+
+**Question:** Where can I find why Liquibase validation failed?
+
+**Answer:** Liquibase will log all errors to the system out error log (SystemErr.log).
