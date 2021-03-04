@@ -15,7 +15,7 @@ Please do the following:
 #. Open the Frank!Framework by browsing to http://localhost.
 #. Open Ladybug by clicking "Testing" and then clicking "Ladybug":
 
-   .. image:: ..\\..\\frankConsoleFindTestTools.jpg
+   .. image:: ../../frankConsoleFindTestTools.jpg
 
 #. Enable the report generator as shown:
 

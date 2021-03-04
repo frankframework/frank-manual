@@ -16,7 +16,7 @@ Please call the the electronic archive as follows:
 #. Ensure that the Frank!Framework is set up according to :ref:`preparations` and that it is running. Go to Ladybug. Ensure that the report generator is enabled. See :ref:`useWebInterfaceWindows` or :ref:`useWebInterfaceLinux`.
 #. Click "Testing":
 
-   .. image:: ..\\..\\frankConsoleFindTestTools.jpg
+   .. image:: ../../frankConsoleFindTestTools.jpg
 
 #. Click "Test Pipeline". The following screen appears:
 

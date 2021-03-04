@@ -17,7 +17,7 @@ Please do the following:
 #. Restart the Frank!Framework.
 #. Open Ladybug by clicking "Testing" and then "Ladybug" as shown below:
 
-   .. image:: ..\\..\\frankConsoleFindTestTools.jpg
+   .. image:: ../../frankConsoleFindTestTools.jpg
 
 #. We delete all existing tests because they are no longer relevant. Click tab "Test" (number 1 in the picture below). Select the top node in the tree view (number 2). Press "Select all" (number 3) to select all tests (number 4). Then press "Delete" (number 5).
 
