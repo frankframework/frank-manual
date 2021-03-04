@@ -18,7 +18,7 @@ Please do the following:
 #. Ensure that you have a captured test report of running adapter "sutGet". This should be the case if you did subsection :ref:`downloadUpload`. In this case, you can proceed to :ref:`afterPrepared`.
 #. If you do not have a test report of running "sutGet", continue with this step. Click "Testing" in the picture below:
 
-   .. image:: ../../frankConsoleFindTestTools.jpg
+   .. image:: ..\\..\\frankConsoleFindTestTools.jpg
 
 #. Click "Test Pipeline". The following screen appears:
 

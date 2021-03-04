@@ -16,7 +16,7 @@ Here are the instructions:
 #. Create a directory for your instance. The last component of the path will be the instance name. Instance names should begin with ``Frank2``, expressing that you are frank, open about your work. The word coming after ``Frank2`` should begin with a capital.
 #. Within your ``frank-runner`` directory, create file ``build.properties``. Fill it like explained in the README file of the Frank!Runner to reference your instance.
 #. Give your instance directory a subdirectory ``configurations``.
-#. Download :download:`ladybug <../../../downloads/ladybug.zip>`.
+#. Download :download:`ladybug <..\\..\\..\\downloads\\ladybug.zip>`.
 #. Unzip this file into your configurations directory. Your files should appear in a directory ``configurations/ladybug``. Here is the directory tree you should have now: ::
 
      Frank2Manual

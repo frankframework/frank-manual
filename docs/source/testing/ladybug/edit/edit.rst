@@ -14,7 +14,7 @@ Please do the following:
 #. Start the Frank!Framework if it is not running, see :ref:`preparations`. Recreate the situation of :ref:`organize`. You may have a download of these test reports that you can upload (see :ref:`downloadUpload`). It is important that you have a capture of running "sutArchive" with stub strategy "Never", and that this test report has a description indicating this stub strategy.
 #. We do another capture of running "sutArchive". Click "Testing" and "Test Pipeline":
 
-   .. image:: ../../frankConsoleFindTestTools.jpg
+   .. image:: ..\\..\\frankConsoleFindTestTools.jpg
 
 #. Select adapter "sutArchive" (number 1 in the picture below). Enter into the message field (number 2): :code:`<document>This is the document</document>`. Press "Send" (number 3).
 

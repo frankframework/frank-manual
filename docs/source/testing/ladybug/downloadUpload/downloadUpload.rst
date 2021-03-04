@@ -23,7 +23,7 @@ Please do the following:
 #. Browse to http://localhost.
 #. Click "Testing":
 
-   .. image:: ../../frankConsoleFindTestTools.jpg
+   .. image:: ..\\..\\frankConsoleFindTestTools.jpg
 
 #. Click Ladybug and tab "Test".
 #. There are no tests, see picture:
