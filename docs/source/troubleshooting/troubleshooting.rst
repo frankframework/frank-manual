@@ -258,12 +258,12 @@ Filling adapter response with session key
 Reading auto-generated keys when inserting into database
 --------------------------------------------------------
 
-**Question:** I am inserting into a database table that auto-generates the primary key. How can I get this auto-generated primary key in my adapter?
+**Question:** I am inserting into or updating a database table that auto-generates values, which may be primary keys or the results of database functions. How can I get these values in my adapter?
 
-**Answer:** You can use a ``FixedQuerySender`` with an "INSERT" query. Fill the attribute ``columnsReturned`` of the ``FixedQuerySender`` with the columns for which you want to have the values. This is a comma-separated list of column names. Typically, you enter the column name of the auto-generated primary key here. See the Frank!Doc for more details.
+**Answer:** You can use a ``FixedQuerySender`` with an "INSERT" or "UPDATE" query. Fill the attribute ``columnsReturned`` of the ``FixedQuerySender`` with the columns for which you want to have the values. This is a comma-separated list of column names. See the Frank!Doc for more details.
 
 .. WARNING::
 
-   This feature of the Frank!Framework does not work for all database drivers. See issue https://github.com/ibissource/iaf/issues/1468.
+   This feature of the Frank!Framework does not work for all database drivers and/or versions. See issue https://github.com/ibissource/iaf/issues/1468.
 
 By default, the value is wrapped into an XML message. If you just want a scalar, you can set the ``scalar`` attribute of the ``FixedQuerySender`` to ``true``.
