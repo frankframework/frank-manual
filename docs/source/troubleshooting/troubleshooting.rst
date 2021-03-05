@@ -246,7 +246,7 @@ Liquibase logging
 
 **Question:** Where can I find why Liquibase validation failed?
 
-**Answer:** Liquibase will log all errors to the system out error log (SystemErr.log). You can also see these errors in the regular logfile when the log level is WARN or lower. Setting the log level is described here: https://frank-manual.readthedocs.io/en/latest/operator/diskUsage.html?highlight=log%20level#disk-usage. From version 7.6 onwards, there will be a warning on the Frank!Console when LiquiBase validation fails.
+**Answer:** There will be a warning on the Frank!Console when Liquibase validation fails. From version 7.6 onwards, this warning includes the reason why validation failed. For older versions, no reason will be in that warning. You can also find the reason in the regular logfile when the log level is WARN or lower. Setting the log level is described here: https://frank-manual.readthedocs.io/en/latest/operator/diskUsage.html?highlight=log%20level#disk-usage. 
 
 Filling adapter response with session key
 -----------------------------------------
