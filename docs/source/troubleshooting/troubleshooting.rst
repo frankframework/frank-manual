@@ -267,3 +267,10 @@ Reading auto-generated keys when inserting into database
    This feature of the Frank!Framework does not work for all database drivers and/or versions. See issue https://github.com/ibissource/iaf/issues/1468.
 
 By default, the value is wrapped into an XML message. If you just want a scalar, you can set the ``scalar`` attribute of the ``FixedQuerySender`` to ``true``.
+
+Iterating over CSV file
+-----------------------
+
+**Question:** How to iterate over a .csv file?
+
+**Answer:** Here is an example to download: :download:`Frank config <../downloads/configurations/forFrankConsole.zip>`. This example applies a ``BatchFileTransformerPipe``. This pipe may be more complicated to use then needed. Since version 7.6 you can use a ``CsvParserPipe``.
