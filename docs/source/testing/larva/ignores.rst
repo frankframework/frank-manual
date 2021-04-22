@@ -86,9 +86,9 @@ This replaces all occurrences of regular expression with IGNORE. By writing
 
 .. code-block::
 
-  ignoreRegularExpressionKey1.key=/\d/
+  ignoreRegularExpressionKey1.key=[A-Z]
 
-all the digits of this current result will be replaced with IGNORE.
+all uppercase letters of the current result and the expected result will be replaced with IGNORE.
 
 **ignoreKey**
 
@@ -177,7 +177,7 @@ This replaces all matches of regular expression (key1) with the value of key2. B
 
 .. code-block::
 
-  replaceRegularExpressionKeys1.key1=/RecordID/
+  replaceRegularExpressionKeys1.key1=RecordID
   replaceRegularExpressionKeys1.key2=ID
 
 all 4 “RecordID” will be replaced by “ID”.
@@ -208,7 +208,7 @@ This replaces all matches of regular expression with “”, write as
 
 .. code-block::
 
-  removeRegularExpressionKey1.key=/\d/
+  removeRegularExpressionKey1.key=\\d
 
   all digits will be removed from the result.
 
