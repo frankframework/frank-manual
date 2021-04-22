@@ -210,7 +210,7 @@ This replaces all matches of regular expression with “”, write as
 
   removeRegularExpressionKey1.key=\\d
 
-  all digits will be removed from the result.
+all digits will be removed from the result.
 
 **removeKeysAndContentBetweenKeys**
 
