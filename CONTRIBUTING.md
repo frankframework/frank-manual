@@ -15,7 +15,7 @@ You can download Git from the following link: https://git-scm.com/download/win. 
 
 You can download Python and Pip from https://www.python.org/downloads/. You also need to install some Python packages usign pip:
 
-* `pip install git+https://github.com/tk0miya/sphinx@8959_unix_pathsep_on_windows`
+* `pip install sphinx`
 * `pip install sphinx_rtd_theme`
 * `pip install pyyaml`
 
