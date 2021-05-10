@@ -1,7 +1,9 @@
 Ignores
 ========
 
-When creating Larva tests, you will find that some constantly changing values will make the tests fail at certain points because there is a difference between the current result of the test and the expected result of the test, for example, the “timestamp”. After all, time changes every second. For solving this kind of issue, Larva has several ways for ignoring parts of messages to compare them. This subsection is intended to name and describe all those ignores within the Larva testing tool.
+As explained in section :ref:`gettingStartedLarva`, Larva-tests verify if values that are read from the tested Frank configuration are equal to the expected constant values. However, some tested systems produce different results each time that they are executed, even though the inputs are the same. Examples are systems that return a time stamp. In Larva, you can address this issue using ignores. With ignores, values returned from the tested system are transformed, before they are compared to the expected value. As a Frank developer, you have to choose these transformations wisely and include meaningful aspects of your returned value. 
+
+This section gives an overview of the transformations (ignores) that are available to you. Below is an overview table followed by explanation and examples for every transformation.
 
 .. list-table:: Overview
    :widths: 30 70
@@ -18,9 +20,9 @@ When creating Larva tests, you will find that some constantly changing values wi
       
        IGNORE  
    * - ignoreContentBetweenKeys 
-     - Replaces all characters found between key1 and key2 with
+     - Replaces all characters found between key1 and key2,
       
-       IGNORE
+       excluding key1 and key2, with IGNORE
    * - ignoreKeysAndContentBetweenKeys
      - Replaces all characters found between key1 and key2, 
        
@@ -59,7 +61,7 @@ When creating Larva tests, you will find that some constantly changing values wi
      - Format decimal content between key1 and key2
 
 
-Usually those ignores are written in the ``common.properties`` file of your Larva test, in this way they apply to all test scenarios which have included this ``common.properties`` file. If you want to use ignores in a particular test scenario, then you can put them in that related ``scenario.properties`` file.
+Usually those ignores are written in the ``common.properties`` file where you define your services (see section :ref:`testingLarvaServices`), in this way they apply to all test scenarios which have included this ``common.properties`` file. If you want to use ignores in a particular test scenario, then you can put them in that related ``scenario.properties`` file.
 
 Some ignores require 2 keys to indicate start and end, which are denoted as key1 and key2. Both require the same identifier. The identifier can be either an increasing sequence of integers starting at 1 for each ignore or an string starting with a “.”. The text indicates what to look for.
 
@@ -69,8 +71,8 @@ Imagine that you want to compare the following result with the expected result:
 
     <Result>
       <RecordID>12</RecordID>
-      <FileName>C:\Users\..\zipfile</FileName>
-      <File>zipfile.zip</File>
+      <FilePath>C:\Users\..\myZipfile.zip</FilePath>
+      <File>UEsDBBQAAAAAAABUqlKWlLkWCgAAAAoAAAASAAAAbXlaaXBmaWxlL3Rlc3QudHh0TGFydmEgVGVzdFBLAQIUABQAAAAAAABUqlKWlLkWCgAAAAoAAAASAAAAAAAAAAEAIAAAAAAAAABteVppcGZpbGUvdGVzdC50eHRQSwUGAAAAAAEAAQBAAAAAOgAAAAAA</File>
       <Decimal>12.34</Decimal>
       <Category>ABC</Category>
       <Timestamp>2019-10-02T10:12:43.788+0100</Timestamp>
@@ -160,7 +162,7 @@ This replaces time found between key1 and key2 with IGNORE_CURRENT_TIME, pattern
   ignoreCurrentTimeBetweenKeys1.key2=</Timestamp>
   ignoreCurrentTimeBetweenKeys1.pattern=yyyy-MM-dd'T'HH:mm:ss.SSSZ
   ignoreCurrentTimeBetweenKeys1.margin=12345
-  ignoreCurrentTimeBetweenKeys1.errorMessageOnRemainingString=true/false
+  ignoreCurrentTimeBetweenKeys1.errorMessageOnRemainingString=false
 
 
 **Other way of using ignore**
@@ -239,26 +241,26 @@ Others
 
 **decodeUnzipContentBetweenKeys**
 
-This decodes and unzips content between key1 and key2, if replaceNewlines is true, it will replace all “\\r” with "[CARRIAGE RETURN]" and all "\\n" with "[LINE FEED]". In the example, there is an element ``<File>zipfile.zip</File>``, by writing
+This decodes and unzips file content between key1 and key2, if replaceNewlines is true, it will replace all “\\r” with "[CARRIAGE RETURN]" and all "\\n" with "[LINE FEED]". In the example, there is an element ``<File>UEsDB...</File>``, it is an encoded zip file named "myZipfile.zip", which contains a text file "test.txt" with content "Larva Test" written in it. By writing
 
 .. code-block::
 
   decodeUnzipContentBetweenKeys1.key1=<File>
   decodeUnzipContentBetweenKeys1.key2=</File>
-  decodeUnzipContentBetweenKeys1.replaceNewlines=true/false
+  decodeUnzipContentBetweenKeys1.replaceNewlines=false
 
-it will decode and unzip this zip file to format “<tt:file xmlns:tt=\"testtool\"><tt:name> fileName  </tt:name><tt:content> file content </tt:content></tt:file>”, and put it in between the 2 keys.
+it will first decode the content and then unzip this zip file to format “<tt:file xmlns:tt=\"testtool\"><tt:name>myZipfile/test.txt</tt:name><tt:content>Larva Test</tt:content></tt:file>”, and put it in between the 2 keys.
 
 **canonicaliseFilePathContentBetweenKeys**
 
-This canonicalizes file path content between key1 and key2. In the example, there is an element ``<FileName>C:\Users\..\zipfile</FileName>``, by writing
+This canonicalizes file path content between key1 and key2. In the example, there is an element ``<FilePath>C:\Users\..\myZipfile.zip</FilePath>``, by writing
 
 .. code-block::
 
-  canonicaliseFilePathContentBetweenKeys1.key1=<FileName>
-  canonicaliseFilePathContentBetweenKeys1.key2=</FileName>
+  canonicaliseFilePathContentBetweenKeys1.key1=<FilePath>
+  canonicaliseFilePathContentBetweenKeys1.key2=</FilePath>
 
-it replaces “C:\\Users\\..\\zipfile” with the canonical pathname of the file object “C:\\zipfile”.
+it replaces “C:\\Users\\..\\myZipfile.zip” with the canonical pathname of the file object “C:\\myZipfile.zip”.
 
 **formatDecimalContentBetweenKeys**
 

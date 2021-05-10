@@ -1,3 +1,5 @@
+.. _testingLarvaServices:
+
 Services
 ========
 
