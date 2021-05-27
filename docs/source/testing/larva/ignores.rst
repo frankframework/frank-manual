@@ -63,7 +63,7 @@ This section gives an overview of the transformations (ignores) that are availab
 
 The ignores use the following structure: ``<ignoreOption><identifier>.key=<text>``.
 
-Some ignores require 2 keys to indicate start and end, which are denoted as key1 and key2. Both require the same identifier. The <identifier> is an increasing sequence of integers starting at 1 for each ignore. The <text> indicates what to look for.
+Some ignores require 2 keys to indicate start and end, which are denoted as key1 and key2. Both require the same identifier. The <identifier> is an increasing sequence of integers starting at 1 for each ignore or an string starting with a “.”. The <text> indicates what to look for.
 
 Usually those ignores are written in the ``common.properties`` file where you define your services (see section :ref:`testingLarvaServices`), in this way they apply to all test scenarios which have included this ``common.properties`` file. If you want to use ignores in a particular test scenario, then you can put them in that related ``scenario.properties`` file.
 
@@ -90,7 +90,9 @@ This replaces all occurrences of regular expression with IGNORE. By writing
 
 .. code-block::
 
-  ignoreRegularExpressionKey1.key=[A-Z]
+  ignoreRegularExpressionKey1.key=[A-Z] 
+  OR 
+  ignoreRegularExpressionKey.contentA.key=[A-Z]
 
 all uppercase letters of the current result and the expected result will be replaced with IGNORE.
 
@@ -101,6 +103,8 @@ This replaces all matching occurrences of provided key with IGNORE. By writing
 .. code-block::
 
   ignoreKey1.key=RecordID
+  OR
+  ignoreKey.contentA.key=RecordID
 
 all 4 “RecordID” which appeared in the above example will be replaced with IGNORE. In this case, comparing RecordID will still fail, because it won’t replace the content of RecordID.
 
@@ -112,6 +116,9 @@ This replace all characters found between key1 and key2 with IGNORE. By writing
 
   ignoreContentBetweenKeys1.key1=<RecordID>
   ignoreContentBetweenKeys1.key2=</RecordID>
+  OR
+  ignoreContentBetweenKeys.contentA.key1=<RecordID>
+  ignoreContentBetweenKeys.contentA.key2=</RecordID>
 
 content between those two tags will be replaced with IGNORE, so comparing RecordID will always succeed no matter what the value is of it.
 
@@ -121,6 +128,9 @@ And by writing
 
   ignoreContentBetweenKeys1.key1=RecordID='
   ignoreContentBetweenKeys1.key2='
+  OR
+  ignoreContentBetweenKeys.contentA.key1=RecordID='
+  ignoreContentBetweenKeys.contentA.key2='
 
 this will replace the RecordID value in the element <Message> with IGNORE.
 
@@ -132,7 +142,9 @@ This is similar to ignoreContentBetweenKeys, the only difference is that it repl
 
   ignoreKeysAndContentBetweenKeys1.key1=<RecordID>
   ignoreKeysAndContentBetweenKeys1.key2=</RecordID>
-
+  OR
+  ignoreKeysAndContentBetweenKeys.contentA.key1=<RecordID>
+  ignoreKeysAndContentBetweenKeys.contentA.key2=</RecordID>
 
 **ignoreContentBeforeKey**
 
@@ -141,6 +153,8 @@ This replaces everything before provided key has been found with IGNORE. By writ
 .. code-block::
 
   ignoreContentBeforeKey1.key=ABC
+  OR
+  ignoreContentBeforeKey.contentA.key=ABC
 
 content before “ABC”, in this case is “<RecordID> 12</RecordID> <Category>”, will be replaced with IGNORE.
 
@@ -151,6 +165,8 @@ The opposite of ignoreContentBeforeKey is ignoreContentAfterKey, this replaces e
 .. code-block::
 
   ignoreContentAfterKey1.key=ABC
+  OR
+  ignoreContentAfterKey.contentA.key=ABC
 
 it will replace everything after “ABC” with IGNORE.
 
@@ -165,6 +181,12 @@ This replaces time found between key1 and key2 with IGNORE_CURRENT_TIME, pattern
   ignoreCurrentTimeBetweenKeys1.pattern=yyyy-MM-dd'T'HH:mm:ss.SSSZ
   ignoreCurrentTimeBetweenKeys1.margin=12345
   ignoreCurrentTimeBetweenKeys1.errorMessageOnRemainingString=false
+  OR
+  ignoreCurrentTimeBetweenKeys.contentA.key1=<Timestamp>
+  ignoreCurrentTimeBetweenKeys.contentA.key2=</Timestamp>
+  ignoreCurrentTimeBetweenKeys.contentA.pattern=yyyy-MM-dd'T'HH:mm:ss.SSSZ
+  ignoreCurrentTimeBetweenKeys.contentA.margin=12345
+  ignoreCurrentTimeBetweenKeys.contentA.errorMessageOnRemainingString=false
 
 
 **Other way of using ignore**
@@ -183,6 +205,9 @@ This replaces all matches of regular expression (key1) with the value of key2. B
 
   replaceRegularExpressionKeys1.key1=RecordID
   replaceRegularExpressionKeys1.key2=ID
+  OR
+  replaceRegularExpressionKeys.contentA.key1=RecordID
+  replaceRegularExpressionKeys.contentA.key2=ID
 
 all 4 “RecordID” will be replaced by “ID”.
 
@@ -194,6 +219,9 @@ replaceKey and replaceEverywhereKey work the same, both replace all matching occ
 
   replaceKey1.key1=RecordID
   replaceKey1.key2=ID
+  OR
+  replaceKey.contentA.key1=RecordID
+  replaceKey.contentA.key2=ID
 
 and
 
@@ -201,6 +229,9 @@ and
 
   replaceEverywhereKey1.key1=RecordID
   replaceEverywhereKey1.key2=ID
+  OR
+  replaceEverywhereKey.contentA.key1=RecordID
+  replaceEverywhereKey.contentA.key2=ID
 
 
 Using remove
@@ -213,6 +244,8 @@ This replaces all matches of regular expression with “”, write as
 .. code-block::
 
   removeRegularExpressionKey1.key=\\d
+  OR
+  removeRegularExpressionKey.contentA.key=\\d
 
 all digits will be removed from the result.
 
@@ -224,6 +257,9 @@ This removes all characters found between key1 and key2, including key1 and key2
 
   removeKeysAndContentBetweenKeys1.key1=<RecordID>
   removeKeysAndContentBetweenKeys1.key2=</RecordID>
+  OR
+  removeKeysAndContentBetweenKeys.contentA.key1=<RecordID>
+  removeKeysAndContentBetweenKeys.contentA.key2=</RecordID>
 
 “<RecordID> 12</RecordID>” will be removed from the result.
 
@@ -234,6 +270,8 @@ This removes all matching occurrences of provided key, by writing
 .. code-block::
 
   removeKey1.key=RecordID
+  OR
+  removeKey.contentA.key=RecordID
 
 all 4 “RecordID” will be removed from the result.
 
@@ -250,6 +288,10 @@ This decodes and unzips file content between key1 and key2, if replaceNewlines i
   decodeUnzipContentBetweenKeys1.key1=<File>
   decodeUnzipContentBetweenKeys1.key2=</File>
   decodeUnzipContentBetweenKeys1.replaceNewlines=false
+  OR
+  decodeUnzipContentBetweenKeys.contentA.key1=<File>
+  decodeUnzipContentBetweenKeys.contentA.key2=</File>
+  decodeUnzipContentBetweenKeys.contentA.replaceNewlines=false
 
 it will first decode the content and then unzip this zip file to format “<tt:file xmlns:tt=\"testtool\"><tt:name>myZipfile/test.txt</tt:name><tt:content>Larva Test</tt:content></tt:file>”, and put it in between the 2 keys.
 
@@ -261,6 +303,9 @@ This canonicalizes file path content between key1 and key2. In the example, ther
 
   canonicaliseFilePathContentBetweenKeys1.key1=<FilePath>
   canonicaliseFilePathContentBetweenKeys1.key2=</FilePath>
+  OR
+  canonicaliseFilePathContentBetweenKeys.contentA.key1=<FilePath>
+  canonicaliseFilePathContentBetweenKeys.contentA.key2=</FilePath>
 
 it replaces “C:\\Users\\..\\myZipfile.zip” with the canonical pathname of the file object “C:\\myZipfile.zip”.
 
@@ -272,6 +317,9 @@ This formats decimal content between key1 and key2, the goal of using it is to b
 
   formatDecimalContentBetweenKeys1.key1=<Decimal>
   formatDecimalContentBetweenKeys1.key2=</Decimal>
+  OR
+  formatDecimalContentBetweenKeys.contentA.key1=<Decimal>
+  formatDecimalContentBetweenKeys.contentA.key2=</Decimal>
 
 it will format this numeric value to ``<Decimal>12.34</Decimal>``, in this case nothing has changed.
 
@@ -288,3 +336,10 @@ To make the target XML document at the beginning of this subsection pass the Lar
   ignoreContentBetweenKeys2.key2=</Timestamp>
   ignoreContentBetweenKeys3.key1=RecordID='
   ignoreContentBetweenKeys3.key2='
+  OR
+  ignoreContentBetweenKeys.contentA.key1=<RecordID>
+  ignoreContentBetweenKeys.contentA.key2=</RecordID>
+  ignoreContentBetweenKeys.contentB.key1=<Timestamp>
+  ignoreContentBetweenKeys.contentB.key2=</Timestamp>
+  ignoreContentBetweenKeys.contentC.key1=RecordID='
+  ignoreContentBetweenKeys.contentC.key2='
