@@ -1,7 +1,7 @@
 Ignores
 ========
 
-As explained in section :ref:`gettingStartedLarva`, Larva-tests verify if values that are read from the tested Frank configuration are equal to the expected constant values. However, some tested systems produce different results each time that they are executed, even though the inputs are the same. Examples are systems that return a time stamp. In Larva, you can address this issue using ignores. With ignores, values returned from the tested system are transformed, before they are compared to the expected value. As a Frank developer, you have to choose these transformations wisely and include meaningful aspects of your returned value. 
+As explained in section :ref:`gettingStartedLarva`, Larva-tests verify if values that are read from the tested Frank configuration are equal to the expected constant values. However, some tested systems produce different results each time that they are executed, even though the inputs are the same. Examples are systems that return a time stamp. In Larva, you can address this issue using ignores. With ignores, values returned from the tested system are transformed, before they are compared to the expected value. As a Frank developer, you have to choose these transformations wisely and retain meaningful aspects of your returned value. 
 
 This section gives an overview of the transformations (ignores) that are available to you. Below is an overview table followed by explanation and examples for every transformation.
 
@@ -61,11 +61,13 @@ This section gives an overview of the transformations (ignores) that are availab
      - Format decimal content between key1 and key2
 
 
+The ignores use the following structure: ``<ignoreOption><identifier>.key=<text>``.
+
+Some ignores require 2 keys to indicate start and end, which are denoted as key1 and key2. Both require the same identifier. The <identifier> is an increasing sequence of integers starting at 1 for each ignore. The <text> indicates what to look for.
+
 Usually those ignores are written in the ``common.properties`` file where you define your services (see section :ref:`testingLarvaServices`), in this way they apply to all test scenarios which have included this ``common.properties`` file. If you want to use ignores in a particular test scenario, then you can put them in that related ``scenario.properties`` file.
 
-Some ignores require 2 keys to indicate start and end, which are denoted as key1 and key2. Both require the same identifier. The identifier can be either an increasing sequence of integers starting at 1 for each ignore or an string starting with a “.”. The text indicates what to look for.
-
-Imagine that you want to compare the following result with the expected result:
+In the subsections below, the ignores are explained by showing their effect on a target XML document. This target XML reads as follow:
 
 .. code-block:: XML
 
@@ -273,8 +275,10 @@ This formats decimal content between key1 and key2, the goal of using it is to b
 
 it will format this numeric value to ``<Decimal>12.34</Decimal>``, in this case nothing has changed.
 
+Example solution
+-----------------------
 
-To make the example result at the beginning of this subsection pass the Larva test, you can write following ignores in your test: 
+To make the target XML document at the beginning of this subsection pass the Larva test, you can write the following ignores in your test: 
 
 .. code-block:: 
 
