@@ -61,9 +61,9 @@ This section gives an overview of the transformations (ignores) that are availab
      - Format decimal content between key1 and key2
 
 
-The ignores use the following structure: ``<ignoreOption><identifier>.key=<text>``.
+The ignores use the following structure: ``<ignoreOption><numberOrName>.key=<text>``.
 
-Some ignores require 2 keys to indicate start and end, which are denoted as key1 and key2. Both require the same identifier. The <identifier> is an increasing sequence of integers starting at 1 for each ignore or an string starting with a “.”. The <text> indicates what to look for.
+Some ignores require 2 keys to indicate start and end, which are denoted as key1 and key2. Both require the same identifier. The <numberOrName> is an increasing sequence of integers starting at 1 for each ignore or an string starting with a “.”. The <text> indicates what to look for.
 
 Usually those ignores are written in the ``common.properties`` file where you define your services (see section :ref:`testingLarvaServices`), in this way they apply to all test scenarios which have included this ``common.properties`` file. If you want to use ignores in a particular test scenario, then you can put them in that related ``scenario.properties`` file.
 
