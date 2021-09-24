@@ -26,3 +26,4 @@ Here is the table of contents:
    scheduling
    diskUsage
    managingProcessedMessages
+   credentials

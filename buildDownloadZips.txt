@@ -30,6 +30,7 @@ srcSteps/NewHorizons/v460/configurations/NewHorizons configurations/NewHorizonsO
 srcSteps/ladybugInstance/v500/configurations/ladybug
 srcSteps/ladybugInstance/v500/classes extendLadybugTable
 src/advancedDevelopmentProperties
+src/advancedDevelopmentCredentials/configurations/credentials configurations/credentials
 src/deploymentTomcat
 srcSteps/forFrankConsole/v500/configurations/NewHorizons configurations/forFrankConsole NewHorizons
 srcSteps/forFrankConsole/v510/configurations/NewHorizons configurations/forFrankConsole_2 NewHorizons
