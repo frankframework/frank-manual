@@ -5,7 +5,7 @@ Credentials
 
 Frank configurations can communicate with external systems. These external systems may require credentials like usernames and passwords. The Frank!Framework needs to know these credentials. It is your job to configure these credentials, because they should not be included in Frank configurations. This section explains how you can do this.
 
-First, you have to know the *alias* of the external account. This is a name used in the Frank configuration to reference the credentials. The Frank config uses strings like ``${credential:username:alias1}`` and ``${credential:password:alias1}``. Here, ``alias1`` is the alias of the external account being accessed. Then you have to provide the credentials of the alias. The Frank!Framework allows you to do this in many ways. We demonstrate credentials first by providing them in a properties file.
+First, you have to know the *alias* of the external account. This is a name used in the Frank configuration to reference the credentials. The Frank config uses strings like ``${credential:username:alias1}`` and ``${credential:password:alias1}``. Here, ``alias1`` is the alias of the external account being accessed. Frank configs also reference aliases by setting XML attribute ``authAlias``. Then you have to provide the credentials of the alias. The Frank!Framework allows you to do this in many ways. We demonstrate credentials first by providing them in a properties file.
 
 You can exercise providing credentials using our example configuration :download:`credentials.zip <../downloads/configurations/credentials.zip>`. Please install it like explained in section :ref:`frankConsolePreparations`. Then continue as follows:
 
