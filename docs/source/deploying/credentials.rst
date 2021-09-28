@@ -1,4 +1,4 @@
-.. _frankConsoleCredentials:
+.. _deploymentCredentials:
 
 Credentials
 -----------
@@ -7,7 +7,7 @@ Frank configurations can communicate with external systems. These external syste
 
 First, you have to know the *alias* of the external account. This is a name used in the Frank configuration to reference the credentials. The Frank config uses strings like ``${credential:username:alias1}`` and ``${credential:password:alias1}``. Here, ``alias1`` is the alias of the external account being accessed. Frank configs also reference aliases by setting XML attribute ``authAlias``. Then you have to provide the credentials of the alias. The Frank!Framework allows you to do this in many ways. We demonstrate credentials first by providing them in a properties file.
 
-You can exercise providing credentials using our example configuration :download:`credentials.zip <../downloads/configurations/credentials.zip>`. Please install it like explained in section :ref:`frankConsolePreparations`. Then continue as follows:
+You can exercise providing credentials using our example configuration :download:`credentials.zip <../downloads/configurations/credentials.zip>`. Please install it like explained in section :ref:`frankConsolePreparations` of chapter :ref:`operator`. Then continue as follows:
 
 1. Create some properties file, say ``credentials.properties`` and give it the following contents:
 
@@ -41,7 +41,32 @@ With property ``authAliases.expansion.allowed``, you define for which aliases yo
 
 Depending on the value of ``credentialFactory.class``, additional properties can be needed to define the source of the credentials. If ``credentialFactory.class`` is ``nl.nn.credentialprovider.PropertyFileCredentialFactory``, you are defining that the credentials are in a properties file. In this case you should provide property ``credentialFactory.map.properties``. The value of the property is the name of the properties file where the credentials can be found.
 
-Below, all the options are listed for providing credentials
+In the table below, all the options are listed for providing credentials:
+
++-------------------------------------------------------------+-----------------------------------------------------+
+| Credentials factory and extra properties                    | Explanation                                         |
++=============================================================+=====================================================+
+| ``nl.nn.credentialprovider.PropertyFileCredentialFactory``  | Credentials from properties file.                   |
+|   with ``credentialFactory.map.properties``                 |   ``credentialFactory.map.properties`` holds the    |
+|                                                             |   name of the file with usernames and passwords.    |
+|                                                             |   See above example for file contents.              |
++-------------------------------------------------------------+-----------------------------------------------------+
+| ``nl.nn.credentialprovider.FileSystemCredentialFactory``    | Username and password in separate text files.       |
+|   with ``credentialFactory.filesystem.usernamefile``,       |   The properties are names of files holding the     |
+|   ``credentialFactory.filesystem.passwordfile`` and         |   username and the password. The paths in           |
+|   ``credentialFactory.filesystem.root``. Default values     |   ``credentialFactory.filesystem.usernamefile``     |
+|   ``username``, ``password`` and ``/etc/secrets``.          |   and ``credentialFactory.filesystem.passwordfile`` |
+|                                                             |   are relative to the path in                       |
+|                                                             |   ``credentialFactory.filesystem.root``.            |
++-------------------------------------------------------------+-----------------------------------------------------+
+| ``nl.nn.credentialprovider.AnsibleVaultCredentialFactory``  | Credentials in Ansible vault. The extra             |
+|   with ``credentialFactory.ansibleVault.vaultFile`` and     |   properties hold the vault file and the key file.  |
+|   ``credentialFactory.keyFile``.                            |                                                     |
++-------------------------------------------------------------+-----------------------------------------------------+
+| ``nl.nn.credentialprovider.WebSphereCredentialFactory``,    | Credentials configured in Websphere Application     |
+|   no additional properties.                                 |   Server.                                           |
++-------------------------------------------------------------+-----------------------------------------------------+
+
 
 Credentials from properties file
   Use credentials factory ``nl.nn.credentialprovider.PropertyFileCredentialFactory``. Configure the properties file name in property ``credentialFactory.map.properties``.
