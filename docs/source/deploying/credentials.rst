@@ -47,35 +47,22 @@ In the table below, all the options are listed for providing credentials:
 | Credentials factory and extra properties                    | Explanation                                         |
 +=============================================================+=====================================================+
 | ``nl.nn.credentialprovider.PropertyFileCredentialFactory``  | Credentials from properties file.                   |
-|   with ``credentialFactory.map.properties``                 |   ``credentialFactory.map.properties`` holds the    |
-|                                                             |   name of the file with usernames and passwords.    |
-|                                                             |   See above example for file contents.              |
+| with ``credentialFactory.map.properties``                   | ``credentialFactory.map.properties`` holds the      |
+|                                                             | name of the file with usernames and passwords.      |
+|                                                             | See above example for file contents.                |
 +-------------------------------------------------------------+-----------------------------------------------------+
 | ``nl.nn.credentialprovider.FileSystemCredentialFactory``    | Username and password in separate text files.       |
-|   with ``credentialFactory.filesystem.usernamefile``,       |   The properties are names of files holding the     |
-|   ``credentialFactory.filesystem.passwordfile`` and         |   username and the password. The paths in           |
-|   ``credentialFactory.filesystem.root``. Default values     |   ``credentialFactory.filesystem.usernamefile``     |
-|   ``username``, ``password`` and ``/etc/secrets``.          |   and ``credentialFactory.filesystem.passwordfile`` |
-|                                                             |   are relative to the path in                       |
-|                                                             |   ``credentialFactory.filesystem.root``.            |
+| with ``credentialFactory.filesystem.usernamefile``,         | The properties are names of files holding the       |
+| ``credentialFactory.filesystem.passwordfile`` and           | username and the password. The paths in             |
+| ``credentialFactory.filesystem.root``. Default values       | ``credentialFactory.filesystem.usernamefile``       |
+| ``username``, ``password`` and ``/etc/secrets``.            | and ``credentialFactory.filesystem.passwordfile``   |
+|                                                             | are relative to the path in                         |
+|                                                             | ``credentialFactory.filesystem.root``.              |
 +-------------------------------------------------------------+-----------------------------------------------------+
 | ``nl.nn.credentialprovider.AnsibleVaultCredentialFactory``  | Credentials in Ansible vault. The extra             |
-|   with ``credentialFactory.ansibleVault.vaultFile`` and     |   properties hold the vault file and the key file.  |
-|   ``credentialFactory.keyFile``.                            |                                                     |
+| with ``credentialFactory.ansibleVault.vaultFile`` and       | properties hold the vault file and the key file.    |
+| ``credentialFactory.keyFile``.                              |                                                     |
 +-------------------------------------------------------------+-----------------------------------------------------+
 | ``nl.nn.credentialprovider.WebSphereCredentialFactory``,    | Credentials configured in Websphere Application     |
-|   no additional properties.                                 |   Server.                                           |
+| no additional properties.                                   | Server.                                             |
 +-------------------------------------------------------------+-----------------------------------------------------+
-
-
-Credentials from properties file
-  Use credentials factory ``nl.nn.credentialprovider.PropertyFileCredentialFactory``. Configure the properties file name in property ``credentialFactory.map.properties``.
-
-Username and password in separate text files
-  Use credentials factory ``nl.nn.credentialprovider.FileSystemCredentialFactory``. Provide the file name where the username can be found in property ``credentialFactory.filesystem.usernamefile``. Provide the file name where the password can be found in property ``credentialFactory.filesystem.passwordfile``. These file names are relative to the path you provide in property ``credentialFactory.filesystem.root``. Default values of these are ``username``, ``password`` and ``/etc/secrets``.
-
-Credentials in Ansible vault
-  Use credentials factory ``nl.nn.credentialprovider.AnsibleVaultCredentialFactory``. Provide the vault file with property ``credentialFactory.ansibleVault.vaultFile``. Provide the key file with property ``credentialFactory.keyFile``.
-
-Credentials configured in Websphere Application Server
-  User credentials factory ``nl.nn.credentialprovider.WebSphereCredentialFactory``. No additional properties needed.

@@ -56,5 +56,9 @@ html_theme = "sphinx_rtd_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+# Martijn Mon Oct 4 2021: This is added to have word wrap in grid table
+html_css_files = [
+    'css/custom.css',
+]
 
 master_doc = 'index'
