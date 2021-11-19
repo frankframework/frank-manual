@@ -107,3 +107,6 @@ warnings.suppress.sqlInjections.<your adapter>
 
 credential:username:alias1 and credential:password:alias1
   These properties refer to credentials of external systems. Here, ``alias1`` has to be replaced by the alias you want to use for the external account. As a developer, you should document the chosen alias for the operator who deploys your config. The operator has to provide the credentials (username and password) for the alias. Section :ref:`deploymentCredentials` explains to operators how these values should be provided.
+
+scenariosroot<n>.description and scenariosroot<n>.directory
+  Define scenarios roots, see subsection :ref:`testingLarvaConsole`.
