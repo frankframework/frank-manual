@@ -21,4 +21,5 @@ Here is the table of contents:
    stubbing
    services
    ignores
+   larvaConsole
 

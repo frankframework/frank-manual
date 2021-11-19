@@ -74,6 +74,8 @@ You have seen all Larva syntax you need to finish your test. You need to write m
 
     .. include:: ../../snippets/Frank2Hermes/v550/scenario01Complete.txt
 
+.. _testingLarvaServicesRunningYourTest:
+
 Running your test
 -----------------
 
