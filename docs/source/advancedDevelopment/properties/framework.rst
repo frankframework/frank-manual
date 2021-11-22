@@ -110,3 +110,6 @@ credential:username:alias1 and credential:password:alias1
 
 scenariosroot<n>.description and scenariosroot<n>.directory
   Define scenarios roots, see subsection :ref:`testingLarvaConsole`.
+
+larva.timeout
+  Larva request timeout, see :ref:`testingLarvaConsole`.
