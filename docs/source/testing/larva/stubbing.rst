@@ -3,12 +3,12 @@
 Stubbing
 ========
 
+This section starts the case study announced at the end of :ref:`testingLarva` and it introduces the concept of stubbing.
+
 Problem description
 -------------------
 
-In this section you study the most important concepts of Larva, namely stubbing and services. The Frank!Framework was designed to support system integration, so we start with a fictive integration problem. The Rotterdam Bank is a bank that provides current accounts and savings accounts to their customers. The Rotterdam Bank has purchased the Hermes system to send paper statements of account. Hermes comes from an external company.
-
-To the Rotterdam Bank it is very important to have the proper contact information of their relations. They have a dedicated department for maintaining this data. The department maintains a system called Conscience to make this data available. Conscience also needs to be accessed by Hermes, because Hermes includes customer addresses in the statements of account.
+The Rotterdam Bank is a bank that provides current accounts and savings accounts to their customers. The Rotterdam Bank has purchased the Hermes system to send paper statements of account. Hermes comes from an external company. To the Rotterdam Bank it is very important to have the proper contact information of their relations. They have a dedicated department for maintaining this data. The department maintains a system called Conscience to make this data available. Conscience also needs to be accessed by Hermes, because Hermes includes customer addresses in the statements of account.
 
 The problem to be solved is that the interfaces of Hermes and Conscience are not compatible. When Hermes needs an address, it sends out a RESTful HTTP GET request with a body like the following:
 
@@ -54,7 +54,7 @@ You see that adapter "adapterToConscience" has a receiver (number 1) and a sende
 
 For the sender, you see the name "pipeCallConscience". This is the name of the pipe that contains the sender. The sender inside this pipe is of type "RestSender" (number 4). This means that the sender sends HTTP requests. This pipe sends messages to Conscience and receives their response.
 
-You cannot run "adapterToConscience" because there are no implementations of Hermes and Conscience. Even if these systems did exist, it would take time and money to set up a test environment with them. With Larva, you can test this adapter without setting up Hermes and Conscience. In the remainder of this subsection, you will write a Larva test for "adapterToConscience".
+You cannot run "adapterToConscience" because there are no implementations of Hermes and Conscience. Even if these systems did exist, it would take time and money to set up a test environment with them. With Larva, you can test this adapter without setting up Hermes and Conscience. In subsection :ref:`testingLarvaServices` you will write a Larva test for "adapterToConscience".
 
 Stubbing
 --------
