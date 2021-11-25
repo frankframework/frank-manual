@@ -162,10 +162,10 @@ IbisDataAdmin
   Can browse message logs, message stores and error stores, see section :ref:`operatorManagingProcessedMessages`. Can resend or delete the messages in them. Can reload configurations and start and stop adapters. Has all IbisObserver permissions too.
 
 IbisAdmin
-  Can do a full reload and test a pipeline, has all IbisDataAdmin permissions too.
+  Can do a full reload and has all IbisDataAdmin permissions.
 
 IbisTester
-  Can execute jdbc query, send jms message and test a service, has all IbisAdmin and IbisWebService permissions too.
+  Can execute jdbc query, send jms message, test a service and test a pipeline, has all IbisAdmin and IbisWebService permissions too.
 
 .. NOTE::
 
