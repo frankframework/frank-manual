@@ -8,9 +8,6 @@
      <!ENTITY dynamicId SYSTEM "ConfigurationDynamicId.xml">
    ]>
    <Configuration name="ladybug">
-     <jmsRealms>
-       <jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
-     </jmsRealms>
      &external;
      &sut;
      &dynamicId;
