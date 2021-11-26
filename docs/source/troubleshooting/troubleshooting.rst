@@ -274,3 +274,23 @@ Iterating over CSV file
 **Question:** How to iterate over a .csv file?
 
 **Answer:** Here is an example to download: :download:`Frank config <../downloads/configurations/forFrankConsole.zip>`. This example applies a ``BatchFileTransformerPipe``. This pipe may be more complicated to use then needed. Since version 7.6 you can use a ``CsvParserPipe``.
+
+Liquibase script does not seem to work with H2 in-memory database
+-----------------------------------------------------------------
+
+**Question:** I have a Frank config that uses an in-memory H2 database. When I load it into the Frank!Framework I see that there is no IBISSTORE database table, even though the catalina log shows correct execution of Liquibase. If I change the URL to have a file H2 database, the IBISSTORE table is created as it should. How is this possible?
+
+**Answer:** When you use an in-memory H2 database, you need to add ``DB_CLOSE_ON_EXIT=FALSE`` to the database URL. In ``context.xml`` this looks something like this:
+
+.. code-block:: xml
+
+   <Resource
+   name="jdbc/ibis4example"
+   type="javax.sql.DataSource"
+   driverClassName="org.h2.Driver"
+   url="jdbc:h2:mem:ibis4example;DB_CLOSE_ON_EXIT=FALSE"
+   maxTotal="10"
+   maxIdle="2"
+   maxWaitMillis="5000"
+   />
+
