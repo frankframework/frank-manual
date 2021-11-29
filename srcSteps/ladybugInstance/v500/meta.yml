@@ -37,3 +37,6 @@
 - file:
     path: configurations/ladybug/uuid.xsd
     change: add
+- file:
+    path: configurations/ladybug/DeploymentSpecifics.properties
+    change: add
