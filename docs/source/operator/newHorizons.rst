@@ -7,7 +7,7 @@ This chapter about the Frank!Console is a tutorial. You will run the Frank!Frame
 
 Before examining the Frank!Console, we present the Frank config that you will deploy within the Frank!Framework. It is about an imaginary company called New Horizons. New Horizons allows travelers to book travels online, which constitute visits to hotels, apartments, campings or any other place where travelers can sleep. New Horizons makes traveling easier, because the traveler with a complex travel does not have to negotiate with the individual hosts. New Horizons takes the responsibility of paying them.
 
-Our example configuration provides a user interface to hosts, allowing them to upload their accommodations. This is done by batch processing. Hosts provide ``.csv`` files to New Horizons with field delimiter ``;``. This tutorial is not about developing Frank configurations, so it is not important to work with a realistic interface. We restrict ourselves to apartents. The information in the columns is the following:
+Our example configuration provides a user interface to hosts, allowing them to upload their accommodations. This is done by batch processing. Hosts provide ``.csv`` files to New Horizons with field delimiter ``;``. This tutorial is not about developing Frank configurations, so it is not important to work with a realistic interface. We restrict ourselves to apartments. The information in the columns is the following:
 
 * The product id.
 * The address.
