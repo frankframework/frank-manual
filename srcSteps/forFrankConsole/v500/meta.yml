@@ -11,9 +11,6 @@
     path: configurations/NewHorizons/Configuration.xml
     change: add
 - file:
-    path: configurations/NewHorizons/ConfigurationDatabase.xml
-    change: add
-- file:
     path: configurations/NewHorizons/ConfigurationDestinations.xml
     change: add
 - file:

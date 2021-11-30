@@ -2,13 +2,11 @@
 
    <?xml version="1.0" encoding="UTF-8" ?>
    <!DOCTYPE configuration [
-     <!ENTITY Database SYSTEM "ConfigurationDatabase.xml">
      <!ENTITY Destinations SYSTEM "ConfigurationDestinations.xml">
      <!ENTITY ProcessDestination SYSTEM "ConfigurationProcessDestination.xml">
      <!ENTITY CheckExpiration SYSTEM "ConfigurationCheckExpiration.xml">
    ]>
    <Configuration name="NewHorizons">
-     &Database;
      &Destinations;
      &ProcessDestination;
      &CheckExpiration;
