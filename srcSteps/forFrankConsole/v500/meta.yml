@@ -2,9 +2,6 @@
     path: example.csv
     change: add
 - file:
-    path: classes/Configuration.xml
-    change: add
-- file:
     path: configurations/NewHorizons/BuildInfo.properties
     change: add
 - file:

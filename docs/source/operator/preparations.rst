@@ -15,12 +15,7 @@ As said in section :ref:`frankConsoleNewHorizons`, this chapter on the Frank!Con
 
 #. Check that your directory ``franks`` has a subdirectory ``frank-runner``. 
 #. Within ``franks``, create a subdirectory ``Frank2Manual``.
-#. Within ``franks/Frank2Manual``, create two subdirectories ``classes`` and ``configurations``.
-#. Create file ``franks/Frank2Manual/classes/Configuration.xml`` and give it the following contents:
-
-   .. literalinclude:: ../../../srcSteps/forFrankConsole/v500/classes/Configuration.xml
-      :language: XML
-
+#. Within ``franks/Frank2Manual``, create subdirectory ``configurations``.
 #. Within directory ``franks/frank-runner``, create text file ``build.properties`` and give it the following contents: ::
 
      project.dir=Frank2Manual

@@ -1,5 +1,0 @@
-<Configuration>
-    <jmsRealms>
-        <jmsRealm datasourceName="jdbc/frank2manual" realmName="jdbc"/>
-    </jmsRealms>
-</Configuration>
