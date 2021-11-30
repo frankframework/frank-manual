@@ -39,7 +39,6 @@ As said in section :ref:`frankConsoleNewHorizons`, this chapter on the Frank!Con
         |- configurations
            |- NewHorizons
               |- Configuration.xml
-              |- ConfigurationDatabase.xml
               ...
      |- frank-runner
         |- build.properties
