@@ -280,7 +280,7 @@ Liquibase script does not seem to work with H2 in-memory database
 
 **Question:** I have a Frank config that uses an in-memory H2 database. When I load it into the Frank!Framework I see that there is no IBISSTORE database table, even though the catalina log shows correct execution of Liquibase. If I change the URL to have a file H2 database, the IBISSTORE table is created as it should. How is this possible?
 
-**Answer:** You need to use the correct ``type`` and ``driverClassName ``attributes in the ``<Resource>`` element of ``context.xml``:
+**Answer:** You need to use the correct ``type`` and ``driverClassName`` attributes in the ``<Resource>`` element of ``context.xml``:
 
 .. code-block:: xml
 
