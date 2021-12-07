@@ -103,7 +103,7 @@ Now that you are prepared, you can learn how to organize your test reports. Plea
 
 Please remember that tests also have a name that you can edit (number 4). In older versions of Ladybug this did not work, but in versions 7.5-20191211.175453 and later this issue is fixed.
 
-10. Press Save (number 3 in the figure of step 9) and Close (number 4). You go back to the "Test" tab as shown with number 1 in the picture below:
+10. Press Save (number 3 in the figure of step 8) and Close (number 4). You go back to the "Test" tab as shown with number 1 in the picture below:
 
     .. image:: descriptionAdded.jpg
 
