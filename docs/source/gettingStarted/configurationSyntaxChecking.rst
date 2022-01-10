@@ -20,18 +20,18 @@ Please do the following preparations:
 
       <Module
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
-      <Adapter name="Example1Adapter">
-        <Receiver name="Example1Receiver">
-          <JavaListener name="Example1" serviceName="Example1"/>
-        </Receiver>
-        <Pipeline firstPipe="Example">
-          <FixedResultPipe name="Example" returnString="Hello World1">
-            <Forward name="success" path="EXIT"/>
-          </FixedResultPipe>
-          <Exit path="EXIT" state="success"/>
-        </Pipeline>
-      </Adapter>
+        xsi:noNamespaceSchemaLocation="./FrankConfig.xsd">
+        <Adapter name="Example1Adapter">
+          <Receiver name="Example1Receiver">
+            <JavaListener name="Example1" serviceName="Example1"/>
+          </Receiver>
+          <Pipeline firstPipe="Example">
+            <FixedResultPipe name="Example" returnString="Hello World1">
+              <Forward name="success" path="EXIT"/>
+            </FixedResultPipe>
+            <Exit path="EXIT" state="success"/>
+          </Pipeline>
+        </Adapter>
       </Module>
 
    You should have this file if you successfully followed the instructions of the previous section. You will try syntax checking by editing this file in Visual Studio Code or Eclipse.

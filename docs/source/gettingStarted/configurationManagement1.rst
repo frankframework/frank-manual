@@ -88,13 +88,13 @@ You will split ``Frank2Manual/configurations/Example1/Configuration.xml`` now su
 
       <Module
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+        xsi:noNamespaceSchemaLocation="./FrankConfig.xsd">
 
    You need this text in the next section to have syntax checking in our text editor. It does not influence the way the Frank config works.
    
    .. NOTE::
 
-      These lines mean the following. First comes a namespace declaration to define namespace prefix "xsi". Then the attribute "noNamespaceSchemaLocation" within namespace "http://www.w3.org/2001/XMLSchema-instance" is set to reference an XML schema file named "./ibisdoc.xsd". In the next section you will download this schema file. For more information on XML namespaces see http://www.xmlmaster.org/en/article/d01/c10/#declaration.
+      These lines mean the following. First comes a namespace declaration to define namespace prefix "xsi". Then the attribute "noNamespaceSchemaLocation" within namespace "http://www.w3.org/2001/XMLSchema-instance" is set to reference an XML schema file named "./FrankConfig.xsd". In the next section you will download this schema file. For more information on XML namespaces see http://www.xmlmaster.org/en/article/d01/c10/#declaration.
 
 #. To the end, add the closing ``</Module>`` tag.
 
