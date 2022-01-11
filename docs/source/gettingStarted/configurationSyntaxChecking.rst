@@ -26,10 +26,10 @@ Please do the following preparations:
             <JavaListener name="Example1" serviceName="Example1"/>
           </Receiver>
           <Pipeline firstPipe="Example">
+            <Exit path="EXIT" state="success"/>
             <FixedResultPipe name="Example" returnString="Hello World1">
               <Forward name="success" path="EXIT"/>
             </FixedResultPipe>
-            <Exit path="EXIT" state="success"/>
           </Pipeline>
         </Adapter>
       </Module>
@@ -41,20 +41,15 @@ Frank configuration schema
 
 Please do the following to download the Frank configuration schema:
 
-#. Click "Webservices" as shown in the figure below:
+#. Click "Frank!Doc" as shown in the figure below:
 
-   .. image:: webservicesMenu.jpg
+   .. image:: frankDocMenu.jpg
 
-#. Click "IbisDoc":
+#. The Frank!Doc web application opens. Click "Download XSD":
 
-   .. image:: webservicesPage.jpg
+   .. image:: frankDocDownloadXsd.jpg
 
-#. Right-click "ibisdoc.xsd" (number 1 in the picture below):
-
-   .. image:: ibisDocFiles.jpg
-
-#. A menu appears that lets you choose what to do with "ibisdoc.xsd".
-#. Put file ``ibisdoc.xsd`` in the same directory as ``ConfigurationExample1Adapter.xml``.
+#. You should have a file ``FrankFramework-7.7-20220110.185459.xsd`` in your downloads folder. The version and the date in the file name are probably different. Please copy this file to ``FrankConfig.xsd`` in the directory of your configuration ``Example1``.
 
 Frank!Doc
 ---------
