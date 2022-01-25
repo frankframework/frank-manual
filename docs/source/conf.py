@@ -61,4 +61,8 @@ html_css_files = [
     'css/custom.css',
 ]
 
+html_js_files = [
+    'js/dummy.js'
+]
+
 master_doc = 'index'
