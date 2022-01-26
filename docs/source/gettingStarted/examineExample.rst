@@ -30,18 +30,13 @@ Please do the following:
               |- configurations
                  |- Example1
                     |- Configuration.xml
-                    |- StageSpecifics_LOC.properties
+                    |- ...
                  |- Example2
                     |- Configuration.xml
+                    |- ...
               |- tests
                  |- ...
-           |- Frank2Example2
-              |- classes
-                 |- ...
-              |- configurations
-                 |- ...
-              |- tests
-                 |- ...
+           |- ...
         |- ...
 
 #. Check that you do NOT have ``franks/frank-runner/build.properties`` at this point. You will study the default Frank, which is in the directory ``franks/frank-runner/examples/Frank2Example1``.
@@ -52,20 +47,20 @@ The main menu
 
 7. Start a webbrowser and browse to http://localhost. To the left, you see the following menu:
 
-   .. image:: mainMenuExtended.jpg
+   .. image:: mainMenu.jpg
 
 #. By default, you are in the "Adapter Status" page (number 1). You also see "Testing" (number 2). Please click it to expand it.
 #. You see "Larva", "Ladybug", "Test Pipeline" and "Test serviceListener". You will examine the first three of these in this :ref:`gettingStarted`.
 #. You also have "JDBC" (number 3), which stands for "Java DataBase Connectivity". This link can also be expanded by clicking it. Here you can find pages to manage your database.
-#. You will soon examine the "Webservices" page (number 4). Here you can find some resources that help you to write proper Frank configurations.
-#. Finally, the "Environment Variables" page (number 5) is relevant. Here you can find many properties configured within your Frank.
+#. You will soon examine the "Frank!Doc" page (number 5). Here you can find some resources that help you to write proper Frank configurations.
+#. Finally, the "Environment Variables" page (number 4) is relevant. Here you can find many properties configured within your Frank.
 
 General structure of the example Frank
 --------------------------------------
 
-Let us now investigate the general structure of the ``Frank2Example1`` application, or as we say the ``Frank2Example1`` Frank. 
+Let us now investigate the general structure of the ``Frank2Example1`` application. 
 
-13. Look at the "Adapter Status" page. You see you really do have the ``Frank2Example1`` Frank (number 2 in the figure below):
+13. Look at the "Adapter Status" page. You see you really do have the ``Frank2Example1`` Frank-application (number 2 in the figure below):
 
     .. image:: adapterStatusTopLeft.jpg
 
@@ -73,13 +68,13 @@ Let us now investigate the general structure of the ``Frank2Example1`` applicati
 
    .. NOTE::
 
-      You will encounter words like Ibis and IAF a lot. WeAreFrank! was recently renamed, which was a good moment to rename their products. Implementing these name changes is not yet finished. The words are related to the old names.
+      You will encounter words like Ibis and IAF sometimes. The name of our company became WeAreFrank! by the end of 2019, which was a good moment to rename our products. Implementing these name changes is not yet finished. The words are related to the old names.
 
 #. You saw earlier that the directory ``franks/frank-runner/examples/Frank2Example1/configurations`` has two subdirectories, namely ``Example1`` and ``Example2``. These appear as tabs (number 3 and number 4). These are Frank configurations.
 
 Frank configurations are meant to be independent of the Frank!Framework instance on which they are deployed. This situation is comparable to software packages in general, which are independent of the specific server on which they are deployed. An example of a software package is Microsoft Word. Everyone who wants this application uses the same installer, independent of the computer on which Microsoft Word is installed.
 
-You as a Frank developer develop a Frank config, which plays the role of a software package in the above metaphor. When you are done, you hand over your Frank config to your customer. The customer has her own production instance of the Frank!Framework, which plays the role of the server. The system administrator deploys your Frank config on the production instance. She can fine-tune the behavior of your Frank config by adding additional configurations on the instance level.
+You as a Frank developer develop a Frank config, which plays the role of a software package in the above metaphor. When you are done, you hand over your Frank config to your customer. The customer has his own production instance of the Frank!Framework, which plays the role of the server. The system administrator deploys your Frank config on the production instance. He can fine-tune the behavior of your Frank config by adding additional configurations on the instance level.
 
 .. NOTE::
 
@@ -105,7 +100,7 @@ System administrators may want to check the sources of the Frank configs they se
 
 22. In the main menu, choose "Environment Variables" (number 5 in the figure below).
 
-    .. image:: mainMenuExtended.jpg
+    .. image:: mainMenu.jpg
 
 #. Press Ctrl-F to search on this page. In the search field, type ``configurations.names``. Iterate over the search results until you see the following properties: "configurations.directory", "configurations.Example1.classLoaderType", "configurations.Example2.classLoaderType" and "configurations.names".
 
