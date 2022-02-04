@@ -50,7 +50,7 @@ The main menu
    .. image:: mainMenu.jpg
 
 #. By default, you are in the "Adapter Status" page (number 1). You also see "Testing" (number 2). Please click it to expand it.
-#. You see "Larva", "Ladybug", "Test Pipeline" and "Test serviceListener". You will examine the first three of these in this :ref:`gettingStarted`.
+#. You see "Larva", "Ladybug", "Test Pipeline" and "Test serviceListener". You will examine the first three of these in section :ref:`gettingStartedTestPipelines`.
 #. You also have "JDBC" (number 3), which stands for "Java DataBase Connectivity". This link can also be expanded by clicking it. Here you can find pages to manage your database.
 #. You will soon examine the "Frank!Doc" page (number 5). Here you can find some resources that help you to write proper Frank configurations.
 #. The "Environment Variables" page (number 4) is relevant. Here you can find many properties configured within your Frank.

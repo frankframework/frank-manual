@@ -14,15 +14,11 @@ If you want, you can download the solutions. There are separate download links f
 
    examineExample
    helloIbis
-   helloTestPipeline
-   helloLarva
-   configurationManagement1
-   configurationSyntaxChecking
+   testPipelines
    newHorizons
    horizonsInterfaces
    horizonsInitialData
    horizonsValidateBooking
-   horizonsLarvaExercise
    horizonsInsertDb
    horizonsTransform
    horizonsForEach

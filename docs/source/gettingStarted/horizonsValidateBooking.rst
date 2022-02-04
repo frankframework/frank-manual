@@ -22,7 +22,7 @@ Before doing something with a booking XML, the ingest booking adapter should che
 
       This schema does not check all possible requirements for a booking to be valid. It does not check that the start date of a visit is before its end date. More advanced checks are possible, but then you need features that are new in XML Schema version 1.1. These features are explained at https://www.altova.com/blog/what-s-new-in-xml-schema-11/. The Frank!Framework supports XML Schema 1.1, but you need a commercial text editor to use the new features. With a free text editor, you will not have syntax checking while working on your advanced XSD file.
 
-      To have syntax checking as explained at the end of section :ref:`configurationSyntaxChecking` with a free text exitor, you have to stick to XML Schema version 1.0. We do so in this tutorial.
+      To have syntax checking with a free text exitor, you have to stick to XML Schema version 1.0. We do so in this tutorial.
 
 #. We will write our adapter in its own file that will be named ``ConfigurationIngestBooking.xml``. The Frank!Framework will read file ``Configuration.xml``, so that file needs to include ``ConfigurationIngestBooking.xml``. Please open ``NewHorizons/Configuration.xml`` and update it as shown:
 
@@ -117,7 +117,7 @@ Final remarks (Windows and Linux)
 
 The HTTP request includes a HTTP header ``Content-Type: application/xml``. You need this header because the ingest booking adapter uses listener ``<ApiListener>``. Use another listener if you want to omit the header from the request.
 
-The exit path ``Exit`` corresponds to code ``201`` and state ``success``. This exit state ``success`` does not appear in the HTTP response. You can see it if you use the "Test Pipeline" page in the console, see section :ref:`helloTestPipeline`.
+The exit path ``Exit`` corresponds to code ``201`` and state ``success``. This exit state ``success`` does not appear in the HTTP response. You can see it if you use the "Test Pipeline" page in the console, see section :ref:`gettingStartedTestPipelines`.
 
 Please test your adapter with XML documents that do not satisfy ``booking.xsd`` or with text that is not valid XML. You should see the message ``Input booking does not satisfy booking.xsd`` and HTTP status code ``500``.
 

@@ -48,5 +48,5 @@ The Frank!Framework defines a pipe ``<XsltPipe>`` that does XSLT transformations
 
    .. include:: ../snippets/NewHorizons/v470/addXsltPipe.txt
 
-The pipe shown above has attribute ``getInputFromSessionKey="originalMessage"``. You may remember session keys from section :ref:`helloTestPipeline`. They are name/value pairs that accompany the message flowing through the pipeline. The ``<XsltPipe>`` should not use the output of its predecessor with ``name`` attribute ``insertBooking``. As said in the previous section, the output of that pipe is an XML coming from the database that expresses the result of the INSERT query. Session key ``originalMessage`` points to    the original input message of the pipeline, which is what we need.
+The pipe shown above has attribute ``getInputFromSessionKey="originalMessage"``. Session keys are name/value pairs that accompany the message flowing through the pipeline. They are visible in Ladybug reports, see :ref:`gettingStartedTestPipelines`. The ``<XsltPipe>`` should not use the output of its predecessor with ``name`` attribute ``insertBooking``. As said in the previous section, the output of that pipe is an XML coming from the database that expresses the result of the INSERT query. Session key ``originalMessage`` points to the original input message of the pipeline, which is what we need.
 

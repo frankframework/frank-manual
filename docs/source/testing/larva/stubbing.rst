@@ -41,10 +41,7 @@ Frank2Hermes is a web application that receives address requests. Hermes is conf
 
 The shown behavior has been implemented in a Frank config "hermesBridge". Please examine this configuration as follows:
 
-#. Install the Frank!Runner as explained in section :ref:`horizonsMultipleFiles`.
-#. Download :download:`Hermes Bridge <../../downloads/configurations/hermesBridge.zip>`.
-#. Deploy this configuration to your Frank2Manual instance.
-#. Start the Frank!Runner.
+#. Download :download:`Hermes Bridge <../../downloads/configurations/hermesBridge.zip>` and deploy it in a development environment that uses the Frank!Runner.
 #. Browse to http://localhost. You see the Adapter Status page.
 #. Expand "adapterToConscience". You should see the following:
 

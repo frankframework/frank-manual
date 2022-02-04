@@ -22,13 +22,15 @@ relational database for further processing.
 
 To get started, please do the following:
 
-#. You will put your work for NewHorizons in a dedicated Frank configuration. You will store it in the directory ``franks/Frank2Manual/configurations/NewHorizons`` (see subsection :ref:`horizonsMultipleFilesSetUpYourInstance` about the directory tree). In that ``NewHorizons`` directory, open a new file ``Configuration.xml``.
+#. In the ``franks`` directory you created in :ref:`frankRunnerInstallation`, add a new project directory ``Frank2Manual``. Within that directory, create ``configurations/NewHorizons`` for the configuration you are going to create.
+#. In the ``NewHorizons`` directory, open a new file ``Configuration.xml``.
 #. Give that file the following contents:
 
    .. literalinclude:: ../../../srcSteps/NewHorizons/v390/configurations/NewHorizons/Configuration.xml
       :language: xml
 
-#. To check this step, please start the Frank!Framework.
-#. Go to the Adapter Status page. You should see a tab "NewHorizons".
+Please take your time to configure your development environment. The `GitHub page of the Frank!Runner <https://github.com/ibissource/frank-runner>`_ contains all the information you need. You will use the non-Maven directory structure that is explained there. You can see how to work with ``FrankConfig.xsd`` and the code completion and syntax checking that it supports. You can also see how you can easily start the Frank!Runner during development.
+
+4. To check these steps, please start the Frank!Framework and go to the Adapter Status page. You should see a tab "NewHorizons".
 
 The details of what we want to build are in the next section.

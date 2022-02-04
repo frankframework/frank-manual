@@ -121,4 +121,4 @@ When you want to send data to an external system, you use pipe ``<SenderPipe>`` 
 Conclusion
 ----------
 
-You studied a simple adapter that is included as an example within the Frank!Runner. It has a receiver that allows us to trigger it. It has a pipeline with a single pipe that outputs a fixed message. In the next section, :ref:`helloTestPipeline`, we will see this adapter in action and we will learn how to test pipelines.
+You studied a simple adapter that is included as an example within the Frank!Runner. It has a receiver that allows us to trigger it. It has a pipeline with a single pipe that outputs a fixed message. In the next section, :ref:`gettingStartedTestPipelines`, we will see this adapter in action and we will learn how to test pipelines.

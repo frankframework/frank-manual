@@ -39,7 +39,7 @@ Please do the following:
 
    If you need a different directory for storing your Ladybug test reports, you can configure it by setting property ``ibistesttool.directory``. When you set this property, the directory of Larva is not modified; you get separate directories for Ladybug and Larva by setting this property.
 
-   By default, the directory of stored Ladybug test reports is shared with Larva tests, which are explained in section :ref:`gettingStartedLarva`. You need to distinguish Larva files from Ladybug files, because you have to keep your Ladybug files together. You can recognize your Ladybug test report files as follows:
+   By default, the directory of stored Ladybug test reports is shared with Larva tests. You need to distinguish Larva files from Ladybug files, because you have to keep your Ladybug files together. You can recognize your Ladybug test report files as follows:
 
    * ``metadata.xml`` is part of your Ladybug test reports.
    * Every file ending with ``.report.xml`` belongs to the Ladybug test reports.

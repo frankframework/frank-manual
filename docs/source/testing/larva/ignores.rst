@@ -3,7 +3,7 @@
 Ignores
 ========
 
-As explained in section :ref:`gettingStartedLarva`, Larva-tests verify if values that are read from the tested Frank configuration are equal to the expected constant values. However, some tested systems produce different results each time that they are executed, even though the inputs are the same. Examples are systems that return a time stamp. In Larva, you can address this issue using ignores. With ignores, values returned from the tested system are transformed, before they are compared to the expected value. As a Frank developer, you have to choose these transformations wisely and retain meaningful aspects of your returned value. 
+Larva-tests verify whether values that are read from the tested Frank configuration are equal to the expected constant values. However, some tested systems produce different results each time that they are executed, even though the inputs are the same. Examples are systems that return a time stamp. In Larva, you can address this issue using ignores. With ignores, values returned from the tested system are transformed, before they are compared to the expected value. As a Frank developer, you have to choose these transformations wisely and retain meaningful aspects of your returned value. 
 
 This section gives an overview of the transformations (ignores) that are available to you. Below is an overview table followed by explanation and examples for every transformation.
 

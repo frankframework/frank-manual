@@ -39,7 +39,7 @@ Please test your work as follows:
 
 #. Copy the booking XML presented in :ref:`horizonsInterfaces` to some file.
 #. Edit that file to update the ``id`` attribute of the ``<booking>`` element. This corresponds to the primary key of database table "booking". You need a value that differs from the values you applied so far.
-#. In the Frank!Console, go to Testing | Test Pipeline. Run the "IngestBooking" adapter with your booking XML. See section :ref:`helloTestPipeline` for details.
+#. In the Frank!Console, go to Testing | Test Pipeline. Run the "IngestBooking" adapter with your booking XML. See section :ref:`gettingStartedTestPipelines` for details.
 
 The response should be something like the following:
 
