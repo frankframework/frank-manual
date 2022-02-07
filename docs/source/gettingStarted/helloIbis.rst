@@ -6,9 +6,9 @@ Hello World Source Code
 Introduction
 ------------
 
-In the previous section you installed the Frank!Runner, a tool to quickly start the Frank!Framework. You saw the directory structure resulting from this installation. There was subdirectory ``configurations`` with subdirectories ``Example1a`` and ``Example1b``, which are deployed Frank configs. These directories contain files with extension ``.xml`` and files with extension ``.properties``. XML stands for Extensible Markup Language, see https://www.w3.org/XML/. Property files are text files that contain name/value pairs. In this section you start learning how to write these files.
+In the previous section you installed the Frank!Runner, a tool to quickly start the Frank!Framework. You saw the directory structure resulting from this installation. There was subdirectory ``configurations`` with subdirectories ``Example1a`` and ``Example1b``, which were deployed Frank configs.
 
-The configurations Example1a and Example1b that you encountered in the previous section are almost the same. You will examine the ``Configuration.xml`` of Example1a. It reads as follows:
+These directories contain files with extension ``.xml`` and files with extension ``.properties``. XML stands for Extensible Markup Language, see https://www.w3.org/XML/. Property files are text files that contain name/value pairs. In this section you start learning how to write these files. The configurations Example1a and Example1b that you encountered in the previous section are almost the same. You will examine the ``Configuration.xml`` of Example1a. It reads as follows:
 
 .. code-block:: XML
 
@@ -112,7 +112,7 @@ A pipeline is a network of pipes. Pipes are predefined functions that can be per
 
 The ``<Forward>`` within a pipe tag defines what should happen after the execution of that pipe. A forward consists of a forward name and a path. Each pipe predefines the forward names from which it can send the output. For the fixed result pipe, the only possibility is "success", but many pipes also have the possibility "failure". This allows Frank developers to handle errors and to have branching pipelines. The ``<Forward>`` tag within the ``<FixedResultPipe>`` references the path "EXIT", which is the path of the ``<Exit>`` tag. The output of the ``<FixedResultPipe>`` is the result of the pipeline. In more complex pipelines, there are also forwards that reference other pipes by their configured ``name`` attribute. It is also possible to have multiple ``<Exit>`` tags within a ``<Pipeline>``.
 
-The shown example pipeline only transform the incoming message to an output message, but you can also send output to external systems. Please see the following screenshot of the Frank!Doc:
+The shown example pipeline only transforms the incoming message to an output message, but you can also send output to external systems. Please see the following screenshot of the Frank!Doc:
 
 .. image:: frankDocSenderPipe.jpg
 
@@ -121,4 +121,6 @@ When you want to send data to an external system, you use pipe ``<SenderPipe>`` 
 Conclusion
 ----------
 
-You studied a simple adapter that is included as an example within the Frank!Runner. It has a receiver that allows us to trigger it. It has a pipeline with a single pipe that outputs a fixed message. In the next section, :ref:`gettingStartedTestPipelines`, we will see this adapter in action and we will learn how to test pipelines.
+You studied a simple adapter that is included as an example within the Frank!Runner. It shows the basic structure of a Frank configuration, which consists of XML tags ``<Configuration>``, ``<Adapter>``, ``<Receiver>``, ``<Pipeline>``, ``<Forward>`` and ``<Exit>``. Within a ``<Receiver>``, you configure a listener that determines the source of the input message. Within a ``<Pipeline>``, you configure how the input message is processed. You do so by building a network of pipes as the predefined building blocks. Pipes are connected with ``<Forward>`` tags that have a ``name`` attribute and a ``path`` attribute. The ``path`` references the next pipe or exit and the ``name`` determines when this link is accessed. The Frank!Doc gives reference information about all these tags. It defines groups that you can use to browse all pipes and all listeners. There is also a group for all senders, which are used to send messages to external systems.
+
+In the next section, :ref:`gettingStartedTestPipelines`, we will see the examined adapter in action and we will learn how to test pipelines.

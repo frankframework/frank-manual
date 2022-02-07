@@ -21,11 +21,8 @@
 # .zip archive.
 
 srcSteps/NewHorizons/v500/configurations/NewHorizons configurations/NewHorizons
-srcSteps/NewHorizons/v500/tests/NewHorizons tests/NewHorizons
 srcSteps/NewHorizons/v410/configurations/NewHorizons configurations/NewHorizonsDatabase
 srcSteps/NewHorizons/v440/configurations/NewHorizons configurations/NewHorizonsValidate
-srcSteps/NewHorizons/v450/configurations/NewHorizons configurations/NewHorizonsLarva
-srcSteps/NewHorizons/v450/tests/NewHorizons tests/NewHorizonsLarva
 srcSteps/NewHorizons/v460/configurations/NewHorizons configurations/NewHorizonsOnlyTableBooking
 srcSteps/ladybugInstance/v500/configurations/ladybug
 srcSteps/ladybugInstance/v500/classes extendLadybugTable

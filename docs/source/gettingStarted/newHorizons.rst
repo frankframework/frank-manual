@@ -3,10 +3,8 @@
 Example: New Horizons
 =====================
 
-In the remaining sections of :ref:`gettingStarted` , we consider a
-more interesting example than outputting a fixed string.
-
-We consider an imaginary firm New Horizons. New Horizons allows 
+In the remaining sections of this Getting Started chapter, you will
+be guided to build a Frank configuration yourself. Your configuration will serve an imaginary firm New Horizons. New Horizons allows 
 travelers to book travels online, which constitute visits to 
 hotels, apartments, campings or any other place where travelers 
 can sleep. New Horizons makes traveling easier, because the 
@@ -15,7 +13,7 @@ with the individual hosts. New Horizons takes the responsibility
 of paying them.
 
 Of course New Horizons has many user stories. In the
-:ref:`gettingStarted` , we focus on a very specific
+:ref:`gettingStarted`, we focus on a very specific
 task. A booking accepted by New Horizons, which can
 constitute multiple visits, should be stored in a 
 relational database for further processing.

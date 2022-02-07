@@ -81,7 +81,7 @@ The sources of your Frank configs
 
 System administrators may want to check the sources of the Frank configs they see. Doing this is also relevant for Frank developers who want to debug their work. Please do the following:
 
-17. In the main menu, choose "Environment Variables" (number 5 in the figure below).
+17. In the main menu, choose "Environment Variables" (number 4 in the figure below).
 
     .. image:: mainMenu.jpg
 

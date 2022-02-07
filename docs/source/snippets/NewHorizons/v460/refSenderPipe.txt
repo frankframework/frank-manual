@@ -4,7 +4,7 @@
    ...
        root="booking"
        schema="booking.xsd">
-     <Forward name="success" path="insertBooking" />
-     <Forward name="failure" path="makeInvalidBookingError" />
+     <Forward name="SUCCESS" path="insertBooking" />
+     <Forward name="FAILURE" path="makeInvalidBookingError" />
    </XmlValidatorPipe>
    ...

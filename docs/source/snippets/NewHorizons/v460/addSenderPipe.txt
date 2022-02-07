@@ -2,7 +2,7 @@
    :emphasize-lines: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
 
    ...
-         <Forward name="success" path="ServerError"/>
+         <Forward name="SUCCESS" path="ServerError"/>
        </FixedResultPipe>
        <SenderPipe
            name="insertBooking">
@@ -15,8 +15,8 @@
            <Param name="price" xpathExpression="/booking/price" />
            <Param name="fee" xpathExpression="/booking/fee" />
          </FixedQuerySender>
-         <Forward name="success" path="Exit" />
-         <Forward name="failure" path="ServerError" />
+         <Forward name="SUCCESS" path="Exit" />
+         <Forward name="EXCEPTION" path="ServerError" />
        </SenderPipe>
      </Pipeline>
    </Adapter>

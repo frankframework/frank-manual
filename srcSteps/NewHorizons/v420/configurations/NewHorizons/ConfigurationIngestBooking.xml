@@ -1,6 +1,6 @@
 <Module
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
   <Adapter name="IngestBooking">
     <Receiver name="input">
       <ApiListener

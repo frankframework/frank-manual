@@ -1,6 +1,6 @@
 <Module
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
   <Adapter name="IngestBooking">
     <Receiver name="input">
       <ApiListener
@@ -9,19 +9,19 @@
           method="POST"/>
     </Receiver>
     <Pipeline firstPipe="checkInput">
-      <Exit path="Exit" state="success" code="201" />
-      <Exit path="ServerError" state="failure" code="500" />
+      <Exit path="Exit" state="SUCCESS" code="201" />
+      <Exit path="ServerError" state="ERROR" code="500" />
       <XmlValidatorPipe
           name="checkInput"
           root="booking"
           schema="booking.xsd">
-        <Forward name="success" path="insertBooking" />
-        <Forward name="failure" path="makeInvalidBookingError" />
+        <Forward name="SUCCESS" path="insertBooking" />
+        <Forward name="FAILURE" path="makeInvalidBookingError" />
       </XmlValidatorPipe>
       <FixedResultPipe
           name="makeInvalidBookingError"
           returnString="Input booking does not satisfy booking.xsd">
-        <Forward name="success" path="ServerError"/>
+        <Forward name="SUCCESS" path="ServerError"/>
       </FixedResultPipe>
       <SenderPipe
           name="insertBooking">
@@ -35,8 +35,8 @@
           <Param name="price" xpathExpression="/booking/price" />
           <Param name="fee" xpathExpression="/booking/fee" />
         </FixedQuerySender>
-        <Forward name="success" path="Exit" />
-        <Forward name="failure" path="ServerError" />
+        <Forward name="SUCCESS" path="Exit" />
+        <Forward name="EXCEPTION" path="ServerError" />
       </SenderPipe>
     </Pipeline>
   </Adapter>

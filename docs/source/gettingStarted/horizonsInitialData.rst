@@ -75,4 +75,4 @@ You can test your work by querying the tables you created, "booking" and "visit"
 Solution
 --------
 
-If you did not get your database working, you can :download:`download <../downloads/configurations/NewHorizonsDatabase.zip>` the solution for the work you did so far. Before using these files, please put them in the directory structure explained earlier.
+If you did not get your database working, you can :download:`download <../downloads/configurations/NewHorizonsDatabase.zip>` the solution for the work you did so far.

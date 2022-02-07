@@ -7,15 +7,15 @@
              name="getDestinations"
              styleSheetName="booking2destinations.xsl"
              getInputFromSessionKey="originalMessage">
-           <Forward name="success" path="iterateDestinations"/>
-           <Forward name="failure" path="ServerError"/>
+           <Forward name="SUCCESS" path="iterateDestinations"/>
+           <Forward name="EXCEPTION" path="ServerError"/>
          </XsltPipe>
          <ForEachChildElementPipe
              name="iterateDestinations"
              elementXPathExpression="/destinations/destination">
              <!-- You will add your sender here -->
-           <Forward name="success" path="Exit"/>
-           <Forward name="failure" path="ServerError"/>
+           <Forward name="SUCCESS" path="Exit"/>
+           <Forward name="EXCEPTION" path="ServerError"/>
          </ForEachChildElementPipe>
        </Pipeline>
      </Adapter>
