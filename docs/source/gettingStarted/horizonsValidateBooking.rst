@@ -6,7 +6,7 @@ Validating XML against Schema
 Introduction
 ------------
 
-In this section you start developing the adapter that the imaginary company New Horizons needs, continuing the case study started in  section :ref:`newHorizons`. The adapter will process an XML document with a valid booking, see section :ref:`horizonsInterfaces` for an example. It will write the booking to the database tables "booking" and "visit" you created in section :ref:`databaseInitialization`. If you did not do the previous sections, you can :download:`download <../downloads/configurations/NewHorizonsDatabase.zip>` that work and continue here from your download.
+In this section you start developing the adapter that the imaginary company New Horizons needs, continuing the case study started in section :ref:`newHorizons`. The adapter will process an XML document with a valid booking, see section :ref:`horizonsInterfaces` for an example. It will write the booking to the database tables "booking" and "visit" you created in section :ref:`databaseInitialization`. If you did not do the previous sections, you can :download:`download <../downloads/configurations/NewHorizonsDatabase.zip>` that work and continue here from your download.
 
 The ingest booking adapter
 --------------------------
@@ -24,18 +24,14 @@ Before doing something with a booking XML, the ingest booking adapter should che
 
       To have syntax checking with a free text exitor, you have to stick to XML Schema version 1.0. We do so in this tutorial.
 
-#. We will write our adapter in its own file that will be named ``ConfigurationIngestBooking.xml``. The Frank!Framework will read file ``Configuration.xml``, so that file needs to include ``ConfigurationIngestBooking.xml``. Please open ``NewHorizons/Configuration.xml`` and update it as shown:
+#. Extend ``Configuration.xml`` as shown below:
 
-   .. include:: ../snippets/NewHorizons/v420/snippetAddConfigurationIngestBooking.txt
-
-#. Please create file ``NewHorizons/ConfigurationIngestBooking.xml``. Put the following contents:
-
-   .. literalinclude:: ../../../srcSteps/NewHorizons/v420/configurations/NewHorizons/ConfigurationIngestBooking.xml
+   .. literalinclude:: ../snippets/NewHorizons/v420/snippetAddAdapterAndReceiver.txt
       :language: XML
 
-You start with a ``<Module>`` tag. It is there to satisfy XML schema ``ibisdoc.xsd``, which allows your text editor to provide automatic code completion. The adapter starts with a ``<Receiver>`` that contains an ``<ApiListener>``. The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests. The attribute ``method="POST"`` makes it listen to HTTP POST requests. The ``uriPattern="booking"`` attribute defines the relative path to which the adapter listens. The Frank!Framework extends this path to be http://localhost/api/booking.
+The adapter starts with a ``<Receiver>`` that contains an ``<ApiListener>``. The choice for ``<ApiListener>`` makes the adapter listen to REST HTTP requests. The attribute ``method="POST"`` makes it listen to HTTP POST requests. The ``uriPattern="booking"`` attribute defines the relative path to which the adapter listens. The Frank!Framework extends this path to be http://localhost/api/booking.
 
-4. The Frank!Framework defines a pipe ``<XmlValidatorPipe>`` that checks the incoming message against an XML Schema. We use it in our adapter. Please update ``ConfigurationIngestBooking.xml`` as shown:
+4. The Frank!Framework defines a pipe ``<XmlValidatorPipe>`` that checks the incoming message against an XML Schema. We use it in our adapter. Please update ``Configuration.xml`` as shown:
 
    .. include:: ../snippets/NewHorizons/v430/addPipeline.txt
 
@@ -78,7 +74,7 @@ Your adapter listens to REST HTTP requests. If you are working under Windows, yo
 
 #. In the message field (number 2), copy/paste the following XML:
 
-   .. literalinclude:: ../../../srcSteps/NewHorizons/v450/tests/NewHorizons/scenario01/validBooking.xml
+   .. literalinclude:: validBooking.xml
       :language: XML
 
 #. Press "Send" (number 3 in the figure).

@@ -1,7 +1,47 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration [
-  <!ENTITY IngestBooking SYSTEM "ConfigurationIngestBooking.xml">
-]>
-<Configuration name="NewHorizons">
-  &IngestBooking;
+<Configuration
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+  <Adapter name="IngestBooking">
+    <Receiver name="input">
+      <ApiListener
+          name="inputListener"
+          uriPattern="booking"
+          method="POST"/>
+    </Receiver>
+    <Pipeline firstPipe="checkInput">
+      <Exit path="Exit" state="SUCCESS" code="201" />
+      <Exit path="BadRequest" state="ERROR" code="400" />
+      <XmlValidatorPipe
+          name="checkInput"
+          root="booking"
+          schema="booking.xsd">
+        <Forward name="success" path="insertBooking" />
+        <Forward name="failure" path="makeInvalidBookingError" />
+      </XmlValidatorPipe>
+      <FixedResultPipe
+          name="makeInvalidBookingError"
+          returnString="Input booking does not satisfy booking.xsd">
+        <Forward name="success" path="BadRequest"/>
+      </FixedResultPipe>
+      <SenderPipe
+          name="insertBooking">
+        <FixedQuerySender
+            name="insertBookingSender"
+            query="INSERT INTO booking VALUES(?, ?, ?, ?)"
+            datasourceName="jdbc/${instance.name.lc}">
+          <Param name="id" xpathExpression="/booking/@id" />
+          <Param name="travelerId" xpathExpression="/booking/travelerId" />
+          <Param name="price" xpathExpression="/booking/price" />
+          <Param name="fee" xpathExpression="/booking/fee" />
+        </FixedQuerySender>
+        <Forward name="success" path="getDestinations" />
+      </SenderPipe>
+      <XsltPipe
+          name="getDestinations"
+          styleSheetName="booking2destinations.xsl"
+          getInputFromSessionKey="originalMessage">
+        <Forward name="success" path="Exit"/>
+      </XsltPipe>
+    </Pipeline>
+  </Adapter>
 </Configuration>

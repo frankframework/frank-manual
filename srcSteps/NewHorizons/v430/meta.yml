@@ -2,7 +2,7 @@
     path: configurations/NewHorizons/booking.xsd
     change: add
 - file:
-    path: configurations/NewHorizons/ConfigurationIngestBooking.xml
+    path: configurations/NewHorizons/Configuration.xml
     change:
         - insert: 11
           highlight: true

@@ -1,4 +1,7 @@
 - file:
+    path: configurations/NewHorizons/Configuration.xml
+    change: add
+- file:
     path: configurations/NewHorizons/DatabaseChangelog.xml
     change: add
 - file:

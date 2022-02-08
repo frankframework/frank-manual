@@ -6,14 +6,14 @@
              name="checkInput"
              root="booking"
              schema="booking.xsd">
-           <Forward name="SUCCESS" path="Exit" />
-           <Forward name="FAILURE" path="makeInvalidBookingError" />
+           <Forward name="success" path="Exit" />
+           <Forward name="failure" path="makeInvalidBookingError" />
          </XmlValidatorPipe>
          <FixedResultPipe
              name="makeInvalidBookingError"
              returnString="Input booking does not satisfy booking.xsd">
-           <Forward name="SUCCESS" path="ServerError"/>
+           <Forward name="success" path="BadRequest"/>
          </FixedResultPipe>
        </Pipeline>
      </Adapter>
-   </Module>
+   </Configuration>

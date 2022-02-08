@@ -1,4 +1,0 @@
-.. code-block:: none
-
-   jdbc.migrator.active=true
-   stub4testtool.configuration=true
