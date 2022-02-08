@@ -24,7 +24,7 @@ To get started, please do the following:
 #. In the ``NewHorizons`` directory, open a new file ``Configuration.xml``.
 #. Give that file the following contents:
 
-   .. literalinclude:: ../../../srcSteps/NewHorizons/v390/configurations/NewHorizons/Configuration.xml
+   .. literalinclude:: ../../../srcSteps/NewHorizons/v410/configurations/NewHorizons/Configuration.xml
       :language: xml
 
 Please take your time to configure your development environment. The `GitHub page of the Frank!Runner <https://github.com/ibissource/frank-runner>`_ contains all the information you need. You will use the non-Maven directory structure that is explained there. You can see how to work with ``FrankConfig.xsd`` and the code completion and syntax checking that it supports. You can also see how you can easily start the Frank!Runner during development.
