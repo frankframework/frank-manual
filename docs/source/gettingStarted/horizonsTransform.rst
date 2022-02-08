@@ -38,12 +38,12 @@ If there were multiple destinations, the second ``<destination>`` would contain
 This can be done with an XSLT transformation, see https://www.w3schools.com/xml/xsl_intro.asp.
 The Frank!Framework defines a pipe ``<XsltPipe>`` that does XSLT transformations. You will use the ``<XsltPipe>`` to extend your adapter to apply the transformation outlined above. Please do the following:
 
-#. Create file ``projects/gettingStarted/configurations/NewHorizons/booking2destinations.xsl`` and give it the following contents:
+#. Create file ``booking2destinations.xsl`` in the same directory as ``Configuration.xml`` and give it the following contents:
 
    .. literalinclude:: ../../../srcSteps/NewHorizons/v470/configurations/NewHorizons/booking2destinations.xsl
       :language: xml
 
-#. Open file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``.
+#. Open file ``Configuration.xml``.
 #. Add the ``<XsltPipe>`` as shown:
 
    .. include:: ../snippets/NewHorizons/v470/addXsltPipe.txt

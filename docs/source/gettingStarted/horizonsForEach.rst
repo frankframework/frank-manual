@@ -14,7 +14,7 @@ A booking can have multiple destinations, each appearing in their
 own ``<destination>`` element. These elements can be iterated
 with the ``<ForEachChildElementPipe>``. Within this pipe you include a sender that is applied to each element, in our case a ``<destination>`` element. Please do the following to do the inserts in table "visit":
 
-#. Please open ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml``.
+#. Please open ``Configuration.xml``.
 #. Add a ``<ForEachChildElementPipe>`` as shown:
 
    .. include:: ../snippets/NewHorizons/v480/addForEachChildElementPipe.txt

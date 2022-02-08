@@ -10,12 +10,12 @@ The Frank!Framework can send data to external systems. This is done by pipe ``<S
 
 As an example, we extend the New Horizons case by writing the "booking" table introduced in section :ref:`horizonsInterfaces`. We use sender ``<FixedQuerySender>`` to specify that we are targeting the database. Please do the following:
 
-#. Please open file ``projects/gettingStarted/configurations/NewHorizons/ConfigurationIngestBooking.xml`` again.
+#. Please open file ``Configuration.xml`` again.
 #. The ``<XmlValidatorPipe>`` you included in the previous section points to path ``Exit`` now. Update it to point to the pipe that will write the database. The highlighted line shows the update:
 
    .. include:: ../snippets/NewHorizons/v460/refSenderPipe.txt
 
-#. Insert the new pipe before the ``</Pipeline>`` tag:
+#. Insert the new pipe after the ``</FixedResultPipe>``:
 
    .. include:: ../snippets/NewHorizons/v460/addSenderPipe.txt
 
