@@ -30,5 +30,7 @@ To get started, please do the following:
 Please take your time to configure your development environment. The `GitHub page of the Frank!Runner <https://github.com/ibissource/frank-runner>`_ contains all the information you need. You will use the non-Maven directory structure that is explained there. You can see how to work with ``FrankConfig.xsd`` and the code completion and syntax checking that it supports. You can also see how you can easily start the Frank!Runner during development.
 
 4. To check these steps, please start the Frank!Framework and go to the Adapter Status page. You should see a tab "NewHorizons".
+#. Check that your directory ``Frank2Manual/configurations`` now contains ``FrankConfig.xsd``, the file referenced within ``Configuration.xml``. Placing this file is the job of the Frank!Runner.
+#. The Frank!Runner should also create a ``.gitignore`` file that ignores ``FrankConfig.xsd`` for checkin. Please check that such a file has been created.
 
 The details of what we want to build are in the next section.
