@@ -62,7 +62,7 @@ html_css_files = [
 ]
 
 html_js_files = [
-    'js/dummy.js'
+    'js/hs-tracking.js'
 ]
 
 master_doc = 'index'
