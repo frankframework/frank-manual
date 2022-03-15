@@ -45,7 +45,7 @@ The outer part of ``Configuration.xml`` reads:
 
 You see that an XML schema file ``FrankConfig.xsd`` is referenced. This file describes the syntax of Frank configurations. It prescribes which XML elements are allowed and what attributes they can have. Some text editors including Visual Studio Code and Eclipse can flag syntax errors. They can also provide automatic code completion. Finally, they can show information about the meaning of the elements and attributes you are using. This information is included in the XSD. The Frank!Runner takes care of downloading ``FrankConfig.xsd`` and putting it in the right directory. Please note the relative path ``../FrankConfig.xsd``. This path references ``FrankConfig.xsd`` from the parent of the directory where ``Configuration.xsd`` resides.
 
-More reference information can be found in the Frank!Doc, which you can access through the main menu (see previous section). Here is a screenshot:
+More information about using ``FrankConfig.xsd`` in your text editor can be found at https://github.com/ibissource/frank-runner; please search for "code completion" on that page. More reference information about the Frank!Framework can be found in the Frank!Doc, which you can access through the main menu (see previous section). Here is a screenshot:
 
 .. image:: frankDoc2.jpg
 
