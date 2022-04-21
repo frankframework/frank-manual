@@ -1,0 +1,6 @@
+- file:
+    path: Frank2Example1/Example1a/Configuration.xml
+    change: add
+- file:
+    path: Frank2Example1/Example1a/StageSpecifics_LOC.properties
+    change: add
