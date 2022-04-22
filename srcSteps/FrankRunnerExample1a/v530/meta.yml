@@ -1,0 +1,14 @@
+- predecessor: v500
+- file:
+    path: Frank2Example1/Example1a/Configuration.xml
+    change:
+      - snippet: receiver
+        old: 5
+        new: 1
+      - snippet: receiver
+        old: 5
+        new: 1
+- snippet:
+    name: receiver
+    markup: XML
+    context: 50

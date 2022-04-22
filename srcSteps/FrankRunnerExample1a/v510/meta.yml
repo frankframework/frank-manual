@@ -1,0 +1,10 @@
+- file:
+    path: Frank2Example1/Example1a/Configuration.xml
+    change:
+    - snippet: onlyConfiguration
+      old: 8
+      new: 1
+- snippet:
+    name: onlyConfiguration
+    markup: XML
+    context: 50
