@@ -1,0 +1,9 @@
+- file:
+    path: pom.xml
+    change:
+      - insert: 18
+        snippet: addPlugin
+- snippet:
+    name: addPlugin
+    markup: xml
+    context: 4
