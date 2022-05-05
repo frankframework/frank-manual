@@ -1,0 +1,33 @@
+- predecessor: v500
+- file:
+    path: src/main/webapp/WEB-INF/web.xml
+    change: add
+- file:
+    path: pom.xml
+    change:
+      - insert: 1
+        snippet: pomPackaging
+      - insert: 6
+        snippet: pomDepBuild
+      - insert: 9
+        snippet: pomDepBuild 
+- file:
+    path: src/main/java/org/wearefrank/maven/webapp/example/Main.java
+    change:
+      - insert: 6
+        snippet: java
+      - old: 3
+        new: 5
+        snippet: java
+- snippet:
+    name: pomPackaging
+    markup: xml
+    context: 3
+- snippet:
+    name: pomDepBuild
+    markup: xml
+    context: 3
+- snippet:
+    name: java
+    markup: none
+    context: 50

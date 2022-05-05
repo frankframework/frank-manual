@@ -222,7 +222,7 @@ class Comparison:
                 currentNewLine += 1
             else:
                 if currentExpectedUpdate >= len(self._expectedUpdates):
-                    self._comparisonError = "Unexpected difference, oldLine = {0}, newLine = {1}".format(currentOldLine, currentNewLine)
+                    self._comparisonError = 'Unexpected difference, oldLine = "{0}", newLine = "{1}"'.format(self._oldLines[currentOldLine], self._newLines[currentNewLine])
                     return
                 actualUpdate = ActualUpdate(self._expectedUpdates[currentExpectedUpdate], currentNewLine)
                 currentOldLine += actualUpdate.getNumOldLines()
