@@ -1,0 +1,34 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.ibissource</groupId>
+	<artifactId>Frank2Webapp</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<ff.version>7.7</ff.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.ibissource</groupId>
+			<artifactId>ibis-adapterframework-webapp</artifactId>
+			<version>${ff.version}</version>
+			<type>war</type>
+		</dependency>
+		<!--
+		Adding core jar can prevent double jars when you add other dependencies to this pom.xml that have dependencies
+		which are different than the same dependencies in Frank!Framework. When core jar is added Maven will compare
+		the versions with the versions specified by the core jar (the webapp doesn't have this effect as it is of type
+		war which is only used as an overlay) -->
+		<dependency>
+			<groupId>org.ibissource</groupId>
+			<artifactId>ibis-adapterframework-core</artifactId>
+			<version>${ff.version}</version>
+		</dependency>
+	</dependencies>
+</project>
