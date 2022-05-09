@@ -7,7 +7,12 @@
             <ApiListener name="hello" uriPattern="hello" />
         </Receiver>
         <Pipeline>
-            <FixedResultPipe name="fixedResult" returnString="Hello World!"></FixedResultPipe>
+            <Exits>
+                <Exit path="READY" state="SUCCESS" />
+            </Exits>
+            <FixedResultPipe name="fixedResult" returnString="Hello World!">
+                <Forward name="success" path="READY" />
+            </FixedResultPipe>
         </Pipeline>
     </Adapter>
 </Configuration>
