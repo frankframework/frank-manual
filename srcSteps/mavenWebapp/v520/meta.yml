@@ -3,6 +3,9 @@
     path: src/main/webapp/WEB-INF/web.xml
     change: add
 - file:
+    path: src/main/webapp/index.html
+    change: add
+- file:
     path: pom.xml
     change:
       - insert: 1
