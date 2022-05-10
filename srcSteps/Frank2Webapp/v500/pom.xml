@@ -79,4 +79,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<!-- Enable F!F SNAPSHOT versions -->
+		<repository>
+			<id>ibissource</id>
+			<name>Ibissource</name>
+			<url>https://nexus.frankframework.org/content/repositories/public</url>
+		</repository>
+	</repositories>
 </project>
