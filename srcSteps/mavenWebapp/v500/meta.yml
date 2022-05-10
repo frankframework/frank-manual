@@ -1,6 +1,10 @@
 - file:
     path: pom.xml
-    change: add
-- file:
-    path: src/main/java/org/wearefrank/maven/webapp/example/Main.java
-    change: add
+    change:
+      - insert: 7
+        snippet: pomDependencies
+        highlight: true
+- snippet:
+    name: pomDependencies
+    context: 50
+    markup: XML

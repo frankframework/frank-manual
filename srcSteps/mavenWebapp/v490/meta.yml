@@ -1,0 +1,10 @@
+- file:
+    path: pom.xml
+    change:
+      - insert: 5
+        snippet: pomAddJavaVersion
+        highlight: true
+- snippet:
+    name: pomAddJavaVersion
+    context: 50
+    markup: xml
