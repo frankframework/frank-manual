@@ -1,0 +1,15 @@
+<Configuration
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="FrankConfig.xsd"
+    name="Frank2Webapp">
+    <Adapter name="hello">
+        <Receiver>
+            <ApiListener name="hello" uriPattern="hello" />
+        </Receiver>
+        <Pipeline>
+            <FixedResultPipe name="fixedResult" returnString="Hello World!">
+                <Forward name="success" path="READY" />
+            </FixedResultPipe>
+        </Pipeline>
+    </Adapter>
+</Configuration>

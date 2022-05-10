@@ -1,0 +1,32 @@
+- file:
+    path: pom.xml
+    change:
+      - insert: 6
+        snippet: pomFiltering
+        highlight: true
+- file:
+    path: src/main/resources/DeploymentSpecifics.properties
+    change:
+      - insert: 3
+        snippet: deploymentSpecificsScenariosroot
+        highlight: true
+- file:
+    path: src/main/resources/StageSpecifics_LOC.properties
+    change: add
+- file:
+    path: src/test/testtool/scenario01.properties
+    change: add
+- file:
+    path: src/test/testtool/scenario01/in.txt
+    change: add
+- file:
+    path: src/test/testtool/scenario01/out.txt
+    change: add
+- snippet:
+    name: pomFiltering
+    markup: xml
+    context: 4
+- snippet:
+    name: deploymentSpecificsScenariosroot
+    markup: none
+    context: 50
