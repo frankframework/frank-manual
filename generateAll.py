@@ -41,4 +41,4 @@ FRANK_CONFIG_XSD = "FrankConfig.xsd"
 
 hasErrors = createAllDownloadZips(downloadsDescriptor, downloadZipsDir, set([META_YML, IBISDOC_XSD, FRANK_CONFIG_XSD]))
 if not hasErrors:
-    createAllSnippets(tutorialStepsDir, snippetsDir, [IBISDOC_XSD])
+    createAllSnippets(tutorialStepsDir, snippetsDir, [IBISDOC_XSD, FRANK_CONFIG_XSD])
