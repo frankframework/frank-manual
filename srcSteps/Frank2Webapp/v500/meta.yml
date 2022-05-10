@@ -4,3 +4,6 @@
 - file:
     path: src/main/resources/Configuration.xml
     change: add
+- file:
+    path: src/main/resources/DeploymentSpecifics.properties
+    change: add

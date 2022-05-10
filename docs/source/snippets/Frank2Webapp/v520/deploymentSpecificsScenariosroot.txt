@@ -1,9 +1,0 @@
-.. code-block:: none
-   :emphasize-lines: 4, 5, 6
-
-   customViews.names=CustomTab
-   customViews.CustomTab.name=Custom Tab
-   customViews.CustomTab.url=http://localhost:8080
-   
-   scenariosroot1.description=Frank2Webapp tests
-   scenariosroot1.directory=${project.build.testSourceDirectory}/../testtool

@@ -3,4 +3,11 @@
     change: add
 - file:
     path: src/main/resources/DeploymentSpecifics.properties
-    change: add
+    change:
+      - insert: 3
+        snippet: deploymentSpecificsAddCustomView
+        highlight: true
+- snippet:
+    name: deploymentSpecificsAddCustomView
+    markup: none
+    context: 50
