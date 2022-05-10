@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<ff.version>7.7</ff.version>
+		<ff.version>[7.8-20220509.173348, )</ff.version>
 		<h2.version>2.1.210</h2.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
