@@ -1,0 +1,4 @@
+.. _advancedDevelopmentDeploymentMavenMavenBasics:
+
+Maven basics
+============
