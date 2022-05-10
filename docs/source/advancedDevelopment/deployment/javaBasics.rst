@@ -2,3 +2,11 @@
 
 Java basics
 ===========
+
+Maven was designed for the programming language Java and the Frank!Framework has been written in that programming language. Therefore a basic understanding of Java is needed.
+
+Java was developed to be platform independent. A compiled Java program was meant to work on any processor and any operating system. This was achieved by introducing the Java Virtual Machine (JVM). Source code files with extension ``.java`` are not compiled into machine code but in so-called byte code. Byte code files are binary files that have extension ``.class``. To run a compiled program, the user starts the Java Virtual Machine. Like a physical processor, the JVM executes the instructions that appear in the ``.class`` files. The JVM can do so reasonable fast because byte code is similar to machine code. For different platforms the implementation of the JVM is different, but all these implementations can read the same byte code.
+
+A key concept with Java development is the **classpath**. When the JVM starts, it populates its own file system by reading ``.class`` files and other resources. It is important to distinguish the classpath from the file system of the host computer. The JVM does this based on the command-line arguments it gets. If you have Java installed, you can learn about the command-line arguments by opening a command prompt and typing ``java -h``. You do not need to know these details however. Maven can take care of them.
+
+The remainder of this section presents instructions to give you hands-on experience. To follow them, you need to download the Java JDK version 8. You do not need the Oracle JDK. An open JDK is sufficient; WeAreFrank! works with the `Zulu JDK <https://www.azul.com/downloads/?package=jdk>`_. It is important to use JDK 8; earlier and later JDKs may not work. Second, you have to download `Apache Maven <https://maven.apache.org/download.cgi>`_. It is important to set system variable ``JAVA_HOME`` to reference the Java JDK you downloaded. Maven uses this variable to access Java. The installation can be tested by opening a command prompt and typing ``mvn -v``. The output should show a Maven version and a Java version, which should include ``1.8``.
