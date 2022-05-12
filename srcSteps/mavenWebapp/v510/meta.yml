@@ -3,6 +3,7 @@
     change:
       - insert: 18
         snippet: addPlugin
+        highlight: true
 - snippet:
     name: addPlugin
     markup: xml

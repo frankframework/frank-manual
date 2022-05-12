@@ -10,7 +10,7 @@ Maven has been developed to build Java webapplications. The Frank!Framework is a
 A basic understanding of Maven is needed before it can be leveraged in Frank projects successfully. This introduction appears in subsections :ref:`advancedDevelopmentDeploymentMavenJavaBasics`, :ref:`advancedDevelopmentDeploymentMavenMavenBasics`, :ref:`advancedDevelopmentDeploymentMavenExecuteJar` and :ref:`advancedDevelopmentDeploymentMavenMavenWebapp`. Subsections :ref:`advancedDevelopmentDeploymentMavenBasicFrankWebapp`, :ref:`advancedDevelopmentDeploymentMavenFrankFrontend` and :ref:`advancedDevelopmentDeploymentMavenLarva` explain how to use Maven within a Frank development project.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
 
    javaBasics
    mavenBasics

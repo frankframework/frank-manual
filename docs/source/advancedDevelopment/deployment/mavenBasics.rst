@@ -23,14 +23,14 @@ In the next steps, a file ``pom.xml`` is added that tells Maven how to compile t
    .. literalinclude:: ../../../../srcSteps/mavenWebapp/v480/pom.xml
       :language: XML
 
-The first two lines are the same for every ``pom.xml`` file. Next come three lines with tags ``<groupId>``, ``<artifactId>`` and ``<version>``. These are collectively referenced ad **Maven coordinates**. The Maven coordinates are the unique identifier of an **artifact**. Artifacts are the basic building blocks that are combined by Maven during compilation and linking. The three lines identify the artifact that is built by this project. Use the ``<groupId>`` as a common name for all artifacts produced by your organization or your team. It is used to distinguish your artifact from artifacts produced by other organizations. The ``<artifactId>`` distinguishes your artifact from the ohter artifacts with the same ``<groupId>``. Finally, the ``<version>`` is the version of your artifact.
+The first two lines are the same for every ``pom.xml`` file. Next come three lines with tags ``<groupId>``, ``<artifactId>`` and ``<version>``. These are collectively referenced as **Maven coordinates**. The Maven coordinates are the unique identifier of an **artifact**. Artifacts are the basic building blocks that are combined by Maven during compilation and linking. The three lines identify the artifact that is built by this project. Use the ``<groupId>`` as a common name for all artifacts produced by your organization or your team. It is used to distinguish your artifact from artifacts produced by other organizations. The ``<artifactId>`` distinguishes your artifact from the ohter artifacts with the same ``<groupId>``. Finally, the ``<version>`` is the version of your artifact.
 
 5. Extend ``pom.xml`` as shown:
 
    .. include:: ../../snippets/mavenWebapp/v490/pomAddJavaVersion.txt
 
    This tells Maven that the Java sources were written with Java 8, and that the code is to be executed with Java 8.
-#. Conclude ``pom.xml`` by adding a dependency. You add the dependency that reference the artifact that holds class ``org.apache.commons.lang3.StringUtils``:
+#. Conclude ``pom.xml`` by adding a dependency. You add the dependency that references the artifact that holds class ``org.apache.commons.lang3.StringUtils``:
 
    .. include:: ../../snippets/mavenWebapp/v500/pomDependencies.txt
 
@@ -139,8 +139,15 @@ All generated files appear in the ``target`` directory. Within that directory, t
 #. Check that your home directory has a folder named ``.m2``. Check that this folder contains directory ``repository\org\ibissource\mavenWebappExample\1.0-SNAPSHOT``.
 #. Check that that directory contains the same JAR file: ``mavenWebappExample-1.0-SNAPSHOT.jar``.
 
-Maven has stored the artifact in the local repository on your computer. If you would build some other project that references ``org.ibissource:mavenWebappExample-1.0-SNAPSHOT.jar:1.0-SNAPSHOT`` as a dependency, then the corresponding directory in the ``.m2`` folder would be accessed.
+Maven has stored the artifact in the local repository on your computer. If you would build some other project that references ``org.ibissource:mavenWebappExample:1.0-SNAPSHOT`` as a dependency, then the corresponding directory in the ``.m2`` folder would be accessed.
 
 15. Check that your ``.m2`` folder has directory ``repository\org\apache\commons\commons-lang3\3.12.0``.
 
 Maven has downloaded the artifact that was referenced as ``<dependency>``. Please note that this version does not end with ``SNAPSHOT``. Version numbers that end with ``SNAPSHOT`` are development versions that will change. Versions without ``SNAPSHOT`` are expected not to change anymore. Anytime that such an artifact is used, the data should be the same.
+
+Conclusion
+----------
+
+Maven is a tool that automates compiling and linking Java programs. It distinguishes build phases like ``clean``, ``process-resources``, ``compile`` and ``install`` that each belong to a lifecycle. When Maven executes a phase, it automatically executes the preceding phases of the lifecycle first. Maven delegates its work to plugins, little programs that can have multiple functions that are named goals. Each phase is linked to plugin goals, which appear in the console output when Maven executes. If your Maven build fails or if you have to update the build process, you probably need information about specific Maven plugins. Maven plugins are usually documented quite well on the internet. Maven plugins and dependencies in your ``pom.xml`` are Maven artifacts. Each artifact is referenced by three Maven coordinates: the group id, the artifact id and the version. Maven can download artifacts automatically and stores them in a central repository on your computer.
+
+In the next subsection, you will use Maven to execute the Java program you wrote.
