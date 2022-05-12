@@ -44,3 +44,5 @@ The webapplication is done. It can be started as follows:
 #. Press F5 in your webbrowser. The text should change to "Hello World" in a large font.
 
 In the previous steps, static HTML has been added to the webapp. Static HTML is transferred to the webbrowser as-is, without modification by the application server or by Java code deployed on it. Static files can also include Java Script code that is executed by the webbrowser. Maven expects static files in directory ``src/main/webapp`` and its subdirectories. An exception is directory ``src/main/webapp/WEB-INF`` that does not include static files. It includes ``web.xml``, the file that links servlets to URLs.
+
+The instructions asked not to stop the application server while adding ``index.html``. It was demonstrated that front-end code can be edited without restarting Jetty. This is very helpful during development.
