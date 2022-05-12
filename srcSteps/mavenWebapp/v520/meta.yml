@@ -10,10 +10,13 @@
     change:
       - insert: 1
         snippet: pomPackaging
+        highlight: true
       - insert: 6
         snippet: pomDepBuild
+        highlight: true
       - insert: 9
-        snippet: pomDepBuild 
+        snippet: pomDepBuild
+        highlight: true
 - file:
     path: src/main/java/org/wearefrank/maven/webapp/example/Main.java
     change:
