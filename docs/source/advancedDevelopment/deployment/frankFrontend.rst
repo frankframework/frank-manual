@@ -18,3 +18,5 @@ In the previous subsection, you wrote a Maven application that leverages the Fra
 #. Click that entry. Your browser should open a new tab with the text "Hello world!" in a large font. The Frank!Framework has a link to the front-end added in the project.
 
 Property ``customViews.names`` holds a comma-separated list of identifiers of custom tabs. For each item in the list, there should be properties ``customViews.<id>.name`` and ``customViews.<id>.url``. These define the name of the shown entry and the target URL.
+
+In the next subsection, we add Larva tests to test the configuration in the project.
