@@ -38,6 +38,11 @@ Some points of this file may need some explanation:
 * The Frank!Framework depends on some system properties that are explained in section :ref:`properties`. These are set in the ``<configuration>`` tag of the Jetty plugin. These settings only apply when Maven is used to start the project in application server Jetty. These values are not packaged.
 * Jetty scans JAR files included in the webapplication for web app configuration data. The number of JAR files searched is limited by the ``<webInfIncludeJarPattern>`` tag.
 * An application server can host multiple webapplication. It supports users to login to these webapplications. Some webapplications share users, while others keep track of their own users without sharing them. Application servers support this using login services. Each webapp can declare a login service. When multiple webapplications declare the same login service, they share their users. Jetty expects an implementation for every declared login service. This is the purpose of the ``<loginServices>`` tags: each inner ``<loginServices>`` tag fixes how the named login service is implemented. WeAreFrank! recently changed the name of the login service declared by the framework. The name changed from ``Ibis`` to ``Frank``. This is why two login services are listed.
+
+  .. NOTE::
+
+     If application server Apache Tomcat is used, then implementations of login services can be omitted if the related webapplications do not require users to login.
+
 * The ``<repository>`` tag is needed to download Frank!Framework version 7.8-20220509.173348 or any other non-stable version. Only stable releases like 7.7 are published to Maven Central, the repository of all public artifacts. The ``<repository>`` tag allows access to a repository of Maven artifacts hosted by WeAreFrank!.
 
 4. Create ``work/src/main/resources/DeploymentSpecifics.properties`` with the following contents:
