@@ -1,0 +1,10 @@
+.. _advancedDevelopmentDeploymentMavenUsingFrankRunner:
+
+Using the Frank!Runner
+======================
+
+The webapp of subsection :ref:`advancedDevelopmentDeploymentMavenLarva` has a few drawbacks. As stated in subsection :ref:`advancedDevelopmentDeploymentMavenBasicFrankWebapp`, you cannot refresh the Frank configuration dynamically. It resides on the classpath and cannot be modified at runtime. Therefore the Frank!Framework cannot see the modified data and hence the refresh button in the Adapter Status page does not work. Another drawback is that properties like ``dtap.stage`` have to be configured with the ``jetty-maven-plugin`` while the Frank!Runner can set these properties automatically. Finally, you can integrate the Frank!Runner with your integrated development environment just like you can do with pure Maven projects. Using the Frank!Runner in a Maven project is demonstrated in the examples of the `Frank!Runner <https://github.com/ibissource/frank-runner>`_, Frank2Example4.
+
+In Frank2Example4, the configuration is not in ``src/main/resources`` but in ``src/main/configurations``. This folder is not recognized by Maven, so the configuration is not packaged in the ``.war`` file. The Frank!Framework can be configured to load configurations after the application server has booted. This is the situation shown in the diagram of :ref:`propertiesDeploymentEnvironment`, with both the layer "Frank!Framework + classes" and the layer "Configurations". The first of these is the classpath with which the application server boots. The second stands for configurations loaded by the Frank!Framework after boot.
+
+The properties to set are given in subsection :ref:`propertiesFramework`: see ``configurations.names`` and related properties. The Frank!Runner can set these properties automatically. In a production system, these properties have to be configured by the operator, or the configuration has to be loaded into the database of the Frank!Framework. The latter is explained in section :ref:`frankConsoleConfigsUploading`.

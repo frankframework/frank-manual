@@ -9,8 +9,7 @@ Maven has been developed to build Java webapplications. The Frank!Framework is a
 
 A basic understanding of Maven is needed before it can be leveraged in Frank projects successfully. This introduction appears in subsections :ref:`advancedDevelopmentDeploymentMavenJavaBasics`, :ref:`advancedDevelopmentDeploymentMavenMavenBasics`, :ref:`advancedDevelopmentDeploymentMavenExecuteJar` and :ref:`advancedDevelopmentDeploymentMavenMavenWebapp`. Subsections :ref:`advancedDevelopmentDeploymentMavenBasicFrankWebapp`, :ref:`advancedDevelopmentDeploymentMavenFrankFrontend` and :ref:`advancedDevelopmentDeploymentMavenLarva` explain how to use Maven within a Frank development project. By the end of subsection :ref:`advancedDevelopmentDeploymentMavenLarva`, you will have a Maven project that you can use as a template for your own Frank project. Here is the :download:`download <../../downloads/configurations/Frank2Webapp.zip>`.
 
-The project setup of :ref:`advancedDevelopmentDeploymentMavenLarva` has some drawbacks. These can be addressed by using the Frank!Runner, which can work with Frank projects structured as a Maven project. This is demonstrated in example "Frank2Example4" of the `Frank!Runner <https://github.com/ibissource/frank-runner>`_.
-
+The project setup of :ref:`advancedDevelopmentDeploymentMavenLarva` has some drawbacks. These can be addressed by using the Frank!Runner, which can work with Frank projects structured as a Maven project. This is demonstrated in example "Frank2Example4" of the `Frank!Runner <https://github.com/ibissource/frank-runner>`_. This is explained in more detail in subsection :ref:`advancedDevelopmentDeploymentMavenUsingFrankRunner`.
 
 .. toctree::
    :maxdepth: 1
@@ -22,3 +21,4 @@ The project setup of :ref:`advancedDevelopmentDeploymentMavenLarva` has some dra
    basicFrankWebapp
    frankFrontend
    larva
+   usingFrankRunner
