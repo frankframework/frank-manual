@@ -22,7 +22,7 @@
     change:
       - insert: 6
         snippet: java
-      - old: 3
+      - old: 6
         new: 5
         snippet: java
 - snippet:
