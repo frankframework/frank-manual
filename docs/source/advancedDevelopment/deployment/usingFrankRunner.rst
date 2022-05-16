@@ -15,6 +15,7 @@ When the Frank!Runner is used, the ``pom.xml`` file can be simplified:
 
 * There is no need to add database drivers like ``h2`` to ``pom.xml``. The Frank!Runner installs them automatically.
 * There is no need to add depencency ``geronimo-jms_1.1_spec`` to ``pom.xml``. The Frank!Runner deploys it automatically.
+* There is no need to configure a scenarios root directory. The Frank!Runner automatically configures the absolute path to ``src/test/testtool``.
 * There is no need to add properties like ``dtap.stage`` to ``pom.xml``. These properties are set automatically by the Frank!Runner.
 
 In this case, the database driver and possibly the JAR of ``geronimo-jms_1.1_spec`` should be deployed manually in the production environment. In every deployment of the Frank!Framework, property ``dtap.stage`` should be configured manually.

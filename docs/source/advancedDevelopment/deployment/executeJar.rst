@@ -12,6 +12,10 @@ References to plugins are nested within XML tags ``<build>`` and ``<plugins>`` i
 
 The plugin has goal ``exec``. This goal is not linked to a build phase, so it will not execute when you execute a phase in Maven. You have to execute the ``exec`` goal explicitly. You might do this like ``mvn org.codehaus.mojo:exec-maven-plugin:exec``, but the plugin allows for a shorthand notation: ``mvn exec:exec``.
 
+.. NOTE::
+
+   You saw a group id ``org.codehaus.mojo``. The letters "MOJO" stand for "Maven Old Java Object". Maven plugins are coded in Java themselves, and a MOJO is a Java class that satisfies additional requirements; these requirements allow it to be a Maven plugin. A Java class that does not satisfy any additional requirements is named a "Plain Old Java Object" (POJO). The term POJO was coined when application servers (see subsection :ref:`advancedDevelopmentDeploymentMavenMavenWebapp`) matured. In the past, application servers could only interact with Java classes that satisfied additional requirements. Modern application servers can work with POJOs.
+
 3. On a command prompt, do ``mvn clean install exec:exec``. Check that the output includes the line ``HELLO WORLD!``, the output of our program.
 
 Maven has two command-line options: ``-e`` to show errors and ``-X`` to show debug information.
