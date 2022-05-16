@@ -1,0 +1,51 @@
+name: TestFrankRunner.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      forceLatestFF:
+        description: Force testing against the latest F!F version from Nexus
+        type: boolean
+        required: true
+        default: false
+jobs:
+  test-frank2webapp:
+    name: Test Frank2Webapp
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    # Do not cache dependencies. Then we would have a large cache with many versions of
+    # the Frank!Framework artifacts.
+    - name: Show input
+      run: echo ${{ github.event.inputs.forceLatestFF }}
+    - name: Start Frank2Example4
+      run: mvn clean install jetty:run &
+      working-directory: srcSteps/Frank2Webapp/v520
+    - name: Wait until Frank!Framework is up
+      run: bash .github/workflows/waitForUrl.sh http://localhost:8080/iaf/api/server/health 500
+    - name: Capture status
+      id: captureStatus
+      uses: fjogeleit/http-request-action@v1
+      with:
+        method: GET
+        url: "http://localhost:8091/iaf/api/server/health"
+    - name: Analyze status
+      uses: actions/github-script@v6
+      with:
+        script: |
+          let rawStatus = '${{ steps.captureStatus.outputs.response }}'
+          core.info('Captured status: ' + rawStatus)
+          let status = JSON.parse(rawStatus)
+          if(! status.status) {
+            core.setFailed('Response has no field "status"')
+          } else if(status.status !== 'OK') {
+            core.setFailed('Field "status" is not "OK"')
+          } else {
+            core.info('status is OK');
+          }
+    - name: Show files
+      run: tree -L 5 .
+      if: always()
