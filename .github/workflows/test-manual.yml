@@ -1,7 +1,9 @@
 name: TestFrankRunner.
 on:
   push:
+    paths: srcSteps/Frank2Webapp/**
   pull_request:
+    paths: srcSteps/Frank2Webapp/**
   workflow_dispatch:
     inputs:
       forceLatestFF:
@@ -21,7 +23,7 @@ jobs:
     # the Frank!Framework artifacts.
     - name: Show input
       run: echo ${{ github.event.inputs.forceLatestFF }}
-    - name: Start Frank2Example4
+    - name: Start Frank2Webapp
       run: mvn clean install jetty:run &
       working-directory: srcSteps/Frank2Webapp/v520
     - name: Wait until Frank!Framework is up
