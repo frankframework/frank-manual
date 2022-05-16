@@ -96,7 +96,7 @@ The output should look as follows:
 
    C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500>
 
-Build phase ``compile`` is part of the default life cycle. All preceding phases, like ``process-resources``, of the default life cycle are executed as well. Phase ``generate-sources`` is linked to plugin ``maven-resources-plugin`` and its goal ``resources``. Phase ``compile`` executes goal ``compile`` of plugin ``maven-compiler-plugin``.
+Build phase ``compile`` is part of the default life cycle. All preceding phases, like ``process-resources``, of the default life cycle are executed as well. Phase ``process-resources`` is linked to plugin ``maven-resources-plugin`` and its goal ``resources``. Phase ``compile`` executes goal ``compile`` of plugin ``maven-compiler-plugin``.
 
 10. Check what files have been produced. Enter command ``tree``.
 

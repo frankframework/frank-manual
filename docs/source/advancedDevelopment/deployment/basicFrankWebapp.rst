@@ -3,7 +3,7 @@
 Basic webapplication with Frank!Framework
 =========================================
 
-The previous subsections presented the basics of Java and Maven. The Frank!Framework is a Java webapplication that is available as a Maven artifact. This subsection shows how to write Frank configurations within a Maven project. The Frank!Framework appears as a dependency. Maven can package the configuration and the Frank!Framework together in a ``.war`` file. This ``.war`` file can be deployed in an application server to execute it. All code is package in a single file, allowing it to be tested and deployed easily.
+The previous subsections presented the basics of Java and Maven. The Frank!Framework is a Java webapplication that is available as a Maven artifact. This subsection shows how to write Frank configurations within a Maven project. The Frank!Framework appears as a dependency. Maven can package the configuration and the Frank!Framework together in a ``.war`` file. This ``.war`` file can be deployed in an application server to execute it. All code is packaged in a single file, allowing it to be tested and deployed easily.
 
 A basic Hello World application that leverages the Frank!Framework can be created as follows:
 
@@ -30,7 +30,8 @@ Some points of this file may need some explanation:
 
   .. NOTE::
 
-     If you want to write your own configuration within a Maven project, you may not get ``FrankConfig.xsd`` from the Frank!Runner. You can download it manually from `https://frank2example.frankframework.org/ <https://frank2example.frankframework.org/>`_. Use option "Frank!Doc" on the main menu.
+     In projects with the Frank!Runner, the Frank!Runner downloads ``FrankConfig.xsd`` automatically. If you do without, it has to be downloaded manually. To do this, visit `https://frank2example.frankframework.org/ <https://frank2example.frankframework.org/>`_ and choose option "Frank!Doc" on the main menu. There will be a button for the download.
+
 * Dependency ``ibis-adapterframework-webapp`` is a ``.war`` archive. Therefore the reference to it needs an extra line ``<type>war</type>``.
 * Dependency ``ibis-adapterframework-core`` has files that are also in the ``.war`` file of ``ibis-adapterframework-webapp``. It is wise to add ``ibis-adapterframework-core`` nevertheless, because Maven does not check for duplicate JAR files with type ``war`` dependencies. By adding ``ibis-adapterframework-core`` it is checked that dependencies of the Frank!Framework do not conflict with dependencies added in your project.
 * The Frank!Framework will not start without a database driver. Artifact ``h2`` is the driver for a simple database called H2. If you want another database, you can include a driver for that database. Not every database runs within the same JVM as the webapplication however. Using another database may be more complicated during development.
@@ -56,7 +57,7 @@ Please note the role of the classpath in this webapplication. Maven takes care t
 
 .. WARNING::
 
-   Jetty cannot update the classpath dynamically. If you change a file in ``src/main/resources``, you have to restart Jetty before this change will have effect. The refresh button in the Adapter Status page will not work, because the changes of the configuration will not appear on the classpath. This may be a reason to organize your project differently. A consequence will be that the configuration will not be packaged inside the ``.war`` file.
+   Jetty cannot update the classpath dynamically. If you change a file in ``src/main/resources``, you have to restart Jetty before this change will have effect. The refresh button in the Adapter Status page will not work, because the changes of the configuration will not appear on the classpath. This may be a reason to organize your project differently. A consequence will be that the configuration will not be packaged inside the ``.war`` file. See subsection :ref:`advancedDevelopmentDeploymentMavenUsingFrankRunner`.
 
 .. NOTE::
 
