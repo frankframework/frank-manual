@@ -5,12 +5,6 @@ on:
   pull_request:
     paths: srcSteps/Frank2Webapp/**
   workflow_dispatch:
-    inputs:
-      forceLatestFF:
-        description: Force testing against the latest F!F version from Nexus
-        type: boolean
-        required: true
-        default: false
 jobs:
   test-frank2webapp:
     name: Test Frank2Webapp
