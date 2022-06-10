@@ -13,7 +13,7 @@ while [[ ${triesSoFar} -le ${numTries} ]]; do
     grep -E "^HTTP/" curlOutput.txt | tail -1 | cut -d" " -f2 > httpStatusCode.txt
     result=$?
     if [[ ${result} -eq 0 ]]; then
-      echo "Fount HTTP status code: $(cat httpStatusCode.txt)"
+      echo "Found HTTP status code: $(cat httpStatusCode.txt)"
       grep -E "2[0-9]{2}" httpStatusCode.txt
       result=$?
       if [[ ${result} -eq 0 ]]; then
