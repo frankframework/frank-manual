@@ -1,9 +1,13 @@
-name: TestFrankRunner.
+name: TestFrankManual.
 on:
   push:
-    paths: srcSteps/Frank2Webapp/**
+    paths:
+      - srcSteps/Frank2Webapp/**
+      - .github
   pull_request:
-    paths: srcSteps/Frank2Webapp/**
+    paths:
+      - srcSteps/Frank2Webapp/**
+      - .github
   workflow_dispatch:
 jobs:
   test-frank2webapp:
