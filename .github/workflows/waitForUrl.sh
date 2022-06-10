@@ -6,10 +6,25 @@ triesSoFar=0
 result=1000
 while [[ ${triesSoFar} -le ${numTries} ]]; do
   let triesSoFar++
-  curl -s ${url}
+  curl -s -I -L -o curlOutput.txt ${url}
   result=$?
   if [[ ${result} -eq 0 ]]; then
-    break
+    echo "Curl returned 0"
+    grep -E "^HTTP/" curlOutput.txt | tail -1 | cut -d" " -f2 > httpStatusCode.txt
+    result=$?
+    if [[ ${result} -eq 0 ]]; then
+      echo "Fount HTTP status code: $(cat httpStatusCode.txt)"
+      grep -E "2[0-9]{2}" httpStatusCode.txt
+      result=$?
+      if [[ ${result} -eq 0 ]]; then
+        echo "HTTP response is successful"
+        break;
+      else
+        sleep 1
+      fi
+    else
+      sleep 1
+    fi
   else
     sleep 1
   fi
