@@ -3,11 +3,11 @@ on:
   push:
     paths:
       - srcSteps/Frank2Webapp/**
-      - .github
+      - .github/**
   pull_request:
     paths:
       - srcSteps/Frank2Webapp/**
-      - .github
+      - .github/**
   workflow_dispatch:
 jobs:
   test-frank2webapp:
