@@ -14,6 +14,7 @@ Please do the following:
 
 .. highlight:: none
 
+#. Check whether you have git. You can do this by opening a command prompt and typing ``git --version``.
 #. If you do not have git already, download it from https://git-scm.com/downloads.
 #. Choose some working directory in which you will install the Frank!Runner and do the exercises of the Frank!Manual, say ``franks``.
 #. In a command prompt, go to your ``franks`` directory and clone the Frank!Runner with the following command: ::
@@ -40,12 +41,16 @@ Please do the following:
         |- ...
 
 #. Check that you do NOT have ``franks/frank-runner/build.properties`` at this point. You will study the default Frank application, which is in the directory ``franks/frank-runner/examples/Frank2Example1``.
-#. Start the Frank!Runner as explained in its ``README.md`` file, for example by running ``franks/frank-runner/start.bat``.
+#. Start the Frank!Runner as explained in its ``README.md`` file (shown at https://github.com/ibissource/frank-runner), for example by running ``franks/frank-runner/start.bat``.
+
+   .. WARNING::
+
+      If you are using your computer for other development tasks, you may already have a running webserver that claims port 80. Please close that webserver or configure the Frank!Framework to use another port. Using another port is explained in the README.md file of the Frank!Runner. Your browser may have cached other stuff at http://localhost:80. Press Shift-F5 or Ctrl-F5 in your browser to see the Frank!Framework.
 
 The main menu
 -------------
 
-7. Start a webbrowser and browse to http://localhost. To the left, you see the following menu:
+8. Start a webbrowser and browse to http://localhost. To the left, you see the following menu:
 
    .. image:: mainMenu.jpg
 
@@ -61,7 +66,7 @@ General structure of the example Frank application
 
 Let us now investigate the general structure of the ``Frank2Example1`` application. 
 
-14. Look at the "Adapter Status" page. You see you really do have the ``Frank2Example1`` Frank application (number 2 in the figure below):
+15. Look at the "Adapter Status" page. You see you really do have the ``Frank2Example1`` Frank application (number 2 in the figure below):
 
     .. image:: adapterStatusTopLeft.jpg
 
@@ -81,23 +86,23 @@ The sources of your Frank configs
 
 System administrators may want to check the sources of the Frank configs they see. Doing this is also relevant for Frank developers who want to debug their work. Please do the following:
 
-17. In the main menu, choose "Environment Variables" (number 4 in the figure below).
+18. In the main menu, choose "Environment Variables" (number 4 in the figure below).
 
     .. image:: mainMenu.jpg
 
-#. Press Ctrl-F to search on this page. In the search field, type ``configurations.names``. Iterate over the search results until you see the following properties: "configurations.directory", "configurations.Example1a.classLoaderType", "configurations.Example1b.classLoaderType" and "configurations.names".
+#. In the search field, type ``configurations.names``. You should see ``configurations.names`` with value ``Example1a,Example1b``.
 
    .. NOTE::
 
-      These properties have been set by the Frank!Runner. If you deploy your Frank config another way, you may have to care about these properties yourself.
+      This property and some other properties, have been set by the Frank!Runner. If you deploy your Frank config another way, you may have to care about these properties yourself.
 
-#. Property "configurations.names" has value "Example1a,Example1b", confirming that you have these two Frank configs (excluding the predefined configurations).
-#. Property "configurations.Example1a.classLoaderType" has value "DirectoryClassLoader". This means that configuration "Example1a" comes from the file system of the computer running the Frank!Framework. Frank configurations can also be deployed on the database, resulting in a different value for this property. Property "configurations.Example1b.classLoaderType" also has value "DirectoryClassLoader", confirming that Frank config "Example1b" also comes from the local file system.
-#. Property "configurations.directory" has value ``absolute-path-of-directory-franks\frank-runner\examples\Frank2Example1\configurations``, the "configurations" directory under the "examples/Frank2Example1" instance. This confirms the directory that holds the source code of your configurations.
+#. In the search field, type ``configurations.``. You see some other variables that are explained below.
+#. Property ``configurations.Example1a.classLoaderType`` has value ``DirectoryClassLoader``. This means that configuration "Example1a" comes from the file system of the computer running the Frank!Framework. Frank configurations can also be deployed on the database, resulting in a different value for this property. Property ``configurations.Example1b.classLoaderType`` also has value ``DirectoryClassLoader``, confirming that Frank config "Example1b" also comes from the local file system.
+#. Property ``configurations.directory`` has value ``absolute-path-of-directory-franks\frank-runner\examples\Frank2Example1\configurations``, the "configurations" directory under the "examples/Frank2Example1" instance. This confirms the directory that holds the source code of your configurations.
 
 You can also use the Frank!Console to see what XML code has been loaded. Please do the following:
 
-22. Click "Configurations" in the main menu (number 1 in the figure below).
+23. Click "Configurations" in the main menu (number 1 in the figure below).
 
     .. image:: showConfiguration.jpg
 

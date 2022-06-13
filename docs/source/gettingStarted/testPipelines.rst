@@ -8,11 +8,13 @@ This section shows three ways to test and debug your pipeline. First, you can ru
 Test a Pipeline
 ---------------
 
-See the figure below:
+An adapter has receivers to receive messages and a pipeline to transform them. The received message can be accompanied by so-called session keys, which are just name/value pairs. Pipelines can be tested with the Testing | Test a Pipeline option on the main menu as shown below:
 
 .. image:: testPipeline.jpg
 
-You can run your pipeline by choosing "Testing | Test a Pipeline" from the main menu. You have feedback that you chose that option (number 1). Next, choose an adapter (number 2). Then enter the input message you want (number 3). Usually the input message should be XML. Many pipelines expect XML and produce unexpected errors if the input does not conform the XML standard. Then press "Send" (number 4). You see the output message (number 5) and the ``state`` of the exit (number 6).
+You have feedback that you chose that option (number 1). Next, choose an adapter (number 2). Then enter the input message to be transformed by the pipeline (number 3). Usually the input message should be XML. Many pipelines expect XML and produce unexpected errors if the input does not conform the XML standard. It is also possible to enter the message by uploading a file. For text files, the encoding (e.g. UTF-8) has to be specified (field "Encoding", not shown). There is a field called "Session Key" that can be used to add a session key to the message. It is fine to leave that blank.
+
+Next press "Send" (number 4). You see the output message (number 5) and the ``state`` of the exit (number 6).
 
 Ladybug
 -------
