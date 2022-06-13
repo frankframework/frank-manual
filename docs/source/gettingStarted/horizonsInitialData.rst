@@ -8,6 +8,8 @@ Introduction
 
 We continue our case study about the imaginary firm NewHorizons, see :ref:`newHorizons` and :ref:`horizonsInterfaces`. In section :ref:`newHorizons` you started development by creating the file ``franks/Frank2Manual/configurations/NewHorizons/Configuration.xml``. You will extend this configuration by adding files to your directory ``NewHorizons``.
 
+The Frank!Framework allows configurations to access a database. Different brands of databases are supported, for example Oracle, MySql and MsSQL. Many databases require you to start a separate executable in addition to the Frank!Framework. An exception is the H2 database. The Frank!Runner configures a H2 database by default, so in this tutorial no action is needed to start the database. Database initialization does not happen automatically; this is the subject of the next subsection.
+
 Enable Liquibase
 ----------------
 
@@ -17,8 +19,7 @@ for the first time. When an enterprise application is restarted later,
 database initialization should be omitted because data in the
 database should be persistent.
 
-The Frank!Framework internally uses Liquibase, see http://www.liquibase.org/,
-to initialize the database. Please switch on Liquibase as follows:
+The Frank!Framework internally uses Liquibase to initialize the database. The Frank!Framework contains Liquibase, so no action is needed to install it. The Frank!Framework should be configured however to switch it on. Please do the following:
 
 #. Add file ``StageSpecifics_LOC.properties`` and give it the following contents:
 
@@ -27,18 +28,19 @@ to initialize the database. Please switch on Liquibase as follows:
 
    .. NOTE::
 
-      You can use many different property files to configure properties. When you choose ``StageSpecifics_LOC.properties``, your settings will not be applied when your configuration is deployed on production. If you would choose ``DeploymentSpecifics.properties``, you settings would also be used in production, provided they are not overruled. More details are in section :ref:`properties`, but before reading that section please finish this chapter first.
+      You can use many different property files to configure properties. When you choose ``StageSpecifics_LOC.properties``, your settings will not be applied when your configuration is deployed on production. If you would choose ``DeploymentSpecifics.properties``, your settings would also be used in production, provided they are not overruled. More details are in section :ref:`properties`, but before reading that section please finish this chapter first.
 
-We illustrate database initialization here for H2 databases, because this database is embedded within the Frank!Framework and does not
-require a process external to it. More information about databases is available in section :ref:`advancedDevelopmentDatabase`. Liquibase expects a so-called changelog, an XML file that defines the data model and the initial data.
+Liquibase expects a so-called changelog, an XML file that defines the data model and the initial data.
 
-2. Please create file ``DatabaseChangelog.xml`` and add XML to initialize the database described in the previous section :ref:`horizonsInterfaces`. Here is the XML to add:
+2. Please create file ``DatabaseChangelog.xml`` in the ``NewHorizons`` directory. Add XML to initialize the database described in the previous section :ref:`horizonsInterfaces`. Here is the XML to add:
 
    .. literalinclude:: ../../../srcSteps/NewHorizons/v410/configurations/NewHorizons/DatabaseChangelog.xml
       :language: xml
 
 For clarity we chose to use SQL statements in the changelog. As a consequence, it is not database independent as would
-be the case if it were pure XML. The shown changelog is specific for H2 databases.
+be the case if it were pure XML. The shown changelog is specific for H2 databases. See http://www.liquibase.org/ for more information about changelogs.
+
+More information about databases is available in section :ref:`advancedDevelopmentDatabase`. 
 
 Test your database
 ------------------
