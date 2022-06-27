@@ -41,7 +41,7 @@ Please do the following:
         |- ...
 
 #. Check that you do NOT have ``franks/frank-runner/build.properties`` at this point. You will study the default Frank application, which is in the directory ``franks/frank-runner/examples/Frank2Example1``.
-#. Start the Frank!Runner as explained in its ``README.md`` file (shown at https://github.com/ibissource/frank-runner), for example by running ``franks/frank-runner/start.bat``.
+#. Start the Frank!Runner as explained in its ``README.md`` file (shown at https://github.com/ibissource/frank-runner right when you open it; you do not have to click file README.md), for example by running ``franks/frank-runner/start.bat``.
 
    .. WARNING::
 
