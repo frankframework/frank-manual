@@ -20,7 +20,7 @@
 # If this third field is omitted, all files to zip are added directly to the root of the
 # .zip archive.
 
-srcSteps/NewHorizons/v500/configurations/NewHorizons configurations/NewHorizons
+srcSteps/NewHorizons/v510/configurations/NewHorizons configurations/NewHorizons
 srcSteps/NewHorizons/v410/configurations/NewHorizons configurations/NewHorizonsDatabase
 srcSteps/NewHorizons/v440/configurations/NewHorizons configurations/NewHorizonsValidate
 srcSteps/NewHorizons/v460/configurations/NewHorizons configurations/NewHorizonsOnlyTableBooking

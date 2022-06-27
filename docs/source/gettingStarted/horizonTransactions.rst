@@ -35,5 +35,5 @@ with the user. Before a booking is accepted, the user logs in and
 searches destinations. That functionality would be needed before
 restricting access would make sense.
 
-Security is easy to implement using the Frank!Framework. This manual will be extended with another
-user story of New Horizons to cover this topic.
+Until now the Frank!Framework has been used only for the backend. The next section
+deals with front-end code.

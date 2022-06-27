@@ -23,3 +23,4 @@ If you want, you can download the solution :download:`configuration <../download
    horizonsTransform
    horizonsForEach
    horizonTransactions
+   webcontent
