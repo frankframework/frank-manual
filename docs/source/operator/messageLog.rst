@@ -30,7 +30,7 @@ You as a site owner get the option to browse the stored messages. In this sectio
 
    .. image:: managingProcessedMessageMessageLogEnvelope.jpg
 
-Next to the envelope you see the number "0", indicating that there are no stored messages. Please proceed as follows to see a stored message:
+Next to the icon you see the number "0", indicating that there are no stored messages. Please proceed as follows to see a stored message:
 
 7. In the main menu, go to Testing | Test Pipeline.
 #. Choose adapter "01 TestMessageLog".
