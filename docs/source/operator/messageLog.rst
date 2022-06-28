@@ -26,7 +26,7 @@ You as a site owner get the option to browse the stored messages. In this sectio
 
    .. image:: managingProcessedMessagesTheExampleAdapters.jpg
 
-#. Expand adapter "TestMessageLog" again, see below. You see a heading "Senders" and below it the sender named "TestMessageStoreSender". Next to this, you see an envelope. As indicated by the red arrow, the envelope appears to the far right of the screen.
+#. Expand adapter "TestMessageLog" again, see below. You see a heading "Senders" and below it the sender named "Send". Next to this, you see a a blue icon. As indicated by the red arrow, the envelope appears to the far right of the screen.
 
    .. image:: managingProcessedMessageMessageLogEnvelope.jpg
 
@@ -49,4 +49,4 @@ Finally, remember that messages in a message log are automatically deleted when 
 
 .. NOTE::
 
-   If you are a Frank developer yourself, look in the Frank!Doc under "MessageLogs". When you select that heading, you can for example select "JdbcTransactionalStorage". This element has an attribute "retention", the number of days that the retention period lasts.
+   If you are a Frank developer yourself, look in the Frank!Doc under "TransactionalStorages". When you select that heading, you can for example select "JdbcTransactionalStorage". This element has an attribute "retention", the number of days that the retention period lasts.
