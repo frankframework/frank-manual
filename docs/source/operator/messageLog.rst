@@ -25,7 +25,7 @@ You as a site owner get the option to browse the stored messages. In this sectio
 
    .. image:: managingProcessedMessagesTheExampleAdapters.jpg
 
-#. Expand adapter 01 again, see below. You see a heading "Senders" and below it the sender named "Send". Next to this, you see a a blue icon. As indicated by the red arrow, the envelope appears to the far right of the screen.
+#. Expand adapter 01 again, see below. You see a heading "Senders" and below it the sender named "Send". Next to this, you see a blue icon. As indicated by the red arrow, the icon appears to the far right of the screen.
 
    .. image:: managingProcessedMessageMessageLogEnvelope.jpg
 
@@ -36,11 +36,12 @@ Next to the icon you see the number "0", indicating that there are no stored mes
 #. In the message field, enter ``<message>Some message</message>``.
 #. Press "Send".  You should see the output ``<id>1</id>``. You should also see a green bar to the top with the word "SUCCESS".
 #. Go back to the adapter status page and expand adapter 01. Your screen should look again like the figure at step 5, but next to the blue icon you should see the number "1".
-#. Click the icon. The screen should look as shown below. There is a table with all stored messages (only one message in this case). The table has a column "Expires" (not shown) in which the end date of the retention period is shown. For each message row, there are two buttons "View" and "Download". The message has been stored with id "2" (highlighted). Note that this value differs from the value you saw in Test a Pipeline.
+#. Click the icon. The screen should look as shown below. There is a table with all stored messages (only one message in this case). The table has a column "Expires" in which the end date of the retention period is shown. For each message row, there are two buttons "View" and "Download". The message has been stored with storage id "2" (highlighted). Note that this value differs from the ``<id>`` value you saw in Test a Pipeline.
 
    .. image:: managingProcessedMessageMessageLog.jpg
 
-#. Please click the "View" button. The screen looks as shown below. You see the id used in the message log to the top (highlighted) and  the original message (also highlighted). There is also a Download button (not shown).
+#. To the top, there is a line "Display and Search Filters" that can be expanded (see highlighted arrow). By expanding, you get options to hide/show columns and to filter messages. These options are very useful if there are many messages.
+#. Please click the "View" button. The screen looks as shown below. You see the storage id used in the message log to the top (highlighted) and  the original message (also highlighted). There is also a Download button (not shown).
 
    .. image:: managingProcessedMessagesMessageLogViewed.jpg
 
