@@ -1,0 +1,13 @@
+```xml{3}
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration [
+  <!ENTITY external SYSTEM "externalTime.xml">
+  <!ENTITY sut SYSTEM "sut.xml">
+  <!ENTITY dynamicId SYSTEM "ConfigurationDynamicId.xml">
+]>
+<Configuration name="ladybug">
+  &external;
+  &sut;
+  &dynamicId;
+</Configuration>
+```

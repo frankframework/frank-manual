@@ -18,18 +18,23 @@ from .stringListCompare import comparatorIndentInsensitive
 from .stringListCompare import comparatorIndentSensitive
 from .stringListCompare import sortedByFirst
 from .rst import makeRst
+from .rst import makeMarkdown
 
 class GeneratedSnippet:
-    def __init__(self, name, lines):
+    def __init__(self, name, linesRst, linesMd):
         if not type(name) is str:
             raise TypeError("Snippet name should be a string")
-        checkNonEmptyStringList(lines)
+        checkNonEmptyStringList(linesRst)
+        checkNonEmptyStringList(linesMd)
         self._name = name
-        self._lines = lines
+        self._linesRst = linesRst
+        self._linesMd = linesMd
     def getName(self):
         return self._name
-    def getLines(self):
-        return self._lines
+    def getLinesRst(self):
+        return self._linesRst
+    def getLinesMd(self):
+        return self._linesMd
 
 class Snippet:
     def __init__(self, name):
@@ -66,10 +71,15 @@ class Snippet:
             if not joinResult.hasOverlap(w):
                 return None, None, "Modifications to combine in this snippet do not touch"
             joinResult = joinResult.join(w)
-        lines, error = makeRst(joinResult, self._markupLanguage)
+        linesRst, error = makeRst(joinResult, self._markupLanguage)
+        if error is not None:
+            return None, joinResult, error
+        linesMarkdown, error = makeMarkdown(joinResult, self._markupLanguage)
+        if error is not None:
+            return None, joinResult, error
         result = None
-        if lines is not None:
-            result = GeneratedSnippet(self._snippetName, lines)
+        if (linesRst is not None) and (linesMarkdown is not None):
+            result = GeneratedSnippet(self._snippetName, linesRst, linesMarkdown)
         return result, joinResult, error
 
 # We want to compare relative paths. We do not want

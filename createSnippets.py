@@ -63,9 +63,13 @@ def createStepSnippets(configName, stepName, oldDir, newDir, snippetsDir, ignore
     else:
         for snippet in snippets:
             makeDirectoryIfNotPresent("/".join([configName, stepName]), os.path.abspath(snippetsDir))
-            outputFileName = os.path.join(os.path.abspath(snippetsDir), configName, stepName, snippet.getName() + ".txt")
-            with open(outputFileName, "w") as f:
-                for line in snippet.getLines():
+            outputFileNameForRst = os.path.join(os.path.abspath(snippetsDir), configName, stepName, snippet.getName() + ".txt")
+            with open(outputFileNameForRst, "w") as f:
+                for line in snippet.getLinesRst():
+                    f.write(line + "\n")
+            outputFileNameForMd = os.path.join(os.path.abspath(snippetsDir), configName, stepName, snippet.getName() + ".md")
+            with open(outputFileNameForMd, "w") as f:
+                for line in snippet.getLinesMd():
                     f.write(line + "\n")
     return hasErrors
 

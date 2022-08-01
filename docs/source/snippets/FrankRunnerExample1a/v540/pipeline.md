@@ -1,0 +1,7 @@
+```XML
+...
+<Pipeline>
+    <FixedResultPipe name="HelloWorld" returnString="Hello World!"/>
+</Pipeline>
+...
+```

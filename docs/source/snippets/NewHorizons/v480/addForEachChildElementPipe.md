@@ -1,0 +1,19 @@
+```xml{7, 9, 10, 11, 12, 13, 14}
+...
+      </SenderPipe>
+      <XsltPipe
+          name="getDestinations"
+          styleSheetName="booking2destinations.xsl"
+          getInputFromSessionKey="originalMessage">
+        <Forward name="success" path="iterateDestinations"/>
+      </XsltPipe>
+      <ForEachChildElementPipe
+          name="iterateDestinations"
+          elementXPathExpression="/destinations/destination">
+          <!-- You will add your sender here -->
+        <Forward name="success" path="Exit"/>
+      </ForEachChildElementPipe>
+    </Pipeline>
+  </Adapter>
+</Configuration>
+```

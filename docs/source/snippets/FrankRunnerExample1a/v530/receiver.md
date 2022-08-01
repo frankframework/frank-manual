@@ -1,0 +1,7 @@
+```XML
+...
+<Receiver name="Receiver1a">
+    <ApiListener name="Listener1a" uriPattern="service1a"/>
+</Receiver>
+...
+```
