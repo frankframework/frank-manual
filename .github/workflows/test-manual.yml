@@ -18,7 +18,7 @@ jobs:
     - name: Show input
       run: echo ${{ github.event.inputs.forceLatestFF }}
     - name: Start Frank2Webapp
-      run: mvn clean install jetty:run &
+      run: mvn --log-file log.txt clean install jetty:run &
       working-directory: srcSteps/Frank2Webapp/v520
     - name: Wait until Frank!Framework is up
       run: bash .github/workflows/waitForUrl.sh http://localhost:8080/iaf/api/server/health 500
@@ -42,6 +42,12 @@ jobs:
           } else {
             core.info('status is OK');
           }
+    - name: Store Maven output
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: mavenLog.txt
+        path: srcSteps/Frank2Webapp/v520/log.txt
     - name: Show files
       run: tree -L 5 .
       if: always()
