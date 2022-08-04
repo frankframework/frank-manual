@@ -27,7 +27,7 @@ jobs:
       working-directory: srcSteps/Frank2Webapp/v520
     - name: Wait until Frank!Framework is up
       # TODO: Decrease timeout when Maven dependencies have been cached
-      run: bash .github/workflows/waitForUrl.sh http://localhost:8080/iaf/api/server/health 5000
+      run: bash .github/workflows/waitForUrl.sh http://localhost:8080/iaf/api/server/health 500
     - name: Capture status
       id: captureStatus
       uses: fjogeleit/http-request-action@v1
