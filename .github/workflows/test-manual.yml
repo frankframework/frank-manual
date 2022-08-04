@@ -26,7 +26,6 @@ jobs:
       run: mvn --log-file log.txt clean install jetty:run &
       working-directory: srcSteps/Frank2Webapp/v520
     - name: Wait until Frank!Framework is up
-      # TODO: Decrease timeout when Maven dependencies have been cached
       run: bash .github/workflows/waitForUrl.sh http://localhost:8080/iaf/api/server/health 500
     - name: Capture status
       id: captureStatus
