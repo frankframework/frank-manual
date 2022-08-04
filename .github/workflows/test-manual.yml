@@ -13,15 +13,21 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    # Do not cache dependencies. Then we would have a large cache with many versions of
-    # the Frank!Framework artifacts.
     - name: Show input
       run: echo ${{ github.event.inputs.forceLatestFF }}
+    - name: Cache Maven downloads
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2/repository/
+        key: ${{ runner.os }}-maven
+        restore-keys: |
+          ${{ runner.os }}-maven
     - name: Start Frank2Webapp
       run: mvn --log-file log.txt clean install jetty:run &
       working-directory: srcSteps/Frank2Webapp/v520
     - name: Wait until Frank!Framework is up
-      run: bash .github/workflows/waitForUrl.sh http://localhost:8080/iaf/api/server/health 500
+      # TODO: Decrease timeout when Maven dependencies have been cached
+      run: bash .github/workflows/waitForUrl.sh http://localhost:8080/iaf/api/server/health 5000
     - name: Capture status
       id: captureStatus
       uses: fjogeleit/http-request-action@v1
