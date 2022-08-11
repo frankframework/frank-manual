@@ -1,4 +1,4 @@
-name: TestFrankRunner.
+name: TestFrankManual.
 on:
   push:
     paths: srcSteps/Frank2Webapp/**
