@@ -26,7 +26,8 @@ jobs:
       run: mvn --log-file log.txt clean install jetty:run &
       working-directory: srcSteps/Frank2Webapp/v520
     - name: Wait until Frank!Framework is up
-      run: bash .github/workflows/waitForUrl.sh http://localhost:8080/iaf/api/server/health 500
+      # Caching Maven deps is not reliable. We do not want that the test fails if we have to wait for Maven downloads
+      run: bash .github/workflows/waitForUrl.sh http://localhost:8080/iaf/api/server/health 5000
     - name: Capture status
       id: captureStatus
       uses: fjogeleit/http-request-action@v1
