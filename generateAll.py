@@ -16,6 +16,11 @@
 # Please run this script before doing the Sphinx build. Sphinx
 # needs the output produced by this script.
 #
+
+# These lines are needed if Python has not been installed with an installer.
+import sys
+sys.path.append(".")
+
 from buildDownloadZips import createAllDownloadZips
 from createSnippets import createAllSnippets
 from createSnippets import META_YML
