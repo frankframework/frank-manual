@@ -11,6 +11,8 @@ The manual is developed with the following build environment:
 * Python 3.8.2 (programming language)
 * Pip (package manager for Python libraries)
 
+If you have no administrator permissions on your computer, you cannot use installers to get these software packages. Please see [INSTALLATION_NO_ADMINISTRATOR.md](INSTALLATION_NO_ADMINISTRATOR.md).
+
 You can download Git from the following link: https://git-scm.com/download/win. The installer of Git also installs MinGW.
 
 You can download Python and Pip from https://www.python.org/downloads/. You also need to install some Python packages usign pip:
