@@ -1,4 +1,4 @@
-If you do not have administrator rights on your computer, you need some hacks to get your development environment ready. Martijn expects that Git and MinGW can easily be installed without administrator rights. If you have trouble installing these tools, please contact Martijn Dirkse or WeAreFrank! (https://www.wearefrank.nl). The remainder of this page focuses on Python and Pip. That installer requires administrator rights to run.
+If you do not have administrator rights on your computer, you need some hacks to get your development environment ready. Martijn Dirkse from WeAreFrank! expects that Git and MinGW can easily be installed without administrator rights. If you have trouble installing these tools, please contact Martijn Dirkse or WeAreFrank! (https://www.wearefrank.nl). The remainder of this page focuses on Python and Pip. That installer requires administrator rights to run.
 
 To install Python and Pip without a Windows installer, please do the following:
 
