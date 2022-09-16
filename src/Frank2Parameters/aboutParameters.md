@@ -101,4 +101,4 @@ If `type=XMLDATETIME`, the raw value should match date format that is something 
 
 ### A case where `type` is ignored
 
-The `<CompareIntegerPipe>` ignores the `type` attribute of parameters. It converts everything integers and compares those. I can imagine that there are some edge cases with rounding. What if parameters of type `NUMBER` are used? Martijn would expect that these are first parsed as Java variables of type `double`. If two `double` values are different but are rounded to the same integer, the comparison may produce equality.
+The `<CompareIntegerPipe>` ignores the `type` attribute of parameters. It converts everything integers and compares those. Martijn can imagine that there are some edge cases with rounding. What if parameters of type `NUMBER` are used? Martijn would expect that these are first parsed as Java variables of type `double`. If two `double` values are different but are rounded to the same integer, the comparison may produce equality.
