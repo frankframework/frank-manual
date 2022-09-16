@@ -14,7 +14,7 @@ There are two example configurations. The example configuration [configurations/
 
 First, the SQL query reads `INSERT INTO WithTimestamp VALUES(?)`. The parameter is of type `XMLDATETIME` and its value is `2022-09-14T15:00:00`. In file [configurations/Parameters/DatabaseChangelog.xml](/configurations/Parameters/DatabaseChangelog.xml) the manipulated database table is created (H2 database). The table being inserted has one column of data type `TIMESTAMP`.
 
-Second, a `CompareIntegerPipe` is executed. It compares the values of parameters `operand1` and `operand2`. These parameters are considered as integers even though they do not have a `type` attribute`.
+Second, a `CompareIntegerPipe` is executed. It compares the values of parameters `operand1` and `operand2`. These parameters are considered as integers even though they do not have a `type` attribute.
 
 Third, the XSLT stylesheet [configurations/Parameters/template.xsl](/configurations/Parameters/template.xsl) is executed. It takes three parameters and includes their values in its output. The values are included using `<xsl:copy-of>`. In the configuration, each parameter is given the value `<xmlRoot>This is the value</xmlRoot>`, the contents of file [configurations/Parameters/fileXmlParameter.xml](/configurations/Parameters/fileXmlParameter.xml). They are passed with different `type` attributes however, namely `STRING`, `XML` and `DOMDOC`. The result is as follows:
 
