@@ -1,0 +1,17 @@
+<Configuration
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+	>
+    <Adapter name="ParametersXslt1">
+        <Receiver>
+            <JavaListener name="listenerXslt1" />
+        </Receiver>
+        <Pipeline>
+            <FixedResultPipe name="pipeXmlParameter" storeResultInSessionKey="keyXmlParameter"
+                filename="fileXmlParameter.xml" />
+            <XsltPipe name="applyParameters" xsltVersion="1" styleSheetName="template.xsl" indentXml="true">
+                <Param name="parNode" type="NODE" sessionKey="keyXmlParameter" xpathExpression="xmlRoot/xmlChild" />
+            </XsltPipe>    
+        </Pipeline>
+    </Adapter>
+</Configuration>
