@@ -25,7 +25,7 @@ You as a site owner get the option to browse the stored messages. In this sectio
 
    .. image:: managingProcessedMessagesTheExampleAdapters.jpg
 
-#. Expand adapter 01 again, see below. You see a heading "Senders" and below it the sender named "Send". Next to this, you see a blue icon. As indicated by the red arrow, the icon appears to the far right of the screen.
+#. Expand adapter 01 again, see below. You see a heading "Senders" and below it the sender named "Send". Next to this, you see a blue icon.
 
    .. image:: managingProcessedMessageMessageLogEnvelope.jpg
 
