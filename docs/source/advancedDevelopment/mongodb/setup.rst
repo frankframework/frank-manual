@@ -3,7 +3,7 @@
 Set up MongoDB
 ==============
 
-MongoDB comes in two flavors. You can install it locally or you can save your data in the cloud with MongoDB atlas. MongoDB atlas has sample datasets that you can use for experimenting. It is difficult to import this sample data to a local MongoDB server. Therefore we work with MongoDB atlas here. This subsection explains how to get a database in MongoDB atlas and how to populate it with the sample data. Please do the following:
+MongoDB comes in two flavors. You can install it locally or you can save your data in the cloud with MongoDB Atlas. MongoDB Atlas has sample datasets that you can use for experimenting. It is difficult to import this sample data to a local MongoDB server. Therefore we work with MongoDB Atlas here. This subsection explains how to get a database in MongoDB Atlas and how to populate it with the sample data. Please do the following:
 
 #. Open a webbrowser and go to https://mongodb.com/atlas.
 #. Press button **Try Free**.
