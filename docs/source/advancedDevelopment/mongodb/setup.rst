@@ -48,7 +48,7 @@ MongoDB comes in two flavors. You can install it locally or you can save your da
 
    .. image:: installCompassAndSeeQueryString.jpg
 
-#. Before you can substitute your password in the query string, you need to url encode it. You can do this using this website: https://www.urlencoder.org/. For example, if your password was `pwd$`, you have to substitute `<password>` by `pwd%24`.
+#. Before you can substitute your password in the query string, you need to url encode it. You can do this using this website: https://www.urlencoder.org/. For example, if your password was ``pwd$``, you have to substitute ``<password>`` by ``pwd%24``.
 #. Open MongoDB Compass. You should see the screen shown below:
 
    .. image:: compassStartScreen.jpg
