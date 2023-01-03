@@ -29,7 +29,7 @@ MongoDB comes in two flavors. You can install it locally or you can save your da
 
    .. image:: databaseSetupDone.jpg
 
-#. You are in the overview of your databases. To the right of label "Load sample datasets to Cluster0.", there is a button to populate your database with the sample data. Click it.
+#. You are in the overview of your databases. To the right of label "Load sample datasets to Cluster0.", there is a button to populate your database with the sample data (not shown). Click it.
 
    .. image:: databasesScreen.jpg
 
