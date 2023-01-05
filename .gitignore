@@ -11,3 +11,4 @@ ibisdoc.xsd
 ladybugTransformation.xsl
 venv
 docs/source/_build/
+/src/frank-runner

@@ -1,0 +1,20 @@
+<Configuration
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+	>
+    <Adapter name="QueryMongoDB">
+        <Receiver>
+            <JavaListener name="QueryMongoDB" />
+        </Receiver>
+        <Pipeline>
+            <SenderPipe name="sendQuery">
+                <MongoDbSender datasourceName="mongodb/frank2mongodb"
+                    database="sample_geospatial"
+                    collection="shipwrecks"
+                    action="FINDMANY"
+                    filter="{latdec: 9.5544777}"
+                    outputFormat="JSON"/>
+            </SenderPipe>
+        </Pipeline>
+    </Adapter>
+</Configuration>

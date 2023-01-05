@@ -1,0 +1,22 @@
+<Context>
+	<Resource
+		name="jdbc/frank2mongodb"
+		type="org.h2.jdbcx.JdbcDataSource"
+		factory="org.apache.naming.factory.BeanFactory"
+		URL="jdbc:h2:C:\Users\martijn\frank-manual\src\frank-runner/build/h2/v2/frank2mongodb"
+	/>
+	<!-- <Resource
+		name="jdbc/frank2mongodb"
+		type="javax.sql.DataSource"
+		driverClassName="org.h2.Driver"
+		url="jdbc:h2:mem:"
+	/> -->
+	<Resource 
+		name="mongodb/frank2mongodb"
+		type="com.mongodb.MongoClient"
+		factory="com.mongodb.client.MongoClientFactory"
+		connectionString="mongodb+srv://martijn:zeEenPRAten0134%24@cluster0.ktth0z5.mongodb.net/test"
+		auth="Container"
+		singleton="true"
+	/>
+</Context>
