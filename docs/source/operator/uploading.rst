@@ -118,15 +118,17 @@ Please continue as follows:
 
       The version string is derived from a file that should be present in the uploaded configuration. The uploaded configuration should contain the file ``BuildInfo.properties``. Adding this file is the responsibility of Frank developers. The contents of this file should look like this:
 
-      instance.version=[some_value]
-      configuration.version=[some_value]
-      configuration.timestamp=[some_value]
-      configuration.commit=[some_value]
-      configuration.pipeline=[some_value]
-      user.name=[some_value]
-      user.fullname=[some_value]
+      .. code-block:: none
+
+         instance.version=[some_value]
+         configuration.version=[some_value]
+         configuration.timestamp=[some_value]
+         configuration.commit=[some_value]
+         configuration.pipeline=[some_value]
+         user.name=[some_value]
+         user.fullname=[some_value]
       
-      Here the "configuration.version" property is especially important as this property is needed to display the version in the Frank!Conolse.
+      Here the ``configuration.version`` property is especially important as this property is needed to display the version in the Frank!Conolse.
 
 #. Go to JDBC | Execute Query.
 #. Execute the following SQL query: ``SELECT * FROM product``.
