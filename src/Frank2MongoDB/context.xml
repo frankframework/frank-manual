@@ -15,7 +15,7 @@
 		name="mongodb/frank2mongodb"
 		type="com.mongodb.MongoClient"
 		factory="com.mongodb.client.MongoClientFactory"
-		connectionString="mongodb+srv://martijn:zeEenPRAten0134%24@cluster0.ktth0z5.mongodb.net/test"
+		connectionString="mongodb+srv://${mongoAccess/username}:${mongoAccess/password}@cluster0.ktth0z5.mongodb.net/test"
 		auth="Container"
 		singleton="true"
 	/>
