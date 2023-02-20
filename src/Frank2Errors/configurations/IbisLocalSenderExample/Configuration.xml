@@ -1,0 +1,40 @@
+<Configuration
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+    >
+    <Adapter name="Caller">
+        <Receiver>
+            <JavaListener name="IbisLocalSenderExample" />
+        </Receiver>
+        <Pipeline>
+            <SenderPipe name="callSubAdapter">
+                <IbisLocalSender javaListener="Callee" />
+                <Forward name="success" path="ReportSuccess" />
+                <Forward name="exception" path="ReportFailure" />
+            </SenderPipe>
+            <FixedResultPipe name="ReportSuccess" returnString="Success">
+                <Forward name="success" path="READY" />
+            </FixedResultPipe>
+            <FixedResultPipe name="ReportFailure" returnString="Failure">
+                <Forward name="success" path="READY" />
+            </FixedResultPipe>
+        </Pipeline>
+    </Adapter>
+    <Adapter name="Callee">
+        <Receiver>
+            <JavaListener name="Callee" />
+        </Receiver>
+        <Pipeline>
+            <Exits>
+                <Exit name="success" state="SUCCESS" />
+                <Exit name="error" state="ERROR" />
+            </Exits>
+            <CompareStringPipe name="compare">
+                <Param name="operand1" value="ok"/>
+                <Forward name="equals" path="success" />
+                <Forward name="lessthan" path="error" />
+                <Forward name="greaterthan" path="error" />
+            </CompareStringPipe>
+        </Pipeline>
+    </Adapter>
+</Configuration>
