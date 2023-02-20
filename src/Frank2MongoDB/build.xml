@@ -6,6 +6,7 @@
 		<exec executable="${exe}" vmlauncher="false" failonerror="true">
 			<arg value="${arg}"/>
 			<arg value="-Dproject.dir=${project.dir}"/>
+			<arg value="-Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=&quot;org.apache.tomcat.util.digester.EnvironmentPropertySource,nl.nn.credentialprovider.CredentialProvidingPropertySource&quot;" />
 		</exec>
 	</target>
 </project>
