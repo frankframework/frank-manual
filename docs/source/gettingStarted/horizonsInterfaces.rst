@@ -35,7 +35,7 @@ The database we want to fill has the following tables: ::
 
 Note that bookings, hosts and travelers are referenced by integer id fields.
 Additional information about travelers and hosts, like name, address,
-thelephone are omitted because they do not have to be stored with a
+telephone are omitted because they do not have to be stored with a
 booking. Every visit has a price, the amount that should be paid
 to the host. In table booking, we store the price that should be
 paid by the traveler to New Horizons, and the fee kept by New
