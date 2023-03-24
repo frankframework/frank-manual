@@ -1,4 +1,10 @@
 - file:
+    path: build.xml
+    change: add
+- file:
+    path: restart.bat
+    change: add
+- file:
     path: configurations/NewHorizons/Configuration.xml
     change: add
 - file:

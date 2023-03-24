@@ -27,9 +27,26 @@ To get started, please do the following:
    .. literalinclude:: ../../../srcSteps/NewHorizons/v410/configurations/NewHorizons/Configuration.xml
       :language: xml
 
-Please take your time to configure your development environment. The `GitHub page of the Frank!Runner <https://github.com/ibissource/frank-runner>`_ contains all the information you need. You will use the non-Maven directory structure that is explained there. You can see how to work with ``FrankConfig.xsd`` and the code completion and syntax checking that it supports. You can also see how you can easily start the Frank!Runner during development.
+#. In directory ``Frank2Manual``, add file ``build.xml`` with the following contents:
 
-4. To check these steps, please start the Frank!Framework and go to the Adapter Status page. You should see a tab "NewHorizons".
+   .. literalinclude:: ../../../srcSteps/NewHorizons/v410/build.xml
+      :language: xml
+
+   .. WARNING::
+
+      This step should be sufficient to run your Frank configuration from within Visual Studio Code or Eclipse. However on March 24 2023 there is an issue with the Task Explorer plugin of Visual Studio Code. This motivates the next step that allows you to run your work using a Windows batch file. See https://github.com/ibissource/frank-runner for more information.
+
+#. In directory ``Frank2Manual``, add file ``restart.bat`` with the following contents:
+
+   .. literalinclude:: ../../../srcSteps/NewHorizons/v410/restart.bat
+      :language: none
+
+   .. WARNING::
+
+      If you are working on Linux or on a Mac, you need ``restart.sh`` instead. See https://github.com/ibissource/frank-runner.
+
+#. To check these steps, please start the Frank!Framework. To do this, run script ``restart.bat`` from a command prompt. You may have to change directory to the ``Frank2Manual`` directory before doing this.
+#. When the Frank!Frame runs, go to the Adapter Status page. You should see a tab "NewHorizons".
 #. Check that your directory ``Frank2Manual/configurations`` now contains ``FrankConfig.xsd``, the file referenced within ``Configuration.xml``. Placing this file is the job of the Frank!Runner.
 #. The Frank!Runner should also create a ``.gitignore`` file that ignores ``FrankConfig.xsd`` for checkin. Please check that such a file has been created.
 
