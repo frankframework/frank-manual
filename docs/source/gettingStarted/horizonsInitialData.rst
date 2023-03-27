@@ -62,6 +62,7 @@ You can test your work by querying the tables you created, "booking" and "visit"
       For more information, see section :ref:`advancedDevelopmentDatabase`.
 
 #. You can choose to have comma-separated (csv) output instead of XML (number 3).
+#. Leave the Query Type to "Auto". You only need to change it for complicated queries for which the Frank!Framework cannot sort out whether a value is returned or not.
 #. Enter query ``SELECT * FROM booking`` (number 4).
 #. Press "Send" (number 5). You will see the result ``"ID","TRAVELERID","PRICE","FEE"`` (number 6). You have verified that the "booking" table exists.
 #. Verify that table "visit" exists by executing the query ``SELECT * FROM visit``. Check that the result of this query is ``"BOOKINGID","SEQ","HOSTID","PRODUCTID","STARTDATE","ENDDATE","PRICE"``.

@@ -62,6 +62,7 @@ The output message is no longer the incoming booking XML. Please remember this w
    .. image:: executeJdbcQuery.jpg
 
 #. You see you are in the execute screen (number 1). Select "Datasource" "jdbc/frank2manual" (number 2). If you want, you can choose to see comma-separated output instead of XML (number 3).
+#. Leave the Query Type to "Auto". You only need to change it for complicated queries for which the Frank!Framework cannot sort out whether a value is returned or not.
 #. Type the following query: ``SELECT * FROM booking`` (number 4).
 #. Press "Send" (number 5). Check that the query result (number 6) shows some of the data you entered in step 2, in particular the "id" you chose.
 

@@ -32,6 +32,7 @@ In this section, you learn how you can browse and modify the database. You will 
 
       The SQL language (Standard Query Language) is almost the same for every database that supports it. There are many resources on the internet for learning the SQL language. For advanced queries, you may want to learn the SQL dialect of your database vendor. When you use the Frank!Runner, the brand of your database is "H2".
 
+#. Leave the Query Type (number 5) to "Auto". You only need to change it for complicated queries for which the Frank!Framework cannot determine whether a value is returned or not.
 #. Press "Send". Below the "Send" button, the result appears. It should be something like the following:
 
    .. code-block:: none
