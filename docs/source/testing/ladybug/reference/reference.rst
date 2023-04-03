@@ -3,6 +3,10 @@
 Read other reports
 ==================
 
+.. WARNING::
+
+   You cannot practice this section at the moment because of issue https://github.com/ibissource/ibis-ladybug/issues/188. You cannot properly sort reports in Ladybug. This section will be updated when the bug has been fixed.
+
 This section continues exploring what you can do by editing test reports. You started editing test reports in subsection :ref:`edit`. When the system-under-test changes, you can update test reports to reflect the new reality. You can copy test reports and edit the copy. This way you can create multiple similar automated tests without having to do them all by hand. A special way to copy them is to use the "Clone" button, as is explained in the previous subsection. That subsection also introduces variables in test reports.
 
 In this subsection, you learn how you can read values from other reports. You will use the example adapter "adapterIngestMessage" to store a message in the database. The adapter returns a unique id that is needed to retrieve the message again. This time the id is not fake; the id is really different for each stored message. You will use another adapter "adapterGetIngestedMessage" to retrieve the message, the input being the id to search for. For each of these two adapters, you will capture a test report. You will update these test reports such that they cooperate. The test report of "adapterGetIngestedMessage" will access the test report of "adapterIngestMessage" to find the id to search for. This is a stronger test than you would have by hiding the id differences with ignores.
