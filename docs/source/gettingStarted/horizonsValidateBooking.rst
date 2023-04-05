@@ -112,7 +112,7 @@ Final remarks (Windows and Linux)
 
 The HTTP request includes a HTTP header ``Content-Type: application/xml``. You need this header because the ingest booking adapter uses listener ``<ApiListener>``. Use another listener if you want to omit the header from the request.
 
-The exit path ``Exit`` corresponds to code ``201`` and state ``SUCCESS``. This exit state ``SUCCESS`` does not appear in the HTTP response. You can see it if you use the "Test Pipeline" page in the console, see section :ref:`gettingStartedTestPipelines`.
+The exit name ``Exit`` corresponds to code ``201`` and state ``SUCCESS``. This exit state ``SUCCESS`` does not appear in the HTTP response. You can see it if you use the "Test Pipeline" page in the console, see section :ref:`gettingStartedTestPipelines`.
 
 Please test your adapter with XML documents that do not satisfy ``booking.xsd`` or with text that is not valid XML. You should see the message ``Input booking does not satisfy booking.xsd`` and HTTP status code ``400``.
 
