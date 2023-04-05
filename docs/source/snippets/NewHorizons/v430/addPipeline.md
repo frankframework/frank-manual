@@ -1,4 +1,4 @@
-```xml{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21}
+```xml{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23}
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
@@ -10,8 +10,10 @@
           method="POST"/>
     </Receiver>
     <Pipeline firstPipe="checkInput">
-      <Exit path="Exit" state="SUCCESS" code="201" />
-      <Exit path="BadRequest" state="ERROR" code="400" />
+      <Exits>
+        <Exit name="Exit" state="SUCCESS" code="201" />
+        <Exit name="BadRequest" state="ERROR" code="400" />
+      </Exits>
       <XmlValidatorPipe
           name="checkInput"
           root="booking"

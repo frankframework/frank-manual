@@ -4,7 +4,7 @@
 - file:
     path: configurations/NewHorizons/Configuration.xml
     change:
-        - insert: 11
+        - insert: 13
           highlight: true
           snippet: addPipeline
 - snippet:

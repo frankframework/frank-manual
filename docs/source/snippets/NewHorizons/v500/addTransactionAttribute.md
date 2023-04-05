@@ -7,13 +7,13 @@
 </Receiver>
 <Pipeline firstPipe="checkInput"
     transactionAttribute="RequiresNew" >
-  <Exit path="Exit" state="SUCCESS" code="201" />
-  <Exit path="BadRequest" state="ERROR" code="400" />
+  <Exits>
+    <Exit name="Exit" state="SUCCESS" code="201" />
+    <Exit name="BadRequest" state="ERROR" code="400" />
+  </Exits>
   <XmlValidatorPipe
       name="checkInput"
       root="booking"
       schema="booking.xsd">
-    <Forward name="success" path="insertBooking" />
-    <Forward name="failure" path="makeInvalidBookingError" />
 ...
 ```

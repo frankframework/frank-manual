@@ -9,8 +9,10 @@
           method="POST"/>
     </Receiver>
     <Pipeline firstPipe="checkInput">
-      <Exit path="Exit" state="SUCCESS" code="201" />
-      <Exit path="BadRequest" state="ERROR" code="400" />
+      <Exits>
+        <Exit name="Exit" state="SUCCESS" code="201" />
+        <Exit name="BadRequest" state="ERROR" code="400" />
+      </Exits>
       <XmlValidatorPipe
           name="checkInput"
           root="booking"
