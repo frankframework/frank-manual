@@ -34,9 +34,9 @@ The adapter starts with a ``<Receiver>`` that contains an ``<ApiListener>``. The
 
    .. include:: ../snippets/NewHorizons/v430/addPipeline.txt
 
-The attributes ``root`` and ``schema`` are used to reference the expected root element of the incoming XML and to reference the XML schema file ``booking.xsd`` presented in step 1. A ``<Forward>`` tag links a forward name to a path. On success, we go to the pipeline exit having path ``Exit``, finishing execution. The ``<Pipeline>`` tag contains an ``<Exit>`` tag that links path ``Exit`` to exit state ``SUCCESS`` and HTTP status code ``201``.
+The attributes ``root`` and ``schema`` are used to reference the expected root element of the incoming XML and to reference the XML schema file ``booking.xsd`` presented in step 1. A ``<Forward>`` tag links a forward name to a path. On success, we go to the pipeline exit having name ``Exit``, finishing execution. The ``<Pipeline>`` tag contains an ``<Exit>`` tag that links path ``Exit`` to exit state ``SUCCESS`` and HTTP status code ``201``.
 
-The ``<XmlValidatorPipe>`` supports another forward name ``failure`` that is followed when validation fails. It is linked to forward path "BadRequest" at this point, corresponding to exit state ``ERROR`` and code ``400``.
+The ``<XmlValidatorPipe>`` supports another forward name ``failure`` that is followed when validation fails. It is linked to forward name "BadRequest" at this point, corresponding to exit state ``ERROR`` and code ``400``.
 
 5. The ``<XmlValidatorPipe>`` echos its input message to its output message, both if validation succeeds and if validation fails. We want an error message if we receive an invalid booking message. Please update ``Configuration.xml`` as follows:
 
