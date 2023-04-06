@@ -21,39 +21,26 @@ Please do the following:
 
    .. image:: ladybugEnableReportGenerator.jpg
 
-#. Start Postman.
-#. Go to File | Settings, select tab General.
-#. Ensure that "SSL certificate verification" is not checked, see figure below:
-
-   .. image:: postmanSettings.jpg
-
-#. Close this dialog.
-#. Select tab Params. Select method POST and type URL ``localhost/api/archive``. See figure below:
-
-   .. image:: postmanParams.jpg
-
+#. Start Postman. Ensure that "SSL certificate verification" is not checked, see :ref:`validateBookingTestWindows` in chapter "Getting Started" for instructions.
+#. Start a new request as explained in Getting Started. Select method POST and type URL ``localhost/api/archive``.
 #. Go to tab "Headers".
 #. Add header ``Content-Type`` with value ``application/xml`` and select it, as shown:
 
    .. image:: postmanHeaders.jpg
 
 #. Go to tab "Body".
-#. Select radio button "raw". Then enter the following XML for the body:
+#. Select type "raw" as explained in Getting Started, see link above. Then enter the following XML for the body:
 
    .. code-block:: xml
      
       <document>This is the document</document>
 
-   See the figure below:
-
-   .. image:: postmanBody.jpg
-
 #. Press "Send".
-#. To the bottom, you should see the following response:
+#. Under the body you entered, you should see the following response:
 
-   .. image:: postmanResponse.jpg
-
-   There are tabs that allow you to see different features of the response (number 1). The body tab is selected, so you see the body of the response (number 2). And you see that the HTTP status code is 200 (number 3), which indicates success.
+   .. code-block:: xml
+     
+      <docid>docid-12345</docid>
 
 #. Switch back to Ladybug and press Refresh:
 
