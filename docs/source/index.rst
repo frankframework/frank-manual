@@ -15,7 +15,6 @@ Below you see the table of contents of the Frank!Manual:
    testing/testing
    deploying/deploying
    advancedDevelopment/advancedDevelopment
-   reference/reference
    troubleshooting/troubleshooting
    disclaimer/disclaimer
    searchHelpIndex/searchHelpIndex
