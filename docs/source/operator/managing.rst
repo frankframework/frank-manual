@@ -29,7 +29,7 @@ You already learned that the config watches directory ``work\input``. If a new f
 
 .. NOTE::
 
-   If you are a Frank develper, it may interest you that moving files between these directories is a feature of the ``<DirectoryListener>`` listener.
+   If you are a Frank developer, it may interest you that moving files between these directories is a feature of the ``<DirectoryListener>`` listener.
 
 Before we start our investigation, we clean up our system. Please do the following:
 

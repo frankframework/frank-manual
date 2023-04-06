@@ -23,10 +23,10 @@ In this section, you learn how you can browse and modify the database. You will 
       
       There is always at least one database, which almost always has its JNDI name derived from the instance name of the deployment. In this tutorial, the instance name is "Frank2Manual". The JNDI name of the database is calculated by replacing capitals by lower-case letters and prepending the string "jdbc/", resulting in "jdbc/frank2manual".
 
-      Do not be worried that the JNDI name depends on a property that can have a different value for different deployents. The Frank!Framework is capable of handling this.
+      Do not be worried that the JNDI name depends on a property that can have a different value for different deployments. The Frank!Framework is capable of handling this.
 
 #. You are going to query the database. You can choose the output format (number 2). Choose "csv".
-#. To tell what you want, you need to enter an SQL query in the text box numbered 3. The example configuration writes to table "product", so you want to see the contents of this table. The SQL query to see all data within table "product" reads ``SELECT * FROM product``. Please enter this text.
+#. You should enter your SQL query in the text box marked with number 3. The example configuration writes to table "product", so you want to see the contents of this table. The SQL query to see all data within table "product" reads ``SELECT * FROM product``. Please enter this text.
 
    .. NOTE::
 

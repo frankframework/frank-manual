@@ -17,7 +17,7 @@ In the main menu, please click "Logging" as shown below:
 
 .. image:: mainMenuLogging.jpg
 
-Your screen should look like shown below. You see the version of the Frank!Framework you are using (number 1), like you do in every screen of the Frank!Console. You also see the instance name of your deployment (number 2). You have it confirmed that you are looking to the logging (number 3). All logfiles appear in the same directory on the server and the full path of this directory is shown (number 4).
+Your screen should look like shown below. You see the version of the Frank!Framework you are using (number 1), like you do in every screen of the Frank!Console. You also see the instance name of your deployment (number 2). You see confirmation that you are looking at the logging (number 3). All logfiles appear in the same directory on the server and the full path of this directory is shown (number 4).
 
 .. image:: loggingOverview.jpg
 
@@ -97,10 +97,6 @@ Finally, we investigate log file "frank2manual.log". Here are a few lines of it:
 Every line starts with a timestamp and with a log level. Then comes information about the Java component issuing the log message. In the first line for example, you see ``[localhost-startStop-1] null util.AppConstants``. This information may be difficult to understand; it is most meaningful to the Java developers who code the Frank!Framework. At the end of the line comes the actual message, describing the event that happened inside the Frank!Framework.
 
 It is not your job as a site owner to understand this log output in detail. It is your job to scan it and to search for the relevant parts. The timestamp you find in every line is your friend. When you know when something interesting happened, you can always find the relevant part of the logfiles by searching for that time. You can also try searching for strings you copy from Ladybug. You typically copy pieces of the logfile and send them to Frank developers, helping them to fix issues with their Frank configurations.
-
-.. NOTE::
-
-   Junior Frank developers often forget to look in the logfiles. They tend to give up when they cannot solve an issue using only Ladybug.
 
 .. NOTE::
 
