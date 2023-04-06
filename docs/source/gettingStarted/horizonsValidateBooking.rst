@@ -53,12 +53,21 @@ Your adapter listens to REST HTTP requests. If you are working under Windows, yo
 
 #. Install Postman from https://www.getpostman.com/downloads/ if you do not have it.
 #. Start Postman.
-#. Go to File | Settings, select tab General.
+#. Press the cog wheen shown in the picture below. It is at the top of the window.
+
+   .. image:: postmanCogwheel.jpg
+
+#. Go to Settings. In the dialog that appears select tab General.
 #. Ensure that "SSL certificate verification" is not checked, see figure below:
 
    .. image:: postmanSettings.jpg
 
 #. Close this dialog.
+#. Press the "New" button shown below. It is almost at the top of the window.
+
+   .. image:: postmanNewRequest.jpg
+
+#. Click "HTTP Request".
 #. Select method POST (number 1 in the figure below) and type URL ``http://localhost/api/booking`` (number 2).
 
    .. image:: postmanUrl.jpg
@@ -71,13 +80,14 @@ Your adapter listens to REST HTTP requests. If you are working under Windows, yo
 
    .. image:: postmanSend.jpg
 
-#. In the message field (number 2), copy/paste the following XML:
+#. Select type "raw" (number 2).
+#. In the message field (number 3), copy/paste the following XML:
 
    .. literalinclude:: validBooking.xml
       :language: XML
 
-#. Press "Send" (number 3 in the figure).
-#. Check the response. Go to the "Body" tab (number 1 in the figure below). You should see that the response equals the original XML message (number 2). You should have status code ``201`` (number 3).
+#. Press "Send" (number 4 in the figure).
+#. The response appears under the request, still in the "Body" tab. It equals the request body. You also see the response code, which is annotated in the figure below.
 
    .. image:: postmanResponse.jpg
 
