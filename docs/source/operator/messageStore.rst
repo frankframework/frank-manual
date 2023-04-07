@@ -26,6 +26,10 @@ The Frank!Framework offers a component for this queuing solution that bridges th
 
    This analysis demonstrates the difference between a message log with type "L" and a message log with type "A". Message logs intended for auditing, see subsection :ref:`managingProcessedMessagesLog`, use type code "L". Message logs that hold processed messages coming from a message store use type code "A".
 
+.. NOTE::
+
+   If you are a Frank developer, the following may be interesting to you. You introduce a message store by using a `<MessageStoreSender>` element in your configuration. This introduces an error store automatically. If you have a `<MessageStoreSender>`, there is no need to add a `<JdbcErrorStorage>` to get the error store for failed messages.
+
 Tutorial
 --------
 
