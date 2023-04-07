@@ -28,7 +28,7 @@ The Frank!Framework offers a component for this queuing solution that bridges th
 
 .. NOTE::
 
-   If you are a Frank developer, the following may be interesting to you. You introduce a message store by using a `<MessageStoreSender>` element in your configuration. This introduces an error store automatically. If you have a `<MessageStoreSender>`, there is no need to add a `<JdbcErrorStorage>` to get the error store for failed messages.
+   If you are a Frank developer, the following may be interesting to you. You introduce a message store by using a ``<MessageStoreSender>`` element in your configuration. This introduces an error store automatically. If you have a ``<MessageStoreSender>``, there is no need to add a ``<JdbcErrorStorage>`` to get the error store for failed messages.
 
 Tutorial
 --------
