@@ -19,7 +19,7 @@ In this section, you learn how you can browse and modify the database. You will 
 
    .. NOTE::
 
-      When a Frank developer delivers a Frank config, she should tell what JNDI names are used. It is up to the system administrator to configure them, linking the names to the actual resources. The developer or the system administrator should tell you as a site owner what JNDI names exist and what they mean. 
+      Upon delivery of a Frank config, the developer should inform you of what JNDI names are used. It is up to the system administrator to configure them, linking the names to the actual resources. The developer or the system administrator should tell you as a site owner what JNDI names exist and what they mean. 
       
       There is always at least one database, which almost always has its JNDI name derived from the instance name of the deployment. In this tutorial, the instance name is "Frank2Manual". The JNDI name of the database is calculated by replacing capitals by lower-case letters and prepending the string "jdbc/", resulting in "jdbc/frank2manual".
 
