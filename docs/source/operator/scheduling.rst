@@ -39,7 +39,7 @@ Now that you are prepared, please continue as follows:
 
       The Pause button number 2 may not work in your version of the Frank!Framework. See GitHub issue https://github.com/ibissource/iaf/issues/718. This issue has been fixed in version 7.6-SNAPSHOT, the latest version available on October 15 2020.
 
-#. You need a string that defines how often you want to run your adapter. To get that string, you have to know that the scheduler of the Frank!Framework uses a Java component called "quartz". When you search the internet for "quartz expression", you may find the following site: https://www.freeformatter.com/cron-expression-generator-quartz.html.
+#. You need a string that defines how often you want to run your adapter. To get that string, you have to know that the scheduler of the Frank!Framework uses a Java component called "quartz". When you search the internet for "quartz expression", you may find the following site: https://www.freeformatter.com/cron-expression-generator-quartz.html. These expressions are alwo known as cron expressions. This give you an alternative website: https://devtoolcafe.com/tools/cron.
 #. Here you can specify that you want to run your task every minute. The site will give you the string ``0 * * ? * * *``. You will use it later.
 #. Press the "Add new schedule" button. You see the page shown below:
 
