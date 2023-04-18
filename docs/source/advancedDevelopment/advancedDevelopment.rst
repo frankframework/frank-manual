@@ -11,3 +11,4 @@ Chapter :ref:`gettingStarted` provides the basics of Frank development. This cha
    properties/properties
    database/database
    deployment/maven
+   exercise/exercise
