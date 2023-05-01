@@ -23,15 +23,19 @@
                 <Forward name="exception" path="error" />
             </LocalFileSystemPipe>
             <XmlValidatorPipe name="checkXml" schema="xmlInput.xsd" root="document" storeResultInSessionKey="xmlData">
-                <Forward name="success" path="readTxtFile" />
+                <Forward name="success" path="saveXml" />
                 <Forward name="failure" path="error" />
             </XmlValidatorPipe>
+            <PutInSessionPipe name="saveXml">
+                <Param name="meta" />
+                <Forward name="success" path="readTxtFile" />
+            </PutInSessionPipe>
             <LocalFileSystemPipe name="readTxtFile" action="read" storeResultInSessionKey="body">
                 <Param name="filename" pattern="{basename}.txt" />
                 <Forward name="success" path="composeMundoMessage" />
                 <Forward name="exception" path="error" />
             </LocalFileSystemPipe>
-            <XsltPipe name="composeMundoMessage" styleSheetName="conclusion2mundo.xslt" xsltVersion="2">
+            <XsltPipe name="composeMundoMessage" styleSheetName="conclusion2mundo.xslt" xsltVersion="2" getInputFromSessionKey="meta">
                 <Param name="body" sessionKey="body" />
             </XsltPipe>
         </Pipeline>
