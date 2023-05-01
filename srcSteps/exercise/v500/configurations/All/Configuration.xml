@@ -1,7 +1,41 @@
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
-    >
+    name="Mundo">
+    <Adapter name="IngestDocument">
+        <Receiver>
+            <!-- Receive a file name base -->
+            <JavaListener name="IngestDocument" />
+        </Receiver>
+        <Pipeline>
+            <Exits>
+                <Exit name="success" state="SUCCESS" />
+                <Exit name="error" state="ERROR" />
+            </Exits>
+            <PutInSessionPipe name="saveBase">
+                <!-- Store the input message -->
+                <Param name="basename" />
+                <Forward name="success" path="readXmlFile" />
+            </PutInSessionPipe>
+            <LocalFileSystemPipe name="readXmlFile" action="read">
+                <Param name="filename" pattern="{basename}.xml"/>
+                <Forward name="success" path="checkXml" />
+                <Forward name="exception" path="error" />
+            </LocalFileSystemPipe>
+            <XmlValidatorPipe name="checkXml" schema="xmlInput.xsd" root="document" storeResultInSessionKey="xmlData">
+                <Forward name="success" path="readTxtFile" />
+                <Forward name="failure" path="error" />
+            </XmlValidatorPipe>
+            <LocalFileSystemPipe name="readTxtFile" action="read" storeResultInSessionKey="body">
+                <Param name="filename" pattern="{basename}.txt" />
+                <Forward name="success" path="composeMundoMessage" />
+                <Forward name="exception" path="error" />
+            </LocalFileSystemPipe>
+            <XsltPipe name="composeMundoMessage" styleSheetName="conclusion2mundo.xslt" xsltVersion="2">
+                <Param name="body" sessionKey="body" />
+            </XsltPipe>
+        </Pipeline>
+    </Adapter>
     <Adapter name="Mundo">
         <Receiver>
             <JavaListener name="Mundo" />
@@ -24,7 +58,7 @@
                 <Forward name="exception" path="answerError" />
             </Base64Pipe>
             <CompareStringPipe name="checkMessage">
-                <Param name="operand2">The document contents</Param>
+                <Param name="operand2" value="The document contents" />
                 <Forward name="equals" path="answerOk" />
                 <Forward name="lessthan" path="answerError" />
                 <Forward name="greaterthan" path="answerError" />
@@ -36,21 +70,6 @@
             <FixedResultPipe name="answerError" returnString="error">
                 <Forward name="success" path="ERROR" />
             </FixedResultPipe>
-        </Pipeline>
-    </Adapter>
-    <Adapter name="IngestDocument">
-        <Receiver>
-            <ApiListener name="IngestDocument" uriPattern="document" method="POST" />
-        </Receiver>
-        <Pipeline>
-            <Exits>
-                <Exit name="READY" state="SUCCESS" code="200" />
-                <Exit name="ERROR" state="ERROR" code="400" />
-            </Exits>
-            <XmlValidatorPipe name="validate" schema="input.xsd" root="document">
-                <Forward name="success" path="answerOk" />
-                <Forward name="failure" path="answerError" />
-            </XmlValidatorPipe>
         </Pipeline>
     </Adapter>
 </Configuration>
