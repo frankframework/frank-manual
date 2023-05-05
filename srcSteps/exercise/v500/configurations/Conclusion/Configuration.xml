@@ -1,0 +1,44 @@
+<Configuration
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="IngestDocument">
+        <Receiver>
+            <!-- Receive a file name base -->
+            <JavaListener name="IngestDocument" />
+        </Receiver>
+        <Pipeline>
+            <Exits>
+                <Exit name="success" state="SUCCESS" />
+                <Exit name="error" state="ERROR" />
+            </Exits>
+            <PutInSessionPipe name="saveBase">
+                <!-- Store the input message -->
+                <Param name="basename" />
+                <Forward name="success" path="readXmlFile" />
+            </PutInSessionPipe>
+            <LocalFileSystemPipe name="readXmlFile" action="read">
+                <Param name="filename" pattern="{basename}.xml"/>
+                <Forward name="success" path="checkXml" />
+                <Forward name="exception" path="error" />
+            </LocalFileSystemPipe>
+            <XmlValidatorPipe name="checkXml" schema="xmlInput.xsd" root="document" storeResultInSessionKey="xmlData">
+                <Forward name="success" path="readTxtFile" />
+                <Forward name="failure" path="error" />
+            </XmlValidatorPipe>
+            <LocalFileSystemPipe name="readTxtFile" action="read">
+                <Param name="filename" pattern="{basename}.txt" />
+                <Forward name="success" path="encodeBody" />
+                <Forward name="exception" path="error" />
+            </LocalFileSystemPipe>
+            <Base64Pipe name="encodeBody" direction="ENCODE" storeResultInSessionKey="body">
+                <Forward name="success" path="composeMundoMessage" />
+                <Forward name="exception" path="error" />
+            </Base64Pipe>
+            <XsltPipe name="composeMundoMessage" styleSheetName="conclusion2mundo.xslt" xsltVersion="2" getInputFromSessionKey="xmlData">
+                <Param name="body" sessionKey="body" />
+                <Forward name="success" path="success" />
+                <Forward name="exception" path="error" />
+            </XsltPipe>
+        </Pipeline>
+    </Adapter>
+</Configuration>
