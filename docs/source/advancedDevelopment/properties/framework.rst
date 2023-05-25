@@ -113,3 +113,6 @@ scenariosroot<n>.description and scenariosroot<n>.directory
 
 larva.timeout
   Larva request timeout, see :ref:`testingLarvaConsole`.
+
+soap.bus.org.apache.cxf.stax.maxAttributeSize, soap.bus.org.apache.cxf.stax.maxChildElements, soap.bus.org.apache.cxf.stax.maxElementDepth, soap.bus.org.apache.cxf.stax.maxAttributeCount, soap.bus.org.apache.cxf.stax.maxTextLength, soap.bus.org.apache.cxf.stax.maxElementCount
+  These properties are closely related. The Frank!Framework uses a library CXF to listen to SOAP messages. This library offers protection against DDOS attacks by rejecting SOAP messages when their XML data is 'too much'. All these properties should have integer values. For example, ``soap.bus.org.apache.cxf.stax.maxTextLength`` is the maximum allowed length of a text inside an XML node. The other properties have similar meanings as their names suggest. See also https://cxf.apache.org/docs/security.html. To see information about one of the mentioned F!F properties, omit the ``soap.bus.`` prefix. WeAreFrank! introduces this prefix in the property names because we work with different CXF busses. So F!F property ``soap.bus.org.apache.cxf.stax.maxTextLength`` corresponds to CXF property ``org.apache.cxf.stax.maxTextLength``.
