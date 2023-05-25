@@ -290,3 +290,10 @@ Liquibase script does not seem to work with H2 in-memory database
    driverClassName="org.h2.Driver"
    url="jdbc:h2:mem:ibis4pt"
    /> 
+
+Watching the boot of the F!F
+----------------------------
+
+**Question:** I am starting my configuration with the F!F running on Apache Tomcat. How can I see whether my application is ready to receive HTTP requests?
+
+**Answer:** You can open a browser and navigate to the main URL of the Frank!Framework, typically ``http://localhost`` in a development environment. If you see the Frank!Framework on this URL, it is done with its boot. Alternatively, you can look at the console output. When you work with the Frank!Runner, take care to look at the console window that is created during boot, not the original command prompt from which you start the Frank!Runner. You see many messages passing by in the console. When you see ``INFO [main] org.apache.catalina.core.ApplicationContext.log Starting IbisContext``, Apache Tomcat has loaded the Frank!Framework and the Frank!Framework's boot code starts executing. When you see ``INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [xxx] milliseconds``, the Frank!Framework should be ready to receive HTTP requests.
