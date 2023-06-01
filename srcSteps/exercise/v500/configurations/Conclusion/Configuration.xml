@@ -9,7 +9,7 @@
         <Pipeline>
             <Exits>
                 <Exit name="success" state="SUCCESS" />
-                <Exit name="error" state="ERROR" />
+                <Exit name="notOk" state="ERROR" />
             </Exits>
             <PutInSessionPipe name="saveBase">
                 <!-- Store the input message -->
@@ -19,30 +19,30 @@
             <LocalFileSystemPipe name="readXmlFile" action="read">
                 <Param name="filename" pattern="{basename}.xml"/>
                 <Forward name="success" path="checkXml" />
-                <Forward name="exception" path="error" />
+                <Forward name="exception" path="notOk" />
             </LocalFileSystemPipe>
             <XmlValidatorPipe name="checkXml" schema="xmlInput.xsd" root="document" storeResultInSessionKey="xmlData">
                 <Forward name="success" path="readTxtFile" />
-                <Forward name="failure" path="error" />
+                <Forward name="failure" path="notOk" />
             </XmlValidatorPipe>
             <LocalFileSystemPipe name="readTxtFile" action="read">
                 <Param name="filename" pattern="{basename}.txt" />
                 <Forward name="success" path="encodeBody" />
-                <Forward name="exception" path="error" />
+                <Forward name="exception" path="notOk" />
             </LocalFileSystemPipe>
             <Base64Pipe name="encodeBody" direction="ENCODE" storeResultInSessionKey="body">
                 <Forward name="success" path="composeMundoMessage" />
-                <Forward name="exception" path="error" />
+                <Forward name="exception" path="notOk" />
             </Base64Pipe>
             <XsltPipe name="composeMundoMessage" styleSheetName="conclusion2mundo.xslt" xsltVersion="2" getInputFromSessionKey="xmlData">
                 <Param name="body" sessionKey="body" />
                 <Forward name="success" path="sendToMundo" />
-                <Forward name="exception" path="error" />
+                <Forward name="exception" path="notOk" />
             </XsltPipe>
             <SenderPipe name="sendToMundo">
                 <HttpSender name="sendToMundo" methodType="POST" url="${mundoUrl}" />
                 <Forward name="success" path="success" />
-                <Forward name="exception" path="error" />
+                <Forward name="exception" path="notOk" />
             </SenderPipe>
         </Pipeline>
     </Adapter>

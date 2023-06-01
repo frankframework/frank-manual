@@ -11,16 +11,34 @@ Conclusion has outsourced marking up and sending letters to customers. These ser
 
 #. Conclusion and Gilgamesh have access to a Windows network share. The share is not accessible by Mundo.
 #. When Conclusion has a message for a customer, it sends an XML file with the data to Gilgamesh and stores the XML as a file on the share.
-#. Gilgamesh creates a PDF with the letter that is sent to the customer and places the PDF on the file share.
+#. Gilgamesh creates a PDF with the letter that is sent to the customer and places the PDF on the file share. In this exercise, we simplify this by working with text files - this makes testing easier for you.
 #. Conclusion polls the file share regularly.
-#. When there is a combination of an XML message and its related PDF letter, Conclusion transforms this information into a HTTP request that can be processed by Mundo.
+#. When there is a combination of an XML message and its related PDF letter (text file), Conclusion transforms this information into a HTTP request that can be processed by Mundo.
 
-Each message that Conclusion sends to Gilgamesh has a unique ID that is a string consisting of lower-case letters, upper-case letters and digits. The filename of an XML file is ``<ID>.xml``, so if the ID is ``abc123``, then it is stored as file ``abc123.xml``. The PDF produced by Gilgamesh is then stored as ``abc123.pdf``. The part before the dot, the base file name, is common to the XML file and the PDF file.
+Each message that Conclusion sends to Gilgamesh has a unique ID that is a string consisting of lower-case letters, upper-case letters and digits. The filename of an XML file is ``<ID>.xml``, so if the ID is ``abc123``, then it is stored as file ``abc123.xml``. The PDF produced by Gilgamesh is then stored as ``abc123.txt``. The part before the dot, the base file name, is common to the XML file and the PDF file.
 
 All processing is done in some subdirectory ``base`` in the file share. Incoming files are put in subdirectory ``base/input``. After successful processing, the files should be moved to ``base/processed``. When an error occurs, the files should be moved to ``base/error``.
 
-* TODO: Explain data formats of incoming and outgoing XML messages.
-* TODO: Provide details about Mundo. What URL? What HTTP headers?
+Here is an example of an input XML message to be processed:
+
+.. literalinclude:: ../../../../srcSteps/exercise/v500/tests/Conclusion/valid.xml
+   :language: xml
+
+All elements of this request have namespace ``http://wearefrank.nl/manual/exercise/conclusion``.
+
+This message should be transformed according to the following:
+
+* Mundo needs an XML in which every element has namespace ``http://wearefrank.nl/manual/exercise/mundo``.
+* The ``<to>`` and ``<cc>`` elements are wrapped inside a ``<header>``.
+* The ``<accountId>``, ``<email>``, ``<street>``, ``<houseNumber>``, ``<city>``, ``<zip>`` and ``<country>`` inside ``<to>`` and ``<cc>`` elements remain the same apart from the namespace.
+* The ``<firstName>`` and ``<lastName>`` elements of a Conclusion request are not copied. Their values are combined and the resulting string is wrapped in an element ``<displayName>``.
+* The ``id`` attribute of the ``<document>`` element of the Conclusion request reappears in the ``<document>`` element posted to Mundo.
+* The Mundo request has an element ``<body>`` that is a brother of the ``<header>`` element. The value of that element is the message of the PDF file encoded as Base 64 string. In the exercise this is text data but we keep for the exercise that Base 64 encoding is necessary. To help you, the Mundo application in Frank2Example checks that the Base 64 decoded body, that should be plain text because the exercise works with text instead of PDF, contains the word ``document``.
+
+Here is an example of a valid request to Mundo, although the values may not match the values in the shown Conclusion request:
+
+.. literalinclude:: validMundo.xml
+   :language: xml
 
 You are asked to write a Frank application that polls the share (for simplicity on your local file system) and sends the data to Mundo (WeAreFrank! provides a webapp that plays Mundo's part). The final result will be a pretty advanced Frank application. The following steps will guide you:
 
