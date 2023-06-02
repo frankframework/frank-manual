@@ -44,30 +44,31 @@ You are asked to write a Frank application that polls the share (for simplicity 
 
 1. Create an adapter that processes a single letter. The adapter should do the following:
 
-   * The input message is the base file name. You can use a ``<JavaListener>`` in your receiver because this adapter will be called by another adapter in later steps.
+   * The input message is the base file name.
    * Read the XML file.
    * Check the syntax of the XML file. You can do so by creating and using an XML Schema document.
-   * Read the PDF file.
+   * Read the text file.
    * Base64 encode its contents.
-   * Transform the contents of the XML file to the format needed by Mundo. Do this using an XSLT transformation that takes the XML file's contents as the main message and the base64'd PDF data as a parameter.
+   * Transform the contents of the XML file to the format needed by Mundo. Do this using an XSLT transformation that takes the XML file's contents as the main message and the base64'd text data as a parameter.
    * Send the message to Mundo.
-   * Move the input files to ``base/processed`` or ``base/error`` depending on whether or not there are errors. What forward can you use to handle errors?
 
-   Test your work using the Frank!Console's Test a Pipeline screen.
+   Test your work using the Frank!Console's Test a Pipeline screen. Please also spent some time on your development environment. Put your code into version control. Set up your project such that it can be run from within Visual Studio Code. You can do this using Ant. See https://github.com/ibissource/frank-runner for help.
 
-2. Create an adapter that polls the file share. It only has to look for PDF files because XML files from Conclusion are always written before PDF files from Gilgamesh. Polling a directory can be done with a ``LocalFileSystemPipe``. Scheduling when to poll is done in step 3. Your adapter has to do the following:
+2. You will use a directory on your local file system to play the role of the file share. The name of this directory should not be coded in the Frank application because it may different for every deployment. Introduce some properties file ``config.properties`` and add a property here with the share directory name as its value. Make sure this file is not checked in into version control. Extend your ANT script (typically ``build.xml``) such that it passes the properties in ``config.properties`` to your Frank application.
 
-   * Take a dummy argument. What listener do you then need in your receiver?
-   * Use a ``LocalFileSystemPipe`` to get a list of all PDF files on the share.
-   * Iterate over these PDF files to process them each using the adapter of step 1.
+3. Create an adapter that polls the file share. It only has to look for .txt files because XML files from Conclusion are always written before .txt files from Gilgamesh. Polling a directory can be done with a ``LocalFileSystemPipe``. Scheduling when to poll is done in step 3. Your adapter has to do the following:
+
+   * Take a dummy argument.
+   * Use a ``LocalFileSystemPipe`` to get a list of all .txt files on the share.
+   * Iterate over these files to process them each using the adapter of step 1.
 
    .. NOTE::
 
-      You may have considere using a DirectoryListener. That listener is triggered when a new file appears. With this listener, you do not have to poll the input directory. The DirectoryListener also moves files to processed or error directories automatically. This approach is not chosen here because only the .pdf files would be handled automatically. You still would have to code moving the .xml files. Having two different mechanisms to move the files is more complicated than doing all file manipulations explicitly as is proposed here.
+      You may have considere using a DirectoryListener. That listener is triggered when a new file appears. With this listener, you do not have to poll the input directory. The DirectoryListener also moves files to processed or error directories automatically. This approach is not chosen here because only the .txt files would be handled automatically. You still would have to code moving the .xml files. Having two different mechanisms to move the files is more complicated than doing all file manipulations explicitly as is proposed here.
 
-3. Extend your work with a ``<Scheduler>`` to schedule when the file share is polled. Introduce a Boolean variable ``polling.active`` that depends on the DTAP stage. When it is false, polling is disabled for testing purposes. When it is true, polling is done like is the case in production. What attribute of which element do you need to make this variable effective? How do you set this variable for each specific DTAP stage?
+4. Extend your work with a ``<Scheduler>`` to schedule when the file share is polled. Introduce a Boolean variable ``polling.active`` that depends on the DTAP stage. When it is false, polling is disabled for testing purposes. When it is true, polling is done like is the case in production. What attribute of which element do you need to make this variable effective? How do you set this variable for each specific DTAP stage?
 
-4. Extend your outer adapter such that files that are in the process of being written are ignored. In a real-world system, writing a .pdf file to the file share may take some time. The aim is to prevent the following sequence of events:
+5. Extend your outer adapter such that files that are in the process of being written are ignored. In a real-world system, writing a .pdf file to the file share may take some time. The aim is to prevent the following sequence of events:
 
    * Gilgamesh connects to the file share and starts writing a .pdf file.
    * Before writing is complete, your adapter starts processing files and it tries to read the .pdf file. It gets corrupt data because writing is not finished.
@@ -76,9 +77,9 @@ You are asked to write a Frank application that polls the share (for simplicity 
 
    Implement this using an XSLT stylesheet that compares a file's timestamp to the time when your adapter starts. The XSLT should omit files for which the timestamp is too close to the reference time. Use a variable for the threshold of the time difference that can be configured in property files or by the system administrator of the deployment environment.
 
-5. Your present adapter has a serious drawback. If processing a letter fails, the adapter polling the input directory aborts. The remaining letters that are ready for processing are skipped. Fix this issue by letting the two adapters communicate asynchronously. The calling adapter should put the base names of the found files on a queue, each base name in a separate message. The called adapter is triggered separately for every message on the queue. If the calling adapter fails, the error does not propagate to the calling adapter. Therefore the calling adapter will always process all files it has observed. Do this by using a ``MessageStoreSender`` and a ``MessageStoreListener``. When the called adapter generates an error, a message is written to the error store that comes with your ``MessageStoreListener``. Operators that have access to the Frank!Console will be able to retry base file names stored in the error store. At this stage, you can prevent your adapter from filling the error store because the related files will be in inaccessible - they are moved to ``base/error``.
+6. Your present adapter has a serious drawback. If processing a letter fails, the adapter polling the input directory aborts. The remaining letters that are ready for processing are skipped. Fix this issue by letting the two adapters communicate asynchronously. The calling adapter should put the base names of the found files on a queue, each base name in a separate message. The called adapter is triggered separately for every message on the queue. If the calling adapter fails, the error does not propagate to the calling adapter. Therefore the calling adapter will always process all files it has observed. Do this by using a ``MessageStoreSender`` and a ``MessageStoreListener``. When the called adapter generates an error, a message is written to the error store that comes with your ``MessageStoreListener``. Operators that have access to the Frank!Console will be able to retry base file names stored in the error store. At this stage, you can prevent your adapter from filling the error store because the related files will be in inaccessible - they are moved to ``base/error``.
 
-6. Make error handling more smart by taking into account the difference between technical errors and invalid input. If a received letter or its XML metadata is invalid, retrying does not make sense. If your HttpSender gets a negative response from Mundo then the reason may be a temporary network error or server error of Mundo. In that case retrying makes sense. Adjust your adapter to achieve the following:
+7. Make error handling more smart by taking into account the difference between technical errors and invalid input. If a received letter or its XML metadata is invalid, retrying does not make sense. If your HttpSender gets a negative response from Mundo then the reason may be a temporary network error or server error of Mundo. In that case retrying makes sense. Adjust your adapter to achieve the following:
 
    * If the called adapter's HttpSender fails in some way, do not move the XML file and do not move the PDF file. Instead, keep the base file name as a message in the error store.
    * If some other error occurs, do not write the error store and move the files to directory ``base/error``.
