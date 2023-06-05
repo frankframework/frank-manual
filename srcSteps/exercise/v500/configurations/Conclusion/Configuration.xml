@@ -16,7 +16,6 @@
             <LocalFileSystemPipe name="pollShare" action="list" wildcard="*.txt">
                 <Forward name="success" path="handleFiles" />
             </LocalFileSystemPipe>
-            <!-- substring-before -->
             <ForEachChildElementPipe name="handleFiles" elementXPathExpression="/directory/file" ignoreExceptions="true">
                 <IbisLocalSender javaListener="IngestDocument" />
                 <Forward name="success" path="success" />
@@ -36,7 +35,7 @@
             </Exits>
             <PutInSessionPipe name="saveBase">
                 <!-- Store the input message -->
-                <Param name="basename" />
+                <Param name="basename" xpathExpression="substring-before(/file/@canonicalName, '.')"/>
                 <Forward name="success" path="readXmlFile" />
             </PutInSessionPipe>
             <LocalFileSystemPipe name="readXmlFile" action="read">
