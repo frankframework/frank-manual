@@ -30,6 +30,7 @@ As an example, assume that you deploy on your local laptop (``dtap.stage = LOC``
 #. ``SideSpecifics_xxx_TOMCAT.properties``.
 #. ``SideSpecifics_xxx.properties``.
 #. ``ServerSpecifics_TOMCAT.properties``.
+#. ``BuildInfo.properties``.
 #. ``DeploymentSpecifics.properties``.
 
 The Frank!Framework does not require these property files to be present. If some of these files do not exist, the Frank!Framework initializes the properties based on the other sources.
