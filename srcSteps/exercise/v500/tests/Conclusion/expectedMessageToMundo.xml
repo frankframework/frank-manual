@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><output:document id="abcdefgh" xmlns:input="http://wearefrank.nl/manual/exercise/conclusion" xmlns:output="http://wearefrank.nl/manual/exercise/mundo" xmlns:xs="http://www.w3.org/2001/XMLSchema"><output:header>
+    <to xmlns="http://wearefrank.nl/manual/exercise/mundo">
+        <accountId>12345</accountId>
+        <output:displayName>Frank Frank</output:displayName>
+        
+        <email>info@wearefrank.nl</email>
+        <street>Westersingel</street>
+        <houseNumber>42</houseNumber>
+        <city>Rotterdam</city>
+        <zip>3014GT</zip>
+        <country>The Netherlands</country>
+    </to>
+    <cc xmlns="http://wearefrank.nl/manual/exercise/mundo">
+        <accountId>12346</accountId>
+        <output:displayName>Frits Frits</output:displayName>
+        
+        <email>frits@wearefrank.nl</email>
+        <street>Blaak</street>
+        <houseNumber>1</houseNumber>
+        <city>Rotterdam</city>
+        <zip>3016ZZ</zip>
+        <country>The Netherlands</country>
+    </cc>
+</output:header><output:body>VGhlIGRvY3VtZW50
+</output:body></output:document>
