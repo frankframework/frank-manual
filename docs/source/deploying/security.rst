@@ -7,17 +7,73 @@ Introduction
 ------------
 
 The previous section was about fine-tuning the Frank!Framework. You learned about the DTAP stage and about setting properties. This section continues about fine-tuning the Frank!Framework. You will learn how to restrict access to the Frank!Console. On your production environment this is important, because you want to protect the integrity of your data and you do not want unauthorized users to read customer data.
+There are two ways of configuring security for your application: The new method and the old method. The new method uses properties in the Frank!Framework to set up authentication and is the recommended way of setting up authentication. The old method is based on JEE authentication and should only be used for testing or research purposes.
 
-When you use Apache Tomcat as your application server, you configure security by editing the Apache Tomcat configuration files. You do not need a manual deployment of Apache Tomcat to practice. Instead you will use the Frank!Runner which installs Apache Tomcat automatically, and then you will change the Apache Tomcat files manually. Please do not take this approach for your production environment. The Frank!Runner sometimes overwrites your security edits.
+The properties method
+-------------------------------
 
-Tutorial on setting up security
+To add authentication to your Frank!Console Open your ``deploymentspecifics.properties`` and add the following lines of code:
+
+.. literalinclude:: ../../../src/administratorManualProperties/DeploymentSpecifics.properties
+      :language: none
+
+In doing so you have defined the in-memory authentication system of the Frank!Framework. Additionally, you have set the username to "ADMIN" and the password to "PASSWORD1234".
+Your Frank!Console is now protected. If you now save your changes and restart your Frank!, you should see a popup asking for credentials. Once you enter the credentials correctly you will be able to use the Frank!Console as normal.
+
+The first line that you previously added to your DeploymentSpecifics.properties is as follows: ::
+   
+   application.security.http.authenticators=inMem
+
+This is the definining line of adding authentication to your Frank!. Here you define an authenticator with the name "inMem" which can be given additional properties later on.
+In order to define the type and properties of this authenticator we have to refer to it's name. We do so in the following three lines: ::
+
+   application.security.http.authenticators.inMem.type=IN_MEMORY
+   application.security.http.authenticators.inMem.username=ADMIN
+   application.security.http.authenticators.inMem.password=PASSWORD1234
+
+You notice that the first line in this snippet references the type "IN_MEMORY". This is one of five types available for authentication. The types of authenticators are listed below. The types and their properties can be found in the table "Authenticators & Properties."
+
+1. "AD", ActiveDirectory
+#. "CONTAINER", Jee
+#. "IN_MEMORY", InMemory
+#. "OAUTH2", OAuth2
+#. "NONE", NoOp
+
+The last line is the assigment of the authentication system. ::
+
+   servlet.Console.authenticator=inMem
+
+Here we say that the Console servlet (the Frank!Console) should be protected by the authentication system that we defined before. Without this line, the console remains unprotected. 
+
+The "NONE" type is the default for authenticators and simply indicates an absence of an authenticator. Functionally it does nothing. 
+Below is a table containing all authenticator types and their properties.
+
+.. list-table:: Authenticators & Properties
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Type
+     - Properties
+   * - Jee
+     - Properties
+   * - ActiveDirectory
+     - domainName, url, baseDn, followReferrals, searchFilter, roleMappingFile
+   * - InMemory
+     - username, password
+   * - OAuth2
+     - scopes, authorizationUri, tokenUri, jwkSetUri, issuerUri, userInfoUri, userNameAttributeName, clientId, clientSecret, provider, roleMappingFile
+
+
+The old method
 -------------------------------
 
 .. highlight:: none
 
+When you use Apache Tomcat as your application server, you can configure security by editing the Apache Tomcat configuration files. You do not need a manual deployment of Apache Tomcat to practice. Instead you will use the Frank!Runner which installs Apache Tomcat automatically, and then you will change the Apache Tomcat files manually. Please do not take this approach for your production environment. The Frank!Runner sometimes overwrites your security edits.
+
 Please set up security as follows:
 
-#. We recommend that you create a new directory to do this section. You are going to tweak files managed by the Frank!Runner. and you do not want your existing configurations to break. Let us call your directory ``security``.
+1. We recommend that you create a new directory to do this section. You are going to tweak files managed by the Frank!Runner. and you do not want your existing configurations to break. Let us call your directory ``security``.
 #. On a command prompt, please change directory to ``security`` and clone the Frank!Framework as follows: ::
 
      security> git clone https://github.com/ibissource/frank-runner
