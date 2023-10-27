@@ -7,12 +7,13 @@ Introduction
 ------------
 
 The previous section was about fine-tuning the Frank!Framework. You learned about the DTAP stage and about setting properties. This section continues about fine-tuning the Frank!Framework. You will learn how to restrict access to the Frank!Console. On your production environment this is important, because you want to protect the integrity of your data and you do not want unauthorized users to read customer data.
+
 There are two ways of configuring security for your application: The new method and the old method. The new method uses properties in the Frank!Framework to set up authentication and is the recommended way of setting up authentication. The old method is based on JEE authentication and should only be used for testing or research purposes.
 
 The properties method
 -------------------------------
 
-To add authentication to your Frank!Console Open your ``deploymentspecifics.properties`` and add the following lines of code:
+To add authentication to your Frank!Console, open your ``deploymentspecifics.properties`` and add the following lines of code:
 
 .. literalinclude:: ../../../src/administratorManualProperties/DeploymentSpecifics.properties
       :language: none
@@ -31,7 +32,7 @@ In order to define the type and properties of this authenticator we have to refe
    application.security.http.authenticators.inMem.username=ADMIN
    application.security.http.authenticators.inMem.password=PASSWORD1234
 
-You notice that the first line in this snippet references the type "IN_MEMORY". This is one of five types available for authentication. The types of authenticators are listed below. The types and their properties can be found in the table "Authenticators & Properties."
+You notice that the first line in this snippet references the type "IN_MEMORY". This is one of five types available for authentication. The types of authenticators are listed below.
 
 1. "AD", ActiveDirectory
 #. "CONTAINER", Jee
@@ -39,14 +40,7 @@ You notice that the first line in this snippet references the type "IN_MEMORY". 
 #. "OAUTH2", OAuth2
 #. "NONE", NoOp
 
-The last line is the assigment of the authentication system. ::
-
-   servlet.Console.authenticator=inMem
-
-Here we say that the Console servlet (the Frank!Console) should be protected by the authentication system that we defined before. Without this line, the console remains unprotected. 
-
-The "NONE" type is the default for authenticators and simply indicates an absence of an authenticator. Functionally it does nothing. 
-Below is a table containing all authenticator types and their properties.
+The types and their properties can be found in the table "Authenticators & Properties."
 
 .. list-table:: Authenticators & Properties
    :widths: 30 70
@@ -62,6 +56,14 @@ Below is a table containing all authenticator types and their properties.
      - username, password
    * - OAuth2
      - scopes, authorizationUri, tokenUri, jwkSetUri, issuerUri, userInfoUri, userNameAttributeName, clientId, clientSecret, provider, roleMappingFile
+
+The last line is the assigment of the authentication system: ::
+
+   servlet.Console.authenticator=inMem
+
+Here we say that the Console servlet (the Frank!Console) should be protected by the authentication system that we defined before. Without this line, the console remains unprotected. 
+
+The "NONE" type is the default for authenticators and simply indicates an absence of an authenticator. Functionally it does nothing. 
 
 
 The old method
