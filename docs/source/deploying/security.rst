@@ -45,8 +45,6 @@ The last line is the assigment of the authentication system. ::
 
 Here we say that the Console servlet (the Frank!Console) should be protected by the authentication system that we defined before. Without this line, the console remains unprotected. 
 
-TODO: Add API protection info.
-
 The "NONE" type is the default for authenticators and simply indicates an absence of an authenticator. Functionally it does nothing. 
 Below is a table containing all authenticator types and their properties.
 
