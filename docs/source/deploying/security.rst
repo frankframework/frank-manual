@@ -7,9 +7,9 @@ Introduction
 ------------
 
 The previous section was about fine-tuning the Frank!Framework. You learned about the DTAP stage and about setting properties. This section continues about fine-tuning the Frank!Framework. You will learn how to restrict access to the Frank!Console. On your production environment this is important, because you want to protect the integrity of your data and you do not want unauthorized users to read customer data.
-There are two ways of configuring security for your application: The new method and the old method. The new method uses properties in the Frank!Framework to set up authentication and is the recommended way of setting up authentication. The old method is based on JEE authentication and should only be used for testing or research purposes.
+There are two ways of configuring security for your application: Containerized Authentication and JEE Provided Authentication. Containerized Authentication uses properties in the Frank!Framework to set up authentication and is the recommended way of setting up authentication. JEE Provided Authentication is based on JEE authentication and cannot be used in containerized environments.
 
-The properties method
+Containerized Authentication
 -------------------------------
 
 To add authentication to your Frank!Console Open your ``deploymentspecifics.properties`` and add the following lines of code:
@@ -55,7 +55,7 @@ Below is a table containing all authenticator types and their properties.
    * - Type
      - Properties
    * - Jee
-     - Properties
+     - Application Server defined settings
    * - ActiveDirectory
      - domainName, url, baseDn, followReferrals, searchFilter, roleMappingFile
    * - InMemory
@@ -64,7 +64,7 @@ Below is a table containing all authenticator types and their properties.
      - scopes, authorizationUri, tokenUri, jwkSetUri, issuerUri, userInfoUri, userNameAttributeName, clientId, clientSecret, provider, roleMappingFile
 
 
-The old method
+JEE Provided Authentication
 -------------------------------
 
 .. highlight:: none
