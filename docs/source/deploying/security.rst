@@ -12,7 +12,7 @@ There are two ways of configuring security for your application: Containerized A
 Containerized Authentication
 -------------------------------
 
-To add authentication to your Frank!Console Open your ``deploymentspecifics.properties`` and add the following lines of code:
+To add authentication to your Frank!Console Open your ``DeploymentSpecifics.properties`` and add the following lines of code:
 
 .. literalinclude:: ../../../src/administratorManualProperties/DeploymentSpecifics.properties
       :language: none
