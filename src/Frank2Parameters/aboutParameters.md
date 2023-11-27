@@ -1,8 +1,8 @@
 # About Parameters
 
-*This text is not published on ReadTheDocs. It is for internal use at WeAreFrank!*
+*This text is not published on ReadTheDocs. It is for writers and developers*
 
-On September 15 2022, WeAreFrank! is working on the Frank!Doc documentation about parameters. In particular, on the [page about Param](https://frankdoc.frankframework.org/#!/Other/Param) the explanation of the `type` attribute needs improvement. The behavior of this attribute does not match a programmer's intuition about what data types are. The files in this directory are a Frank application that demonstrates the effect of the `type` attribute. The remainder of this document explains this example and provides its output. After that, Martijn's analysis of the corresponding source code of the Frank!Framework is given. This text should clarify the confusion about the `type` attribute and it should allow discussion about further action.
+On September 15 2022, work started on the Frank!Doc documentation about parameters. In particular, on the [page about Param](https://frankdoc.frankframework.org/#!/Other/Param) the explanation of the `type` attribute needs improvement. The behavior of this attribute does not match a programmer's intuition about what data types are. The files in this directory are a Frank application that demonstrates the effect of the `type` attribute. The remainder of this document explains this example and provides its output. After that, Martijn's analysis of the corresponding source code of the Frank!Framework is given. This text should clarify the confusion about the `type` attribute and it should allow discussion about further action.
 
 ### Example configurations
 

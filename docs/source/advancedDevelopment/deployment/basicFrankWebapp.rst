@@ -26,7 +26,7 @@ Some points of this file may need some explanation:
 
   .. NOTE::
 
-     You may want to work with a stable release, for example ``7.7``. Release ``7.7`` will work if you apply some minor changes to ``Configuration.xml``. To see what changes are needed, you need file the ``FrankConfig.xsd`` that belongs to that version of our framework. Please contact WeAreFrank! if you want this file.
+     You may want to work with a stable release, for example ``7.7``. Release ``7.7`` will work if you apply some minor changes to ``Configuration.xml``. To see what changes are needed, you need file the ``FrankConfig.xsd`` that belongs to that version of our framework. You can download the file from `GitHub <https://github.com/frankframework/frankframework/blob/master/core/src/main/resources/xml/xsd/FrankConfig.xsd>`_
 
   .. NOTE::
 
@@ -38,13 +38,13 @@ Some points of this file may need some explanation:
 * Jetty and Apache Tomcat do not fully satisfy the Jakarta EE specification. The Frank!Framework expects some classes that are part of the Jakarte EE specification, but that are not included in your application server. This has been fixed by including the ``geronimo-jms_1.1_spec`` dependency.
 * The Frank!Framework depends on some system properties that are explained in section :ref:`properties`. These are set in the ``<configuration>`` tag of the Jetty plugin. These settings only apply when Maven is used to start the project in application server Jetty. These values are not packaged.
 * Jetty scans JAR files included in the webapplication for web app configuration data. The number of JAR files searched is limited by the ``<webInfIncludeJarPattern>`` tag.
-* An application server can host multiple webapplication. It supports users to login to these webapplications. Some webapplications share users, while others keep track of their own users without sharing them. Application servers support this using login services. Each webapp can declare a login service. When multiple webapplications declare the same login service, they share their users. Jetty expects an implementation for every declared login service. This is the purpose of the ``<loginServices>`` tags: each inner ``<loginServices>`` tag fixes how the named login service is implemented. WeAreFrank! recently changed the name of the login service declared by the framework. The name changed from ``Ibis`` to ``Frank``. This is why two login services are listed.
+* An application server can host multiple webapplication. It supports users to login to these webapplications. Some webapplications share users, while others keep track of their own users without sharing them. Application servers support this using login services. Each webapp can declare a login service. When multiple webapplications declare the same login service, they share their users. Jetty expects an implementation for every declared login service. This is the purpose of the ``<loginServices>`` tags: each inner ``<loginServices>`` tag fixes how the named login service is implemented. Recently the name of the login service declared by the framework was changed. The name changed from ``Ibis`` to ``Frank``. This is why two login services are listed.
 
   .. NOTE::
 
      If application server Apache Tomcat is used, then implementations of login services can be omitted if the related webapplications do not require users to login.
 
-* The ``<repository>`` tag is needed to download Frank!Framework version 7.8-20220509.173348 or any other non-stable version. Only stable releases like 7.7 are published to Maven Central, the repository of all public artifacts. The ``<repository>`` tag allows access to a repository of Maven artifacts hosted by WeAreFrank!.
+* The ``<repository>`` tag is needed to download Frank!Framework version 7.8-20220509.173348 or any other non-stable version. Only stable releases like 7.7 are published to Maven Central, the repository of all public artifacts. The ``<repository>`` tag allows access to a repository of Maven artifacts hosted by Frank!Framework.
 
 4. Create ``work/src/main/resources/DeploymentSpecifics.properties`` with the following contents:
 

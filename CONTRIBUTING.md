@@ -21,7 +21,7 @@ You can download Python and Pip from https://www.python.org/downloads/. You also
 * `pip install sphinx_rtd_theme`
 * `pip install pyyaml`
 
-WARNING: By the beginning of March 2021, the latest official Sphinx release does not build the Frank!Manual successful. The shown Sphinx release is a bugfix. WeAreFrank! does not know when this fix will be included in an official release.
+WARNING: By the beginning of March 2021, the latest official Sphinx release does not build the Frank!Manual successful. The shown Sphinx release is a bugfix. It is not known when this fix will be included in an official release.
 
 You may be able to use Linux instead of Windows and you may be able to do without MinGW. When using other tools, please check carefully whether everything works well. Make sure that you check-in all text files with UNIX-style line endings (not \r\n but \n).
 
@@ -51,22 +51,18 @@ The only exception is reference material about individual Java classes. This mat
 
 The manual should everywhere use the same word for the same thing, with the same spelling.
 
-#### WeAreFrank! and their Products
+#### Terminology
 
-In January 2020, the company Integration Partners changes their name to WeAreFrank!. Please use the right words to reference the company and their products, as listed below:
+Please use the right words to reference the company and their products, as listed below:
 
-* WeAreFrank!: The name of the company that produces the Frank!Framework. The exclamation sign is part of the company name, the dot isn't.
-* Frank!Framework: The product being documented in this manual. Note that the exclamation mark is part of the name and that there are two capitals. The dot is not part of the name.
-* Frank: A solution produced with the Frank!Framework. This is the combination of the Frank!Framework and Frank configs deployed on it.
-* Franks: Plural of Frank.
-* Frank config(uration): A set of XML files and property files that configures the Frank!Framework to provide a solution for a customer. A Frank config is typically created by a Frank developer. This word is also used for a set of adapters that is defined in or included from the same ``Configuration.xml`` file. When you have multiple ``Configuration.xml`` files within your Frank, you have multiple Frank configs.
-* ~Frank code~: For Java developers who edit this manual, it is tempting to use this phrase. We kindly ask them to write about "Frank config" instead. You do not have to be a programmer to use the Frank!Framework.
-* ~Frank language~: Franks are written in XML, not in a propriatary programming language. You can say that Frank configurations are XML documents that satisfy the Frank configuration schema.
-* Frank config(uration) schema: The XML schema document that defines what XML code is valid for configuring the Frank!Framework.
+* Frank!Framework: The organisation and product being documented in this manual. Note that the exclamation mark is part of the name and that there are two capitals. When no special characters are allowed, we use ``frankframework``.
+* Frank!: A solution produced with the Frank!Framework. This is the combination of the Frank!Framework and Frank configs deployed on it.
+* Franks!: Plural of Frank.
+* Frank!Config(uration): A set of XML files and property files that configures the Frank!Framework to provide a solution for a customer. A Frank config is typically created by a Frank developer. This word is also used for a set of adapters that is defined in or included from the same ``Configuration.xml`` file. When you have multiple ``Configuration.xml`` files within your Frank, you have multiple Frank configs.
+* Frank!Config(uration) schema: The XML schema document that defines what XML code is valid for configuring the Frank!Framework.
 * Frank!Console: The graphical user interface of the Frank!Framework.
 * Frank!Doc: A complement to this manual that is shorter but provides better search capability. It can be accessed through the Frank!Console.
-* Frank developer: Engineer who writes Frank configs.
-* integration specialist: Engineer who wants to integrate software systems at a customer site. She may be interested in using the Frank!Framework to do her job.
+* Frank!Developer: Engineer who writes Frank configs.
 
 #### Cross references
 

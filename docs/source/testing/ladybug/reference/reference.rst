@@ -24,8 +24,8 @@ Please do the following to get the raw test reports:
 
       <message>
         <customer>Frank</customer>
-        <subject>WeAreFrank!</subject>
-        <message>We are a great company</message>
+        <subject>Frank!Framework</subject>
+        <message>We are a great community</message>
       </message>
 
 #. Press "Send". Please check that you have a green bar to the top with the word "success".
@@ -46,7 +46,7 @@ Please do the following to get the raw test reports:
 
    .. code-block:: XML
 
-      <message><customer>Frank</customer><subject>WeAreFrank!</subject><message>We are a great company</message></message>
+      <message><customer>Frank</customer><subject>Frank!Framework</subject><message>We are a great community</message></message>
 
    This is the message you stored with all meaningless spaces omitted.
 

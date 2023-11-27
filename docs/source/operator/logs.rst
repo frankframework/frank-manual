@@ -57,7 +57,7 @@ Both lines start with a timestamp, the time to which the message applies. Then c
 
 After the log level, you see "adapter" or "receiver", followed by a name. This is the adapter or receiver to which the reminder of the line applies. Finally, it says "has state [...]". The hardbeat file thus shows the state of each adapter and each receiver. This information is added periodically. You have snapshots of the adapter status matrix, the left part of the configuration summary panel in the Adapter Status page as explained in section :ref:`frankConsoleAdapterStatus`.
 
-You may use the heartbeat file to set up your own monitoring application. Indeed, there are tools on the market that monitor logfiles and produce graphical user interfaces from them, e.g. https://www.splunk.com. For more information, contact `WeAreFrank! <https://wearefrank.nl>`_.
+You may use the heartbeat file to set up your own monitoring application. Indeed, there are tools on the market that monitor logfiles and produce graphical user interfaces from them, e.g. https://www.splunk.com.
 
 Messages
 --------

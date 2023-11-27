@@ -3,7 +3,7 @@
 Exercise
 ========
 
-This page provides an exercise to work with the material of this chapter. It does not provide detailed instructions what to do. WeAreFrank! hopes that doing this exercise will help you to write your own Frank applications.
+This page provides an exercise to work with the material of this chapter. It does not provide detailed instructions what to do. Doing this exercise will help you to write your own Frank applications.
 
 The assignment is about a fictive company Conclusion that offers pension services. Customers can save for their pension. From the saved money, Conclusion pays them a monthly allowance when they reach retirement. Customers of Conclusion should receive a yearly overview by paper mail. They also have access to a webportal in which this mail is archived.
 
@@ -40,7 +40,7 @@ Here is an example of a valid request to Mundo, although the values may not matc
 .. literalinclude:: validMundo.xml
    :language: xml
 
-You are asked to write a Frank application that takes the base name of an XML / text file pair and sends the information to Mundo. WeAreFrank! provides a webapp that plays Mundo's part. Access it with the following URL: https://frank2example.frankframework.org/api/mundo. The following steps will guide you:
+You are asked to write a Frank application that takes the base name of an XML / text file pair and sends the information to Mundo. The Frank!Framework organisation provides a webapp that plays Mundo's part. Access it with the following URL: https://frank2example.frankframework.org/api/mundo. The following steps will guide you:
 
 * The input message is the base file name. Have a receiver with a JavaListener to capture that input.
 * Read the XML file using a LocalFileSystemPipe. Check the Frank!Doc to learn how to use this pipe.

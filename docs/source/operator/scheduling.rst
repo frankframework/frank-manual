@@ -108,7 +108,7 @@ The first run is at the beginning of a new minute. In this minute, you paused th
 
 .. WARNING::
 
-   WeAreFrank! has changed the behavior of the Resume button of a scheduled job. From version 7.6-SNAPSHOT (snapshot versions from around October 15 2020 and later), the behavior is as follows. After you resume a scheduled job, it fires automatically at the next scheduled moment. If you want to run it immediately after resume, you can do this by triggering it manually.
+   The behavior of the Resume button of a scheduled job has changed. From version 7.6-SNAPSHOT (snapshot versions from around October 15 2020 and later), the behavior is as follows. After you resume a scheduled job, it fires automatically at the next scheduled moment. If you want to run it immediately after resume, you can do this by triggering it manually.
 
    Older versions of the Frank!Framework have different behavior. When you pause a job and later resume it, the scheduler checks whether a scheduled moment passed during the job pause. If so, the scheduler executes the job immediately on resume. Otherwise, resuming the job does not caause immediate execution. When a job is resumed before the next scheduled moment, the scheduler awaits that moment, executing the job at its due time.
 

@@ -7,7 +7,7 @@ The Frank!Manual has a search function as shown below.
 
 If you want to find something, please use this search field.
 
-WeAreFrank! discovered that some search words did not produce the desired result. These words are added here, with a reference to the proper section of this manual.
+Some search words do not produce the desired result. These words are added here, with a reference to the proper section of this manual.
 
 * :ref:`errorstorage <managingProcessedMessagesError>`.
 * :ref:`errorstore <managingProcessedMessagesError>`.

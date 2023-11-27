@@ -13,12 +13,12 @@ given instructions, you should apply the instructions in
 :ref:`preparations`. This subsection explains how to set up
 the environment you need.
 
-This tutorial is based on an electronic archive that WeAreFrank! built
-for one of their customers. The archive has a portal before it that
+This tutorial is based on an electronic archive that once was built
+by an user. The archive has a portal before it that
 handles requests from users. The portal accesses the archive
 to service the user.
 
-WeAreFrank! cannot give everyone access to the real archive. Therefore,
+Not everyone can access to the real archive. Therefore,
 a very simple emulator of this archive is supplied within this
 manual. A download link is available in :ref:`preparations`. The code
 provides the portal and the archive. The archive is capable of

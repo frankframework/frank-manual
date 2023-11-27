@@ -225,6 +225,6 @@ IbisTester
 
 .. NOTE::
 
-   "What is 'Ibis'?", you might ask. WeAreFrank! used this brand before they acquired their name. Before, the company was called "Integration Partners". In that time, they used the brands "Ibis" and "Ibis Adapter Framework". These names have not all been replaced by their Frank! equivalents.
+   "What is 'Ibis'?", you might ask. This comes from the time before the frankemwork was renamed to Frank!Framework. In that time, the brands "Ibis" and "Ibis Adapter Framework" were used. These names have not all been replaced by their Frank! equivalents.
 
 You can assign these roles to users, as you did when you edited ``tomcat-users.xml``. You assign a value to the ``roles`` attribute that is a comma-separated list of roles. Each role should be taken from the list.

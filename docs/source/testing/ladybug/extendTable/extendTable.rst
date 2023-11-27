@@ -3,9 +3,9 @@
 Extend the test reports table
 =============================
 
-When you enter Ladybug, you are in tab "Debug". To the top, this tab shows a table with all Ladybug reports. You saw this table many times when you did the preceeding subsections. You use this table to quickly find a (not yet captured) test report. Some customers of WeAreFrank! want more information in this table, because they repeatedly run the same adapter. To distinguish between these runs, they want an extra column with data extracted from the test report.
+When you enter Ladybug, you are in tab "Debug". To the top, this tab shows a table with all Ladybug reports. You saw this table many times when you did the preceeding subsections. You use this table to quickly find a (not yet captured) test report. Some want more information in this table, because they repeatedly run the same adapter. To distinguish between these runs, they want an extra column with data extracted from the test report.
 
-WeAreFrank! has developed a solution for this need, but it has a different nature than the Ladybug functions presented in earlier subsections. This option is not provided through a well-developed user interface, but requires the user to hack the Frank!Framework. This way, WeAreFrank! was able to provide a solution quickly. When more customers want this option, a user interface will be provided.
+A solution has been developed for this need, but it has a different nature than the Ladybug functions presented in earlier subsections. This option is not provided through a well-developed user interface, but requires the user to hack the Frank!Framework. This way, it was possible to provide a solution quickly. When more customers want this option, a user interface will be provided.
 
 There are two sub-subsections. Sub-subsection :ref:`ladybugExtendTableHowto` just tells you how to do the job, without bothering you with knowledge about the implementation of the Frank!Framework. Sub-subsection :ref:`ladybugExtendTableBackground` gives some background information.
 
