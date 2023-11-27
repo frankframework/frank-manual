@@ -10,9 +10,9 @@ Maven can best be introduced using a simple Hello World application. Please do t
 
 1. Choose some work directory, say ``work``.
 #. Within ``work``, create folder ``src/main/java``. This is where Maven expects Java sources.
-#. Within ``work/src/main/java``, open ``org/wearefrank/maven/webapp/example/Main.java``. Populate it with the following text:
+#. Within ``work/src/main/java``, open ``org/frankframework/maven/webapp/example/Main.java``. Populate it with the following text:
 
-   .. literalinclude:: ../../../../srcSteps/mavenWebapp/v500/src/main/java/org/wearefrank/maven/webapp/example/Main.java
+   .. literalinclude:: ../../../../srcSteps/mavenWebapp/v500/src/main/java/org/frankframework/maven/webapp/example/Main.java
 
 This is a program that should be started from the command line. It simply prints "HELLO WORLD!". To demonstrate Maven, a dependency has been introduced. This program needs Java class ``org.apache.commons.lang3.StringUtils``.
 
@@ -112,14 +112,14 @@ The output should look like this:
    │   └───main
    │       └───java
    │           └───org
-   │               └───wearefrank
+   │               └───frankframework
    │                   └───maven
    │                       └───webapp
    │                           └───example
    └───target
        ├───classes
        │   └───org
-       │       └───wearefrank
+       │       └───frankframework
        │           └───maven
        │               └───webapp
        │                   └───example
@@ -132,7 +132,7 @@ The output should look like this:
 
    C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500>
 
-All generated files appear in the ``target`` directory. Within that directory, there is a directory ``classes``. This directory holds everything that this artifact will put on the classpath when the linked application executes. There is a path ``org/wearefrank/maven/webapp/example``. This path resembles the path to file ``Main.java``. The directory holds file ``Main.class``, the byte code produced by compiling source file ``Main.java`` (not shown).
+All generated files appear in the ``target`` directory. Within that directory, there is a directory ``classes``. This directory holds everything that this artifact will put on the classpath when the linked application executes. There is a path ``org/frankframework/maven/webapp/example``. This path resembles the path to file ``Main.java``. The directory holds file ``Main.class``, the byte code produced by compiling source file ``Main.java`` (not shown).
 
 11. Assemble the artifact of this project, which has ``<groupId>`` ``org.ibissource``, ``<artifactId>`` ``mavenWebappExample`` and ``<version>`` ``1.0-SNAPSHOT``. Do so by entering ``mvn install``.
 #. Check that you have file ``mavenWebappExample-1.0-SNAPSHOT.jar``. This is a ZIP file that holds all data that this artifact should put on the classpath.

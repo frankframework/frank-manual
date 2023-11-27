@@ -1,4 +1,4 @@
-package org.wearefrank.maven.webapp.example;
+package org.frankframework.maven.webapp.example;
 
 import org.apache.commons.lang3.StringUtils;
 

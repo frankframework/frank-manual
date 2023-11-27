@@ -1,7 +1,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:input="http://wearefrank.nl/manual/exercise/conclusion"
-    xmlns:output="http://wearefrank.nl/manual/exercise/mundo"
+    xmlns:input="http://frankframework.org/manual/exercise/conclusion"
+    xmlns:output="http://frankframework.org/manual/exercise/mundo"
     version="2.0">
     <xsl:param name="body" as="xs:string" />
     <xsl:template match="/input:document">
@@ -14,7 +14,7 @@
         </output:document>
     </xsl:template>
     <xsl:template match="input:*">
-        <xsl:element name="{local-name()}" namespace="http://wearefrank.nl/manual/exercise/mundo">
+        <xsl:element name="{local-name()}" namespace="http://frankframework.org/manual/exercise/mundo">
             <xsl:apply-templates />
         </xsl:element>
     </xsl:template>

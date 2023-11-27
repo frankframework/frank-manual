@@ -27,7 +27,7 @@
                     <arguments>
                         <argument>-classpath</argument>
                         <classpath/>
-                        <argument>org.wearefrank.maven.webapp.example.Main</argument>
+                        <argument>org.frankframework.maven.webapp.example.Main</argument>
                     </arguments>
                 </configuration>
             </plugin>

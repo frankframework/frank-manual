@@ -8,9 +8,9 @@ Maven webapplications are usually not executed by starting the JVM directly. Ins
 Webapplications do network communication using the Hypertext Transfer Protocol (HTTP). First, update the ``Main`` class of subsection :ref:`advancedDevelopmentDeploymentMavenMavenBasics` to talk HTTP:
 
 #. Undo the changes of subsection :ref:`advancedDevelopmentDeploymentMavenExecuteJar` by restoring the copy you made at the beginning of that subsection.
-#. Change file ``work/src/main/java/org/wearefrank/maven/webapp/example/Main.java`` to become as follows:
+#. Change file ``work/src/main/java/org/frankframework/maven/webapp/example/Main.java`` to become as follows:
 
-   .. literalinclude:: ../../../../srcSteps/mavenWebapp/v520/src/main/java/org/wearefrank/maven/webapp/example/Main.java
+   .. literalinclude:: ../../../../srcSteps/mavenWebapp/v520/src/main/java/org/frankframework/maven/webapp/example/Main.java
 
 #. Link this servlet to the URL that should trigger it. Do so by creating file ``work/src/main/webapp/WEB-INF/web.xml`` and give it the following contents:
 

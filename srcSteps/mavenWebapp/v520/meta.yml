@@ -18,7 +18,7 @@
         snippet: pomDepBuild
         highlight: true
 - file:
-    path: src/main/java/org/wearefrank/maven/webapp/example/Main.java
+    path: src/main/java/org/frankframework/maven/webapp/example/Main.java
     change:
       - old: 7
         new: 12

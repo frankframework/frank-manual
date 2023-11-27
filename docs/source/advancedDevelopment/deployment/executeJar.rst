@@ -26,13 +26,13 @@ The output should include:
 
 .. code-block:: none
 
-   [DEBUG] Executing command line: [C:\Program Files (x86)\Common Files\Oracle\Java\javapath\java.exe, -classpath, C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v510\target\classes;C:\Users\martijn\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar, org.wearefrank.maven.webapp.example.Main]
+   [DEBUG] Executing command line: [C:\Program Files (x86)\Common Files\Oracle\Java\javapath\java.exe, -classpath, C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v510\target\classes;C:\Users\martijn\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar, org.frankframework.maven.webapp.example.Main]
 
 The output is a comma-separated list of the arguments used to start ``java.exe``. You see here that ``java.exe`` was executed like this:
 
 .. code-block:: none
 
-   C:\Program Files (x86)\Common Files\Oracle\Java\javapath\java.exe -classpath C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v510\target\classes;C:\Users\martijn\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar org.wearefrank.maven.webapp.example.Main
+   C:\Program Files (x86)\Common Files\Oracle\Java\javapath\java.exe -classpath C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v510\target\classes;C:\Users\martijn\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar org.frankframework.maven.webapp.example.Main
 
 5. Please run this command directly on a command prompt. You may have to quote some words and you may have to adjust some directory names depending on your operating system and your work directory.
 

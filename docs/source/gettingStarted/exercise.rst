@@ -24,11 +24,11 @@ Here is an example of an input XML message to be processed:
 .. literalinclude:: ../../../srcSteps/exercise/v500/tests/Conclusion/valid.xml
    :language: xml
 
-All elements of this request have namespace ``http://wearefrank.nl/manual/exercise/conclusion``.
+All elements of this request have namespace ``http://frankframework.org/manual/exercise/conclusion``.
 
 This message should be transformed according to the following:
 
-* Mundo needs an XML in which every element has namespace ``http://wearefrank.nl/manual/exercise/mundo``.
+* Mundo needs an XML in which every element has namespace ``http://frankframework.org/manual/exercise/mundo``.
 * The ``<to>`` and ``<cc>`` elements are wrapped inside a ``<header>``.
 * The ``<accountId>``, ``<email>``, ``<street>``, ``<houseNumber>``, ``<city>``, ``<zip>`` and ``<country>`` inside ``<to>`` and ``<cc>`` elements remain the same apart from the namespace.
 * The ``<firstName>`` and ``<lastName>`` elements of a Conclusion request are not copied. Their values are combined and the resulting string is wrapped in an element ``<displayName>``.

@@ -2,5 +2,5 @@
     path: pom.xml
     change: add
 - file:
-    path: src/main/java/org/wearefrank/maven/webapp/example/Main.java
+    path: src/main/java/org/frankframework/maven/webapp/example/Main.java
     change: add
