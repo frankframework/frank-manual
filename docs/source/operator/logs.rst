@@ -100,4 +100,4 @@ It is not your job as a site owner to understand this log output in detail. It i
 
 .. NOTE::
 
-   The Frank!Framework is open source. Frank developers with some Java knowledge can examine difficult issues by cloning the Frank!Framework from GitHub. They can search the Java code for strings that appear in a logfile, pinpointing the location in the Java sources where an error occurs. The URL of this GitHub repository is https://github.com/ibissource/iaf.
+   The Frank!Framework is open source. Frank developers with some Java knowledge can examine difficult issues by cloning the Frank!Framework from GitHub. They can search the Java code for strings that appear in a logfile, pinpointing the location in the Java sources where an error occurs. The URL of this GitHub repository is https://github.com/frankframework/frankframework.

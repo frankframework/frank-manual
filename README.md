@@ -1,6 +1,6 @@
 # Frank!Manual
 
-This project documents the Frank!Framework for software integration. The Frank!Framework itself is hosted on GitHub at https://github.com/ibissource/iaf. The audience for this manual about the Frank!Framework is developers, testers and system administrators. Please read this manual on http://frank-manual.readthedocs.io to learn more about the Frank!Framework.
+This project documents the Frank!Framework for software integration. The Frank!Framework itself is hosted on GitHub at https://github.com/frankframework/frankframework. The audience for this manual about the Frank!Framework is developers, testers and system administrators. Please read this manual on http://frank-manual.readthedocs.io to learn more about the Frank!Framework.
 
 This project contains restructured text files with explanations and Frank configs that complements these explanations. Restructured text files are plain text files with extension .rst. These files should be processed by the Sphinx tool to produce the formatted manual. This is achieved using the website http://www.readthedocs.io. This GitHub repository has a Git hook pointing to that site, triggering an automated build each time a commit is added. The result can be read at https://frank-manual.readthedocs.io/.
 

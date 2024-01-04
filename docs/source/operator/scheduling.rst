@@ -37,7 +37,7 @@ Now that you are prepared, please continue as follows:
 
    .. WARNING::
 
-      The Pause button number 2 may not work in your version of the Frank!Framework. See GitHub issue https://github.com/ibissource/iaf/issues/718. This issue has been fixed in version 7.6-SNAPSHOT, the latest version available on October 15 2020.
+      The Pause button number 2 may not work in your version of the Frank!Framework. See GitHub issue https://github.com/frankframework/frankframework/issues/718. This issue has been fixed in version 7.6-SNAPSHOT, the latest version available on October 15 2020.
 
 #. You need a string that defines how often you want to run your adapter. To get that string, you have to know that the scheduler of the Frank!Framework uses a Java component called "quartz". When you search the internet for "quartz expression", you may find the following site: https://www.freeformatter.com/cron-expression-generator-quartz.html. These expressions are alwo known as cron expressions. This give you an alternative website: https://devtoolcafe.com/tools/cron.
 #. Here you can specify that you want to run your task every minute. The site will give you the string ``0 * * ? * * *``. You will use it later.
@@ -112,4 +112,4 @@ The first run is at the beginning of a new minute. In this minute, you paused th
 
    Older versions of the Frank!Framework have different behavior. When you pause a job and later resume it, the scheduler checks whether a scheduled moment passed during the job pause. If so, the scheduler executes the job immediately on resume. Otherwise, resuming the job does not caause immediate execution. When a job is resumed before the next scheduled moment, the scheduler awaits that moment, executing the job at its due time.
 
-   If you want to know more about this change, you may look at the related GitHub issue: https://github.com/ibissource/iaf/issues/764.
+   If you want to know more about this change, you may look at the related GitHub issue: https://github.com/frankframework/frankframework/issues/764.

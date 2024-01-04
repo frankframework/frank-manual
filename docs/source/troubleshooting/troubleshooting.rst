@@ -111,7 +111,7 @@ Using an Oracle database
 
 **Answer:** You may be used to installing Oracle on your development computer, but this is more complicated than necessary. For example if you have a corporate laptop, you should remember to use the right user account. On a corporate laptop you might have an admin account (WSA account) with administrator rights beside your normal user account. If you log in with your normal account and install Oracle, giving the installer administrator rights, then it does not work. You should log in with your admin account and then install Oracle.
  
-You can avoid such issues by using a Docker container for your Oracle database. See the sources of the Frank!Framework for an example. Checkout https://github.com/ibissource/iaf and see directory ``test/src/main/tools/setupDB/Oracle``.
+You can avoid such issues by using a Docker container for your Oracle database. See the sources of the Frank!Framework for an example. Checkout https://github.com/frankframework/frankframework and see directory ``test/src/main/tools/setupDB/Oracle``.
 
 Inserting from XPath expression, default value null
 ---------------------------------------------------
@@ -209,7 +209,7 @@ Authorization to turn on Ladybug
 
 **Question:** Which role do you need at least to turn on Ladybug?
 
-**Answer:** IbisDataAdmin, IbisAdmin or IbisTester. IbisDataAdmin might only work in snapshots that include https://github.com/ibissource/iaf/pull/1294 (all after 26-11-2020). See also :ref:`deploymentSecurity`.
+**Answer:** IbisDataAdmin, IbisAdmin or IbisTester. IbisDataAdmin might only work in snapshots that include https://github.com/frankframework/frankframework/pull/1294 (all after 26-11-2020). See also :ref:`deploymentSecurity`.
 
 Flow diagram images
 -------------------
@@ -223,7 +223,7 @@ XmlSwitchPipe exception "Premature end of file"
 
 **Question:** Why does ``XmlSwitchPipe`` throw "Premature end of file"?
 
-**Answer:** As the pipe name indicates, it expects the input message to be valid XML. When the input is not in XML format or if the XML is invalid, this error is thrown. You have to configure an XSLT stylesheet that is applied to the incoming message. The pipe uses the result of the transformation as the forward to follow. See also GitHub issue https://github.com/ibissource/iaf/issues/1020.
+**Answer:** As the pipe name indicates, it expects the input message to be valid XML. When the input is not in XML format or if the XML is invalid, this error is thrown. You have to configure an XSLT stylesheet that is applied to the incoming message. The pipe uses the result of the transformation as the forward to follow. See also GitHub issue https://github.com/frankframework/frankframework/issues/1020.
 
 **Additional:** But with the attribute ``sessionKey``, the XmlSwitchPipe can work without an XSLT transformation, the attribute value being used directly as the forward to follow.
 
@@ -264,7 +264,7 @@ Reading auto-generated keys when inserting into database
 
 .. WARNING::
 
-   This feature of the Frank!Framework does not work for all database drivers and/or versions. See issue https://github.com/ibissource/iaf/issues/1468.
+   This feature of the Frank!Framework does not work for all database drivers and/or versions. See issue https://github.com/frankframework/frankframework/issues/1468.
 
 By default, the value is wrapped into an XML message. If you just want a scalar, you can set the ``scalar`` attribute of the ``FixedQuerySender`` to ``true``.
 

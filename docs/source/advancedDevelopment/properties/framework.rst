@@ -36,7 +36,7 @@ configurations.autoDatabaseClassLoader
 
   .. WARNING::
 
-     Do not set this property right now because of issue https://github.com/ibissource/iaf/issues/927.
+     Do not set this property right now because of issue https://github.com/frankframework/frankframework/issues/927.
 
 configurations.directory
   The directory where the Frank!Framework expects to find configurations. This directory is applied when a property ``configurations.SomeConfig.classLoaderType`` is set to ``DirectoryClassLoader`` for some configuration ``SomeConfig``. In this case, configuration ``SomeConfig`` is expected in a subdirectory of the value of ``configurations.directory``. This property can be overruled for a configuration ``MyConfig`` by setting ``configurations.MyConfig.directory``. When you do that for all your configurations, you do not have to define ``configurations.directory``.

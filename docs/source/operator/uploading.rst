@@ -72,7 +72,7 @@ Please continue as follows:
 
    .. NOTE::
 
-      There will be another way, but only when issue https://github.com/ibissource/iaf/issues/927 will have been fixed.
+      There will be another way, but only when issue https://github.com/frankframework/frankframework/issues/927 will have been fixed.
 
 #. Go to the Adapter Status page. You should see a message that configuration "NewHorizons" was not found in the database, see below:
 
