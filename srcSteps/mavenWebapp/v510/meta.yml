@@ -1,7 +1,7 @@
 - file:
     path: pom.xml
     change:
-      - insert: 18
+      - insert: 8
         snippet: addPlugin
         highlight: true
 - snippet:

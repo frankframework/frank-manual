@@ -33,5 +33,3 @@ srcSteps/forFrankConsole/v500/configurations/NewHorizons configurations/forFrank
 srcSteps/forFrankConsole/v510/configurations/NewHorizons configurations/forFrankConsole_2 NewHorizons
 srcSteps/Frank2Hermes/v500/configurations/hermesBridge configurations/hermesBridge
 srcSteps/sandbox/v01 sandbox/v01
-
-srcSteps/Frank2Webapp/v520 configurations/Frank2Webapp

@@ -1,7 +1,7 @@
 - file:
     path: pom.xml
     change:
-      - insert: 5
+      - insert: 13
         snippet: pomAddJavaVersion
         highlight: true
 - snippet:

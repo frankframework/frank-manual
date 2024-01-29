@@ -12,7 +12,7 @@ Maven can best be introduced using a simple Hello World application. Please do t
 #. Within ``work``, create folder ``src/main/java``. This is where Maven expects Java sources.
 #. Within ``work/src/main/java``, open ``org/frankframework/maven/webapp/example/Main.java``. Populate it with the following text:
 
-   .. literalinclude:: ../../../../srcSteps/mavenWebapp/v500/src/main/java/org/frankframework/maven/webapp/example/Main.java
+   .. literalinclude:: ../../../../srcSteps/mavenWebapp/v480/src/main/java/org/frankframework/maven/webapp/example/Main.java
 
 This is a program that should be started from the command line. It simply prints "HELLO WORLD!". To demonstrate Maven, a dependency has been introduced. This program needs Java class ``org.apache.commons.lang3.StringUtils``.
 

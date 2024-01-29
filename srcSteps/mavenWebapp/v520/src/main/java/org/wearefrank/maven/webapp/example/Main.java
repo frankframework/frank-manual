@@ -1,4 +1,4 @@
-package org.frankframework.maven.webapp.example;
+package org.wearefrank.maven.webapp.example;
 
 import org.apache.commons.lang3.StringUtils;
 import javax.servlet.ServletException;

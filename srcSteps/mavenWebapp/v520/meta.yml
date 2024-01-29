@@ -6,6 +6,14 @@
     path: src/main/webapp/index.html
     change: add
 - file:
+    path: src/main/java/org/wearefrank/maven/webapp/example/Main.java
+    change:
+    - insert: 6
+      snippet: java
+    - old: 6
+      new: 5
+      snippet: java
+- file:
     path: pom.xml
     change:
       - insert: 1
@@ -14,15 +22,6 @@
       - insert: 6
         snippet: pomDepBuild
         highlight: true
-      - insert: 9
-        snippet: pomDepBuild
-        highlight: true
-- file:
-    path: src/main/java/org/frankframework/maven/webapp/example/Main.java
-    change:
-      - old: 7
-        new: 12
-        snippet: java
 - snippet:
     name: pomPackaging
     markup: xml
