@@ -10,11 +10,11 @@ Maven can best be introduced using a simple Hello World application. Please do t
 
 1. Choose some work directory, say ``work``.
 #. Within ``work``, create folder ``src/main/java``. This is where Maven expects Java sources.
-#. Within ``work/src/main/java``, open ``org/frankframework/maven/webapp/example/Main.java``. Populate it with the following text:
+#. Within ``work/src/main/java``, open ``org/wearefrank/maven/webapp/example/Main.java``. Populate it with the following text:
 
-   .. literalinclude:: ../../../../srcSteps/mavenWebapp/v500/src/main/java/org/frankframework/maven/webapp/example/Main.java
+   .. literalinclude:: ../../../../srcSteps/mavenWebapp/v480/src/main/java/org/wearefrank/maven/webapp/example/Main.java
 
-This is a program that should be started from the command line. It simply prints "HELLO WORLD!". To demonstrate Maven, a dependency has been introduced. This program needs Java class ``org.apache.commons.lang3.StringUtils``.
+This is a program that should be started from the command line. It simply prints "Hello World!". To demonstrate Maven, a dependency has been introduced. This program needs Java class ``org.apache.commons.lang3.StringUtils``.
 
 In the next steps, a file ``pom.xml`` is added that tells Maven how to compile this program.
 
@@ -29,7 +29,7 @@ The first two lines are the same for every ``pom.xml`` file. Next come three lin
 
    .. include:: ../../snippets/mavenWebapp/v490/pomAddJavaVersion.txt
 
-   This tells Maven that the Java sources were written with Java 8, and that the code is to be executed with Java 8.
+   This tells Maven that the compiler, the tool that transforms ``.java`` files into ``.class`` files, should treat the source code as written for Java 11 (if you are working with another Java version, another version may be needed in the ``pom.xml``). The idea of plugins will be explained later.
 #. Conclude ``pom.xml`` by adding a dependency. You add the dependency that references the artifact that holds class ``org.apache.commons.lang3.StringUtils``:
 
    .. include:: ../../snippets/mavenWebapp/v500/pomDependencies.txt
@@ -46,25 +46,23 @@ The output should look like this:
 
 .. code-block:: none
 
-   C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500>mvn clean
-   [INFO] Scanning for projects...
-   [INFO]
-   [INFO] -----------------< org.ibissource:mavenWebappExample >------------------
-   [INFO] Building mavenWebappExample 1.0-SNAPSHOT
-   [INFO] --------------------------------[ jar ]---------------------------------
-   [INFO]
-   [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ mavenWebappExample ---
-   [INFO] Deleting C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500\target
-   [INFO] ------------------------------------------------------------------------
-   [INFO] BUILD SUCCESS
-   [INFO] ------------------------------------------------------------------------
-   [INFO] Total time:  0.204 s
-   [INFO] Finished at: 2022-05-10T18:06:56+02:00
-   [INFO] ------------------------------------------------------------------------
+  $ mvn clean
+  [INFO] Scanning for projects...
+  [INFO]
+  [INFO] -----------------< org.wearefrank:mavenWebappExample >------------------
+  [INFO] Building mavenWebappExample 1.0-SNAPSHOT
+  [INFO] --------------------------------[ jar ]---------------------------------
+  [INFO]
+  [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ mavenWebappExample ---
+  [INFO] Deleting C:\Users\martijn\git\frank-manual\srcSteps\mavenWebapp\v500\target
+  [INFO] ------------------------------------------------------------------------
+  [INFO] BUILD SUCCESS
+  [INFO] ------------------------------------------------------------------------
+  [INFO] Total time:  0.265 s
+  [INFO] Finished at: 2024-01-29T15:43:19+01:00
+  [INFO] ------------------------------------------------------------------------
 
-   C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500>
-
-Maven distinguishes build phases. The ``mvn clean`` command tells maven to execute build phase ``clean``. Maven delegates everything it does to plugins. By default, Maven executes plugin ``maven-clean-plugin`` when it executes phase ``clean``. Maven plugins are artifacts themselves that can be referenced by Maven coordinates. You can change the version of this plugin by adding a reference to this plugin in your ``pom.xml``. You will see how to do this in a later subsection. Maven plugins are little programs that may have multiple functions. These are named ``goals``. The output says that goal ``clean`` of ``maven-clean-plugin`` version ``2.5`` has been executed. This action deleted directory ``target`` which probably did not exist at this moment. All output of Maven appears in the ``target`` directory, so all output from previous runs of Maven has been removed as was intended.
+Maven distinguishes build phases. The ``mvn clean`` command tells maven to execute build phase ``clean``. Maven delegates everything it does to plugins. By default, Maven executes plugin ``maven-clean-plugin`` when it executes phase ``clean``. Maven plugins are artifacts themselves that can be referenced by Maven coordinates. You can change the versions of a plugin by adding a reference to it in your ``pom.xml``. This is what we did to compile for Java version 11. More explanation will be given in a later subsection. Maven plugins are little programs that may have multiple functions. These are named ``goals``. The output says that goal ``clean`` of ``maven-clean-plugin`` version ``2.5`` has been executed. This action deleted directory ``target`` which probably did not exist at this moment. All output of Maven appears in the ``target`` directory, so all output from previous runs of Maven has been removed as was intended.
 
 9. Within the same command prompt, enter ``mvn compile`` to execute build phase ``compile``.
 
@@ -72,29 +70,27 @@ The output should look as follows:
 
 .. code-block:: none
 
-   C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500>mvn compile
-   [INFO] Scanning for projects...
-   [INFO]
-   [INFO] -----------------< org.ibissource:mavenWebappExample >------------------
-   [INFO] Building mavenWebappExample 1.0-SNAPSHOT
-   [INFO] --------------------------------[ jar ]---------------------------------
-   [INFO]
-   [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ mavenWebappExample ---
-   [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
-   [INFO] skip non existing resourceDirectory C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500\src\main\resources
-   [INFO]
-   [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ mavenWebappExample ---
-   [INFO] Changes detected - recompiling the module!
-   [WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
-   [INFO] Compiling 1 source file to C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500\target\classes
-   [INFO] ------------------------------------------------------------------------
-   [INFO] BUILD SUCCESS
-   [INFO] ------------------------------------------------------------------------
-   [INFO] Total time:  0.838 s
-   [INFO] Finished at: 2022-05-10T18:22:50+02:00
-   [INFO] ------------------------------------------------------------------------
-
-   C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500>
+  $ mvn compile
+  [INFO] Scanning for projects...
+  [INFO]
+  [INFO] -----------------< org.wearefrank:mavenWebappExample >------------------
+  [INFO] Building mavenWebappExample 1.0-SNAPSHOT
+  [INFO] --------------------------------[ jar ]---------------------------------
+  [INFO]
+  [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ mavenWebappExample ---
+  [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+  [INFO] skip non existing resourceDirectory C:\Users\martijn\git\frank-manual\srcSteps\mavenWebapp\v500\src\main\resources
+  [INFO]
+  [INFO] --- maven-compiler-plugin:3.12.1:compile (default-compile) @ mavenWebappExample ---
+  [INFO] Recompiling the module because of changed source code.
+  [WARNING] File encoding has not been set, using platform encoding windows-1252, i.e. build is platform dependent!
+  [INFO] Compiling 1 source file with javac [debug release 11] to target\classes
+  [INFO] ------------------------------------------------------------------------
+  [INFO] BUILD SUCCESS
+  [INFO] ------------------------------------------------------------------------
+  [INFO] Total time:  1.002 s
+  [INFO] Finished at: 2024-01-29T16:40:54+01:00
+  [INFO] ------------------------------------------------------------------------
 
 Build phase ``compile`` is part of the default life cycle. All preceding phases, like ``process-resources``, of the default life cycle are executed as well. Phase ``process-resources`` is linked to plugin ``maven-resources-plugin`` and its goal ``resources``. Phase ``compile`` executes goal ``compile`` of plugin ``maven-compiler-plugin``.
 
@@ -132,14 +128,14 @@ The output should look like this:
 
    C:\Users\martijn\frank-manual\srcSteps\mavenWebapp\v500>
 
-All generated files appear in the ``target`` directory. Within that directory, there is a directory ``classes``. This directory holds everything that this artifact will put on the classpath when the linked application executes. There is a path ``org/frankframework/maven/webapp/example``. This path resembles the path to file ``Main.java``. The directory holds file ``Main.class``, the byte code produced by compiling source file ``Main.java`` (not shown).
+All generated files appear in the ``target`` directory. Within that directory, there is a directory ``classes``. This directory holds everything that this artifact will put on the classpath when the linked application executes. There is a path ``org/wearefrank/maven/webapp/example``. This path resembles the path to file ``Main.java``. The directory holds file ``Main.class``, the byte code produced by compiling source file ``Main.java`` (not shown).
 
 11. Assemble the artifact of this project, which has ``<groupId>`` ``org.ibissource``, ``<artifactId>`` ``mavenWebappExample`` and ``<version>`` ``1.0-SNAPSHOT``. Do so by entering ``mvn install``.
 #. Check that you have file ``mavenWebappExample-1.0-SNAPSHOT.jar``. This is a ZIP file that holds all data that this artifact should put on the classpath.
-#. Check that your home directory has a folder named ``.m2``. Check that this folder contains directory ``repository\org\ibissource\mavenWebappExample\1.0-SNAPSHOT``.
+#. Check that your home directory has a folder named ``.m2``. Check that this folder contains directory ``repository\org\wearefrank\mavenWebappExample\1.0-SNAPSHOT``.
 #. Check that that directory contains the same JAR file: ``mavenWebappExample-1.0-SNAPSHOT.jar``.
 
-Maven has stored the artifact in the local repository on your computer. If you would build some other project that references ``org.ibissource:mavenWebappExample:1.0-SNAPSHOT`` as a dependency, then the corresponding directory in the ``.m2`` folder would be accessed.
+Maven has stored the artifact in the local repository on your computer. If you would build some other project that references ``org.wearefrank:mavenWebappExample:1.0-SNAPSHOT`` as a dependency, then the corresponding directory in the ``.m2`` folder would be accessed.
 
 15. Check that your ``.m2`` folder has directory ``repository\org\apache\commons\commons-lang3\3.12.0``.
 

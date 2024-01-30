@@ -43,9 +43,12 @@ class DirectoryTree:
         self._browsePaths(lambda relPath: self._handleBrowsePath(relPath, handler), ignored)
     def _handleBrowsePath(self, relPath, handler):
         toOpen = os.path.join(self._absPath, relPath)
-        with open(toOpen, "r") as f:
-            rawLines = f.readlines()
-            lines = [line.replace("\r\n", "\n").rstrip() for line in rawLines]
+        try:
+            with open(toOpen, "r") as f:
+                rawLines = f.readlines()
+                lines = [line.replace("\r\n", "\n").rstrip() for line in rawLines]
+        except:
+            raise Exception("Cannot open file " + toOpen)
         handler(relPath, lines)
     def fileExists(self, path):
         return os.path.isfile(os.path.join(self._absPath, path))
