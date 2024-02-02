@@ -130,3 +130,10 @@ larva.timeout
   .. NOTE::
 
     The prefix ``soap.bus.`` is in the property names because we use the CXF library for multiple purposes. In the future, we may need other Frank!Framework properties that map to the same CXF properties.
+
+**customViews.names=CustomTab**
+
+**customViews.CustomTab.name=Custom Tab**
+
+**customViews.CustomTab.url=http://localhost:8080**
+  This is the way to add custom tabs to the Frank!Console. This creates a new entry in the main menu that points to the mentioned URL.
