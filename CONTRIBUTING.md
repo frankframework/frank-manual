@@ -21,8 +21,6 @@ You can download Python and Pip from https://www.python.org/downloads/. You also
 * `pip install sphinx_rtd_theme`
 * `pip install pyyaml`
 
-WARNING: By the beginning of March 2021, the latest official Sphinx release does not build the Frank!Manual successful. The shown Sphinx release is a bugfix. It is not known when this fix will be included in an official release.
-
 You may be able to use Linux instead of Windows and you may be able to do without MinGW. When using other tools, please check carefully whether everything works well. Make sure that you check-in all text files with UNIX-style line endings (not \r\n but \n).
 
 ## Guidelines for the contents
