@@ -61,6 +61,8 @@ The main menu
 #. The "Environment Variables" page (number 4) is relevant. Here you can find many properties configured within your Frank.
 #. Finally, you have "Configurations" (number 6). Here you can view the XML code of your configurations as explained later in this section. You can also use this option to upload configurations if you do not want to use the local file system.
 
+.. _frankRunnerInstallationGeneralStructure:
+
 General structure of the example Frank application
 --------------------------------------------------
 
@@ -77,7 +79,7 @@ Frank configurations are meant to be independent of the Frank!Framework instance
 
 You as a Frank developer develop a Frank config, which plays the role of a software package in the above metaphor. When you are done, you hand over your Frank config to your customer. The customer has his own production instance of the Frank!Framework, which plays the role of the server. The system administrator deploys your Frank config on the production instance. He can fine-tune the behavior of your Frank config by adding additional configurations on the instance level.
 
-Below the top part of the adapter status page that was shown at step 13, there is useful information about the statuses of your configurations. This information is discussed in chapter :ref:`operator`. There is one button you should remember at this point; it is shown in the figure below. You can use it to reload your configuration after editing it. It will save you a lot of time during development work, because you do not have to restart the Frank!Runner to apply your edits.
+Below the top part of the adapter status page that was shown at step 13, there is useful information about the statuses of your configurations. This information is discussed in chapter :ref:`operator`. There is one button you should remember at this point; it is shown in the figure below (tooltip Full Reload). You can use it to reload your configuration after editing it. It will save you a lot of time during development work, because you do not have to restart the Frank!Runner to apply your edits.
 
 .. image:: configurationRefresh.jpg
 

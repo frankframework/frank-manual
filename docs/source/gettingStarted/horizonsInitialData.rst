@@ -73,7 +73,7 @@ You can test your work by querying the tables you created, "booking" and "visit"
  
 .. NOTE::
 
-   If you are developing on the changelog within your own project, you will probably make some errors. In this situation, you want to remove all database tables to rerun all change sets within your changelog. You can do this using the query ``DROP ALL OBJECTS``. After running it, restart the Frank!Framework.
+   If you are developing on the changelog within your own project, you will probably make some errors. In this situation, you want to remove all database tables to rerun all change sets within your changelog. You can do this using the query ``DROP ALL OBJECTS``. After running it, reload your configuration with the Full Reload button in the adapter status page, see :ref:`frankRunnerInstallationGeneralStructure`.
 
 Solution
 --------
