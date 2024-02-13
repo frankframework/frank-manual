@@ -11,7 +11,7 @@ It requires many resources in terms of time, networks and servers to set up inte
 
 Integration test environments are precious and scarse, so you need unit tests. A unit test tests a small piece of your configuration, typically an adapter, in isolation. Another reason you want unit tests has to do with the complexity of your adapters. A complex adapter can handle multiple types of input that each have to be processed in a different way. There are multiple program flows. When an integration test executes multiple adapters, the number of possible program flows grows exponentially. Integration tests do not allow you to test the detailed requirements of each adapter. To do this, you need to test each adapter in isolation. Larva allows you to test each of your adapters in isolation, which means that it is a tool to write unit tests.
 
-The beginning of this section, subsections :ref:`testingLarvaStubbing` and :ref:`testingLarvaServices`, is a tutorial. It is about a fictive bank, the Rotterdam Bank, that has to integrate two third-party systems. You will test a Frank configuration that has been written to connect them. There are instructions allowing you to get hands-on experience, but you will not miss information if you just read along. The end of this section, subsections :ref:`testingLarvaIgnores` and :ref:`testingLarvaConsole`, contains reference material.
+The beginning of this section, subsections :ref:`testingLarvaStubbing` and :ref:`testingLarvaServices`, is a tutorial. It is about a fictive bank, the Rotterdam Bank, that has to integrate two third-party systems. You will test a Frank configuration that has been written to connect them. There are instructions allowing you to get hands-on experience, but you will not miss information if you just read along. The end of this section, subsections :ref:`testingLarvaIgnores` to :ref:`testingLarvaProperties`, contains reference material.
 
 Here is the table of contents:
 
@@ -22,4 +22,4 @@ Here is the table of contents:
    services
    ignores
    larvaConsole
-
+   properties
