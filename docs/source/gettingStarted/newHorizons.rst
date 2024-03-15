@@ -43,7 +43,7 @@ To get started, please do the following:
 
    .. WARNING::
 
-      If you are working on Linux or on a Mac, you need ``restart.sh`` instead. See https://github.com/ibissource/frank-runner.
+      If you are working on Linux or on a Mac, you need ``restart.sh`` instead. See https://github.com/ibissource/frank-runner. Beware to call it as `./restart.sh` even if you are in the directory that holds this script (mind the `./`).
 
 #. To check these steps, please start the Frank!Framework. To do this, run script ``restart.bat`` from a command prompt. You may have to change directory to the ``Frank2Manual`` directory before doing this.
 #. When the Frank!Frame runs, go to the Adapter Status page. You should see a tab "NewHorizons".
