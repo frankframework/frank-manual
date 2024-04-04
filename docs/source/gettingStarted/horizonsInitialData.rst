@@ -37,10 +37,7 @@ Liquibase expects a so-called changelog, an XML file that defines the data model
    .. literalinclude:: ../../../srcSteps/NewHorizons/v410/configurations/NewHorizons/DatabaseChangelog.xml
       :language: xml
 
-For clarity we chose to use SQL statements in the changelog. As a consequence, it is not database independent as would
-be the case if it were pure XML. The shown changelog is specific for H2 databases. See http://www.liquibase.org/ for more information about changelogs.
-
-More information about databases is available in section :ref:`advancedDevelopmentDatabase`. 
+Information about the syntax of ``DatabaseChangelog.xml`` can be found at https://docs.liquibase.com/change-types/home.html. More information about databases is available in section :ref:`advancedDevelopmentDatabase`. 
 
 Test your database
 ------------------
