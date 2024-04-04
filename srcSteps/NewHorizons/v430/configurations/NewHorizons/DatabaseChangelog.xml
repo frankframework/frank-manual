@@ -7,28 +7,55 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     <changeSet id="1" author="martijn">
-       <sql>
-           CREATE TABLE booking (
-               id INT PRIMARY KEY NOT NULL,
-               travelerId INT NOT NULL,
-               price DECIMAL NOT NULL,
-               fee DECIMAL NOT NULL
-           )
-       </sql>
+        <createTable tableName="booking">
+            <column name="id" type="int">  
+                <constraints  primaryKey="true" nullable="false"/>  
+            </column>
+            <column name="travelerId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal">
+                <constraints nullable="false" />
+            </column>
+            <column name="fee" type="decimal">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
     </changeSet>
     <changeSet id="2" author="martijn">
-        <sql>
-            CREATE TABLE visit (
-                bookingId INT NOT NULL,
-                seq INT NOT NULL,
-                hostId INT NOT NULL,
-                productId INT NOT NULL,
-                startDate date NOT NULL,
-                endDate date NOT NULL,
-                price DECIMAL NOT NULL,
-                PRIMARY KEY (bookingId, seq)
-            );
-            ALTER TABLE visit ADD FOREIGN KEY (bookingId) REFERENCES booking(id)
-        </sql>
+        <createTable tableName="visit">
+            <column name="bookingId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="seq" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hostId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="productId" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="startDate" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="endDate" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="martijn">
+        <addPrimaryKey tableName="visit" columnNames="bookingId, seq" />
+    </changeSet>
+    <changeSet id="4" author="martijn">
+        <addForeignKeyConstraint
+            constraintName="FK_VISIT_BOOKING"
+            baseTableName="visit"
+            baseColumnNames="bookingId"
+            referencedTableName="booking"
+            referencedColumnNames="id" />
     </changeSet>
 </databaseChangeLog>
