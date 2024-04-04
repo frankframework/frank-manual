@@ -39,6 +39,12 @@ Liquibase expects a so-called changelog, an XML file that defines the data model
 
 Information about the syntax of ``DatabaseChangelog.xml`` can be found at https://docs.liquibase.com/change-types/home.html. More information about databases is available in section :ref:`advancedDevelopmentDatabase`. 
 
+.. Note::
+
+   You just added ``jdbc.migrator.active=true`` and ``DatabaseChangelog.xml`` for a specific configuration, NewHorizons. If the data you
+   are initializing is not specific for a configuration, you need to add these in the ``classes`` directory. See
+   :ref:`propertiesDeploymentEnvironment` for background information.
+
 Test your database
 ------------------
 

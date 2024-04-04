@@ -18,3 +18,4 @@ Ladybug
    variables/variables
    reference/reference
    extendTable/extendTable
+   storages/storages
