@@ -11,10 +11,11 @@ You can add extra columns to the LADYBUG database table by adding file ``src/mai
 
 .. code-block:: xml
 
+   ...
    <changeSet id="LadybugCustom:1" author="Jaco de Groot">
        <comment>Add column EXTRACOLUMN</comment>
        <addColumn tableName="LADYBUG">
            <column name="EXTRACOLUMN" type="java.sql.Types.VARCHAR(255)"/>
        </addColumn>
    </changeSet>
-
+   ...
