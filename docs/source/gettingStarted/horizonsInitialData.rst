@@ -43,7 +43,7 @@ Information about the syntax of ``DatabaseChangelog.xml`` can be found at https:
 
    You just added ``jdbc.migrator.active=true`` and ``DatabaseChangelog.xml`` for a specific configuration, NewHorizons. If the data you
    are initializing is not specific for a configuration, you need to add these in the ``classes`` directory. See
-   :ref:`propertiesDeploymentEnvironment` for background information.
+   :ref:`propertiesDeploymentEnvironment` for background information. A ``DatabaseChangelog.xml`` in the ``classes`` folder is only executed if there is also a ``Configuration.xml`` in the ``classes`` folder and if that configuration is not deactivated with attribute ``active`` (see the Frank!Doc). Setting ``jdbc.migrator.active=true`` in the ``classes`` folder is always effective; no matter if there is a ``Configuration.xml``.
 
 Test your database
 ------------------
