@@ -19,4 +19,5 @@ Here is the table of contents of this chapter:
    dtapAndProperties
    security
    credentials
+   IdentityProviders/MicrosoftEntraId/microsoftEntraId
  
