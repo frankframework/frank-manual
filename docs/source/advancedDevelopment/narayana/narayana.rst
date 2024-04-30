@@ -7,8 +7,7 @@ Narayana Database TX Storage
 
 A transaction is a unit of work that encapsulates multiple database actions such that that either all the encapsulated actions fail or all succeed. Narayana is the OpenSource implementation for WildFly and JBoss EAP, backed by Red Hat.
 
-TX-Managers uniqueness
-----------------------
+**TX-Managers uniqueness**
 
 When deploying an application, the transaction manager needs to have a unique identifier. We call this the uid. There are also a few default transaction settings that you can change to improve your workflow. More information can be found in the community documentation, a link has been added at the end of this document.
 
@@ -26,20 +25,17 @@ When deploying an application, the transaction manager needs to have a unique id
    # How often (in ms) the connection pool checks for stuck connections.
    transactionmanager.narayana.stuckTimerTime=30000
 
-Types of ObjectStores
----------------------
+**Types of ObjectStores**
 
 Narayana has multiple types of storing the transaction information. This can be done on the local filesystem (should not be a mount and requires low latency access), in memory (though should the application stop, all information will be lost), or stored in a database.
 
 The JDBCStore is the preferred cloud solution due to the way filesystem mounts work. In a clustered environment filesystems may be shared over multiple nodes which may create extra latency. Databases are more robust and made for (local) transactional data transfer, they can operate independently of any availability zone or cluster.
 
-ShadowNoFileLockStore
----------------------
+**ShadowNoFileLockStore**
 
 The default storage implementation is the ShadowNoFileLockStore which relies upon user-level locking. It uses pairs of files to represent objects. One file is the shadow version and the other is the committed version. Files are opened, locked, operated upon, unlocked, and closed on every interaction with the object store.
 
-JDBCStore
----------
+**JDBCStore**
 
 Another implementation is the JDBCStore which uses a database to save persistent object states in BLOB format.
 
