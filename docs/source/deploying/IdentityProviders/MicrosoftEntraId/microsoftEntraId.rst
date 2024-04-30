@@ -1,7 +1,9 @@
 .. _deploymentMicrosoftEntraId:
 
-Register application with identity provider MicrosoftEntraId
-============================================================
+THIS PAGE IS STILL WORK IN PROGRESS
+
+Register application with identity provider Microsoft Entra ID
+==============================================================
 
 This section explains how to register a Frank application with identity provider Microsoft Entra ID. First, screenshots are shown about what should be done in the Microsoft cloud. At the end of this section you find a list of Frank!Framework properties that should be set (on the class level).
 
