@@ -12,23 +12,31 @@ The Rotterdam Bank is a bank that provides current accounts and savings accounts
 
 The problem to be solved is that the interfaces of Hermes and Conscience are not compatible. When Hermes needs an address, it sends out a RESTful HTTP GET request with a body like the following:
 
-.. literalinclude:: ../../../../srcSteps/Frank2Hermes/v550/tests/hermesBridge/scenario01/hermesAddressRequest.xml
-   :language: xml
+    .. literalinclude:: ../../../../srcSteps/Frank2Hermes/v550/tests/hermesBridge/scenario01/hermesAddressRequest.xml
+       :language: xml
+
+    **Figure 1:** Hermes address request
 
 Conscience expects a different format. This format looks like the following example:
 
-.. literalinclude:: ../../../../srcSteps/Frank2Hermes/v550/tests/hermesBridge/scenario01/conscienceAddressRequest.xml
-   :language: xml
+    .. literalinclude:: ../../../../srcSteps/Frank2Hermes/v550/tests/hermesBridge/scenario01/conscienceAddressRequest.xml
+       :language: xml
+
+    **Figure 2:** Concience address request
 
 Conscience produces a response, for example:
 
-.. literalinclude:: ../../../../srcSteps/Frank2Hermes/v550/tests/hermesBridge/scenario01/conscienceAddress.xml
-   :language: xml
+    .. literalinclude:: ../../../../srcSteps/Frank2Hermes/v550/tests/hermesBridge/scenario01/conscienceAddressResponse.xml
+       :language: xml
+
+    **Figure 3:** Concience address response
 
 But Hermes expects something like this:
 
-.. literalinclude:: ../../../../srcSteps/Frank2Hermes/v550/tests/hermesBridge/scenario01/hermesAddress.xml
-   :language: xml
+    .. literalinclude:: ../../../../srcSteps/Frank2Hermes/v550/tests/hermesBridge/scenario01/hermesAddressResponse.xml
+       :language: xml
+
+    **Figure 4:** Hermes address response
 
 The solution
 ------------

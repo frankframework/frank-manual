@@ -5,10 +5,10 @@
           highlight: true
           snippet: scenario01Complete
 - file:
-    path: tests/hermesBridge/scenario01/conscienceAddress.xml
+    path: tests/hermesBridge/scenario01/conscienceAddressResponse.xml
     change: add
 - file:
-    path: tests/hermesBridge/scenario01/hermesAddress.xml
+    path: tests/hermesBridge/scenario01/hermesAddressResponse.xml
     change: add
 - snippet:
     name: scenario01Complete

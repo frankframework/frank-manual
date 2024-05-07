@@ -68,8 +68,8 @@ You will continue with message 2 of the figure of subsection :ref:`testingLarvaS
 
 You have seen all Larva syntax you need to finish your test. You need to write message 3, the response to "Frank2Hermes" that is the Conscience-formatted address. The writing has to be done by service ``stub.conscience``. Finally your test needs to read message 4, the Hermes-formatted address, comparing it with the address you expect. Please continue as follows:
 
-12. Create file ``Frank2Manual/tests/hermesBridge/scenario01/conscienceAddress.xml``. Fill it with the example of a Conscience address.
-#. Create file ``Frank2Manual/tests/hermesBridge/scenario01/hermesAddress.xml``. Fill it with the example of a Hermes address.
+12. Create file ``Frank2Manual/tests/hermesBridge/scenario01/conscienceAddressResponse.xml``. Fill it with the example of a Conscience address.
+#. Create file ``Frank2Manual/tests/hermesBridge/scenario01/hermesAddressResponse.xml``. Fill it with the example of a Hermes address.
 #. Finish ``scenario01.properties`` as shown:
 
     .. include:: ../../snippets/Frank2Hermes/v550/scenario01Complete.txt
