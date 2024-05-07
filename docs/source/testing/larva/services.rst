@@ -48,15 +48,15 @@ Your scenario needs the services you have defined in ``common.properties``. Plea
 
    .. include:: ../../snippets/Frank2Hermes/v520/scenario01AddInclude.txt
 
-Next, you will write a Hermes-formatted address request to your system-under-test "Frank2Hermes". This is message 1 in the figure to the bottom of the previous subsection :ref:`testingLarvaStubbing`. To the top of that subsection, you already saw an example Hermes-formatted address request. Please continue as follows:
+Next, you will write a Hermes-formatted address request to your system-under-test "Frank2Hermes". This is message 1 in the figure to the bottom of the previous subsection :ref:`testingLarvaStubbing`. To the top of that subsection in Figure 1, you already saw an example Hermes-formatted address request. Please continue as follows:
 
 7. Create file ``Frank2Manual/tests/hermesBridge/scenario01/hermesAddressRequest.xml``.
-#. Fill it with the example Hermes-formatted address request you find in subsection :ref:`testingLarvaStubbing`.
+#. Fill it with the text of Figure 1 of subsection :ref:`testingLarvaStubbing`.
 #. Extend your file ``scenario01.properties`` as shown:
 
    .. include:: ../../snippets/Frank2Hermes/v525/scenario01Message1.txt
 
-You see a new syntax here that needs explanation. The file you are writing appears to the right of the ``=`` sign. The property name before the ``=`` sign has to: a) command that the mentioned file is to be written; b) specify the service that has to do the writing; and c) specify when the write has to happen. Point (c) is expressed by the first word ``step1``. Point (b) is pressed by the next two words ``adapter.toConscience``. Point (a) is expressed by the last word ``write``.
+You see a new syntax here that needs explanation. The file you are writing appears to the right of the ``=`` sign. The property name before the ``=`` sign has to: (a) command that the mentioned file is to be written; (b) specify the service that has to do the writing; and (c) specify when the write has to happen. Point (c) is expressed by the first word ``step1``. Point (b) is pressed by the next two words ``adapter.toConscience``. Point (a) is expressed by the last word ``write``.
 
 You will continue with message 2 of the figure of subsection :ref:`testingLarvaStubbing`. Now a message is coming from your system-under-test, and you have to ``read`` this message. The ``read`` command compares the read text with the file mentiond to the right of the ``=`` sign. You test here that "Frank2Hermes" transforms a Hermes address request correctly into a Conscience address request. The reading has to be done by service ``stub.conscience`` and it is ``step2`` of your scenario. Please continue as follows:
 
@@ -64,12 +64,12 @@ You will continue with message 2 of the figure of subsection :ref:`testingLarvaS
 
     .. include:: ../../snippets/Frank2Hermes/v530/scenario01Message2.txt
 
-#. Create file ``Frank2Manual/tests/hermesBridge/scenario01/conscienceAddressRequest.xml``. Fill it with the example Conscience address request you can find in subsection :ref:`testingLarvaStubbing`.
+#. Create file ``Frank2Manual/tests/hermesBridge/scenario01/conscienceAddressRequest.xml``. Fill it with the example Conscience address request Figure 2.
 
 You have seen all Larva syntax you need to finish your test. You need to write message 3, the response to "Frank2Hermes" that is the Conscience-formatted address. The writing has to be done by service ``stub.conscience``. Finally your test needs to read message 4, the Hermes-formatted address, comparing it with the address you expect. Please continue as follows:
 
-12. Create file ``Frank2Manual/tests/hermesBridge/scenario01/conscienceAddressResponse.xml``. Fill it with the example of a Conscience address.
-#. Create file ``Frank2Manual/tests/hermesBridge/scenario01/hermesAddressResponse.xml``. Fill it with the example of a Hermes address.
+12. Create file ``Frank2Manual/tests/hermesBridge/scenario01/conscienceAddressResponse.xml``. Fill it with Figure 3.
+#. Create file ``Frank2Manual/tests/hermesBridge/scenario01/hermesAddressResponse.xml``. Fill it with Figure 4.
 #. Finish ``scenario01.properties`` as shown:
 
     .. include:: ../../snippets/Frank2Hermes/v550/scenario01Complete.txt
@@ -85,7 +85,7 @@ Please try your test as follows:
 
     .. image:: runRequestReplyTest.jpg
 
-#. You see you are in Larva (number 1). Select that you want to run all your tests ("\\\\" in number 2) and press "start" (number 3).
+#. You see you are in Larva (number 1). Select that you want to run all your tests ("\\" in number 2) and press "start" (number 3).
 #. All your tests should succeed. Please check this (see number 4).
 #. A test scenario is a sequence of steps that depend on each other. You should have one scenario named "hermesBridge/scenario01". Please check that you see the decription you entered earlier.
 #. You see all four steps of your scenario (number 6 shows step 1). If a step fails it becomes red, showing you where the problem occurs.
