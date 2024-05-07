@@ -1,9 +1,9 @@
 .. _advancedDevelopmentNarayana:
 
-THIS PAGE IS STILL UNDER DEVELOPMENT.
+LIVING DOCUMENT
 
-Narayana Database TX Storage
-============================
+Narayana TransactionManager
+===========================
 
 A transaction is a unit of work that encapsulates multiple database actions such that that either all the encapsulated actions fail or all succeed. Narayana is the OpenSource implementation for WildFly and JBoss EAP, backed by Red Hat.
 
