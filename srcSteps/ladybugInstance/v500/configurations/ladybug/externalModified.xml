@@ -1,10 +1,15 @@
+<Module
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
   <Adapter name="externalArchive">
     <Receiver name="externalArchive">
       <JavaListener name="externalArchive"
           serviceName="archive"/>
     </Receiver>
     <Pipeline firstPipe="externalArchive">
-      <Exit state="success" path="Exit" code="200" />
+      <Exits>
+          <Exit name="Exit" state="SUCCESS" code="200" />
+      </Exits>
       <FixedResultPipe name="externalArchive"
           returnString="&lt;docid&gt;docid-67890&lt;/docid&gt;"/>
     </Pipeline>
@@ -15,8 +20,11 @@
           serviceName="get"/>
     </Receiver>
     <Pipeline firstPipe="externalGet">
-      <Exit state="success" path="Exit" code="200"/>
+      <Exits>
+          <Exit name="Exit" state="SUCCESS" code="200"/>
+      </Exits>
       <FixedResultPipe name="externalGet"
           returnString="&lt;document&gt;This is the document&lt;/document&gt;"/>
     </Pipeline>
   </Adapter>
+</Module>

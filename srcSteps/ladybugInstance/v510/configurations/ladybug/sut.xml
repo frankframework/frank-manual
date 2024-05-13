@@ -1,4 +1,6 @@
-<Module>
+<Module
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
   <Adapter name="sutArchive">
     <Receiver name="sutArchive">
       <ApiListener name="sutArchive"
@@ -6,7 +8,9 @@
           method="POST"/>
     </Receiver>
     <Pipeline firstPipe="sutArchive">
-      <Exit state="success" path="Exit" code="200"/>
+      <Exits>
+          <Exit name="Exit" state="SUCCESS" code="200"/>
+      </Exits>
       <SenderPipe name="sutArchive">
         <IbisJavaSender name="sutArchiveSender"
             serviceName="archive"/>
@@ -20,7 +24,9 @@
           method="POST"/>
     </Receiver>
     <Pipeline firstPipe="sutGet">
-      <Exit state="success" path="Exit" code="200"/>
+      <Exits>
+          <Exit name="Exit" state="SUCCESS" code="200"/>
+      </Exits>
       <SenderPipe name="sutGet">
         <IbisJavaSender name="sutGetSender"
             serviceName="get"/>

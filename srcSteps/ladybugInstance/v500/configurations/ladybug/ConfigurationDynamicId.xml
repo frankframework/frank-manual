@@ -1,12 +1,16 @@
 <Module
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
   <Adapter name="adapterIngestMessage">
       <Receiver name="receiverIngestMessage">
           <JavaListener name="listenerIngestMessage" serviceName="listenerIngestMessage"/>
       </Receiver>
       <Pipeline firstPipe="pipeCheckIncomingMessage">
-          <XmlValidatorPipe
+        <Exits>
+            <Exit name="EXIT" state="SUCCESS" code="200" />
+            <Exit name="ServerError" state="ERROR" code="400"/>
+        </Exits>
+        <XmlValidatorPipe
           name="pipeCheckIncomingMessage"
           root="message"
           schema="message.xsd">
@@ -22,7 +26,7 @@ xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
           </XsltPipe>
           <UUIDGeneratorPipe
           name="pipeCreateUuid"
-          type="numeric"
+          type="NUMERIC"
           storeResultInSessionKey="uuid"
           preserveInput="true">
               <Forward name="success" path="pipeStoreMessage"/>
@@ -43,13 +47,11 @@ xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
           <XsltPipe
           name="returnUuid"
           omitXmlDeclaration="true"
-          outputType="text"
+          outputType="TEXT"
           xpathExpression="concat(concat('&lt;uuid&gt;', $uuid), '&lt;/uuid&gt;')">
-              <Param name="uuid" sessionKey="uuid" type="string"/>
+              <Param name="uuid" sessionKey="uuid" />
               <Forward name="success" path="EXIT"/>
           </XsltPipe>
-          <Exit path="EXIT" state="success" code="200" />
-          <Exit path="ServerError" state="failure" code="400"/>
       </Pipeline>
   </Adapter>
   <Adapter name="adapterGetIngestedMessage">
@@ -57,6 +59,10 @@ xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
         <JavaListener name="listenerGetIngestedMessage" serviceName="listenerGetIngestedMessage"/>
     </Receiver>
     <Pipeline firstPipe="pipeCheckIncomingRequest">
+        <Exits>
+            <Exit name="EXIT" state="SUCCESS" code="200" />
+            <Exit name="ServerError" state="ERROR" code="400"/>    
+        </Exits>
         <XmlValidatorPipe
         name="pipeCheckIncomingRequest"
         root="uuid"
@@ -71,7 +77,7 @@ xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
             <FixedQuerySender
             name="senderGetMessage"
             datasourceName="jdbc/${instance.name.lc}"
-            queryType="select"
+            queryType="SELECT"
             query="SELECT id, customer, subject, message FROM message WHERE id = ?">
                 <Param name="id" xpathExpression="/uuid"/>
             </FixedQuerySender>
@@ -83,8 +89,6 @@ xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
         omitXmlDeclaration="true">
             <Forward name="success" path="EXIT"/>
         </XsltPipe>
-        <Exit path="EXIT" state="success" code="200" />
-        <Exit path="ServerError" state="failure" code="400"/>
     </Pipeline>
   </Adapter>
 </Module>

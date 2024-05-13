@@ -1,10 +1,15 @@
+<Module
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
   <Adapter name="externalArchive">
     <Receiver name="externalArchive">
       <JavaListener name="externalArchive"
           serviceName="archive"/>
     </Receiver>
     <Pipeline firstPipe="getArchiveTime">
-      <Exit state="success" path="Exit" code="200" />
+      <Exits>
+        <Exit name="Exit" state="SUCCESS" code="200" />
+      </Exits>
       <PutSystemDateInSessionPipe name="getArchiveTime"
           sessionKey="archiveTime"/>
       <XsltPipe name="externalArchive"
@@ -19,7 +24,9 @@
           serviceName="get"/>
     </Receiver>
     <Pipeline firstPipe="getRetrievalTime">
-      <Exit state="success" path="Exit" code="200"/>
+      <Exits>
+        <Exit name="Exit" state="SUCCESS" code="200"/>
+      </Exits>
       <PutSystemDateInSessionPipe name="getRetrievalTime"
           sessionKey="retrievalTime"/>
       <XsltPipe name="externalGet"
@@ -28,3 +35,4 @@
       </XsltPipe>      
     </Pipeline>
   </Adapter>
+</Module>
