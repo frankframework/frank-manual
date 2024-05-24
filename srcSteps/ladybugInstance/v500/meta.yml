@@ -2,6 +2,9 @@
     path: classes/DeploymentSpecifics.properties
     change: add
 - file:
+    path: classes/StageSpecifics_LOC.properties
+    change: add
+- file:
     path: classes/springIbisTestToolCustom.xml
     change: add
 - file:

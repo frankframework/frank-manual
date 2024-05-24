@@ -101,7 +101,7 @@ Now that you are prepared, you can learn how to organize your test reports. Plea
 
       This description references the architecture of the simplified electronic archive as introduced in :ref:`introduction`. It emulates a real archive combined with a portal, the portal servicing the user and delegating user calls to the real archive. This set-up allows us to demonstrate the impact of the stub strategy in subsection :ref:`edit`.
 
-Please remember that tests also have a name that you can edit (number 4). In older versions of Ladybug this did not work, but in versions 7.5-20191211.175453 and later this issue is fixed.
+Please remember that tests also have a name that you can edit (number 4).
 
 10. Press Save (number 3 in the figure of step 8) and Close (number 4). You go back to the "Test" tab as shown with number 1 in the picture below:
 

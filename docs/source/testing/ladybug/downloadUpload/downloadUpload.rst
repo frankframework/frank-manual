@@ -18,7 +18,7 @@ Please do the following:
 #. A save file dialog appears allowing you to save a zip file. Press OK.
 #. Go to your Downloads folder and sort by creation date to see the downloaded file.
 #. Stop the Frank!Framework. You will restore your captured reports soon.
-#. Sometimes the Frank!Framework saves test reports automatically, but you can not rely on this. In this tutorial we make sure that all captured test reports are lost, such that we can properly demonstrate uploading. Remove the ``build`` directory within your ``frank-runner`` directory. This will delete all data from previous runs of the Frank!Runner.
+#. Sometimes the Frank!Framework saves test reports automatically, but you can not rely on this. In this tutorial we make sure that all captured test reports are lost, such that we can properly demonstrate uploading. Go to the ``tests`` directory within your ``Frank2Manual`` directory. Within the ``tests`` directory there should be a file named ``Pipeline sutGet.report.xml``. Delete it.
 #. Restart the Frank!Framework.
 #. Browse to http://localhost.
 #. Click "Testing":
