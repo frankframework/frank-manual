@@ -15,7 +15,7 @@ Please do the following:
 
    .. image:: saveTestsHopefullyWithTransformation.jpg
 
-#. Stop the Frank!Framework. Delete the ``build`` directory within your ``frank-runner`` directory.
+#. Stop the Frank!Framework. Go to the tests directory within your Frank2Manual directory. Within the tests directory there should be files satisfying pattern "Pipeline \*.report.xml". Delete them.
 #. Restart the Frank!Framework. Open Ladybug and go to tab "Test" (number 1 in the figure below). Press "Upload" (number 2) and select file :code:`savedTestsAfterTransformation`. Finish the dialog. This restores your tests.
 
    .. image:: uploadTests.jpg
