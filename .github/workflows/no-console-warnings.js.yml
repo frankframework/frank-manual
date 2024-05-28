@@ -1,0 +1,132 @@
+name: Testing
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+jobs:
+  testing:
+    name: Cypress tests of ladybug + Frank!Framework
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Frank!Runner
+        uses: actions/checkout@v4
+        with:
+          repository: wearefrank/frank-runner
+          path: frank-runner
+      - name: See commit number of checked-out frank-runner
+        run: git log -1
+        working-directory: frank-runner
+      - name: Set port where Frank!Framework is served
+        run: echo "tomcat.connector.port=8090" > frank-runner/build.properties
+      - name: Set debug to true
+        run: echo "debug=true" >> frank-runner/build.properties
+      - name: Checkout ladybug-ff-cypress-test
+        uses: actions/checkout@v4
+        with:
+          path: ladybug-ff-cypress-test
+      - name: Copy cypress.config_cicd.ts to cypress.config.ts to listen to correct port
+        run: cp cypress.config_cicd.ts cypress.config.ts
+        working-directory: ladybug-ff-cypress-test
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20.x
+          cache: "yarn"
+          cache-dependency-path: "**/yarn.lock"
+      - name: Update yarn
+        run: corepack enable
+        working-directory: "ladybug-ff-cypress-test"
+      - name: Show node version
+        run: node -v
+        working-directory: "ladybug-ff-cypress-test"
+      - name: Show yarn version
+        run: yarn -v
+        working-directory: "ladybug-ff-cypress-test"
+      - name: Install packages
+        run: yarn install --immutable
+        working-directory: ladybug-ff-cypress-test
+      - name: Cache Frank!Runner dependencies - build
+        uses: actions/cache@v3
+        with:
+          path: frank-runner/build
+          key: ${{ runner.os }}-frank-runner-build
+          restore-keys: |
+            ${{ runner.os }}-frank-runner-build
+      - name: Cache Frank!Runner dependencies - download
+        uses: actions/cache@v3
+        with:
+          path: frank-runner/download
+          key: ${{ runner.os }}-frank-runner-download
+          restore-keys: |
+            ${{ runner.os }}-frank-runner-download
+      - name: Show current time, allows you to check that logs are not old
+        run: date
+      - name: Let Frank!Runner do its downloads
+        run: yarn run installFrankRunnerEnv
+        working-directory: ladybug-ff-cypress-test
+      - name: Show apache-tomcat directories
+        run: find . -path './build/*' -name 'apache-tomcat*'
+        working-directory: frank-runner
+      - name: Check that there is only one version of Tomcat
+        run: test $(find . -path './build/*' -name 'apache-tomcat*' | wc -w) -eq 1
+        working-directory: frank-runner
+      - name: Delete old Ladybug test reports
+        run: find . -path './build/apache-tomcat*/logs/testtool*' -delete
+        working-directory: frank-runner
+      - name: Remove old catalina.out
+        run: find . -path './build/apache-tomcat*/catalina.out' -delete
+        working-directory: frank-runner
+      - name: Start server using Frank!Runner in background
+        run: yarn run startServer &
+        working-directory: ladybug-ff-cypress-test
+      - name: Wait for server to be available
+        run: ./waitForUrl.sh http://localhost:8090 240
+        working-directory: ladybug-ff-cypress-test/.github/workflows
+      - name: Run the tests
+        run: yarn batch
+        working-directory: ladybug-ff-cypress-test
+      - name: Try to access server directly with curl
+        run: curl -v -i -X DELETE http://localhost:8090/iaf/ladybug/api/report/all/Test
+        if: always()
+      - name: Show files
+        run: tree -L 5 .
+        if: always()
+      - name: Store log of Frank!Runner downloads
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: installFrankRunnerEnv.log
+          path: frank-runner/installFrankRunnerEnv.log
+      - name: Store log of starting the server with the Frank!Runner
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: serverStartLog.log
+          path: frank-runner/serverStartLog.log
+      - name: Store build.properties
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: build.properties
+          path: frank-runner/build.properties
+      - name: Store Apache Tomcat log
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: logs
+          path: frank-runner/build/*/logs/*
+      - name: Store Cypress screenshots
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: screenshots
+          path: ladybug-ff-cypress-test/cypress/screenshots/
+      - name: Store Cypress videos
+        uses: actions/upload-artifact@v2
+        if: always()
+
+        with:
+          name: videos
+          path: ladybug-ff-cypress-test/cypress/videos/

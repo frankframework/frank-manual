@@ -1,0 +1,14 @@
+{
+  "name": "frank-manual-cypress",
+  "version": "1.0.0",
+  "description": "Cypress tests related to the frank-manual",
+  "main": "index.ts",
+  "repository": "https://github.com/frankframework/frank-manual",
+  "author": "Martijn Dirkse",
+  "license": "MIT",
+  "packageManager": "yarn@4.1.1",
+  "dependencies": {
+    "cypress": "^13.10.0",
+    "typescript": "^5.4.5"
+  }
+}
