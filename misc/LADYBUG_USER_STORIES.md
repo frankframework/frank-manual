@@ -146,7 +146,7 @@ TODO: Is there more information than the message here?
 
 **4000:** As a System administrator I want the option to turn off the report generator. When the report generator is off, my Frank application should not invoke Ladybug when processing messages. This might reduce the execution time.
 
-TODO: Only create reports if some regex is matched.
+**4010:** As a System administrator I want the option to create reports for only some adapter executions that match my search criterion. The search criterion is a regex that is applied to the name of the outer start checkpoint.
 
 # I do not want unauthorized access to reports
 
