@@ -36,6 +36,7 @@ This page presents a few main user stories and groups the other userstories as s
 * [I want to re-run (test) reports to test my Frank application](#i-want-to-re-run-test-reports-to-test-my-frank-application)
 * [I want to configure whether my Frank application does produce reports](#i-want-to-configure-whether-my-frank-application-does-produce-reports)
 * [I do not want unauthorized access to reports](#i-do-not-want-unauthorized-access-to-reports)
+* [Miscelaneous](#miscelaneous)
 
 # I want to find the report I am interested in
 
@@ -65,7 +66,7 @@ TODO: What syntax do we support for the filters?
 
 **210:** As a Frank tester, I want to see the reports ordered by the timestamp of the outer start checkpoint or by the timestamp of the outer end checkpoint. The latest timestamp should be in the topmost table row.
 
-**300:** As a Frank tester I want to see whether there are reports-in-progress. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint.
+**300:** As a Frank tester I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint.
 
 **310:** As a Frank tester, if a report-in-progress is open for too long, then I want Ladybug to close it such that I can see it as a regular report in the table.
 
@@ -135,6 +136,12 @@ TODO: Is there more information than the message here?
 
 **3050:** As a Frank tester, I want the option to rerun all reports that are in the Test tab, allowing me to test my Frank application with a single click.
 
+**3100:** As a Frank tester, when I have rerun a report I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
+
+**3200:** As a Frank tester, I want the option to download reports and upload them later. This allows me to save reports if I do not trust the persistent storage provided by the Frank!Framework. It also allows me to remove tests from my test cases without losing the test permanently.
+
+**3210:** As a Frank tester, I want downloading and uploading to be available both in the Debug tab and in the Test tab. This way I am not obliged to copy reports to the Test tab before I can use these functions.
+
 # I want to configure whether my Frank application does produce reports
 
 **4000:** As a System administrator I want the option to turn off the report generator. When the report generator is off, my Frank application should not invoke Ladybug when processing messages. This might reduce the execution time.
@@ -142,52 +149,6 @@ TODO: Is there more information than the message here?
 TODO: Only create reports if some regex is matched.
 
 # I do not want unauthorized access to reports
-
-Debugging
----------
-
-Story | Test plan
------ | ---------
-I want to see the flow of a message through the receier and the pipes (tree view) | ladybug-ff-cypress-test
-When a pipeline calls other adapters by Java calls, the flow through these other adapters should be shown in the same report | ladybug-ff-cypress-test
-Right after opening a report in the tree view, calls to other adapters should be collapsed nodes | ladybug-ff-cypress-test
-I want the option to delete reports from the table to keep the number of reports limited | ladybug-ff-cypress-test
-I can disable report generation to limit the number of reports in the table and to reduce execution time | ladybug-ff-cypress-test
-I can configure a regular expression such that reports are only stored if their name matches the regular expression | ladybug-ff-cypress-test
-
-Searching
----------
-
-Story | Test plan
------ | ---------
-Above the tree view there is a table that has one row for each report | ladybug-ff-cypress-test
-The columns of the table are metadata fields. It should be possible put a filter in each metadata field to reduce the number of rows shown | ladybug-ff-cypress-test, details about possible filters in ladybug-frontend or component test
-I can open reports in the tree view that I choose from the table, and I should be able to close them again | ladybug-ff-cypress-test
-
-Testing
--------
-
-Story | Test plan
------ | ---------
-Reports are put in the debug tab when created. When I want to use a report as a test case, I want to put it in the test tab. | ladybug-ff-cypress-test
-I can rerun a report. This can be with stubbed responses of external systems or without stubbing | ladybug-ff-cypress-test
-I can rerun both in the test tab and in the debug tab | ladybug-ff-cypress-test
-When a rerun produces a different result, I can compare the original and the new result.
-I can configure irrelevant differences (e.g. time stamps) to be ignored | ladybug-ff-cypress-test
-In the test tab, I can select multiple reports to be rerun in one go | ladybug-ff-cypress-test
-I can download reports and upload them later, allowing them to be backed up | ladybug-ff-cypress-test
-Downloading and uploading reports should be available both in the debug tab and the test tab | ladybug-ff-cypress-test
-
-Reports in progress
--------------------
-
-Story | Test plan
------ | ---------
-Each message the F!F is currently processing results in a report-in-progress. I want to see the number of reports-in-process | ladybug-ff-cypress-test
-If a report remains in-process for more than five minutes, I want to see an alert in Ladybug | ladybug-ff-cypress-test
-
-Security and storage
---------------------
 
 Ladybug has different security categories for functions. Most functions are accessible with F!F security role "Observer", which implies accessibility with DataAdmin role. Some functions are only accessible with the "DataAdmin" role. Other functions are only available with the Tester role.
 
@@ -207,7 +168,9 @@ The following features should only be available with the DataAdmin role.
 
 The following features should be available with the Tester role (and not necessarily the DataAdmin role):
 
-* Running a report.
+# Miscelaneous
+
+### Running a report.
 
 Reports are saved by the ladybug backend. The backend provides different storages:
 
