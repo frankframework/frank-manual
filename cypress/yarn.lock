@@ -48,6 +48,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/cypress@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "@types/cypress@npm:1.1.3"
+  dependencies:
+    cypress: "npm:*"
+  checksum: 10c0/53dfb5b3eaee0cc3bcd305788f63c0c1c208d5b5f75afca7c3d40a244ef3eb3f59e5569b26daab42395a2219c8e32185a951022dfddad5bb4ae5f522de962359
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 20.12.12
   resolution: "@types/node@npm:20.12.12"
@@ -388,7 +397,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^13.10.0":
+"cypress@npm:*, cypress@npm:^13.10.0":
   version: 13.10.0
   resolution: "cypress@npm:13.10.0"
   dependencies:
@@ -665,6 +674,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "frank-manual-cypress@workspace:."
   dependencies:
+    "@types/cypress": "npm:^1.1.3"
     cypress: "npm:^13.10.0"
     typescript: "npm:^5.4.5"
   languageName: unknown

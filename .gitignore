@@ -11,3 +11,5 @@ ibisdoc.xsd
 ladybugTransformation.xsl
 venv
 docs/source/_build/
+node_modules
+cypress/.yarn/install-state.gz
