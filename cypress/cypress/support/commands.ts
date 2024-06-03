@@ -26,10 +26,20 @@
 
 declare namespace Cypress {
   interface Chainable<Subject = any> {
-    myCommand(): Chainable<any>;
+    tryToFindMoreThanZero(query: string, numTrials: number)
   }
 }
 
-Cypress.Commands.add('myCommand', () => {
-  cy.visit('https://example.cypress.io')
+Cypress.Commands.add('tryToFindMoreThanZero', (query, numTrials) => {
+  cy.get(query).then(result => {
+    const numFound: number = result.length
+    if (numFound === 0) {
+      if (numTrials !== 0) {
+        cy.wait(200)
+        cy.tryToFindMoreThanZero(query, numTrials-1)
+      }
+    } else {
+      cy.wrap(numFound).should('equal', 0)
+    }
+  })
 })

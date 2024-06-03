@@ -13,3 +13,5 @@ venv
 docs/source/_build/
 node_modules
 cypress/.yarn/install-state.gz
+cypress/cypress/screenshots/
+cypress/cypress/videos/
