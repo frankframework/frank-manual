@@ -31,7 +31,7 @@ declare namespace Cypress {
 }
 
 Cypress.Commands.add('tryToFindMoreThanZero', (query, numTrials) => {
-  cy.get(query).then(result => {
+  cy.get(query).should('have.length.gte', 0).then(result => {
     const numFound: number = result.length
     if (numFound === 0) {
       if (numTrials !== 0) {
