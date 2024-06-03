@@ -71,6 +71,9 @@ jobs:
       - name: Show apache-tomcat directories
         run: find . -path './build/*' -name 'apache-tomcat*'
         working-directory: frank-runner
+      - name: Remove old Tomcat directories
+        run: rm -rf ./build/apache-tomcat-9*
+        working-directory: frank-runner/build
       - name: Check that there is only one version of Tomcat
         run: test $(find . -path './build/*' -name 'apache-tomcat*' | wc -w) -eq 1
         working-directory: frank-runner
