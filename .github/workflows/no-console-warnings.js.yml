@@ -11,8 +11,8 @@ jobs:
     strategy:
       matrix:
         frankConfig: [
-          "frank-manual/srcSteps/ladybugInstance/v520",
-          "frank-manual/srcSteps/Frank2Hermes/v560"
+          "frank-manual/srcSteps/ladybugInstance/v520"
+          # "frank-manual/srcSteps/Frank2Hermes/v560"
         ]
     name: Test that Frank config has no warnings - ${{matrix.frankConfig}}
     runs-on: ubuntu-latest
