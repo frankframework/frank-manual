@@ -1,5 +1,4 @@
-```none{3}
+```none{2}
 warnings.suppress.sqlInjections.ManageDatabase=true
 stub4testtool.configuration=true
-hermesAddress=hermesAddressRequest.xml
 ```
