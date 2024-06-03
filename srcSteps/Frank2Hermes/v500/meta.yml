@@ -1,4 +1,7 @@
 - file:
+    path: classes/StageSpecifics_LOC.properties
+    change: add
+- file:
     path: configurations/hermesBridge/Configuration.xml
     change: add
 - file:
