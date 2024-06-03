@@ -66,7 +66,7 @@ jobs:
       - name: Show current time, allows you to check that logs are not old
         run: date
       - name: Let Frank!Runner do its downloads
-        run: env.sh > installFrankRunnerEnv.log
+        run: ./env.sh > installFrankRunnerEnv.log
         working-directory: frank-runner
       - name: Show apache-tomcat directories
         run: find . -path './build/*' -name 'apache-tomcat*'
