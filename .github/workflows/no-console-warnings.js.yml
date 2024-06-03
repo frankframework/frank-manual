@@ -8,7 +8,13 @@ on:
   workflow_dispatch:
 jobs:
   testing:
-    name: Test that Frank config has no warnings
+    strategy:
+      matrix:
+        frankConfig: [
+          "frank-manual/srcSteps/ladybugInstance/v520",
+          "frank-manual/srcSteps/Frank2Hermes/v560"
+        ]
+    name: Test that Frank config has no warnings - ${{matrix.frankConfig}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Frank!Runner
@@ -26,7 +32,7 @@ jobs:
       - name: Set projects.dir
         run: echo "projects.dir=.." >> frank-runner/build.properties
       - name: Select the configuration in the manual we want to test
-        run: echo "project.dir=frank-manual/srcSteps/Frank2Hermes/v560" >> frank-runner/build.properties
+        run: echo "project.dir=${{matrix.frankConfig}}" >> frank-runner/build.properties
       - name: Checkout frank-manual
         uses: actions/checkout@v4
         with:
@@ -53,16 +59,16 @@ jobs:
         uses: actions/cache@v3
         with:
           path: frank-runner/build
-          key: ${{ runner.os }}-frank-runner-build
+          key: ${{ runner.os }}${{ matrix.frankConfig }}-frank-runner-build
           restore-keys: |
-            ${{ runner.os }}-frank-runner-build
+            ${{ runner.os }}${{ matrix.frankConfig }}-frank-runner-build
       - name: Cache Frank!Runner dependencies - download
         uses: actions/cache@v3
         with:
           path: frank-runner/download
-          key: ${{ runner.os }}-frank-runner-download
+          key: ${{ runner.os }}${{ matrix.frankConfig }}-frank-runner-download
           restore-keys: |
-            ${{ runner.os }}-frank-runner-download
+            ${{ runner.os }}${{ matrix.frankConfig }}-frank-runner-download
       - name: Show current time, allows you to check that logs are not old
         run: date
       - name: Let Frank!Runner do its downloads
