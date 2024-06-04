@@ -102,11 +102,11 @@ jobs:
         run: ./waitForUrl.sh http://localhost:8090 240
         working-directory: frank-manual/.github/workflows
       - name: Run the tests - really no warnings
-        if: ${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag }} === "NoWarnings"
+        if: ${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag == 'NoWarnings' }}
         run: yarn run cypress run --spec cypress/e2e/no-warnings.cy.ts
         working-directory: frank-manual/cypress
       - name: Run the tests - allow warning about IAF_Util
-        if: ${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag }} === "AllowIafUtilWarning"
+        if: ${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag == 'AllowIafUtilWarning' }}
         run: yarn run cypress run --spec cypress/e2e/warning-only-iaf-util.cy.ts
         working-directory: frank-manual/cypress
       - name: Try to access server directly with curl
