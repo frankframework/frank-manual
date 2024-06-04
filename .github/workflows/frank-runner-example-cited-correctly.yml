@@ -24,4 +24,4 @@ jobs:
         with:
           path: frank-manual
       - name: Compare cited configuration
-        run: diff frank-manual/srcSteps/FrankRunnerExample1a/v500/Frank2Example1/Example1aConfiguration.xml frank-runner/examples/Frank2Example1/configurations/Example1a/Configuration.xml
+        run: diff frank-manual/srcSteps/FrankRunnerExample1a/v500/Frank2Example1/Example1a/Configuration.xml frank-runner/examples/Frank2Example1/configurations/Example1a/Configuration.xml
