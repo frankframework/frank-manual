@@ -1,4 +1,4 @@
-name: Testing
+name: Frank configs should not produce warnings
 on:
   push:
     branches:
