@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - testFrankRunnerExampleCitedCorrectly
   pull_request:
   workflow_dispatch:  
 jobs:
