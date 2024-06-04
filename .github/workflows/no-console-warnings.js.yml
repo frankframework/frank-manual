@@ -17,12 +17,6 @@ jobs:
     name: Test that Frank config has no warnings - ${{matrix.frankConfig}}
     runs-on: ubuntu-latest
     steps:
-      - name: Determine what to test
-        id: setExpectedBehaviorTag
-        run: ./setExpectedBehaviorTag.sh ${{ matrix.frankConfig }}
-        working-directory: frank-manual/.github/workflows
-      - name: Show expectedBehaviorTag
-        run: echo "${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag }}"
       - name: Checkout Frank!Runner
         uses: actions/checkout@v4
         with:
@@ -43,6 +37,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: frank-manual
+      - name: Determine what to test
+        id: setExpectedBehaviorTag
+        run: ./setExpectedBehaviorTag.sh ${{ matrix.frankConfig }}
+        working-directory: frank-manual/.github/workflows
+      - name: Show expectedBehaviorTag
+        run: echo "${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag }}"
       - name: Copy cypress/cypress.config_cicd.ts to cypress/cypress.config.ts to listen to correct port
         run: cp cypress.config_cicd.ts cypress.config.ts
         working-directory: frank-manual/cypress
