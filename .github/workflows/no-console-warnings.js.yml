@@ -17,6 +17,11 @@ jobs:
     name: Test that Frank config has no warnings - ${{matrix.frankConfig}}
     runs-on: ubuntu-latest
     steps:
+      - name: Determine what to test
+        id: setExpectedBehaviorTag
+        run: ./setExpectedBehaviorTag.sh
+      - name: Show expectedBehaviorTag
+        run: echo "${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag }}"
       - name: Checkout Frank!Runner
         uses: actions/checkout@v4
         with:
@@ -95,8 +100,13 @@ jobs:
       - name: Wait for server to be available
         run: ./waitForUrl.sh http://localhost:8090 240
         working-directory: frank-manual/.github/workflows
-      - name: Run the tests
-        run: yarn run cypress run
+      - name: Run the tests - really no warnings
+        if: ${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag }} === "NoWarnings"
+        run: yarn run cypress run --spec cypress/e2e/no-warnings.cy.ts
+        working-directory: frank-manual/cypress
+      - name: Run the tests - allow warning about IAF_Util
+        if: ${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag }} === "AllowIafUtilWarning"
+        run: yarn run cypress run --spec cypress/e2e/warning-only-iaf-util.cy.ts
         working-directory: frank-manual/cypress
       - name: Try to access server directly with curl
         run: curl -v -i -X DELETE http://localhost:8090/iaf/ladybug/api/report/all/Test
