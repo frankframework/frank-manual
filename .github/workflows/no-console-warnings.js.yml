@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Determine what to test
         id: setExpectedBehaviorTag
-        run: ./setExpectedBehaviorTag.sh
+        run: ./setExpectedBehaviorTag.sh ${{ matrix.frankConfig }}
       - name: Show expectedBehaviorTag
         run: echo "${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag }}"
       - name: Checkout Frank!Runner
