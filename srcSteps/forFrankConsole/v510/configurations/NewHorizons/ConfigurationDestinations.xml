@@ -1,6 +1,6 @@
 <Module
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../../ibisdoc.xsd">
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
     <Adapter name="adapterGetDestinations">
         <Receiver name="receiverGetDestinations">
             <DirectoryListener
@@ -9,10 +9,12 @@
                 inputFolder="input"
                 inProcessFolder="processing"
                 processedFolder="processed"
-                errorFolder="error"
-                createFolders="false"/>
+                errorFolder="error"/>
         </Receiver>
         <Pipeline firstPipe="pipeParseCSV">
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" code="200"/>
+            </Exits>
             <BatchFileTransformerPipe
                 name="pipeParseCSV">
                 <recordHandler
@@ -39,7 +41,6 @@
                     name="senderSendApartments"
                     serviceName="listenerProcessDestination"/>
             </ForEachChildElementPipe>
-            <Exit path="EXIT" state="success" code="200"/>
         </Pipeline>
     </Adapter>
 </Module>
