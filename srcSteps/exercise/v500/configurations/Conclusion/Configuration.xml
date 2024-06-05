@@ -31,7 +31,7 @@
                 <Forward name="success" path="encodeBody" />
                 <Forward name="exception" path="answerBadRequest" />
             </LocalFileSystemPipe>
-            <Base64Pipe name="encodeBody" direction="ENCODE" storeResultInSessionKey="body">
+            <Base64Pipe name="encodeBody" storeResultInSessionKey="body">
                 <Forward name="success" path="composeMundoMessage" />
                 <Forward name="exception" path="answerBadRequest" />
             </Base64Pipe>
