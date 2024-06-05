@@ -12,7 +12,9 @@ jobs:
         frankConfig: [
           "frank-manual/srcSteps/ladybugInstance/v520",
           "frank-manual/srcSteps/Frank2Hermes/v560",
-          "frank-manual/srcSteps/NewHorizons/v510"
+          "frank-manual/srcSteps/NewHorizons/v510",
+          "frank-manual/srcSteps/exercise/v500",
+          "frank-manual/srcSteps/forFrankConsole/v510"
         ]
     name: ${{matrix.frankConfig}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
