@@ -2,16 +2,19 @@
 
    <Module
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="../../../ibisdoc.xsd">
+       xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
        <Adapter name="adapterProcessDestination">
            <Receiver name="receiverProcessDestination">
                <JavaListener name="listenerProcessDestination" serviceName="listenerProcessDestination"/>
            </Receiver>
            <Pipeline firstPipe="pipeCheckProductIdExists" transactionAttribute="RequiresNew">
+               <Exits>
+                   <Exit state="SUCCESS" name="EXIT" code="200"/>
+               </Exits>
                <SenderPipe name="pipeCheckProductIdExists">
                    <FixedQuerySender
                        name="senderCheckProductIdExists"
-                       queryType="select"
+                       queryType="SELECT"
                        query="SELECT COUNT(*) AS cnt FROM product WHERE productId = ?"
                        datasourceName="jdbc/${instance.name.lc}"
                        maxRows="1"
@@ -54,7 +57,6 @@
                        <Param name="id" xpathExpression="/apartment/productId"/>
                    </FixedQuerySender>
                </SenderPipe>
-               <Exit state="success" path="EXIT" code="200"/>
            </Pipeline>
        </Adapter>
    </Module>
