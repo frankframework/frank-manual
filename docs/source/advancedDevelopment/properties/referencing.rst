@@ -29,7 +29,7 @@ Both in property files and in XML Frank config files, you can reference properti
 
    .. literalinclude:: ../../../../src/advancedDevelopmentProperties/configurations/properties/ConfigurationReferenceProperties.xml
       :language: xml
-      :emphasize-lines: 8
+      :emphasize-lines: 10
 
    The highlighted line shows that properties are referenced by surrounding the property name with ``${`` and ``}`` as said before.
 
