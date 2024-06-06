@@ -14,8 +14,19 @@ Containerized Authentication
 
 To add authentication to your Frank!Console Open your ``DeploymentSpecifics.properties`` and add the following lines of code:
 
-.. literalinclude:: ../../../src/administratorManualProperties/DeploymentSpecifics.properties
-      :language: none
+.. code-block:: none
+
+   # Define the available authenticators
+   application.security.http.authenticators=inMem
+
+   # Configure the authenticator
+   application.security.http.authenticators.inMem.type=IN_MEMORY
+   application.security.http.authenticators.inMem.username=ADMIN
+   application.security.http.authenticators.inMem.password=PASSWORD1234
+
+   # # Set the authenticator on an endpoint
+   servlet.IAF-API.authenticator=inMem
+   servlet.Console.authenticator=inMem
 
 In doing so you have defined the in-memory authentication system of the Frank!Framework. Additionally, you have set the username to "ADMIN" and the password to "PASSWORD1234".
 Your Frank!Console is now protected. If you now save your changes and restart your Frank!, you should see a popup asking for credentials. Once you enter the credentials correctly you will be able to use the Frank!Console as normal.
