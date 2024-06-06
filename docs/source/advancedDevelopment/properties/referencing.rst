@@ -13,12 +13,12 @@ Please perform the following steps:
 #. Within ``Frank2Manual/configurations``, create a subdirectory ``properties`` to start a new configuration with that name.
 #. Please add file ``Configuration.xml`` with the following contents:
 
-   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/Configuration.xml
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/configurations/properties/Configuration.xml
       :language: xml
    
 #. Please make a file ``DeploymentSpecifics.properties``. Give it the following contents:
 
-   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/DeploymentSpecifics.properties
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/configurations/properties/DeploymentSpecifics.properties
       :language: xml
    
 The file ``DeploymentSpecifics.properties`` allows you to set properties. The key is to the left of the ``=`` sign, while the value is to the right. Property names are words separated by dots. Lines starting with ``#`` are comments, which are ignored by the Frank!Framework.
@@ -27,7 +27,7 @@ Both in property files and in XML Frank config files, you can reference properti
 
 5. Please create file ``ConfigurationReferenceProperties.xml`` with the following contents:
 
-   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/ConfigurationReferenceProperties.xml
+   .. literalinclude:: ../../../../src/advancedDevelopmentProperties/configurations/properties/ConfigurationReferenceProperties.xml
       :language: xml
       :emphasize-lines: 8
 
