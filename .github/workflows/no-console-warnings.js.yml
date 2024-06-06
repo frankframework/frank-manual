@@ -15,7 +15,8 @@ jobs:
           "frank-manual/srcSteps/NewHorizons/v510",
           "frank-manual/srcSteps/exercise/v500",
           "frank-manual/srcSteps/forFrankConsole/v510",
-          "frank-manual/src/advancedDevelopmentCredentials"
+          "frank-manual/src/advancedDevelopmentCredentials",
+          "frank-manual/src/advancedDevelopmentProperties"
         ]
     name: ${{matrix.frankConfig}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
