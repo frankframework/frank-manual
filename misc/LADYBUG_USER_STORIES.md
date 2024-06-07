@@ -12,7 +12,7 @@ Ladybug is not limited to work with the Frank!Framework; it is a tool that can b
 
 The Frank!Framework creates a Ladybug checkpoint for each pipe and each pipeline. Frank developers can thus see how each pipe transforms the message going through the pipeline.
 
-Ladybug can be used as a debug tool. Ladybug provides a user interface that shows a table of all captured reports. When the user clicks a report, it is opened in a tree view. Multiple reports can be shown simultaneously in the tree view. Each checkpoint of each report is a node in the tree. Collapsing and expanding nodes is described in more details in the user stories below. When you click a node, the corresponding message inside the checkpoint is shown.
+Ladybug can be used as a debug tool. Ladybug provides a user interface that shows a table of all captured reports. When the user clicks a report, it is opened in a tree view. Each checkpoint is a node in the tree. Collapsing and expanding nodes is described in more details in the user stories below. When you click a node, the corresponding message inside the checkpoint is shown.
 
 In the tree view, the user can see all intermediate results of processing each message. Each checkpoint has a meaningful name. The Frank!Framework names each checkpoint after the adapter or pipe name. Therefore the user can relate the checkpoint's message to the debugged/tested source code, or to the Frank application being tested.
 
@@ -56,15 +56,15 @@ This page presents a few main user stories and groups the other userstories as s
 * **Estimated memory usage:** TODO: What does this mean?
 * **Storage size:** TODO: What does this mean?
 
-**120:** As a Frank developer, I want to be able to add columns to the report table in addition to the ones shown in story **100**. I am willing to write Spring XML files to achieve this.
-
-TODO: Do I have to specify what metadata extractors we have?
+**120:** As a Frank developer, I want to be able to add columns to the report table in addition to the ones shown in story **100**. This way I can support the customer's tester who wants to search reports based on customer-specific data (see story **10**). As a Frank developer I am willing to write Spring XML files to achieve this for the customer. Customer specific data appears in the checkpoints of the reports, so I need Java Beans that together provide flexible search capabilities.
 
 **200:** As a Frank tester I want to hide reports from the report table in which I am not interested. This way I can find the report I need more easily. For each metadata field I want an edit box in which I can write a regular expression. Only if for a report all the metadata fields satisfy their regex, then the report should be shown in the table.
 
 TODO: What syntax do we support for the filters?
 
-**210:** As a Frank tester, I want to see the reports ordered by the timestamp of the outer start checkpoint or by the timestamp of the outer end checkpoint. The latest timestamp should be in the topmost table row.
+**210:** As a Frank tester, I want to see the reports ordered by the timestamp of the first start checkpoint or by the timestamp of the last end checkpoint. The latest timestamp should be in the topmost table row.
+
+**220:** As a Frank tester, I want to be able to sort both ascending and descending with respect to the timestamp of story **210**. This helps me to find reports more easily.
 
 **300:** As a Frank tester I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint.
 
