@@ -1,23 +1,26 @@
 <Module
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="../../../ibisdoc.xsd">
+  xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
   <Adapter name="adapterCheckExpiration">
       <Receiver name="receiverCheckExpiration">
           <JavaListener name="listenerCheckExpiration" serviceName="listenerCheckExpiration"/>
       </Receiver>
       <Pipeline firstPipe="pipeQueryHowManyExpired">
+          <Exits>
+              <Exit state="SUCCESS" name="EXIT" code="200"/>
+          </Exits>
           <SenderPipe name="pipeQueryHowManyExpired">
               <FixedQuerySender
                   name="senderQueryHowManyExpired"
                   datasourceName="jdbc/${instance.name.lc}"
-                  queryType="select"
+                  queryType="SELECT"
                   query="SELECT COUNT(*) AS cnt FROM product WHERE DATEDIFF(SECOND, modificationDate, NOW()) >= 120"/>
               <Forward name="success" path="pipeStoreNumExpired"/>
           </SenderPipe>
           <XsltPipe
               name="pipeStoreNumExpired"
               xpathExpression="/result/rowset/row/field"
-              outputType="xml"
+              outputType="XML"
               storeResultInSessionKey="numExpired">
               <Forward name="success" path="pipeProduceLogMessage"/>
           </XsltPipe>
@@ -53,7 +56,6 @@
                   logLevel="INFO"/>
               <Forward name="success" path="EXIT"/>
           </SenderPipe>
-          <Exit state="success" path="EXIT" code="200"/>
       </Pipeline>
   </Adapter>
 </Module>

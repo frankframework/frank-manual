@@ -76,6 +76,10 @@ Before you can run a Larva test, you have to get rid of the HTTP interfaces of y
 
       File "StageSpecifics_LOC.properties" has been chosen with care. This property file is only applied in DTAP stage ``LOC``, see subsection :ref:`propertiesInitialization`. It will not be applied in the other DTAP stages, allowing your adapter to work normally in integration tests and on production.
 
+   .. NOTE::
+
+      Setting ``warnings.suppress.sqlInjections.ManageDatabase=true`` is done for the following reason. The Frank!Framework has a build-in adapter named "ManageDatabase". This adapter supplies useful functionality within Larva tests, but its existence raises a security risk. The adapter can process arbitrary SQL that may be entered by a user. In DTAP stage "LOC" this does not matter, because a Frank application is deployed in DTAP stage PRD. We therefore configure the FF! to suppress this warning. The warning is only suppressed in DTAP stage LOC because of the chosen property file name.
+
 #. Restart the Frank!Runner.
 #. Expand "adapterToConscience" again. You should see the following:
 

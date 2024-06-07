@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><output:document id="abcdefgh" xmlns:input="http://frankframework.org/manual/exercise/conclusion" xmlns:output="http://frankframework.org/manual/exercise/mundo" xmlns:xs="http://www.w3.org/2001/XMLSchema"><output:header>
     <to xmlns="http://frankframework.org/manual/exercise/mundo">
         <accountId>12345</accountId>
-        <output:displayName>Frank</displayName>
+        <output:displayName>Frank Frank</output:displayName>
 
         <email>info@frankframework.org</email>
         <street>Example Street</street>
@@ -12,7 +12,7 @@
     </to>
     <cc xmlns="http://frankframework.org/manual/exercise/mundo">
         <accountId>12346</accountId>
-        <output:displayName>Frits</displayName>
+        <output:displayName>Frits Frank</output:displayName>
         
         <email>frits@frankframework.org</email>
         <street>Other Example Street</street>

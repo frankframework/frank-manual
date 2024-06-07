@@ -1,0 +1,122 @@
+name: Frank configs should not produce warnings
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+jobs:
+  testing:
+    strategy:
+      matrix:
+        frankConfig: [
+          "frank-manual/srcSteps/ladybugInstance/v520",
+          "frank-manual/srcSteps/Frank2Hermes/v560",
+          "frank-manual/srcSteps/NewHorizons/v510",
+          "frank-manual/srcSteps/exercise/v500",
+          "frank-manual/srcSteps/forFrankConsole/v510",
+          "frank-manual/src/advancedDevelopmentCredentials",
+          "frank-manual/src/advancedDevelopmentProperties",
+          "frank-manual/src/deploymentTomcat"
+        ]
+    name: ${{matrix.frankConfig}} - Test that Frank config has no warnings
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Frank!Runner
+        uses: actions/checkout@v4
+        with:
+          repository: wearefrank/frank-runner
+          path: frank-runner
+      - name: See commit number of checked-out frank-runner
+        run: git log -1
+        working-directory: frank-runner
+      - name: Set port where Frank!Framework is served
+        run: echo "tomcat.connector.port=8090" > frank-runner/build.properties
+      - name: Set debug to true
+        run: echo "debug=true" >> frank-runner/build.properties
+      - name: Set projects.dir
+        run: echo "projects.dir=.." >> frank-runner/build.properties
+      - name: Select the configuration in the manual we want to test
+        run: echo "project.dir=${{matrix.frankConfig}}" >> frank-runner/build.properties
+      - name: Checkout frank-manual
+        uses: actions/checkout@v4
+        with:
+          path: frank-manual
+      - name: Determine what to test
+        id: setExpectedBehaviorTag
+        run: ./setExpectedBehaviorTag.sh ${{ matrix.frankConfig }}
+        working-directory: frank-manual/.github/workflows
+      - name: Show expectedBehaviorTag
+        run: echo "${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag }}"
+      - name: Copy cypress/cypress.config_cicd.ts to cypress/cypress.config.ts to listen to correct port
+        run: cp cypress.config_cicd.ts cypress.config.ts
+        working-directory: frank-manual/cypress
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20.x
+          cache: "yarn"
+          cache-dependency-path: "**/yarn.lock"
+      - name: Show node version
+        run: node -v
+        working-directory: "frank-manual/cypress"
+      - name: Show yarn version
+        run: yarn -v
+        working-directory: "frank-manual/cypress"
+      - name: Install packages
+        run: yarn install --immutable
+        working-directory: frank-manual/cypress
+      - name: Cache Frank!Runner dependencies - build
+        uses: actions/cache@v3
+        with:
+          path: frank-runner/build
+          key: ${{ runner.os }}${{ matrix.frankConfig }}-frank-runner-build
+          restore-keys: |
+            ${{ runner.os }}${{ matrix.frankConfig }}-frank-runner-build
+      - name: Cache Frank!Runner dependencies - download
+        uses: actions/cache@v3
+        with:
+          path: frank-runner/download
+          key: ${{ runner.os }}${{ matrix.frankConfig }}-frank-runner-download
+          restore-keys: |
+            ${{ runner.os }}${{ matrix.frankConfig }}-frank-runner-download
+      - name: Show current time, allows you to check that logs are not old
+        run: date
+      - name: Let Frank!Runner do its downloads
+        run: ./env.sh > installFrankRunnerEnv.log
+        working-directory: frank-runner
+      - name: Show apache-tomcat directories
+        run: find . -path './build/*' -name 'apache-tomcat*'
+        working-directory: frank-runner
+      - name: Remove old Tomcat directories
+        run: rm -rf ./build/apache-tomcat-9*
+        working-directory: frank-runner
+      - name: Check that there is only one version of Tomcat
+        run: test $(find . -path './build/*' -name 'apache-tomcat*' | wc -w) -eq 1
+        working-directory: frank-runner
+      - name: Delete old Ladybug test reports
+        run: find . -path './build/apache-tomcat*/logs/testtool*' -delete
+        working-directory: frank-runner
+      - name: Remove old catalina.out
+        run: find . -path './build/apache-tomcat*/catalina.out' -delete
+        working-directory: frank-runner
+      - name: Start server using Frank!Runner in background
+        run: ./restart.sh > serverStartLog.log &
+        working-directory: frank-runner
+      - name: Wait for server to be available
+        run: ./waitForUrl.sh http://localhost:8090 240
+        working-directory: frank-manual/.github/workflows
+      - name: Run the tests - really no warnings
+        if: ${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag == 'NoWarnings' }}
+        run: yarn run cypress run --spec cypress/e2e/no-warnings.cy.ts
+        working-directory: frank-manual/cypress
+      - name: Run the tests - allow warning about IAF_Util
+        if: ${{ steps.setExpectedBehaviorTag.outputs.expectedBehaviorTag == 'AllowIafUtilWarning' }}
+        run: yarn run cypress run --spec cypress/e2e/warning-only-iaf-util.cy.ts
+        working-directory: frank-manual/cypress
+      - name: Try to access server directly with curl
+        run: curl -v -i -X DELETE http://localhost:8090/iaf/ladybug/api/report/all/Test
+        if: always()
+      - name: Show files
+        run: tree -L 5 .
+        if: always()

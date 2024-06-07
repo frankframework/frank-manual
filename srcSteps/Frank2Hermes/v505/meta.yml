@@ -1,6 +1,13 @@
 - file:
     path: classes/StageSpecifics_LOC.properties
-    change: add
+    change:
+      - insert: 1
+        highlight: true
+        snippet: setStub4testtool
 - file:
     path: tests/hermesBridge/common.properties
     change: add
+- snippet:
+    name: setStub4testtool
+    markup: none
+    context: 50

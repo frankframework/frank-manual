@@ -1,0 +1,26 @@
+name: Frank!Runner example cited correctly
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:  
+jobs:
+  testing:
+    name: Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Frank!Runner
+        uses: actions/checkout@v4
+        with:
+          repository: wearefrank/frank-runner
+          path: frank-runner
+      - name: See commit number of checked-out frank-runner
+        run: git log -1
+        working-directory: frank-runner
+      - name: Checkout frank-manual
+        uses: actions/checkout@v4
+        with:
+          path: frank-manual
+      - name: Compare cited configuration
+        run: diff frank-manual/srcSteps/FrankRunnerExample1a/v500/Frank2Example1/Example1a/Configuration.xml frank-runner/examples/Frank2Example1/configurations/Example1a/Configuration.xml

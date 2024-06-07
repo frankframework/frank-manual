@@ -2,6 +2,9 @@
     path: example.csv
     change: add
 - file:
+    path: classes/StageSpecifics_LOC.properties
+    change: add
+- file:
     path: configurations/NewHorizons/BuildInfo.properties
     change: add
 - file:

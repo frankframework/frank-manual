@@ -1,6 +1,6 @@
 <Module
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="./ibisdoc.xsd">
+  xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
   <Adapter name="adapterToConscience">
     <Receiver name="receiverToConscience">
       <ApiListener 
@@ -9,6 +9,9 @@
       method="GET"/>
     </Receiver>
     <Pipeline firstPipe="pipeTranslateRequest">
+      <Exits>
+        <Exit name="Exit" state="SUCCESS" code="200"/>
+      </Exits>
       <XsltPipe
       name="pipeTranslateRequest"
       styleSheetName="hermesRequest2ConscienceRequest.xsl"
@@ -29,7 +32,6 @@
       xsltVersion="2">
         <Forward name="success" path="Exit"/>
       </XsltPipe>
-      <Exit path="Exit" state="success" code="200"/>
     </Pipeline>
   </Adapter>
 </Module>
