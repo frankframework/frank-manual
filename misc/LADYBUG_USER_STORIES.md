@@ -8,13 +8,11 @@ Vision
 
 Ladybug is a tool to debug and test Java applications that process messages. It is included in the Frank!Framework. This document provides user stories for Ladybug as a part of the Frank!Framework.
 
-Ladybug is not limited to work with the Frank!Framework; it is a tool that can be used with other Java applications as well. The Java application that uses Ladybug is expected to receive or retrieve messages. Each message undergoes a series of transformations to obtain an output message. The Java application has access to a class **TestTool** that is provided by the Ladybug dependency. During the transformation, the Java application uses the methods of class TestTool to produce **checkpoints**. The Java application should also call TestTool to create checkpoints for the input message and the output message. For each input message, the Java application should create a unique **correlation id** that is provided to TestTool for each created checkpoint. TestTool groups all checkpoints by correlation id into a **report**. A **report** thus describes all transformations applied to one input message.
+Ladybug is not limited to work with the Frank!Framework; it is a tool that can be used with other Java applications as well. The Java application that uses Ladybug is expected to receive or retrieve messages. Each message undergoes a series of transformations to obtain an output message. The Java application has access to a class **TestTool** that is provided by the Ladybug dependency. During the transformation, the Java application uses the methods of class TestTool to produce **checkpoints**. The Java application should also call TestTool to create checkpoints for the input message and the output message. For each input message, the Java application should create a unique **correlation id** that is provided to TestTool for each created checkpoint. TestTool groups all checkpoints by correlation id into a **report**. A **report** thus describes all transformations applied to one input message. The Frank!Framework creates a Ladybug checkpoint for each pipe and each pipeline. Frank developers can thus see how each pipe transforms the message going through the pipeline.
 
-The Frank!Framework creates a Ladybug checkpoint for each pipe and each pipeline. Frank developers can thus see how each pipe transforms the message going through the pipeline.
+When a report has been captured it is a Java object managed by Ladybug. Ladybug then extracts metadata from the report. This helps for searching and browsing reports because the amount of metadata is much less than the amount of data of all reports. The users should have options to define what information captured in reports should be treated as metadata. Ladybug should also be able to transform reports into XML format. Then users can interact with the reports through Xpath and XSLT.
 
-Ladybug can be used as a debug tool. Ladybug provides a user interface that shows a table of all captured reports. When the user clicks a report, it is opened in a tree view. Each checkpoint is a node in the tree. Collapsing and expanding nodes is described in more details in the user stories below. When you click a node, the corresponding message inside the checkpoint is shown.
-
-In the tree view, the user can see all intermediate results of processing each message. Each checkpoint has a meaningful name. The Frank!Framework names each checkpoint after the adapter or pipe name. Therefore the user can relate the checkpoint's message to the debugged/tested source code, or to the Frank application being tested.
+Ladybug can be used as a debug tool. Ladybug provides a user interface that shows a table of all captured reports. When the user clicks a report, it is opened in a tree view. Each checkpoint is a node in the tree. Collapsing and expanding nodes is described in more details in the user stories below. In the tree view, the user can see all intermediate results of processing each message. Each checkpoint has a meaningful name. The Frank!Framework names each checkpoint after the adapter or pipe name. Therefore the user can relate the checkpoint's message to the debugged/tested source code, or to the Frank application being tested. When you click a node in the tree, the corresponding message inside the checkpoint should be shown.
 
 Ladybug can be used as a tool for automated testing. Ladybug reports can act as test cases because they can be rerun. Rerunning a report means that the Java code that produced the report is re-executed. The messages inside the related checkpoints are compared to the messages in the original report. The test succeeds if these new messages are considered equivalent to the original ones; otherwise the test fails. Ladybug's user interface has separate tabs for new reports (Debug) and reports that are meant as test cases (Test). In the Debug tab, the user has a button to copy reports to the test tab. The user has options to edit a report to convert the raw capture to a useful testcase.
 
@@ -22,9 +20,11 @@ Data in Ladybug reports can be confidential. There are userstories to limit acce
 
 This document focuses on user stories for Ladybug as a part of the Frank!Framework. The following user roles are considered:
 
-**Frank developer:** Someone who writes Frank application. He wants to configure Ladybug as part of his work.
+**Frank developer:** Someone who writes Frank application. He wants to configure Ladybug as part of his job to develop the application for the customer. He also uses Ladybug for debugging or testing purposes, typically before the application is deployed to the customer's production environment. There is little risk that he will see confidential information of the customer.
 
-**Frank tester:** Someone who tests or debugs Frank configurations using Ladybug.
+**Support engineer:** Someone hired by the customer to debug issues in the production environment. He can use ladybug but the customer expects that he does not modify data. He should respect the confidentiality of the customer's data.
+
+**Service manager:** Employee of the customer who uses Ladybug to manage the Frank application. He wants to see whether the app is working correctly and whether there are messages that have not been processed as expected. He typically wants to resend messages when their processing failed.
 
 **System administrator:** Someone who deploys the Java application and has control over the device and the application server on which the Java application is hosted.
 
@@ -40,21 +40,21 @@ This page presents a few main user stories and groups the other userstories as s
 
 # I want to find the report I am interested in
 
-**10:** As a Frank tester, I want to see a table of reports when I open the Ladybug GUI. Each row of the table should be a report and each column should be a metadata attribute. In this table I can search the report of the adapter run that I want to examine.
-
-**20:** As a Frank tester, when I click a row in the table I want to see the corresponding report in the tree view. This allows me to examine it in more detail.
-
-**100:** As a Frank tester, I want to see at least the following metadata attributes in the report table:
+**5:** Given is that I am developing an application and that I did some test. As a Frank developer, I want to see a table of my reports in which I can search for the report about my test. This helps me to produce regression tests.
+**10:** Given is that some messages have been processed. As a service manager I want to see a table of my reports that shows me what messages were succesfully processed and what messages could not be processed correctly. I want to see the status for each message and also some metadata that gives me a hint where to look for problems.
+**15:** Given is that some messages have been processed. As a support engineer I want to see a table of my reports that gives me an overview of how the system is operating: how many errors? how many messages? what are the general characteristics of the messages? I want to use this table as a starting point for more detailed research. This goal is achieved when the following metadata fields are supplied as table columns:
 
 * **Name:** The name of the report, which is the name of the outermost start checkpoint.
 * **Correlation id:** See vision.
 * **Storage id:** The id assigned to the report when it was stored.
-* **End time:** The timestamp at which the outermost end checkpoint was created.
-* **Duration:** The time interval between the outermost start checkpoint and the outermost end checkpoint.
+* **End time:** The timestamp at which the last checkpoint was created.
+* **Duration:** The duration of processing the message.
 * **Status:** The status with which the pipeline ended, should be SUCCESS or ERROR.
 * **Number of checkpoints**
-* **Estimated memory usage:** TODO: What does this mean?
-* **Storage size:** TODO: What does this mean?
+* **Estimated memory usage:** Estimated amount of memory needed to work with this report (size when the data is not compressed).
+* **Storage size:** Estimated number of bytes needed to store this report (size needed after possible data compression).
+
+**20:** As a Frank developer, support engineer or service manager, when I click a row in the table I want to see the corresponding report in the tree view so that I can examine it in more detail.
 
 **120:** As a Frank developer, I want to be able to add columns to the report table in addition to the ones shown in story **100**. This way I can support the customer's tester who wants to search reports based on customer-specific data (see story **10**). As a Frank developer I am willing to write Spring XML files to achieve this for the customer. Customer specific data appears in the checkpoints of the reports, so I need Java Beans that together provide flexible search capabilities.
 
