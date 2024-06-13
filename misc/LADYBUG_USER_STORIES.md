@@ -20,11 +20,11 @@ Data in Ladybug reports can be confidential. There are userstories to limit acce
 
 This document focuses on user stories for Ladybug as a part of the Frank!Framework. The following user roles are considered:
 
-**Frank developer:** Someone who writes Frank application. He wants to configure Ladybug as part of his job to develop the application for the customer. He also uses Ladybug for debugging or testing purposes, typically before the application is deployed to the customer's production environment. There is little risk that he will see confidential information of the customer.
+**Frank developer:** Someone who writes Frank applications. He wants to configure Ladybug as part of his job to develop the application for the customer. He also uses Ladybug for debugging or testing purposes, typically before the application is deployed to the customer's production environment. There is little risk that he will see confidential information of the customer.
 
 **Support engineer:** Someone hired by the customer to debug issues in the production environment. He can use ladybug but the customer expects that he does not modify data. He should respect the confidentiality of the customer's data.
 
-**Service manager:** Employee of the customer who uses Ladybug to manage the Frank application. He wants to see whether the app is working correctly and whether there are messages that have not been processed as expected. He typically wants to resend messages when their processing failed.
+**Service manager:** Employee of the customer who uses Ladybug to manage the Frank application. He wants to see whether the app is working correctly and whether there are messages that have not been processed as expected. He typically wants to resend messages when their processing failed (resending messages is not done by Ladybug but by another part of the Frank!Framework).
 
 **System administrator:** Someone who deploys the Java application and has control over the device and the application server on which the Java application is hosted.
 
@@ -41,7 +41,9 @@ This page presents a few main user stories and groups the other userstories as s
 # I want to find the report I am interested in
 
 **5:** Given is that I am developing an application and that I did some test. As a Frank developer, I want to see a table of my reports in which I can search for the report about my test. This helps me to produce regression tests.
+
 **10:** Given is that some messages have been processed. As a service manager I want to see a table of my reports that shows me what messages were succesfully processed and what messages could not be processed correctly. I want to see the status for each message and also some metadata that gives me a hint where to look for problems.
+
 **15:** Given is that some messages have been processed. As a support engineer I want to see a table of my reports that gives me an overview of how the system is operating: how many errors? how many messages? what are the general characteristics of the messages? I want to use this table as a starting point for more detailed research. This goal is achieved when the following metadata fields are supplied as table columns:
 
 * **Name:** The name of the report, which is the name of the outermost start checkpoint.
