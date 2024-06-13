@@ -56,33 +56,43 @@ This page presents a few main user stories and groups the other userstories as s
 
 **20:** As a Frank developer, support engineer or service manager, when I click a row in the table I want to see the corresponding report in the tree view so that I can examine it in more detail.
 
-**120:** As a Frank developer, I want to be able to add columns to the report table in addition to the ones shown in story **100**. This way I can support the customer's tester who wants to search reports based on customer-specific data (see story **10**). As a Frank developer I am willing to write Spring XML files to achieve this for the customer. Customer specific data appears in the checkpoints of the reports, so I need Java Beans that together provide flexible search capabilities.
+**120:** Given is that a service manager wants to see customer-specific data in the table of reports (story **10**). As a Frank developer, I want tools to define meta data items that are calculated from reports (input and output data, also data captured in arbitrary checkpoints). I want simple building blocks that I can combine, similar to building Frank configurations from pipes, senders and listeners. I want the option to configure the Frank!Framework to add the custom meta data items as columns in the table of reports. This way I can satisfy the requirements given to me by the service manager within a limite timeframe.
 
-**200:** As a Frank tester I want to hide reports from the report table in which I am not interested. This way I can find the report I need more easily. For each metadata field I want an edit box in which I can write a regular expression. Only if for a report all the metadata fields satisfy their regex, then the report should be shown in the table.
+NOTE: We implement story **120** because Frank developers can write Spring configuration files (XML). These files define what Java beans are used as metadata extractors and what metadata is used to produce the table of reports. Instructions are in the Frank!Manual but they also require some knowledge of the Java source code of Ladybug.
 
-TODO: What syntax do we support for the filters?
+**200:** Given is that Frank developers are working simultaneously with the same development or test environment. As a Frank developer I want to filter the rows in the report table such that I am seeing only the work I am doing. This helps me to write automated tests more quickly (story **5**).
 
-**210:** As a Frank tester, I want to see the reports ordered by the timestamp of the first start checkpoint or by the timestamp of the last end checkpoint. The latest timestamp should be in the topmost table row.
+**203:** Given is that there are many reports in the production environment. As a service manager, I want user-friendly options to omit reports from the report table such that I can analyze the remaining rows. This way I can answer specific questions about the status of the system. This can be implemented as follows. For each column there is an edit field in which I can choose the value required for that column. A report is only shown if every column has the required value. Some metadata items take their value from a limited set (e.g. either SUCCESS or ERROR). In these cases, Ladybug should provide a drop-down list with all possible values to choose from.
 
-**220:** As a Frank tester, I want to be able to sort both ascending and descending with respect to the timestamp of story **210**. This helps me to find reports more easily.
+**204:** As a Frank developer I want the option to customize in which cases story **203** is implemented with drop-down lists. I do not want to bother the customer with such  detailed configurations.
 
-**300:** As a Frank tester I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint.
+**207:** Given is that there are many reports in the production environment. As a support engineer, I want flexible options to filter the rows in the report table such that I can do complicated analyses of the reports. This flexibility can be implemented by allowing filter options with regexes.
 
-**310:** As a Frank tester, if a report-in-progress is open for too long, then I want Ladybug to close it such that I can see it as a regular report in the table.
+**210:** As a user I want to see the reports ordered by end time in descending order in the report table when I open Ladybug. This is because I am usually most interested in recent reports.
 
-**330:** As a Frank developer, I want to be able to configure the time threshold of story **310**.
+**220:** As a user I want to have standard sorting options in the table of reports. This means at least sorting on any column and both ascending and descending.
 
-**400:** As a Frank tester, I want reports to be stored persistently. Reports should not vanish when the Frank!Framework is restarted.
+**300:** Given is that messages are being processed in the production environment. As a service manager I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint.
 
-**410:** As a System administrator, I want the option to store reports in a shared persistent storage. A shared storage used by multiple instances of the Frank!Framework. This is useful when the Framk!Framework runs in the cloud and when the Frank tester does not see easily which node executed a report.
+**310:** Given is that processing a message is taking long - after a long time there is no end checkpoint that corresponds to the start checkpoint (this is a report-in-progress, see story **300**). As a service manager I want Ladybug to forcibly produce a report after a timeout so that I can examine what is happening.
 
-**420:** As a Frank tester, I want to be able to delete reports permanently from storage. This helps me to search more easily within the remaining reports.
+**330:** As a Frank developer, I want to be able to configure the time threshold of story **310** so that the customer is not bothered by such a detailed configuration setting.
+
+**400:** As a service manager, I want reports to be stored persistently. Reports should not vanish when the Frank!Framework is restarted.
+
+**405:** Given is that my app runs in the cloud and that because of that data stored in a local file system is not persistent. As a service manager, I want reports to be stored persistently also in this configuration. This can be implemented by storing reports in a database.
+
+**410:** As a Frank developer or system administrator I want control over the kind of storage I am using. Depending on whether I have a database and whether data on my local file system is really persistent, I want the choice to use a database storage or storage on the local file system. I also want the option to store my reports as XML such that I can read them.
+
+**415:** As a Frank developer I want the option to store my reports in memory (not persistent) so that automated tests are not influenced by reports captured during earlier test runs.
+
+**420:** As a Frank developer, I want to be able to delete reports permanently from storage so that I can limit the number of reports I have to consider.
 
 # I want to understand how the message captured by a report was processed
 
-**1000:** As a Frank tester, I want to see the name of each checkpoint that is shown in the tree view. The name is not required to be unique.
+**1000:** As a support engineer or Frank developer, I want to see the name of each checkpoint that is shown in the tree view. The name is not required to be unique.
 
-**1010:** As a Frank tester I want to see the *type* of each checkpoint in the tree view. The type is shown as an icon. It is one of the following:
+**1010:** As a support engineer or Frank developer, I want to see the *type* of each checkpoint in the tree view. The type is shown as an icon. It is one of the following:
 
 * Start point.
 * End point.
@@ -94,59 +104,53 @@ TODO: What syntax do we support for the filters?
 * Thread start point.
 * Thread end point.
 
-**1020:** As a Frank tester, I want to see a start point as the parent node of the checkpoints that come after it. This applies recursively: a start node inside a start node causes subsequent nodes to be grand children of the first start node. An end point that is a direct child of a start node is also the last child. Subsequent nodes are siblings of the ended start node. This also applies recursively.
+**1020:** As a support engineer or Frank developer, I want to see a start point as the parent node of the checkpoints that come after it. This applies recursively: a start node inside a start node causes subsequent nodes to be grand children of the first start node. An end point that is a direct child of a start node is also the last child. Subsequent nodes are siblings of the ended start node. This also applies recursively.
 
-**1030:** As a Frank tester I want to be able to collapse and to expand each parent node in the tree view. Each parent node can be *expanded* which means that the start node and its children, including the end node, are shown. A parent node can also be *collapsed* which means that its descendants are not shown. This way I can hide details of how a message was processed.
+**1030:** As a support engineer or Frank developer, I want to be able to collapse and to expand each parent node in the tree view. Each parent node can be *expanded* which means that the start node and its children, including the end node, are shown. A parent node can also be *collapsed* which means that its descendants are not shown. This way I can hide details of how a message was processed.
 
-**1033:** As a Frank tester, I want to have a checkpoint for each pipe such that I can see how each pipe transformed the incoming message.
+**1033:** As a support engineer or Frank developer, I want to have a checkpoint for each pipe such that I can see how each pipe transformed the incoming message.
 
-**1037:** As a Frank tester, I want a single report when my adapter calls another adapter via a JavaListener. This way, I do not have to browse multiple reports to examine how my incoming message was processed. The sub-adapter checkpoints should have a common ancestor. When I collapse that ancestor, I want to see only one node for everything done in the sub-adapter.
+**1037:** As a support engineer or Frank developer, I want a single report when my adapter calls another adapter via a JavaListener. This way, I do not have to browse multiple reports to examine how my incoming message was processed. The sub-adapter checkpoints should have a common ancestor. When I collapse that ancestor, I want to see only one node for everything done in the sub-adapter.
 
-**1040:** As a Frank tester, I want each report to have a single parent node. That parent node does not correspond to a checkpoint. All other nodes correspond to checkpoints and they are descendants of the parent node. This helps me to see which checkpoint belongs to which report. The name of the parent node is the same as the name of the first checkpoint, which is the outer start point.
+**1050:** As a support engineer or Frank developer, I want to see the message and the metadata of a checkpoint when I click on it.
 
-**1050:** As a Frank tester, I want to see the message of a checkpoint when I click on it.
-
-TODO: Is there more information than the message here?
-
-**1100:** As a Frank tester, I want the option to remove a report from the tree view when I am done with it. This does not mean that a report is removed from persistent storage.
+**1100:** As a support engineer or Frank developer, I want the option to remove a report from the tree view when I am done with it. This does not mean that a report is removed from persistent storage.
 
 # I want to turn a report into a test case
 
-**2000:** Given is that I am viewing a report as a Frank tester. I want the option to edit the message within each checkpoint. When the report is rerun, the produced message will be compared to the edited message instead of the message originally captured. This allows me to update reports as test cases when my Frank application is changed.
+**2000:** Given is that I am building an automated test from a report. As a Frank developer I want the option to edit the message within each checkpoint. When the report is rerun, the produced message will be compared to the edited message instead of the message originally captured.
 
-**2010:** Given is that I am viewing a report as a Frank tester. I want the option to configure an XSLT transformation that is applied to each message inside each checkpoint. When a report is rerun, the XSLT transformation is applied to the produced messages and it is applied to the messages inside the checkpoints. For each checkpoint, the two transformation results are compared. This way, irrelevant differences can be ignored. Irrelevant differences are produced for example if the current time is used by a Frank application.
+**2010:** Given is that I am building an automated test from a report. As a Frank developer I want the option to configure an XSLT transformation that is applied to each message inside each checkpoint. When a report is rerun, the XSLT transformation is applied to the produced messages and it is applied to the messages inside the checkpoints. For each checkpoint, the two transformation results are compared. This way, irrelevant differences can be ignored. Irrelevant differences are produced for example if the current time is used by a Frank application.
 
-**2020:** Given is that I am viewing a report as a Frank tester. I want the option to declare some checkpoints **stubbed**, checkpoints that correspond to calls to external systems. When the report is rerun, the Frank!Framework should not call the external systems again but it should return the results already stored in the stubbed checkpoints. This way, only the logic within the Frank configuration captured in the report is tested, not the behavior of the external system. Stubbing allows Frank testers to work with a simpler test environment, because the test do not require access to external systems.
+**2020:** Given is that I am building an automated test from a report. As a Frank developer I want the option to declare some checkpoints **stubbed**, checkpoints that correspond to calls to external systems. When the report is rerun, the Frank!Framework should not call the external systems again but it should return the results already stored in the stubbed checkpoints. This way, only the logic within the Frank configuration captured in the report is tested, not the behavior of the external systems. Stubbing allows Frank developers to work with a simpler test environment, because the test does not require access to external systems.
 
-**2030:** Given is that I am viewing a report as a Frank tester. I want the option to base parameterized tests upon my report. This means that I introduce variable references in my report. I can create a new report by specifying values for the variables. I can do this for multiple possibilities to set the variables, all resulting in a new clone of the report.
+**2030:** Given is that I am building an automated test from a report. As a Frank developer I want the option to base parameterized tests upon my report. This means that I introduce variable references in my report. I can create a new report by specifying values for the variables. I can do this for multiple possibilities to set the variables, all resulting in a new clone of the report.
 
-**2040:** Given is that I am viewing a report as a Frank tester. I want the option to add a *description* to my report. In the description I can document what the report viewed as a test case should test.
+**2040:** Given is that I am building an automated test from a report. As a Frank developer I want the option to add a *description* to my report. In the description I can document what the report viewed as a test case should test.
 
 # I want to re-run (test) reports to test my Frank application
 
-**3000:** As a Frank tester, when I enter the test tab I want to see all reports that I have prepared as test cases for my Frank application.
+**3000:** Given is that I am testing my application as a Frank developer. When I enter the test tab I want to see all reports that I have prepared as test cases.
 
-**3010:** As a Frank tester, I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the configured XSLT transformation (user story **2010**).
+**3010:** Given is that I am testing my application as a Frank developer. I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the configured XSLT transformation (user story **2010**).
 
-**3020:** As a Frank tester, I want the option to rerun a single report. I should have that option for every report, whether it is in the Debug tab or in the Test tab. This way, I am not obliged to edit reports before they can act as automated tests.
+**3020:** Given is that I am testing my application as a Frank developer. I want the option to rerun a single report.
 
-**3030:** As a Frank tester, I want the option to organize the reports in the Test tab. I want to create groups of tests that can have sub-groups. A tree structure in which the composite nodes are test groups and the leaf nodes are reports. This structure gives me an overview of the tests I have.
+**3030:** Given is that I am testing my application as a Frank developer. I want the option to organize the reports in the Test tab. I want to create groups of tests that can have sub-groups. A tree structure in which the composite nodes are test groups and the leaf nodes are reports. This structure gives me an overview of the tests I have.
 
-**3040:** As a Frank tester, I want the option to select test cases and groups of test cases. I want the option to rerun the tests I selected. This gives me fine-grained control over my test runs when I want to test parts of my Frank application.
+**3040:** Given is that I am testing my application as a Frank developer. I want the option to select test cases and groups of test cases. I want the option to rerun the tests I selected. This gives me fine-grained control over my test runs when I want to test parts of my Frank application.
 
-**3050:** As a Frank tester, I want the option to rerun all reports that are in the Test tab, allowing me to test my Frank application with a single click.
+**3050:** Given is that I am testing my application as a Frank developer. I want the option to rerun all reports that are in the Test tab, allowing me to test my Frank application with a single click.
 
-**3100:** As a Frank tester, when I have rerun a report I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
+**3100:** Given is that I have rerun a report as a Frank developer and that this test failed. I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
 
-**3200:** As a Frank tester, I want the option to download reports and upload them later. This allows me to save reports if I do not trust the persistent storage provided by the Frank!Framework. It also allows me to remove tests from my test cases without losing the test permanently.
-
-**3210:** As a Frank tester, I want downloading and uploading to be available both in the Debug tab and in the Test tab. This way I am not obliged to copy reports to the Test tab before I can use these functions.
+**3200:** As a Frank developer I want the option to download reports and upload them later. This allows me to save reports if I do not trust the persistent storage provided by the Frank!Framework. It also allows me to remove tests from my test cases without losing the test permanently.
 
 # I want to configure whether my Frank application does produce reports
 
-**4000:** As a System administrator I want the option to turn off the report generator. When the report generator is off, my Frank application should not invoke Ladybug when processing messages. This might reduce the execution time.
+**4000:** As a service manager I want the option to turn off the report generator. When the report generator is off, my Frank application should not invoke Ladybug when processing messages. This might reduce the execution time.
 
-**4010:** As a System administrator I want the option to create reports for only some adapter executions that match my search criterion. The search criterion is a regex that is applied to the name of the outer start checkpoint.
+**4010:** As a service manager I want the option to create reports for only some adapter executions that match my search criterion. TODO: How to make this user-friendly?
 
 # I do not want unauthorized access to reports
 
