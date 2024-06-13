@@ -152,7 +152,7 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 
 **4002:** Given is that my application is not performing well. As a service manager I want the option to turn on the report generator, so that I will get reports that allow me to investigate my issue.
 
-**4010:** As a service manager I want the option to create reports for only some adapter executions that match my search criterion. TODO: How to make this user-friendly?
+**4010:** Given is that my application is not performing well. As a service manager I want the option to create reports for only some adapter executions that match my search criterion. This allows me to reduce execution time and memory usage and also get reports to investigate my issue. TODO: How to make this user-friendly?
 
 # I do not want unauthorized access to reports
 
