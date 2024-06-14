@@ -126,6 +126,15 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 
 **1230:** As a service manager I want my choice regarding to **1220** to be persistent, so that I can know by heart whether my Ladybug works like **1200** or like **1210**.
 
+**1240:** Story **1200** has as a consequence that each report in the tree view should have a single root node, otherwise you could not see which node belonged to each report.
+
+NOTE: Presently, some features of Ladybug are attached to the root node of a report.
+
+* In the old Echo2 GUI, there is an "Edit" button in the tree view that puts the report in "edit mode". In edit mode, you have an editable message when you click a node in the tree view. There are also metadata fields, some of them editable and some of them read-only. When you select the top level node, you can edit a description. This way you can add a description of a report that exists in the debug tab.
+* In the test tab you can "open" a report. This is the user interface for main user story [I want to turn a report into a test case](#i-want-to-turn-a-report-into-a-test-case).Doing so opens a new tab with a tree view with editable node information next to it, like "edit mode" in the debug tab's tree view. Also in this case the root node of a report is relevant in the current implementation of Ladybug.
+* When you click the root node of a report you see it as XML. This combines nicely with an edit field to enter an XSLT transformation (story **2010**)
+* When you click the root node of a report you have the option there to enter the description (story **2040**).
+
 # I want to turn a report into a test case
 
 **2000:** Given is that I am building an automated test from a report. As a Frank developer I want the option to edit the message within each checkpoint. When the report is rerun, the produced message will be compared to the edited message instead of the message originally captured.
