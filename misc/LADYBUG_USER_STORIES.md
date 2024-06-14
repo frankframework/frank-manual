@@ -12,7 +12,7 @@ Ladybug is not limited to work with the Frank!Framework; it is a tool that can b
 
 When a report has been captured it is a Java object managed by Ladybug. Ladybug then extracts metadata from the report. This helps for searching and browsing reports because the amount of metadata is much less than the amount of data of all reports. The users should have options to define what information captured in reports should be treated as metadata. Ladybug should also be able to transform reports into XML format. Then users can interact with the reports through Xpath and XSLT.
 
-Ladybug can be used as a debug tool. Ladybug provides a user interface that shows a table of all captured reports. When the user clicks a report, it is opened in a tree view. Each checkpoint is a node in the tree. Collapsing and expanding nodes is described in more details in the user stories below. In the tree view, the user can see all intermediate results of processing each message. Each checkpoint has a meaningful name. The Frank!Framework names each checkpoint after the adapter or pipe name. Therefore the user can relate the checkpoint's message to the debugged/tested source code, or to the Frank application being tested. When you click a node in the tree, the corresponding message inside the checkpoint should be shown.
+Ladybug can be used as a debug tool. Ladybug provides a user interface that shows a table of all captured reports. When the user clicks a report, it is opened in a tree view. Each checkpoint is a node in the tree. Collapsing and expanding nodes is described in more detail in the user stories below. In the tree view, the user can see all intermediate results of processing each message. Each checkpoint has a meaningful name. The Frank!Framework names each checkpoint after the adapter or pipe name. Therefore the user can relate the checkpoint's message to the debugged/tested source code, or to the Frank application being tested. When you click a node in the tree, the corresponding message inside the checkpoint should be shown.
 
 Ladybug can be used as a tool for automated testing. Ladybug reports can act as test cases because they can be rerun. Rerunning a report means that the Java code that produced the report is re-executed. The messages inside the related checkpoints are compared to the messages in the original report. The test succeeds if these new messages are considered equivalent to the original ones; otherwise the test fails. Ladybug's user interface has separate tabs for new reports (Debug) and reports that are meant as test cases (Test). In the Debug tab, the user has a button to copy reports to the test tab. The user has options to edit a report to convert the raw capture to a useful testcase.
 
@@ -58,7 +58,7 @@ This page presents a few main user stories and groups the other userstories as s
 
 **20:** As a Frank developer, support engineer or service manager, when I click a row in the table I want to see the corresponding report in the tree view so that I can examine it in more detail.
 
-**120:** Given is that a service manager wants to see customer-specific data in the table of reports (story **10**). As a Frank developer, I want tools to define meta data items that are calculated from reports (input and output data, also data captured in arbitrary checkpoints). I want simple building blocks that I can combine, similar to building Frank configurations from pipes, senders and listeners. I want the option to configure the Frank!Framework to add the custom meta data items as columns in the table of reports. This way I can satisfy the requirements given to me by the service manager within a limite timeframe.
+**120:** Given is that a service manager wants to see customer-specific data in the table of reports (story **10**). As a Frank developer, I want tools to define meta data items that are calculated from reports (input and output data, also data captured in arbitrary checkpoints). I want simple building blocks that I can combine, similar to building Frank configurations from pipes, senders and listeners. I want the option to configure the Frank!Framework to add the custom meta data items as columns in the table of reports. This way I can satisfy the requirements given to me by the service manager within a limited timeframe.
 
 NOTE: We implement story **120** because Frank developers can write Spring configuration files (XML). These files define what Java beans are used as metadata extractors and what metadata is used to produce the table of reports. Instructions are in the Frank!Manual but they also require some knowledge of the Java source code of Ladybug.
 
@@ -177,19 +177,6 @@ The following features should only be available with the DataAdmin role.
 The following features should be available with the Tester role (and not necessarily the DataAdmin role):
 
 # Miscelaneous
-
-### Running a report.
-
-Reports are saved by the ladybug backend. The backend provides different storages:
-
-* Memory storage.
-* File storage.
-* Database storage.
-* TODO: Make this overview complete.
-
-Some storages provide the option to delete specific reports. Others only provide the option to clear all reports. If a storage provides the option to clear all reports, then the user should have the option to clear all reports at once.
-
-It should be possible to configure what storage is used in the ladybug backend, although this does not need to be controllable through the GUI.
 
 TODO: Tester role not properly described.
 TODO: Include white box, grey box, black box. What is it?
