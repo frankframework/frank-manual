@@ -118,6 +118,14 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 
 **1100:** As a support engineer or Frank developer, I want the option to remove a report from the tree view when I am done with it. This does not mean that a report is removed from persistent storage.
 
+**1200:** As a user I want the option to have multiple reports in the tree view simultaneously so that I can easily switch between a few reports I am interested in.
+
+**1210:** As a user I want the option to enforce that the tree view holds only one report at a time, so that I will not get confused about the report I am looking at.
+
+**1220:** As a service manager I want a user-friendly way to switch between requirements **1200** or **1210**.
+
+**1230:** As a service manager I want my choice regarding to **1220** to be persistent, so that I can know by heart whether my Ladybug works like **1200** or like **1210**.
+
 # I want to turn a report into a test case
 
 **2000:** Given is that I am building an automated test from a report. As a Frank developer I want the option to edit the message within each checkpoint. When the report is rerun, the produced message will be compared to the edited message instead of the message originally captured.
