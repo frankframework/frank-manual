@@ -171,7 +171,9 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 
 **4002:** Given is that my application is not performing well. As a service manager I want the option to turn on the report generator, so that I will get reports that allow me to investigate my issue.
 
-**4010:** Given is that my application is not performing well. As a service manager I want the option to create reports for only some adapter executions that match my search criterion. This allows me to reduce execution time and memory usage and also get reports to investigate my issue. TODO: How to make this user-friendly?
+**4004:** As a Frank developer, I want to include in my Frank application whether the report generator is on or off when my Frank configuration is deployed, so that the service manager does not have to check whether the report generator is off to save resources or whether it is on to provide information about potential problems.
+
+**4010:** Given is that my application is not performing well. As a service manager or support engineer I want the option to create reports for only some adapter executions that match my search criterion. This allows me to reduce execution time and memory usage and also get reports to investigate my issue. This can be implemented by an edit field where the user can enter a regular expression. The regular expression is applied to the name of the report, which can be derived from the first checkpoint that will create the report if the report generator is enabled. If the regular expression matches, subsequent checkpoints are used to produce a report. Otherwise no report is created. This implementation provides the desired trade-off between saving resources and providing debug information.
 
 # I do not want unauthorized access to reports
 
@@ -194,6 +196,8 @@ The following features should only be available with the DataAdmin role.
 The following features should be available with the Tester role (and not necessarily the DataAdmin role):
 
 # Miscelaneous
+
+**5000:** As a service manager I want Ladybug to be self-explanatory. The user interface should help me to understand what is going on, for example by providing mouse-over texts.
 
 TODO: Tester role not properly described.
 TODO: Include white box, grey box, black box. What is it?
