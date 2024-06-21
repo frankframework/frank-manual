@@ -1,0 +1,12 @@
+- file:
+    path: docker-compose.yml
+    change: add
+- file:
+    path: configurations/my-config/Configuration.xml
+    change: add
+- file:
+    path: configurations/my-config/Configuration_mine.xml
+    change: add
+- file:
+    path: configurations/resources.yml
+    change: add
