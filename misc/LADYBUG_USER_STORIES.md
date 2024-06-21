@@ -165,6 +165,8 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 
 **3200:** As a Frank developer I want the option to download reports and upload them later. This allows me to save reports if I do not trust the persistent storage provided by the Frank!Framework. It also allows me to remove tests from my test cases without losing the test permanently.
 
+**3210:** As a Frank developer I want to use reports as a means to communicate with my colleagues. I want to construct a report and send it to someone else, asking him to update our application such that the test will pass.
+
 # I want to configure whether my Frank application does produce reports
 
 **4000:** As a service manager I want the option to turn off the report generator, so that I can reduce the execution time of my application.
