@@ -20,12 +20,14 @@ Starting the FF! with docker-compose
 WeAreFrank! maintains Docker image ``frankframework/frankframework`` on Dockerhub. It runs Linux and contains Apache Tomcat with the Frank!Framework deployed. It configures the Frank!Framework to read configurations from directory ``/opt/frank/configurations``. The Frank!Framework is served under the root context on port 8080. The following ``docker-compose.yml`` is sufficient to get started:
 
 .. literalinclude:: ../../../../srcSteps/Frank2dockerDevel/v500/docker-compose.yml
+   :language: none
 
 This defines service ``frank-docker-example`` from the mentioned FF! image. It exposes port 8080 of the container to port 8080 on your device. It creates a Docker volume that maps subdirectory ``configurations`` (relative to the project root) to ``/opt/frank/configurations``, allowing you to write your configurations in directory ``configurations`` on your device. Then it sets some necessary properties for the Frank!Framework, most notably ``instance.name`` and ``dtap.stage``. See :ref:`propertiesDeploymentEnvironment` about DTAP stages and :ref:`propertiesFramework` for an overview of all properties that change the behavior of the FF!.
 
 You need one more file because the Frank!Framework expects that there is a database with JNDI name ``jdbc/${instance.name.lc}`` with ``instance.name.lc`` the value of property ``instance.name`` converted to lower-case. To get started, you can use an in-memory H2 database. To do this, create file ``configurations/resources.yml`` with the following contents:
 
 .. literalinclude:: ../../../../srcSteps/Frank2dockerDevel/v500/configurations/resources.yml
+   :languate: none
 
 If you also provide a valid configuration in ``configurations/Configuration.xml``, you can start your work using ``docker-compose up``. You can see it on http://localhost:8080.
 
