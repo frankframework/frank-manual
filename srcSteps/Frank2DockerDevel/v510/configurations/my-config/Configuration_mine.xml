@@ -1,0 +1,10 @@
+<Module>
+	<Adapter name="myAdapter">
+		<Receiver name="myReceiver">
+			<JavaListener name="myListener" serviceName="myService" />
+		</Receiver>
+		<Pipeline firstPipe="myPipe">
+			<FixedResultPipe name="myPipe" returnString="Hello World"/>
+		</Pipeline>
+	</Adapter>
+</Module>

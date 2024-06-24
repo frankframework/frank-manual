@@ -1,0 +1,13 @@
+- file:
+    path: docker-compose.yml
+    change:
+      - insert: 1
+        highlight: true
+        snippet: dockerComposeAddFrankFlow
+      - insert: 2
+        highlight: true
+        snippet: dockerComposeAddFrankFlow
+- snippet:
+    name: dockerComposeAddFrankFlow
+    markup: none
+    context: 50
