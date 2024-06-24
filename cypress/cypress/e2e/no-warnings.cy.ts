@@ -1,6 +1,7 @@
 describe('Tests of frank-manual config - no warnings', () => {
   it('Test that there are no alerts in the status page', () => {
     cy.visit('')
+    cy.wait(5000)
     // cy.get('[data-cy-status-alert]').should('have.length', 0)
     cy.get('.alert-warning').should('have.length', 0)
   })
