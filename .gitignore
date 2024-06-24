@@ -7,6 +7,7 @@ target
 lib
 docs/build
 ibisdoc.xsd
+srcSteps/Frank2DockerDevel/v520/configurations/FrankConfig.xsd
 *.xcf
 ladybugTransformation.xsl
 venv

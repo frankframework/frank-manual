@@ -1,0 +1,11 @@
+- file:
+    path: configurations/my-config/Configuration_mine.xml
+    change:
+      - old: 1
+        new: 3
+        highlight: true
+        snippet: refFrankConfigXsd
+- snippet:
+    name: refFrankConfigXsd
+    markup: none
+    context: 6
