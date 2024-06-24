@@ -6,7 +6,8 @@
       <ApiListener 
       name="listenerToConscience"
       uriPattern="adapter/hermes/address"
-      method="GET"/>
+      method="GET"
+      authenticationMethod="NONE"/>
     </Receiver>
     <Pipeline firstPipe="pipeTranslateRequest">
       <Exits>
