@@ -31,4 +31,4 @@ If you also provide a valid configuration in ``configurations/Configuration.xml`
 
 .. NOTE::
 
-   You may wonder why the shown URL starts with `http` instead of `https` - is your data safe within the Frank!Framework? The answer has to do with the DTAP stage. Only if `dtap.stage=LOC` then access through `http` is possible. Otherwise, access is only possible through `https`. As a service manager, you should check that security is taken care of in your app. The Frank!Framework allows Frank developers to protect the data.
+   You may wonder why the shown URL starts with ``http`` instead of ``https`` - is your data safe within the Frank!Framework? The answer has to do with the DTAP stage. Only if ``dtap.stage=LOC`` then access through ``http`` is possible. Otherwise, access is only possible through ``https``. As a service manager, you should check that security is taken care of in your app. The Frank!Framework allows Frank developers to protect the data.
