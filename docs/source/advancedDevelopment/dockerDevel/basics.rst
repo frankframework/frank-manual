@@ -27,7 +27,7 @@ This defines service ``frank-docker-example`` from the mentioned FF! image. It e
 You need one more file because the Frank!Framework expects that there is a database with JNDI name ``jdbc/${instance.name.lc}`` with ``instance.name.lc`` the value of property ``instance.name`` converted to lower-case. To get started, you can use an in-memory H2 database. To do this, create file ``configurations/resources.yml`` with the following contents:
 
 .. literalinclude:: ../../../../srcSteps/Frank2dockerDevel/v500/configurations/resources.yml
-   :languate: none
+   :language: none
 
 If you also provide a valid configuration in ``configurations/Configuration.xml``, you can start your work using ``docker-compose up``. You can see it on http://localhost:8080.
 
