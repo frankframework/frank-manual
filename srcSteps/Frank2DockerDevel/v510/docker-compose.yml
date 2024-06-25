@@ -18,3 +18,5 @@ services:
     ports:
       - "8081:8080"
     volumes: *frank-volumes
+    environment:
+      configurations.directory: /opt/frank/configurations
