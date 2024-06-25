@@ -3,9 +3,8 @@ services:
     image: frankframework/frankframework:8
     ports:
       - 8080:8080
-    volumes:
+    volumes: &frank-volumes
       - ./configurations:/opt/frank/configurations
-      - ./frank-flow.war:/usr/local/tomcat/webapps/frank-flow.war:ro
     environment:
       instance.name: frank-docker-example
       dtap.stage: LOC
@@ -14,3 +13,8 @@ services:
       jdbc.require: false
       # For Frank!Flow to run as webapp
       CATALINA_OPTS: -Dfrank-flow.context-path=
+  frank-flow:
+    image: frankframework/frank-flow
+    ports:
+      - "8081:8080"
+    volumes: *frank-volumes
