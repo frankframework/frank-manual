@@ -7,6 +7,7 @@ target
 lib
 docs/build
 ibisdoc.xsd
+srcSteps/Frank2DockerDevel/v520/configurations/FrankConfig.xsd
 *.xcf
 ladybugTransformation.xsl
 venv
@@ -15,3 +16,4 @@ node_modules
 cypress/.yarn/install-state.gz
 cypress/cypress/screenshots/
 cypress/cypress/videos/
+srcSteps/Frank2DockerDevel/v510/frank-flow.war
