@@ -72,6 +72,8 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 
 **210:** As a user I want to see the reports ordered by end time in descending order in the report table when I open Ladybug. This is because I am usually most interested in recent reports.
 
+**212:** Given is that I am busy with some analysis that involves the report table, and that I am also curious whether there are new reports (any user role). When I press the refresh button, I want that the row that was previously selected remains selected so that I am not distracted unnecessarily from the work I was doing.
+
 **220:** As a user I want to have standard sorting options in the table of reports. This means at least sorting on any column and both ascending and descending.
 
 **300:** Given is that messages are being processed in the production environment. As a service manager I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint.
