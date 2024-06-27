@@ -11,12 +11,9 @@ services:
       configurations.directory.autoLoad: true
       configurations.names: ""
       jdbc.require: false
-      # For Frank!Flow to run as webapp
-      CATALINA_OPTS: -Dfrank-flow.context-path=
+      management.gateway.inbound.class: "org.frankframework.management.gateway.HazelcastInboundGateway"
   frank-flow:
     image: frankframework/frank-flow
     ports:
       - "8081:8080"
     volumes: *frank-volumes
-    environment:
-      configurations.directory: /opt/frank/configurations
