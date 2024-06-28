@@ -143,11 +143,11 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 * When you click the root node of a report you see it as XML. This combines nicely with an edit field to enter an XSLT transformation (story **2010**)
 * When you click the root node of a report you have the option there to enter the description (story **2040**).
 
-**1300:** Given is that I as a service manager am investigating an issue with my application. I want the option to see only checkpoints about communicating with external systems for reports I open in the debug tree. This is currently known as the black box view.
+**1300:** Given is that I as a service manager am investigating an issue with my application. In the debug tree, I want the option to see only the checkpoints within each report report that are about communicating with external systems. This is currently known as the black box view.
 
-**1310:** Given is that I as a support engineer or Frank developer am investigating an issue. I want the option to see all checkpoints within a report for reports I open in the debug tree. This is known as the white box view.
+**1310:** Given is that I as a support engineer or Frank developer am investigating an issue. In the debug tree, I want the option to see all the checkpoints within each report. This is known as the white box view.
 
-**1320:** Given is that I as a user am investigating an issue. I want the option to see a selection of checkpoints within a report for reports I open in the debug tree. More checkpoints than the black box view. This is known as the gray box view.
+**1320:** Given is that I as a user am investigating an issue. In the debug tree, I want the option to see a selection of the checkpoints within each report. More checkpoints than the black box view. This is known as the gray box view.
 
 **1330:** Given is that multiple users with multiple interests use the debug tree. As a user I want that the view I select (story **510**) also determines which checkpoints of my reports are shown: **1300**, **1310** or **1320**, in other words white box, gray box or black box.
 
