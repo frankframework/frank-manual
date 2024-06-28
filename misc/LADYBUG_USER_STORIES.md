@@ -193,6 +193,10 @@ NOTE: Details of the algorithm implied in **3110** and **3120** are not needed h
 
 **3210:** As a Frank developer I want to use reports as a means to communicate with my colleagues. I want to construct a report and send it to someone else, asking him to update our application such that the test will pass.
 
+NOTE: Jaco suggested that there should be an edit button in the debug tab. A disadvantage is that if reports can be edited in the debug tab, then you cannot be sure that all reports in the debug tab are original captures. Jaco is also satisfied if there is a disabled edit button in the debug tab. This button can have a mouse-over text that suggests copying to the test tab first.
+
+TODO: Discuss whether we want that reports can be downloaded and uploaded in the debug tab. It may be better to only have this in the test tab.
+
 # I want to configure whether my Frank application does produce reports
 
 **4000:** As a service manager I want the option to turn off the report generator, so that I can reduce the execution time of my application.
