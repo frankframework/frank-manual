@@ -92,6 +92,12 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 
 **420:** As a Frank developer, I want to be able to delete reports permanently from storage so that I can limit the number of reports I have to consider.
 
+**500:** Given is that multiple users with multiple interests use the report table. As a Frank developer, I want a languague that allows me to create *views*. I want to configure for each view what metadata is in the report table. It should be possible to do this differently for different views.
+
+**510:** Given is that multiple users with multiple interests use the report table. As a user, I want to select a view provided by the Frank developer such that I see the metadata I want in the report table.
+
+NOTE: Story **500** is implemented in the ladybug backend because you can create views in Spring configuration files. Story **510** is implemented because the debug tab has a dropdown box in which you can select a view from the list of available views.
+
 # I want to understand how the message captured by a report was processed
 
 **1000:** As a support engineer or Frank developer, I want to see the name of each checkpoint that is shown in the tree view. The name is not required to be unique.
@@ -137,6 +143,14 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 * When you click the root node of a report you see it as XML. This combines nicely with an edit field to enter an XSLT transformation (story **2010**)
 * When you click the root node of a report you have the option there to enter the description (story **2040**).
 
+**1300:** Given is that I as a service manager am investigating an issue with my application. I want the option to see only checkpoints about communicating with external systems for reports I open in the debug tree. This is currently known as the black box view.
+
+**1310:** Given is that I as a support engineer or Frank developer am investigating an issue. I want the option to see all checkpoints within a report for reports I open in the debug tree. This is known as the white box view.
+
+**1320:** Given is that I as a user am investigating an issue. I want the option to see a selection of checkpoints within a report for reports I open in the debug tree. More checkpoints than the black box view. This is known as the gray box view.
+
+**1330:** Given is that multiple users with multiple interests use the debug tree. As a user I want that the view I select (story **510**) also determines which checkpoints of my reports are shown: **1300**, **1310** or **1320**, in other words white box, gray box or black box.
+
 # I want to turn a report into a test case
 
 **2000:** Given is that I am building an automated test from a report. As a Frank developer I want the option to edit the message within each checkpoint. When the report is rerun, the produced message will be compared to the edited message instead of the message originally captured.
@@ -163,7 +177,17 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 
 **3050:** Given is that I am testing my application as a Frank developer. I want the option to rerun all reports that are in the Test tab, allowing me to test my Frank application with a single click.
 
+**3060:** Given is that I have reran a few reports and that I want to do new tests. As a user I want the option to reset the report generator, which means that all shown test results are cleared. When I rerun my tests after resetting the report generator, I want that all test results I see come from test started after the moment of resetting.
+
+NOTE: Story **3060** is not trivial because rerunning reports happens in the background.
+
 **3100:** Given is that I have rerun a report as a Frank developer and that this test failed. I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
+
+**3110:** Given is that I have rerun a report and that this test failed. Given is also that the number of checkpoints at both sides is different. As a user I want that Ladybug chooses intelligently what checkpoints to the left belong to what checkpoints to the right. When I look at one checkpoint I want to see the corresponding checkpoint next to it. I do not want to search on the other side for the corresponding checkpoint.
+
+**3120:** Given is the context of story **3110**. I want that checkpoints corresponding to the same inputs and outputs to external systems are matched. This statement is intended to clarify the "intelligent choice" of story **3110**.
+
+NOTE: Details of the algorithm implied in **3110** and **3120** are not needed here. We can make Cypress tests to test that the user will be happy with the algorithm.
 
 **3200:** As a Frank developer I want the option to download reports and upload them later. This allows me to save reports if I do not trust the persistent storage provided by the Frank!Framework. It also allows me to remove tests from my test cases without losing the test permanently.
 
@@ -178,6 +202,12 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 **4004:** As a Frank developer, I want to include in my Frank application whether the report generator is on or off when my Frank configuration is deployed, so that the service manager does not have to check whether the report generator is off to save resources or whether it is on to provide information about potential problems.
 
 **4010:** Given is that my application is not performing well. As a service manager or support engineer I want the option to create reports for only some adapter executions that match my search criterion. This allows me to reduce execution time and memory usage and also get reports to investigate my issue. This can be implemented by an edit field where the user can enter a regular expression. The regular expression is applied to the name of the report, which can be derived from the first checkpoint that will create the report if the report generator is enabled. If the regular expression matches, subsequent checkpoints are used to produce a report. Otherwise no report is created. This implementation provides the desired trade-off between saving resources and providing debug information.
+
+**4100:** Given is that a service manager may distinguish multiple categories of reports. An example is Tibet2. Some reports are about failed messages and indicate that messages should be resend. As a Frank developer, I want the option to route reports to different storages. TODO: Make this a bit more specific.
+
+**4110:** Given is that reports appear in multiple storages as described in **4100**. As a Frank developer, I want to configure for each view (story **500:**) what storage is used to populate the report table.
+
+**4120:** Given is that I am as a service manager investigating an issue with my application. Given is also that reports appear in multiple storages. I want that the view I select (story **510**) determines what storage is used to populate the report table.
 
 # I do not want unauthorized access to reports
 
