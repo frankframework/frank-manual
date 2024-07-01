@@ -236,6 +236,3 @@ The following features should be available with the Tester role (and not necessa
 # Miscelaneous
 
 **5000:** As a service manager I want Ladybug to be self-explanatory. The user interface should help me to understand what is going on, for example by providing mouse-over texts.
-
-TODO: Tester role not properly described.
-TODO: Include white box, grey box, black box. What is it?
