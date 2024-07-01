@@ -209,7 +209,7 @@ TODO: Discuss whether we want that reports can be downloaded and uploaded in the
 
 **4100:** Given is that a service manager may distinguish multiple categories of reports. An example is Tibet2. Some reports are about failed messages and indicate that messages should be resend. As a Frank developer, I want the option to route reports to different storages. TODO: Make this a bit more specific.
 
-**4110:** Given is that reports appear in multiple storages as described in **4100**. As a Frank developer, I want to configure for each view (story **500:**) what storage is used to populate the report table.
+**4110:** Given is that reports appear in multiple storages as described in **4100**. As a Frank developer, I want to configure for each view (story **500**) what storage is used to populate the report table.
 
 **4120:** Given is that I am as a service manager investigating an issue with my application. Given is also that reports appear in multiple storages. I want that the view I select (story **510**) determines what storage is used to populate the report table.
 
