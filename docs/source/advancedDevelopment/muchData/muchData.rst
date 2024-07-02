@@ -3,6 +3,15 @@
 About large messages
 ====================
 
-The Frank!Framework treats large messages in a special way to save memory. Frank developers sometimes need some knowledge about this to fix issues with their Frank applications. There is a property ``message.max.memory.size`` to configure the threshold: messages larger than this size are treated specially. Large messages are written to a temporary file before they are processed. Under Linux, they are typically stored in the ``/tmp`` folder. If this folder is on a small disk partition, an OutOfMemory Java exception may result. As an exception, messages that are already in a file are not copied to a temp file before they are processed. This exception typically applies to the contents of a file handled by a ``LocalFileSystemPipe``. This exception is more general: the Frank!Framework has intelligence to determine whether a file has been stored already - it is only written to a temp file if it is not available otherwise.
+In order to improve memory management while not impacting the performance too much the Frank!Framework may store (large) messages on disk instead of in memory. Especially when dealing with large messages this may greatly improve performance, but it comes with the caveat that more disk IO is required. The property ``message.max.memory.size`` may be used to configure the threshold (in bytes) in the Frank!Framework. By default this has been set to 5MB, files under this threshold are stored in memory, and files larger are persistent to disk. When an application has a high volume of smaller sized traffic it may be beneficial to set the threshold to 30MB so files are kept longer in memory. The Frank!Framework only preserves messages on disk when it needs to, for example when the message can be read multiple times and does not already have a pointer to disk.
+
+Files stored on disk are stored in ``${java.io.tmpdir}/${instance.name}/temp-messages/`` and are cleaned up automatically.
+
+.. WARNING::
+
+   If there is not enough disk space available the application will throw an exception or log a warning!
+
+
+
 
 TODO: What is different before 7.9 from the behavior from 7.9 and later?
