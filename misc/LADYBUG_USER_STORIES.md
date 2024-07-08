@@ -207,9 +207,9 @@ TODO: Discuss whether we want that reports can be downloaded and uploaded in the
 
 **4010:** Given is that my application is not performing well. As a service manager or support engineer I want the option to create reports for only some adapter executions that match my search criterion. This allows me to reduce execution time and memory usage and also get reports to investigate my issue. This can be implemented by an edit field where the user can enter a regular expression. The regular expression is applied to the name of the report, which can be derived from the first checkpoint that will create the report if the report generator is enabled. If the regular expression matches, subsequent checkpoints are used to produce a report. Otherwise no report is created. This implementation provides the desired trade-off between saving resources and providing debug information.
 
-**4100:** Given is that a service manager may distinguish multiple categories of reports. An example is Tibet2. Some reports are about failed messages and indicate that messages should be resend. As a Frank developer, I want the option to route reports to different storages. TODO: Make this a bit more specific.
+**4110:** Given is that reports appear in multiple storages. As a Frank developer, I want to configure for each view (story **500**) what storage is used to populate the report table.
 
-**4110:** Given is that reports appear in multiple storages as described in **4100**. As a Frank developer, I want to configure for each view (story **500**) what storage is used to populate the report table.
+NOTE: Story **4110** does not imply that Ladybug needs a mechanism to route reports to different storages. Story **4110** comes from a Frank application with a hack. Ladybug reports are created outside Ladybug in that application.
 
 **4120:** Given is that I am as a service manager investigating an issue with my application. Given is also that reports appear in multiple storages. I want that the view I select (story **510**) determines what storage is used to populate the report table.
 
