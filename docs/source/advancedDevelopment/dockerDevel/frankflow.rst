@@ -1,11 +1,11 @@
-Editing your configurations as flow charts
-==========================================
+Editing your configurations graphically
+=======================================
 
 In the previous section you learned to start the Frank!Framework with docker. With that set-up, you can already edit your configurations in a text editor. The files you edit on your device's ``configurations`` folder are seen by your Docker container as files in ``opt/frank/configurations``. After editing you can thus press the refresh button (see below, Adapter Status page screen capture from https://frank2example.frankframework.org) to load your edits.
 
 .. image:: refreshButtonFromFrank2Example.jpg
 
-This section explains how you can edit your Frank configurations as flow charts. You can do this using the Frank!Flow that runs in your webbrowser. It can show your configurations as flow charts in which you can drag-and-drop pipes, senders and receivers. The Frank!Flow also allows you to edit your configurations as XML files.
+This section explains how you can edit your Frank configurations graphically as flow charts. You can do this using the Frank!Flow that runs in your webbrowser. It can show your configurations as flow charts in which you can drag-and-drop pipes, senders and receivers. The Frank!Flow also allows you to edit your configurations as XML files.
 
 Please do the following to set this up:
 
