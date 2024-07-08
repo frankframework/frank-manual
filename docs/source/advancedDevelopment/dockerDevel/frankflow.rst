@@ -24,4 +24,4 @@ Please do the following to set this up:
 
 .. NOTE::
 
-   If you edit your configuration with the Frank!Flow, you do not need to reference ``FrankConfig.xsd`` in your configuration. You have syntax highlighting if you just use `<Configuration>` or `<Module>`; no need for `xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"`.
+   If you edit your configuration with the Frank!Flow, you do not need to reference ``FrankConfig.xsd`` in your configuration. You have syntax highlighting if you just use ``<Configuration>`` or ``<Module>``; no need for ``xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"``.
