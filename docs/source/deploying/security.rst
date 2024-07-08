@@ -7,7 +7,8 @@ Introduction
 ------------
 
 The previous section was about fine-tuning the Frank!Framework. You learned about the DTAP stage and about setting properties. This section continues about fine-tuning the Frank!Framework. You will learn how to restrict access to the Frank!Console. On your production environment this is important, because you want to protect the integrity of your data and you do not want unauthorized users to read customer data.
-There are two ways of configuring security for your application: Containerized Authentication and JEE Provided Authentication. Containerized Authentication uses properties in the Frank!Framework to set up authentication and is the recommended way of setting up authentication. JEE Provided Authentication is based on JEE authentication and cannot be used in containerized environments.
+
+There are two ways of configuring security for your application: Containerized Authentication (new) and JEE Provided Authentication (old). Containerized Authentication uses properties in the Frank!Framework to set up authentication and is the recommended way of setting up authentication. JEE Provided Authentication is based on Java EE ApplicationServers and cannot be used in containerized environments.
 
 Containerized Authentication
 -------------------------------
@@ -24,9 +25,14 @@ To add authentication to your Frank!Console Open your ``DeploymentSpecifics.prop
    application.security.http.authenticators.inMem.username=ADMIN
    application.security.http.authenticators.inMem.password=PASSWORD1234
 
-   # # Set the authenticator on an endpoint
-   servlet.IAF-API.authenticator=inMem
-   servlet.Console.authenticator=inMem
+   # # Set the authenticator on an webservice endpoint, for instance
+   servlet.ApiListenerServlet.authenticator=inMem
+   servlet.SoapProviderServlet.authenticator=inMem
+
+   # # Or set the authenticator on the console
+   application.security.console.authentication.type=IN_MEMORY
+   application.security.console.authentication.username=ADMIN
+   application.security.console.authentication.password=PASSWORD1234
 
 In doing so you have defined the in-memory authentication system of the Frank!Framework. Additionally, you have set the username to "ADMIN" and the password to "PASSWORD1234".
 Your Frank!Console is now protected. If you now save your changes and restart your Frank!, you should see a popup asking for credentials. Once you enter the credentials correctly you will be able to use the Frank!Console as normal.
@@ -52,9 +58,9 @@ You notice that the first line in this snippet references the type "IN_MEMORY". 
 
 The last line is the assigment of the authentication system. ::
 
-   servlet.Console.authenticator=inMem
+   servlet.ApiListenerServlet.authenticator=inMem
 
-Here we say that the Console servlet (the Frank!Console) should be protected by the authentication system that we defined before. Without this line, the console remains unprotected. 
+Here we say that the ApiListener servlet should be protected by the authentication system that we defined before. Without this line, the API endpoints remains unprotected. 
 
 The "NONE" type is the default for authenticators and simply indicates an absence of an authenticator. Functionally it does nothing. 
 Below is a table containing all authenticator types and their properties.
@@ -75,7 +81,7 @@ Below is a table containing all authenticator types and their properties.
      - scopes, authorizationUri, tokenUri, jwkSetUri, issuerUri, userInfoUri, userNameAttributeName, clientId, clientSecret, provider, roleMappingFile
 
 
-JEE Provided Authentication
+JEE Provided Authentication (Deprecated since v8.0.0)
 -------------------------------
 
 .. highlight:: none
