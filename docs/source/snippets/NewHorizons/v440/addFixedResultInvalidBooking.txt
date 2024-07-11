@@ -9,11 +9,11 @@
            <Forward name="success" path="Exit" />
            <Forward name="failure" path="makeInvalidBookingError" />
          </XmlValidatorPipe>
-         <FixedResultPipe
+         <EchoPipe
              name="makeInvalidBookingError"
-             returnString="Input booking does not satisfy booking.xsd">
+             getInputFromFixedValue="Input booking does not satisfy booking.xsd">
            <Forward name="success" path="BadRequest"/>
-         </FixedResultPipe>
+         </EchoPipe>
        </Pipeline>
      </Adapter>
    </Configuration>

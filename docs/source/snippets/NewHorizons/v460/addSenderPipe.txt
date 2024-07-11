@@ -3,7 +3,7 @@
 
    ...
          <Forward name="success" path="BadRequest"/>
-       </FixedResultPipe>
+       </EchoPipe>
        <SenderPipe
            name="insertBooking">
          <FixedQuerySender

@@ -1,6 +1,6 @@
 ```xml{7, 8}
 ...
-</FixedResultPipe>
+</EchoPipe>
 <SenderPipe
     name="insertBooking">
   <FixedQuerySender
