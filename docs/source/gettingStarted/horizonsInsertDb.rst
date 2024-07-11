@@ -15,7 +15,7 @@ As an example, we extend the New Horizons case by writing the "booking" table in
 
    .. include:: ../snippets/NewHorizons/v460/refSenderPipe.txt
 
-#. Insert the new pipe after the ``</FixedResultPipe>``:
+#. Insert the new pipe after the ``</EchoPipe>``:
 
    .. include:: ../snippets/NewHorizons/v460/addSenderPipe.txt
 

@@ -11,7 +11,7 @@ The previous section was about fine-tuning the Frank!Framework. You learned abou
 There are two ways of configuring security for your application: Containerized Authentication (new) and JEE Provided Authentication (old). Containerized Authentication uses properties in the Frank!Framework to set up authentication and is the recommended way of setting up authentication. JEE Provided Authentication is based on Java EE ApplicationServers and cannot be used in containerized environments.
 
 Containerized Authentication
--------------------------------
+----------------------------
 
 To add authentication to your Frank!Console Open your ``DeploymentSpecifics.properties`` and add the following lines of code:
 
@@ -82,7 +82,7 @@ Below is a table containing all authenticator types and their properties.
 
 
 JEE Provided Authentication (Deprecated since v8.0.0)
--------------------------------
+-----------------------------------------------------
 
 .. highlight:: none
 
