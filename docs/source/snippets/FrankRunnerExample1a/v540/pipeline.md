@@ -1,7 +1,7 @@
 ```XML
 ...
 <Pipeline>
-    <FixedResultPipe name="HelloWorld" returnString="Hello World!"/>
+    <EchoPipe name="HelloWorld" getInputFromFixedValue="Hello World!"/>
 </Pipeline>
 ...
 ```

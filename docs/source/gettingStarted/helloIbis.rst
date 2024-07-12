@@ -59,7 +59,7 @@ The pipeline defines how the message provided by the receiver should be processe
 
 .. include:: ../snippets/FrankRunnerExample1a/v540/pipeline.txt
 
-A pipeline is a network of pipes. Pipes are predefined functions that can be performed on the incoming message. The ``<FixedResultPipe>`` ignores the input and outputs a fixed string that can be configured. The fixed output string we want is in the ``returnString`` attribute. In the remainder of the :ref:`gettingStarted` chapter, we will see pipes with more interesting functions, like applying XSLT transformations and sending data to a database. The Frank!Doc has a group "Pipes" that holds all available pipes.
+A pipeline is a network of pipes. Pipes are predefined functions that can be performed on the incoming message. The ``<EchoPipe>`` by default echos the input message as the output message; using attribute ``getInputFromFixedValue`` it can be used to produce a fixed value as output. In the remainder of the :ref:`gettingStarted` chapter, we will see pipes with more interesting functions, like applying XSLT transformations and sending data to a database. The Frank!Doc has a group "Pipes" that holds all available pipes.
 
 The shown example pipeline only transforms the incoming message to an output message, but you can also send output to external systems. Please see the following screenshot of the Frank!Doc:
 
