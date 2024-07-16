@@ -72,6 +72,8 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 
 **210:** As a user I want to see the reports ordered by end time in descending order in the report table when I open Ladybug. This is because I am usually most interested in recent reports.
 
+**212:** Given is that I am busy with some analysis that involves the report table, and that I am also curious whether there are new reports (any user role). When I press the refresh button, I want that the row that was previously selected remains selected so that I am not distracted unnecessarily from the work I was doing.
+
 **220:** As a user I want to have standard sorting options in the table of reports. This means at least sorting on any column and both ascending and descending.
 
 **300:** Given is that messages are being processed in the production environment. As a service manager I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint.
@@ -89,6 +91,12 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 **415:** As a Frank developer I want the option to store my reports in memory (not persistent) so that automated tests are not influenced by reports captured during earlier test runs.
 
 **420:** As a Frank developer, I want to be able to delete reports permanently from storage so that I can limit the number of reports I have to consider.
+
+**500:** Given is that multiple users with multiple interests use the report table. As a Frank developer, I want a languague that allows me to create *views*. I want to configure for each view what metadata is in the report table. It should be possible to do this differently for different views.
+
+**510:** Given is that multiple users with multiple interests use the report table. As a user, I want to select a view provided by the Frank developer such that I see the metadata I want in the report table.
+
+NOTE: Story **500** is implemented in the ladybug backend because you can create views in Spring configuration files. Story **510** is implemented because the debug tab has a dropdown box in which you can select a view from the list of available views.
 
 # I want to understand how the message captured by a report was processed
 
@@ -131,9 +139,17 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 NOTE: Presently, some features of Ladybug are attached to the root node of a report.
 
 * In the old Echo2 GUI, there is an "Edit" button in the tree view that puts the report in "edit mode". In edit mode, you have an editable message when you click a node in the tree view. There are also metadata fields, some of them editable and some of them read-only. When you select the top level node, you can edit a description. This way you can add a description of a report that exists in the debug tab.
-* In the test tab you can "open" a report. This is the user interface for main user story [I want to turn a report into a test case](#i-want-to-turn-a-report-into-a-test-case).Doing so opens a new tab with a tree view with editable node information next to it, like "edit mode" in the debug tab's tree view. Also in this case the root node of a report is relevant in the current implementation of Ladybug.
+* In the test tab you can "open" a report. This is the user interface for main user story [I want to turn a report into a test case](#i-want-to-turn-a-report-into-a-test-case). Doing so opens a new tab with a tree view with editable node information next to it, like "edit mode" in the debug tab's tree view. Also in this case the root node of a report is relevant in the current implementation of Ladybug.
 * When you click the root node of a report you see it as XML. This combines nicely with an edit field to enter an XSLT transformation (story **2010**)
 * When you click the root node of a report you have the option there to enter the description (story **2040**).
+
+**1300:** Given is that I as a service manager am investigating an issue with my application. In the debug tree, I want the option to see only the checkpoints within each report report that are about communicating with external systems. This is currently known as the black box view.
+
+**1310:** Given is that I as a support engineer or Frank developer am investigating an issue. In the debug tree, I want the option to see all the checkpoints within each report. This is known as the white box view.
+
+**1320:** Given is that I as a user am investigating an issue. In the debug tree, I want the option to see a selection of the checkpoints within each report. More checkpoints than the black box view. This is known as the gray box view.
+
+**1330:** Given is that multiple users with multiple interests use the debug tree. As a user I want that the view I select (story **510**) also determines which checkpoints of my reports are shown: **1300**, **1310** or **1320**, in other words white box, gray box or black box.
 
 # I want to turn a report into a test case
 
@@ -161,9 +177,25 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 
 **3050:** Given is that I am testing my application as a Frank developer. I want the option to rerun all reports that are in the Test tab, allowing me to test my Frank application with a single click.
 
+**3060:** Given is that I have reran a few reports and that I want to do new tests. As a user I want the option to reset the report generator, which means that all shown test results are cleared. When I rerun my tests after resetting the report generator, I want that all test results I see come from test started after the moment of resetting.
+
+NOTE: Story **3060** is not trivial because rerunning reports happens in the background.
+
 **3100:** Given is that I have rerun a report as a Frank developer and that this test failed. I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
 
+**3110:** Given is that I have rerun a report and that this test failed. Given is also that the number of checkpoints at both sides is different. As a user I want that Ladybug chooses intelligently what checkpoints to the left belong to what checkpoints to the right. When I look at one checkpoint I want to see the corresponding checkpoint next to it. I do not want to search on the other side for the corresponding checkpoint.
+
+**3120:** Given is the context of story **3110**. I want that checkpoints corresponding to the same inputs and outputs to external systems are matched. This statement is intended to clarify the "intelligent choice" of story **3110**.
+
+NOTE: Details of the algorithm implied in **3110** and **3120** are not needed here. We can make Cypress tests to test that the user will be happy with the algorithm.
+
 **3200:** As a Frank developer I want the option to download reports and upload them later. This allows me to save reports if I do not trust the persistent storage provided by the Frank!Framework. It also allows me to remove tests from my test cases without losing the test permanently.
+
+**3210:** As a Frank developer I want to use reports as a means to communicate with my colleagues. I want to construct a report and send it to someone else, asking him to update our application such that the test will pass.
+
+NOTE: Jaco suggested that there should be an edit button in the debug tab. A disadvantage is that if reports can be edited in the debug tab, then you cannot be sure that all reports in the debug tab are original captures. Jaco is also satisfied if there is a disabled edit button in the debug tab. This button can have a mouse-over text that suggests copying to the test tab first.
+
+TODO: Discuss whether we want that reports can be downloaded and uploaded in the debug tab. It may be better to only have this in the test tab.
 
 # I want to configure whether my Frank application does produce reports
 
@@ -171,7 +203,15 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 
 **4002:** Given is that my application is not performing well. As a service manager I want the option to turn on the report generator, so that I will get reports that allow me to investigate my issue.
 
-**4010:** Given is that my application is not performing well. As a service manager I want the option to create reports for only some adapter executions that match my search criterion. This allows me to reduce execution time and memory usage and also get reports to investigate my issue. TODO: How to make this user-friendly?
+**4004:** As a Frank developer, I want to include in my Frank application whether the report generator is on or off when my Frank configuration is deployed, so that the service manager does not have to check whether the report generator is off to save resources or whether it is on to provide information about potential problems.
+
+**4010:** Given is that my application is not performing well. As a service manager or support engineer I want the option to create reports for only some adapter executions that match my search criterion. This allows me to reduce execution time and memory usage and also get reports to investigate my issue. This can be implemented by an edit field where the user can enter a regular expression. The regular expression is applied to the name of the report, which can be derived from the first checkpoint that will create the report if the report generator is enabled. If the regular expression matches, subsequent checkpoints are used to produce a report. Otherwise no report is created. This implementation provides the desired trade-off between saving resources and providing debug information.
+
+**4110:** Given is that reports appear in multiple storages. As a Frank developer, I want to configure for each view (story **500**) what storage is used to populate the report table.
+
+NOTE: Story **4110** does not imply that Ladybug needs a mechanism to route reports to different storages. Story **4110** comes from a Frank application with a hack. Ladybug reports are created outside Ladybug in that application.
+
+**4120:** Given is that I am as a service manager investigating an issue with my application. Given is also that reports appear in multiple storages. I want that the view I select (story **510**) determines what storage is used to populate the report table.
 
 # I do not want unauthorized access to reports
 
@@ -195,5 +235,4 @@ The following features should be available with the Tester role (and not necessa
 
 # Miscelaneous
 
-TODO: Tester role not properly described.
-TODO: Include white box, grey box, black box. What is it?
+**5000:** As a service manager I want Ladybug to be self-explanatory. The user interface should help me to understand what is going on, for example by providing mouse-over texts.
