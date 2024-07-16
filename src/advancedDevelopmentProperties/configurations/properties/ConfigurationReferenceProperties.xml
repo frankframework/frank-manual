@@ -6,9 +6,9 @@
     <Exits>
       <Exit state="SUCCESS" name="Exit" />
     </Exits>
-    <FixedResultPipe name="accessProperties"
-        returnString="From stage ${dtap.stage}, I say ${my.text}" >
+    <EchoPipe name="accessProperties"
+        getInputFromFixedValue="From stage ${dtap.stage}, I say ${my.text}" >
       <Forward name="success" path="Exit" />
-    </FixedResultPipe>
+    </EchoPipe>
   </Pipeline>
 </Adapter>
