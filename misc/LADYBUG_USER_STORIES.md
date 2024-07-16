@@ -159,6 +159,10 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 
 **2010:** Given is that I am building an automated test from a report. As a Frank developer I want the option to configure an XSLT transformation that is applied to each message inside each checkpoint. When a report is rerun, the XSLT transformation is applied to the produced messages and it is applied to the messages inside the checkpoints. For each checkpoint, the two transformation results are compared. This way, irrelevant differences can be ignored. Irrelevant differences are produced for example if the current time is used by a Frank application.
 
+**2012:** Given is that I am using a report as a test case and that I did not edit an XSLT transformation as indiciated in story **2010**. This means that I am rerunning such a report. As a user, I want the following. If the inputs and the outputs and the behavior of the external systems are the same, then I want my test to succeed because I do not want false negatives.
+
+NOTE: Story **2012** can be implemented by giving original-capture reports a default XSLT transformation.
+
 **2020:** Given is that I am building an automated test from a report. As a Frank developer I want the option to declare some checkpoints **stubbed**, checkpoints that correspond to calls to external systems. When the report is rerun, the Frank!Framework should not call the external systems again but it should return the results already stored in the stubbed checkpoints. This way, only the logic within the Frank configuration captured in the report is tested, not the behavior of the external systems. Stubbing allows Frank developers to work with a simpler test environment, because the test does not require access to external systems.
 
 **2030:** Given is that I am building an automated test from a report. As a Frank developer I want the option to base parameterized tests upon my report. This means that I introduce variable references in my report. I can create a new report by specifying values for the variables. I can do this for multiple possibilities to set the variables, all resulting in a new clone of the report.
