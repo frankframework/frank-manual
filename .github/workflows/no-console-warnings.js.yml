@@ -17,7 +17,7 @@ jobs:
           "frank-manual/srcSteps/forFrankConsole/v510",
           "frank-manual/src/advancedDevelopmentCredentials",
           "frank-manual/src/advancedDevelopmentProperties",
-          # "frank-manual/src/deploymentTomcat"
+          "frank-manual/src/deploymentTomcat"
         ]
     name: ${{matrix.frankConfig}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
