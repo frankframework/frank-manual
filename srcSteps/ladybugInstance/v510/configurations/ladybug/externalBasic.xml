@@ -10,8 +10,8 @@ xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
       <Exits>
           <Exit name="Exit" state="SUCCESS" code="200" />
       </Exits>
-      <FixedResultPipe name="externalArchive"
-          returnString="&lt;docid&gt;docid-12345&lt;/docid&gt;"/>
+      <EchoPipe name="externalArchive"
+        getInputFromFixedValue="&lt;docid&gt;docid-12345&lt;/docid&gt;"/>
     </Pipeline>
   </Adapter>
   <Adapter name="externalGet">
@@ -23,8 +23,8 @@ xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
       <Exits>
           <Exit name="Exit" state="SUCCESS" code="200"/>
       </Exits>
-      <FixedResultPipe name="externalGet"
-          returnString="&lt;document&gt;This is the document&lt;/document&gt;"/>
+      <EchoPipe name="externalGet"
+        getInputFromFixedValue="&lt;document&gt;This is the document&lt;/document&gt;"/>
     </Pipeline>
   </Adapter>
 </Module>

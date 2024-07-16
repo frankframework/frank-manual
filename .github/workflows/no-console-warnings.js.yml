@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         frankConfig: [
-          # "frank-manual/srcSteps/ladybugInstance/v520",
+          "frank-manual/srcSteps/ladybugInstance/v520",
           # "frank-manual/srcSteps/Frank2Hermes/v560",
           "frank-manual/srcSteps/NewHorizons/v510",
           "frank-manual/srcSteps/exercise/v500"
