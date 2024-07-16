@@ -118,6 +118,8 @@ NOTE: Story **500** is implemented in the ladybug backend because you can create
 
 **1030:** As a support engineer or Frank developer, I want to be able to collapse and to expand each parent node in the tree view. Each parent node can be *expanded* which means that the start node and its children, including the end node, are shown. A parent node can also be *collapsed* which means that its descendants are not shown. This way I can hide details of how a message was processed.
 
+**1031:** As a user, I want to click only once to expand or collapse a node. In other words: if I click a node that was not selected yet, then I want the clicked node to become the selected one AND I want to toggle its expanded or collapsed state.
+
 **1033:** As a support engineer or Frank developer, I want to have a checkpoint for each pipe such that I can see how each pipe transformed the incoming message.
 
 **1037:** As a support engineer or Frank developer, I want a single report when my adapter calls another adapter via a JavaListener. This way, I do not have to browse multiple reports to examine how my incoming message was processed. The sub-adapter checkpoints should have a common ancestor. When I collapse that ancestor, I want to see only one node for everything done in the sub-adapter.
