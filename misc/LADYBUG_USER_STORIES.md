@@ -138,16 +138,18 @@ NOTE: Story **500** is implemented in the ladybug backend because you can create
 
 NOTE: Presently, some features of Ladybug are attached to the root node of a report.
 
-* In the old Echo2 GUI, there is an "Edit" button in the tree view that puts the report in "edit mode". In edit mode, you have an editable message when you click a node in the tree view. There are also metadata fields, some of them editable and some of them read-only. When you select the top level node, you can edit a description. This way you can add a description of a report that exists in the debug tab.
+* In the old Echo2 GUI, there is an "Edit" button for the debug tree that puts the report in "edit mode". In edit mode, you have an editable message when you click a node in the tree view. There are also metadata fields, some of them editable and some of them read-only. When you select the top level node, you can edit a description. This way you can add a description of a report that exists in the debug tab.
+* TODO: Do we want reports to be editable in the debug tab? If this is allowed, users cannot trust that reports in the debug tab are always original captures. If editing reports in the debug tab is prohibited, the user can still copy them to the test tab and edit these copies. A drawback is that the set of test cases in the test tab can be contaminated with reports that are there only temporarily.
+* If we decide that reports can be edited in the Debug tab, then the requirements of stories **2000** - **2050** apply.
 * In the test tab you can "open" a report. This is the user interface for main user story [I want to turn a report into a test case](#i-want-to-turn-a-report-into-a-test-case). Doing so opens a new tab with a tree view with editable node information next to it, like "edit mode" in the debug tab's tree view. Also in this case the root node of a report is relevant in the current implementation of Ladybug.
 * When you click the root node of a report you see it as XML. This combines nicely with an edit field to enter an XSLT transformation (story **2010**)
 * When you click the root node of a report you have the option there to enter the description (story **2040**).
 
-**1300:** Given is that I as a service manager am investigating an issue with my application. In the debug tree, I want the option to see only the checkpoints within each report report that are about communicating with external systems. This is currently known as the black box view.
+**1300:** Given is that I as a service manager am investigating an issue with my application. In the debug tree, I want the option to see only the checkpoints within each report that are about communicating with external systems. This is currently known as the black box view.
 
 **1310:** Given is that I as a support engineer or Frank developer am investigating an issue. In the debug tree, I want the option to see all the checkpoints within each report. This is known as the white box view.
 
-**1320:** Given is that I as a user am investigating an issue. In the debug tree, I want the option to see a selection of the checkpoints within each report. More checkpoints than the black box view. This is known as the gray box view.
+**1320:** Given is that I as a user am investigating an issue. In the debug tree, I want the option to see a only the following checkpoints: Checkpoints about communicating with external systems plus checkpoints related to adapters calling each other (typically through `IbisLocalSender`). This is known as the gray box view.
 
 **1330:** Given is that multiple users with multiple interests use the debug tree. As a user I want that the view I select (story **510**) also determines which checkpoints of my reports are shown: **1300**, **1310** or **1320**, in other words white box, gray box or black box.
 
@@ -162,6 +164,8 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 **2030:** Given is that I am building an automated test from a report. As a Frank developer I want the option to base parameterized tests upon my report. This means that I introduce variable references in my report. I can create a new report by specifying values for the variables. I can do this for multiple possibilities to set the variables, all resulting in a new clone of the report.
 
 **2040:** Given is that I am building an automated test from a report. As a Frank developer I want the option to add a *description* to my report. In the description I can document what the report viewed as a test case should test.
+
+**2050:** Given is that I am building an automated test from a report. If I have done some editing and save my results, I want that all views of the report are updated automatically without the need to press a refresh button.
 
 # I want to re-run (test) reports to test my Frank application
 
