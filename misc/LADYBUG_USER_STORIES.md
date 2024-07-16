@@ -191,6 +191,8 @@ NOTE: Story **3060** is not trivial because rerunning reports happens in the bac
 
 **3100:** Given is that I have rerun a report as a Frank developer and that this test failed. I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
 
+**3108:** Given is that I am comparing a report in the context of story **3100**. On one side I have the checkpoints in the report and on the other side I have the checkpoints produced by the rerun. As a user, I want that the selected checkpoint is synchronized. If I select a checkpoint on one side, I want that the corresponding checkpoint on the other side is selected automatically. This helps me to do my analysis more quickly.
+
 **3110:** Given is that I have rerun a report and that this test failed. Given is also that the number of checkpoints at both sides is different. As a user I want that Ladybug chooses intelligently what checkpoints to the left belong to what checkpoints to the right. When I look at one checkpoint I want to see the corresponding checkpoint next to it. I do not want to search on the other side for the corresponding checkpoint.
 
 **3120:** Given is the context of story **3110**. I want that checkpoints corresponding to the same inputs and outputs to external systems are matched. This statement is intended to clarify the "intelligent choice" of story **3110**.
