@@ -98,6 +98,8 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 
 NOTE: Story **500** is implemented in the ladybug backend because you can create views in Spring configuration files. Story **510** is implemented because the debug tab has a dropdown box in which you can select a view from the list of available views.
 
+**520:** Given is that I as a user am doing some analysis about my reports and that I have put some filters on the report table. Given is that I select another view during my analysis. For each metadata field that appears in the table for both views, I want that my filter on that field remains. This way I can continue my analysis without having to retype my filters unnecessarily.
+
 # I want to understand how the message captured by a report was processed
 
 **1000:** As a support engineer or Frank developer, I want to see the name of each checkpoint that is shown in the tree view. The name is not required to be unique.
