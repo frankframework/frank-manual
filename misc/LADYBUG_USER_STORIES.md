@@ -156,6 +156,8 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 * When you click the root node of a report you see it as XML. This combines nicely with an edit field to enter an XSLT transformation (story **2010**)
 * When you click the root node of a report you have the option there to enter the description (story **2040**).
 
+**1250:** Given is that I am doing some analysis involving multiple reports. Given is also that I have configured the tree view to allow multiple reports (story **1200**). If the tree view is empty and if I open multiple reports simultaneously, the reports should appear in the tree view in the same sequence as they are in the report table. This way the reports in the tree view have a predictable sequence, helping me to do my analysis more efficiently.
+
 **1300:** Given is that I as a service manager am investigating an issue with my application. In the debug tree, I want the option to see only the checkpoints within each report that are about communicating with external systems. This is currently known as the black box view.
 
 **1310:** Given is that I as a support engineer or Frank developer am investigating an issue. In the debug tree, I want the option to see all the checkpoints within each report. This is known as the white box view.
