@@ -116,6 +116,13 @@ NOTE: Story **500** is implemented in the ladybug backend because you can create
 * Thread start point.
 * Thread end point.
 
+TODO: What checkpoints should be produced when a Frank adapter is executed? I guess there should a pipeline for each:
+* Root node.
+* Pipeline.
+* Pipe.
+* Sender.
+* Session key.
+
 **1020:** As a support engineer or Frank developer, I want to see a start point as the parent node of the checkpoints that come after it. This applies recursively: a start node inside a start node causes subsequent nodes to be grand children of the first start node. An end point that is a direct child of a start node is also the last child. Subsequent nodes are siblings of the ended start node. This also applies recursively.
 
 **1030:** As a support engineer or Frank developer, I want to be able to collapse and to expand each parent node in the tree view. Each parent node can be *expanded* which means that the start node and its children, including the end node, are shown. A parent node can also be *collapsed* which means that its descendants are not shown. This way I can hide details of how a message was processed.
@@ -243,10 +250,11 @@ The following features should only be available with the DataAdmin role.
 * Upload report.
 * Move report.
 * Run report.
-* TODO: Something about resetting a ReportRunner.
 
 The following features should be available with the Tester role (and not necessarily the DataAdmin role):
 
 # Miscelaneous
 
 **5000:** As a service manager I want Ladybug to be self-explanatory. The user interface should help me to understand what is going on, for example by providing mouse-over texts.
+
+**5010:** Given is that ladybug is not behaving as expected. As a user I want to see a version number for the ladybug frontend. It should point to a unique commit of the ladybug-frontend GitHub project. This way I can read the source code of the ladybug frontend I am not happy with.
