@@ -188,6 +188,8 @@ NOTE: Story **2012** can be implemented by giving original-capture reports a def
 
 **3000:** Given is that I am testing my application as a Frank developer. When I enter the test tab I want to see all reports that I have prepared as test cases.
 
+**3005:** For each report I see in the test tab, I want to see its name and its description (story **2040**).
+
 **3010:** Given is that I am testing my application as a Frank developer. I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the configured XSLT transformation (user story **2010**).
 
 **3020:** Given is that I am testing my application as a Frank developer. I want the option to rerun a single report.
