@@ -203,7 +203,7 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1052:** When I have selected the checkpoint of a session key or a parameter in the tree view, the value I want to see (story **1050**) is the value of the session key or the parameter value.
 
-**1054:** When I have selected a start point / end point of a pipeline / pipe / sender, I want to see the incoming / outcoming message. Along with that message, FF!-generated metadata should be shown.
+**1054:** When I have selected a start point / end point of a pipeline / pipe / sender, I want to see the incoming / outgoing message. Along with that message, FF!-generated metadata should be shown.
 
 **1056:** When I have selected the root node of a report, the value I want to see is the report in XML form, the ladybug-generated metadata, the description (story **2040**) and the XSLT transformation (story **2010**).
 
