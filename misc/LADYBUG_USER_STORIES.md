@@ -209,7 +209,7 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1058:** Given is that I have selected a checkpoint like described in story **1054**. If the message is too large, the message should be shown truncated and a warning should be shown. The warning should make clear that the user is not seeing the complete message.
 
-**1059:** As a Frank!Developer, I want to be able to configure a threshold for story **1058**. When a message is longer than the configured threshold, then the message is shown truncated.
+**1059:** As a Frank developer, I want to be able to configure a threshold for story **1058**. When a message is longer than the configured threshold, then the message is shown truncated.
 
 **1100:** As a support engineer or Frank developer, I want the option to remove a report from the tree view when I am done with it. This does not mean that a report is removed from persistent storage.
 
