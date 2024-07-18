@@ -118,14 +118,59 @@ NOTE: Story **500** is implemented in the ladybug backend because you can create
 * Thread start point.
 * Thread end point.
 
-TODO: What checkpoints should be produced when a Frank adapter is executed? I guess there should a pipeline for each:
-* Root node.
-* Pipeline.
-* Pipe.
-* Sender.
-* Session key.
+TODO: How should InputWrapper, InputValidator, OutputValidator, OutputWrapper, scheduling-related elements and monitoring related elements appear?
 
 **1020:** As a support engineer or Frank developer, I want to see a start point as the parent node of the checkpoints that come after it. This applies recursively: a start node inside a start node causes subsequent nodes to be grand children of the first start node. An end point that is a direct child of a start node is also the last child. Subsequent nodes are siblings of the ended start node. This also applies recursively.
+
+NOTE: The figure below explains story **1020** and **1240** about the existance of a root node:
+
+![Nesting of nodes and root node](./ladybug-user-stories/nesting-of-report-nodes.jpg)
+
+**1025:** The following table shows how the elements of a Frank configuration should be shown in a Ladybug report:
+
+Frank type | Item | Ladybug type | Comment
+---------- | ---- | ------------ | -------
+- | Root node | - | Shown as folder, see story **1056**
+Pipeline | message | Start point | Message read by listener
+Pipeline | message | End point | Output message of pipeline
+Pipeline | error | Abort point |
+Pipeline | session key | input point | Additional information like timestamp received or URL on which a http request was received.
+Pipeline | session key | output point | Session key related to pipeline output
+Receiver | - | not shown |
+Listener | - | not shown | Additional information in Pipeline session keys
+Sender | message | Start point | Message sent
+Sender | message | End point | Response message
+Sender | error | Abort point |
+Sender | session key | input point |
+Sender | session key | output point |
+Pipe | message | Start point | Message received
+Pipe | message | End point | Output message
+Pipe | error | Abort point |
+Pipe | session key | Input point |
+Pipe | parameter | Input point | TODO: Is this correct?
+Pipe | session key | Output point |
+Pipe | source code, loaded config syntax (*) | Info point |
+
+NOTE: About (*). There is a difference between "loaded config syntax", or syntax 1, and "original syntax", or syntax 2. Here is an example of "loaded config syntax":
+
+```
+<pipe className="org.frankframework.pipes.PutInSession" name="saveBase">
+  <param className="org.frankframework.parameters.Parameter" name="basename"/>
+  <forward name="success" path="readXmlFile"/>
+</pipe>
+```
+
+And here is the same in original config syntax, or syntax 2:
+
+```
+<PutInSessionPipe name="saveBase">
+  <!-- Store the input message -->
+  <Param name="basename"/>
+  <Forward name="success" path="readXmlFile"/>
+</PutInSessionPipe>
+```
+
+For completeness, it should be noted that Frank configurations can also be written in syntax 1 directly; mixed syntax 1 and syntax 2 is also allowed.
 
 **1030:** As a support engineer or Frank developer, I want to be able to collapse and to expand each parent node in the tree view. Each parent node can be *expanded* which means that the start node and its children, including the end node, are shown. A parent node can also be *collapsed* which means that its descendants are not shown. This way I can hide details of how a message was processed.
 
