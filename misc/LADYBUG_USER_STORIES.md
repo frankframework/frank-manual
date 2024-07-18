@@ -128,9 +128,9 @@ NOTE: The figure below explains story **1020** and **1240** about the existance 
 
 **1025:** The following table shows how the elements of a Frank configuration should be shown in a Ladybug report:
 
-Frank type | Item | Ladybug type | Comment
----------- | ---- | ------------ | -------
-\- | Root node | - | Shown as folder, see story **1056**
+:Frank type | :Item | :Ladybug type | :Comment
+----------- | ----- | ------------- | --------
+\- | root node | - | Shown as folder, see story **1056**
 Pipeline | message | Start point | Message read by listener
 Pipeline | message | End point | Output message of pipeline
 Pipeline | error | Abort point |
