@@ -102,6 +102,8 @@ NOTE: Story **500** is implemented in the ladybug backend because you can create
 
 **520:** Given is that I as a user am doing some analysis about my reports and that I have put some filters on the report table. Given is that I select another view during my analysis. For each metadata field that appears in the table for both views, I want that my filter on that field remains. This way I can continue my analysis without having to retype my filters unnecessarily.
 
+**600:** As a service manager, I want that all reports I see in the report table are original captures. I do not want to see reports that were edited after capture (as can be done according to story **2060**) so that I can be sure about the integrity of my data.
+
 # I want to understand how the message captured by a report was processed
 
 **1000:** As a support engineer or Frank developer, I want to see the name of each checkpoint that is shown in the tree view. The name is not required to be unique.
@@ -226,7 +228,6 @@ For completeness, it should be noted that Frank configurations can also be writt
 NOTE: Presently, some features of Ladybug are attached to the root node of a report.
 
 * In the old Echo2 GUI, there is an "Edit" button for the debug tree that puts the report in "edit mode". In edit mode, you have an editable message when you click a node in the tree view. There are also metadata fields, some of them editable and some of them read-only. When you select the top level node, you can edit a description. This way you can add a description of a report that exists in the debug tab.
-* TODO: Do we want reports to be editable in the debug tab? If this is allowed, users cannot trust that reports in the debug tab are always original captures. If editing reports in the debug tab is prohibited, the user can still copy them to the test tab and edit these copies. A drawback is that the set of test cases in the test tab can be contaminated with reports that are there only temporarily.
 * If we decide that reports can be edited in the Debug tab, then the requirements of stories **2000** - **2050** apply.
 * In the test tab you can "open" a report. This is the user interface for main user story [I want to turn a report into a test case](#i-want-to-turn-a-report-into-a-test-case). Doing so opens a new tab with a tree view with editable node information next to it, like "edit mode" in the debug tab's tree view. Also in this case the root node of a report is relevant in the current implementation of Ladybug.
 * When you click the root node of a report you see it as XML. This combines nicely with an edit field to enter an XSLT transformation (story **2010**)
@@ -260,6 +261,12 @@ NOTE: Story **2012** can be implemented by giving original-capture reports a def
 
 **2050:** Given is that I am building an automated test from a report. If I have done some editing and save my results, I want that all views of the report are updated automatically without the need to press a refresh button.
 
+**2060:** Given is that I as a Frank developer am testing my application in the DTAP test environment. When I have a report in the debug tab for which I do not like the results, I want the option to edit the report there, similar to stories **2000** - **2050**. I do this with the aim of rerunning the report. If the edited report behaves as I want, I can download it and send to my collleague Frank developer so that my colleague can fix our app.
+
+**2070:** Given is that I as a Frank developer have edited a report in the debug tab (story **2060**). After saving my edits, a report with my edits should be open in the debug tree so that I still have access to it, even though it is not in the report table as is required by story **600**.
+
+TODO: Should we allow stories **2060** and **2070** when only one report is allowed in the debug tree? We could allow that. The implication is that when you edit a report in the debug tree, that the original report is removed from the debug tree when the edits are saved.
+
 # I want to re-run (test) reports to test my Frank application
 
 **3000:** Given is that I am testing my application as a Frank developer. When I enter the test tab I want to see all reports that I have prepared as test cases.
@@ -268,17 +275,19 @@ NOTE: Story **2012** can be implemented by giving original-capture reports a def
 
 **3010:** Given is that I am testing my application as a Frank developer. I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the configured XSLT transformation (user story **2010**).
 
-**3020:** Given is that I am testing my application as a Frank developer. I want the option to rerun a single report.
+**3020:** Given is that I am testing my application as a Frank developer. I want the option to rerun a single report in the test tab.
 
 **3030:** Given is that I am testing my application as a Frank developer. I want the option to organize the reports in the Test tab. I want to create groups of tests that can have sub-groups. A tree structure in which the composite nodes are test groups and the leaf nodes are reports. This structure gives me an overview of the tests I have.
 
-**3040:** Given is that I am testing my application as a Frank developer. I want the option to select test cases and groups of test cases. I want the option to rerun the tests I selected. This gives me fine-grained control over my test runs when I want to test parts of my Frank application.
+**3040:** Given is that I am testing my application as a Frank developer. I want the option to select test cases and groups of test cases in the test tab. I want the option to rerun the tests I selected. This gives me fine-grained control over my test runs when I want to test parts of my Frank application.
 
 **3050:** Given is that I am testing my application as a Frank developer. I want the option to rerun all reports that are in the Test tab, allowing me to test my Frank application with a single click.
 
-**3060:** Given is that I have reran a few reports and that I want to do new tests. As a user I want the option to reset the report generator, which means that all shown test results are cleared. When I rerun my tests after resetting the report generator, I want that all test results I see come from test started after the moment of resetting.
+**3060:** Given is that I have reran a few reports in the test tab and that I want to do new tests. As a user I want the option to reset the report generator, which means that all shown test results are cleared. When I rerun my tests after resetting the report generator, I want that all test results I see come from tests started after the moment of resetting.
 
 NOTE: Story **3060** is not trivial because rerunning reports happens in the background.
+
+**3070:** Given is that I as a Frank developer are testing my app in the DTAP test environment. I want the option to rerun a single report in the debug tab. This is relevant in the context of story **2060**.
 
 **3100:** Given is that I have rerun a report as a Frank developer and that this test failed. I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
 
@@ -294,9 +303,7 @@ NOTE: Details of the algorithm implied in **3110** and **3120** are not needed h
 
 **3210:** As a Frank developer I want to use reports as a means to communicate with my colleagues. I want to construct a report and send it to someone else, asking him to update our application such that the test will pass.
 
-NOTE: Jaco suggested that there should be an edit button in the debug tab. A disadvantage is that if reports can be edited in the debug tab, then you cannot be sure that all reports in the debug tab are original captures. Jaco is also satisfied if there is a disabled edit button in the debug tab. This button can have a mouse-over text that suggests copying to the test tab first.
-
-TODO: Discuss whether we want that reports can be downloaded and uploaded in the debug tab. It may be better to only have this in the test tab.
+**3220:** Because of the context of story **2060**, downloading and uploading reports should be possible both in the debug tab and in the test tab.
 
 # I want to configure whether my Frank application does produce reports
 
