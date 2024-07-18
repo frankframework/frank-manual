@@ -176,17 +176,33 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1031:** As a user, I want to click only once to expand or collapse a node. In other words: if I click on the `>` or `v` sign to the left of an expandable node that was not selected yet, then I want the node to become the selected one AND I want to toggle its expanded or collapsed state.
 
-**1033:** As a support engineer or Frank developer, I want to have a checkpoint for each pipe such that I can see how each pipe transformed the incoming message.
+**1032:** Given is that I am looking at the white box view (story **1310**). As a user, I want to see a start checkpoint and an end checkpoint for each pipeline so that I can see how the pipeline transformed the message. If an error occurred in the pipeline, I do not want an end point but an abort point that shows me information about the error.
 
-**1035:** As a support engineer of Frank developer, I want to have a checkpoint for each session key that is input or output of a pipe.
+**1033:** Given is that I am looking at the white box view (story **1310**). As a user, I want to have a start checkpoint and an end checkpoint for each pipe so that I can see how each pipe transformed the incoming message. If an error occurred, I do not want to see and end point but an abort point that shows me information about the error.
 
-**1037:** As a support engineer or Frank developer, I want a single report when my adapter calls another adapter via a JavaListener. This way, I do not have to browse multiple reports to examine how my incoming message was processed. The sub-adapter checkpoints should have a common ancestor. When I collapse that ancestor, I want to see only one node for everything done in the sub-adapter.
+**1034:** Given is that I am looking at the white box view (story **1310**). As a user I want to have a checkpoint for each session key that is input or output of a pipeline.
+
+**1035:** Given is that I am looking at the white box view (story **1310**). As a user I want to have a checkpoint for each parameter of a pipe.
+
+**1036:** Given is that I am looking at the white box view (story **1310**). As a user I want that pipe checkpoints have child checkpoints for session keys. There should be an input point for each session key that is used by the pipe. There should be an output point for each session key that is generated or changed by the pipe.
+
+**1037:** Given is that I am looking at the white box view (story **1310**). As a user I want to have a start point and an end point for each sender so that I can see the sent message and the response. If an error occurred, I do not want an end point but an abort point that shows me information about the error.
+
+**1038:** Given is that I am looking at the white box view (story **1310**). If there are session keys that contain additional information about the message sent by a sender, then I want the start point of the sender to contain child checkpoints (input points) for these session keys.
+
+**1039:** Given is that I am looking at the white box view (story **1310**). If a there are sessions keys related to the response returned to a sender, then I want the start point of the sender to contain child checkpoints (output points) for these session keys.
+
+**1040:** Given is that I am looking at the white box view (story **1310**). If a sender has parameters, then I want the start point of the sender to contain child nodes (input points) for these parameters.
+
+**1041:** Given is that I am looking at the white box view (story **1310**). For each pipe, I want to see an info checkpoint with the source code of that pipe.
+
+**1048:** As a support engineer or Frank developer, I want a single report when my adapter calls another adapter via a JavaListener. This way, I do not have to browse multiple reports to examine how my incoming message was processed. The sub-adapter checkpoints should have a common ancestor. When I collapse that ancestor, I want to see only one node for everything done in the sub-adapter.
 
 **1050:** As a support engineer or Frank developer, I want to see the value of the selected node in the debug tree.
 
-**1052:** When I have selected the checkpoint of a session key in the tree view, the value I want to see (story **1050**) is the value of the session key.
+**1052:** When I have selected the checkpoint of a session key or a parameter in the tree view, the value I want to see (story **1050**) is the value of the session key or the parameter value.
 
-**1054:** When I have selected a checkpoint that is not a session key, the value I want to see is the message along with its FF!-generated metadata.
+**1054:** When I have selected a start point / end point of a pipeline / pipe / sender, I want to see the incoming / outcoming message. Along with that message, FF!-generated metadata should be shown.
 
 **1056:** When I have selected the root node of a report, the value I want to see is the report in XML form, the ladybug-generated metadata, the description (story **2040**) and the XSLT transformation (story **2010**).
 
@@ -221,7 +237,7 @@ NOTE: Presently, some features of Ladybug are attached to the root node of a rep
 
 **1310:** Given is that I as a support engineer or Frank developer am investigating an issue. In the debug tree, I want the option to see all the checkpoints within each report. This is known as the white box view.
 
-**1320:** Given is that I as a user am investigating an issue. In the debug tree, I want the option to see a only the following checkpoints: Checkpoints about communicating with external systems plus checkpoints related to adapters calling each other (typically through `IbisLocalSender`). This is known as the gray box view.
+**1320:** Given is that I as a user am investigating an issue. In the debug tree, I want the option to see a only the following checkpoints: Checkpoints about communicating with external systems plus checkpoints related to adapters calling each other (typically through `IbisLocalSender`). When adapters call each other, the flow of the message should appear in one report as stated in story **1048**. This is known as the gray box view.
 
 **1330:** Given is that multiple users with multiple interests use the debug tree. As a user I want that the view I select (story **510**) also determines which checkpoints of my reports are shown: **1300**, **1310** or **1320**, in other words white box, gray box or black box.
 
