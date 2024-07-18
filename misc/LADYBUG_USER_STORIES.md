@@ -130,7 +130,7 @@ NOTE: The figure below explains story **1020** and **1240** about the existance 
 
 Frank type | Item | Ladybug type | Comment
 ---------- | ---- | ------------ | -------
-- | Root node | - | Shown as folder, see story **1056**
+\- | Root node | - | Shown as folder, see story **1056**
 Pipeline | message | Start point | Message read by listener
 Pipeline | message | End point | Output message of pipeline
 Pipeline | error | Abort point |
