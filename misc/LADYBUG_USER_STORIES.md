@@ -142,6 +142,7 @@ Sender | message | Start point | Message sent
 Sender | message | End point | Response message
 Sender | error | Abort point |
 Sender | session key | input point |
+Sender | parameter | input point |
 Sender | session key | output point |
 Pipe | message | Start point | Message received
 Pipe | message | End point | Output message
