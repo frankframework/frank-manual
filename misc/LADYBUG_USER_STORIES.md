@@ -225,14 +225,6 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1240:** Story **1200** has as a consequence that each report in the tree view should have a single root node, otherwise you could not see which node belonged to each report.
 
-NOTE: Presently, some features of Ladybug are attached to the root node of a report.
-
-* In the old Echo2 GUI, there is an "Edit" button for the debug tree that puts the report in "edit mode". In edit mode, you have an editable message when you click a node in the tree view. There are also metadata fields, some of them editable and some of them read-only. When you select the top level node, you can edit a description. This way you can add a description of a report that exists in the debug tab.
-* If we decide that reports can be edited in the Debug tab, then the requirements of stories **2000** - **2050** apply.
-* In the test tab you can "open" a report. This is the user interface for main user story [I want to turn a report into a test case](#i-want-to-turn-a-report-into-a-test-case). Doing so opens a new tab with a tree view with editable node information next to it, like "edit mode" in the debug tab's tree view. Also in this case the root node of a report is relevant in the current implementation of Ladybug.
-* When you click the root node of a report you see it as XML. This combines nicely with an edit field to enter an XSLT transformation (story **2010**)
-* When you click the root node of a report you have the option there to enter the description (story **2040**).
-
 **1250:** Given is that I am doing some analysis involving multiple reports. Given is also that I have configured the tree view to allow multiple reports (story **1200**). If the tree view is empty and if I open multiple reports simultaneously, the reports should appear in the tree view in the same sequence as they are in the report table. This way the reports in the tree view have a predictable sequence, helping me to do my analysis more efficiently.
 
 **1300:** Given is that I as a service manager am investigating an issue with my application. In the debug tree, I want the option to see only the checkpoints within each report that are about communicating with external systems. This is currently known as the black box view.
