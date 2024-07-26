@@ -297,3 +297,16 @@ Watching the startup of the F!F
 **Question:** I am starting my configuration with the F!F running on Apache Tomcat. How can I see whether my application is ready to receive HTTP requests?
 
 **Answer:** You can open a browser and navigate to the main URL of the Frank!Framework, typically ``http://localhost`` in a development environment. If you see the Frank!Framework on this URL, it is done with its startup. Alternatively, you can look at the console output. When you work with the Frank!Runner, take care to look at the console window that is created during boot, not the original command prompt from which you start the Frank!Runner. You see many messages passing by in the console. When you see ``INFO [main] org.apache.catalina.core.ApplicationContext.log Starting IbisContext``, Apache Tomcat has loaded the Frank!Framework and the Frank!Framework's startup code starts executing. When you see ``INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [xxx] milliseconds``, the Frank!Framework should be ready to receive HTTP requests.
+
+ApiListener and curl
+--------------------
+
+**Question:** I have a configuration with an ``ApiListener`` to receive HTTP POST requests. I try to test it using ``curl --request POST --url http://localhost/api/ingestDocument --data 'C:\Users\martijn\git\ladybug-with-manual-tests\manual-test\configurations\Conclusion\exampleInputs\valid'``. This produces an unexpected result. When I look in Ladybug, I see that there is a session key with name ``C:\Users\martijn\git\ladybug-with-manual-tests\manual-test\configurations\Conclusion\exampleInputs\valid`` that has no value. When I look at the pipeline's input message, I see this: ``>> Captured stream was closed without being read.``. What is going wrong?
+
+**Answer:** When you use curl like this, it automatically adds a header ``Content-Type: application/x-www-form-urlencoded``. You can check this by adding the ``--verbose`` option to the curl command. You can suppress this header by adding ``-H "Content-Type:"``. The following command thus works:
+
+.. code-block:: none
+
+   curl -H "Content-Type:" --request POST --url http://localhost/api/ingestDocument --data 'C:\Users\martijn\git\ladybug-with-manual-tests\manual-test\configurations\Conclusion\exampleInputs\valid'
+
+Alternatively, you can use another tool to test your interface, for example `Bruno <https://www.usebruno.com/>`_.
