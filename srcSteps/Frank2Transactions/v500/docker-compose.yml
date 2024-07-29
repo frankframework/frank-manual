@@ -17,3 +17,4 @@ services:
     environment:
       jdbc.dbms.default: postgres-xa
       jdbc.hostname: db
+      transactionmanager.type.default: NARAYANA
