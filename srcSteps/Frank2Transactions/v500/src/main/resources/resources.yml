@@ -1,18 +1,18 @@
 jdbc:
   # Postgres XA does not work without Narayana, gives ClassCastException casting the XA datasource to Java datasource, so add non-XA for those cases
+  # - name: "frank2transactions"
+  #   type: "org.postgresql.Driver"
+  #   url: "jdbc:postgresql://${jdbc.hostname:-localhost}:5432/testiaf"
+  #   authalias: "${db.authalias}"
+  #   username: "testiaf_user"
+  #   password: "testiaf_user00"
+
   - name: "frank2transactions"
-    type: "org.postgresql.Driver"
+    type: "org.postgresql.xa.PGXADataSource"
     url: "jdbc:postgresql://${jdbc.hostname:-localhost}:5432/testiaf"
     authalias: "${db.authalias}"
     username: "testiaf_user"
     password: "testiaf_user00"
-
-#  - name: "ibis4test-postgres-xa"
-#    type: "org.postgresql.xa.PGXADataSource"
-#    url: "jdbc:postgresql://${jdbc.hostname:-localhost}:5432/testiaf"
-#    authalias: "${db.authalias}"
-#    username: "testiaf_user"
-#    password: "testiaf_user00"
 
 jms:
   - name: "qcf-artemis"
