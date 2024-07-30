@@ -1,0 +1,27 @@
+<Configuration
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+    >
+    <Adapter name="accessDb">
+        <Receiver>
+            <JavaListener name="getMessageToStore" />
+        </Receiver>
+        <Pipeline>
+            <SenderPipe name="storeMessagePipe">
+                <FixedQuerySender query="INSERT INTO message(message) VALUES(?)">
+                    <Param name="message" type="string" defaultValueMethods="input" />
+                </FixedQuerySender>
+            </SenderPipe>
+        </Pipeline>
+    </Adapter>
+    <Adapter name="accessQueue">
+        <Receiver>
+            <JavaListener name="getMessageForQueue" />
+        </Receiver>
+        <Pipeline>
+            <SenderPipe name="putOnQueuePipe">
+                <JmsSender name="putOnQueue" destinationName="myQueue" messageClass="TEXT" queueConnectionFactoryName="jms/qcf-artemis"></JmsSender>
+            </SenderPipe>
+        </Pipeline>
+    </Adapter>
+</Configuration>
