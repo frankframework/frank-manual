@@ -106,7 +106,7 @@ NOTE: Story **500** is implemented in the ladybug backend because you can create
 
 # I want to understand how the message captured by a report was processed
 
-**1000:** As a support engineer or Frank developer, I want to see the name of each checkpoint that is shown in the tree view. The name is not required to be unique.
+**1000:** As a support engineer or Frank developer, I want to see the name of each checkpoint that is shown in the tree view, so that I can see what part of my Frank configuration was executed to produce the checkpoint. The name is not required to be unique.
 
 **1010:** As a support engineer or Frank developer, I want to see the *type* of each checkpoint in the tree view. The type is shown as an icon. It is one of the following:
 
@@ -153,6 +153,8 @@ Pipe | session key | Input point |
 Pipe | parameter | Input point | TODO: Is this correct?
 Pipe | session key | Output point |
 Pipe | source code, loaded config syntax (*) | Info point |
+
+TODO: How about the exit state of a pipeline?
 
 NOTE: About (*). There is a difference between "loaded config syntax", or syntax 1, and "original syntax", or syntax 2. Here is an example of "loaded config syntax":
 
@@ -207,7 +209,7 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1054:** When I have selected a start point / end point of a pipeline / pipe / sender, I want to see the incoming / outgoing message. Along with that message, the FF!-generated metadata should be shown.
 
-**1056:** When I have selected the root node of a report, the value I want to see is the report in XML form, the ladybug-generated metadata, the description (story **2040**) and the XSLT transformation (story **2010**).
+**1056:** When I have selected the root node of a report (story **1240** says there should be one), the value I want to see is the report in XML form, the ladybug-generated metadata, the description (story **2040**) and the XSLT transformation (story **2010**).
 
 **1058:** Given is that I have selected a checkpoint like described in story **1054**. If the message is too large, the message should be shown truncated and a warning should be shown. The warning should make clear that the user is not seeing the complete message.
 
@@ -246,6 +248,8 @@ For completeness, it should be noted that Frank configurations can also be writt
 NOTE: Story **2012** can be implemented by giving original-capture reports a default XSLT transformation.
 
 **2020:** Given is that I am building an automated test from a report. As a Frank developer I want the option to declare some checkpoints **stubbed**, checkpoints that correspond to calls to external systems. When the report is rerun, the Frank!Framework should not call the external systems again but it should return the results already stored in the stubbed checkpoints. This way, only the logic within the Frank configuration captured in the report is tested, not the behavior of the external systems. Stubbing allows Frank developers to work with a simpler test environment, because the test does not require access to external systems.
+
+TODO: At present the old GUI has controls to stub *every* checkpoint, even info points. This makes me see that I do not understand the exact meaning of stubbing.
 
 **2030:** Given is that I am building an automated test from a report. As a Frank developer I want the option to base parameterized tests upon my report. This means that I introduce variable references in my report. I can create a new report by specifying values for the variables. I can do this for multiple possibilities to set the variables, all resulting in a new clone of the report.
 
