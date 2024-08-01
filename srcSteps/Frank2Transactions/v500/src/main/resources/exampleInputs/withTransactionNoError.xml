@@ -1,0 +1,6 @@
+<action>
+	<start>
+		<message>This is the message</message>
+		<do-error>ok</do-error>
+	</start>
+</action>

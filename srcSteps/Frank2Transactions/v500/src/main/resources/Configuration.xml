@@ -2,26 +2,70 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
     >
-    <Adapter name="accessDb">
-        <Receiver>
-            <JavaListener name="getMessageToStore" />
+    <!-- Accessing Db and queue -->
+    <Adapter name="writeDb">
+        <Receiver transactionAttribute="Supports">
+            <JavaListener name="writeDb" serviceName="writeDb" />
         </Receiver>
         <Pipeline>
-            <SenderPipe name="storeMessagePipe">
+            <SenderPipe name="writeDb">
                 <FixedQuerySender query="INSERT INTO message(message) VALUES(?)">
                     <Param name="message" type="string" defaultValueMethods="input" />
                 </FixedQuerySender>
             </SenderPipe>
         </Pipeline>
     </Adapter>
-    <Adapter name="accessQueue">
-        <Receiver>
-            <JavaListener name="getMessageForQueue" />
+    <Adapter name="causeDbError">
+        <Receiver transactionAttribute="Supports">
+            <JavaListener name="causeDbError" serviceName="causeDbError" />
         </Receiver>
         <Pipeline>
-            <SenderPipe name="putOnQueuePipe">
-                <JmsSender name="putOnQueue" destinationName="myQueue" messageClass="TEXT" queueConnectionFactoryName="jms/qcf-artemis"></JmsSender>
+            <SenderPipe name="causeDbError">
+                <FixedQuerySender query="INSERT INTO message(message) VALUES(NULL)" />
             </SenderPipe>
+        </Pipeline>
+    </Adapter>
+    <Adapter name="enqueue">
+        <Receiver>
+            <JavaListener name="enqueueListener" />
+        </Receiver>
+        <Pipeline>
+            <SenderPipe name="enqueue">
+                <JmsSender name="enqueue" destinationName="myQueue" messageClass="TEXT" queueConnectionFactoryName="jms/qcf-artemis"></JmsSender>
+            </SenderPipe>
+        </Pipeline>
+    </Adapter>
+    <Adapter name="dequeue">
+        <Receiver>
+            <JmsListener name="dequeue" destinationName="myQueue" messageClass="TEXT" queueConnectionFactoryName="jms/qcf-artemis" />
+        </Receiver>
+        <Pipeline>
+            <EchoPipe name="echoDequeued" />
+        </Pipeline>
+    </Adapter>
+    <Adapter name="processInTransaction">
+        <Receiver transactionAttribute="RequiresNew">
+            <JavaListener name="processInTransaction" />
+        </Receiver>
+        <Pipeline>
+            <XmlInputValidator throwException="true" schema="./processInTransaction.xsd" root="action" />
+            <PutInSessionPipe name="parse">
+                <Param name="message" xpathExpression="/action/start/message" />
+            </PutInSessionPipe>
+            <XmlSwitchPipe name="switch" xpathExpression="/action/start/do-error">
+                <Forward name="ok" path="ok" />
+                <Forward name="db-error" path="db-error" />
+                <Forward name="ff-error" path="ff-error" />
+            </XmlSwitchPipe>
+            <SenderPipe name="ok" getInputFromSessionKey="message">
+                <IbisLocalSender name="putInDb" javaListener="writeDb" />
+                <Forward name="success" path="READY" />
+            </SenderPipe>
+            <SenderPipe name="db-error">
+                <IbisLocalSender name="causeDbError" javaListener="causeDbError" />
+                <Forward name="success" path="READY" />
+            </SenderPipe>
+            <ExceptionPipe name="ff-error"></ExceptionPipe>
         </Pipeline>
     </Adapter>
 </Configuration>
