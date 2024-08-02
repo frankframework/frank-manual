@@ -4,7 +4,8 @@
     >
     <!-- Accessing Db and queue -->
     <Adapter name="writeDb">
-        <Receiver transactionAttribute="Supports">
+        <!-- This is the default: transactionAttribute="Supports" -->
+        <Receiver>
             <JavaListener name="writeDb" serviceName="writeDb" />
         </Receiver>
         <Pipeline>
@@ -16,7 +17,7 @@
         </Pipeline>
     </Adapter>
     <Adapter name="causeDbError">
-        <Receiver transactionAttribute="Supports">
+        <Receiver>
             <JavaListener name="causeDbError" serviceName="causeDbError" />
         </Receiver>
         <Pipeline>
@@ -43,29 +44,26 @@
             <EchoPipe name="echoDequeued" />
         </Pipeline>
     </Adapter>
-    <Adapter name="processInTransaction">
-        <Receiver transactionAttribute="RequiresNew">
-            <JavaListener name="processInTransaction" />
+    <Adapter name="enqueueForTransaction">
+        <Receiver>
+            <JavaListener name="enqueueListener" />
         </Receiver>
         <Pipeline>
-            <XmlInputValidator throwException="true" schema="./processInTransaction.xsd" root="action" />
-            <PutInSessionPipe name="parse">
-                <Param name="message" xpathExpression="/action/start/message" />
-            </PutInSessionPipe>
-            <XmlSwitchPipe name="switch" xpathExpression="/action/start/do-error">
-                <Forward name="ok" path="ok" />
-                <Forward name="db-error" path="db-error" />
-                <Forward name="ff-error" path="ff-error" />
-            </XmlSwitchPipe>
-            <SenderPipe name="ok" getInputFromSessionKey="message">
+            <SenderPipe name="enqueue">
+                <JmsSender name="enqueue" destinationName="with-transaction" messageClass="TEXT" queueConnectionFactoryName="jms/qcf-artemis"></JmsSender>
+            </SenderPipe>
+        </Pipeline>
+    </Adapter>
+    <Adapter name="processInTransaction">
+        <Receiver transactionAttribute="RequiresNew">
+            <JmsListener name="dequeue" destinationName="with-transaction" messageClass="TEXT" queueConnectionFactoryName="jms/qcf-artemis" />
+            <JdbcErrorStorage slotId="transactions" />
+        </Receiver>
+        <Pipeline>
+            <SenderPipe name="callWriteInDb">
                 <IbisLocalSender name="putInDb" javaListener="writeDb" />
                 <Forward name="success" path="READY" />
             </SenderPipe>
-            <SenderPipe name="db-error">
-                <IbisLocalSender name="causeDbError" javaListener="causeDbError" />
-                <Forward name="success" path="READY" />
-            </SenderPipe>
-            <ExceptionPipe name="ff-error"></ExceptionPipe>
         </Pipeline>
     </Adapter>
 </Configuration>
