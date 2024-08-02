@@ -271,6 +271,8 @@ TODO: Should we allow stories **2060** and **2070** when only one report is allo
 
 **3010:** Given is that I am testing my application as a Frank developer. I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the configured XSLT transformation (user story **2010**).
 
+**3015:** Given is that I have rerun a report and that there were difference (test failed). Given is also that this failure is a false negative - the requirements of the app have changed. As a Frank developer, I want the option to replace the expected value with the actual value.
+
 **3020:** Given is that I am testing my application as a Frank developer. I want the option to rerun a single report in the test tab.
 
 **3030:** Given is that I am testing my application as a Frank developer. I want the option to organize the reports in the Test tab. I want to create groups of tests that can have sub-groups. A tree structure in which the composite nodes are test groups and the leaf nodes are reports. This structure gives me an overview of the tests I have.
