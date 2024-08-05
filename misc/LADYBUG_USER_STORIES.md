@@ -58,6 +58,8 @@ This page presents a few main user stories and groups the other userstories as s
 * **Estimated memory usage:** Estimated amount of memory needed to work with this report (size when the data is not compressed).
 * **Storage size:** Estimated number of bytes needed to store this report (size needed after possible data compression).
 
+**17:** As a user, I want that the reports in the table are colored based on the value of the Status column. This allows me to see quickly which reports belong to successful pipeline executions and which not.
+
 **20:** As a Frank developer, support engineer or service manager, when I click a row in the table I want to see the corresponding report in the tree view so that I can examine it in more detail.
 
 **120:** Given is that a service manager wants to see customer-specific data in the table of reports (story **10**). As a Frank developer, I want tools to define meta data items that are calculated from reports (input and output data, also data captured in arbitrary checkpoints). I want simple building blocks that I can combine, similar to building Frank configurations from pipes, senders and listeners. I want the option to configure the Frank!Framework to add the custom meta data items as columns in the table of reports. This way I can satisfy the requirements given to me by the service manager within a limited timeframe.
@@ -181,6 +183,10 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1031:** As a user, I want to click only once to expand or collapse a node. In other words: if I click on the `>` or `v` sign to the left of an expandable node that was not selected yet, then I want the node to become the selected one AND I want to toggle its expanded or collapsed state.
 
+**1031a:** As a user, I want the option to expand all parent checkpoints in the debug tree at once so that I can see all the details with one click.
+
+**1031b:** As a user, I want the option to collapse all parent checkpoints in the debug tree at once so that I can hide all details I am not interested in with one click.
+
 **1032:** Given is that I am looking at the white box view (story **1310**). As a user, I want to see a start checkpoint and an end checkpoint for each pipeline so that I can see how the pipeline transformed the message. If an error occurred in the pipeline, I do not want an end point but an abort point that shows me information about the error.
 
 **1033:** Given is that I am looking at the white box view (story **1310**). As a user, I want to have a start checkpoint and an end checkpoint for each pipe so that I can see how each pipe transformed the incoming message. If an error occurred, I do not want to see and end point but an abort point that shows me information about the error.
@@ -214,6 +220,12 @@ For completeness, it should be noted that Frank configurations can also be writt
 **1058:** Given is that I have selected a checkpoint like described in story **1054**. If the message is too large, the message should be shown truncated and a warning should be shown. The warning should make clear that the user is not seeing the complete message.
 
 **1059:** As a Frank developer, I want to be able to configure a threshold for story **1058**. When a message is longer than the configured threshold, then the message is shown truncated.
+
+**1070:** As a support engineer or Frank developer, I want to see ladybug-generated metadata about the selected node. At least the following metadata fields should be shown:
+
+* The checkpoint type, same as the type defined in story 1010.
+* The level of nesting of checkpoints.
+* TODO: What more?
 
 **1100:** As a support engineer or Frank developer, I want the option to remove a report from the tree view when I am done with it. This does not mean that a report is removed from persistent storage.
 
@@ -277,6 +289,8 @@ TODO: Should we allow stories **2060** and **2070** when only one report is allo
 
 **3030:** Given is that I am testing my application as a Frank developer. I want the option to organize the reports in the Test tab. I want to create groups of tests that can have sub-groups. A tree structure in which the composite nodes are test groups and the leaf nodes are reports. This structure gives me an overview of the tests I have.
 
+**3035:** In the context of story **3030**, I as a user want my test groups and my tests to be sorted alphabetically. To be precise: a set of nodes that has the same parent should be sorted alphabetically. This makes the order of my tests predictable.
+
 **3040:** Given is that I am testing my application as a Frank developer. I want the option to select test cases and groups of test cases in the test tab. I want the option to rerun the tests I selected. This gives me fine-grained control over my test runs when I want to test parts of my Frank application.
 
 **3050:** Given is that I am testing my application as a Frank developer. I want the option to rerun all reports that are in the Test tab, allowing me to test my Frank application with a single click.
@@ -289,6 +303,8 @@ NOTE: Story **3060** is not trivial because rerunning reports happens in the bac
 
 **3100:** Given is that I have rerun a report as a Frank developer and that this test failed. I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
 
+**3105:** Given is that I as a user am comparing a report in the context of story **3100**. If a checkpoint differs from its counterpart, I want it to have a different color on both sides so that I can see quickly where the differences are.
+
 **3108:** Given is that I am comparing a report in the context of story **3100**. On one side I have the checkpoints in the report and on the other side I have the checkpoints produced by the rerun. As a user, I want that the selected checkpoint is synchronized. If I select a checkpoint on one side, I want that the corresponding checkpoint on the other side is selected automatically. This helps me to do my analysis more quickly.
 
 **3110:** Given is that I have rerun a report and that this test failed. Given is also that the number of checkpoints at both sides is different. As a user I want that Ladybug chooses intelligently what checkpoints to the left belong to what checkpoints to the right. When I look at one checkpoint I want to see the corresponding checkpoint next to it. I do not want to search on the other side for the corresponding checkpoint.
@@ -296,6 +312,8 @@ NOTE: Story **3060** is not trivial because rerunning reports happens in the bac
 **3120:** Given is the context of story **3110**. I want that checkpoints corresponding to the same inputs and outputs to external systems are matched. This statement is intended to clarify the "intelligent choice" of story **3110**.
 
 NOTE: Details of the algorithm implied in **3110** and **3120** are not needed here. We can make Cypress tests to test that the user will be happy with the algorithm.
+
+**3140:** Given is that I am comparing a failed test report (story **3100**). As a user, I want the option to copy text so that I can paste it elsewhere. This helps me to cooperate with my colleagues and it helps me to analyse rerun failures.
 
 **3200:** As a Frank developer I want the option to download reports and upload them later. This allows me to save reports if I do not trust the persistent storage provided by the Frank!Framework. It also allows me to remove tests from my test cases without losing the test permanently.
 
@@ -343,3 +361,7 @@ The following features should be available with the Tester role (and not necessa
 **5000:** As a service manager I want Ladybug to be self-explanatory. The user interface should help me to understand what is going on, for example by providing mouse-over texts.
 
 **5010:** Given is that ladybug is not behaving as expected. As a user I want to see a version number for the ladybug frontend. It should point to a unique commit of the ladybug-frontend GitHub project. This way I can read the source code of the ladybug frontend I am not happy with.
+
+**5020:** Given is that ladybug is not behaving as expected, for example because a database error occurs when Ladybug tries to store a report. As a service manager, I want to see an error message in such a situation so that I can inform a support engineer.
+
+**5030:** WeAreFrank! does not want any occurrence of "ibis" in the sources of Ladybug and this word should not appear in the UI. The reason is that our company is called WeAreFrank!, not Integration Partners.
