@@ -55,7 +55,8 @@
         </Pipeline>
     </Adapter>
     <Adapter name="processInTransaction">
-        <Receiver transactionAttribute="RequiresNew">
+        <Receiver transactionAttribute="RequiresNew"
+            maxRetries="5">
             <JmsListener name="dequeue" destinationName="with-transaction" messageClass="TEXT" queueConnectionFactoryName="jms/qcf-artemis" />
             <JdbcErrorStorage slotId="transactions" />
         </Receiver>
