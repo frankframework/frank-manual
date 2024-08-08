@@ -50,7 +50,18 @@ You can use these property files to configure your properties differently for di
 
 Within your Frank config, you can use properties to call the right service URL from your Frank. In your adapters, you can reference a property ``serviceURL`` to find the URL of your service. In ``DeploymentSpecifics.properties``, you include the line ``serviceURL=https://dev.someservice.io``. In ``StageSpecifics_ACC.properties``, you include the line ``serviceURL=https://acc.someservice.io``. Finally in ``StageSpecifics_PRD.properties`` you set the real service URL: ``serviceURL=https://someservice.io``. In DTAP stages local, development or test, the service URL defined in ``DeploymentSpecifics.properties`` is applied. In DTAP stage acceptance, this value is superseeded by the definition in ``StageSpecifics_ACC.properties``. In production, the service URL found in ``StageSpecifics_PRD.properties`` is taken. 
 
-The mentioned files ``Test.properties`` ... ``DeploymentSpecifics.properties`` can also exist within the deployment on the application server (the ``classes`` folder). Then they have the same order of precedence, but they have a lower precedence than the configuration specific property files. Please remember that system properties always take precedence over properties configured in your Frank config.
+The mentioned files ``Test.properties`` ... ``DeploymentSpecifics.properties`` can also exist within the deployment on the application server (the ``classes`` folder). Then they have the same order of precedence, but they have a lower precedence than the configuration specific property files. Please remember that system properties always take precedence over properties configured in your Frank config. The order between the different properties files takes precedence over the order imposed by the deployment stack. As an example, assume we have ``StageSpecifics_LOC.properties`` and ``DeploymentSpecifics.properties`` that both exist on the application level and the configuration level. This makes four resources. Their precedence order is as follows (from high to low precedence):
+
+1. ``StageSpecifics_LOC.properties``, configuration level.
+#. ``StageSpecifics_LOC.properties``, application level.
+#. ``DeploymentSpecifics.properties``, configuration level.
+#. ``DeploymentSpecifics.properties``, application level.
+
+As said before, the FF! first reads all properties files and then uses that data to give each property the right value. This allows developers to instantiate properties based on other properties. You can have an application-level ``DeploymentSpecifics.properties`` that defines ``prop.appl`` and a configuration level ``DeploymentSpecifics.properties`` that sets ``prop.conf=${prop.appl}``.
+
+.. WARNING::
+
+   It does not make sense to reverse this example. If multiple configurations are present on the same instance of the FF!, then it does not make sense to define some application-level property based on properties that are defined on the configuration level.
 
 In addition to the chain of system properties and property files, some properties have default values. These default values are listed in subsection :ref:`propertiesFramework`. If some property is not configured by the system administrator and if it is not defined in the property files read by the Frank!Framework, then the default value is applied.
 
