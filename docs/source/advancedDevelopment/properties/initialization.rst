@@ -32,7 +32,7 @@ As an example, assume that you deploy on your local laptop (``dtap.stage = LOC``
 #. ``BuildInfo.properties``.
 #. ``DeploymentSpecifics.properties``.
 
-The Frank!Framework does not require these property files to be present. If some of these files do not exist, the Frank!Framework initializes the properties based on the other sources.
+The Frank!Framework does not require these property files to be present. If some of these files do not exist, the Frank!Framework reads the properies files from the above list that do exist. The properties are then taken from all read files simultaneously, while the order of precedence is applied when a property exists in multiple files.
 
 .. NOTE::
 
