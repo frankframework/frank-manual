@@ -23,17 +23,19 @@ Property files
 
 Within your configuration you can define properties by adding property files in its root directory, for example ``DeploymentSpecifics.properties`` or ``StageSpecifics_LOC.properties``. The Frank!Framework then chooses what property files to consider. The Frank!Framework bases this choice on the values of ``application.server.type``, ``dtap.stage`` and ``dtap.side``, the properties that reflect your deployment environment.
 
-As an example, assume that you deploy on your local laptop (``dtap.stage = LOC``), that you use Frank!Runner (``application.server.type = TOMCAT``) and that you chose to set ``dtap.side = xxx``. Then the Frank!Framework reads the following property files, sorted from high priority to low priority:
+As an example, assume that you deploy on your local laptop (``dtap.stage = LOC``), that you use Frank!Runner (``application.server.type = TOMCAT``) and that you chose to set ``dtap.side = MyOrg``. Then the Frank!Framework reads the following property files, sorted from high priority to low priority:
 
-#. ``StageSpecifics_LOC_TOMCAT.properties``.
 #. ``StageSpecifics_LOC.properties``.
-#. ``SideSpecifics_xxx_TOMCAT.properties``.
-#. ``SideSpecifics_xxx.properties``.
+#. ``SideSpecifics_MyOrg.properties``.
 #. ``ServerSpecifics_TOMCAT.properties``.
 #. ``BuildInfo.properties``.
 #. ``DeploymentSpecifics.properties``.
 
 The Frank!Framework does not require these property files to be present. If some of these files do not exist, the Frank!Framework initializes the properties based on the other sources.
+
+.. NOTE::
+
+   What is the purpose of ``BuildInfo.properties`` - like ``DeploymentSpecifics.properties``, it is always read independent of ``application.server.type``, ``dtap.stage`` and ``dtap.side``? ``BuildInfo.properties`` is typically written by automated build scripts, for example to provide properties with the version number and the commit SHA.
 
 .. NOTE::
 
