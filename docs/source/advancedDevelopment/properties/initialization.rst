@@ -3,20 +3,20 @@
 How Properties Are Set
 ======================
 
-In subsection :ref:`propertiesDeploymentEnvironment`, the characteristics of the deployment environment of a Frank config were explained. The Frank!Framework can be deployed on different types of application servers. The Frank!Framework detects the type of application server and automatically sets the property ``application.server.type``. System administrators can configure the properties ``dtap.stage`` and ``dtap.side`` as system properties, for example by setting Java properties as explained in subsection :ref:`propertiesReference`. A consequence of the boot process of the Frank!Framework was explained, namely the difference between system properties, classpath properties and configuration properties (three levels). It was said that some properties can only be supplied as system properties (most basic level), while some others can only be supplied as system properties or classpath properties (the most basic level or the next level, but not as configuration properties). For most properties however, it does not matter how they are configured.
+In subsection :ref:`propertiesDeploymentEnvironment`, the characteristics of the deployment environment of a Frank config were explained. The Frank!Framework can be deployed on different types of application servers. The Frank!Framework detects the type of application server and automatically sets the property ``application.server.type``. System administrators can configure the properties ``dtap.stage`` and ``dtap.side`` as system properties, for example by setting Java properties as explained in subsection :ref:`propertiesReference`. A consequence of the boot process of the Frank!Framework was explained, namely the difference between system properties, application properties and configuration properties (three levels). It was said that some properties can only be supplied as system properties (most basic level), while some others can only be supplied as system properties or application properties (the most basic level or the next level, but not as configuration properties). For most properties however, it does not matter how they are configured.
 
 Precedence Order
 ----------------
 
-Each Frank config has its own set of properties. Next to these configuration properties, properties set within the deployment environment are applied, namely classpath properties and system properties. There is a precedence order between these three property sources. For each configuration, the order of precedence is as follows:
+Each Frank config has its own set of properties. Next to these configuration properties, properties set within the deployment environment are applied, namely application properties and system properties. There is a precedence order between these three property sources. For each configuration, the order of precedence is as follows:
 
 #. System properties.
 #. Configuration properties.
-#. Classpath properties.
+#. Application properties.
 
 As a consequence, the system administrator can override configuration properties by setting them as system properties. You tried this at the end of subsection :ref:`propertiesReference`. 
 
-As said before, it is possible to put a Frank config in the ``classes`` folder of a Frank application, although this is considered bad practice. This Frank config only uses the classpath properties and the system properties, the system properties taking precedence.
+As said before, it is possible to put a Frank config in the ``classes`` folder of a Frank application, although this is considered bad practice. This Frank config only uses the application properties and the system properties, the system properties taking precedence.
 
 Property files
 --------------
