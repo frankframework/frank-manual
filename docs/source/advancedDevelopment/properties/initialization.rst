@@ -44,7 +44,7 @@ The Frank!Framework does not require these property files to be present. If some
 
 .. NOTE::
 
-   Using ``Test.properties`` rarely makes sense. It was introduced to the FF! before the option to use ``StageSpecifics_LOC.properties``. There may be a use case because ``StageSpecifics_LOC.properties`` is the same for every developer in a development team - it is checked in into version control. If an individual developer wants to introduce properties in his local development environment that are not relevant for the others, he can use ``Test.properties`` and make sure not to check this in.
+   Using ``Test.properties`` rarely makes sense and should always be in `.gitignore` if present to keep it out of version control. There may be a use case because ``StageSpecifics_LOC.properties`` is the same for every developer in a development team. With ``Test.properties``, an individual developer can introduce properties in his local development environment that are not relevant for the other developers in the team.
 
 You can use these property files to configure your properties differently for different deployment environments. As an example, suppose that your Frank calls a REST service hosted on https://someservice.io. If this service manages sensitive data, you do not want to access it during testing. You want clones of the REST service that work with fake data, so-called stubs. Within your company (DTAP stages local, development and test), you may want testdata that differs from the test data the customer has (DTAP stage acceptance). These two different stubs could be hosted on https://dev.someservice.io and https://acc.someservice.io.
 
