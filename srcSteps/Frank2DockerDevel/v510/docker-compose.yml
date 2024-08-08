@@ -10,7 +10,6 @@ services:
       dtap.stage: LOC
       configurations.directory.autoLoad: true
       configurations.names: ""
-      jdbc.require: false
       management.gateway.inbound.class: "org.frankframework.management.gateway.HazelcastInboundGateway"
   frank-flow:
     image: frankframework/frank-flow

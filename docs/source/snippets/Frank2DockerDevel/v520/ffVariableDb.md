@@ -1,4 +1,4 @@
-```none{3, 6, 13, 14, 15, 16, 17, 18}
+```none{14}
 services:
   frank-docker-example:
     image: frankframework/frankframework:8.2.0-SNAPSHOT
@@ -12,6 +12,7 @@ services:
       configurations.directory.autoLoad: true
       configurations.names: ""
       management.gateway.inbound.class: "org.frankframework.management.gateway.HazelcastInboundGateway"
+      jdbc.datasource.default: "jdbc/db-loc"
   frank-flow:
     image: frankframework/frank-flow
     ports:

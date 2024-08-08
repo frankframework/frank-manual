@@ -10,4 +10,3 @@ services:
       dtap.stage: LOC
       configurations.directory.autoLoad: true
       configurations.names: ""
-      jdbc.require: false

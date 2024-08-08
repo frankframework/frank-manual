@@ -1,5 +1,5 @@
 .. code-block:: none
-   :emphasize-lines: 3, 6, 13, 14, 15, 16, 17, 18
+   :emphasize-lines: 14
 
    services:
      frank-docker-example:
@@ -14,6 +14,7 @@
          configurations.directory.autoLoad: true
          configurations.names: ""
          management.gateway.inbound.class: "org.frankframework.management.gateway.HazelcastInboundGateway"
+         jdbc.datasource.default: "jdbc/db-loc"
      frank-flow:
        image: frankframework/frank-flow
        ports:
