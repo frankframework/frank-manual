@@ -57,11 +57,11 @@ The mentioned files ``Test.properties`` ... ``DeploymentSpecifics.properties`` c
 #. ``DeploymentSpecifics.properties``, configuration level.
 #. ``DeploymentSpecifics.properties``, application level.
 
-As said before, the FF! first reads all properties files and then uses that data to give each property the right value. This allows developers to instantiate properties based on other properties. You can have an application-level ``DeploymentSpecifics.properties`` that defines ``prop.appl`` and a configuration level ``DeploymentSpecifics.properties`` that sets ``prop.conf=${prop.appl}``.
+As said before, the FF! first reads all properties files and then uses that data to give each property the right value. This allows developers to instantiate properties based on other properties. You can have an application-level ``DeploymentSpecifics.properties`` that defines ``prop.appl`` and a configuration level ``DeploymentSpecifics.properties`` (higher precedence) that sets ``prop.conf=${prop.appl}``. You can also have a ``StageSpecifics_LOC.properties`` (higher precedence) that defines ``prop_high`` and a ``DeploymentSpecifics.properties`` that defines ``prop_low=${prop_high}``.
 
 .. WARNING::
 
-   It does not make sense to reverse this example. If multiple configurations are present on the same instance of the FF!, then it does not make sense to define some application-level property based on properties that are defined on the configuration level.
+   It is NOT possible to define application-level properties based on configuration-level properties! Application-level properties have to be calculated while the FF! boots, before the FF! reads configurations outside the application level (shown as ``classes`` in :ref:`propertiesDeploymentEnvironment`.
 
 In addition to the chain of system properties and property files, some properties have default values. These default values are listed in subsection :ref:`propertiesFramework`. If some property is not configured by the system administrator and if it is not defined in the property files read by the Frank!Framework, then the default value is applied.
 
