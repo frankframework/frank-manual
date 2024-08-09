@@ -207,7 +207,7 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1041:** Given is that I am looking at the white box view (story **1310**). For each pipe, I want to see an info checkpoint with the source code of that pipe.
 
-**1048:** As a support engineer or Frank developer, I want a single report when my adapter calls another adapter via a JavaListener. This way, I do not have to browse multiple reports to examine how my incoming message was processed. The sub-adapter checkpoints should have a common ancestor. When I collapse that ancestor, I want to see only one node for everything done in the sub-adapter.
+**1048:** As a support engineer or Frank developer, I want a single report when my adapter calls another adapter via a JavaListener. This way, I do not have to browse multiple reports to examine how my incoming message was processed. The sub-adapter checkpoints should have a common ancestor. When I collapse that ancestor, I want to see only one node for everything done in the sub-adapter. The same applies if adapters from the same configuration enqueue and dequeue a message from a JMS queue or when a ``ForEachChildElementPipe`` is applied.
 
 **1050:** As a support engineer or Frank developer, I want to see the value of the selected node in the debug tree.
 
