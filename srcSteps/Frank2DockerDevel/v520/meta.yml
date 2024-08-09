@@ -1,3 +1,4 @@
+- predecessor: v510
 - file:
     path: docker-compose.yml
     change:
