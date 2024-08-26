@@ -45,9 +45,9 @@
                 <Forward name="success" path="success" />
                 <Forward name="exception" path="serverError" />
             </SenderPipe>
-            <EchoPipe name="answerBadRequest" getInputFromFixedValue="bad request">
+            <FixedResultPipe name="answerBadRequest" returnString="bad request">
                 <Forward name="success" path="badRequest" />
-            </EchoPipe>
+            </FixedResultPipe>
         </Pipeline>
     </Adapter>
 </Configuration>
