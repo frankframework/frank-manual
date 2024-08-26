@@ -1,9 +1,9 @@
 .. code-block:: none
-   :emphasize-lines: 15
+   :emphasize-lines: 14
 
    services:
      frank-docker-example:
-       image: frankframework/frankframework:8.2.0-SNAPSHOT
+       image: frankframework/frankframework:8.3.0-SNAPSHOT
        ports:
          - 8080:8080
        volumes: &frank-volumes
@@ -12,7 +12,6 @@
          instance.name: frank-docker-example
          dtap.stage: LOC
          configurations.directory.autoLoad: true
-         configurations.names: ""
          management.gateway.inbound.class: "org.frankframework.management.gateway.HazelcastInboundGateway"
          jdbc.datasource.default: "jdbc/db-loc"
          jdbc.migrator.active: true

@@ -1,6 +1,6 @@
 services:
   frank-docker-example:
-    image: frankframework/frankframework:8.2.0-SNAPSHOT
+    image: frankframework/frankframework:8.3.0-SNAPSHOT
     ports:
       - 8080:8080
     volumes: &frank-volumes
@@ -9,7 +9,6 @@ services:
       instance.name: frank-docker-example
       dtap.stage: LOC
       configurations.directory.autoLoad: true
-      configurations.names: ""
       management.gateway.inbound.class: "org.frankframework.management.gateway.HazelcastInboundGateway"
   frank-flow:
     image: frankframework/frank-flow
