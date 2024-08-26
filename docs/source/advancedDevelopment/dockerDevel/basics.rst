@@ -51,6 +51,10 @@ The Frank!Framework runs on multiple application servers, and therefore it suppo
 .. literalinclude:: ../../../../srcSteps/Frank2DockerDevel/v500/configurations/resources.yml
    :language: none
 
+.. WARNING::
+
+   If you use an in-memory H2 database (which makes sense for local testing), it is recommended to include ``DB_CLOSE_ON_EXIT=FALSE`` in the URL. The Frank!Framework closes and opens database connections while working with the database. Without this text in the URL, the H2 database is cleared when the connection to the database is closed.
+
 Finally, a valid configuration is needed, for example in ``configurations/my-config/Configuration.xml``. If you are using this text as a tutorial, you can use the following example:
 
 .. literalinclude:: ../../../../srcSteps/Frank2DockerDevel/v500/configurations/my-config/Configuration.xml
