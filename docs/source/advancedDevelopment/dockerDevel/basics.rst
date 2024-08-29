@@ -19,7 +19,7 @@ Working with the Frank!Runner as was explained in :ref:`gettingStarted` is easy.
   * It copies the ``context.xml`` you provide or it creates one that has a ``<Resource>`` tag for your database.
 * It downloads ``FrankConfig.xsd``, a file you need to have syntax checking while editing Frank configurations.
 
-You may want more insight into these details already during development. You can achieve this by using Docker (see https://hub.docker.com/). WeAreFrank! has created a Docker image that holds the Frank!Framework deployed inside the appropriate version of Apache Tomcat. This image can also be used in your production environment. If you do your development using Docker, your development environment is more similar to your production environment.
+You may want more insight into these details already during development. You can achieve this by using Docker (see https://hub.docker.com/). We have created a Docker image that holds the Frank!Framework deployed inside the appropriate version of Apache Tomcat. This image can also be used in your production environment. If you do your development using Docker, your development environment is more similar to your production environment.
 
 About configuring docker
 ------------------------
@@ -37,7 +37,9 @@ We assume in this section that you have docker and docker-compose on your develo
 Starting the FF! with docker-compose
 ------------------------------------
 
-WeAreFrank! maintains Docker image ``frankframework/frankframework`` on Dockerhub. It runs Linux and contains Apache Tomcat with the Frank!Framework deployed. It configures the Frank!Framework to read configurations from directory ``/opt/frank/configurations``. The Frank!Framework is served under the root context on port 8080. The following ``docker-compose.yml`` is sufficient to get started:
+Docker images are provided, suitable both for local and server use. Images are provided from the registry located at https://nexus.frankframework.org, where images will be stored for as long as possible. Specific nightly builds are made available on DockerHub ``frankframework/frankframework (https://hub.docker.com/r/frankframework/frankframework), but may only be available for 6 months (https://www.docker.com/blog/scaling-dockers-business-to-serve-millions-more-developers-storage). The source is available from the docker-folder in the `frankframework/frankframework` GitHub repository.
+
+It runs Linux and contains Apache Tomcat with the Frank!Framework deployed. It configures the Frank!Framework to read configurations from directory ``/opt/frank/configurations``. The Frank!Framework is served under the root context on port 8080. The following ``docker-compose.yml`` is sufficient to get started:
 
 .. literalinclude:: ../../../../srcSteps/Frank2DockerDevel/v500/docker-compose.yml
    :language: none
