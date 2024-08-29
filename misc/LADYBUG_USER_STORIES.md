@@ -62,6 +62,8 @@ This page presents a few main user stories and groups the other userstories as s
 
 **20:** As a Frank developer, support engineer or service manager, when I click a row in the table I want to see the corresponding report in the tree view so that I can examine it in more detail.
 
+**30:** A report should only appear in the report table when capturing it is done. This means that the first start checkpoint has been matched by an end checkpoint. This implies that reports-in-progress (story **300**) should not appear in the table.
+
 **120:** Given is that a service manager wants to see customer-specific data in the table of reports (story **10**). As a Frank developer, I want tools to define meta data items that are calculated from reports (input and output data, also data captured in arbitrary checkpoints). I want simple building blocks that I can combine, similar to building Frank configurations from pipes, senders and listeners. I want the option to configure the Frank!Framework to add the custom meta data items as columns in the table of reports. This way I can satisfy the requirements given to me by the service manager within a limited timeframe.
 
 NOTE: We implement story **120** because Frank developers can write Spring configuration files (XML). These files define what Java beans are used as metadata extractors and what metadata is used to produce the table of reports. Instructions are in the Frank!Manual but they also require some knowledge of the Java source code of Ladybug.
@@ -80,11 +82,13 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 
 **220:** As a user I want to have standard sorting options in the table of reports. This means at least sorting on any column and both ascending and descending.
 
-**300:** Given is that messages are being processed in the production environment. As a service manager I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint.
+**300:** Given is that messages are being processed in the production environment. As a service manager I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint. In other words: when a start checkpoint is captured for a new correlation id, then there is a report-in-progress. When the start checkpoint is matched by an end checkpoint, the report-in-progress becomes a regular report.
 
-**310:** Given is that processing a message is taking long - after a long time there is no end checkpoint that corresponds to the start checkpoint (this is a report-in-progress, see story **300**). As a service manager I want Ladybug to forcibly produce a report after a timeout so that I can examine what is happening.
+**302:** As a service manager, I want to see a warning if there are reports-in-progress that have not been closed for, say, 5 minutes.
 
-**330:** As a Frank developer, I want to be able to configure the time threshold of story **310** so that the customer is not bothered by such a detailed configuration setting.
+**304:** Given is that the application is not behaving as expected. As a service manager or support engineer, I want the option to open any report-in-progress. This means that I want to see all information in all checkpoints that have been captured already.
+
+**330:** As a Frank developer, I want to be able to configure the time threshold of story **302** so that the customer is not bothered by such a detailed configuration setting.
 
 **400:** As a service manager, I want reports to be stored persistently. Reports should not vanish when the Frank!Framework is restarted.
 
