@@ -254,6 +254,8 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1250:** Given is that I am doing some analysis involving multiple reports. Given is also that I have configured the tree view to allow multiple reports (story **1200**). If the tree view is empty and if I open multiple reports simultaneously, the reports should appear in the tree view in the same sequence as they are in the report table. This way the reports in the tree view have a predictable sequence, helping me to do my analysis more efficiently.
 
+**1260:** Given is that I captured two reports that I expect to be similar. Given is also that one of them shows correct behavior and the other shows incorrect behavior. As a Frank developer or support engineer, I want to compare these two reports so that I can analyze what went wrong.
+
 **1300:** Given is that I as a service manager am investigating an issue with my application. In the debug tree, I want the option to see only the checkpoints within each report that are about communicating with external systems. This is currently known as the black box view.
 
 **1310:** Given is that I as a support engineer or Frank developer am investigating an issue. In the debug tree, I want the option to see all the checkpoints within each report. This is known as the white box view.
