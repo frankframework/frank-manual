@@ -314,9 +314,13 @@ TODO: Should we allow stories **2060** and **2070** when only one report is allo
 
 **3010:** Given is that I am testing my application as a Frank developer. I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the configured XSLT transformation (user story **2010**).
 
-**3015:** Given is that I have rerun a report and that there were difference (test failed). Given is also that this failure is a false negative - the requirements of the app have changed. As a Frank developer, I want the option to replace the expected value with the actual value.
+**3015:** Given is that I have rerun a report and that there were differences (test failed). Given is also that this failure is a false negative - the requirements of the app have changed. As a Frank developer, I want the option to replace the expected value with the actual value.
 
 **3020:** Given is that I am testing my application as a Frank developer. I want the option to rerun a single report in the test tab.
+
+**3023:** As a Frank developer, I want the option to delete reports from the test tab.
+
+**3027:** As a Frank developer, I want an are-you-sure dialog when I am deleting reports from the test tab, so that I will not delete reports by accident.
 
 **3030:** Given is that I am testing my application as a Frank developer. I want the option to organize the reports in the Test tab. I want to create groups of tests that can have sub-groups. A tree structure in which the composite nodes are test groups and the leaf nodes are reports. This structure gives me an overview of the tests I have.
 
@@ -330,7 +334,7 @@ TODO: Should we allow stories **2060** and **2070** when only one report is allo
 
 NOTE: Story **3060** is not trivial because rerunning reports happens in the background.
 
-**3070:** Given is that I as a Frank developer are testing my app in the DTAP test environment. I want the option to rerun a single report in the debug tab. This is relevant in the context of story **2060**.
+**3070:** Given is that I as a Frank developer am testing my app in the DTAP test environment. I want the option to rerun a single report in the debug tab. This is relevant in the context of story **2060**.
 
 **3100:** Given is that I have rerun a report as a Frank developer and that this test failed. I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
 
