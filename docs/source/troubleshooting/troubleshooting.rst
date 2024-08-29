@@ -237,7 +237,7 @@ Test ApiListener with authentication (without Larva)
 
 **Answer:** In the configuration, make the authenticationMethod a configurable property (for example ``${​​​​api.authMethod}​​​​​​​​​​​``.
 
-Assuming you've set these exact properties in the DeploymentSpecifics.properties, you can 'disable' it's behaviour in the StageSpecifics_LOC.properties by setting:
+Assuming you've set these exact properties in the DeploymentSpecifics.properties, you can 'disable' its behaviour in the StageSpecifics_LOC.properties by setting:
 
 .. code-block:: none 
 
