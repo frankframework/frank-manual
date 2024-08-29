@@ -262,6 +262,24 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1330:** Given is that multiple users with multiple interests use the debug tree. As a user I want that the view I select (story **510**) also determines which checkpoints of my reports are shown: **1300**, **1310** or **1320**, in other words white box, gray box or black box.
 
+**1400:** Given is that I am analyzing an issue with my application and that I have to deal with a report that has many checkpoints. As a Frank developer or support engineer, I want the option to search within the reports that are open in the tree view. Nodes with search results should be highlighted. After this, I can select the highlighted nodes to see detailed information.
+
+NOTE: Searching only has to be supported in the debug tab.
+
+**1410:** Given is that a search has been done (story **1400**). If a hidden node matches the search query, hidden because an ancestor is collapsed, then the first visible ancestor should be highlighted. If a visible node matches the search query, non-matching ancestors should not be highlighted.
+
+**1420:** Given is that a search query has been done (story **1400**). If I as a user expand and collapse nodes after my search, then the highlighting should be updated so that the requirement of **1410** remains satisfied.
+
+**1430:** Given is that I as a user did a search (story **1400**). A node should match both if the text in the tree view matches or if the value of the node matches as it would appear when the matching node would be selected.
+
+**1440:** Given is that I as a user did a search (story **1400**) and that the view I chose omits nodes from the tree view (story **1330**). I want that omitted nodes do not match so that I can always see why a node matches my search criterion.
+
+NOTE: Story **1440** means that parent nodes will not be highlighted solely because a hidden child node, hidden because of the view here, matches a search query.
+
+**1450:** Given is that I as a user did a search (story **1400**) and that I choose another view after my search. Then I want that the requirement of story **1440** remains satisfied.
+
+**1460:** Given is that I as a user did a search (story **1400**) but that the search criterion is no longer relevant for me. I want the option to clear all highlighting and clear the search query I entered.
+
 # I want to turn a report into a test case
 
 **2000:** Given is that I am building an automated test from a report. As a Frank developer I want the option to edit the message within each checkpoint. When the report is rerun, the produced message will be compared to the edited message instead of the message originally captured.
