@@ -185,7 +185,7 @@ Transaction attribute on receiver or pipeline?
 
 **Question:** Both the ``<Receiver>`` and the ``<Pipeline>`` tag has attribute ``transactionAttribute``. Which element should you choose?
 
-**Answer:** It really depends on what you want to achieve! The purpose of a transaction is that all data modifications should succeed or none should happen. The ``<Receiver>`` does part of the work such as accepting a message from a queue. It's responsibility is to safely read and processes the message. Depending on additional elements on the ``<Receiver>`` such as an ``<ErrorStorage>`` it also adds a fail-safe mechanism if the message cannot be processed at this time. The ``<Pipeline>`` processes the information, and can be fed by multiple receivers. Typically, some receivers support transactions and some do not. If a receivers that supports transactions has the ``transactionAttribute``, the pipeline after the receiver will inherit the transaction.
+**Answer:** It really depends on what you want to achieve! The purpose of a transaction is that all data modifications should succeed or none should happen. The ``<Receiver>`` does part of the work such as accepting a message from a queue. Its responsibility is to safely read and processes the message. Depending on additional elements on the ``<Receiver>`` such as an ``<ErrorStorage>`` it also adds a fail-safe mechanism if the message cannot be processed at this time. The ``<Pipeline>`` processes the information, and can be fed by multiple receivers. Typically, some receivers support transactions and some do not. If a receivers that supports transactions has the ``transactionAttribute``, the pipeline after the receiver will inherit the transaction.
 
 .. WARNING::
 
