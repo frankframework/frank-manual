@@ -356,6 +356,10 @@ NOTE: Details of the algorithm implied in **3110** and **3120** are not needed h
 
 **3220:** Because of the context of story **2060**, downloading and uploading reports should be possible both in the debug tab and in the test tab.
 
+**3300:** As a Frank developer, I want the option to convert Ladybug reports in the test tab to Larva test cases.
+
+NOTE: Story *3300** is not hard-coded into Ladybug because Larva is not part of Ladybug. We have a plugin mechanism, custom report actions, that can be configured through Spring beans. Something like ``<bean name="customReportAction" class="nl.nn.testtool.extensions.DummyReportAction"/>``. The bean should have a function that takes a Ladybug report as argument.
+
 # I want to configure whether my Frank application does produce reports
 
 **4000:** As a service manager I want the option to turn off the report generator, so that I can reduce the execution time of my application.
