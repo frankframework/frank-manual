@@ -219,7 +219,7 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1054:** When I have selected a start point / end point of a pipeline / pipe / sender, I want to see the incoming / outgoing message. Along with that message, the FF!-generated metadata should be shown.
 
-**1056:** When I have selected the root node of a report (story **1240** says there should be one), the value I want to see is the report in XML form, the ladybug-generated metadata, the description (story **2040**) and the XSLT transformation (story **2010**).
+**1056:** When I have selected the root node of a report (story **1240** says there should be one), the value I want to see is the report in XML form, the ladybug-generated metadata, the description (story **2040**) and the report's XSLT transformation (story **2010**) if present.
 
 **1058:** Given is that I have selected a checkpoint like described in story **1054**. If the message is too large, the message should be shown truncated and a warning should be shown. The warning should make clear that the user is not seeing the complete message.
 
@@ -286,11 +286,11 @@ NOTE: Story **1440** means that parent nodes will not be highlighted solely beca
 
 **2000:** Given is that I am building an automated test from a report. As a Frank developer I want the option to edit the message within each checkpoint. When the report is rerun, the produced message will be compared to the edited message instead of the message originally captured.
 
-**2010:** Given is that I am building an automated test from a report. As a Frank developer I want the option to configure an XSLT transformation that is applied to each message inside each checkpoint. When a report is rerun, the XSLT transformation is applied to the produced messages and it is applied to the messages inside the checkpoints. For each checkpoint, the two transformation results are compared. This way, irrelevant differences can be ignored. Irrelevant differences are produced for example if the current time is used by a Frank application.
+**2010:** Given is that I am building an automated test from a report. As a Frank developer I want the option to configure an XSLT transformation as part of my report that is applied to each message inside each checkpoint. When a report is rerun, the XSLT transformation is applied to the produced messages and it is applied to the messages inside the checkpoints. For each checkpoint, the two transformation results are compared. This way, irrelevant differences can be ignored. Irrelevant differences are produced for example if the current time is used by a Frank application.
 
-**2012:** Given is that I am using a report as a test case and that I did not edit an XSLT transformation as indiciated in story **2010**. This means that I am rerunning such a report. As a user, I want the following. If the inputs and the outputs and the behavior of the external systems are the same, then I want my test to succeed because I do not want false negatives.
+**2012:** Given is that I am using a report as a test case and that I did not add an XSLT transformation as indiciated in story **2010**. This means that I am rerunning such a report. As a user, I want the following. If the inputs and the outputs and the behavior of the external systems are the same, then I want my test to succeed because I do not want false negatives.
 
-NOTE: Story **2012** can be implemented by giving original-capture reports a default XSLT transformation.
+**2014:** Story **2012** is implemented by a default XSLT transformation. As a Frank developer or support engineer, I want the option to edit the default XSLT transformation.
 
 **2020:** Given is that I am building an automated test from a report. As a Frank developer I want the option to declare some checkpoints **stubbed**, checkpoints that correspond to calls to external systems. When the report is rerun, the Frank!Framework should not call the external systems again but it should return the results already stored in the stubbed checkpoints. This way, only the logic within the Frank configuration captured in the report is tested, not the behavior of the external systems. Stubbing allows Frank developers to work with a simpler test environment, because the test does not require access to external systems.
 
@@ -314,7 +314,9 @@ TODO: Should we allow stories **2060** and **2070** when only one report is allo
 
 **3005:** For each report I see in the test tab, I want to see its name and its description (story **2040**).
 
-**3010:** Given is that I am testing my application as a Frank developer. I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the configured XSLT transformation (user story **2010**).
+**3010:** Given is that I am testing my application as a Frank developer. I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the report's XSLT transformation (user story **2010**) or the default XSLT transformation (story **2014**).
+
+**3012:** In the context of story **3010**, the XSLT transformation of a report takes precedence over the configured XSLT transformation.
 
 **3015:** Given is that I have rerun a report and that there were differences (test failed). Given is also that this failure is a false negative - the requirements of the app have changed. As a Frank developer, I want the option to replace the expected value with the actual value.
 
