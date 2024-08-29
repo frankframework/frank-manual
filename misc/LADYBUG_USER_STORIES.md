@@ -234,6 +234,8 @@ For completeness, it should be noted that Frank configurations can also be writt
 * For each sender the timestamp when a message was sent.
 * For each sender the timestamp when a response was received.
 
+**1083:** In the debug tree, the following information should be available as ladybug-generated metadata, FF! metadata or session keys: All HTTP headers of a HTTP request received by a Frank configuration, typically through ``ApiListener``.
+
 **1100:** As a support engineer or Frank developer, I want the option to remove a report from the tree view when I am done with it. This does not mean that a report is removed from persistent storage.
 
 **1200:** As a user I want the option to have multiple reports in the tree view simultaneously so that I can easily switch between a few reports I am interested in.
