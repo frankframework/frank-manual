@@ -1,0 +1,22 @@
+- predecessor: v510
+- file:
+    path: docker-compose.yml
+    change:
+      - insert: 1
+        highlight: true
+        snippet: ffVariableDb
+- file:
+    path: configurations/resources.yml
+    change:
+      - old: 1
+        new: 1
+        highlight: true
+        snippet: resourceVariableDb
+- snippet:
+    name: ffVariableDb
+    markup: none
+    context: 50
+- snippet:
+    name: resourceVariableDb
+    markup: none
+    context: 50

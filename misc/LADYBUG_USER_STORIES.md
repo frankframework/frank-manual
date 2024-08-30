@@ -58,7 +58,11 @@ This page presents a few main user stories and groups the other userstories as s
 * **Estimated memory usage:** Estimated amount of memory needed to work with this report (size when the data is not compressed).
 * **Storage size:** Estimated number of bytes needed to store this report (size needed after possible data compression).
 
+**17:** As a user, I want that the reports in the table are colored based on the value of the Status column. This allows me to see quickly which reports belong to successful pipeline executions and which not.
+
 **20:** As a Frank developer, support engineer or service manager, when I click a row in the table I want to see the corresponding report in the tree view so that I can examine it in more detail.
+
+**30:** A report should only appear in the report table when capturing it is done. This means that the first start checkpoint has been matched by an end checkpoint. This implies that reports-in-progress (story **300**) should not appear in the table.
 
 **120:** Given is that a service manager wants to see customer-specific data in the table of reports (story **10**). As a Frank developer, I want tools to define meta data items that are calculated from reports (input and output data, also data captured in arbitrary checkpoints). I want simple building blocks that I can combine, similar to building Frank configurations from pipes, senders and listeners. I want the option to configure the Frank!Framework to add the custom meta data items as columns in the table of reports. This way I can satisfy the requirements given to me by the service manager within a limited timeframe.
 
@@ -78,11 +82,13 @@ NOTE: We implement story **120** because Frank developers can write Spring confi
 
 **220:** As a user I want to have standard sorting options in the table of reports. This means at least sorting on any column and both ascending and descending.
 
-**300:** Given is that messages are being processed in the production environment. As a service manager I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint.
+**300:** Given is that messages are being processed in the production environment. As a service manager I want to see how many reports-in-progress there are. There is a report-in-progress if for some correlation id the start checkpoint is not yet matched by a corresponding end checkpoint. In other words: when a start checkpoint is captured for a new correlation id, then there is a report-in-progress. When the start checkpoint is matched by an end checkpoint, the report-in-progress becomes a regular report.
 
-**310:** Given is that processing a message is taking long - after a long time there is no end checkpoint that corresponds to the start checkpoint (this is a report-in-progress, see story **300**). As a service manager I want Ladybug to forcibly produce a report after a timeout so that I can examine what is happening.
+**302:** As a service manager, I want to see a warning if there are reports-in-progress that have not been closed for, say, 5 minutes.
 
-**330:** As a Frank developer, I want to be able to configure the time threshold of story **310** so that the customer is not bothered by such a detailed configuration setting.
+**304:** Given is that the application is not behaving as expected. As a service manager or support engineer, I want the option to open any report-in-progress. This means that I want to see all information in all checkpoints that have been captured already.
+
+**330:** As a Frank developer, I want to be able to configure the time threshold of story **302** so that the customer is not bothered by such a detailed configuration setting.
 
 **400:** As a service manager, I want reports to be stored persistently. Reports should not vanish when the Frank!Framework is restarted.
 
@@ -181,6 +187,10 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1031:** As a user, I want to click only once to expand or collapse a node. In other words: if I click on the `>` or `v` sign to the left of an expandable node that was not selected yet, then I want the node to become the selected one AND I want to toggle its expanded or collapsed state.
 
+**1031a:** As a user, I want the option to expand all parent checkpoints in the debug tree at once so that I can see all the details with one click.
+
+**1031b:** As a user, I want the option to collapse all parent checkpoints in the debug tree at once so that I can hide all details I am not interested in with one click.
+
 **1032:** Given is that I am looking at the white box view (story **1310**). As a user, I want to see a start checkpoint and an end checkpoint for each pipeline so that I can see how the pipeline transformed the message. If an error occurred in the pipeline, I do not want an end point but an abort point that shows me information about the error.
 
 **1033:** Given is that I am looking at the white box view (story **1310**). As a user, I want to have a start checkpoint and an end checkpoint for each pipe so that I can see how each pipe transformed the incoming message. If an error occurred, I do not want to see and end point but an abort point that shows me information about the error.
@@ -201,7 +211,7 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1041:** Given is that I am looking at the white box view (story **1310**). For each pipe, I want to see an info checkpoint with the source code of that pipe.
 
-**1048:** As a support engineer or Frank developer, I want a single report when my adapter calls another adapter via a JavaListener. This way, I do not have to browse multiple reports to examine how my incoming message was processed. The sub-adapter checkpoints should have a common ancestor. When I collapse that ancestor, I want to see only one node for everything done in the sub-adapter.
+**1048:** As a support engineer or Frank developer, I want a single report when my adapter calls another adapter via a JavaListener. This way, I do not have to browse multiple reports to examine how my incoming message was processed. The sub-adapter checkpoints should have a common ancestor. When I collapse that ancestor, I want to see only one node for everything done in the sub-adapter. The same applies if adapters from the same configuration enqueue and dequeue a message from a JMS queue or when a ``ForEachChildElementPipe`` is applied.
 
 **1050:** As a support engineer or Frank developer, I want to see the value of the selected node in the debug tree.
 
@@ -209,11 +219,26 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1054:** When I have selected a start point / end point of a pipeline / pipe / sender, I want to see the incoming / outgoing message. Along with that message, the FF!-generated metadata should be shown.
 
-**1056:** When I have selected the root node of a report (story **1240** says there should be one), the value I want to see is the report in XML form, the ladybug-generated metadata, the description (story **2040**) and the XSLT transformation (story **2010**).
+**1056:** When I have selected the root node of a report (story **1240** says there should be one), the value I want to see is the report in XML form, the ladybug-generated metadata, the description (story **2040**) and the report's XSLT transformation (story **2010**) if present.
 
 **1058:** Given is that I have selected a checkpoint like described in story **1054**. If the message is too large, the message should be shown truncated and a warning should be shown. The warning should make clear that the user is not seeing the complete message.
 
 **1059:** As a Frank developer, I want to be able to configure a threshold for story **1058**. When a message is longer than the configured threshold, then the message is shown truncated.
+
+**1070:** As a support engineer or Frank developer, I want to see ladybug-generated metadata about the selected node. At least the following metadata fields should be shown:
+
+* The checkpoint type, same as the type defined in story 1010.
+* The level of nesting of checkpoints.
+* TODO: What more?
+
+**1080:** In the debug tree, the following information should be available as ladybug-generated metadata or FF! metadata:
+
+* The timestamp an imcoming message was received.
+* The timestamp when processing was done.
+* For each sender the timestamp when a message was sent.
+* For each sender the timestamp when a response was received.
+
+**1083:** In the debug tree, the following information should be available as ladybug-generated metadata, FF! metadata or session keys: All HTTP headers of a HTTP request received by a Frank configuration, typically through ``ApiListener``.
 
 **1100:** As a support engineer or Frank developer, I want the option to remove a report from the tree view when I am done with it. This does not mean that a report is removed from persistent storage.
 
@@ -229,6 +254,8 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1250:** Given is that I am doing some analysis involving multiple reports. Given is also that I have configured the tree view to allow multiple reports (story **1200**). If the tree view is empty and if I open multiple reports simultaneously, the reports should appear in the tree view in the same sequence as they are in the report table. This way the reports in the tree view have a predictable sequence, helping me to do my analysis more efficiently.
 
+**1260:** Given is that I captured two reports that I expect to be similar. Given is also that one of them shows correct behavior and the other shows incorrect behavior. As a Frank developer or support engineer, I want to compare these two reports so that I can analyze what went wrong.
+
 **1300:** Given is that I as a service manager am investigating an issue with my application. In the debug tree, I want the option to see only the checkpoints within each report that are about communicating with external systems. This is currently known as the black box view.
 
 **1310:** Given is that I as a support engineer or Frank developer am investigating an issue. In the debug tree, I want the option to see all the checkpoints within each report. This is known as the white box view.
@@ -237,15 +264,33 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1330:** Given is that multiple users with multiple interests use the debug tree. As a user I want that the view I select (story **510**) also determines which checkpoints of my reports are shown: **1300**, **1310** or **1320**, in other words white box, gray box or black box.
 
+**1400:** Given is that I am analyzing an issue with my application and that I have to deal with a report that has many checkpoints. As a Frank developer or support engineer, I want the option to search within the reports that are open in the tree view. Nodes with search results should be highlighted. After this, I can select the highlighted nodes to see detailed information.
+
+NOTE: Searching only has to be supported in the debug tab.
+
+**1410:** Given is that a search has been done (story **1400**). If a hidden node matches the search query, hidden because an ancestor is collapsed, then the first visible ancestor should be highlighted. If a visible node matches the search query, non-matching ancestors should not be highlighted.
+
+**1420:** Given is that a search query has been done (story **1400**). If I as a user expand and collapse nodes after my search, then the highlighting should be updated so that the requirement of **1410** remains satisfied.
+
+**1430:** Given is that I as a user did a search (story **1400**). A node should match both if the text in the tree view matches or if the value of the node matches as it would appear when the matching node would be selected.
+
+**1440:** Given is that I as a user did a search (story **1400**) and that the view I chose omits nodes from the tree view (story **1330**). I want that omitted nodes do not match so that I can always see why a node matches my search criterion.
+
+NOTE: Story **1440** means that parent nodes will not be highlighted solely because a hidden child node, hidden because of the view here, matches a search query.
+
+**1450:** Given is that I as a user did a search (story **1400**) and that I choose another view after my search. Then I want that the requirement of story **1440** remains satisfied.
+
+**1460:** Given is that I as a user did a search (story **1400**) but that the search criterion is no longer relevant for me. I want the option to clear all highlighting and clear the search query I entered.
+
 # I want to turn a report into a test case
 
 **2000:** Given is that I am building an automated test from a report. As a Frank developer I want the option to edit the message within each checkpoint. When the report is rerun, the produced message will be compared to the edited message instead of the message originally captured.
 
-**2010:** Given is that I am building an automated test from a report. As a Frank developer I want the option to configure an XSLT transformation that is applied to each message inside each checkpoint. When a report is rerun, the XSLT transformation is applied to the produced messages and it is applied to the messages inside the checkpoints. For each checkpoint, the two transformation results are compared. This way, irrelevant differences can be ignored. Irrelevant differences are produced for example if the current time is used by a Frank application.
+**2010:** Given is that I am building an automated test from a report. As a Frank developer I want the option to configure an XSLT transformation as part of my report that is applied to each message inside each checkpoint. When a report is rerun, the XSLT transformation is applied to the produced messages and it is applied to the messages inside the checkpoints. For each checkpoint, the two transformation results are compared. This way, irrelevant differences can be ignored. Irrelevant differences are produced for example if the current time is used by a Frank application.
 
-**2012:** Given is that I am using a report as a test case and that I did not edit an XSLT transformation as indiciated in story **2010**. This means that I am rerunning such a report. As a user, I want the following. If the inputs and the outputs and the behavior of the external systems are the same, then I want my test to succeed because I do not want false negatives.
+**2012:** Given is that I am using a report as a test case and that I did not add an XSLT transformation as indiciated in story **2010**. This means that I am rerunning such a report. As a user, I want the following. If the inputs and the outputs and the behavior of the external systems are the same, then I want my test to succeed because I do not want false negatives.
 
-NOTE: Story **2012** can be implemented by giving original-capture reports a default XSLT transformation.
+**2014:** Story **2012** is implemented by a default XSLT transformation. As a Frank developer or support engineer, I want the option to edit the default XSLT transformation.
 
 **2020:** Given is that I am building an automated test from a report. As a Frank developer I want the option to declare some checkpoints **stubbed**, checkpoints that correspond to calls to external systems. When the report is rerun, the Frank!Framework should not call the external systems again but it should return the results already stored in the stubbed checkpoints. This way, only the logic within the Frank configuration captured in the report is tested, not the behavior of the external systems. Stubbing allows Frank developers to work with a simpler test environment, because the test does not require access to external systems.
 
@@ -269,11 +314,21 @@ TODO: Should we allow stories **2060** and **2070** when only one report is allo
 
 **3005:** For each report I see in the test tab, I want to see its name and its description (story **2040**).
 
-**3010:** Given is that I am testing my application as a Frank developer. I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the configured XSLT transformation (user story **2010**).
+**3010:** Given is that I am testing my application as a Frank developer. I want the option to *rerun* reports. Rerunning a report means that the Frank adapter that produced the report is re-executed. The same input message is supplied. For each pipe, the produced output is compared with the value stored with the corresponding checkpoint. The test succeeds if the new messages are the same after applying the report's XSLT transformation (user story **2010**) or the default XSLT transformation (story **2014**).
+
+**3012:** In the context of story **3010**, the XSLT transformation of a report takes precedence over the configured XSLT transformation.
+
+**3015:** Given is that I have rerun a report and that there were differences (test failed). Given is also that this failure is a false negative - the requirements of the app have changed. As a Frank developer, I want the option to replace the expected value with the actual value.
 
 **3020:** Given is that I am testing my application as a Frank developer. I want the option to rerun a single report in the test tab.
 
+**3023:** As a Frank developer, I want the option to delete reports from the test tab.
+
+**3027:** As a Frank developer, I want an are-you-sure dialog when I am deleting reports from the test tab, so that I will not delete reports by accident.
+
 **3030:** Given is that I am testing my application as a Frank developer. I want the option to organize the reports in the Test tab. I want to create groups of tests that can have sub-groups. A tree structure in which the composite nodes are test groups and the leaf nodes are reports. This structure gives me an overview of the tests I have.
+
+**3035:** In the context of story **3030**, I as a user want my test groups and my tests to be sorted alphabetically. To be precise: a set of nodes that has the same parent should be sorted alphabetically. This makes the order of my tests predictable.
 
 **3040:** Given is that I am testing my application as a Frank developer. I want the option to select test cases and groups of test cases in the test tab. I want the option to rerun the tests I selected. This gives me fine-grained control over my test runs when I want to test parts of my Frank application.
 
@@ -283,9 +338,11 @@ TODO: Should we allow stories **2060** and **2070** when only one report is allo
 
 NOTE: Story **3060** is not trivial because rerunning reports happens in the background.
 
-**3070:** Given is that I as a Frank developer are testing my app in the DTAP test environment. I want the option to rerun a single report in the debug tab. This is relevant in the context of story **2060**.
+**3070:** Given is that I as a Frank developer am testing my app in the DTAP test environment. I want the option to rerun a single report in the debug tab. This is relevant in the context of story **2060**.
 
 **3100:** Given is that I have rerun a report as a Frank developer and that this test failed. I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
+
+**3105:** Given is that I as a user am comparing a report in the context of story **3100**. If a checkpoint differs from its counterpart, I want it to have a different color on both sides so that I can see quickly where the differences are.
 
 **3108:** Given is that I am comparing a report in the context of story **3100**. On one side I have the checkpoints in the report and on the other side I have the checkpoints produced by the rerun. As a user, I want that the selected checkpoint is synchronized. If I select a checkpoint on one side, I want that the corresponding checkpoint on the other side is selected automatically. This helps me to do my analysis more quickly.
 
@@ -295,11 +352,17 @@ NOTE: Story **3060** is not trivial because rerunning reports happens in the bac
 
 NOTE: Details of the algorithm implied in **3110** and **3120** are not needed here. We can make Cypress tests to test that the user will be happy with the algorithm.
 
+**3140:** Given is that I am comparing a failed test report (story **3100**). As a user, I want the option to copy text so that I can paste it elsewhere. This helps me to cooperate with my colleagues and it helps me to analyse rerun failures.
+
 **3200:** As a Frank developer I want the option to download reports and upload them later. This allows me to save reports if I do not trust the persistent storage provided by the Frank!Framework. It also allows me to remove tests from my test cases without losing the test permanently.
 
 **3210:** As a Frank developer I want to use reports as a means to communicate with my colleagues. I want to construct a report and send it to someone else, asking him to update our application such that the test will pass.
 
 **3220:** Because of the context of story **2060**, downloading and uploading reports should be possible both in the debug tab and in the test tab.
+
+**3300:** As a Frank developer, I want the option to convert Ladybug reports in the test tab to Larva test cases.
+
+NOTE: Story *3300** is not hard-coded into Ladybug because Larva is not part of Ladybug. We have a plugin mechanism, custom report actions, that can be configured through Spring beans. Something like ``<bean name="customReportAction" class="nl.nn.testtool.extensions.DummyReportAction"/>``. The bean should have a function that takes a Ladybug report as argument.
 
 # I want to configure whether my Frank application does produce reports
 
@@ -341,3 +404,7 @@ The following features should be available with the Tester role (and not necessa
 **5000:** As a service manager I want Ladybug to be self-explanatory. The user interface should help me to understand what is going on, for example by providing mouse-over texts.
 
 **5010:** Given is that ladybug is not behaving as expected. As a user I want to see a version number for the ladybug frontend. It should point to a unique commit of the ladybug-frontend GitHub project. This way I can read the source code of the ladybug frontend I am not happy with.
+
+**5020:** Given is that ladybug is not behaving as expected, for example because a database error occurs when Ladybug tries to store a report. As a service manager, I want to see an error message in such a situation so that I can inform a support engineer.
+
+**5030:** WeAreFrank! does not want any occurrence of "ibis" in the sources of Ladybug and this word should not appear in the UI. The reason is that our company is called WeAreFrank!, not Integration Partners.

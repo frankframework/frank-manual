@@ -1,3 +1,5 @@
+*Work in progress.*
+
 The basics
 ==========
 
@@ -17,12 +19,12 @@ Working with the Frank!Runner as was explained in :ref:`gettingStarted` is easy.
   * It copies the ``context.xml`` you provide or it creates one that has a ``<Resource>`` tag for your database.
 * It downloads ``FrankConfig.xsd``, a file you need to have syntax checking while editing Frank configurations.
 
-You may want more insight into these details already during development. You can achieve this by using Docker (see https://hub.docker.com/). WeAreFrank! has created a Docker image that holds the Frank!Framework deployed inside the appropriate version of Apache Tomcat. This image can also be used in your production environment. If you do your development using Docker, your development environment is more similar to your production environment. This section focuses on development, however, not on deployment on a production environment.
+You may want more insight into these details already during development. You can achieve this by using Docker (see https://hub.docker.com/). WeAreFrank! has created a Docker image that holds the Frank!Framework deployed inside the appropriate version of Apache Tomcat. This image can also be used in your production environment. If you do your development using Docker, your development environment is more similar to your production environment.
 
 About configuring docker
 ------------------------
 
-We assume in this section that you have docker and docker-compose on your development device. If you work with Windows and Docker Desktop, you have to configure it to allow volumes that use your working directory. Please do the following:
+We assume in this section that you have docker and docker-compose on your development device. This is not an issue for Linux users. If you work with Windows and Docker Desktop, you have to configure it to allow volumes that use your working directory. Please do the following:
 
 1. Go to your Docker Desktop window and press the settings button:
 
@@ -42,13 +44,29 @@ WeAreFrank! maintains Docker image ``frankframework/frankframework`` on Dockerhu
 
 This defines service ``frank-docker-example`` from the mentioned FF! image. It exposes port 8080 of the container to port 8080 on your device. It creates a Docker volume that maps subdirectory ``configurations`` (relative to the project root) to ``/opt/frank/configurations``, allowing you to write your configurations in directory ``configurations`` on your device. Then it sets some necessary properties for the Frank!Framework, most notably ``instance.name`` and ``dtap.stage``. See :ref:`propertiesDeploymentEnvironment` about DTAP stages and :ref:`propertiesFramework` for an overview of all properties that change the behavior of the FF!.
 
-You need one more file because the Frank!Framework expects that there is a database with JNDI name ``jdbc/${instance.name.lc}`` with ``instance.name.lc`` the value of property ``instance.name`` converted to lower-case. To get started, you can use an in-memory H2 database. To do this, create file ``configurations/resources.yml`` with the following contents:
+You need one more file because the Frank!Framework expects that there is a database. Within Frank configurations, the database is referenced by a so-called JNDI name. System administrators can then configure the application server of the deployment environment, such that the JNDI name corresponds to a database. Application server Apache Tomcat expects a file ``context.xml`` for this. By default, the FF! uses a database with JNDI name ``jdbc/${instance.name.lc}`` with ``instance.name.lc`` the value of property ``instance.name`` converted to lower-case.
+
+The Frank!Framework runs on multiple application servers, and therefore it supports a generic mechanism to reference resources. This can be accessed by Frank developers through a file ``resources.yml``. To get started, you can use an in-memory H2 database by creating ``configurations/resources.yml`` as follows:
 
 .. literalinclude:: ../../../../srcSteps/Frank2DockerDevel/v500/configurations/resources.yml
    :language: none
 
-If you also provide a valid configuration in ``configurations/Configuration.xml``, you can start your work using ``docker-compose up``. You can see it on http://localhost:8080.
+.. WARNING::
+
+   If you use an in-memory H2 database (which makes sense for local testing), it is recommended to include ``DB_CLOSE_ON_EXIT=FALSE`` in the URL. The Frank!Framework closes and opens database connections while working with the database. Without this text in the URL, the H2 database is cleared when the connection to the database is closed.
+
+Finally, a valid configuration is needed, for example in ``configurations/my-config/Configuration.xml``. If you are using this text as a tutorial, you can use the following example:
+
+.. literalinclude:: ../../../../srcSteps/Frank2DockerDevel/v500/configurations/my-config/Configuration.xml
+   :language: xml
+
+And add ``configurations/my-config/Configuration_mine.xml``:
+
+.. literalinclude:: ../../../../srcSteps/Frank2DockerDevel/v500/configurations/my-config/Configuration_mine.xml
+   :language: xml
+
+At this point, the development environment can be started using ``docker compose up``. It becomes available at http://localhost:8080.
 
 .. NOTE::
 
-   You may wonder why the shown URL starts with ``http`` instead of ``https`` - is your data safe within the Frank!Framework? The answer has to do with the DTAP stage. Only if ``dtap.stage=LOC`` then access through ``http`` is possible. Otherwise, access is only possible through ``https``. As a service manager, you should check that security is taken care of in your app. The Frank!Framework allows Frank developers to protect the data.
+   You may wonder why the shown URL starts with ``http`` instead of ``https`` - is your data safe within the Frank!Framework? The answer has to do with the DTAP stage. Only if ``dtap.stage=LOC`` then access through ``http`` is possible. Otherwise, access is only possible through ``https``. Service managers should check that security is taken care of in your app. The Frank!Framework allows Frank developers to protect the data.

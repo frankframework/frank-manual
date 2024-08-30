@@ -1,3 +1,5 @@
+*Obsolete - the maintainers of the Frank!Framework provide a Docker image that manages these details.*
+
 .. _deploymentTomcatDatabase:
 
 Deploying with an External Database
