@@ -1,0 +1,19 @@
+meta {
+  name: write-db
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/api/write
+  body: text
+  auth: none
+}
+
+headers {
+  Message-Id: 1000
+}
+
+body:text {
+  My first message
+}
