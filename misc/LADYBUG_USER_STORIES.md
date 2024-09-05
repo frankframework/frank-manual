@@ -268,6 +268,8 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 NOTE: Searching only has to be supported in the debug tab.
 
+**1402:** Given is the context of story **1400**. The data searched is the value in the checkpoint excluding Frank!Framework generated metadata. Ladybug generated metadata should be included in the search when it has meaning with respect to functional requirements of the app. For example, a search query of ``24`` should not match if the timestamp of receiving the message was ``2024-01-01 12:00:00``.
+
 **1410:** Given is that a search has been done (story **1400**). If a hidden node matches the search query, hidden because an ancestor is collapsed, then the first visible ancestor should be highlighted. If a visible node matches the search query, non-matching ancestors should not be highlighted.
 
 **1420:** Given is that a search query has been done (story **1400**). If I as a user expand and collapse nodes after my search, then the highlighting should be updated so that the requirement of **1410** remains satisfied.
