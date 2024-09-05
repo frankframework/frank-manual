@@ -352,6 +352,8 @@ NOTE: Story **3060** is not trivial because rerunning reports happens in the bac
 
 NOTE: Details of the algorithm implied in **3110** and **3120** are not needed here. We can make Cypress tests to test that the user will be happy with the algorithm.
 
+NOTE: As part of the algorithm, Ladybug calculates a metadata field ``Path``. Its value is something like ``/Pipeline processXml[0]/SessionKey originalMessage[0]``. The names of the elements in the Frank configuration are used, and the path components are made unique with an index. This field is useful as debug information about matching checpoints. This field also provides a way to reference checkpoints. The ``Path`` of a checkpoint can be expressed in speech unlike the unique id.
+
 **3140:** Given is that I am comparing a failed test report (story **3100**). As a user, I want the option to copy text so that I can paste it elsewhere. This helps me to cooperate with my colleagues and it helps me to analyse rerun failures.
 
 **3200:** As a Frank developer I want the option to download reports and upload them later. This allows me to save reports if I do not trust the persistent storage provided by the Frank!Framework. It also allows me to remove tests from my test cases without losing the test permanently.
