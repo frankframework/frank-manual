@@ -3,8 +3,10 @@
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
     >
     <Adapter name="writeDb">
-        <Receiver>
+        <Receiver checkForDuplicates="true" processResultCacheSize="0">
             <ApiListener uriPattern="/write" method="POST" />
+            <!-- <JdbcErrorStorage slotId="write-db"/> -->
+            <JdbcMessageLog slotId="write-db"/>
         </Receiver>
         <Pipeline>
             <SenderPipe name="writeTableMessage">
