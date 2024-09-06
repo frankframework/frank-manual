@@ -1,0 +1,15 @@
+meta {
+  name: write-db-correlationid
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/api/write
+  body: text
+  auth: none
+}
+
+body:text {
+  <input correlationId="1000" message="My first message" />
+}
