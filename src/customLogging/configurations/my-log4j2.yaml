@@ -1,0 +1,11 @@
+Configuration:
+  Appenders:
+    Console:
+      name: Customized-stdout
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "MY LAYOUT %m%n"
+  Loggers:
+    Root:
+      AppenderRef:
+        ref: Customized-stdout
