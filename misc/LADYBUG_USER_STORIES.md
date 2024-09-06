@@ -268,6 +268,8 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 NOTE: Searching only has to be supported in the debug tab.
 
+**1402:** Given is the context of story **1400**. The data searched is the value in the checkpoint excluding Frank!Framework generated metadata. Ladybug generated metadata should be included in the search when it has meaning with respect to functional requirements of the app. For example, a search query of ``24`` should not match if the timestamp of receiving the message was ``2024-01-01 12:00:00``.
+
 **1410:** Given is that a search has been done (story **1400**). If a hidden node matches the search query, hidden because an ancestor is collapsed, then the first visible ancestor should be highlighted. If a visible node matches the search query, non-matching ancestors should not be highlighted.
 
 **1420:** Given is that a search query has been done (story **1400**). If I as a user expand and collapse nodes after my search, then the highlighting should be updated so that the requirement of **1410** remains satisfied.
@@ -351,6 +353,8 @@ NOTE: Story **3060** is not trivial because rerunning reports happens in the bac
 **3120:** Given is the context of story **3110**. I want that checkpoints corresponding to the same inputs and outputs to external systems are matched. This statement is intended to clarify the "intelligent choice" of story **3110**.
 
 NOTE: Details of the algorithm implied in **3110** and **3120** are not needed here. We can make Cypress tests to test that the user will be happy with the algorithm.
+
+NOTE: As part of the algorithm, Ladybug calculates a metadata field ``Path``. Its value is something like ``/Pipeline processXml[0]/SessionKey originalMessage[0]``. The names of the elements in the Frank configuration are used, and the path components are made unique with an index. This field is useful as debug information about matching checpoints. This field also provides a way to reference checkpoints. The ``Path`` of a checkpoint can be expressed in speech unlike the unique id.
 
 **3140:** Given is that I am comparing a failed test report (story **3100**). As a user, I want the option to copy text so that I can paste it elsewhere. This helps me to cooperate with my colleagues and it helps me to analyse rerun failures.
 
