@@ -19,7 +19,6 @@ Please do the following to set this up:
 
    This does the following:
 
-   * It selects the latest nightly build of the Frank!Framework. On July 7 2024 this does not work in an official release yet.
    * It sets property ``management.gateway.inbound.class`` so that the Frank!Framework is reachable by the Frank!Flow. The Frank!Flow can then ask the Frank!Framework for the location of the Frank configurations.
    * It creates an alias for the volume you use for your configurations.
    * It adds a service for the Frank!Flow. That service uses an image provided by the developers of the Frank!Framework. The service uses the same volume declaration as the Frank!Framework service so that configurations are at the same directory in the docker container.
