@@ -12,5 +12,5 @@ services:
       instance.name: my-config
       dtap.stage: LOC
       configurations.directory.autoLoad: true
-      log4j.configurationFile: log4j4ibis.xml,file:///opt/frank/my-log4j2.xml
+      log4j.configurationFile: log4j4ibis.xml,file:///opt/frank/my-log4j2.yaml
       testtool.enabled: false
