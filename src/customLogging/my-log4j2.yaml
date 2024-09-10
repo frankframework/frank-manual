@@ -4,7 +4,7 @@ Configuration:
       name: Customized-stdout
       target: SYSTEM_OUT
       PatternLayout:
-        Pattern: "MYLAYOUT%m%n"
+        Pattern: "MYLAYOUT %d{dd MMM yyyy HH:mm:ss,SSS} %m%n"
   Loggers:
     Root:
       AppenderRef:

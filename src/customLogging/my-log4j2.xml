@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<log4j2:Configuration status="warn" xmlns="http://logging.apache.org/log4j/2.0/config" xmlns:log4j2="log4j-config.xsd">
-<!-- https://logging.apache.org/log4j/2.x/manual/customloglevels.html -->
-
-<Appenders>
-<Appender name="stdout" type="Console">
-<Layout type="IbisPatternLayout">
-<Pattern>MYLAYOUT XML - %m%n%xEx{short}</Pattern>
-</Layout>
-</Appender>
-
-
-</Appenders>
-
-<Loggers>
-
-<Root level="${ctx:log.level}">
-<AppenderRef ref="stdout"/>
-</Root>
-</Loggers>
-</log4j2:Configuration>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout 
+              pattern="LAYOUT TEST %d [%t] %-5level %logger{36} - %msg%n%throwable"/>
+        </Console>
+        <Console name="ConsoleAppenderAlt" target="SYSTEM_OUT">
+            <PatternLayout 
+              pattern="LAYOUT TEST HEARTBEAT %d [%t] %-5level %logger{36} - %msg%n%throwable"/>
+        </Console>
+   </Appenders>
+    <Loggers>
+        <Logger name="HEARTBEAT" level="DEBUG">
+            <AppenderRef ref="ConsoleAppenderAlt" />
+        </Logger>
+        <Root level="DEBUG">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
