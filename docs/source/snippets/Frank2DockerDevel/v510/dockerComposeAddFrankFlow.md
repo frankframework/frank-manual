@@ -1,4 +1,4 @@
-```none{3, 6, 12, 13, 14, 15, 16, 17}
+```none{6, 12, 13, 14, 15, 16, 17}
 services:
   frank-docker-example:
     image: frankframework/frankframework:8.3.0-SNAPSHOT

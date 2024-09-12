@@ -1,5 +1,5 @@
 .. code-block:: none
-   :emphasize-lines: 3, 6, 12, 13, 14, 15, 16, 17
+   :emphasize-lines: 6, 12, 13, 14, 15, 16, 17
 
    services:
      frank-docker-example:

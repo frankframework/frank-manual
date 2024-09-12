@@ -1,5 +1,3 @@
-*Work in progress.*
-
 The basics
 ==========
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout 
+              pattern="LAYOUT TEST %d [%t] %-5level %logger{36} - %msg%n%throwable"/>
+        </Console>
+        <Console name="ConsoleAppenderAlt" target="SYSTEM_OUT">
+            <PatternLayout 
+              pattern="LAYOUT TEST HEARTBEAT %d [%t] %-5level %logger{36} - %msg%n%throwable"/>
+        </Console>
+   </Appenders>
+    <Loggers>
+        <Logger name="HEARTBEAT" level="DEBUG">
+            <AppenderRef ref="ConsoleAppenderAlt" />
+        </Logger>
+        <Root level="DEBUG">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

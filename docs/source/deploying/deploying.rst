@@ -20,4 +20,5 @@ Here is the table of contents of this chapter:
    security
    credentials
    IdentityProviders/MicrosoftEntraId/microsoftEntraId
+   customLogging
  

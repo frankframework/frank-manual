@@ -1,6 +1,6 @@
 services:
   frank-docker-example:
-    image: frankframework/frankframework:8
+    image: frankframework/frankframework:8.3.0-SNAPSHOT
     ports:
       - 8080:8080
     volumes:
