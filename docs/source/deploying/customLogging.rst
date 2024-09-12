@@ -10,40 +10,14 @@ The Frank!Framework, which has been programmed in the programming language Java,
 About the generation of log information
 ---------------------------------------
 
-Log4j2 decouples the way Java applications provide log information from writing that information to the intended destination. Every line of log information is written to a specific *logger* and has a *log level* that expresses the importance of the line. A Java class typically creates a logger by a statement like the following:
+Log4j2 decouples the way Java applications provide log information from writing that information to the intended destination. Java code writes every line of log information to a specific *logger*. Along with this message a *log level* is provided that expresses the importance of the line. The most important log levels are ``ERROR``, ``WARN``, ``INFO`` and ``DEBUG``. The logger chosen by the Java developer reveals information about the part of the Java application that is writing the log line. Log4j2 writes the information provided via loggers using *appenders*. An appender determines how a log line is formatted and where the information is written. On the web many third-party appenders are available to write log information to specific destinations, e.g. Splunk.
 
-.. code-block:: java
-
-   protected Logger log = LogUtil.getLogger(this);	
-
-This creates a member variable named ``log`` to which information coming from the current Java class can be written. This statement appears for example in Java class ``org.frankframework.filesystem.AmazonS3FileSystemTest`` (not used in production, only for testing the Frank!Framework). Log information written to this variable ``log`` is considered to be about the operation of Java class ``org.frankframework.filesystem.AmazonS3FileSystemTest`` or some larger part of the Frank!Framework that is implemented by this Java class - in this case some tests related to the Amazon cloud.
-
-The Frank!Framework also writes log information to loggers that are not related to a Java class. For example, there is a logger named ``HEARTBEAT`` to which each Frank adapter (defined by ``<Adapter>`` in a Frank configuration) writes a message as long as it is working properly.
-
-Log information is actually written by a statement like the following:
-
-.. code-block:: java
-
-   log.error("unable to remove bucket", e);
-
-The method ``error()`` is used here, which means that an error is being reported. The message has log level ``ERROR``. Less important log levels are for example ``WARN``, ``INFO`` and ``DEBUG``. System administrators typically use the log level to control how much information they want to see. If they want to see little, they typically set the log level to ``ERROR`` or ``WARN`` to see only the most relevant information. If they want more detailed information, they use ``INFO`` or ``DEBUG``. The logger chosen by the Java developer reveals information about the part of the Java application that is writing the log line. System administrators can use this information to differentiate between parts of the application that require detailed monitoring and parts that need less attention.
-
-Log4j2 writes the information provided via loggers using *appenders*. An appender determines how a log line is formatted and where the information is written. On the web many third-party appenders are available to write log information to specific destinations, e.g. Splunk. A system administrator typically provides a configuration file that references loggers and maps them to appenders. Here is a simple example that modifies the destination and the layout of the log information provided by the Frank!Framework:
-
-.. literalinclude:: ../../../src/customLogging/my-log4j2.xml
-   :language: xml
-
-This file routes logger ``HEARTBEAT`` to the console and adds some nonsensical text to each log line. Here are two lines of the output written by this log configuration:
-
-.. code-block:: none
-
-   customlogging-custom-logging-1  | LAYOUT TEST 2024-09-10 13:39:38,291 [WebSocket-TaskScheduler3] DEBUG org.springframework.integration.channel.PublishSubscribeChannel - postSend (sent=true) on channel 'bean 'frank-management-bus'', message: GenericMessage [payload=NONE, headers={replyChannel=org.springframework.messaging.core.GenericMessagingTemplate$TemporaryReplyChannel@1760fa14, errorChannel=org.springframework.messaging.core.GenericMessagingTemplate$TemporaryReplyChannel@1760fa14, topic=ADAPTER, action=GET, meta-expanded=all, id=fc75f940-2fa1-ee0b-e852-f47fb9534216, timestamp=1725975578281}]
-   customlogging-custom-logging-1  | LAYOUT TEST HEARTBEAT 2024-09-10 13:39:41,129 [recover Adapters[IbisScheduler_Worker-3]] INFO  HEARTBEAT - adapter [ManageDatabase] has state [STARTED]
+A system administrator typically provides a configuration file that references loggers and maps them to appenders. In this file, loggers are referenced along with the lowest log level for which the information has to be shown. By carefully choosing the loggers to which the appenders are connected, system administrators can differentiate between parts of the application that require detailed monitoring and parts that need less attention.
 
 Configuring logging for Frank applications
 ------------------------------------------
 
-To configure custom logging in Frank application, a system property ``log4j.configurationFile`` has to be set. Its value is a comma-separated list of all log4j2 configuration files to be read. To produce the above output, the value was set to ``log4j4ibis.xml,my-log4j2.xml``. ``log4j4ibis.xml`` is the default log configuration provided by the Frank!Framework. The example log configuration shown above was in a file named ``my-log4j2.xml``. The Frank!Framework was run using docker. Both the default log configuration and the custom log configuration appeared on the classpath of the Java Virtual Machine (JVM). It is also possible to reference files outside the JVM using URLs like ``file:///absolute/path/to/file``.
+To configure custom logging in Frank application, a system property ``log4j.configurationFile`` has to be set. Its value is a comma-separated list of all log4j2 configuration files to be read. A typical value is ``log4j4ibis.xml,my-log4j2.xml``. ``log4j4ibis.xml`` is the default log configuration provided by the Frank!Framework. ``my-log4j2.xml`` is a custom log configuration. The shown value references the two log configuration from the classpath of the Java Virtual Machine (JVM). System administrators can manipulate the classpath by properly configuring the application server (e.g. Apache Tomcat). It is also possible to reference files outside the JVM using URLs like ``file:///absolute/path/to/file``.
 
 When you use a third-party appender, make sure to configure the application server so that the appender's library is on the classpath.
 
@@ -59,20 +33,17 @@ The Frank!Framework writes important log information to loggers that are not rel
 
 **Logger** ``SEC``: outputs by default to file ``${instance.name.lc}-security.log``. Audit logging.
 
-**Logger** ``HEARTBEAT``: outputs by default to file ``${instance.name.lc}-heartbeat.log``. Periodic adapter status status.
+**Logger** ``HEARTBEAT``: outputs by default to file ``${instance.name.lc}-heartbeat.log``. Each Frank adapter (defined by ``<Adapter>`` in a Frank configuration) periodically writes a message as long as it is working properly. The heartbeat log can be checked to see whether all adapters are up and running.
 
 **Logger** ``CONFIG``: outputs by default to file ``${instance.name.lc}-config.xml``. Prints the current configuration.
 
-**Logger** ``APPLICATION``: outputs by default to the console.
+**Logger** ``APPLICATION``: outputs by default to the console. Shows how the Frank!Framework boots: what subsystems are discovered? How about connecting to databases and queues? What configurations are present? After booting, a message is shown when a configuration is reloaded.
 
-For a complete overview, see the contents of the default log configuration ``log4j4ibis.xml`` that is part of the Frank!Framework source code. See https://github.com/frankframework/frankframework/blob/master/core/src/main/resources/log4j4ibis.xml.
+The Frank!Framework also writes to loggers that are related to specific Java classes and packages. For a complete overview, see the contents of the default log configuration ``log4j4ibis.xml`` that is part of the Frank!Framework source code. It can be found at https://github.com/frankframework/frankframework/blob/master/core/src/main/resources/log4j4ibis.xml. An overview also appears in the Frank!Console, see https://frank2example.frankframework.org/#/logging/settings.
 
-Reference information on log4j2:
+
+External references:
 
 * https://www.baeldung.com/log4j2-appenders-layouts-filters.
 * https://logging.apache.org/log4j/2.x/manual/configuration.html.
 * https://logging.apache.org/log4j/2.x/manual/appenders.html.
-
-Overview of third-party appenders:
-
-* TODO.
