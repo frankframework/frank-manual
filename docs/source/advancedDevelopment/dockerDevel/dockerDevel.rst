@@ -1,5 +1,3 @@
-*Work in progress.*
-
 .. _advancedDevelopmentDockerDevel:
 
 On developing and deploying

@@ -1,5 +1,3 @@
-*Work in progress.*
-
 .. _advancedDevelopmentDockerDevelSingleConfig:
 
 Deploying a single configuration

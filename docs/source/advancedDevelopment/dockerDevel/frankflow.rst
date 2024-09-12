@@ -1,5 +1,3 @@
-*Work in progress.*
-
 .. _advancedDevelopmentDockerDevelFrankFlow:
 
 Editing your configurations graphically

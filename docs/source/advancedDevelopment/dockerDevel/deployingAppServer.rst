@@ -1,5 +1,3 @@
-*Work in progress.*
-
 .. _advancedDevelopmentDockerDevelAppServer:
 
 Deploying the full application
