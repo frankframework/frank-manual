@@ -1,0 +1,15 @@
+- file:
+    path: docker-compose.yml
+    change: add
+- file:
+    path: src/main/resources/Configuration.xml
+    change: add
+- file:
+    path: DatabaseChangelog.xml
+    change: add
+- file:
+    path: DeploymentSpecifics.properties
+    change: add
+- file:
+    path: resources.yml
+    change: add

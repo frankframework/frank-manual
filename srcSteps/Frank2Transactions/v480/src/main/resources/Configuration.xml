@@ -3,22 +3,16 @@
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
     >
     <Adapter name="writeDb">
-        <Receiver checkForDuplicates="true"
-            checkForDuplicatesMethod="CORRELATIONID" correlationIDXPath="/input/@correlationId">
+        <Receiver checkForDuplicates="true">
             <ApiListener uriPattern="/write" method="POST" />
             <!-- <JdbcErrorStorage slotId="write-db"/> -->
             <JdbcMessageLog slotId="write-db"/>
         </Receiver>
         <Pipeline>
-            <XmlInputValidator schema="input.xsd" root="input" throwException="true"></XmlInputValidator>
-            <XsltPipe name="extractMessage" xpathExpression="/input/@message"></XsltPipe>
-            <PutInSessionPipe name="Safe message">
-                <Param name="inputMessage" />
-            </PutInSessionPipe>
-            <SenderPipe name="writeTableMessage" getInputFromSessionKey="inputMessage">
+            <SenderPipe name="writeTableMessage">
                 <IbisLocalSender name="writeTableMessage" javaListener="writeTableMessage" />
             </SenderPipe>
-            <EchoPipe name="originalMessage" getInputFromSessionKey="inputMessage" />
+            <EchoPipe name="originalMessage" getInputFromSessionKey="originalMessage" />
             <SenderPipe name="writeTableOtherMessage">
                 <IbisLocalSender name="writeTableOtherMessage" javaListener="writeTableOtherMessage" />
             </SenderPipe>
