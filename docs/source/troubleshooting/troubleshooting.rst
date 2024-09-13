@@ -114,9 +114,7 @@ Inserting from XPath expression, default value null
 Custom logging with log4j
 -------------------------
 
-You can write extra logging to (custom) log files using the ``<LogSender>``. When you do not set the ``logCategory``, the message will be appended to the root logger that by default writes output to file ``${instance.name.lc}.log``. See :ref:`deploymentCustomLogging` for more information about logging.
-
-TODO: Is it true that the default is the root logger. I am waiting for Niels' answers on my questions.
+Frank developers can add extra logging using to their configuration using the ``<LogSender>``. Log messages always have a category, which you can set using attribute ``logCategory``. When you do not set the log category, the sender's name appears in the log as the log category. By default, logging written by ``<LogSender>`` appears in log file ``${instance.name.lc}.log``. The system administrator who deploys the Frank application may override this however, see :ref:`deploymentCustomLogging`.
 
 XSLT Testing with Larva
 -----------------------
