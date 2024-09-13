@@ -5,11 +5,11 @@
     path: src/main/resources/Configuration.xml
     change: add
 - file:
-    path: DatabaseChangelog.xml
+    path: src/main/resources/DatabaseChangelog.xml
     change: add
 - file:
-    path: DeploymentSpecifics.properties
+    path: src/main/resources/DeploymentSpecifics.properties
     change: add
 - file:
-    path: resources.yml
+    path: src/main/resources/resources.yml
     change: add

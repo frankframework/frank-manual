@@ -1,5 +1,8 @@
 - predecessor: v480
 - file:
+    path: src/main/resources/input.xsd
+    change: add
+- file:
     path: src/main/resources/Configuration.xml
     change:
       - old: 1
@@ -14,3 +17,8 @@
         new: 1
         snippet: toCorrelationId
         highlight: true
+- snippet:
+    name: toCorrelationId
+    markup: none
+    context: 50
+
