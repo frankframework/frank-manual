@@ -111,8 +111,8 @@ Inserting from XPath expression, default value null
 
 **Answer:** You can use a FixedQuerySender to insert rows in a table. The values to insert are given in ``<Param>`` elements. The value to insert can be given by an XPath expression, for example ``<Param name="myParam" xpathExpression="/BIJKANT/PK/PK_NUMMER"/>``. You cannot use the ``defaultValue`` attribute to use a default value of ``null``, but you do not need to. When you omit the ``defaultValue`` attribute, you will have ``null`` when your XPath expression does not find anything.
 
-Custom logging with log4j
--------------------------
+Logging
+-------
 
 Frank developers can add extra logging using to their configuration using the ``<LogSender>``. Log messages always have a category, which you can set using attribute ``logCategory``. When you do not set the log category, the sender's name appears in the log as the log category. By default, logging written by ``<LogSender>`` appears in log file ``${instance.name.lc}.log``. The system administrator who deploys the Frank application may override this however, see :ref:`deploymentCustomLogging`.
 
