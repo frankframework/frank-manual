@@ -1,4 +1,4 @@
-.. _advancedDevelopmentCustomLogging:
+.. _deploymentCustomLogging:
 
 Custom Logging
 ==============

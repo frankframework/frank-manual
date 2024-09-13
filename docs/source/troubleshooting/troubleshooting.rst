@@ -114,26 +114,7 @@ Inserting from XPath expression, default value null
 Custom logging with log4j
 -------------------------
 
-You can write extra logging to (custom) log files using the ``<LogSender>``. When you do not set the logCategory, the message will be appended to the default Ibis4Name.log.
- 
-Currently the following log categories are available:
- 
-* ``file`` (ibis4name.log) - The applications log
-* ``msg-text`` (ibis4name-xml.log) - Processed messages in human readable format
-* ``msg-json`` (ibis4name-xml.log) - Processed message in structured logging (JSON) format.
-* ``security`` (ibis4name-security.log) - Audit logging
-* ``heartbeat`` (ibis4name-heartbeat.log) - Periodic adapter status status
-* ``config`` (ibis4name-galm.log) - Prints the current configuration
-* ``ladybug`` (ibis4name-messages.log) - Contains all Ladybug logging
-
-If you which to change the log appenders, either the format or filename you can overwrite the default framework log file ``log4jibis.xml``.
-Please be aware that in order to overwrite this file it must be located in the ``src/main/resources`` (``classes`` folder for non Maven projects) folder.
-
-.. NOTE::
-
-   We do not recommend editing this file, it may change between framework versions so use it at your own risk.
-   Instead we strongly advice to set the ``log4j.configurationFile`` as a system property, with the following value: ``log4j4ibis.xml,/my-file.xml|json|yml``.
-
+Frank developers can add extra logging using to their configuration using the ``<LogSender>``. Log messages always have a category, which you can set using attribute ``logCategory``. When you do not set the log category, the sender's name appears in the log as the log category. By default, logging written by ``<LogSender>`` appears in log file ``${instance.name.lc}.log``. The system administrator who deploys the Frank application may override this however, see :ref:`deploymentCustomLogging`.
 
 XSLT Testing with Larva
 -----------------------
