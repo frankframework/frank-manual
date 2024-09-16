@@ -19,6 +19,8 @@ Working with the Frank!Runner as was explained in :ref:`gettingStarted` is easy.
 
 You may want more insight into these details already during development. You can achieve this by using Docker (see https://hub.docker.com/). We have created a Docker image that holds the Frank!Framework deployed inside the appropriate version of Apache Tomcat. This image can also be used in your production environment. If you do your development using Docker, your development environment is more similar to your production environment.
 
+.. _advancedDevelopmentDockerDevelConfigureDocker:
+
 About configuring docker
 ------------------------
 

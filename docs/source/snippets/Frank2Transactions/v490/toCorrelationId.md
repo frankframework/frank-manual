@@ -1,4 +1,4 @@
-```none{6, 7, 12, 13, 14, 15, 16, 17, 20}
+```xml{6, 7, 12, 13, 14, 15, 16, 17, 20}
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
@@ -24,29 +24,5 @@
             </SenderPipe>
         </Pipeline>
     </Adapter>
-    <Adapter name="writeTableMessage">
-        <Receiver>
-            <JavaListener name="writeTableMessage" serviceName="writeTableMessage" />
-        </Receiver>
-        <Pipeline>
-            <SenderPipe name="writeTableMessage">
-                <FixedQuerySender query="INSERT INTO &quot;message&quot;(message) VALUES(?)">
-                    <Param name="message" type="string" defaultValueMethods="input" />
-                </FixedQuerySender>
-            </SenderPipe>
-        </Pipeline>
-    </Adapter>
-    <Adapter name="writeTableOtherMessage">
-        <Receiver>
-            <JavaListener name="writeTableOtherMessage" serviceName="writeTableOtherMessage" />
-        </Receiver>
-        <Pipeline>
-            <SenderPipe name="writeTableOtherMessage">
-                <FixedQuerySender query="INSERT INTO &quot;otherMessage&quot;(message) VALUES(?)">
-                    <Param name="message" type="string" defaultValueMethods="input" />
-                </FixedQuerySender>
-            </SenderPipe>
-        </Pipeline>
-    </Adapter>
-</Configuration>
+...
 ```

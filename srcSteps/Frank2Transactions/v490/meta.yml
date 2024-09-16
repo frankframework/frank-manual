@@ -19,6 +19,6 @@
         highlight: true
 - snippet:
     name: toCorrelationId
-    markup: none
-    context: 50
+    markup: xml
+    context: 5
 
