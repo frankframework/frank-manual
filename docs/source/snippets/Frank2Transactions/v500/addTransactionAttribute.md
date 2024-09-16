@@ -19,7 +19,7 @@
         </Pipeline>
     </Adapter>
     <Adapter name="writeTableMessage">
-        <Receiver transactionAttribute="Required">
+        <Receiver transactionAttribute="Mandatory">
             <JavaListener name="writeTableMessage" serviceName="writeTableMessage" />
         </Receiver>
         <Pipeline>
@@ -31,7 +31,7 @@
         </Pipeline>
     </Adapter>
     <Adapter name="writeTableOtherMessage">
-        <Receiver transactionAttribute="Required">
+        <Receiver transactionAttribute="Mandatory">
             <JavaListener name="writeTableOtherMessage" serviceName="writeTableOtherMessage" />
         </Receiver>
         <Pipeline>
