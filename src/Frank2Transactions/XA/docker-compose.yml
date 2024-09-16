@@ -9,7 +9,7 @@ services:
       - 8160:8160
       - 61615:61615
   ff:
-    image: frankframework/frankframework:8.2.1-20240727.032301
+    image: frankframework/frankframework:8.3.0-SNAPSHOT
     ports:
       - 8080:8080
     volumes:
