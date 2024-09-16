@@ -1,0 +1,14 @@
+*Under construction*
+
+.. _advancedDevelopmentIntegrationPatternsFireForget:
+
+Fire and Forget concepts
+========================
+
+This section turns to the fire and forget integration pattern introduced in the introduction :ref:`advancedDevelopmentIntegrationPatterns`. It means that the sender of a message does not wait until the receiver has processed the message. With the fire and forget integration pattern, the network may be set up so that the sender will never be informed about processing errors. This situation is supported by the Frank!Framework's *error store*. When processing of a message fails, it is stored in an error store so that an operator can resend the message from the Frank!Console. Instructions for the operator to do this are in :ref:`managingProcessedMessagesError`.
+
+With the fire and forget integration pattern, messages are often put on a queue. Typically the sender gets a positive response when the request has been put on the queue. The intended recipient reads the request from the queue and processes it. When an error occurs, it may be desirable to roll back reading the request from the queue as well. Then the message can be read again later, hopefully when it can be processed successfully. This can be implemented using XA transactions, transactions that span across multiple data-processing systems, e.g. a queue and a database. Frank developers should also add an error store in this scenario, because processing the request may fail repeatedly. Operators should have a chance to correct errors by hand and then resend failed messages.
+
+An alternative to using a real queue is using the database as a queue. This can be done by sending messages using a ``MessageStoreSender`` and by reading these messages using a ``MessageStoreListener``. The ``MessageStoreSender`` / ``MessageStoreListener`` pair uses database table ``IBISSTORE`` as the queue, which is also used by the ``<JdbcMessageLog>`` introduced in section :ref:`advancedDevelopmentIntegrationPatternsOnlyOnce`. This database-backed queue is insulated from other data in table ``IBISSTORE`` by providing a ``slotId``. All elements of the queue share the same value for the ``slotId`` field within table ``IBISSTORE`` while other data has a different value for this field.
+
+When a The ``MessageStoreSender`` / ``MessageStoreListener`` pair is used, the Frank!Framework automatically adds an error store to the Frank!Console. Frank developers do not need to explicitly add an error store to their configuration in this case. Therefore, the examples that will be added in proceeding sections will cover a real queue with an explicit error store before turning to the ``MessageStoreSender`` and the ``MessageStoreListener``. This allows for clear examples to illustrate the concept of an error store.

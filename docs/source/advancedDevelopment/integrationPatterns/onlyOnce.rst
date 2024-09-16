@@ -23,11 +23,15 @@ Attribute ``checkForDuplicates="true"`` does the trick. The example expects the 
 
    Setting attribute ``processResultCacheSize="0"`` is a workaround for issue https://github.com/frankframework/frankframework/issues/7432. When this issue will have been solved, setting this attribute will not be necessary anymore.
 
-The ``<JdbcMessageLog>`` configures the Frank!Framework to remember the incoming messages. They are stored in a database table named ``IBISSTORE``. The ``slotId`` attribute is needed to distinguish between the different ``<JdbcMessageLog>`` elements that can appear in a Frank application.
+The ``<JdbcMessageLog>`` configures the Frank!Framework to remember the incoming messages. They are stored in a database table named ``IBISSTORE``. The ``slotId`` attribute is needed to distinguish between the different ``<JdbcMessageLog>`` elements that can appear in a Frank application. Message logs have another purpose in addition to remembering message ids already received - they act as audit logs as well. See :ref:`managingProcessedMessagesLog`.
 
 .. WARNING::
 
    Table ``IBISSTORE`` is only created if property ``jdbc.migrator.active`` is true and if this is configured as a system property or application property. Setting this within a configuration is not sufficient.
+
+.. NOTE::
+
+   The fact that the ``<JdbcMessageLog>`` is backed by the database has an important consequence. When multiple instances of the application run in parallel, the message log still behaves as expected. This would not be possible if a message log would only keep its data in memory. If that would be the case, other instances would not know that some incoming message was seen already because in-memory information is not shared.
 
 The receiver can be changed to expect a correlation id that is extracted from the incoming message, instead of a message id. The changes shown below modify ``Configuration.xml`` to process a message only if the extracted correlation id has not been seen before:
 

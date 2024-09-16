@@ -20,3 +20,4 @@ This section introduces concepts and features of the Frank!Framework to implemen
 
    onlyOnce
    transactions
+   fireAndForget
