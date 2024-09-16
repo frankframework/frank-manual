@@ -1,0 +1,20 @@
+- predecessor: v480
+- file:
+    path: src/main/resources/Configuration.xml
+    change:
+      - old: 1
+        new: 1
+        highlight: true
+        snippet: addTransactionAttribute
+      - old: 1
+        new: 1
+        highlight: true
+        snippet: addTransactionAttribute
+      - old: 1
+        new: 1
+        highlight: true
+        snippet: addTransactionAttribute
+- snippet:
+    name: addTransactionAttribute
+    markup: none
+    context: 50

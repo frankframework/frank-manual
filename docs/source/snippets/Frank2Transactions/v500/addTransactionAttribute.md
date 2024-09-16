@@ -1,9 +1,10 @@
+```none{6, 21, 33}
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
     >
     <Adapter name="writeDb">
-        <Receiver checkForDuplicates="true">
+        <Receiver checkForDuplicates="true" transactionAttribute="RequiresNew">
             <ApiListener uriPattern="/write" method="POST" />
             <JdbcMessageLog slotId="write-db"/>
         </Receiver>
@@ -18,7 +19,7 @@
         </Pipeline>
     </Adapter>
     <Adapter name="writeTableMessage">
-        <Receiver>
+        <Receiver transactionAttribute="Required">
             <JavaListener name="writeTableMessage" serviceName="writeTableMessage" />
         </Receiver>
         <Pipeline>
@@ -30,7 +31,7 @@
         </Pipeline>
     </Adapter>
     <Adapter name="writeTableOtherMessage">
-        <Receiver>
+        <Receiver transactionAttribute="Required">
             <JavaListener name="writeTableOtherMessage" serviceName="writeTableOtherMessage" />
         </Receiver>
         <Pipeline>
@@ -42,3 +43,4 @@
         </Pipeline>
     </Adapter>
 </Configuration>
+```

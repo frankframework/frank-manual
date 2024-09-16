@@ -1,4 +1,4 @@
-```none{6, 7, 13, 14, 15, 16, 17, 18, 21}
+```none{6, 7, 12, 13, 14, 15, 16, 17, 20}
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
@@ -7,7 +7,6 @@
         <Receiver checkForDuplicates="true"
             checkForDuplicatesMethod="CORRELATIONID" correlationIDXPath="/input/@correlationId">
             <ApiListener uriPattern="/write" method="POST" />
-            <!-- <JdbcErrorStorage slotId="write-db"/> -->
             <JdbcMessageLog slotId="write-db"/>
         </Receiver>
         <Pipeline>

@@ -6,7 +6,6 @@
         <Receiver checkForDuplicates="true"
             checkForDuplicatesMethod="CORRELATIONID" correlationIDXPath="/input/@correlationId">
             <ApiListener uriPattern="/write" method="POST" />
-            <!-- <JdbcErrorStorage slotId="write-db"/> -->
             <JdbcMessageLog slotId="write-db"/>
         </Receiver>
         <Pipeline>
