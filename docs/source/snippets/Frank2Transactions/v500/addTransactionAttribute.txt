@@ -1,4 +1,4 @@
-.. code-block:: none
+.. code-block:: xml
    :emphasize-lines: 6, 21, 33
 
    <Configuration

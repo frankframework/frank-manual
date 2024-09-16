@@ -17,3 +17,4 @@ This section introduces concepts and features of the Frank!Framework to implemen
    :maxdepth: 3
 
    onlyOnce
+   transactions

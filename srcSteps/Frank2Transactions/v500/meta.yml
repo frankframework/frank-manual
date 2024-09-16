@@ -16,5 +16,5 @@
         snippet: addTransactionAttribute
 - snippet:
     name: addTransactionAttribute
-    markup: none
+    markup: xml
     context: 50

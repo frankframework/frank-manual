@@ -1,4 +1,4 @@
-```none{6, 21, 33}
+```xml{6, 21, 33}
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"

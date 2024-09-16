@@ -9,7 +9,7 @@ In a fire and forget situation, the sender of some request may later receive a n
 
 You can experiment with the message id and the correlation by downloading this :download:`example Frank application <../../downloads/advancedDevelopmentIntegrationPatternsMessageId.zip>`. Its root directory is ``messageIdExample``. It can be started using docker compose, see :ref:`advancedDevelopmentDockerDevel`. A Frank configuration is included with an ``<ApiListener>``, which means that it listens to HTTP requests. Please install an API client that can send HTTP requests to this Frank configuration, for example Bruno. It can be downloaded from https://www.usebruno.com/. When the application is running, it can be visited at http://localhost:8080. The incoming HTTP requests should be HTTP POST requests to URL http://localhost:8080/api/write.
 
-The example detects whether a duplicate message id is received and returns HTTP code 304 Not Modified in this case. This behavior is configured in the receiver of adapter ``writeDb``. The receiver is shown below (the remainder is a bit more complicated then needed here, but it is useful later to exmplain transactions):
+The example detects whether a duplicate message id is received and returns HTTP code 304 Not Modified in this case. This behavior is configured in the receiver of adapter ``writeDb``. The receiver is shown below (the remainder is a bit more complicated than needed here, but it is a useful example to explain transactions in the next section :ref:`advancedDevelopmentIntegrationPatternsTransactions`):
 
 .. literalinclude:: ../../../../srcSteps/Frank2Transactions/v480/src/main/resources/Configuration.xml
    :emphasize-lines: 6, 8
