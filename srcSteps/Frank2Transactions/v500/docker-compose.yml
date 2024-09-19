@@ -10,5 +10,4 @@ services:
     volumes:
       - ./src/main/resources:/opt/frank/resources
     environment:
-      jdbc.dbms.default: postgres
       jdbc.hostname: db

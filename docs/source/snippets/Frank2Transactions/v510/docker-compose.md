@@ -1,4 +1,4 @@
-```none{6, 7, 8, 9, 10, 18, 20, 21, 22}
+```none{6, 7, 8, 9, 10, 19, 20, 21}
 services:
   db:
     image: private.docker.nexus.frankframework.org/ff-test/dbms/postgresql
@@ -16,7 +16,6 @@ services:
     volumes:
       - ./src/main/resources:/opt/frank/resources
     environment:
-      jdbc.dbms.default: postgres-xa
       jdbc.hostname: db
       jms.hostname: jms
       transactionmanager.type.default: NARAYANA

@@ -18,3 +18,4 @@ This section has the following sub-sections:
    frankflow
    deploySingleConfig
    deployingAppServer
+   jms
