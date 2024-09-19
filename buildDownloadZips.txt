@@ -35,3 +35,4 @@ srcSteps/Frank2Hermes/v500/configurations/hermesBridge configurations/hermesBrid
 srcSteps/sandbox/v01 sandbox/v01
 srcSteps/Frank2Transactions/v480 advancedDevelopmentIntegrationPatternsMessageId messageIdExample
 srcSteps/Frank2Transactions/v500 advancedDevelopmentDockerDevelPreJms withJms
+srcSteps/Frank2Transactions/v510 advancedDevelopmentDockerDevelJms withJms
