@@ -1,0 +1,47 @@
+- predecessor: v500
+- file:
+    path: docker-compose.yml
+    change:
+      - insert: 5
+        highlight: true
+        snippet: docker-compose
+      - old: 1
+        new: 1
+        highlight: true
+        snippet: docker-compose
+      - insert: 3
+        highlight: true
+        snippet: docker-compose
+- file:
+    path: src/main/resources/Configuration.xml
+    change:
+      - old: 1
+        new: 1
+        highlight: true
+        snippet: async-config
+      - old: 1
+        new: 12
+        highlight: true
+        snippet: async-config
+- file:
+    path: src/main/resources/resources.yml
+    change:
+      - old: 1
+        new: 1
+        highlight: true
+        snippet: reference-queue
+      - insert: 5
+        highlight: true
+        snippet: reference-queue
+- snippet:
+    name: docker-compose
+    markup: none
+    context: 50
+- snippet:
+    name: async-config
+    markup: xml
+    context: 50
+- snippet:
+    name: reference-queue
+    markup: none
+    context: 50
