@@ -288,11 +288,13 @@ NOTE: Story **1440** means that parent nodes will not be highlighted solely beca
 
 **2000:** Given is that I am building an automated test from a report. As a Frank developer I want the option to edit the message within each checkpoint. When the report is rerun, the produced message will be compared to the edited message instead of the message originally captured.
 
-**2010:** Given is that I am building an automated test from a report. As a Frank developer I want the option to configure an XSLT transformation as part of my report that is applied to each message inside each checkpoint. When a report is rerun, the XSLT transformation is applied to the produced messages and it is applied to the messages inside the checkpoints. For each checkpoint, the two transformation results are compared. This way, irrelevant differences can be ignored. Irrelevant differences are produced for example if the current time is used by a Frank application.
+**2010:** Given is that I am building an automated test from a report. As a Frank developer I want the option to configure an XSLT transformation as part of my report that is applied to the XML representation of the report. When a report is rerun, the XSLT transformation is applied to the XML representation of the newly created checkpoins. A test succeeds if the two XML documents resulting from the XSLT representation are the same. This way, irrelevant differences can be ignored. Irrelevant differences are produced for example if the current time is used by a Frank application.
 
-**2012:** Given is that I am using a report as a test case and that I did not add an XSLT transformation as indiciated in story **2010**. This means that I am rerunning such a report. As a user, I want the following. If the inputs and the outputs and the behavior of the external systems are the same, then I want my test to succeed because I do not want false negatives.
+**2012:** Given is that I am using a report as a test case and that I did not add an XSLT transformation as indiciated in story **2010**. This means that I am rerunning such a report. As a user, I want the following. If the inputs and the outputs of the pipeline are the same, then I want my test to succeed because I do not want false negatives.
 
 **2014:** Story **2012** is implemented by a default XSLT transformation. As a Frank developer or support engineer, I want the option to edit the default XSLT transformation.
+
+NOTE: The default XSLT transformation omits all checkpoints except the first checkpoint and the last checkpoint. If this default XSLT transformation is applied, the following holds. Only if a rerun produces differences for the first and the last checkpoint, then the test fails.
 
 **2020:** Given is that I am building an automated test from a report. As a Frank developer I want the option to declare some checkpoints **stubbed**, checkpoints that correspond to calls to external systems. When the report is rerun, the Frank!Framework should not call the external systems again but it should return the results already stored in the stubbed checkpoints. This way, only the logic within the Frank configuration captured in the report is tested, not the behavior of the external systems. Stubbing allows Frank developers to work with a simpler test environment, because the test does not require access to external systems.
 
@@ -344,17 +346,17 @@ NOTE: Story **3060** is not trivial because rerunning reports happens in the bac
 
 **3100:** Given is that I have rerun a report as a Frank developer and that this test failed. I want the option to compare the original capture to the new results. I want to see the two datasets next to each other such that I can see what is the same and what is different.
 
-**3105:** Given is that I as a user am comparing a report in the context of story **3100**. If a checkpoint differs from its counterpart, I want it to have a different color on both sides so that I can see quickly where the differences are.
+**3102:** In the context of story **3100**, each side of the comparison is a tree of checkpoints. At both sides, there should be one selected node, and the values of these two node nodes should be shown next to each other.
 
-**3108:** Given is that I am comparing a report in the context of story **3100**. On one side I have the checkpoints in the report and on the other side I have the checkpoints produced by the rerun. As a user, I want that the selected checkpoint is synchronized. If I select a checkpoint on one side, I want that the corresponding checkpoint on the other side is selected automatically. This helps me to do my analysis more quickly.
+**3104:** In the context of story **3102**: if the two values of the selected checkpoints are different, the differences should be highlighted.
 
-**3110:** Given is that I have rerun a report and that this test failed. Given is also that the number of checkpoints at both sides is different. As a user I want that Ladybug chooses intelligently what checkpoints to the left belong to what checkpoints to the right. When I look at one checkpoint I want to see the corresponding checkpoint next to it. I do not want to search on the other side for the corresponding checkpoint.
+**3106:** In the context of story **3102**. As a user I want the option to select a checkpoint to the left and a checkpoint to the right independently. My choice to the left does not change the selected checkpoint to the right and vice versa.
 
-**3120:** Given is the context of story **3110**. I want that checkpoints corresponding to the same inputs and outputs to external systems are matched. This statement is intended to clarify the "intelligent choice" of story **3110**.
+**3108:** In the context of story **3102**. As a user I want the option to select a *compare method*. The compare method determines which checkpoint to the left belongs to which checkpoint on the right. If I have chosen a compare method, selecting a checkpoint on one side should cause the matching checkpoint on the other side to be selected automatically. This helps me to browse more efficiently.
 
-NOTE: Details of the algorithm implied in **3110** and **3120** are not needed here. We can make Cypress tests to test that the user will be happy with the algorithm.
+**3120:** Given is the context of story **3108**. I want to have a compare method at my disposal that does the following. It should match checkpoints corresponding to the same inputs and outputs to external systems. 
 
-NOTE: As part of the algorithm, Ladybug calculates a metadata field ``Path``. Its value is something like ``/Pipeline processXml[0]/SessionKey originalMessage[0]``. The names of the elements in the Frank configuration are used, and the path components are made unique with an index. This field is useful as debug information about matching checpoints. This field also provides a way to reference checkpoints. The ``Path`` of a checkpoint can be expressed in speech unlike the unique id.
+NOTE: Compare methods provided by Ladybug use a metadata field ``Path``. Its value is something like ``/Pipeline processXml[0]/SessionKey originalMessage[0]``. The names of the elements in the Frank configuration are used, and the path components are made unique with an index. This field is useful as debug information about matching checpoints. This field also provides a way to reference checkpoints. The ``Path`` of a checkpoint can be expressed in speech unlike the unique id.
 
 **3140:** Given is that I am comparing a failed test report (story **3100**). As a user, I want the option to copy text so that I can paste it elsewhere. This helps me to cooperate with my colleagues and it helps me to analyse rerun failures.
 
