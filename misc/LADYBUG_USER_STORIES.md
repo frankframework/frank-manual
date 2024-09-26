@@ -256,6 +256,10 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1260:** Given is that I captured two reports that I expect to be similar. Given is also that one of them shows correct behavior and the other shows incorrect behavior. As a Frank developer or support engineer, I want to compare these two reports so that I can analyze what went wrong.
 
+**1263:** In the context of story **1260**, one report appears at the left of the compare tab and the other report appears to the right. The compare method (story **2025**) should be the default compare method of comparison (story **3108**).
+
+**1266:** In the context of story **1260**, I want the option to swap the left hand report and the right hand report of the comparison.
+
 **1300:** Given is that I as a service manager am investigating an issue with my application. In the debug tree, I want the option to see only the checkpoints within each report that are about communicating with external systems. This is currently known as the black box view.
 
 **1310:** Given is that I as a support engineer or Frank developer am investigating an issue. In the debug tree, I want the option to see all the checkpoints within each report. This is known as the white box view.
@@ -296,9 +300,11 @@ NOTE: Story **1440** means that parent nodes will not be highlighted solely beca
 
 NOTE: The default XSLT transformation omits all checkpoints except the first checkpoint and the last checkpoint. If this default XSLT transformation is applied, the following holds. Only if a rerun produces differences for the first and the last checkpoint, then the test fails.
 
-**2020:** Given is that I am building an automated test from a report. As a Frank developer I want the option to declare some checkpoints **stubbed**, checkpoints that correspond to calls to external systems. When the report is rerun, the Frank!Framework should not call the external systems again but it should return the results already stored in the stubbed checkpoints. This way, only the logic within the Frank configuration captured in the report is tested, not the behavior of the external systems. Stubbing allows Frank developers to work with a simpler test environment, because the test does not require access to external systems.
+**2020:** Given is that I am building an automated test from a report. As a Frank developer I want the option to declare some checkpoints **stubbed**, checkpoints that correspond to calls to external systems. When the report is rerun (story **3010**), the Frank!Framework should not call the external systems again but it should return the results already stored in the stubbed checkpoints. This way, only the logic within the Frank configuration captured in the report is tested, not the behavior of the external systems. Stubbing allows Frank developers to work with a simpler test environment, because the test does not require access to external systems.
 
 TODO: At present the old GUI has controls to stub *every* checkpoint, even info points. This makes me see that I do not understand the exact meaning of stubbing.
+
+**2025:** Story **2020**, story **3010** and story **3108** have an interesting consequence. Story **3108** implies that there exist different compare methods that match a checkpoit produced by a rerun to a checkpoint in the original report. This match is important during rerunning, because the matched checkpoint from the original report determines whether stubbing applies and what value should be used to continue the rerun with. The conclusion is that each Ladybug report should have a compare method associated with it.
 
 **2030:** Given is that I am building an automated test from a report. As a Frank developer I want the option to base parameterized tests upon my report. This means that I introduce variable references in my report. I can create a new report by specifying values for the variables. I can do this for multiple possibilities to set the variables, all resulting in a new clone of the report.
 
@@ -352,7 +358,7 @@ NOTE: Story **3060** is not trivial because rerunning reports happens in the bac
 
 **3106:** In the context of story **3102**. As a user I want the option to select a checkpoint to the left and a checkpoint to the right independently. My choice to the left does not change the selected checkpoint to the right and vice versa.
 
-**3108:** In the context of story **3102**. As a user I want the option to select a *compare method*. The compare method determines which checkpoint to the left belongs to which checkpoint on the right. If I have chosen a compare method, selecting a checkpoint on one side should cause the matching checkpoint on the other side to be selected automatically. This helps me to browse more efficiently.
+**3108:** In the context of story **3102**. As a user I want the option to select a compare method (story **2025**) for the comparison I am doing. If I have chosen a compare method, selecting a checkpoint on one side should cause the matching checkpoint on the other side to be selected automatically. This helps me to browse more efficiently.
 
 **3120:** Given is the context of story **3108**. I want to have a compare method at my disposal that does the following. It should match checkpoints corresponding to the same inputs and outputs to external systems. 
 
