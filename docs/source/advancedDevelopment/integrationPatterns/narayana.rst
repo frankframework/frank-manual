@@ -1,6 +1,6 @@
-.. _advancedDevelopmentNarayana:
-
 LIVING DOCUMENT
+
+.. _advancedDevelopmentIntegrationPatternsNarayana:
 
 Narayana TransactionManager
 ===========================

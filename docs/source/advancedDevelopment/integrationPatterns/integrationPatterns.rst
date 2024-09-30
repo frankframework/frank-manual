@@ -22,3 +22,4 @@ This section introduces concepts and features of the Frank!Framework to implemen
    transactions
    fireAndForget
    errorStoreAndXaTransactions
+   narayana
