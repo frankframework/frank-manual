@@ -15,9 +15,9 @@ xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
           root="message"
           schema="message.xsd">
               <Forward name="success" path="pipeAddDefaults"/>
-              <Forward name="parseError" path="ServerError"/>
-              <Forward name="illegalRoot" path="ServerError"/>
+              <Forward name="parserError" path="ServerError"/>
               <Forward name="failure" path="ServerError"/>
+              <Forward name="exception" path="ServerError"/>
           </XmlValidatorPipe>
           <XsltPipe
           name="pipeAddDefaults"
@@ -68,9 +68,9 @@ xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
         root="uuid"
         schema="uuid.xsd">
             <Forward name="success" path="pipeGetMessage"/>
-            <Forward name="parseError" path="ServerError"/>
-            <Forward name="illegalRoot" path="ServerError"/>
+            <Forward name="parserError" path="ServerError"/>
             <Forward name="failure" path="ServerError"/>
+            <Forward name="exception" path="ServerError"/>
         </XmlValidatorPipe>
         <SenderPipe
         name="pipeGetMessage">
