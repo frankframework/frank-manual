@@ -4,7 +4,7 @@
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
     >
     <Adapter name="writeDbAsync">
-        <Receiver checkForDuplicates="true" processResultCacheSize="0" transactionAttribute="RequiresNew">
+        <Receiver checkForDuplicates="true" processResultCacheSize="0" transactionAttribute="Required">
             <ApiListener uriPattern="/write" method="POST" />
             <JdbcMessageLog slotId="write-db-req"/>
         </Receiver>
@@ -15,7 +15,7 @@
         </Pipeline>
     </Adapter>
     <Adapter name="writeDb">
-        <Receiver transactionAttribute="RequiresNew" maxRetries="5">
+        <Receiver transactionAttribute="Required" maxRetries="5">
             <JmsListener name="dequeue" destinationName="myQueue" messageClass="TEXT" queueConnectionFactoryName="jms/qcf-artemis" />
             <JdbcErrorStorage slotId="write-db"/>
         </Receiver>

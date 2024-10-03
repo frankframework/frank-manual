@@ -6,7 +6,7 @@
        xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
        >
        <Adapter name="writeDb">
-           <Receiver checkForDuplicates="true" processResultCacheSize="0" transactionAttribute="RequiresNew">
+           <Receiver checkForDuplicates="true" processResultCacheSize="0" transactionAttribute="Required">
                <ApiListener uriPattern="/write" method="POST" />
                <JdbcMessageLog slotId="write-db"/>
            </Receiver>
