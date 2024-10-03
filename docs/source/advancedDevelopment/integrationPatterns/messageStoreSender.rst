@@ -5,7 +5,7 @@
 Fire and Forget Without Queue
 =============================
 
-This page shows how to set up the Fire and Forget integration pattern when you do not want the hassle of introducing a queue and XA transactions. Files ``docker-compose.yml`` and ``src/main/resources/resources.yml`` are taken from the example configuration :download:`example Frank without queue <../../downloads/advancedDevelopmentDockerDevelPreJms.zip>`. We show how the ``Configuration.xml`` that uses a queue (from :download:`example Frank using a queue <../../downloads/advancedDevelopmentDockerDevelJms.zip>`) has to be modified when the queue is replaced database table IBISSTORE:
+This page shows how to set up the Fire and Forget integration pattern when you do not want the hassle of introducing a queue and XA transactions. Files ``docker-compose.yml`` and ``src/main/resources/resources.yml`` are taken from the example configuration :download:`example Frank without queue <../../downloads/advancedDevelopmentDockerDevelPreJms.zip>` that also was the starting point in :ref:`advancedDevelopmentIntegrationPatternsErrorStoreXa`. We show how the ``Configuration.xml`` that uses a queue (from :download:`example Frank using a queue <../../downloads/advancedDevelopmentDockerDevelJms.zip>`, the result presented by the end of :ref:`advancedDevelopmentIntegrationPatternsErrorStoreXa`) has to be modified when the queue is replaced by database table IBISSTORE:
 
 .. include:: ../../snippets/Frank2Transactions/v520/replaceQueueByIbisStore.txt
 
