@@ -1,3 +1,4 @@
+```xml{12, 18}
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
@@ -36,19 +37,5 @@
                 <FixedQuerySender query="INSERT INTO &quot;message&quot;(message) VALUES(?)">
                     <Param name="message" type="string" defaultValueMethods="input" />
                 </FixedQuerySender>
-            </SenderPipe>
-        </Pipeline>
-    </Adapter>
-    <Adapter name="writeTableOtherMessage">
-        <Receiver transactionAttribute="Mandatory">
-            <JavaListener name="writeTableOtherMessage" serviceName="writeTableOtherMessage" />
-        </Receiver>
-        <Pipeline>
-            <SenderPipe name="writeTableOtherMessage">
-                <FixedQuerySender query="INSERT INTO &quot;otherMessage&quot;(message) VALUES(?)">
-                    <Param name="message" type="string" defaultValueMethods="input" />
-                </FixedQuerySender>
-            </SenderPipe>
-        </Pipeline>
-    </Adapter>
-</Configuration>
+...
+```

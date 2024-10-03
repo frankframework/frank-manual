@@ -1,0 +1,41 @@
+- file:
+    path: src/main/resources/Configuration.xml
+    change:
+      - old: 1
+        new: 1
+        snippet: replaceQueueByIbisStore
+        highlight: true
+      - old: 2
+        new: 1
+        snippet: replaceQueueByIbisStore
+        highlight: true
+- file:
+    path: docker-compose.yml
+    change:
+      - old: 5
+        new: 0
+        snippet: undo-xa-docker-compose
+      - old: 3
+        new: 0
+        snippet: undo-xa-docker-compose
+- file:
+    path: src/main/resources/resources.yml
+    change:
+      - old: 1
+        new: 1
+        snippet: undo-xa-resources
+      - old: 5
+        new: 0
+        snippet: undo-xa-resources
+- snippet:
+    name: replaceQueueByIbisStore
+    markup: xml
+    context: 20
+- snippet:
+    name: undo-xa-docker-compose
+    markup: none
+    context: 50
+- snippet:
+    name: undo-xa-resources
+    markup: none
+    context: 50
