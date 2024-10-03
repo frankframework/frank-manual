@@ -30,7 +30,7 @@
 - snippet:
     name: replaceQueueByIbisStore
     markup: xml
-    context: 20
+    context: 10
 - snippet:
     name: undo-xa-docker-compose
     markup: none

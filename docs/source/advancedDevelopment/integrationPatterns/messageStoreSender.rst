@@ -17,6 +17,8 @@ In the adapter that processes messages, ``writeDb``, there are more changes. The
 
    Attribute ``statusValueInProcess="I"`` makes processing messages more robust. It tells the Frank!Framework to update table IBISSTORE when processing a message is started. The ``TYPE`` field is then updated to value ``I``, telling possilbe parallel instances of the listening adapter not to read the message anymore. This update happens outside the transaction. Without attribute ``statusValueInProcess``, the ``TYPE`` field is not updated when processing starts and you rely on the database to protect the message from parallel instances of the adapter.
 
+You can :download:`download the Frank application shown in this page <../../downloads/advancedDevelopmentDockerDevelNoJms.zip>`. You are encouraged to repeat the exercise of the previous page for this application.
+
 It is useful to explain the ``TYPE`` field of table IBISSTORE in more detail. This field plays a role for ``<JdbcMessageLog>`` and ``<JdbcErrorStorage>`` elements and for ``<MessageStoreSender>`` / ``<MessageStoreListener>`` pairs. See the table below:
 
 .. table::
