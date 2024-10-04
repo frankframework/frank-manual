@@ -9,18 +9,15 @@
         </Receiver>
         <Pipeline>
             <SenderPipe name="writeTableMessage">
-                <IbisLocalSender name="writeTableMessage" javaListener="writeTableMessage" />
+                <FrankSender name="writeTableMessage" target="writeTableMessage" />
             </SenderPipe>
             <EchoPipe name="originalMessage" getInputFromSessionKey="originalMessage" />
             <SenderPipe name="writeTableOtherMessage">
-                <IbisLocalSender name="writeTableOtherMessage" javaListener="writeTableOtherMessage" />
+                <FrankSender name="writeTableOtherMessage" target="writeTableOtherMessage" />
             </SenderPipe>
         </Pipeline>
     </Adapter>
     <Adapter name="writeTableMessage">
-        <Receiver>
-            <JavaListener name="writeTableMessage" serviceName="writeTableMessage" />
-        </Receiver>
         <Pipeline>
             <SenderPipe name="writeTableMessage">
                 <FixedQuerySender query="INSERT INTO &quot;message&quot;(message) VALUES(?)">
@@ -30,9 +27,6 @@
         </Pipeline>
     </Adapter>
     <Adapter name="writeTableOtherMessage">
-        <Receiver>
-            <JavaListener name="writeTableOtherMessage" serviceName="writeTableOtherMessage" />
-        </Receiver>
         <Pipeline>
             <SenderPipe name="writeTableOtherMessage">
                 <FixedQuerySender query="INSERT INTO &quot;otherMessage&quot;(message) VALUES(?)">
