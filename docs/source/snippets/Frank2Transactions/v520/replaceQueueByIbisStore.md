@@ -20,11 +20,11 @@ xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
     </Receiver>
     <Pipeline>
         <SenderPipe name="writeTableMessage">
-            <IbisLocalSender name="writeTableMessage" javaListener="writeTableMessage" />
+            <FrankSender name="writeTableMessage" target="writeTableMessage" />
         </SenderPipe>
         <EchoPipe name="originalMessage" getInputFromSessionKey="originalMessage" />
         <SenderPipe name="writeTableOtherMessage">
-            <IbisLocalSender name="writeTableOtherMessage" javaListener="writeTableOtherMessage" />
+            <FrankSender name="writeTableOtherMessage" target="writeTableOtherMessage" />
         </SenderPipe>
     </Pipeline>
 ...
