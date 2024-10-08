@@ -16,11 +16,11 @@
                 <Param name="inputMessage" />
             </PutInSessionPipe>
             <SenderPipe name="writeTableMessage" getInputFromSessionKey="inputMessage">
-                <IbisLocalSender name="writeTableMessage" javaListener="writeTableMessage" />
+                <FrankSender name="writeTableMessage" target="writeTableMessage" />
             </SenderPipe>
             <EchoPipe name="originalMessage" getInputFromSessionKey="inputMessage" />
             <SenderPipe name="writeTableOtherMessage">
-                <IbisLocalSender name="writeTableOtherMessage" javaListener="writeTableOtherMessage" />
+                <FrankSender name="writeTableOtherMessage" target="writeTableOtherMessage" />
             </SenderPipe>
         </Pipeline>
     </Adapter>

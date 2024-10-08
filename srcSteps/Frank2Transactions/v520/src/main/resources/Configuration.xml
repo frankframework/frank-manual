@@ -2,10 +2,20 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
     >
-    <Adapter name="writeDb">
+    <Adapter name="writeDbAsync">
         <Receiver checkForDuplicates="true" processResultCacheSize="0" transactionAttribute="Required">
             <ApiListener uriPattern="/write" method="POST" />
-            <JdbcMessageLog slotId="write-db"/>
+            <JdbcMessageLog slotId="write-db-req"/>
+        </Receiver>
+        <Pipeline>
+            <SenderPipe name="enqueue">
+                <MessageStoreSender slotId="write-db"></MessageStoreSender>
+            </SenderPipe>
+        </Pipeline>
+    </Adapter>
+    <Adapter name="writeDb">
+        <Receiver transactionAttribute="Required" maxRetries="5">
+            <MessageStoreListener slotId="write-db" statusValueInProcess="I" />
         </Receiver>
         <Pipeline>
             <SenderPipe name="writeTableMessage">

@@ -5,7 +5,7 @@ LIVING DOCUMENT
 Narayana TransactionManager
 ===========================
 
-A transaction is a unit of work that encapsulates multiple database actions such that that either all the encapsulated actions fail or all succeed. Narayana is the OpenSource implementation for WildFly and JBoss EAP, backed by Red Hat.
+This section shows how to configure the Narayana Transaction Manager. Its purpose was explained in :ref:`advancedDevelopmentIntegrationPatternsErrorStoreXa`. Narayana is the OpenSource implementation of a two phase commit transaction coordinate. It was developed for WildFly and JBoss EAP and it is backed by the company Red Hat.
 
 **TX-Managers uniqueness**
 

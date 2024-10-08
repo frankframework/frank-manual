@@ -101,6 +101,8 @@ class Change:
             raise TypeError("doHighlight should be bool")
         if not isinstance(snippet, Snippet):
             raise TypeError("Snippet expected")
+        if (numNew == 0) and (doHighlight):
+            raise ArithmeticError("Cannot highlight in snippet when all lines are removed")
         self._numOld = numOld
         self._numNew = numNew
         self._doHighlight = doHighlight
