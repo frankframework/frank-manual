@@ -1,7 +1,7 @@
 - file:
     path: docker-compose.yml
     change:
-      - insert: 1
+      - insert: 2
         snippet: openServerPort
         highlight: true
 - snippet:

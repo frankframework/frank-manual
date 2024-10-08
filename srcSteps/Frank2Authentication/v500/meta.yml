@@ -11,7 +11,7 @@
     path: client/secrets/credentials.properties
     change: add
 - file:
-    file: server/configurations/Server/Configuration.xml
+    path: server/configurations/Server/Configuration.xml
     change: add
 - file:
     path: server/configurations/DeploymentSpecifics.properties
