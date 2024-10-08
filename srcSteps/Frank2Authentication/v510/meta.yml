@@ -1,0 +1,10 @@
+- file:
+    path: docker-compose.yml
+    change:
+      - insert: 1
+        snippet: openServerPort
+        highlight: true
+- snippet:
+    name: openServerPort
+    markup: none
+    context: 10

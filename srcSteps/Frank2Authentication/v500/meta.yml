@@ -1,0 +1,21 @@
+- file:
+    path: docker-compose.yml
+    change: add
+- file:
+    path: client/configurations/Client/Configuration.xml
+    change: add
+- file:
+    path: client/configurations/resources.yml
+    change: add
+- file:
+    path: client/secrets/credentials.properties
+    change: add
+- file:
+    file: server/configurations/Server/Configuration.xml
+    change: add
+- file:
+    path: server/configurations/DeploymentSpecifics.properties
+    change: add
+- file:
+    path: server/configurations/resources.yml
+    change: add
