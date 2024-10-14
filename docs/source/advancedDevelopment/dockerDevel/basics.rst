@@ -48,7 +48,7 @@ This defines service ``frank-docker-example`` from the mentioned FF! image. It e
 
 You need one more file because the Frank!Framework expects that there is a database. Within Frank configurations, the database is referenced by a so-called JNDI name. System administrators can then configure the application server of the deployment environment, such that the JNDI name corresponds to a database. Application server Apache Tomcat expects a file ``context.xml`` for this. By default, the FF! uses a database with JNDI name ``jdbc/${instance.name.lc}`` with ``instance.name.lc`` the value of property ``instance.name`` converted to lower-case.
 
-The Frank!Framework runs on multiple application servers, and therefore it supports a generic mechanism to reference resources. This can be accessed by Frank developers through a file ``resources.yml``. To get started, you can use an in-memory H2 database by creating ``resources/resources.yml`` as follows:
+The Frank!Framework runs on multiple application servers, and therefore it supports a generic mechanism to reference resources. This can be accessed by Frank developers through a file ``resources.yml``. File ``docker-compose.yml`` creates an additional volume to put it in ``/opt/frank/resources``. To get started, you can use an in-memory H2 database by creating ``resources.yml`` as follows:
 
 .. literalinclude:: ../../../../srcSteps/Frank2DockerDevel/v500/resources/resources.yml
    :language: none
@@ -59,7 +59,7 @@ The Frank!Framework runs on multiple application servers, and therefore it suppo
 
 .. NOTE::
 
-   It is also possible to create ``configurations/resources.yml`` instead of ``resources/resources.yml``. The choice depends on how you perceive the boundary between the product you deliver to the customer on the one hand and configuration files written by the customer on the other hand. See also :ref:`advancedDevelopmentDockerDevelAppServer`. To make ``resources.yml`` part of your product, write ``configurations/resources.yml``. Write ``resources/resources.yml`` as something outside your product that is only included to support development.
+   It is also possible to create ``configurations/resources.yml`` instead of ``resources/resources.yml``. Doing so is not recommended because it makes it more difficult to deploy the product. See :ref:`advancedDevelopmentDockerDevelAppServer`.
 
 Finally, a valid configuration is needed, for example in ``configurations/my-config/Configuration.xml``. If you are using this text as a tutorial, you can use the following example:
 
