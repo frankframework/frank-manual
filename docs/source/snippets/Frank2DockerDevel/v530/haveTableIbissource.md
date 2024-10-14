@@ -1,4 +1,4 @@
-```none{14}
+```none{15}
 services:
   frank-docker-example:
     image: frankframework/frankframework:8.3.0-SNAPSHOT
@@ -6,6 +6,7 @@ services:
       - 8080:8080
     volumes: &frank-volumes
       - ./configurations:/opt/frank/configurations
+      - ./resources:/opt/frank/resources
     environment:
       instance.name: frank-docker-example
       dtap.stage: LOC

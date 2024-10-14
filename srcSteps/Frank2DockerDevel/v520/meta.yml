@@ -6,7 +6,7 @@
         highlight: true
         snippet: ffVariableDb
 - file:
-    path: configurations/resources.yml
+    path: resources/resources.yml
     change:
       - old: 1
         new: 1

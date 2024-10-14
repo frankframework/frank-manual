@@ -8,5 +8,5 @@
     path: configurations/my-config/Configuration_mine.xml
     change: add
 - file:
-    path: configurations/resources.yml
+    path: resources/resources.yml
     change: add

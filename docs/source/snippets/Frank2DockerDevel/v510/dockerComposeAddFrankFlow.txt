@@ -1,5 +1,5 @@
 .. code-block:: none
-   :emphasize-lines: 6, 12, 13, 14, 15, 16, 17
+   :emphasize-lines: 6, 13, 14, 15, 16, 17, 18
 
    services:
      frank-docker-example:
@@ -8,6 +8,7 @@
          - 8080:8080
        volumes: &frank-volumes
          - ./configurations:/opt/frank/configurations
+         - ./resources:/opt/frank/resources
        environment:
          instance.name: frank-docker-example
          dtap.stage: LOC
