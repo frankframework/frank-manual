@@ -20,9 +20,6 @@
     path: configurations/Conclusion/Configuration.xml
     change: add
 - file:
-    path: configurations/Conclusion/StageSpecifics_DEV.properties
-    change: add
-- file:
     path: configurations/Conclusion/StageSpecifics_LOC.properties
     change: add
 - file:

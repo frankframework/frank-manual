@@ -1,6 +1,6 @@
 <project default="restart">
 	<property file="config.properties"/>
-	<target name="restart-LOC">
+	<target name="restart">
 		<basename property="project.dir" file="${basedir}"/>
 		<condition property="exe" value="../frank-runner/restart.bat" else="/bin/bash"><os family="windows"/></condition>
 		<condition property="arg" value="../frank-runner/restart.sh" else=""><os family="unix"/></condition>
@@ -8,17 +8,6 @@
 			<arg value="${arg}"/>
 			<arg value="-Dproject.dir=${project.dir}"/>
 			<arg value="-Ddtap.stage=LOC" />
-		</exec>
-	</target>
-	<target name="restart-DEV">
-		<basename property="project.dir" file="${basedir}"/>
-		<condition property="exe" value="../frank-runner/restart.bat" else="/bin/bash"><os family="windows"/></condition>
-		<condition property="arg" value="../frank-runner/restart.sh" else=""><os family="unix"/></condition>
-		<exec executable="${exe}" vmlauncher="false" failonerror="true">
-			<arg value="${arg}"/>
-			<arg value="-Dproject.dir=${project.dir}"/>
-			<arg value="-Ddtap.stage=DEV" />
-			<arg value="-Dshare=${share}" />
 		</exec>
 	</target>
 </project>
