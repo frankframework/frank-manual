@@ -3,7 +3,7 @@
 Deploying a single configuration
 ================================
 
-As said in :ref:`advancedDevelopmentDockerDevel`, the development environment has characteristics that are not desirable for production. There are two ways to deploy Frank configurations. One way is to only deliver a single configuration to the customer. The customer is then responsible for maintaining an application server, uploading the configuration and configuring access to the external resources required by the configuration. Enterprises usually have specialized staff who have been trained well for these tasks.
+As said in :ref:`advancedDevelopmentDockerDevel`, the development environment has characteristics that are not desirable for production. There are two ways to deploy Frank configurations. One way is to still deploy a Frank application, including the necessary configurations of the application server. This can be done by improving ``resources.yml`` and ``docker-compose.yml``, see :ref:`advancedDevelopmentDockerDevelAppServer`. The other way is to only deliver a single configuration to the customer. The customer is then responsible for maintaining an application server, uploading the configuration and configuring access to the external resources required by the configuration. Enterprises usually have specialized staff who have been trained well for these tasks.
 
 Deploying a configuration like this is done as follows:
 

@@ -3,7 +3,7 @@
 Editing your configurations graphically
 =======================================
 
-In the previous section you learned to start the Frank!Framework with docker. With that set-up, you can already edit your configurations in a text editor. The files you edit on your device's ``configurations`` folder are seen by your Docker container as files in ``opt/frank/configurations``. After editing you can thus press the refresh button (see below, Adapter Status page screen capture from https://frank2example.frankframework.org) to load your edits.
+In the previous section you learned to start the Frank!Framework with Docker. With that set-up, you can already edit your configurations in a text editor. The files you edit on your device's ``configurations`` folder are seen by your Docker container as files in ``opt/frank/configurations``. After editing you can thus press the refresh button (see below, Adapter Status page screen capture from https://frank2example.frankframework.org) to load your edits.
 
 .. image:: refreshButtonFromFrank2Example.jpg
 
@@ -18,8 +18,8 @@ Please do the following to set this up:
    This does the following:
 
    * It sets property ``management.gateway.inbound.class`` so that the Frank!Framework is reachable by the Frank!Flow. The Frank!Flow can then ask the Frank!Framework for the location of the Frank configurations.
-   * It creates an alias for the volume you use for your configurations.
-   * It adds a service for the Frank!Flow. That service uses an image provided by the developers of the Frank!Framework. The service uses the same volume declaration as the Frank!Framework service so that configurations are at the same directory in the docker container.
+   * It creates an alias for your volumes.
+   * It adds a service for the Frank!Flow. That service uses an image provided by the developers of the Frank!Framework. The service uses the same volume declarations as the Frank!Framework service so that configurations are at the same directory in the Docker container.
 
 2. When you restart your work with ``docker-compose up``, you can visit the Frank!Flow at http://localhost:8081
 

@@ -40,7 +40,7 @@ Here is an example of a valid request to Mundo, although the values may not matc
 .. literalinclude:: validMundo.xml
    :language: xml
 
-You are asked to write a Frank application that takes the base name of an XML / text file pair and sends the information to Mundo. The Frank!Framework organisation provides a webapp that plays Mundo's part. Access it with the following URL: https://frank2example.frankframework.org/api/mundo. The following steps will guide you:
+You are asked to write a Frank application that takes the base name of an XML / text file pair and sends the information to Mundo. The Frank!Framework organisation provides a webapp that plays Mundo's part. Access it with the following URL: https://api.frank2example.frankframework.org/api/mundo. The following steps will guide you:
 
 * The input message is the base file name. Have a receiver with a JavaListener to capture that input.
 * Read the XML file using a LocalFileSystemPipe. Check the Frank!Doc to learn how to use this pipe.
@@ -56,8 +56,4 @@ You are asked to write a Frank application that takes the base name of an XML / 
 * Send the message to Mundo. You need a SenderPipe that has a HttpSender as child element.
 * Your pipe should have three exits. One possibility is that the input was valid and that it was processed successfully by Mundo. The second possibility is that the input was invalid. In this case, no attempt should have been made to contact Mundo. The last possibility is that Mundo was not accessible. Give each of these possibilities its own ``<Exit>`` and take care that your adapter always exits with the correct exit.
 
-Test your work using the Frank!Console's Test a Pipeline screen. Please also spent some time on your development environment. Put your code into version control. Set up your project such that it can be run from within Visual Studio Code. You can do this using Ant. See https://github.com/ibissource/frank-runner for help.
-
-.. NOTE::
-
-   You do not have the complete solution that Conclusion needs at this stage. In chapter :ref:`advancedDevelopment`, a section will be added with additional instructions. You will learn what functionality is still missing and you will get directions for creating it.
+Test your work using the Frank!Console's Test a Pipeline screen. Please also spent some time on your development environment. Put your code into version control. Set up your project such that it can be run from within Visual Studio Code. You can do this using Ant. See https://github.com/wearefrank/frank-runner for help.
