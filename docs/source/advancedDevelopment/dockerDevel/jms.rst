@@ -15,7 +15,7 @@ First, the ``docker-compose.yml`` file has to be extended to add a container wit
 
 .. include:: ../../snippets/Frank2Transactions/v510/docker-compose.txt
 
-The JMS container comes from an image hosted on WeAreFrank!'s server, the same server that holds image ``nexus.frankframework.org/frankframework``. System property ``jms.createDestination`` is set to ``true`` to tell the Frank!Framework that it should create the queues that are referenced in Frank configurations. This is useful during development because it makes it easier to get up and running. In the production environment, queues should be created and maintained by a system administrator and then the Frank!Framework should only reference existing queues. On production, property ``jms.createDestination`` should be ``false``.
+The JMS container comes from an image hosted on a server owned by the maintainers of the Frank!Framework, the same server that holds image ``nexus.frankframework.org/frankframework``. System property ``jms.createDestination`` is set to ``true`` to tell the Frank!Framework that it should create the queues that are referenced in Frank configurations. This is useful during development because it makes it easier to get up and running. In the production environment, queues should be created and maintained by a system administrator and then the Frank!Framework should only reference existing queues. On production, property ``jms.createDestination`` should be ``false``.
 
 System property ``jms.hostname`` is added to make ``resources.yml`` independent of the service name (here ``jms``) chosen for the queue container. Propert ``transactionmanager.type.default: NARAYANA`` is needed to supports XA transactions, transactions that span multiple data-processing systems.
 
