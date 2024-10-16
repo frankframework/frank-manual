@@ -1,4 +1,5 @@
-*Obsolete. The instructions below disclose secrets, like usernames and passwords, in Ladybug and in log files. The manual will be update to provide better information.*
+   .. DANGER::
+      *Obsolete. The instructions below disclose secrets, like usernames and passwords, in Ladybug and in log files. The manual will be update to provide better information.*
 
 .. _deploymentCredentials:
 
