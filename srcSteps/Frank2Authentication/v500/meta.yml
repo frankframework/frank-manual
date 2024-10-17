@@ -2,11 +2,11 @@
 - file:
     path: docker-compose.yml
     change:
-      - insert: 13
-        highlight: true
-        snippet: addClientContainerAndRemoveServerPorts
       - old: 2
         new: 0
+        snippet: addClientContainerAndRemoveServerPorts
+      - insert: 13
+        highlight: true
         snippet: addClientContainerAndRemoveServerPorts
 - file:
     path: client/configurations/Client/Configuration.xml
