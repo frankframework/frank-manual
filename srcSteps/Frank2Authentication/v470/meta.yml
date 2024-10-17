@@ -1,10 +1,10 @@
 - file:
-    path: docker-compose.yml
+    path: server/configurations/DeploymentSpecifics.properties
     change:
-      - insert: 2
-        snippet: openServerPort
+      - insert: 4
         highlight: true
+        snippet: openConsole
 - snippet:
-    name: openServerPort
+    name: openConsole
     markup: none
-    context: 10
+    context: 50

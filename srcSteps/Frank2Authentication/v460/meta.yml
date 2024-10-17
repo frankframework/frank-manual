@@ -1,10 +1,12 @@
 - file:
     path: docker-compose.yml
-    change:
-      - insert: 2
-        snippet: openServerPort
-        highlight: true
-- snippet:
-    name: openServerPort
-    markup: none
-    context: 10
+    change: add
+- file:
+    path: server/configurations/Server/Configuration.xml
+    change: add
+- file:
+    path: server/configurations/DeploymentSpecifics.properties
+    change: add
+- file:
+    path: server/resources/resources.yml
+    change: add
