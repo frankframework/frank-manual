@@ -3,8 +3,8 @@
     change:
       - insert: 4
         highlight: true
-        snippet: openConsole
+        snippet: openLadybug
 - snippet:
-    name: openConsole
+    name: openLadybug
     markup: none
     context: 50
