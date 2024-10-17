@@ -1,4 +1,4 @@
-```none{12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24}
+```none{12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25}
 services:
   frank-authorization-server:
     image: frankframework/frankframework:8.3.0-SNAPSHOT
@@ -16,6 +16,7 @@ services:
       - 8080:8080
     volumes:
       - ./client/configurations:/opt/frank/configurations
+      - ./client/resources:/opt/frank/resources
       - ./client/secrets:/opt/frank/secrets
     environment:
       instance.name: frank-authorization-client

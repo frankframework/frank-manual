@@ -15,6 +15,7 @@ services:
       - 8080:8080
     volumes:
       - ./client/configurations:/opt/frank/configurations
+      - ./client/resources:/opt/frank/resources
       - ./client/secrets:/opt/frank/secrets
     environment:
       instance.name: frank-authorization-client
