@@ -1,3 +1,7 @@
+.. WARNING::
+
+   The information given here is not complete. Please check :ref:`deploymentSecurity` for additional information.
+
 .. _advancedDevelopmentAuthorization:
 
 Authorization
@@ -23,7 +27,10 @@ To understand the material of this section, knowledge on earlier sections of the
    consoleAndLadybug
    authorizationMethodsAndRoles
 
-TODO: Authorization methods and roles
-HTTP interfaces
-Basic authentication
-Keeping secrets with parameters
+.. WARNING::
+
+   The following topics, and more, will be added:
+
+   * Configuring authorization for HTTP interfaces.
+   * Using secrets to do basic authentication.
+   * Keeping secrets using parameters.

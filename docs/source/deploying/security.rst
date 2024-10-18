@@ -1,3 +1,7 @@
+.. WARNING::
+
+   This section now contains material that is only relevant for Frank developers. The maintainers of this manual are moving that information to :ref:`advancedDevelopmentAuthorization`.
+
 .. _deploymentSecurity:
 
 Security
