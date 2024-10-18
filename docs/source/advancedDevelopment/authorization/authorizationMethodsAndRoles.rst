@@ -22,3 +22,11 @@ The overview of which roles exist is not only relevant for Frank developers, but
 .. NOTE::
 
    With the ``roles`` item in ``localUsers.yml`` you can assign multiple roles to the same user. Do so by providing a comma-separated list of roles.
+
+.. NOTE::
+
+   Page :ref:`deploymentOverviewSecurityRoles` does not explain yet about Ladybug. It will be added what Ladybug features are accessible by what roles.
+
+.. NOTE::
+
+   With the ``IN_MEMORY`` authentication mechanism, no role list can be supplied. When a user authenticates by this mechanism, he is give every role and he can therefore access every feature of the configured interface.
