@@ -18,6 +18,7 @@ Here is the table of contents of this chapter:
    tomcat
    dtapAndProperties
    security
+   overviewSecurityRoles
    credentials
    IdentityProviders/MicrosoftEntraId/microsoftEntraId
    customLogging

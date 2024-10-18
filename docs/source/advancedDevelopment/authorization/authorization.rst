@@ -21,9 +21,9 @@ To understand the material of this section, knowledge on earlier sections of the
    :maxdepth: 3
 
    consoleAndLadybug
+   authorizationMethodsAndRoles
 
 TODO: Authorization methods and roles
 HTTP interfaces
 Basic authentication
 Keeping secrets with parameters
-Overview of the authorization language
