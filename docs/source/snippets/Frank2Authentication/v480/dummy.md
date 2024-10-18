@@ -1,0 +1,3 @@
+```none
+application.security.console.authentication.type=YAML
+```

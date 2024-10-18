@@ -1,0 +1,14 @@
+- predecessor: v460
+- file:
+    path: server/resources/localUsers.yml
+    change: add
+- file:
+    path: server/configurations/DeploymentSpecifics.properties
+    change:
+      - old: 3
+        new: 1
+        snippet: dummy
+- snippet:
+    name: dummy
+    markup: none
+    context: 50

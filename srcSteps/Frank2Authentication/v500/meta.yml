@@ -1,0 +1,44 @@
+- predecessor: v460
+- file:
+    path: docker-compose.yml
+    change:
+      - old: 2
+        new: 0
+        snippet: addClientContainerAndRemoveServerPorts
+      - insert: 14
+        highlight: true
+        snippet: addClientContainerAndRemoveServerPorts
+- file:
+    path: client/configurations/Client/Configuration.xml
+    change: add
+- file:
+    path: client/resources/resources.yml
+    change: add
+- file:
+    path: client/secrets/credentials.properties
+    change: add
+- file:
+    path: server/configurations/DeploymentSpecifics.properties
+    change:
+      - old: 3
+        new: 11
+        snippet: dummy
+- file:
+    path: server/configurations/Server/Configuration.xml
+    change:
+      - old: 1
+        new: 1
+        highlight: true
+        snippet: serverApiListener
+- snippet:
+    name: addClientContainerAndRemoveServerPorts
+    markup: none
+    context: 50
+- snippet:
+    name: dummy
+    markup: none
+    context: 50
+- snippet:
+    name: serverApiListener
+    markup: xml
+    context: 50

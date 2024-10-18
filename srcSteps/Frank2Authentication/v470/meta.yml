@@ -1,0 +1,10 @@
+- file:
+    path: server/configurations/DeploymentSpecifics.properties
+    change:
+      - insert: 4
+        highlight: true
+        snippet: openLadybug
+- snippet:
+    name: openLadybug
+    markup: none
+    context: 50

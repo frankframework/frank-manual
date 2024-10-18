@@ -12,5 +12,6 @@ Chapter :ref:`gettingStarted` provides the basics of Frank development. This cha
    database/database
    dockerDevel/dockerDevel
    integrationPatterns/integrationPatterns
+   authorization/authorization
    deployment/maven
    muchData/muchData
