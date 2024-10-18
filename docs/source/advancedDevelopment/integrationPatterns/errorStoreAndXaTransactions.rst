@@ -1,5 +1,3 @@
-*Under construction*
-
 .. _advancedDevelopmentIntegrationPatternsErrorStoreXa:
 
 Error Store and XA Transactions

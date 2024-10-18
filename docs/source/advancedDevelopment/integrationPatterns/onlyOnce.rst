@@ -1,5 +1,3 @@
-*Under construction*
-
 .. _advancedDevelopmentIntegrationPatternsOnlyOnce:
 
 Message Id and Correlation Id

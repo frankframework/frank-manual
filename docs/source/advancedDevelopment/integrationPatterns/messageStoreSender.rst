@@ -1,5 +1,3 @@
-*Under construction*
-
 .. _advancedDevelopmentIntegrationPatternsMessageStoreSender:
 
 Fire and Forget Without Queue

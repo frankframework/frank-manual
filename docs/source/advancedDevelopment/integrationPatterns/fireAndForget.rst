@@ -1,5 +1,3 @@
-*Under construction*
-
 .. _advancedDevelopmentIntegrationPatternsFireForget:
 
 Fire and Forget concepts

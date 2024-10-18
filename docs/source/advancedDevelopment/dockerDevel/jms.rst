@@ -1,5 +1,3 @@
-*Under construction*
-
 .. _advancedDevelopmentDockerDevelJms:
 
 Queues and Java Message Service (JMS)

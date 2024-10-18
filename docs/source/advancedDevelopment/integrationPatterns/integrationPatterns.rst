@@ -1,5 +1,3 @@
-*Under construction*
-
 .. _advancedDevelopmentIntegrationPatterns:
 
 Integration Patterns and Data Integrity
