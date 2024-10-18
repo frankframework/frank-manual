@@ -59,7 +59,6 @@ description. Get it from https://www.usebruno.com/.
   * `git clone https://github.com/frankframework/frankframework` (not needed to test Nexus release of FF!).
   * `git clone https://github.com/wearefrank/ladybug` (not needed to test Nexus release of FF!).
   * `git clone https://github.com/wearefrank/ladybug-frontend` (only needed if latest code of ladybug-frontend is tested).
-* You should have a different clone of https://github.com/wearefrank/ladybug to read this test description from and to reference test configurations from. We refer to it as `ladybug-test`.
 * In directory `work`, check out the versions you want for the F!F and ladybug. You can not choose arbitrarily what vesions to combine. The ladybug backend version used by the FF! is in `work/frankframework/ladybug/pom.xml`, the line `<ladybug.version>...</ladybug.version>` under `<properties>`. That value should be the artifact version mentioned in `work/ladybug/pom.xml`. You can omit this step for now if you want to test the latest ladybug-frontend code.
 * If you test the latest code of ladybug-frontend, do the following:
   * Check out the version of ladybug-frontend you want.
@@ -72,7 +71,7 @@ description. Get it from https://www.usebruno.com/.
 * Uncomment line `test.with.iaf=true` in the `build.properties` you created in the previous step. Uncomment some other lines if you want to speed up the build.
 * Change directory to `work/frank-runner/specials/iaf-webapp`.
 * Copy `build-example.properties` to `build.properties`.
-* Search for the line `# configurations.dir=...`. Replace it by `configurations.dir=<path-to-ladybug-checkout-with-this-test-description>/manual-test/configurations`.
+* Search for the line `# configurations.dir=...`. Replace it by `configurations.dir=<path-to-frank-manual>/misc/manual-test/configurations`.
 * Uncomment some lines of `build.properties` to speed up the build of the FF!.
 
 ### Start up (latest code)
@@ -87,7 +86,7 @@ In this case, the `build.properties` files you have in subdirectories of `work/f
     # Path given is itself relative to work/frank-runner
     projects.dir=..
 
-    project.dir=<ladybug-test>/manual-test
+    project.dir=<path-to-frank-manual>/misc/manual-test
 
 ### Start up (Nexus release)
 
@@ -211,19 +210,35 @@ TODO: Then continue writing this test.
 
 **Step 10:** This test starts with the situation of test 10.
 
-**Step 20:** In the Frank!Runner checkpoint, add the following to `build/<Apache Tomcat dir>/conf/catalina.properties`:
+**Step 20:** In the Frank!Runner checkout, add the following to ``build.properties``:
 
+    dtap.stage=DEV
+    application.security.http.transportGuarantee=none
+
+**Step 25:** Copy ``<path-to-frank-manual>/misc/manual-test/classes-for-auth`` to ``<path-to-frank-manual>/misc/manual-test/classes``.
+
+**Step 30:** Start the Frank!Framework.
+
+**Step 40:** Browse to the Frank!Console. You should get a login dialog. Choose a user mentioned in ``localUsers.yml`` to choose your role.
+
+**Step 50:** Browse to Ladybug. You should not see a login dialog.
+
+**Step 60:** Try to do a few things in Ladybug. Is access restricted as required by your role?
+
+**Step 70:** Repeat this test for other roles.
+
+**Step 80:** Delete directory ``<path-to-frank-manual>/misc/manual-test/classes``. Add the following to ``work/frank-runner/build.properties``:
+
+    application.security.console.authentication.type=NONE
     application.security.testtool.authentication.type=IN_MEMORY
     application.security.testtool.authentication.username=Admin
     application.security.testtool.authentication.password=Nimda
 
-**Step 30:** Start the Frank!Framework.
+**Step 90:** Restart the Frank!Runner. Check that no login dialog is required to enter the Frank!Console.
 
-**Step 40:** Browse to the Frank!Console. You should be allowed to view this without logging in.
+**Step 100:** Go to Ladybug. Check that you have to login with the shown credentials.
 
-**Step 50:** Browse to Ladybug. You should see a login dialog to enter the credentials. After providing these, you should have access to Ladybug.
-
-**Step 60:** Rerun a report. Check that rerunning is allowed and that rerunning succeeds for a report that succeeded when created.
+**Step 110:** Restore ``work/frank-runner/build.properties`` as stated in the [Preparations](#preparations).
 
 ### Test 40: Stubbing
 
@@ -235,11 +250,11 @@ TODO: Then continue writing this test.
 
 ![Stub senders control](./manual-test/stubSendersControl.jpg)
 
-**Step 40:** Stop the Frank!Framework. Update file `<ladybug-test>/manual-test/configurations/processXml/getName.xsl` so that an extra string is added to the output. Edit line `<xsl:value-of select="." />`. The aim is to change the result of the `processXml` adapter.
+**Step 40:** Stop the Frank!Framework. Update file `<path-to-frank-manual>/misc/manual-test/configurations/processXml/getName.xsl` so that an extra string is added to the output. Edit line `<xsl:value-of select="." />`. The aim is to change the result of the `processXml` adapter.
 
 **Step 50:** Restart the FF! and rerun the two reports. The one with stubbed senders should succeed. The one without stubbing should fail.
 
-**Step 60:** Stop the FF! and undo the change to `<ladybug-test>/manual-test/configurations/processXml/getName.xsl`.
+**Step 60:** Stop the FF! and undo the change to `<path-to-frank-manual>/misc/manual-test/configurations/processXml/getName.xsl`.
 
 ### Test 50: Toast messages
 
