@@ -19,7 +19,7 @@ In the previous subsections, authorization was configured to protect the Frank!C
    * - ``/api``
      - ``<ApiListener>``
      - ApiListenerServlet
-     - \*
+     - no authorization required*
    * - ``/rest``
      - ``<RestListener>``
      - RestListenerServlet
