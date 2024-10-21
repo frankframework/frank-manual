@@ -1,3 +1,4 @@
 ```none
 application.security.console.authentication.type=YAML
+application.security.testtool.authentication.type=YAML
 ```

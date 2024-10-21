@@ -6,7 +6,7 @@
     path: server/configurations/DeploymentSpecifics.properties
     change:
       - old: 3
-        new: 1
+        new: 2
         snippet: dummy
 - snippet:
     name: dummy

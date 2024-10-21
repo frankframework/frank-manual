@@ -9,11 +9,11 @@ Authorization methods and roles
 
 In the previous subsection, the Frank!Console and Ladybug were secured with a very basic authorization mechanism named ``IN_MEMORY``. A username and a password were included in ``DeploymentSpecifics.properties`` and hence these were not kept secret. Another authorization mechanism is ``YAML``. With this mechanism, a separate file named ``localUsers.yml`` is supplied with usernames and passwords. This file can be excluded from a Docker image provided to the customer. The system administrator of the customer's site can thus save it in a secure way.
 
-Here is an example in which only the Frank!Console is accessible. It has the following ``DeploymentSpecifics.properties``:
+Here is an example that again secures the Frank!Console and Ladybug. It has the following ``DeploymentSpecifics.properties``:
 
 .. literalinclude:: ../../../../srcSteps/Frank2Authentication/v480/server/configurations/DeploymentSpecifics.properties
 
-And ``localUsers.yml`` looks as follows:
+File ``localUsers.yml`` looks as follows:
 
 .. literalinclude:: ../../../../srcSteps/Frank2Authentication/v480/server/resources/localUsers.yml
 
