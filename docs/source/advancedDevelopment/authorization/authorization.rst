@@ -26,11 +26,11 @@ To understand the material of this section, knowledge on earlier sections of the
 
    consoleAndLadybug
    authorizationMethodsAndRoles
+   httpInterfaces
 
 .. WARNING::
 
    The following topics, and more, will be added:
 
-   * Configuring authorization for HTTP interfaces.
    * Using secrets to do basic authentication.
    * Keeping secrets using parameters.
