@@ -66,25 +66,6 @@ The last line is the assigment of the authentication system. ::
 
 Here we say that the ApiListener servlet should be protected by the authentication system that we defined before. Without this line, the API endpoints remains unprotected. 
 
-The "NONE" type is the default for authenticators and simply indicates an absence of an authenticator. Functionally it does nothing. 
-Below is a table containing all authenticator types and their properties.
-
-.. list-table:: Authenticators & Properties
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Type
-     - Properties
-   * - Jee
-     - Application Server defined settings
-   * - ActiveDirectory
-     - domainName, url, baseDn, followReferrals, searchFilter, roleMappingFile
-   * - InMemory
-     - username, password
-   * - OAuth2
-     - scopes, authorizationUri, tokenUri, jwkSetUri, issuerUri, userInfoUri, userNameAttributeName, clientId, clientSecret, provider, roleMappingFile
-
-
 JEE Provided Authentication (Deprecated since v8.0.0)
 -----------------------------------------------------
 

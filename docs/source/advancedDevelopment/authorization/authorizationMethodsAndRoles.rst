@@ -34,3 +34,41 @@ The overview of which roles exist is not only relevant for Frank developers, but
 .. NOTE::
 
    With the ``IN_MEMORY`` authentication mechanism, no role list can be supplied. When a user authenticates by this mechanism, he is given every role and he can therefore access every feature of the configured interface.
+
+The following table shows all the available authorization mechanism and the properties that exist for each authorization mechanism:
+
+.. list-table:: Authorization mechanisms & properties
+   :widths: 20 20 60
+   :header-rows: 1
+
+   * - Description
+     - ``type``
+     - Property suffixes\*
+   * - No access
+     - ``NONE``\*\*
+     - --
+   * - In memory
+     - ``IN_MEMORY``
+     - ``username``, ``password``
+   * - Yaml
+     - ``YAML`` or ``YML``
+     - --
+   * - ActiveDirectory
+     - ``AD``
+     - ``domainName``, ``url``, ``baseDn``, ``followReferrals``, ``searchFilter``, ``roleMappingFile``
+   * - OAuth2
+     - ``OAUTH2``
+     - ``scopes``, ``authorizationUri``, ``tokenUri``, ``jwkSetUri``, ``issuerUri``, ``userInfoUri``, ``userNameAttributeName``, ``clientId``, ``clientSecret``, ``provider``, ``roleMappingFile``
+   * - Jee\*\*\*
+     - ``CONTAINER``
+     - --
+
+\* = to get the real property name, prepend by:
+
+  * ``application.security.console.authentication.`` to protect the Frank!Console,
+  * ``application.security.testtool.authentication.`` to protect Ladybug, or
+  * ``application.security.http.authenticators.<authenticator name>`` to protect an HTTP interface.
+
+\*\* = This is the default. Access is denied by default unless ``dtap.stage=LOC``.
+
+\*\*\* = Type Jee, ``CONTAINER``, is deprecated. It means that authorization is handled by the application server.
