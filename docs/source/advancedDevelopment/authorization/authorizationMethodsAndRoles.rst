@@ -33,4 +33,4 @@ The overview of which roles exist is not only relevant for Frank developers, but
 
 .. NOTE::
 
-   With the ``IN_MEMORY`` authentication mechanism, no role list can be supplied. When a user authenticates by this mechanism, he is give every role and he can therefore access every feature of the configured interface.
+   With the ``IN_MEMORY`` authentication mechanism, no role list can be supplied. When a user authenticates by this mechanism, he is given every role and he can therefore access every feature of the configured interface.
