@@ -47,8 +47,8 @@ The following table shows all the available authorization mechanism and the prop
    * - No authorization required
      - ``NONE``
      - --
-   * - No access
-     - ``SEALED``\*\*
+   * - No access\*\*
+     - ``SEALED``
      - --
    * - In memory
      - ``IN_MEMORY``
