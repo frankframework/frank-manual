@@ -44,8 +44,11 @@ The following table shows all the available authorization mechanism and the prop
    * - Description
      - ``type``
      - Property suffixes\*
+   * - No authorization required
+     - ``NONE``
+     - --
    * - No access
-     - ``NONE``\*\*
+     - ``SEALED``\*\*
      - --
    * - In memory
      - ``IN_MEMORY``
@@ -67,8 +70,8 @@ The following table shows all the available authorization mechanism and the prop
 
   * ``application.security.console.authentication.`` to protect the Frank!Console,
   * ``application.security.testtool.authentication.`` to protect Ladybug, or
-  * ``application.security.http.authenticators.<authenticator name>`` to protect an HTTP interface.
+  * ``application.security.http.authenticators.<authenticator name>`` to protect an HTTP interface, see :ref:`advancedDevelopmentAuthorizationHttpInterfaces`.
 
-\*\* = This is the default. Access is denied by default unless ``dtap.stage=LOC``.
+\*\* = This is the default. Access is denied by default unless ``dtap.stage=LOC``, but there is an exception for protecting access to ``<ApiListener>`` listeners, see :ref:`advancedDevelopmentAuthorizationHttpInterfaces`.
 
 \*\*\* = Type Jee, ``CONTAINER``, is deprecated. It means that authorization is handled by the application server.
