@@ -293,3 +293,32 @@ This test should be executed with the ladybug test webapp. The maintainers of La
 **Step 30:** Locate the directory that holds the stored ladybug reports (should be a subdir of `data`). Rename it.
 
 **Step 30:** Restart ladybug. Check that an error message is shown.
+
+### Test 90: Miscelaneaus tests of debug table
+
+This is a test of some buttons of the debug table that are not covered by other tests. See picture below:
+
+![miscDebugTableButtons.jpg](./manual-test/miscDebugTableButtons.jpg)
+
+**Step 10:** Create six or more reports in the debug table.
+
+**Step 20:** Using the settings dialog (cog wheel), allow that multiple reports are open simultaneously in the debug tree.
+
+**Step 30:** Ensure that the debug tree is empty.
+
+**Step 40:** Select multiple reports, say four or five, in the debug table and press Open Selected.
+
+**Step 50:** Check that the reports are in the debug tree and that their sequence is the same as in the debug table.
+
+**Step 60:** Download the selected reports.
+
+**Step 70:** Press Delete All to delete all reports.
+
+**Step 80: Upload the downloaded reports. Check that they appear in debug table and that you can browse them in the debug tree.
+
+**Step 80:** In the settings dialog, go back to factory settings. Check that only one report is allowed to be open in the debug tree.
+
+**Step 90:** How does the debug tree look now? Multiple reports were open, but that is not allowed now.
+
+**Step 100:** Ensure that the debug tree is empty. Try to open multiple reports at the same time. This should not succeed.
+
