@@ -39,4 +39,8 @@ Protecting HTTP interfaces is done by defining *authenticators* that are then as
 
 This file defines an authenticator with the name ``inMem``, sets its properties like explained in subsection :ref:`advancedDevelopmentAuthorizationMethodsAndRoles` and then uses the authenticator to protect ``ApiListenerServlet``. In general, an authenticator is assigned to a servlet by setting property ``servlet.<servlet name>.authenticator=<name of the authenticator>``.
 
-Please not that property ``servlet.ApiListenerServlet.securityRoles=IbisAdmin`` is set - a user must become ``IbisAdmin`` to gain access to ``ApiListenerServlet``. The ``ApiListenerServlet`` is an exception in requiring property ``servlet.ApiListenerServlet.securityRoles`` - the other HTTP interfaces do not have similar properties. See the above table for the roles that users have to acquire to gain access.
+.. NOTE::
+
+   To define multiple authenticators, assign a comma-separated list of their names to property ``application.security.http.authenticators``.
+
+Please note that property ``servlet.ApiListenerServlet.securityRoles=IbisAdmin`` is set - a user must become ``IbisAdmin`` to gain access to ``ApiListenerServlet``. The ``ApiListenerServlet`` is an exception in requiring property ``servlet.ApiListenerServlet.securityRoles`` - the other HTTP interfaces do not have similar properties. See the above table for the roles that users have to acquire to gain access.
