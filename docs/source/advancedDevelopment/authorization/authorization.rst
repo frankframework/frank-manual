@@ -27,10 +27,10 @@ To understand the material of this section, knowledge on earlier sections of the
    consoleAndLadybug
    authorizationMethodsAndRoles
    httpInterfaces
+   internalNetwork
 
 .. WARNING::
 
    The following topics, and more, will be added:
 
-   * Using secrets to do basic authentication.
    * Keeping secrets using parameters.
