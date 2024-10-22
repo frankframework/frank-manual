@@ -28,6 +28,7 @@ To understand the material of this section, knowledge on earlier sections of the
    authorizationMethodsAndRoles
    httpInterfaces
    internalNetwork
+   secrets
 
 .. WARNING::
 

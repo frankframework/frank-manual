@@ -1,6 +1,3 @@
-   .. DANGER::
-      *Obsolete. The instructions below disclose secrets, like usernames and passwords, in Ladybug and in log files. The manual will be updated to provide better information.*
-
 .. _deploymentCredentials:
 
 Credentials
@@ -8,9 +5,15 @@ Credentials
 
 Frank configurations can communicate with external systems. These external systems may require credentials like usernames and passwords. The Frank!Framework needs to know these credentials. It is your job to configure these credentials, because they should not be included in Frank configurations. This section explains how you can do this.
 
-First, you have to know the *alias* of the external account. This is a name used in the Frank configuration to reference the credentials. The Frank config uses strings like ``${credential:username:alias1}`` and ``${credential:password:alias1}``. Here, ``alias1`` is the alias of the external account being accessed. Frank configs also reference aliases by setting XML attribute ``authAlias``. Then you have to provide the credentials of the alias. The Frank!Framework allows you to do this in many ways. We demonstrate credentials first by providing them in a properties file.
+First, you have to know the *alias* of the external account. This is a name used in the Frank configuration to reference the credentials. The Frank config uses strings like ``authAlias="alias1"``. Here, ``alias1`` is the alias of the external account being accessed. Then you have to provide the credentials of the alias. The Frank!Framework allows you to do this in many ways. We demonstrate credentials first by providing them in a properties file.
 
-You can exercise providing credentials using our example configuration :download:`credentials.zip <../downloads/configurations/credentials.zip>`. Please install it like explained in section :ref:`frankConsolePreparations` of chapter :ref:`operator`. Then continue as follows:
+You can exercise providing credentials using our example configuration :download:`credentials.zip <../downloads/configurations/credentials.zip>`. Please install it like explained in section :ref:`frankConsolePreparations` of chapter :ref:`operator`.
+
+.. DANGER::
+
+   This example does not keep the secrets secret. Do not do this in production! This example helps you to check whether you provide credentials the right way, which requires these credentials to be disclosed. See :ref:`advancedDevelopmentAuthorizationSecrets` to learn how Frank developers should write safe Frank configurations with secrets.
+
+Continue as follows:
 
 1. Create some properties file, say ``credentials.properties`` and give it the following contents:
 
@@ -31,16 +34,9 @@ You can exercise providing credentials using our example configuration :download
 
    .. image:: testCredentials.jpg
 
-5. Restart the Frank!Runner but omit the Java Virtual Machine options: just ``.\start.bat``.
-6. Run the same adapter. Now it should look like shown below:
+The properties ``credentialFactory.class`` and ``credentialFactory.map.properties`` are relevant for system administrators. They are system properties. You can initialize them as Java Virtual Machine properties (with ``-D`` as shown). If you run the Frank!Framework on Apache Tomcat, you can configure them in ``catalina.properties``. If you are working with Docker Compose, they can be configured in ``docker-compose.yml``. For other application servers, there are other ways but these are beyond the scope of this section.
 
-   .. image:: credentialsNotAllowed.jpg
-
-   You did not allow the Frank!Framework to expand the credentials of alias ``alias1``. You see text that tells you so.
-
-The properties ``authAliases.expansion.allowed``, ``credentialFactory.class`` and ``credentialFactory.map.properties`` are system properties. You can initialize them as Java Virtual Machine properties (with ``-D`` as shown). If you run the Frank!Framework on Apache Tomcat, you can configure them in ``catalina.properties``. For other application servers, there are other ways but these are beyond the scope of this section.
-
-With property ``authAliases.expansion.allowed``, you define for which aliases you want to allow credentials expansion. It is a comma-separated list. With property ``credentialFactory.class`` you define the source from which the credentials have to be obtained. In the example the credentials were in a properties file, but there are many other possibilities you can choose. You give the Java class name of the class that should read the credentials.
+With property ``credentialFactory.class`` you define the source from which the credentials have to be obtained. In the example the credentials were in a properties file, but there are many other possibilities you can choose. You give the Java class name of the class that should read the credentials.
 
 Depending on the value of ``credentialFactory.class``, additional properties can be needed to define the source of the credentials. If ``credentialFactory.class`` is ``nl.nn.credentialprovider.PropertyFileCredentialFactory``, you are defining that the credentials are in a properties file. In this case you should provide property ``credentialFactory.map.properties``. The value of the property is the name of the properties file where the credentials can be found.
 
