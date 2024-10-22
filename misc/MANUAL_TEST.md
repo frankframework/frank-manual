@@ -21,6 +21,8 @@ Ladybug is tested by [automated tests](./README.md#cicd). These automated tests 
   - [Test 50: Toast messages](#test-50-toast-messages)
   - [Test 60: Rerun and compare](#test-60-rerun-and-compare)
   - [Test 70: Low-level error should be shown](#test-70-low-level-error-should-be-shown)
+  - [Test 80: Filter debug table](#test-80-filter-debug-table)
+  - [Test 90: Miscelaneous tests of debug table](#test-90-miscelaneous-tests-of-debug-table)
 
 # Preparations
 
@@ -294,7 +296,31 @@ This test should be executed with the ladybug test webapp. The maintainers of La
 
 **Step 30:** Restart ladybug. Check that an error message is shown.
 
-### Test 90: Miscelaneaus tests of debug table
+### Test 80: Filter debug table
+
+**Step 10:** Create reports from different adapters, such that different filters can produce different selections of reports to appear.
+
+**Step 20:** Check that the debug table has the following columns:
+
+* Storage id.
+* End time.
+* Duration.
+* Name.
+* Correlation Id.
+* Status.
+* Checkpoints.
+* Memory.
+* Size.
+
+**Step 30:** Filter on each criterion.
+
+**Step 40:** In an earlier version, there was an error when you filter by selecting an "End time" from the drop down list. Has that been fixed?
+
+**Step 50:** Filter on multiple criteria simultaneously.
+
+**Step 60:** Filter by substrings of values that appear in a column. Does that work intuitively?
+
+### Test 90: Miscelaneous tests of debug table
 
 This is a test of some buttons of the debug table that are not covered by other tests. See picture below:
 
@@ -314,11 +340,11 @@ This is a test of some buttons of the debug table that are not covered by other 
 
 **Step 70:** Press Delete All to delete all reports.
 
-**Step 80: Upload the downloaded reports. Check that they appear in debug table and that you can browse them in the debug tree.
+**Step 80**: Upload the downloaded reports. Check that they appear in debug table and that you can browse them in the debug tree.
 
-**Step 80:** In the settings dialog, go back to factory settings. Check that only one report is allowed to be open in the debug tree.
+**Step 90:** In the settings dialog, go back to factory settings. Check that only one report is allowed to be open in the debug tree.
 
-**Step 90:** How does the debug tree look now? Multiple reports were open, but that is not allowed now.
+**Step 100:** How does the debug tree look now? Multiple reports were open, but that is not allowed now.
 
-**Step 100:** Ensure that the debug tree is empty. Try to open multiple reports at the same time. This should not succeed.
+**Step 110:** Ensure that the debug tree is empty. Try to open multiple reports at the same time. This should not succeed.
 
