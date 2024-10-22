@@ -23,6 +23,7 @@ Ladybug is tested by [automated tests](./README.md#cicd). These automated tests 
   - [Test 70: Low-level error should be shown](#test-70-low-level-error-should-be-shown)
   - [Test 80: Filter debug table](#test-80-filter-debug-table)
   - [Test 90: Miscelaneous tests of debug table](#test-90-miscelaneous-tests-of-debug-table)
+  - [Test 100: Persistence of tab contents](#test-100-persistence-of-tab-contents)
 
 # Preparations
 
@@ -284,6 +285,22 @@ TODO: Then continue writing this test.
 
 **Step 80:** Change the node comparison algorithm to "None". Select nodes to the left and to the right. Check that selecting a node on one side does not affect the other side.
 
+**Step 90:** Run Adapter1b. Then open the resulting report in the debug tree.
+
+**Step 100:** Select a few nodes in the tree. The rerun button should be present for every selected node.
+
+**Step 110:** Rerun the report.
+
+**Step 120:** Check that a toast window appears about the success or failure of the rerun. It should show additional information like the amount of checkpoints and information about stubbing.
+
+**Step 130:** Check that the debug table has a new report - the report from doing the rerun.
+
+**Step 140:** Open another report in the debug tree. Rerun it from another selected node.
+
+**Step 150:** Check that there is a toast window about the success or failure of the rerun that also provides additional information.
+
+**Step 160:** Check that there is a report from doing the rerun.
+
 ### Test 70: Low-level error should be shown
 
 This test should be executed with the ladybug test webapp. The maintainers of Ladybug know how to start this, so documenting the required preparations is postponed.
@@ -348,3 +365,20 @@ This is a test of some buttons of the debug table that are not covered by other 
 
 **Step 110:** Ensure that the debug tree is empty. Try to open multiple reports at the same time. This should not succeed.
 
+### Test 100: Persistence of tab contents
+
+When you change tabs in your browser, the state of each tab is preserved. When you return to a tab, its state should be the same as before. The same should be true about the different tabs of Ladybug. This can be tested as follows:
+
+**Step 10:** Ensure that you have four or more different reports in the debug tab.
+
+**Step 20:** Copy at least four reports to the Test tab.
+
+**Step 30:** In the debug tab, open one report in the debug tree. Then select a few reports in the table but not all. There should be deselected reports as well. Remember which reports were selected and which one was in the debug tab. Remember which node is selected in the debug tree.
+
+**Step 40:** Go to the Test tab.
+
+**Step 50:** Make the states of the reports different. At least have one re-runned, one selected and one not selected. Remember which report has which state.
+
+**Step 60:** Return to the debug tab. Check that the same reports are selected and that the same report is in the debug tab. Select that the same node is selected in the debug tree.
+
+**Step 70:** Return to the Test tab. Check that the states of the reports are as they were in step 50.
