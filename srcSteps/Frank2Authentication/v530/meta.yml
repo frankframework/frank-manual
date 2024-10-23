@@ -1,1 +1,21 @@
 - predecessor: v500
+- file:
+    path: docker-compose.yml
+    change:
+      - old: 2
+        new: 1
+        highlight: true
+        snippet: useFileSystemCredentialFactory
+- file:
+    path: client/secrets/credentials.properties
+    change: del
+- file:
+    path: client/secrets/myAlias/username
+    change: add
+- file:
+    path: client/secrets/myAlias/password
+    change: add
+- snippet:
+    name: useFileSystemCredentialFactory
+    markup: none
+    context: 50
