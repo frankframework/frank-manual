@@ -17,7 +17,7 @@ We continue the example started in subsection :ref:`advancedDevelopmentAuthoriza
 .. literalinclude:: ../../../../srcSteps/Frank2Authentication/v500/docker-compose.yml
    :emphasize-lines: 19, 24, 25
 
-Property ``credentialFactory.class`` defines what Java class should be used by the Frank!Framework to read credentials. Class ``nl.nn.credentialprovider.PropertyFileCredentialFactory`` is the Java class that reads credentials from a properties file. The Frank!Framework also provides other ways to store credentials, for example using separate text files for the username and the password. The latter could be configured by setting ``credentialFactory.class=nl.nn.credentialprovider.FileSystemCredentialFactory``.
+Property ``credentialFactory.class`` defines what Java class should be used by the Frank!Framework to read credentials. Class ``nl.nn.credentialprovider.PropertyFileCredentialFactory`` is the Java class that reads credentials from a properties file. The Frank!Framework also provides other ways to store credentials, for example in the application server.
 
 Property ``credentialFactory.map.properties`` is only relevant when ``credentialFactory.class=nl.nn.credentialprovider.PropertyFileCredentialFactory`` and specifies the file to read the properties from. Properties are read from ``/opt/frank/secrets/credentials.properties`` in this case. The shown ``docker-compose.yml`` is only used for development. It defines a volume so that some ``credentails.properties`` can be read during development. In production, these properties should be configured by the system administrator of the customer's site. See :ref:`deploymentCredentials`.
 
@@ -26,6 +26,10 @@ Here is the ``credentials.properties`` used in this example during development:
 .. literalinclude:: ../../../../srcSteps/Frank2Authentication/v500/client/secrets/credentials.properties
 
 The user and the password configured for the server are repeated here so that the client should be able to authorize to the server. The words ``username`` and ``password`` are both prepended by ``myAlias/``. With ``PropertyFileCredentialFactory`` you can define multiple sets of credentials, aliases, that could give access to different servers requiring authentication. In this case there is one alias that is named  ``myAlias``.
+
+.. NOTE::
+
+   It is possible to store usernames and passwords in separate files; each username and each password in a dedicated file. This can be done by setting ``credentialFactory.class=nl.nn.credentialprovider.FileSystemCredentialFactory``. Frank applications usually need multiple aliases, so this approach is more complicated than managing all aliases in a single filee using the ``nl.nn.credentialprovider.PropertyFileCredentialFactory``.
 
 Using secrets to authenticate
 -----------------------------
@@ -41,6 +45,8 @@ The client's request has to reach the ``<ApiListener>`` that listens to ``uriPat
    :emphasize-lines: 11 - 14
 
 The trick is the attribute added to the ``<HttpSender>``: ``authAlias="myAlias"``. This tells the Frank!Framework to authenticate itself using basic authentication, using the secrets from alias ``myAlias``.
+
+This finishes the example started in subsection :ref:`advancedDevelopmentAuthorizationHttpInterfaces`. It :download:`is available for download <../../downloads/advancedDevelopmentAuthentication.zip>`.
 
 How to authenticate when the server URL is protected by another mechanism than basic authentication? If the secrets are part of the URL or when they are needed as query parameters or within headers, the secrets can be kept by wrapping them in parameters. Here is an example:
 
