@@ -54,8 +54,8 @@ In the table below, all the options are listed for providing credentials:
 | with ``credentialFactory.filesystem.usernamefile``,         | The properties are names of files holding the       |
 | ``credentialFactory.filesystem.passwordfile`` and           | username and the password. The paths in             |
 | ``credentialFactory.filesystem.root``. Default values       | ``credentialFactory.filesystem.usernamefile``       |
-| ``username``, ``password`` and ``/etc/secrets``.            | and ``credentialFactory.filesystem.passwordfile``   |
-|                                                             | are relative to the path in                         |
+| ``<name of alias>/username``, ``<name of alias>/password``  | and ``credentialFactory.filesystem.passwordfile``   |
+| and ``/opt/frank/secrets``.                                 | are relative to the path in                         |
 |                                                             | ``credentialFactory.filesystem.root``.              |
 +-------------------------------------------------------------+-----------------------------------------------------+
 | ``nl.nn.credentialprovider.AnsibleVaultCredentialFactory``  | Credentials in Ansible vault. The extra             |
