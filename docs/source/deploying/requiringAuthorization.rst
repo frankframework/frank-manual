@@ -35,7 +35,7 @@ With this authorization mechanism, you are responsible for configuring users, pa
     IbisTester=xxx
     IbisAdmin=yyy
 
-This example assumes that ``xxx`` and ``yyy``are Active Directory  roles. To the left of the ``=`` sign is the Frank!Framework role corresponding to the Active Directory role.
+This example assumes that ``xxx`` and ``yyy`` are Active Directory  roles. To the left of the ``=`` sign is the Frank!Framework role corresponding to the Active Directory role.
 
 .. WARNING::
 
