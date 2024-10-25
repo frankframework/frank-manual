@@ -193,7 +193,7 @@ Authorization to turn on Ladybug
 
 **Question:** Which role do you need at least to turn on Ladybug?
 
-**Answer:** IbisDataAdmin, IbisAdmin or IbisTester. See also :ref:`deploymentSecurity`.
+**Answer:** IbisDataAdmin, IbisAdmin or IbisTester. See also :ref:`deploymentOverviewSecurityRoles`.
 
 Flow diagram images
 -------------------
