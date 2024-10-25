@@ -25,9 +25,3 @@ To understand the material of this section, knowledge on earlier sections of the
    httpInterfaces
    internalNetwork
    secrets
-
-.. WARNING::
-
-   The following topics, and more, will be added:
-
-   * Keeping secrets using parameters.

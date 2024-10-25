@@ -14,7 +14,7 @@ This section assumes that authorization has been set up for you. Frank developer
 YAML authorization
 ------------------
 
-This mechanism expects that users, passwords and roles are in a YAML file that you provide. If you use a Docker image derived from the Frank!Framework on Tomcat Docker image, then the file is expected at ``opt/frank/resources/localUsers.yml``. Here is an example:
+This mechanism expects that users, passwords and roles are in a YAML file that you provide. If you use a Docker image derived from the Frank!Framework on Tomcat Docker image, then the file is expected at ``/opt/frank/resources/localUsers.yml``. Here is an example:
 
 .. code-block:: none
 

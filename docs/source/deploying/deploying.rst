@@ -10,12 +10,12 @@ The Frank!Framework is a Java web application that has to be served by an applic
 * The DTAP stage (Development, Test, Acceptance, Production) and property ``instance.name``.
 * Configuring databases and queues.
 * Configuring users, passwords and roles.
-* Providing credentials for the Frank!Framework that it needs to contact third-party applications.
+* Providing credentials to the Frank!Framework that it needs to contact third-party applications.
 * The way Frank configurations can be found (already handled in a Docker image provided by Frank developers).
 
 .. WARNING::
 
-   The information in this chapter is not complete yet. Not all subject listed here are covered yet.
+   The information in this chapter is not complete yet. Not all subject listed here are covered.
 
 This manual does not explain how to use an application server. Instead, it explains how to do the configurations listed above. The maintainers of the Frank!Framework have created a Docker image that holds the Frank!Framework deployed on Apache Tomcat, see https://github.com/frankframework/frankframework/blob/master/Docker.md. Frank developers can derive their image from this image to add Frank configurations.
 
@@ -26,7 +26,7 @@ Here is the table of contents of this chapter:
 .. toctree::
    :maxdepth: 3
 
-   dtapAndProperties
+   dtapAndInstanceName
    requiringAuthorization
    overviewSecurityRoles
    credentials
