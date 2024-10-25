@@ -44,7 +44,7 @@ In the next subsection, you will use the previous version of the NewHorizons con
 
    .. WARNING::
 
-      You see how powerful the JDBC | Execute Query page is? You really need security on your production site, see section :ref:`deploymentSecurity`.
+      You see how powerful the JDBC | Execute Query page is? You really need security on your production site, see section :ref:`deploying`.
 
 #. Stop the Frank!Framework.
 #. Delete all files from ``work\input``, ``work\processing``, ``work\processed``, ``work\error``, but not the directories themselves.

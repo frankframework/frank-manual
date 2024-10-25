@@ -1,7 +1,7 @@
 .. _deploymentCredentials:
 
 Credentials
------------
+===========
 
 Frank configurations can communicate with external systems. These external systems may require credentials like usernames and passwords. The Frank!Framework needs to know these credentials. It is your job to configure these credentials, because they should not be included in Frank configurations. This section explains how you can do this.
 

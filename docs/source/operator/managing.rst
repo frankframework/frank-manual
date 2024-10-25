@@ -5,7 +5,7 @@
 Management
 ==========
 
-In the preceeding sections, you have learned how to monitor the status of the Frank!Framework and how to investigate issues. In this section you will start learning what you can do as a site owner. This section is about temporarily stopping adapters and receivers. The next section :ref:`frankConsoleConfigsUploading` is about uploading new versions of a Frank config. If you are also a system administrator, you also need to read chapter :ref:`deploying`, in particular subsections :ref:`deploymentDtapAndProperties` and :ref:`deploymentSecurity`.
+In the preceeding sections, you have learned how to monitor the status of the Frank!Framework and how to investigate issues. In this section you will start learning what you can do as a site owner. This section is about temporarily stopping adapters and receivers. The next section :ref:`frankConsoleConfigsUploading` is about uploading new versions of a Frank config. If you are also a system administrator, you also need to read chapter :ref:`deploying`.
 
 In this chapter, you continue learning about :ref:`frankConsoleScheduling` a task for periodic execution. The final section :ref:`operatorManagingProcessedMessages` is also important; you learn about auditing and about fixing messages for which processing has failed. Finally, section :ref:`frankConsoleDiskUsage` gives you some tricks to reduce the amount of data stored by the Frank!Framework.
 
@@ -141,7 +141,7 @@ The Test Pipeline screen allows you to pass messages directly into adapters, byp
 
 .. WARNING::
 
-   Wise system administrators should prevent unauthorized users from accessing the Test Pipeline page. Using this feature in your production environment is strongly discouraged, because the receivers you bypass perform important tasks. In the example above, input file ``work\input\example2.csv`` might be processed again if the receiver would start again. See also :ref:`deploymentSecurity`.
+   Wise system administrators should prevent unauthorized users from accessing the Test Pipeline page. Using this feature in your production environment is strongly discouraged, because the receivers you bypass perform important tasks. In the example above, input file ``work\input\example2.csv`` might be processed again if the receiver would start again. See also :ref:`deploying`.
 
 27. Please restart receiver "receiverGetDestinations" like explained. In the next section, you may want to have all adapters and receivers in state Started.
 

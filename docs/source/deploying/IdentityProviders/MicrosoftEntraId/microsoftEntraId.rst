@@ -1,6 +1,8 @@
-.. _deploymentMicrosoftEntraId:
+  .. WARNING::
 
-THIS PAGE IS STILL WORK IN PROGRESS
+     This page is still work in progress.
+
+.. _deploymentMicrosoftEntraId:
 
 Register application with identity provider Microsoft Entra ID
 ==============================================================

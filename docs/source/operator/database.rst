@@ -47,4 +47,4 @@ You learned how to view data. When you want to insert or update records, you hav
 
 .. WARNING::
 
-   In production, you are strongly discouraged to modify your data this way. Maintaining the data should be the responsibility of the Frank configs you deployed. A wise system administrator should configure security such that only authorized operators can use this page of the Frank!Framework. For more information, see :ref:`deploymentSecurity`.
+   In production, you are strongly discouraged to modify your data this way. Maintaining the data should be the responsibility of the Frank configs you deployed. A wise system administrator should configure security such that only authorized operators can use this page of the Frank!Framework. For more information, see :ref:`deploying`.

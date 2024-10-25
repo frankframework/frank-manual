@@ -1,7 +1,3 @@
-   .. WARNING::
-
-      The information given here is not complete. Please check :ref:`deploymentSecurity` for additional information.
-
 .. _advancedDevelopmentAuthorization:
 
 Authorization
