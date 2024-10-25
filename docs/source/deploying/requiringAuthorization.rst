@@ -28,14 +28,18 @@ This file says that user ``joe`` has the roles ``IbisWebService`` and ``IbisObse
 Active Directory
 ----------------
 
-With this authorization mechanism, you are responsible for configuring users, password and Active Directory roles. The Frank!Framework needs a role mapping file, a file that translates Active Directory roles to the Frank!Framework roles. Here is an example:
+With this authorization mechanism, you are responsible for configuring users, password and Active Directory roles. The Frank!Framework needs a role mapping file, a file that translates Active Directory roles to Frank!Framework roles. Here is an example:
 
 .. code-block:: none
 
-    IbisTester=xxx,yyy
-    IbisAdmin=zzz
+    IbisTester=xxx
+    IbisAdmin=yyy
 
-This example assumes that ``xxx``, ``yyy`` and ``zzz`` are LDAP roles. To the left of the ``=`` sign is the Frank!Framework role corresponding to the Active Directory roles.
+This example assumes that ``xxx`` and ``yyy``are Active Directory  roles. To the left of the ``=`` sign is the Frank!Framework role corresponding to the Active Directory role.
+
+.. WARNING::
+
+   The mapping is one to one in this case! You cannot link one Frank!Framework role to multiple Active Directory roles.
 
 .. NOTE::
 
