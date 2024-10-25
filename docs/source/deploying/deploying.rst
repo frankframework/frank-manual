@@ -15,7 +15,6 @@ Here is the table of contents of this chapter:
    :maxdepth: 3
 
    dtapAndProperties
-   security
    overviewSecurityRoles
    credentials
    IdentityProviders/MicrosoftEntraId/microsoftEntraId
