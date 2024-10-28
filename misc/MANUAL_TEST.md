@@ -435,3 +435,5 @@ The two highlighted buttons to the right are exercised to get new folders to the
 **Step 170:** Select folder `yyy`. Both of its two reports should be selected. Press the delete button. The confirmation dialog should list the two selected reports. Confirm.
 
 **Step 180:** Check that there is only one report and that it is in the Reports folder. Check that folder `yyy` is gone.
+
+**Step 190:** Test a situation that a folder has three or more reports and that you are deleting some of them but not all.
