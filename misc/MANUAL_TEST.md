@@ -24,6 +24,7 @@ Ladybug is tested by [automated tests](./README.md#cicd). These automated tests 
   - [Test 80: Filter debug table](#test-80-filter-debug-table)
   - [Test 90: Miscelaneous tests of debug table](#test-90-miscelaneous-tests-of-debug-table)
   - [Test 100: Persistence of tab contents](#test-100-persistence-of-tab-contents)
+  - [Test 110: Miscelaneous tests of the debug tree](#test-110-miscelaneous-tests-of-the-debug-tree)
 
 # Preparations
 
@@ -382,3 +383,25 @@ When you change tabs in your browser, the state of each tab is preserved. When y
 **Step 60:** Return to the debug tab. Check that the same reports are selected and that the same report is in the debug tab. Select that the same node is selected in the debug tree.
 
 **Step 70:** Return to the Test tab. Check that the states of the reports are as they were in step 50.
+
+### Test 110: Miscelaneous tests of the debug tree
+
+We test the following buttons here:
+
+![debug tree buttons](./manual-test/miscDebugTreeButtons.jpg)
+
+**Step 10:** Create two or more reports in the debug table. You can do this with Test a Pipeline.
+
+**Step 20:** Click a report in the debug table to open it in the debug tree. Press the cross button of the debug tree. Check that the report is removed from the debug tree. Check that the report still exists in the debug table.
+
+**Step 30:** Click a report in the debug table to open it in the debug tree. Expand and collapse nodes. Use the expand all and collapse all buttons. Are the nodes correctly expanded and collapsed?
+
+**Step 40:** Select a node in the debug tree. A value should appear to the right. Press the cross button of the value. Check that pane to the right of the nodes becomes blank. Repeat this for a few different selected nodes. Can you restore the value of a node by clicking the node again after you removed the value with the cross button?
+
+**Step 50:** Toggle the Show Metadata button. Check that metadata appears and disappears. Do this for different selected nodes.
+
+**Step 60:** Search nodes with the looking glass button. Nodes that match the search term should be highlighted; no change of the collapse / expand status of nodes.
+
+**Step 70:** Press the download button. Delete all reports from the debug tab and from the test tab.
+
+**Step 80:** Upload the report again. Copy the report to the test tab and rerun.
