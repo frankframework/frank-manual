@@ -24,6 +24,7 @@ Ladybug is tested by [automated tests](./README.md#cicd). These automated tests 
   - [Test 90: Miscelaneous tests of debug table](#test-90-miscelaneous-tests-of-debug-table)
   - [Test 100: Persistence of tab contents](#test-100-persistence-of-tab-contents)
   - [Test 110: Miscelaneous tests of the debug tree](#test-110-miscelaneous-tests-of-the-debug-tree)
+  - [Test 120: Folder structure of test tab](#test-120-folder-structure-of-test-tab)
 
 # Preparations
 
@@ -390,3 +391,47 @@ We test the buttons here that are highlighted in the figure below:
 **Step 70:** Press the download button. Delete all reports from the debug tab and from the test tab.
 
 **Step 80:** Upload the report again. Copy the report to the test tab and rerun.
+
+### Test 120: Folder structure of test tab
+
+This test tests the folder structure, see the screenshot shown below:
+
+![test-tab-folder-structure](./manual-test/testTabFolderStructure.jpg)
+
+The two highlighted buttons to the right are exercised to get new folders to the left. These new folders appear as children of the highlighted "Reports" folder.
+
+**Step 10:** Fill the test tab with two reports.
+
+**Step 20:** Go to the test tab. All reports there should be selected.
+
+**Step 30:** Select only one report. Enter some folder name, say `xxx`, in the edit field to the left of the two shown buttons. Press the Copy button.
+
+**Step 40:** Check that there is a folder named `xxx` below the `Reports` folder to the left.
+
+**Step 50:** Go to the reports folder. Check that there are three reports: the two reports you started with and a copy of one of the reports in the folder `xxx`.
+
+**Step 60:** Go to folder `xxx`. Check that there is only one report, the copy you made in **step 30**. Check that it is selected.
+
+**Step 70:** Press the delete button. A dialog should appear that shows what report is going to be deleted. It should be one report, the report of folder `xxx`.
+
+**Step 80:** Press "Yes". You should be back in the Reports folder. There should be two reports again and they should both be selected.
+
+**Step 90:** Check that folder `xxx` is not present again to the left.
+
+**Step 100:** Select both reports. Type folder name `yyy` and press the Move button.
+
+**Step 110:** Both reports should be in folder `yyy`.
+
+**Step 120:** Select one report and press the copy button to the top of the test tab. The copy button that is not linked to a folder name. Check that the copied report is also in folder `yyy`. The Reports folder should have three reports in total that are all in the `yyy` folder.
+
+**Step 130:** Select one report. Leave the folder edit field empty and press Move.
+
+**Step 140:** Check that one report has been moved to the root folder and that two reports are still in the `yyy` folder.
+
+**Step 150:** Go to folder `yyy`. Check that its two reports are selected. Press delete. Cancel in the confirmation dialog.
+
+**Step 160:** Check that `yyy` still has two reports and that the Reports folder has three reports (including the two of `yyy`).
+
+**Step 170:** Select folder `yyy`. Both of its two reports should be selected. Press the delete button. The confirmation dialog should list the two selected reports. Confirm.
+
+**Step 180:** Check that there is only one report and that it is in the Reports folder. Check that folder `yyy` is gone.
