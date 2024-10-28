@@ -3,7 +3,7 @@
 HTTP Interfaces
 ===============
 
-In the previous subsections, authorization was configured to protect the Frank!Console and Ladybug. The third interface that can be protected was mentioned already in :ref:`advancedDevelopmentAuthorization`: HTTP interfaces. Actually, there are different HTTP interfaces that are protected separately. See the table below:
+In the previous subsections, authorization was configured to protect the Frank!Console including Ladybug. The second interface that can be protected was mentioned already in :ref:`advancedDevelopmentAuthorization`: HTTP interfaces. Actually, there are different HTTP interfaces that are protected separately. See the table below:
 
 .. list-table:: Overview of HTTP interfaces
    :header-rows: 1

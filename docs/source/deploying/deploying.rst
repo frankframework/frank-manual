@@ -19,7 +19,7 @@ The Frank!Framework is a Java web application that has to be served by an applic
 
 This manual does not explain how to use an application server. Instead, it explains how to do the configurations listed above. The maintainers of the Frank!Framework have created a Docker image that holds the Frank!Framework deployed on Apache Tomcat, see https://github.com/frankframework/frankframework/blob/master/Docker.md. Frank developers can derive their image from this image to add Frank configurations.
 
-When you get a Docker image from Frank developers, you can trust that Apache Tomcat has been properly configured. In addition, the Frank!Framework should be able to find the configurations without any additional configurations. It remains your responsibility to take care of the other configurations explained in this chapter.
+When you get a Docker image from Frank developers, you can trust that Apache Tomcat has been properly configured. In addition, the Frank!Framework should be able to find the Frank configurations without any additional configurations. It remains your responsibility to take care of the other configurations explained in this chapter.
 
 Here is the table of contents of this chapter:
 

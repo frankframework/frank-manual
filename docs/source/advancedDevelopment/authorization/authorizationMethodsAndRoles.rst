@@ -13,9 +13,9 @@ File ``localUsers.yml`` looks as follows:
 
 .. literalinclude:: ../../../../srcSteps/Frank2Authentication/v480/server/resources/localUsers.yml
 
-You see here that ``localUsers.yml`` adds an item ``roles`` for each user. Roles allow for differentiation between the features supported by an interface - the Frank!Console, Ladybug or HTTP. For example, relatively many users should have access to the Adapter Status page of the Frank!Framework. In contrast, few user should be allowed to access Test a Pipeline. Test a Pipeline allows users to start arbitrary adapters, disregarding the purpose of the Frank application.
+You see here that ``localUsers.yml`` adds an item ``roles`` for each user. Roles allow for differentiation between the features supported by an interface - the Frank!Console including Ladybug or HTTP. For example, relatively many users should have access to the Adapter Status page of the Frank!Framework. In contrast, few user should be allowed to access Test a Pipeline. Test a Pipeline allows users to start arbitrary adapters, disregarding the purpose of the Frank application.
 
-When a user logs in to the Frank!Framework, he is assigned a set of roles - in the shown example the single role ``IbisObserver``. When the logged-in user tries to access a feature of the Frank!Framework, the Frank!Framework determines the role that is required to access the feature. Only when the user has that role, then access to the feature is granted. An ``IbisObserver`` for example is allowed to see the Adapter Status page, but he is not allowed to access ``Test a Pipeline``. Only an ``IbisTester`` is allowed to do the latter.
+When a user logs in to the Frank!Framework, he is assigned a set of roles - in the shown example the single role ``IbisObserver``. When the logged-in user tries to access a feature of the Frank!Framework, the Frank!Framework determines the role that is required to access the feature. Only when the user has that role, then access to the feature is granted. An ``IbisObserver`` for example is allowed to see the Adapter Status page, but he is not allowed to access Test a Pipeline. Only an ``IbisTester`` is allowed to do the latter.
 
 The overview of which roles exist is not only relevant for Frank developers, but also for system administrators. To have the information in one place, it is only given in section :ref:`deploymentOverviewSecurityRoles`.
 
@@ -64,8 +64,8 @@ The following table shows all the available authorization mechanism and the prop
 
 \* = to get the real property name, prepend by:
 
-  * ``application.security.console.authentication.`` to protect the Frank!Console,
-  * ``application.security.testtool.authentication.`` to protect Ladybug, or
+  * ``application.security.console.authentication.`` to protect the Frank!Console and Ladybug,
+  * ``application.security.testtool.authentication.`` to protect Ladybug differently, or
   * ``application.security.http.authenticators.<authenticator name>.`` to protect an HTTP interface, see :ref:`advancedDevelopmentAuthorizationHttpInterfaces`.
 
 \*\* = This is the default. Access is denied by default unless ``dtap.stage=LOC``, but there is an exception for protecting access to ``<ApiListener>`` listeners, see :ref:`advancedDevelopmentAuthorizationHttpInterfaces`.

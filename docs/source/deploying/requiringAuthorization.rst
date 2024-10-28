@@ -43,4 +43,4 @@ This example assumes that ``xxx`` and ``yyy`` are Active Directory  roles. To th
 
 .. NOTE::
 
-   Information about the other authorization mechanisms supported by the Frank!Framework is not available yet.
+   Information about the other authorization mechanisms supported by the Frank!Framework is not in this manual yet.
