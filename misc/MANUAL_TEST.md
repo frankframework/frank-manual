@@ -6,7 +6,6 @@ Ladybug is tested by [automated tests](./README.md#cicd). These automated tests 
 # Contents
 
 - [Preparations](#preparations)
-  - [Bruno](#bruno)
   - [Checkout](#checkout)
   - [Configure Frank!Runner to run backend - latest code](#configure-frankrunner-to-run-backend-latest-code)
   - [Start up - latest code](#start-up-latest-code)
@@ -46,12 +45,6 @@ The instructions below make clear what to do for each of these choices.
 > `\`.
 
 Please do the following:
-
-### Bruno
-
-Please install HTTP client Bruno. You need it to issue HTTP requests to Frank
-configs. The requests to issue have been prepared along with this test
-description. Get it from https://www.usebruno.com/.
 
 ### Checkout
 
@@ -167,17 +160,9 @@ In this case, the `build.properties` files you have in subdirectories of `work/f
 
 ### Test 20: Views in the debug tree
 
-**Step 10:** Open Bruno and import the prepared requests as shown. The directory to select is in the checkout of this test description.
+**Step 10:** Lookup directory `frank-manual/misc/manual-test/configurations/Conclusion/exampleInputs`. If you are testing under Windows, take its Windows path with escaped `\` characters, for example `c:\\Users\\martijn\\git\\frank-manual\\misc\\manual-test\\configurations\\Conclusion\\exampleInputs`, say `<PATH>`. Otherwise, use the Linux path.
 
-![Bruno open](./manual-test/brunoOpen.jpg)
-
-![Bruno select](./manual-test/brunoSelect.jpg)
-
-The result should be as shown:
-
-![Bruno after open](./manual-test/brunoAfterOpen.jpg)
-
-**Step 20:** Apply the request named "Conclusion - valid".
+**Step 20:** Go to Test a Pipeline and run adapter "Conclusion/Ingest Document". The message should be `<PATH>\\valid` under Windows or `<PATH>/valid` under Linux.
 
 **Step 30:** Go to ladybug and press refresh.
 
