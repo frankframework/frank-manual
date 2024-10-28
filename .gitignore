@@ -17,3 +17,5 @@ cypress/.yarn/install-state.gz
 cypress/cypress/screenshots/
 cypress/cypress/videos/
 srcSteps/Frank2DockerDevel/v510/frank-flow.war
+# Ladybug manual tests
+misc/manual-test/bruno/ladybug-manual-test
