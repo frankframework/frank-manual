@@ -386,7 +386,7 @@ When you change tabs in your browser, the state of each tab is preserved. When y
 
 ### Test 110: Miscelaneous tests of the debug tree
 
-We test the following buttons here:
+We test the buttons here that are highlighted in the figure below:
 
 ![debug tree buttons](./manual-test/miscDebugTreeButtons.jpg)
 
