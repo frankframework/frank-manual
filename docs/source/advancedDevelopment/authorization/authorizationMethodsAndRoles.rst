@@ -25,10 +25,6 @@ The overview of which roles exist is not only relevant for Frank developers, but
 
 .. NOTE::
 
-   Page :ref:`deploymentOverviewSecurityRoles` does not explain yet about Ladybug. It will be added what Ladybug features are accessible by what roles.
-
-.. NOTE::
-
    With the ``IN_MEMORY`` authentication mechanism, no role list can be supplied. When a user authenticates by this mechanism, he is given every role and he can therefore access every feature of the configured interface.
 
 The following table shows all the available authorization mechanism and the properties that exist for each authorization mechanism:
