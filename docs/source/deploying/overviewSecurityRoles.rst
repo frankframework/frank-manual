@@ -9,7 +9,7 @@ IbisWebService
   Can call an Ibis WebserviceListener. No access to Ladybug.
 
 IbisObserver
-  Can look in configurations, statistics and log files. Can clear rerun results (reset) in Ladybug. Can view reports, configuration settings, errors and warnings in Ladybug. Can change Ladybug's default XSLT transformation and node link strategies.
+  Can look in configurations, statistics and log files. Can view reports, configuration settings, errors and warnings in Ladybug. Can change Ladybug's default XSLT transformation and node link strategies.
 
 IbisDataAdmin
   Can browse message logs, message stores and error stores, see section :ref:`operatorManagingProcessedMessages`. Can resend or delete the messages in them. Can reload configurations and start and stop adapters. Can configure when or when not to create Ladybug reports from received messages. Can store and delete Ladybug reports. Has all IbisObserver permissions too.
