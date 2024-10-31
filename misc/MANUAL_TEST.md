@@ -224,9 +224,9 @@ TODO: Then continue writing this test.
     application.security.testtool.authentication.username=Admin
     application.security.testtool.authentication.password=Nimda
 
-**Step 90:** Restart the Frank!Runner. Check that no login dialog is required to enter the Frank!Console.
+**Step 90:** Restart the Frank!Runner. Check that a login dialog is required to enter the Frank!Console.
 
-**Step 100:** Go to Ladybug. Check that you have to login with the shown credentials.
+**Step 100:** Go to Ladybug. Check that no login is required.
 
 **Step 110:** Restore ``work/frank-runner/build.properties`` as stated in the [Preparations](#preparations).
 
