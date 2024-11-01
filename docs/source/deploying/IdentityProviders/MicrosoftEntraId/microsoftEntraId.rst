@@ -40,7 +40,7 @@ You should see the following:
 Frank!Framework properties
 --------------------------
 
-The following properties can be used to configure authentication with Microsoft Entra ID. They configure the Frank!Console so that its users should authenticate themselves at Microsoft Entra ID. Use them on the class level (`src/main/resources` or `classes`) or as system properties.
+The following properties can be used to configure authentication with Microsoft Entra ID. They configure the Frank!Console so that its users should authenticate themselves at Microsoft Entra ID. Use them on the class level (``src/main/resources`` or ``classes``) or as system properties.
 
 .. code-block:: none
 
