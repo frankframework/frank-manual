@@ -40,19 +40,19 @@ You should see the following:
 Frank!Framework properties
 --------------------------
 
-The following properties can be used to configure authentication with Microsoft Entra ID. Use them on the class level (`src/main/resources` or `classes`) or as system properties.
+The following properties can be used to configure authentication with Microsoft Entra ID. They configure the Frank!Console so that its users should authenticate themselves at Microsoft Entra ID. Use them on the class level (`src/main/resources` or `classes`) or as system properties.
 
 .. code-block:: none
 
-   application.security.http.authenticators.myOauth.type=OAUTH2
-   application.security.http.authenticators.myOauth.provider=custom
+   application.security.console.authentication.type=OAUTH2
+   application.security.console.authentication.provider=custom
    #Directory (tenant) ID
-   application.security.http.authenticators.myOauth.clientId=<application id>
+   application.security.console.authentication.clientId=<application id>
    #Secret value
-   application.security.http.authenticators.myOauth.clientSecret=
-   application.security.http.authenticators.myOauth.scopes=openid,profile,email
-   application.security.http.authenticators.myOauth.authorizationUri=https://login.microsoftonline.com/<tenantID>/oauth2/v2.0/authorize
-   application.security.http.authenticators.myOauth.tokenUri=https://login.microsoftonline.com/<tenantID>/oauth2/v2.0/token
-   application.security.http.authenticators.myOauth.jwkSetUri=https://login.microsoftonline.com/common/discovery/v2.0/keys
-   application.security.http.authenticators.myOauth.issuerUri=https://login.microsoftonline.com/<tenantID>/v2.0
-   application.security.http.authenticators.myOauth.userInfoUri=https://graph.microsoft.com/oidc/userinfo
+   application.security.console.authentication.clientSecret=
+   application.security.console.authentication.scopes=openid,profile,email
+   application.security.console.authentication.authorizationUri=https://login.microsoftonline.com/<tenantID>/oauth2/v2.0/authorize
+   application.security.console.authentication.tokenUri=https://login.microsoftonline.com/<tenantID>/oauth2/v2.0/token
+   application.security.console.authentication.jwkSetUri=https://login.microsoftonline.com/common/discovery/v2.0/keys
+   application.security.console.authentication.issuerUri=https://login.microsoftonline.com/<tenantID>/v2.0
+   application.security.console.authentication.userInfoUri=https://graph.microsoft.com/oidc/userinfo
