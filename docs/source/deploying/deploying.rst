@@ -27,6 +27,7 @@ Here is the table of contents of this chapter:
    :maxdepth: 3
 
    dtapAndInstanceName
+   database
    requiringAuthorization
    overviewSecurityRoles
    credentials
