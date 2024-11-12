@@ -7,6 +7,10 @@ The previous page :ref:`advancedDevelopmentDockerDevelSingleConfig` explained on
 
 These issues can be addressed by distributing a Docker image. Developers can create it by writing a Dockerfile. The Dockerfile should derive from image ``frankframework/frankframework`` (if the desired application server is Apache Tomcat), which is available on Dockerhub and on a server owned by the maintainers of the Frank!Framework (see :ref:`advancedDevelopmentDockerDevelConfigureDocker`). The new image should include the Frank configurations (can be plural in this case) being deployed in the ``/opt/frank/configurations`` directory. The production environment does not reference them in a volume anymore.
 
+.. WARNING::
+
+   From release 9.0 onwards, you also have to include the database driver, see :ref:`deployingDatabaseDriver`. It should be in directory ``/usr/local/tomcat/lib``, but keep in mind that this directory already has files in the image provided by the maintainers of the Frank!Framework.
+ 
 File ``resources.yml`` is still mapped as a volume (``/opt/frank/resources``) to allow the customer to configure external resources. This explains why it is useful not to put ``resources.yml`` in ``/opt/frank/configurations`` - doing so would make it more difficult to include configurations in a Docker image without doing so for ``resources.yml``.
 
 The maintainers of the Frank!Framework have done a lot of work to make image ``frankframework/frankframework`` reliable, and hence you are recommended not to interfere with the way it configures Apache Tomcat. For example, it is deprecated upon to provide some ``context.xml``. Detailed information about this image and how to use it can be found here: https://github.com/frankframework/frankframework/blob/master/Docker.md.

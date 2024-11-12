@@ -7,7 +7,7 @@
 Configuring the Database
 ========================
 
-Frank developers write Frank configurations that may access a database. This database is referenced in Frank configurations by its so-called JNDI name (Java Naming and Directory Interface). The JNDI name of a database starts with ``jdbc/`` and after the ``/`` comes some unique name. As a system administrator it is your job to configure the database that belongs to the name referenced in the Frank configuration.
+Frank developers write Frank configurations that may access a database. This database is referenced in Frank configurations by its so-called JNDI name (Java Naming and Directory Interface). The JNDI name of a database starts with ``jdbc/`` and after the ``/`` comes some unique name. As a system administrator it is your job to configure the database that belongs to the name referenced in the Frank configuration. You may also have to take care of the database driver, see the next section :ref:`deployingDatabaseDriver`.
 
 When a Frank application is applied in the application server Apache Tomcat, then Tomcat's ``context.xml`` may be provided to configure the database. This approach is discouraged, because the Frank!Framework supports multiple application servers. The Frank!Framework supports database configurations that are provided in a YAML file, ``resources.yml``. When you use the image provided by the maintainers of the Frank!Framework, the path is expected to be ``/opt/frank/resources/resources.yml``.
 
@@ -44,3 +44,4 @@ The fields ``type`` and ``url`` depend on the database brand. They also depend o
 **optional-port:** ``:<port number>`` or omitted.
 
 See also https://www.netiq.com/documentation/identity-manager-49-drivers/jdbc/data/supported-third-party-jdbc-drivers.html#t47303hry5lw.
+
