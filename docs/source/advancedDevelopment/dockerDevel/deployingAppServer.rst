@@ -9,7 +9,7 @@ These issues can be addressed by distributing a Docker image. Developers can cre
 
 .. WARNING::
 
-   From release 9.0 onwards, you also have to include the database driver, see :ref:`deployingDatabaseDriver`. It should be in directory ``/usr/local/tomcat/lib``, but keep in mind that this directory already has files in the image provided by the maintainers of the Frank!Framework.
+   From release 9.0 onwards, database libraries are no longer in the standard Docker image. See :ref:`deployingDatabaseDriver` for more explanation. If you use the standard image to derive a customer-specific image, then add the library in ``/usr/local/tomcat/lib``. Keep in mind that this directory already contains other files, so do not make this directory a volume. You can also leave it to the customer to add the database driver. Make ``/opt/frank/resources`` a volume and have the library in that directory.
  
 File ``resources.yml`` is still mapped as a volume (``/opt/frank/resources``) to allow the customer to configure external resources. This explains why it is useful not to put ``resources.yml`` in ``/opt/frank/configurations`` - doing so would make it more difficult to include configurations in a Docker image without doing so for ``resources.yml``.
 
