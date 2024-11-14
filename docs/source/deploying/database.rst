@@ -36,9 +36,9 @@ Here is an example that shows the syntax of ``resources.yml`` (do not use in pro
 
 There is a top-level YAML object ``jdbc`` that contains a list of database resources. Each resource is an object that has at least the fields ``name``, ``type`` and ``url``. The ``name`` should be the part of the JNDI name that comes after ``jdbc/``. If the JNDI name of the database is ``jdbc/myDatabase``, then the ``name`` field should be ``myDatabase``. The fields ``type`` and ``url`` define how to reach the database. Sometimes the ``properties`` field is added, see below. Credentials to access the database should be provided through the combination of fields ``username`` and ``password``, or through ``authalias`` if the username and the password are treated as secrets (see :ref:`deploymentCredentials`).
 
-.. WARNING::
+.. NOTE::
 
-   The shown example has both ``authalias``, ``username`` and ``password``. Do not do that in production.
+   The shown example has both ``authalias``, ``username`` and ``password``. In this situation, the ``authalias`` takes precedence over the ``username`` / ``password`` combination.
 
 The ``type`` field
 ------------------
@@ -61,7 +61,7 @@ The following table shows your options to configure the ``type``:
    PostgreSQL, driver, ``org.postgresql.Driver``
    PostgreSQL, XA datasource*, ``org.postgresql.xa.PGXADataSource``
    MariaDB, driver, ``org.mariadb.jdbc.Driver``
-   MariaDB, non-XA datasource, ``org.mariadb.jdbc.MariaDbDataSource``
+   MariaDB, datasource with or without XA, ``org.mariadb.jdbc.MariaDbDataSource``
    MySQL, driver, ``com.mysql.cj.jdbc.Driver``
    MySQL, XA datasource, ``com.mysql.cj.jdbc.MysqlXADataSource``
    MS SQL, driver, ``com.microsoft.sqlserver.jdbc.SQLServerDriver``
