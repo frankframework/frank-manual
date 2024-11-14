@@ -1,7 +1,3 @@
-   .. WARNING::
-
-      Under construction.
-
 .. _deployingDatabase:
 
 Configuring the Database
