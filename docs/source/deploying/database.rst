@@ -76,7 +76,7 @@ The following table shows your options to configure the ``type``:
 Fields ``url`` and ``properties``
 ---------------------------------
 
-The field ``url`` contains the address of the database. The syntax is a bit different for different database brands. Some vendors allow property/value pairs within the URL to configure the database driver. The syntax for adding properties in the ``url`` is different for different database vendors. For this reason, the Frank!Framework supports the ``properties`` field in ``resources.yml``. All properties supported by a database vendor can be configured within ``properties``.
+The field ``url`` contains the address of the database. The syntax is a bit different for different database brands. Some vendors allow property/value pairs within the URL to configure the connection to the database. The syntax for adding properties in the ``url`` is different for different database vendors. For this reason, the Frank!Framework supports the ``properties`` field in ``resources.yml``. All properties supported by each database vendor can be configured in the ``properties`` field of ``resources.yml``.
 
 The following table shows a basic template for the ``url`` for each database brand.
 
