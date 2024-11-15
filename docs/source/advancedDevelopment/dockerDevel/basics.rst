@@ -26,7 +26,9 @@ You may want more insight into these details already during development. You can
 About configuring Docker
 ------------------------
 
-We assume in this section that you have Docker and docker-compose on your development device. This is not an issue for Linux users. If you work with Windows and Docker Desktop, you have to configure it to allow volumes that use your working directory. Please do the following:
+We assume in this section that you have Docker and docker-compose on your development device. This is not an issue for Linux users. For Windows users, Docker Desktop should work out-of-the-box.
+
+If Docker Desktop does not work under Windows, you may have to configure it so that volumes can use your working directory. This can be done as follows:
 
 1. Go to your Docker Desktop window and press the settings button:
 
