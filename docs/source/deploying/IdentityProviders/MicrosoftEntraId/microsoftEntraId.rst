@@ -4,10 +4,16 @@
 
 .. _deploymentMicrosoftEntraId:
 
-Register application with identity provider Microsoft Entra ID
-==============================================================
+Protecting the Frank!Console with OAuth provider Azure AD
+=========================================================
 
-This section explains how to register a Frank application with identity provider Microsoft Entra ID. First, screenshots are shown about what should be done in the Microsoft cloud. At the end of this section you find a list of Frank!Framework properties that should be set (on the class level).
+This section explains how to protect the Frank!Console with OAuth 2.0 from OAuth provider Azure AD. There are two steps:
+
+* Register the application with Microsoft Entra ID.
+* Configure the properties in the Frank!Framework that govern authorization.
+
+Registering with Microsoft Entra ID
+-----------------------------------
 
 The first screen you enter is shown below:
 
@@ -40,7 +46,7 @@ You should see the following:
 Frank!Framework properties
 --------------------------
 
-The following properties can be used to configure authentication with Microsoft Entra ID. They configure the Frank!Console so that its users should authenticate themselves at Microsoft Entra ID. Use them on the class level (``src/main/resources`` or ``classes``) or as system properties.
+The following properties have to be set in the Frank!Framework. They configure the Frank!Console so that its users should authenticate themselves at identity provider Azure AD. Use them on the class level (``src/main/resources`` or ``classes``) or as system properties.
 
 .. code-block:: none
 
