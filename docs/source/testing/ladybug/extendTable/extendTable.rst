@@ -50,4 +50,4 @@ You do not want to change Ladybug completely. Many Java beans still have to be c
 
 .. WARNING::
 
-   In case Ladybug needs data from the database, set ``jdbc.migrator.active=true`` in a properties file in the ``classes`` directory or in ``src/main/resources`` for a Maven project. This is relevant if reports are stored in the database, see :ref:`testingLadybugStorages`.
+   If you want to keep Ladybug reports in a database, you have to do more. Please see :ref:`testingLadybugStorages`.
