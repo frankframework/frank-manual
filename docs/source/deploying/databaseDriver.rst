@@ -9,6 +9,8 @@ To access a database, the Frank!Framework needs a database driver or a datasourc
 
    Until release 8.3 of the Frank!Framework, the database libraries of many databases were included in the Docker image provided by the maintainers of the Frank!Framework. This is the Docker image that holds the Frank!Framework deployed on Apache Tomcat. From the 9.0 release onwards, the database libraries will be excluded from this standard image to make it smaller. Frank developers typically derive a Docker image from this standard image to provide the Frank configurations the customer needs. They should take care now to add the database library of the chosen database.
 
+Frank developers should carefully consider the location of the database library. If the standard image is used to derive a customer-specific image and if the database library should be in the image, then add the library in ``/usr/local/tomcat/lib``. Keep in mind that this directory already contains other files, so do not make this directory a volume. If the customer is to add the database driver, make ``/opt/frank/resources`` a volume. The customer can then supply the database library.
+
 The following table shows for each database brand where the library can be found:
 
 .. csv-table::
