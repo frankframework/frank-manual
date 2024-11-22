@@ -294,3 +294,25 @@ ApiListener and curl
    curl -H "Content-Type:" --request POST --url http://localhost/api/ingestDocument --data 'C:\Users\martijn\git\ladybug-with-manual-tests\manual-test\configurations\Conclusion\exampleInputs\valid'
 
 Alternatively, you can use another tool to test your interface, for example `Bruno <https://www.usebruno.com/>`_.
+
+Having adapters that are stopped by default
+-------------------------------------------
+
+**Question:** I have some adapters that I want to be stopped by default. I could stop the adapters in the Frank!Console, but then they are started again when I restart the Frank!Framework. This is not what I want. Is there a property that causes adapters to be stopped unless I start them in the Frank!Console?
+
+**Answer:** Yes, use attribute ``autoStart`` of the ``<Adapter>`` element. For example:
+
+.. code-block:: xml
+
+   <Configuration
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+   >
+       <Adapter name="Adapter1a" autoStart="false">
+       <Receiver name="Receiver1a">
+           ...
+       </Receiver>
+       ...
+   </Configuration>
+
+I changed an example adapter of the Frank!Runner like this. When I started the Frank!Runner, the adapter was in state stopped. I was able to restart it by hand in the Adapter Status page as was intended.
