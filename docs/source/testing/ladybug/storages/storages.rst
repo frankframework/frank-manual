@@ -1,7 +1,7 @@
 .. _testingLadybugStorages:
 
-Storages
-========
+Ladybug storages and the database
+=================================
 
 Ladybug has to store reports persistently. It allows the user to choose whether reports are stored on the local file system, in the database, or another way. From Frank!Framework version 8.1 onwards, the default is to store reports in the database. If Ladybug stores reports in a database, it uses a table named ``LADYBUG``. As a Frank!Developer, you need to consider a few things to make this work or to override this behavior.
 
