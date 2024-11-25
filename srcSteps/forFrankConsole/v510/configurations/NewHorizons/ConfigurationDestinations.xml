@@ -9,7 +9,8 @@
                 inputFolder="input"
                 inProcessFolder="processing"
                 processedFolder="processed"
-                errorFolder="error"/>
+                errorFolder="error"
+                fileTimeSensitive="true"/>
         </Receiver>
         <Pipeline firstPipe="pipeParseCSV">
             <Exits>
