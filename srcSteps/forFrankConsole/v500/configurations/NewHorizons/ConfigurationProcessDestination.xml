@@ -21,13 +21,13 @@
                 </FixedQuerySender>
                 <Forward name="success" path="pipeChooseInsertOrUpdate"/>
             </SenderPipe>
-            <XmlIfPipe
+            <IfPipe
                 name="pipeChooseInsertOrUpdate"
                 xpathExpression="/result/rowset/row/field"
-                expressionValue="0"
-                thenForwardName="pipeDoInsert"
-                elseForwardName="pipeDoUpdate">
-            </XmlIfPipe>
+                expressionValue="0">
+                <Forward name="then" path="pipeDoInsert" />
+                <Forward name="else" path="pipeDoUpdate" />
+            </IfPipe>
             <SenderPipe
                 name="pipeDoInsert"
                 getInputFromSessionKey="originalMessage">
