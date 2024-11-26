@@ -30,16 +30,14 @@
               storeResultInSessionKey="logMessage">
               <Forward name="success" path="pipeChooseLogWriter"/>
           </XsltPipe>
-          <XmlIfPipe
+          <IfPipe
               name="pipeChooseLogWriter"
               xpathExpression="/field"
               expressionValue="0"
-              getInputFromSessionKey="numExpired"
-              thenForwardName="noneExpired"
-              elseForwardName="someExpired">
-              <Forward name="noneExpired" path="pipeWriteLogMessageInfo"/>
-              <Forward name="someExpired" path="pipeWriteLogMessageError"/>
-          </XmlIfPipe>
+              getInputFromSessionKey="numExpired">
+              <Forward name="then" path="pipeWriteLogMessageInfo"/>
+              <Forward name="else" path="pipeWriteLogMessageError"/>
+          </IfPipe>
           <SenderPipe
               name="pipeWriteLogMessageError"
               getInputFromSessionKey="logMessage">
