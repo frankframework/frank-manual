@@ -29,6 +29,7 @@ Here is the table of contents of this chapter:
    dtapAndInstanceName
    database
    databaseDriver
+   jms
    requiringAuthorization
    overviewSecurityRoles
    credentials
