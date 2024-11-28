@@ -1,0 +1,16 @@
+<Configuration
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+	>
+	<Adapter name="OnMonitoringTriggered">
+		<Receiver name="OnMonitoringTriggered">
+			<JavaListener name="OnMonitoringTriggered" serviceName="OnMonitoringTriggered"/>
+		</Receiver>
+		<Pipeline>
+			<EchoPipe name="MakeLogMessage" getInputFromFixedValue="Monitor triggered" />
+			<SenderPipe name="LogItPipe">
+				<LogSender name="LogItSender" logLevel="WARN"/>
+			</SenderPipe>
+		</Pipeline>
+	</Adapter>
+</Configuration>
