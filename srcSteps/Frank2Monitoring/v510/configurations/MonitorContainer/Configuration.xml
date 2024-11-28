@@ -15,7 +15,8 @@
 			<IbisJavaSender name="TheSender" serviceName="OnMonitoringTriggered"></IbisJavaSender>
 		</SenderMonitorAdapterDestination>
 		<Monitor name="MyMonitor" type="TECHNICAL" destinations="TheDestination">
-			<AlarmTrigger>
+			<AlarmTrigger severity="WARNING">
+				<Event>Receiver Operation Suspended</Event>
 				<Event>Receiver Shutdown</Event>
 			</AlarmTrigger>
 		</Monitor>
