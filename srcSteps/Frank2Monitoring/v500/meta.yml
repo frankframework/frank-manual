@@ -5,8 +5,5 @@
     path: configurations/MonitorContainer/Configuration.xml
     change: add
 - file:
-    path: configurations/ObjectOfAttention/Configuration.xml
-    change: add
-- file:
     path: configurations/OnMonitorTriggered/Configuration.xml
     change: add
