@@ -1,0 +1,10 @@
+- file:
+    path: configurations/MonitorContainer/Configuration.xml
+    change:
+      - insert: 6
+        highlight: true
+        snippet: monitorTextThatShouldComeFromGui
+- snippet:
+    name: monitorTextThatShouldComeFromGui
+    markup: none
+    context: 6

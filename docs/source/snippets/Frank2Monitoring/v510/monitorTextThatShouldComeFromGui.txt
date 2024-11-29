@@ -1,0 +1,18 @@
+.. code-block:: none
+   :emphasize-lines: 8, 9, 10, 11, 12, 13
+
+   ...
+           </Pipeline>
+       </Adapter>
+       <Monitoring>
+           <SenderMonitorAdapterDestination name="TheDestination">
+               <IbisJavaSender name="TheSender" serviceName="OnMonitoringTriggered"></IbisJavaSender>
+           </SenderMonitorAdapterDestination>
+           <Monitor name="MyMonitor" type="TECHNICAL" destinations="TheDestination">
+               <AlarmTrigger severity="WARNING" period="60" threshold="2">
+                   <Event>Receiver Shutdown</Event>
+                   <Adapterfilter adapter="First" />
+               </AlarmTrigger>
+           </Monitor>
+       </Monitoring>
+   </Configuration>
