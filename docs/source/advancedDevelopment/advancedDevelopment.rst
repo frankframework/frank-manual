@@ -15,3 +15,4 @@ Chapter :ref:`gettingStarted` provides the basics of Frank development. This cha
    authorization/authorization
    deployment/maven
    muchData/muchData
+   monitoring/monitoring

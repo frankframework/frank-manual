@@ -1,22 +1,5 @@
-```none{25, 26, 27, 28, 29, 30}
-<Configuration
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
-    >
-    <Adapter name="First">
-        <Receiver name="First">
-            <JavaListener name="First" serviceName="First" />
-        </Receiver>
-        <Pipeline>
-            <EchoPipe name="Message" getInputFromFixedValue="Greetings from First"/>
-        </Pipeline>
-    </Adapter>
-    <Adapter name="Second">
-        <Receiver name="Second">
-            <JavaListener name="Second" serviceName="Listener1b" />
-        </Receiver>
-        <Pipeline>
-            <EchoPipe name="Message" getInputFromFixedValue="Greetings from Second"/>
+```none{8, 9, 10, 11, 12, 13}
+...
         </Pipeline>
     </Adapter>
     <Monitoring>
