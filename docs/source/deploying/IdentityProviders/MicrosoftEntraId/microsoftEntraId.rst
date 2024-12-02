@@ -64,9 +64,8 @@ You have configured Azure to grant OAuth scopes to logged-in users. You also nee
    IbisAdmin=${IbisTester}
    IbisDataAdmin=${otherProperty}
    IbisTester=SCOPE_openid
-   IbisObserver=SCOPE_https://www.googleapis.com/auth/userinfo.email
 
-This example shows the following. Scope ``SCOPE_openid`` means that a user is logged in. The third line links this to Frank!Framework role ``IbisTester``, so when a user has logged in via Microsoft Azure AD then he has Frank!Framework role ``IbisTester``. The first line shows that a Frank!Framework role acts as a property that has the OAuth scope as value. When a user logs in, he also becomes ``IbisAdmin``. The second line shows that scopes can be property references; the value of property ``otherProperty`` is the scope linked to ``IbisDataAdmin``. The last line shows scope ``SCOPE_https://www.googleapis.com/auth/userinfo.email`` to the right of the ``=`` sign. This scope comes from OAuth provider Google. If an application allows authentication with Google, a user becomes ``IbisObserver`` when access to Google's scope for the email address has been granted.
+This example shows the following. Scope ``SCOPE_openid`` means that a user is logged in. The third line links this to Frank!Framework role ``IbisTester``, so when a user has logged in via Microsoft Azure AD then he has Frank!Framework role ``IbisTester``. The first line shows that a Frank!Framework role acts as a property that has the OAuth scope as value. When a user logs in, he also becomes ``IbisAdmin``. The second line shows that scopes can be property references; the value of property ``otherProperty`` is the scope linked to ``IbisDataAdmin``.
 
 Frank!Framework properties
 --------------------------
