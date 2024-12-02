@@ -33,6 +33,10 @@ After committing your edits, it should look like this:
 
 .. image:: configuredPermissions.jpg
 
+.. WARNING::
+
+   Please be advised that this only authenticates and does not authorize the user. If you want more fine-grained access, you need to create ACLs in Azure Entra ID. See the following Microsoft article for more info: https://learn.microsoft.com/en-us/entra/identity-platform/howto-add-app-roles-in-apps.
+
 Continue as follows:
 
 * Go to "Certificates & Secrets".
