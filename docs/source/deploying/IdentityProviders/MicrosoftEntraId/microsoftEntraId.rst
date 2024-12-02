@@ -11,7 +11,7 @@ This section explains how to protect the Frank!Console with OAuth 2.0 from OAuth
 
 The basic idea of OAuth is that the user does not log in to the application (i.e. the Frank application) directly. When a user wants to access the application, he is redirected to a login page of Microsoft Azure. After successful login, the Frank!Framework receives a token. The Frank!Framework thus does not manage user credentials: checking whether the user provides the correct credentials is delegated to Microsoft Azure.
 
-When a user is redirected to Azure AD by the application, the application is represented by a secret id, the *client id*. The application with the specified client id wants permission to access specific user data or to perform specific actions on behalf of the user. OAuth uses the term *scope* for each specific data item or each specific action. In the Azure AD user interface, scopes are shown with heading "OpenId permissions". Another synonym for scope is *claim*. To summarize, when an application logs in to Microsoft Azure AD on behalf of a user, the application wants permissions to access specific scopes for the user.
+When a user is redirected to Azure AD by the application, the application is represented by an id, the *client id*. The application with the specified client id wants permission to access specific user data or to perform specific actions on behalf of the user. OAuth uses the term *scope* for each specific data item or each specific action. In the Azure AD user interface, scopes are shown with heading "OpenId permissions". Another synonym for scope is *claim*. To summarize, when an application logs in to Microsoft Azure AD on behalf of a user, the application wants permissions to access specific scopes for the user.
 
 When a system administrator wants to protect access to a Frank application with OAuth and provider Azure AD, he has to perform the following steps:
 
@@ -44,7 +44,7 @@ After saving your changes, it should look like this:
 
    The instructions shown so far grant each user the same scope(s). If you want more fine-grained access, you need to create ACLs in Azure Entra ID. See the following Microsoft article for more info: https://learn.microsoft.com/en-us/entra/identity-platform/howto-add-app-roles-in-apps.
 
-At this point, you have configured in Azure ID what scopes will be accessible by the application for the user, after login. The final step of registering the application is to generate the client id. Continue as follows:
+At this point, you have configured in Azure ID what scopes will be accessible by the application for the user, after login. The final step of registering the application is to generate the *client secret*; this is a kind of password used by an application to prove its identity. A client secret has an id and a value. Continue as follows:
 
 * Go to "Certificates & Secrets".
 * Go to "New client secret" and enter a client secret.
@@ -87,3 +87,7 @@ The following properties have to be set in the Frank!Framework. They configure t
    application.security.console.authentication.jwkSetUri=https://login.microsoftonline.com/common/discovery/v2.0/keys
    application.security.console.authentication.issuerUri=https://login.microsoftonline.com/<tenantID>/v2.0
    application.security.console.authentication.userInfoUri=https://graph.microsoft.com/oidc/userinfo
+
+.. NOTE::
+
+   At the top of this list, you see ``application.security.console.authentication.provider=custom``. For other OAuth providers than Microsoft Azure AD, some of the values shown above are fixed. For example, when you set ``application.security.console.authentication.provider=google``, some of these properties can be omitted. Detailed information will be added to this manual later.
