@@ -26,7 +26,7 @@ Go to https://portal.azure.com. Go to "Enterprise Applications" | "All applicati
 
 .. image:: registerApplication.jpg
 
-Find your newly created application. Configure group to claim mappings (this section will be extended to describe this). Continue by configuring the claims (scopes):
+Find your newly created application. Configure group to claim mappings. Continue by configuring the claims (scopes):
 
 * Click on "App registrations".
 * Find your newly created application.
