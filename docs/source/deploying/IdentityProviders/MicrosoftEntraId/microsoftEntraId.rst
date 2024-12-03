@@ -22,7 +22,7 @@ When a system administrator wants to protect access to a Frank application with 
 Registering with Microsoft Entra ID
 -----------------------------------
 
-Go to Azure.com. Go to "Enterprise Applications" | "All applications". Click "Register". Fill out the screen shown below:
+Go to https://portal.azure.com. Go to "Enterprise Applications" | "All applications". Click "Register". Fill out the screen shown below:
 
 .. image:: registerApplication.jpg
 
@@ -44,14 +44,15 @@ After saving your changes, it should look like this:
 
    The instructions shown so far grant each user the same scope(s). If you want more fine-grained access, you need to create ACLs in Azure Entra ID. See the following Microsoft article for more info: https://learn.microsoft.com/en-us/entra/identity-platform/howto-add-app-roles-in-apps.
 
-At this point, you have configured in Azure ID what scopes will be accessible by the application for the user, after login. The final step of registering the application is to generate the *client secret*; this is a kind of password used by an application to prove its identity. A client secret has an id and a value. Continue as follows:
+Creating a Client Secret
+------------------------
+At this point, you have configured in Azure ID what scopes will be accessible by the application for the user. The final step of registering the application is to generate a *client secret*. Continue as follows:
 
 * Go to "Certificates & Secrets".
 * Go to "New client secret" and enter a client secret.
-* Save the value and secret ID.
+* Save the secret value, you'll need this later.
 
-You should see the following:
-
+See the following image for more info:
 .. image:: endpoints.jpg
 
 Mapping OAuth scopes to Frank!Framework roles (authorization)
@@ -67,8 +68,8 @@ You have configured Azure to grant OAuth scopes to logged-in users. You also nee
 
 This example shows the following. Scope ``SCOPE_openid`` means that a user is logged in. The third line links this to Frank!Framework role ``IbisTester``, so when a user has logged in via Microsoft Azure AD then he has Frank!Framework role ``IbisTester``. The first line shows that a Frank!Framework role acts as a property that has the OAuth scope as value. When a user logs in, he also becomes ``IbisAdmin``. The second line shows that scopes can be property references; the value of property ``otherProperty`` is the scope linked to ``IbisDataAdmin``.
 
-Frank!Framework properties
---------------------------
+Configuring the Frank!Application by setting properties
+-------------------------------------------------------
 
 The following properties have to be set in the Frank!Framework. They configure the Frank!Console so that its users should authenticate themselves at identity provider Azure AD. Use them on the class level (``src/main/resources`` or ``classes``) or as system properties.
 
