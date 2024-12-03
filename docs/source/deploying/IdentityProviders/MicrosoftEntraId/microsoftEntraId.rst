@@ -16,6 +16,7 @@ When a user is redirected to Azure AD by the application, the application is rep
 When a system administrator wants to protect access to a Frank application with OAuth and provider Azure AD, he has to perform the following steps:
 
 * Register the application with Microsoft Entra ID.
+* Create the client secret.
 * Map OAuth scopes to Frank!Framework roles (authorization).
 * Configure the properties in the Frank!Framework that govern authorization.
 
@@ -53,6 +54,7 @@ At this point, you have configured in Azure ID what scopes will be accessible by
 * Save the secret value, you'll need this later.
 
 See the following image for more info:
+
 .. image:: endpoints.jpg
 
 Mapping OAuth scopes to Frank!Framework roles (authorization)
