@@ -26,6 +26,10 @@ jobs:
           - frankConfig: frank-manual/srcSteps/Frank2Authentication/v515
             iafUtilAllowed: true
             withDocker: true
+          - frankConfig: frank-manual/srcSteps/Frank2Authentication/v515
+            iafUtilAllowed: true
+            withDocker: true
+            port: 8091
     name: ${{matrix.frankConfig}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
     steps:
@@ -57,9 +61,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: frank-manual
-      - name: Copy cypress/cypress.config_cicd.ts to cypress/cypress.config.ts to listen to correct port
-        run: cp cypress.config_cicd.ts cypress.config.ts
-        working-directory: frank-manual/cypress
+      - name: Change the port queried by the test to the default - 8090
+        if: ${{ ! matrix.port }}
+        run: ./adjustServerPort.sh ../../cypress/cypress.config.ts 8090
+        working-directory: frank-manual/.github/workflows
+      - name: Change the port queried by the test to ${{ matrix.port }}
+        if: ${{ matrix.port }}
+        run: ./adjustServerPort.sh ../../cypress/cypress.config.ts ${{ matrix.port }}
+        working-directory: frank-manual/.github/workflows
       - name: Use Node.js 20.x
         uses: actions/setup-node@v2
         with:
@@ -76,6 +85,7 @@ jobs:
         run: yarn install --immutable
         working-directory: frank-manual/cypress
       - name: Cache Frank!Runner dependencies - build
+        if: ${{ matrix.withDocker != true }}
         uses: actions/cache@v3
         with:
           path: frank-runner/build
@@ -124,8 +134,13 @@ jobs:
         if: ${{ matrix.withDocker == true }}
         run: docker compose up &
         working-directory: ${{ matrix.frankConfig }}
-      - name: Wait for server to be available
+      - name: Wait for server to be available - default port 8090
+        if: ${{ ! matrix.port }}
         run: ./waitForUrl.sh http://localhost:8090 240
+        working-directory: frank-manual/.github/workflows
+      - name: Wait for server to be available - port ${{ matrix.port }}
+        if: ${{ matrix.port }}
+        run: ./waitForUrl.sh http://localhost:${{ matrix.port }} 240
         working-directory: frank-manual/.github/workflows
       - name: Run the tests - really no warnings
         if: ${{ matrix.iafUtilAllowed != true }}
@@ -135,9 +150,12 @@ jobs:
         if: ${{ matrix.iafUtilAllowed == true }}
         run: yarn run cypress run --spec cypress/e2e/warning-only-iaf-util.cy.ts
         working-directory: frank-manual/cypress
-      - name: Try to access server directly with curl
+      - name: Try to access server directly with curl - default port 8090
+        if: ${{ ! matrix.port }}
         run: curl -v -i -X DELETE http://localhost:8090/iaf/ladybug/api/report/all/Test
-        if: always()
+      - name: Try to access server directly with curl - port ${{ matrix.port }}
+        if: ${{ matrix.port }}
+        run: curl -v -i -X DELETE http://localhost:${{ matrix.port }}/iaf/ladybug/api/report/all/Test
       - name: Show files
         run: tree -L 5 .
         if: always()

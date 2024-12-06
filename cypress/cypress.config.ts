@@ -4,7 +4,7 @@ module.exports = {
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: 'http://localhost',
+    baseUrl: 'http://localhost:8091',
     video: true
   },
 };
