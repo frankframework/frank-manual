@@ -23,6 +23,9 @@ jobs:
           - frankConfig: frank-manual/srcSteps/Frank2DockerDevel/v530
             iafUtilAllowed: true
             withDocker: true
+          - frankConfig: frank-manual/srcSteps/Frank2Authentication/v515
+            iafUtilAllowed: true
+            withDocker: true
     name: ${{matrix.frankConfig}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
     steps:
