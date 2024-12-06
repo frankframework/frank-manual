@@ -9,16 +9,16 @@ jobs:
     strategy:
       matrix:
         include:
-          - name: ladybugInstance/v520
+          - name: ladybugInstance-v520
             frankConfig: frank-manual/srcSteps/ladybugInstance/v520
-          - name: Frank2Hermes/v560
+          - name: Frank2Hermes-v560
             frankConfig: frank-manual/srcSteps/Frank2Hermes/v560
-          - name: NewHorizons/v510
+          - name: NewHorizons-v510
             frankConfig: frank-manual/srcSteps/NewHorizons/v510
             iafUtilAllowed: true
-          - name: exercise/v500
+          - name: exercise-v500
             frankConfig: frank-manual/srcSteps/exercise/v500
-          - name: forFrankConsole/v510
+          - name: forFrankConsole-v510
             frankConfig: frank-manual/srcSteps/forFrankConsole/v510
           - name: advancedDevelopmentCredentials
             frankConfig: frank-manual/src/advancedDevelopmentCredentials
@@ -27,22 +27,22 @@ jobs:
           - name: deploymentTomcat
             frankConfig: frank-manual/src/deploymentTomcat
             iafUtilAllowed: true
-          - name: Frank2Monitoring/v510
+          - name: Frank2Monitoring-v510
             frankConfig: frank-manual/srcSteps/Frank2Monitoring/v510
-          - name: Frank2DockerDevel/v530
+          - name: Frank2DockerDevel-v530
             frankConfig: frank-manual/srcSteps/Frank2DockerDevel/v530
             iafUtilAllowed: true
             withDocker: true
-          - name: Frank2Authentication/v515 client
+          - name: Frank2Authentication-v515 client
             frankConfig: frank-manual/srcSteps/Frank2Authentication/v515
             iafUtilAllowed: true
             withDocker: true
-          - name: Frank2Authentication/v515 server
+          - name: Frank2Authentication-v515 server
             frankConfig: frank-manual/srcSteps/Frank2Authentication/v515
             iafUtilAllowed: true
             withDocker: true
             port: 8091
-    name: ${{matrix.frankConfig}} - Test that Frank config has no warnings
+    name: ${{matrix.name}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
     steps:
       - name: Show additional properties
