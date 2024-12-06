@@ -46,10 +46,12 @@ jobs:
             frankConfig: frank-manual/srcSteps/Frank2Transactions/v515
             iafUtilAllowed: true
             withDocker: true
+            waitTime: 600
           - name: Frank2Transactions with table ibisstore
             frankConfig: frank-manual/srcSteps/Frank2Transactions/v525
             iafUtilAllowed: true
             withDocker: true
+            waitTime: 600
     name: ${{matrix.name}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
     steps:
@@ -154,13 +156,21 @@ jobs:
         if: ${{ matrix.withDocker == true }}
         run: docker compose up &
         working-directory: ${{ matrix.frankConfig }}
-      - name: Wait for server to be available - default port 8090
-        if: ${{ ! matrix.port }}
+      - name: Wait for server to be available - default port 8090 - default time 240
+        if: ${{ ! matrix.port && ! matrix.waitTime }}
         run: ./waitForUrl.sh http://localhost:8090 240
         working-directory: frank-manual/.github/workflows
-      - name: Wait for server to be available - port ${{ matrix.port }}
-        if: ${{ matrix.port }}
+      - name: Wait for server to be available - port ${{ matrix.port }} - default time 240
+        if: ${{ matrix.port && ! matrix.waitTime }}
         run: ./waitForUrl.sh http://localhost:${{ matrix.port }} 240
+        working-directory: frank-manual/.github/workflows
+      - name: Wait for server to be available - default port 8090 - time ${{ matrix.waitTime }}
+        if: ${{ ! matrix.port && matrix.waitTime }}
+        run: ./waitForUrl.sh http://localhost:8090 ${{ matrix.waitTime }}
+        working-directory: frank-manual/.github/workflows
+      - name: Wait for server to be available - port ${{ matrix.port }} - time ${{ matrix.waitTime }}
+        if: ${{ matrix.port && matrix.waitTime }}
+        run: ./waitForUrl.sh http://localhost:${{ matrix.port }} ${{ matrix.waitTime }}
         working-directory: frank-manual/.github/workflows
       - name: Run the tests - really no warnings
         if: ${{ matrix.iafUtilAllowed != true }}
