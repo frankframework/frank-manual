@@ -1,0 +1,15 @@
+- file:
+    path: docker-compose.yml
+    change:
+      - old: 1
+        new: 1
+        snippet: changePortsForGithubActions
+        highlight: true
+      - old: 1
+        new: 1
+        snippet: changePortsForGithubActions
+        highlight: true
+- snippet:
+    name: changePortsForGithubActions
+    markup: none
+    context: 50
