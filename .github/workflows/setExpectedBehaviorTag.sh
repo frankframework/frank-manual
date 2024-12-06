@@ -4,7 +4,6 @@ export currentFrankConfig=$1
 
 export frankConfigsIafUtilAllowed=" \
     frank-manual/srcSteps/NewHorizons/v510 \
-    frank-manual/srcSteps/Frank2Monitoring/v510 \
     frank-manual/src/deploymentTomcat"
 
 # Copied from StackOverflow - checks whether ${currentFrankConfig}
