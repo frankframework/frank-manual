@@ -9,24 +9,36 @@ jobs:
     strategy:
       matrix:
         include:
-          - frankConfig: frank-manual/srcSteps/ladybugInstance/v520
-          - frankConfig: frank-manual/srcSteps/Frank2Hermes/v560
-          - frankConfig: frank-manual/srcSteps/NewHorizons/v510
+          - name: ladybugInstance/v520
+            frankConfig: frank-manual/srcSteps/ladybugInstance/v520
+          - name: Frank2Hermes/v560
+            frankConfig: frank-manual/srcSteps/Frank2Hermes/v560
+          - name: NewHorizons/v510
+            frankConfig: frank-manual/srcSteps/NewHorizons/v510
             iafUtilAllowed: true
-          - frankConfig: frank-manual/srcSteps/exercise/v500
-          - frankConfig: frank-manual/srcSteps/forFrankConsole/v510
-          - frankConfig: frank-manual/src/advancedDevelopmentCredentials
-          - frankConfig: frank-manual/src/advancedDevelopmentProperties
-          - frankConfig: frank-manual/src/deploymentTomcat
+          - name: exercise/v500
+            frankConfig: frank-manual/srcSteps/exercise/v500
+          - name: forFrankConsole/v510
+            frankConfig: frank-manual/srcSteps/forFrankConsole/v510
+          - name: advancedDevelopmentCredentials
+            frankConfig: frank-manual/src/advancedDevelopmentCredentials
+          - name: advancedDevelopmentProperties
+            frankConfig: frank-manual/src/advancedDevelopmentProperties
+          - name: deploymentTomcat
+            frankConfig: frank-manual/src/deploymentTomcat
             iafUtilAllowed: true
-          - frankConfig: frank-manual/srcSteps/Frank2Monitoring/v510
-          - frankConfig: frank-manual/srcSteps/Frank2DockerDevel/v530
+          - name: Frank2Monitoring/v510
+            frankConfig: frank-manual/srcSteps/Frank2Monitoring/v510
+          - name: Frank2DockerDevel/v530
+            frankConfig: frank-manual/srcSteps/Frank2DockerDevel/v530
             iafUtilAllowed: true
             withDocker: true
-          - frankConfig: frank-manual/srcSteps/Frank2Authentication/v515
+          - name: Frank2Authentication/v515 client
+            frankConfig: frank-manual/srcSteps/Frank2Authentication/v515
             iafUtilAllowed: true
             withDocker: true
-          - frankConfig: frank-manual/srcSteps/Frank2Authentication/v515
+          - name: Frank2Authentication/v515 server
+            frankConfig: frank-manual/srcSteps/Frank2Authentication/v515
             iafUtilAllowed: true
             withDocker: true
             port: 8091
@@ -159,3 +171,9 @@ jobs:
       - name: Show files
         run: tree -L 5 .
         if: always()
+      - name: Store cypress.config.ts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress.config.ts ${{ matrix.name }}
+          path: frank-manual/cypress/cypress.config.ts
