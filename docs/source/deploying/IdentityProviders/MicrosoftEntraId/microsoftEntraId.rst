@@ -1,7 +1,3 @@
-  .. WARNING::
-
-     This page is still work in progress.
-
 .. _deploymentMicrosoftEntraId:
 
 Protecting the Frank!Console with OAuth provider Azure AD
