@@ -42,6 +42,14 @@ jobs:
             iafUtilAllowed: true
             withDocker: true
             port: 8091
+          - name: Frank2Transactions with queue
+            frankConfig: frank-manual/srcSteps/Frank2Transactions/v515
+            iafUtilAllowed: true
+            withDocker: true
+          - name: Frank2Transactions with table ibisstore
+            frankConfig: frank-manual/srcSteps/Frank2Transactions/v525
+            iafUtilAllowed: true
+            withDocker: true
     name: ${{matrix.name}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
     steps:
