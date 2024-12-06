@@ -9,7 +9,17 @@
         new: 1
         snippet: changePortsForGithubActions
         highlight: true
+- file:
+    path: server/configurations/DeploymentSpecifics.properties
+    change:
+      - insert: 3
+        snippet: allowAccessForGithubActions
+        highlight: true
 - snippet:
     name: changePortsForGithubActions
+    markup: none
+    context: 50
+- snippet:
+    name: allowAccessForGithubActions
     markup: none
     context: 50
