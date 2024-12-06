@@ -1,7 +1,3 @@
-   .. WARNING::
-
-      Under construction.
-
 .. _deploymentMonitoring:
 
 Monitoring
