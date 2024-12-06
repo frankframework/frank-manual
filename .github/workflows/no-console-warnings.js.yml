@@ -20,26 +20,35 @@ jobs:
           - frankConfig: frank-manual/src/deploymentTomcat
             iafUtilAllowed: true
           - frankConfig: frank-manual/srcSteps/Frank2Monitoring/v510
+          - frankConfig: frank-manual/srcSteps/Frank2DockerDevel/v530
+            iafUtilAllowed: true
+            withDocker: true
     name: ${{matrix.frankConfig}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
     steps:
       - name: Show additional properties
-        run: echo "Testing ${{matrix.frankConfig}} with iafUtilAllowed = ${{ matrix.iafUtilAllowed }}"
+        run: echo "Testing ${{matrix.frankConfig}} with iafUtilAllowed = ${{ matrix.iafUtilAllowed }} and withDocker = ${{ matrix.withDocker }}"
       - name: Checkout Frank!Runner
+        if: ${{ matrix.withDocker != true }}
         uses: actions/checkout@v4
         with:
           repository: wearefrank/frank-runner
           path: frank-runner
       - name: See commit number of checked-out frank-runner
+        if: ${{ matrix.withDocker != true }}
         run: git log -1
         working-directory: frank-runner
       - name: Set port where Frank!Framework is served
+        if: ${{ matrix.withDocker != true }}
         run: echo "tomcat.connector.port=8090" > frank-runner/build.properties
       - name: Set debug to true
+        if: ${{ matrix.withDocker != true }}
         run: echo "debug=true" >> frank-runner/build.properties
       - name: Set projects.dir
+        if: ${{ matrix.withDocker != true }}
         run: echo "projects.dir=.." >> frank-runner/build.properties
       - name: Select the configuration in the manual we want to test
+        if: ${{ matrix.withDocker != true }}
         run: echo "project.dir=${{matrix.frankConfig}}" >> frank-runner/build.properties
       - name: Checkout frank-manual
         uses: actions/checkout@v4
@@ -71,6 +80,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}${{ matrix.frankConfig }}-frank-runner-build
       - name: Cache Frank!Runner dependencies - download
+        if: ${{ matrix.withDocker != true }}
         uses: actions/cache@v3
         with:
           path: frank-runner/download
@@ -80,26 +90,37 @@ jobs:
       - name: Show current time, allows you to check that logs are not old
         run: date
       - name: Let Frank!Runner do its downloads
+        if: ${{ matrix.withDocker != true }}
         run: ./env.sh > installFrankRunnerEnv.log
         working-directory: frank-runner
       - name: Show apache-tomcat directories
+        if: ${{ matrix.withDocker != true }}
         run: find . -path './build/*' -name 'apache-tomcat*'
         working-directory: frank-runner
       - name: Remove old Tomcat directories
+        if: ${{ matrix.withDocker != true }}
         run: rm -rf ./build/apache-tomcat-9*
         working-directory: frank-runner
       - name: Check that there is only one version of Tomcat
+        if: ${{ matrix.withDocker != true }}
         run: test $(find . -path './build/*' -name 'apache-tomcat*' | wc -w) -eq 1
         working-directory: frank-runner
       - name: Delete old Ladybug test reports
+        if: ${{ matrix.withDocker != true }}
         run: find . -path './build/apache-tomcat*/logs/testtool*' -delete
         working-directory: frank-runner
       - name: Remove old catalina.out
+        if: ${{ matrix.withDocker != true }}
         run: find . -path './build/apache-tomcat*/catalina.out' -delete
         working-directory: frank-runner
       - name: Start server using Frank!Runner in background
+        if: ${{ matrix.withDocker != true }}
         run: ./restart.sh > serverStartLog.log &
         working-directory: frank-runner
+      - name: Start server using docker-compose
+        if: ${{ matrix.withDocker == true }}
+        run: docker compose up &
+        working-directory: ${{ matrix.frankConfig }}
       - name: Wait for server to be available
         run: ./waitForUrl.sh http://localhost:8090 240
         working-directory: frank-manual/.github/workflows
