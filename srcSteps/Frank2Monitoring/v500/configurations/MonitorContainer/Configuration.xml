@@ -19,8 +19,8 @@
 		</Pipeline>
 	</Adapter>
 	<Monitoring>
-		<SenderMonitorAdapterDestination name="TheDestination">
+		<Destination name="TheDestination">
 			<IbisJavaSender name="TheSender" serviceName="OnMonitoringTriggered"></IbisJavaSender>
-		</SenderMonitorAdapterDestination>
+		</Destination>
 	</Monitoring>
 </Configuration>

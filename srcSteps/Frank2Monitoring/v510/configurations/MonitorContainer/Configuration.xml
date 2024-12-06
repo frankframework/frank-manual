@@ -19,9 +19,9 @@
 		</Pipeline>
 	</Adapter>
 	<Monitoring>
-		<SenderMonitorAdapterDestination name="TheDestination">
+		<Destination name="TheDestination">
 			<IbisJavaSender name="TheSender" serviceName="OnMonitoringTriggered"></IbisJavaSender>
-		</SenderMonitorAdapterDestination>
+		</Destination>
 		<Monitor name="MyMonitor" type="TECHNICAL" destinations="TheDestination">
 			<AlarmTrigger severity="WARNING" period="60" threshold="2">
 				<Event>Receiver Shutdown</Event>
