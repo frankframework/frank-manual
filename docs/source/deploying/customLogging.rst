@@ -23,7 +23,7 @@ When you use a third-party appender, make sure to configure the application serv
 
 .. NOTE::
 
-   Logging can also be adjusted using properties. As an example, consider the property setting ``logging.level.org.springframework=WARN``. This sets the log level for all Java packages starting with ``org.springframework`` to ``WARN``. To the right of the ``=`` sign is the log level, to the left is the Java class or package prepended by ``logging.level.``.
+   Logging can also be adjusted using properties. As an example, consider the property setting ``logging.level.org.springframework=WARN``. This sets the log level for all Java packages starting with ``org.springframework`` to ``WARN``. To the right of the ``=`` sign is the log level; to the left is the Java class or package prepended by ``logging.level.``.
 
 References and reference information
 ------------------------------------
