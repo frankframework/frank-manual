@@ -55,6 +55,7 @@ The following table shows your options to configure the ``type``:
    :header: Brand, Kind, ``type``
 
    PostgreSQL, driver, ``org.postgresql.Driver``
+   PostgreSQL, non-XA datasource, ``org.postgresql.ds.PGSimpleDataSource``
    PostgreSQL, XA datasource*, ``org.postgresql.xa.PGXADataSource``
    MariaDB, driver, ``org.mariadb.jdbc.Driver``
    MariaDB, datasource with or without XA, ``org.mariadb.jdbc.MariaDbDataSource``
@@ -67,7 +68,7 @@ The following table shows your options to configure the ``type``:
    Oracle, XA datasource, ``oracle.jdbc.xa.client.OracleXADataSource``
    H2, non-XA datasource, ``org.h2.jdbcx.JdbcDataSource``
 
-* = Only works if you also enable a transaction manager, i.e. Narayana. A transaction manager coordinates XA transactions.
+\* = Only works if you also enable a transaction manager, i.e. Narayana. A transaction manager coordinates XA transactions.
 
 Fields ``url`` and ``properties``
 ---------------------------------
