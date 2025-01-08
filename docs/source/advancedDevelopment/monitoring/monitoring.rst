@@ -5,6 +5,10 @@ Monitoring
 
 Operators and system administrators want to monitor the status of their Frank application. The Adapter Status page shows general information. The Frank!Framework also allows operators and Frank developers to define custom monitoring information. This is partly done in the Frank!Console and it is partly done by editing ``Configuration.xml`` (or files included by ``Configuration.xml``). Defining and using monitoring information is the subject of this page.
 
+.. WARNING::
+
+   This feature of the Frank!Framework only works if property ``monitoring.enabled`` is ``true``. This should be the default. In case your monitors do not work, consider setting ``monitoring.enabled=true`` explicitly.
+
 Concepts
 --------
 
