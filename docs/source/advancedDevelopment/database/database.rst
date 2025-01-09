@@ -23,6 +23,10 @@ This knowledge allows you to use multiple databases. If you have a second databa
 
 If you are using an Apache Tomcat application server, then the Frank!Framework expects that there is a database with JNDI name ``jdbc/${instance.name.lc}`` with ``${instance.name.lc}`` a property reference as explained. The expected database name depends on property ``instance.name``.
 
+.. NOTE::
+
+   It is possible to override the JNDI name of the default database. It comes from property ``jdbc.datasource.default`` that has default value ``jdbc/${instance.name.lc}``. To reference the default database by another JNDI name, give this property another value.
+
 Initial data
 ------------
 
