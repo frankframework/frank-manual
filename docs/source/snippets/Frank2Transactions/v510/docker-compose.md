@@ -1,9 +1,13 @@
-```none{6, 7, 8, 9, 10, 19, 20, 21}
+```none{10, 11, 12, 13, 14, 23, 24, 25}
 services:
   db:
-    image: private.docker.nexus.frankframework.org/ff-test/dbms/postgresql
+    image: postgres
     ports:
       - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=testiaf_user00
+      - POSTGRES_USER=testiaf_user
+      - POSTGRES_DB=testiaf
   jms:
     image: private.docker.nexus.frankframework.org/ff-test/mq/artemis
     ports:
