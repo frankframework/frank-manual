@@ -24,9 +24,6 @@ jobs:
             frankConfig: frank-manual/src/advancedDevelopmentCredentials
           - name: advancedDevelopmentProperties
             frankConfig: frank-manual/src/advancedDevelopmentProperties
-          - name: deploymentTomcat
-            frankConfig: frank-manual/src/deploymentTomcat
-            iafUtilAllowed: true
           - name: Frank2Monitoring-v510
             frankConfig: frank-manual/srcSteps/Frank2Monitoring/v510
           - name: Frank2DockerDevel-v530
