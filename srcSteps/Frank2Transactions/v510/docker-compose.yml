@@ -4,16 +4,19 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_PASSWORD=testiaf_user00
-      - POSTGRES_USER=testiaf_user
-      - POSTGRES_DB=testiaf
+      POSTGRES_PASSWORD: testiaf_user00
+      POSTGRES_USER: testiaf_user
+      POSTGRES_DB: testiaf
+      max_prepared_transactions: 100
   jms:
-    image: private.docker.nexus.frankframework.org/ff-test/mq/artemis
+    image: apache/activemq-artemis:2.36.0
     ports:
       - 8160:8160
-      - 61615:61615
+      - 61616:61616
+    environment:
+      ANONYMOUS_LOGIN: true
   ff:
-    image: frankframework/frankframework:8.3.0-SNAPSHOT
+    image: frankframework/frankframework:latest
     ports:
       - 8080:8080
     volumes:
