@@ -3,7 +3,7 @@
 Configuring the Database
 ========================
 
-Frank developers write Frank configurations that may access a database. This database is referenced in Frank configurations by its so-called JNDI name (Java Naming and Directory Interface). The JNDI name of a database starts with ``jdbc/`` and after the ``/`` comes some unique name. As a system administrator it is your job to configure the database that belongs to the name referenced in the Frank configuration. You may also have to take care of the database driver, see the next section :ref:`deployingDatabaseDriver`.
+Frank developers write Frank configurations that may access a database. This database is referenced in Frank configurations by its name. The name of a database starts with ``jdbc/`` and after the ``/`` comes some unique name. As a system administrator it is your job to configure the database that belongs to the name referenced in the Frank configuration. You may also have to take care of the database driver, see the next section :ref:`deployingDatabaseDriver`.
 
 Introduction to ``resources.yml``
 ---------------------------------
@@ -30,7 +30,7 @@ Here is an example that shows the syntax of ``resources.yml`` (do not use in pro
 
    The shown line ``authalias: "${db.authalias}"`` demonstrates that system properties or application properties can be referenced in ``resources.yml``.
 
-There is a top-level YAML object ``jdbc`` that contains a list of database resources. Each resource is an object that has at least the fields ``name``, ``type`` and ``url``. The ``name`` should be the part of the JNDI name that comes after ``jdbc/``. If the JNDI name of the database is ``jdbc/myDatabase``, then the ``name`` field should be ``myDatabase``. The fields ``type`` and ``url`` define how to reach the database. Sometimes the ``properties`` field is added, see below. Credentials to access the database should be provided through the combination of fields ``username`` and ``password``, or through ``authalias`` if the username and the password are treated as secrets (see :ref:`deploymentCredentials`).
+There is a top-level YAML object ``jdbc`` that contains a list of database resources. Each resource is an object that has at least the fields ``name``, ``type`` and ``url``. The ``name`` should be the part of the database name that comes after ``jdbc/``. If the database name is ``jdbc/myDatabase``, then the ``name`` field should be ``myDatabase``. The fields ``type`` and ``url`` define how to reach the database. Sometimes the ``properties`` field is added, see below. Credentials to access the database should be provided through the combination of fields ``username`` and ``password``, or through ``authalias`` if the username and the password are treated as secrets (see :ref:`deploymentCredentials`).
 
 .. NOTE::
 

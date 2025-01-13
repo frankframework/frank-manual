@@ -33,7 +33,7 @@ The ``<JdbcMessageLog>`` configures the Frank!Framework to remember the incoming
 
 .. NOTE::
 
-   If table IBISSTORE is created, it appears in the database referenced by ``jdbc.datasource.default``. If that property does not have its default value, then table IBISSTORE does not appear in the database with JNDI name ``jdbc/${instance.name.lc}``. In that case it appears in the database with the JNDI name that is the value of property ``jdbc.datasource.default``.
+   If table IBISSTORE is created, it appears in the database referenced by ``jdbc.datasource.default``. If that property does not have its default value, then table IBISSTORE does not appear in the database with name ``jdbc/${instance.name.lc}``. In that case it appears in the database with the name that is the value of property ``jdbc.datasource.default``.
 
 The receiver can be changed to expect a correlation id that is extracted from the incoming message, instead of a message id. The changes shown below modify ``Configuration.xml`` to process a message only if the extracted correlation id has not been seen before:
 

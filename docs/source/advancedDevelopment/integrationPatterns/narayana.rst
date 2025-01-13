@@ -46,7 +46,7 @@ The ``objectStoreDatasource`` property may refer to a DataSource available in th
    ## Narayana ObjectStore Settings
    # When using the database the FQDN must be used, eg; com.arjuna.ats.internal.arjuna.objectstore.jdbc.JDBCStore
    transactionmanager.narayana.objectStoreType=com.arjuna.ats.internal.arjuna.objectstore.ShadowNoFileLockStore
-   # JNDI DataSource name, should not be XA-capable and will be managed + pooled by the framework.
+   # DataSource name, should not be XA-capable and will be managed + pooled by the framework.
    transactionmanager.narayana.objectStoreDatasource=
    transactionmanager.narayana.dropTable=false
    transactionmanager.narayana.createTable=true

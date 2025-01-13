@@ -3,11 +3,11 @@
 Configuring JMS and its driver
 ==============================
 
-JMS stands for Java Message Service. This is a standard that allows Java applications, including the Frank!Framework, to write and read from queues. Frank configurations access the queue through its JNDI name (Java Naming and Directory Interface). This is a string that starts with ``jms/``, for example ``jms/qcf-artemis``. As a system administrator, you should receive the JNDI name that is given to the queue to be accessed. It is your job to set up this queue and to configure how the Frank!Framework should reach the queue.
+JMS stands for Java Message Service. This is a standard that allows Java applications, including the Frank!Framework, to write and read from queues. Frank configurations access the queue system through its name. This is a string that starts with ``jms/``, for example ``jms/qcf-artemis``. As a system administrator, you should receive the name that is given to the queue system to be accessed. It is your job to set up this queue system and to configure how the Frank!Framework should reach the queue system.
 
 .. NOTE::
 
-   Frank developers should know that the JNDI of the queue to read or write is specified in attribute ``queueConnectionFactoryName`` of the ``<JmsSender>`` or ``<JmsListener>``.
+   Frank developers should know that the name of the queue system to read or write is specified in attribute ``queueConnectionFactoryName`` of the ``<JmsSender>`` or ``<JmsListener>``. The actual queue is specified by attribute ``destinationName``.
 
 ``resources.yml``
 -----------------
@@ -26,7 +26,7 @@ You can use file ``resources.yml`` to specify how the Frank!Framework can access
 
 The fields that can appear under ``jms`` to configure queues are the same as the fields that can appear under ``jdbc`` to configure databases: they are ``name``, ``type``, ``url``, ``authalias``, ``username``, ``password`` and ``properties``.
 
-The ``name`` field should be the part of the JNDI name that comes after ``jms/``.
+The ``name`` field should be the part of the queue system name that comes after ``jms/``.
 
 The ``type`` specifies the Java class that should be used as connection factory. The ``type`` field is more straightforward for queues than it is for databases - for queues there is no counterpart for the choice between a driver and a datasource. You still have to take care that your queue connection factory supports XA transactions when required -- you need XA transactions if you want transactions that span multiple systems, for example when reading a queue and writing a database has to happen within the same transaction.
 
