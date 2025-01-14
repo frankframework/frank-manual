@@ -21,7 +21,8 @@ In this section, you learn how you can browse and modify the database. You will 
 
       Upon delivery of a Frank config, the developer should inform you what database names are used. It is up to the system administrator to configure them, linking the names to the actual resources. The developer or the system administrator should tell you as a site owner what database names exist and what their roles are. 
       
-      There is always at least one database, which almost always has its a name derived from the instance name of the deployment. In this tutorial, the instance name is "Frank2Manual". The name of the database is calculated by replacing capitals by lower-case letters and prepending the string "jdbc/", resulting in "jdbc/frank2manual".
+      There is always at least one database, which almost always has its
+ name derived from the instance name of the deployment. In this tutorial, the instance name is "Frank2Manual". The name of the database is calculated by replacing capitals by lower-case letters and prepending the string "jdbc/", resulting in "jdbc/frank2manual".
 
       Do not be worried that the database name depends on a property that can have a different value for different deployments. The Frank!Framework is capable of handling this.
 
