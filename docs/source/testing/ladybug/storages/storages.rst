@@ -15,7 +15,7 @@ Please consider the following properties:
    :header: Property, Explanation
 
    ``jdbc.migrator.active``, Set to ``true`` to allow the Frank!Framework to create table ``LADYBUG``.
-   ``ladybug.jdbc.datasource``, "If not set, Ladybug uses the default database of the Frank!Framework to store reports. Set this property to choose another database (is a JNDI name, like ``jdbc/xxx``). You can set ``ladybug.jdbc.datasource=`` (set to blank value) to force Ladybug not to use the database. Then Ladybug stores reports in the local filesystem."
+   ``ladybug.jdbc.datasource``, "If not set, Ladybug uses the default database of the Frank!Framework to store reports. Set this property to choose another database (like ``jdbc/xxx``). You can set ``ladybug.jdbc.datasource=`` (set to blank value) to force Ladybug not to use the database. Then Ladybug stores reports in the local filesystem."
 
 These properties have to be system properties or application properties, see :ref:`propertiesDeploymentEnvironment`.
 

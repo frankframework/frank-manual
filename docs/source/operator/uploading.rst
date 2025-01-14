@@ -91,7 +91,7 @@ Please continue as follows:
    .. image:: uploadingUploadConfig.jpg
 
 #. Download the :download:`original version <../downloads/configurations/forFrankConsole.zip>` of the NewHorizons configuration if you do not have it anymore. It is not important where you save it.
-#. Select your database by its JNDI name (number 1), like you did in the JDBC | Execute Query page in section :ref:`frankConsoleDatabase`. You have only one choice.
+#. Select your database by its name (number 1), like you did in the JDBC | Execute Query page in section :ref:`frankConsoleDatabase`. You have only one choice.
 #. Next to number 2 you have a "Browse..."  button. Press it and select the zipfile you just downloaded.
 #. Check "Activate Config" (number 3).
 #. Press "Send" (number 4). To the top, a green bar should appear indicating success (number 5).
