@@ -199,4 +199,4 @@ jobs:
         if: ${{ always() }}
         with:
           name: videos ${{ matrix.name }}
-          path: frank-manual/cypress/videos
+          path: frank-manual/cypress/cypress/videos
