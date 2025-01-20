@@ -7,6 +7,7 @@ describe('Tests of frank-manual config - only IAF_Util', () => {
   })
 
   it('Test that only alerts are IAF-Util and FrankConfig-compatibility.xsd', () => {
+    cy.visit('')
     cy.get('.alert-warning').then((alerts: JQuery<Html>) => {
       const totalNumAlerts = alerts.length
       cy.log(`Total number of Adapter Status alerts is: ${totalNumAlerts}`)
