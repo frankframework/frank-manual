@@ -12,7 +12,7 @@ describe('Tests of frank-manual config - only IAF_Util', () => {
       const totalNumAlerts = alerts.length
       cy.log(`Total number of Adapter Status alerts is: ${totalNumAlerts}`)
       const alertsNoFrankDoc = alerts.filter((a) => {
-        const alertText = a.text()
+        const alertText = a.text
         const isRelevant = alertText.find('FrankConfig-compatibility') < 0
         cy.log(`Alert with text "${alertText}" relevant: ${isRelevant}`)
         return isRelevant
