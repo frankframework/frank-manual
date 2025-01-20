@@ -194,3 +194,9 @@ jobs:
         with:
           name: cypress.config.ts ${{ matrix.name }}
           path: frank-manual/cypress/cypress.config.ts
+      - name: Store video
+        uses: actions/upload-artifact@v4  
+        if: ${{ always() && matrix.name == 'Frank2DockerDevel-v530' }}
+        with:
+          name: videos ${{ matrix.name }}
+          path: frank-manual/cypress/videos
