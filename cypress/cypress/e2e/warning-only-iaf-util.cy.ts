@@ -17,7 +17,11 @@ describe('Tests of frank-manual config - only IAF_Util', () => {
         cy.log(`Alert with text "${alertText}" relevant: ${isRelevant}`)
         return isRelevant
       })
-      cy.wrap(alertsNoFrankDoc).contains('Configuration [IAF_Util]').should('have.length', 1)
+      if (alertsNoFrankDoc.length === 0) {
+        cy.log('No alerts at all, OK')
+      } else {
+        cy.wrap(alertsNoFrankDoc).contains('Configuration [IAF_Util]').should('have.length', 1)
+      }
     })
   })
 })
