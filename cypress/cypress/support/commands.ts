@@ -27,6 +27,8 @@
 declare namespace Cypress {
   interface Chainable<Subject = any> {
     tryToFindMoreThanZero(query: string, numTrials: number)
+    omitElementsWithText(textToOmit: string): Chainable<any>
+    tryToFindMoreThanZeroOmitting(query: string, textToOmit: string, numTrials: number): Chainable<any>
   }
 }
 
@@ -37,6 +39,33 @@ Cypress.Commands.add('tryToFindMoreThanZero', (query, numTrials) => {
       if (numTrials !== 0) {
         cy.wait(200)
         cy.tryToFindMoreThanZero(query, numTrials-1)
+      }
+    } else {
+      cy.wrap(numFound).should('equal', 0)
+    }
+  })
+})
+
+Cypress.Commands.add('omitElementsWithText', { prevSubject: 'element' }, (elements, textToOmit) => {
+  let result: JQuery<HTMLElement> = []
+  for(let i = 0; i < elements.length; ++i) {
+    const elementText = elements[i].innerText
+    const elementDoesNotHaveTheText = elementText.indexOf(textToOmit) < 0
+    if (elementDoesNotHaveTheText) {
+      result.push(elements[i])
+    }
+    cy.log(`Element with text "${elementText}" kept: ${elementDoesNotHaveTheText}`)
+  }
+  return cy.wrap(result)
+})
+
+Cypress.Commands.add('tryToFindMoreThanZeroOmitting', (query, textToOmit, numTrials) => {
+  cy.get(query).omitElementsWithText(textToOmit).should('have.length.gte', 0).then(result => {
+    const numFound: number = result.length
+    if (numFound === 0) {
+      if (numTrials !== 0) {
+        cy.wait(200)
+        cy.tryToFindMoreThanZeroOmitting(query, textToOmit, numTrials-1)
       }
     } else {
       cy.wrap(numFound).should('equal', 0)
