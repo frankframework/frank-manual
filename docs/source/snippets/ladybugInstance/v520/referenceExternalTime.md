@@ -5,7 +5,7 @@
   <!ENTITY sut SYSTEM "sut.xml">
   <!ENTITY dynamicId SYSTEM "ConfigurationDynamicId.xml">
 ]>
-<Configuration name="ladybug">
+<Configuration>
   &external;
   &sut;
   &dynamicId;
