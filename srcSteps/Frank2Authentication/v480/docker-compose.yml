@@ -1,6 +1,6 @@
 services:
   frank-authorization-server:
-    image: frankframework/frankframework:8.3.0-SNAPSHOT
+    image: frankframework/frankframework:latest
     ports:
       - 8081:8080
     volumes:

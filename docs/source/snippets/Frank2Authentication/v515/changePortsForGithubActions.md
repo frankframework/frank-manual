@@ -1,7 +1,7 @@
 ```none{5, 17}
 services:
   frank-authorization-server:
-    image: frankframework/frankframework:8.3.0-SNAPSHOT
+    image: frankframework/frankframework:latest
     ports:
       - 8091:8080
     volumes:
@@ -13,7 +13,7 @@ services:
       configurations.directory.autoLoad: true
       application.security.http.transportGuarantee: none
   frank-authorization-client:
-    image: frankframework/frankframework:8.3.0-SNAPSHOT
+    image: frankframework/frankframework:latest
     ports:
       - 8090:8080
     volumes:
