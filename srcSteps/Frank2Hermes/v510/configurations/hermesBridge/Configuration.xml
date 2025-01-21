@@ -2,6 +2,6 @@
 <!DOCTYPE configuration [
   <!ENTITY ToConscience SYSTEM "ConfigurationToConscience.xml">
 ]>
-<Configuration name="hermesBridge">
+<Configuration>
   &ToConscience;
 </Configuration>
