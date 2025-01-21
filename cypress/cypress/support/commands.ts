@@ -60,7 +60,8 @@ Cypress.Commands.add('omitElementsWithText', { prevSubject: 'element' }, (elemen
 })
 
 Cypress.Commands.add('tryToFindMoreThanZeroOmitting', (query, textToOmit, numTrials) => {
-  cy.get(query).omitElementsWithText(textToOmit).should('have.length.gte', 0).then(result => {
+  cy.get(query).should('have.length.gte', 0)
+    .omitElementsWithText(textToOmit).should('have.length.gte', 0).then(result => {
     const numFound: number = result.length
     if (numFound === 0) {
       if (numTrials !== 0) {
