@@ -46,7 +46,10 @@ Cypress.Commands.add('tryToFindMoreThanZero', (query, numTrials) => {
   })
 })
 
-Cypress.Commands.add('omitElementsWithText', { prevSubject: 'element' }, (elements, textToOmit) => {
+Cypress.Commands.add('omitElementsWithText', { prevSubject: 'optional' }, (elements, textToOmit) => {
+  if (! elements) {
+    return null
+  }
   let result: JQuery<HTMLElement> = []
   for(let i = 0; i < elements.length; ++i) {
     const elementText = elements[i].innerText
