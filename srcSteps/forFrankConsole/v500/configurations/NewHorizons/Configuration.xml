@@ -3,7 +3,7 @@
   <!ENTITY Destinations SYSTEM "ConfigurationDestinations.xml">
   <!ENTITY ProcessDestination SYSTEM "ConfigurationProcessDestination.xml">
 ]>
-<Configuration name="NewHorizons">
+<Configuration>
   &Destinations;
   &ProcessDestination;
 </Configuration>

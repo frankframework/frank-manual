@@ -5,7 +5,7 @@
   <!ENTITY ProcessDestination SYSTEM "ConfigurationProcessDestination.xml">
   <!ENTITY CheckExpiration SYSTEM "ConfigurationCheckExpiration.xml">
 ]>
-<Configuration name="NewHorizons">
+<Configuration>
   &Destinations;
   &ProcessDestination;
   &CheckExpiration;
