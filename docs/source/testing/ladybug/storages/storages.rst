@@ -14,14 +14,18 @@ Please consider the following properties:
    :widths: auto
    :header: Property, Explanation
 
-   ``jdbc.migrator.active``, Set to ``true`` to allow the Frank!Framework to create table ``LADYBUG``.
-   ``ladybug.jdbc.datasource``, "If not set, Ladybug uses the default database of the Frank!Framework to store reports. Set this property to choose another database (like ``jdbc/xxx``). You can set ``ladybug.jdbc.datasource=`` (set to blank value) to force Ladybug not to use the database. Then Ladybug stores reports in the local filesystem."
+   ``ladybug.jdbc.migrator.active``, "Boolean property that determines whether table ``LADYBUG`` should be created. The default value is ``${jdbc.migrator.active}``. The default behavior is thus to treat the creation of table ``LADYBUG`` like the other database initializations that are or are not performed by the Frank!Framework (e.g. creating table ``IBISSTORE``)."
+   ``ladybug.jdbc.datasource``, "The database name that points to the database in which Ladybug should write reports. No default value. If empty, Ladybug writes reports to the local file system."
 
 These properties have to be system properties or application properties, see :ref:`propertiesDeploymentEnvironment`.
 
 .. WARNING::
 
    Please consider the following before deciding not to use the database for Ladybug reports. The local filesystem is not a secure storage in a serverless environment because VMs and docker containers are often shut down and recreated. 
+
+.. WARNING::
+
+   In version 9.1.0-SNAPSHOT of the Frank!Framework, there is no default value for ``ladybug.jdbc.datasource``. It is NOT the case that default database were used when ``ladybug.jdbc.datasource`` would not be set. In some 8.x versions of the FF!, this behavior may be different.
 
 Extra columns and the database
 ------------------------------
