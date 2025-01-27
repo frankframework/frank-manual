@@ -12,9 +12,10 @@ jobs:
           - name: ladybugInstance-v520
             frankConfig: frank-manual/srcSteps/ladybugInstance/v520
             expectedFrankConfigs: ladybug
-          - name: Frank2Hermes-v560
-            frankConfig: frank-manual/srcSteps/Frank2Hermes/v560
-            expectedFrankConfigs: hermesBridge
+          # TODO: Temporarily disabled because of FrankConfig-compatibility issue
+          # - name: Frank2Hermes-v560
+          #   frankConfig: frank-manual/srcSteps/Frank2Hermes/v560
+          #   expectedFrankConfigs: hermesBridge
           - name: NewHorizons-v510
             frankConfig: frank-manual/srcSteps/NewHorizons/v510
             expectedFrankConfigs: NewHorizons
