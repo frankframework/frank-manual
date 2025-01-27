@@ -1,7 +1,7 @@
 ```none{14}
 services:
   frank-docker-example:
-    image: frankframework/frankframework:8.3.0-SNAPSHOT
+    image: frankframework/frankframework:latest
     ports:
       - 8080:8080
     volumes: &frank-volumes

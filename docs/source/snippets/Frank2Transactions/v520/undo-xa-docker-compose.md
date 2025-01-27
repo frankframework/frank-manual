@@ -5,7 +5,7 @@ services:
     ports:
       - 5432:5432
   ff:
-    image: frankframework/frankframework:8.3.0-SNAPSHOT
+    image: frankframework/frankframework:latest
     ports:
       - 8080:8080
     volumes:
