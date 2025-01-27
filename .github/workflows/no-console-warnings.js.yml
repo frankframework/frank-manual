@@ -7,7 +7,6 @@ on:
 jobs:
   testing:
     strategy:
-      fail-fast: false
       matrix:
         include:
           - name: ladybugInstance-v520
