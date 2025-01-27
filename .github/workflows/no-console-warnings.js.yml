@@ -35,7 +35,7 @@ jobs:
             expectedFrankConfigs: properties
           - name: Frank2Monitoring-v510
             frankConfig: frank-manual/srcSteps/Frank2Monitoring/v510
-            expectedFrankConfigs: MonitorContainer,OnMonitorTriggered
+            expectedFrankConfigs: "MonitorContainer,OnMonitorTriggered"
           - name: Frank2DockerDevel-v530
             frankConfig: frank-manual/srcSteps/Frank2DockerDevel/v530
             expectedFrankConfigs: my-config
