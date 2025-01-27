@@ -206,7 +206,7 @@ jobs:
           path: frank-manual/cypress/cypress.config.ts
       - name: Store video
         uses: actions/upload-artifact@v4  
-        # if: ${{ failure() }}
+        if: ${{ always() }}
         with:
           name: videos ${{ matrix.name }}
           path: frank-manual/cypress/cypress/videos
