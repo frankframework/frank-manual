@@ -202,7 +202,7 @@ jobs:
         if: always()
       - name: Store video
         uses: actions/upload-artifact@v4  
-        if: ${{ always() }}
+        if: ${{ failure() }}
         with:
           name: videos ${{ matrix.name }}
           path: frank-manual/cypress/cypress/videos
