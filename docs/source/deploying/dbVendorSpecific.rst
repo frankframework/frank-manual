@@ -5,6 +5,8 @@ Database vendor specific
 
 This section contains database vendor specific information to use the database with the Frank!Framework.
 
+.. _dbVendorSpecificPostgreSQL:
+
 PostgreSQL
 ----------
 

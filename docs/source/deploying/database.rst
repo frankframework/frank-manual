@@ -68,7 +68,7 @@ The following table shows your options to configure the ``type``:
    Oracle, XA datasource, ``oracle.jdbc.xa.client.OracleXADataSource``
    H2, non-XA datasource, ``org.h2.jdbcx.JdbcDataSource``
 
-\* = Only works if you also enable a transaction manager, i.e. Narayana. A transaction manager coordinates XA transactions.
+\* = Only works if you also enable a transaction manager, i.e. Narayana. A transaction manager coordinates XA transactions. You also have to set PostgreSQL property ``max_prepared_transactions``, see :ref:`dbVendorSpecificPostgreSQL`.
 
 Fields ``url`` and ``properties``
 ---------------------------------
