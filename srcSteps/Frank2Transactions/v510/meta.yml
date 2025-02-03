@@ -2,12 +2,22 @@
 - file:
     path: docker-compose.yml
     change:
+      - old: 1
+        new: 2
+        highlight: true
+        snippet: docker-compose
       - insert: 5
         highlight: true
         snippet: docker-compose
       - insert: 3
         highlight: true
         snippet: docker-compose
+- file:
+    path: db/Dockerfile
+    change: add
+- file:
+    path: db/install-scripts/enableXa.sql
+    change: add
 - file:
     path: src/main/resources/Configuration.xml
     change:

@@ -1,9 +1,13 @@
 ```none
 services:
   db:
-    image: private.docker.nexus.frankframework.org/ff-test/dbms/postgresql
+    image: postgres
     ports:
       - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: testiaf_user00
+      POSTGRES_USER: testiaf_user
+      POSTGRES_DB: testiaf
   ff:
     image: frankframework/frankframework:latest
     ports:
