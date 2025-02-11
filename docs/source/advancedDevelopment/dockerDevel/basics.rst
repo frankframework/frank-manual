@@ -65,6 +65,10 @@ The Frank!Framework runs on multiple application servers, and therefore it suppo
 
    It is also possible to create ``configurations/resources.yml`` instead of ``resources/resources.yml``. Doing so is not recommended because it makes it more difficult to deploy the product. See :ref:`advancedDevelopmentDockerDevelAppServer`.
 
+.. NOTE::
+
+   It is possible to boot the Frank!Framework without a database. If property ``jdbc.required`` is set to ``false``, the Frank!Framework does not check during the boot whether it can connect to databases. The Frank!Framework has a lot of functionality that requires a database however. If you boot with ``jdbc.required=false`` and if you do not configure a database, then the Frank!Framework will produce error message if it tries to do things that require a database.
+
 Finally, a valid configuration is needed, for example in ``configurations/my-config/Configuration.xml``. If you are using this text as a tutorial, you can use the following example:
 
 .. literalinclude:: ../../../../srcSteps/Frank2DockerDevel/v500/configurations/my-config/Configuration.xml
