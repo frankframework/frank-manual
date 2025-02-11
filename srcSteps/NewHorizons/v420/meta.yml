@@ -1,7 +1,7 @@
 - file:
     path: configurations/NewHorizons/Configuration.xml
     change:
-        - insert: 8
+        - insert: 9
           highlight: true
           snippet: snippetAddAdapterAndReceiver
 - snippet:
