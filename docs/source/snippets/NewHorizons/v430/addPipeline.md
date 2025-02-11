@@ -1,4 +1,4 @@
-```xml{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23}
+```xml{12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24}
 <Configuration
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
@@ -7,6 +7,7 @@
       <ApiListener
           name="inputListener"
           uriPattern="booking"
+          allowAllParams="false"
           method="POST"/>
     </Receiver>
     <Pipeline firstPipe="checkInput">

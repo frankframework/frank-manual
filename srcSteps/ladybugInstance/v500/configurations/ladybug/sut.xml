@@ -5,6 +5,7 @@ xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
     <Receiver name="sutArchive">
       <ApiListener name="sutArchive"
           uriPattern="archive"
+          allowAllParams="false"
           method="POST"/>
     </Receiver>
     <Pipeline firstPipe="sutArchive">
@@ -21,6 +22,7 @@ xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
     <Receiver name="sutGet">
       <ApiListener name="sutGet"
           uriPattern="get"
+          allowAllParams="false"
           method="POST"/>
     </Receiver>
     <Pipeline firstPipe="sutGet">

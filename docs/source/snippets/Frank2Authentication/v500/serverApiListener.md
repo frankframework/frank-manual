@@ -5,7 +5,7 @@
     >
     <Adapter name="Server">
         <Receiver>
-            <ApiListener name="server" uriPattern="/server" />
+            <ApiListener name="server" uriPattern="/server" allowAllParams="false"/>
         </Receiver>
         <Pipeline>
             <EchoPipe name="showMessage" getInputFromFixedValue="Hello World" />

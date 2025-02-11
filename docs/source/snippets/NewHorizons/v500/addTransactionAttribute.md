@@ -1,8 +1,8 @@
 ```xml{7, 8}
 ...
-  <ApiListener
       name="inputListener"
       uriPattern="booking"
+      allowAllParams="false"
       method="POST"/>
 </Receiver>
 <Pipeline firstPipe="checkInput"

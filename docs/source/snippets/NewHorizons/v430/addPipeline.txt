@@ -1,5 +1,5 @@
 .. code-block:: xml
-   :emphasize-lines: 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
+   :emphasize-lines: 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
 
    <Configuration
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -9,6 +9,7 @@
          <ApiListener
              name="inputListener"
              uriPattern="booking"
+             allowAllParams="false"
              method="POST"/>
        </Receiver>
        <Pipeline firstPipe="checkInput">
