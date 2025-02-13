@@ -9,7 +9,7 @@ This page shows how to set up the Fire and Forget integration pattern when you d
 
 In the adapter that enqueues the incoming message, ``writeDbAsync``, the ``<Receiver>`` remains the same. The message log that receives the incoming message is still needed - this has nothing to do with the replaced queue. The only change in this adapter is that the ``<JmsSender>`` is replaced by a ``<MessageStoreSender>``.
 
-In the adapter that processes messages, ``writeDb``, there are more changes. The ``<JdbcErrorStorage>`` is removed because the Frank!Framework automatically puts an error storage in the Frank!Console when a ``<MessageStoreSender>`` / ``<MessageStoreListener>`` pair is used. The ``<JmsListener>`` is replaced by a ``<MessageStoreListener>``.
+In the adapter that processes messages, ``writeDb``, there are more changes. The ``<JdbcErrorStorage>`` is removed because the Frank!Framework automatically puts an error store in the Frank!Console when a ``<MessageStoreSender>`` / ``<MessageStoreListener>`` pair is used. The ``<JmsListener>`` is replaced by a ``<MessageStoreListener>``.
 
 .. NOTE::
 
