@@ -1,4 +1,4 @@
-- predecessor: v510
+- predecessor: v512
 - file:
     path: src/main/resources/Configuration.xml
     change:
