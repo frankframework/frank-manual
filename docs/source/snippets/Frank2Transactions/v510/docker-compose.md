@@ -1,4 +1,4 @@
-```none{3, 4, 11, 12, 13, 14, 15, 24, 25, 26}
+```none{3, 4, 11, 12, 13, 14, 15, 16, 17, 26, 27, 28}
 services:
   db:
     image: frankframework.org/frank-manual/src-steps/frank-2-transactions/postgresql
@@ -10,10 +10,12 @@ services:
       POSTGRES_USER: testiaf_user
       POSTGRES_DB: testiaf
   jms:
-    image: private.docker.nexus.frankframework.org/ff-test/mq/artemis
+    image: apache/activemq-artemis:2.36.0
     ports:
       - 8160:8160
-      - 61615:61615
+      - 61616:61616
+    environment:
+      ANONYMOUS_LOGIN: true
   ff:
     image: frankframework/frankframework:latest
     ports:
