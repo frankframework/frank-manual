@@ -5,7 +5,7 @@
     >
     <Adapter name="writeDbAsync">
         <Receiver checkForDuplicates="true" processResultCacheSize="0" transactionAttribute="Required">
-            <ApiListener uriPattern="/write" method="POST" />
+            <ApiListener uriPattern="/write" method="POST" allowAllParams="false"/>
             <JdbcMessageLog slotId="write-db-req"/>
         </Receiver>
         <Pipeline>

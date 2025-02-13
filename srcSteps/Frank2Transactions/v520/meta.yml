@@ -1,4 +1,4 @@
-- predecessor: v510
+- predecessor: v512
 - file:
     path: src/main/resources/Configuration.xml
     change:
@@ -13,12 +13,21 @@
 - file:
     path: docker-compose.yml
     change:
+      - old: 2
+        new: 1
+        snippet: undo-xa-docker-compose
       - old: 5
         new: 0
         snippet: undo-xa-docker-compose
       - old: 3
         new: 0
         snippet: undo-xa-docker-compose
+- file:
+    path: db/Dockerfile
+    change: del
+- file:
+    path: db/install-scripts/enableXa.sql
+    change: del
 - file:
     path: src/main/resources/resources.yml
     change:

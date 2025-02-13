@@ -1,9 +1,14 @@
-```none{14}
+```none{19}
 services:
   db:
-    image: private.docker.nexus.frankframework.org/ff-test/dbms/postgresql
+    image: frankframework.org/frank-manual/src-steps/frank-2-transactions/postgresql
+    build: ./db
     ports:
       - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: testiaf_user00
+      POSTGRES_USER: testiaf_user
+      POSTGRES_DB: testiaf
   jms:
     image: private.docker.nexus.frankframework.org/ff-test/mq/artemis
     ports:

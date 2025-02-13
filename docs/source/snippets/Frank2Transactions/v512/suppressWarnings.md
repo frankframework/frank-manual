@@ -1,0 +1,9 @@
+```none{3, 4, 5, 6, 7}
+instance.name=Frank2Transactions
+jdbc.migrator.active=true
+
+warnings.suppress.transaction.writeDbAsync=true
+warnings.suppress.transaction.writeTableMessage=true
+warnings.suppress.transaction.writeTableOtherMessage=true
+warnings.suppress.integrityCheck.writeDbAsync=true
+```
