@@ -16,7 +16,7 @@
       - old: 2
         new: 1
         snippet: undo-xa-docker-compose
-      - old: 5
+      - old: 7
         new: 0
         snippet: undo-xa-docker-compose
       - old: 3

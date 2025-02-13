@@ -10,5 +10,5 @@ jdbc:
 jms:
   - name: "qcf-artemis"
     type: "org.apache.activemq.artemis.jms.client.ActiveMQXAConnectionFactory"
-    url: "tcp://${jms.hostname:-localhost}:61615"
+    url: "tcp://${jms.hostname:-localhost}:61616"
 ```

@@ -6,7 +6,7 @@
         new: 2
         highlight: true
         snippet: docker-compose
-      - insert: 5
+      - insert: 7
         highlight: true
         snippet: docker-compose
       - insert: 3

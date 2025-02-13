@@ -1,5 +1,5 @@
 .. code-block:: none
-   :emphasize-lines: 19
+   :emphasize-lines: 21
 
    services:
      db:
@@ -12,10 +12,12 @@
          POSTGRES_USER: testiaf_user
          POSTGRES_DB: testiaf
      jms:
-       image: private.docker.nexus.frankframework.org/ff-test/mq/artemis
+       image: apache/activemq-artemis:2.36.0
        ports:
          - 8160:8160
-         - 61615:61615
+         - 61616:61616
+       environment:
+         ANONYMOUS_LOGIN: true
      ff:
        image: frankframework/frankframework:latest
        ports:
