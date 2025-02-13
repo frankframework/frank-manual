@@ -1,0 +1,11 @@
+- file:
+    path: src/main/resources/DeploymentSpecifics.properties
+    change:
+      - old: 0
+        new: 5
+        highlight: true
+        snippet: suppressWarnings
+- snippet:
+    name: suppressWarnings
+    markup: none
+    context: 50
