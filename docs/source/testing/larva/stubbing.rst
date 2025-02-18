@@ -41,7 +41,7 @@ But Hermes expects something like this:
 The solution
 ------------
 
-The Rotterdam Bank needs an integration application, or as we say a Frank, that connects Hermes and Conscience. This integration application is named "Frank2Hermes". Its role is illustrated by the following figure:
+The Rotterdam Bank needs an integration application, or as we say a Frank application, that connects Hermes and Conscience. This integration application is named "Frank2Hermes". Its role is illustrated by the following figure:
 
 .. image:: requestReply.jpeg
 
@@ -57,7 +57,7 @@ The shown behavior has been implemented in a Frank config "hermesBridge". Please
 
 You see that adapter "adapterToConscience" has a receiver (number 1) and a sender (number 2). The receiver is named "receiverToConscience" and it has a listener of type "ApiListener" (number 3). Listener type "ApiListener" means that this receiver listens to RESTful HTTP requests. Hermes should be configured to make HTTP requests that are handled by receiver "receiverToConscience". This receiver both handles the request from Hermes and the response to Hermes.
 
-For the sender, you see the name "pipeCallConscience". This is the name of the pipe that contains the sender. The sender inside this pipe is of type "RestSender" (number 4). This means that the sender sends HTTP requests. This pipe sends messages to Conscience and receives their response.
+For the sender, you see the name "pipeCallConscience". This is the name of the pipe that contains the sender. The sender inside this pipe is of type "HttpSender" (number 4). This means that the sender sends HTTP requests. This pipe sends messages to Conscience and receives their response.
 
 You cannot run "adapterToConscience" because there are no implementations of Hermes and Conscience. Even if these systems did exist, it would take time and money to set up a test environment with them. With Larva, you can test this adapter without setting up Hermes and Conscience. In subsection :ref:`testingLarvaServices` you will write a Larva test for "adapterToConscience".
 
