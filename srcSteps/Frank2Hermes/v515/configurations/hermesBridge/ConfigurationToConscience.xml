@@ -19,11 +19,11 @@
         <Forward name="success" path="pipeCallConscience"/>
       </XsltPipe>
       <SenderPipe name="pipeCallConscience">
-        <RestSender
+        <HttpSender
           name="senderCallConscience"
           url="http://localhost/conscience/address"
           methodType="GET">
-        </RestSender>
+        </HttpSender>
         <Forward name="success" path="pipeTranslateAddress"/>
       </SenderPipe>
       <XsltPipe
