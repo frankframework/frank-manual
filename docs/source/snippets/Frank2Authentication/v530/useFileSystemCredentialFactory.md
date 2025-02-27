@@ -1,4 +1,4 @@
-```none{24}
+```none{24, 25}
 services:
   frank-authorization-server:
     image: frankframework/frankframework:latest
@@ -22,5 +22,6 @@ services:
       instance.name: frank-authorization-client
       dtap.stage: LOC
       configurations.directory.autoLoad: true
-      credentialFactory.class: nl.nn.credentialprovider.FileSystemCredentialFactory
+      credentialFactory.class: org.frankframework.credentialprovider.FileSystemCredentialFactory
+      credentialFactory.filesystem.root: /opt/frank/secrets/
 ```

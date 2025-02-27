@@ -3,7 +3,7 @@
     path: docker-compose.yml
     change:
       - old: 2
-        new: 1
+        new: 2
         highlight: true
         snippet: useFileSystemCredentialFactory
 - file:
