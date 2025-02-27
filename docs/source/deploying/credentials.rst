@@ -25,7 +25,7 @@ Continue as follows:
    .. code-block::
    
       .\start.bat -DauthAliases.expansion.allowed=alias1 
-      -DcredentialFactory.class=nl.nn.credentialprovider.PropertyFileCredentialFactory
+      -DcredentialFactory.class=org.frankframework.credentialprovider.PropertyFileCredentialFactory
       -DcredentialFactory.map.properties=<full-path-to-your-properties-file>
       
    This text all has to appear on the same line. In this command, replace ``<full-path-to-your-properties-file>`` to the full path of the file you created in the previous step.
@@ -38,30 +38,27 @@ The properties ``credentialFactory.class`` and ``credentialFactory.map.propertie
 
 With property ``credentialFactory.class`` you define the source from which the credentials have to be obtained. In the example the credentials were in a properties file, but there are many other possibilities you can choose. You give the Java class name of the class that should read the credentials.
 
-Depending on the value of ``credentialFactory.class``, additional properties can be needed to define the source of the credentials. If ``credentialFactory.class`` is ``nl.nn.credentialprovider.PropertyFileCredentialFactory``, you are defining that the credentials are in a properties file. In this case you should provide property ``credentialFactory.map.properties``. The value of the property is the name of the properties file where the credentials can be found.
+Depending on the value of ``credentialFactory.class``, additional properties can be needed to define the source of the credentials. If ``credentialFactory.class`` is ``org.frankframework.credentialprovider.PropertyFileCredentialFactory``, you are defining that the credentials are in a properties file. In this case you should provide property ``credentialFactory.map.properties``. The value of the property is the name of the properties file where the credentials can be found.
 
 In the table below, all the options are listed for providing credentials:
 
-+-------------------------------------------------------------+-----------------------------------------------------+
-| Credentials factory and extra properties                    | Explanation                                         |
-+=============================================================+=====================================================+
-| ``nl.nn.credentialprovider.PropertyFileCredentialFactory``  | Credentials from properties file.                   |
-| with ``credentialFactory.map.properties``                   | ``credentialFactory.map.properties`` holds the      |
-|                                                             | name of the file with usernames and passwords.      |
-|                                                             | See above example for file contents.                |
-+-------------------------------------------------------------+-----------------------------------------------------+
-| ``nl.nn.credentialprovider.FileSystemCredentialFactory``    | Username and password in separate text files.       |
-| with ``credentialFactory.filesystem.usernamefile``,         | The properties are names of files holding the       |
-| ``credentialFactory.filesystem.passwordfile`` and           | username and the password. The paths in             |
-| ``credentialFactory.filesystem.root``. Default values       | ``credentialFactory.filesystem.usernamefile``       |
-| ``<name of alias>/username``, ``<name of alias>/password``  | and ``credentialFactory.filesystem.passwordfile``   |
-| and ``/opt/frank/secrets``.                                 | are relative to the path in                         |
-|                                                             | ``credentialFactory.filesystem.root``.              |
-+-------------------------------------------------------------+-----------------------------------------------------+
-| ``nl.nn.credentialprovider.AnsibleVaultCredentialFactory``  | Credentials in Ansible vault. The extra             |
-| with ``credentialFactory.ansibleVault.vaultFile`` and       | properties hold the vault file and the key file.    |
-| ``credentialFactory.keyFile``.                              |                                                     |
-+-------------------------------------------------------------+-----------------------------------------------------+
-| ``nl.nn.credentialprovider.WebSphereCredentialFactory``,    | Credentials configured in Websphere Application     |
-| no additional properties.                                   | Server.                                             |
-+-------------------------------------------------------------+-----------------------------------------------------+
++--------------------------------------------------------------------------+-----------------------------------------------------+
+| Credentials factory and extra properties                                 | Explanation                                         |
++=============================================================+============+=====================================================+
+| ``org.frankframework.credentialprovider.PropertyFileCredentialFactory``  | Credentials from properties file.                   |
+| with ``credentialFactory.map.properties``                                | ``credentialFactory.map.properties`` holds the      |
+|                                                                          | name of the file with usernames and passwords.      |
+|                                                                          | See above example for file contents.                |
++--------------------------------------------------------------------------+-----------------------------------------------------+
+| ``org.frankframework.credentialprovider.FileSystemCredentialFactory``    | Username and password in separate text files.       |
+| with ``credentialFactory.filesystem.usernamefile``,                      | The properties are names of files holding the       |
+| ``credentialFactory.filesystem.passwordfile`` and                        | username and the password. The paths in             |
+| ``credentialFactory.filesystem.root``. Default values                    | ``credentialFactory.filesystem.usernamefile``       |
+| ``<name of alias>/username``, ``<name of alias>/password``               | and ``credentialFactory.filesystem.passwordfile``   |
+| and ``/opt/frank/secrets``.                                              | are relative to the path in                         |
+|                                                                          | ``credentialFactory.filesystem.root``.              |
++--------------------------------------------------------------------------+-----------------------------------------------------+
+| ``org.frankframework.credentialprovider.AnsibleVaultCredentialFactory``  | Credentials in Ansible vault. The extra             |
+| with ``credentialFactory.ansibleVault.vaultFile`` and                    | properties hold the vault file and the key file.    |
+| ``credentialFactory.keyFile``.                                           |                                                     |
++--------------------------------------------------------------------------+-----------------------------------------------------+
