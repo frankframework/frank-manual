@@ -15,17 +15,17 @@ Please start writing your Larva test by doing the following:
 
    .. literalinclude:: ../../../../srcSteps/Frank2Hermes/v505/tests/hermesBridge/common.properties
 
-You have defined a service that can interact with listener "testtool-adapterToConscience". Your service writes to a listener, so it has to be a sender. The listener is of type "JavaListener", so your sender should issue direct Java calls. Therefore, your sender needs to be of type "IbisJavaSender". To define the sender, you reference the Java class that implements it. In the Frank!Framework source code, class ``nl.nn.adapterframework.senders.IbisJavaSender`` implements senders of type "IbisJavaSender".
+You have defined a service that can interact with listener "testtool-adapterToConscience". Your service writes to a listener, so it has to be a sender. The listener is of type "JavaListener", so your sender should issue direct Java calls. Therefore, your sender needs to be of type "IbisJavaSender". To define the sender, you reference the Java class that implements it. In the Frank!Framework source code, class ``org.frankframework.senders.IbisJavaSender`` implements senders of type "IbisJavaSender".
 
 Services are defined by assigning properties. Services of type "IbisJavaSender" have two properties, namely ``className`` and ``serviceName``. You are defining a service named ``adapter.toConscience``, so you have to set the properties ``adapter.toConscience.className`` and ``adapter.toConscience.serviceName``.
 
-The values of these properties appear after the ``=`` sign. You already learned why the value of the ``className`` property is ``nl.nn.adapterframework.senders.IbisJavaSender``. In ``serviceName`` you set the destination to which your IbisJavaSender is writing. This is the service name of the "JavaListener" you are accessing, which is ``testtool-adapterToConscience``.
+The values of these properties appear after the ``=`` sign. You already learned why the value of the ``className`` property is ``org.frankframework.senders.IbisJavaSender``. In ``serviceName`` you set the destination to which your IbisJavaSender is writing. This is the service name of the "JavaListener" you are accessing, which is ``testtool-adapterToConscience``.
 
 3. Add your ``testtool-pipeCallConscience`` service to ``common.properties``. Extend this file as shown:
 
     .. include:: ../../snippets/Frank2Hermes/v510/completeCommonProperties.txt
 
-Your service ``testtool-pipeCallConscience`` is accessed by your system under test "Frank2Hermes". "Frank2Hermes" writes to your test service, so your service should be a listener. "Frank2Hermes" calls your service through direct Java calls, so your service should be of type "JavaListener". This type of service is implemented by Java class ``nl.nn.adapterframework.receivers.JavaListener``. You name your service ``stub.conscience``, so your Java class name should be the value of property ``stub.conscience.className``. This explains the first line you added.
+Your service ``testtool-pipeCallConscience`` is accessed by your system under test "Frank2Hermes". "Frank2Hermes" writes to your test service, so your service should be a listener. "Frank2Hermes" calls your service through direct Java calls, so your service should be of type "JavaListener". This type of service is implemented by Java class ``org.frankframework.receivers.JavaListener``. You name your service ``stub.conscience``, so your Java class name should be the value of property ``stub.conscience.className``. This explains the first line you added.
 
 Services of type "JavaListener" also have a property ``serviceName``, but it has a different meaning. The service name of a JavaListener identifies it for senders of type "IbisJavaSender". An IbisJavaSender references the destination to write to by the service name. We explained earlier that the Frank!Framework modified the sender within Frank2Hermes to access listener ``testtool-pipeCallConscience``. This is the ``serviceName`` we need for our service. To set the ``serviceName`` of service ``stub.conscience``, we have to set property ``stub.conscience.serviceName``. This explains the second line.
 
