@@ -22,6 +22,6 @@ services:
       instance.name: frank-authorization-client
       dtap.stage: LOC
       configurations.directory.autoLoad: true
-      credentialFactory.class: nl.nn.credentialprovider.PropertyFileCredentialFactory
+      credentialFactory.class: org.frankframework.credentialprovider.PropertyFileCredentialFactory
       credentialFactory.map.properties: /opt/frank/secrets/credentials.properties
 ```
