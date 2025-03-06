@@ -225,6 +225,22 @@ For completeness, it should be noted that Frank configurations can also be writt
 
 **1059:** As a Frank developer, I want to be able to configure a threshold for story **1058**. When a message is longer than the configured threshold, then the message is shown truncated.
 
+**1061:** Given is that I as a user am viewing the value of a checkpoint (see reqs. **1052** and **1054**). There are some possible properties of the value that I do not see from the literal value. I want to see labels (can be multiple) in the following cases:
+
+**1061a:** If the checkpoint was stubbed so that the value was not calculated when the report was generated.
+
+**1061b:** If the value was null, to distinguish from the empty string.
+
+**1061c:** If the value was the empty string, to distinguish from null.
+
+**1061d:** If the message was truncated (req. **1058**).
+
+**1061e:** If the message is being read from a stream; not finished. In this case the type of the stream should be mentioned in the label.
+
+**1061f:** If the message was a stream and if no close was received for the stream.
+
+**1061g:** If the message has been encoded to a string; the original type should be shown in the label.
+
 **1070:** As a support engineer or Frank developer, I want to see ladybug-generated metadata about the selected node. At least the following metadata fields should be shown:
 
 * The checkpoint type, same as the type defined in story 1010.
