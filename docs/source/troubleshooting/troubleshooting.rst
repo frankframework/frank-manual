@@ -316,3 +316,10 @@ Having adapters that are stopped by default
    </Configuration>
 
 I changed an example adapter of the Frank!Runner like this. When I started the Frank!Runner, the adapter was in state stopped. I was able to restart it by hand in the Adapter Status page as was intended.
+
+SECURITY RISK: All path parameters and query parameters will be copied into the session
+---------------------------------------------------------------------------------------
+
+**Question:** I am seeing a console warning with the test: "SECURITY RISK: All path parameters and query parameters will be copied into the session". What does it mean and what can I do with it?
+
+**Answer:** The warning means what it says. HTTP requests can contain parameters that are provided via the URL path or via query parameters. It is a security risk if the Frank!Framework uses all parameters supplied in a request. A malicious caller would have options to try hacking by adding unexpected parameters to HTTP requests. The best way to fix this is by setting attribute ``allowAllParams="false"`` on your ``<ApiListener>``. If your endpoint expects some parameters, you can specify them with attribute ``allowedParameters``.
