@@ -54,11 +54,15 @@ In the table below, all the options are listed for providing credentials:
 | with ``credentialFactory.filesystem.usernamefile``,                      | The properties are names of files holding the       |
 | ``credentialFactory.filesystem.passwordfile`` and                        | username and the password. The paths in             |
 | ``credentialFactory.filesystem.root``. Default values                    | ``credentialFactory.filesystem.usernamefile``       |
-| ``<name of alias>/username``, ``<name of alias>/password``               | and ``credentialFactory.filesystem.passwordfile``   |
-| and ``/opt/frank/secrets``.                                              | are relative to the path in                         |
+| ``<name of alias>/username``, and ``<name of alias>/password``.          | and ``credentialFactory.filesystem.passwordfile``   |
+| ``credentialFactory.filesystem.root`` is mandatory and has no default.   | are relative to the path in                         |
 |                                                                          | ``credentialFactory.filesystem.root``.              |
 +--------------------------------------------------------------------------+-----------------------------------------------------+
 | ``org.frankframework.credentialprovider.AnsibleVaultCredentialFactory``  | Credentials in Ansible vault. The extra             |
 | with ``credentialFactory.ansibleVault.vaultFile`` and                    | properties hold the vault file and the key file.    |
 | ``credentialFactory.keyFile``.                                           |                                                     |
 +--------------------------------------------------------------------------+-----------------------------------------------------+
+
+.. NOTE::
+
+   Where to look if your Frank application is denied acces? In other words -- how can you debug errors that are due to wrong credentials properties? If you are using Apache Tomcat, look in the catalina log that you see when Apache Tomcat starts. Here is an example error message that may help you to search this log\: ``WARNING [main] org.frankframework.credentialprovider.CredentialFactory.tryFactory Cannot instantiate CredentialFactory [org.frankframework.credentialprovider.FileSystemCredentialFactory] (java.lang.IllegalStateException): No property [credentialFactory.filesystem.root] found``.
