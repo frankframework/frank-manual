@@ -23,5 +23,5 @@ services:
       dtap.stage: LOC
       configurations.directory.autoLoad: true
       credentialFactory.class: org.frankframework.credentialprovider.FileSystemCredentialFactory
-      # credentialFactory.filesystem.root: /opt/frank/secrets/
+      credentialFactory.filesystem.root: /opt/frank/secrets/
 ```
