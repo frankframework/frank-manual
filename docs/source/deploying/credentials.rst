@@ -62,7 +62,3 @@ In the table below, all the options are listed for providing credentials:
 | with ``credentialFactory.ansibleVault.vaultFile`` and                    | properties hold the vault file and the key file.    |
 | ``credentialFactory.keyFile``.                                           |                                                     |
 +--------------------------------------------------------------------------+-----------------------------------------------------+
-
-.. NOTE::
-
-   Where to look if your Frank application is denied acces? In other words -- how can you debug errors that are due to wrong credentials properties? If you are using Apache Tomcat, look in the catalina log that you see when Apache Tomcat starts. Here is an example error message that may help you to search this log\: ``WARNING [main] org.frankframework.credentialprovider.CredentialFactory.tryFactory Cannot instantiate CredentialFactory [org.frankframework.credentialprovider.FileSystemCredentialFactory] (java.lang.IllegalStateException): No property [credentialFactory.filesystem.root] found``.
