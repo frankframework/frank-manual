@@ -101,7 +101,7 @@ jobs:
         run: ./adjustServerPort.sh ../../cypress/cypress.config.ts ${{ matrix.port }}
         working-directory: frank-manual/.github/workflows
       - name: Use Node.js 20.x
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 20.x
           cache: "yarn"
