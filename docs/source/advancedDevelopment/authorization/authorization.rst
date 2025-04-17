@@ -8,7 +8,7 @@ Organizations that store data have to protect this data. Customers of an organiz
 Two interfaces of the Frank!Framework need protection:
 
 * HTTP interfaces accessed by the systems being integrated by the Frank!Framework, typically REST or SOAP endpoints.
-* The Frank!Console, the management console of the Frank!Framework. See :ref:`operator`. Protecting the Frank!Console authomatically protects the debugger Ladybug, see :ref:`ladybug`, as well.
+* The Frank!Console, the management console of the Frank!Framework. See :ref:`operator`. Protecting the Frank!Console automatically protects the debugger Ladybug, see :ref:`ladybug`, as well.
 
 These two interfaces are not the only ones. For example, it is possible to write Frank configurations that read data from the local file system. System administrators should then protect access to the local file system - this is outside the scope of the Frank!Framework. In general, system administrators should protect the sources from which the Frank!Framework reads data.
 
