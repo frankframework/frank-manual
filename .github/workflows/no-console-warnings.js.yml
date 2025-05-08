@@ -161,7 +161,7 @@ jobs:
       - name: Get full path to credentials file
         id: getPathCredentialsProperties
         if: ${{ matrix.name == 'advancedDevelopmentCredentials' }}
-        run: echo "pathCredentialsProperties=$(readlink -f credentials.properties) >> $GITHUB_OUTPUT
+        run: echo "pathCredentialsProperties=$(readlink -f credentials.properties)" >> $GITHUB_OUTPUT
         working-directory: frank-manual/src/advancedDevelopmentCredentials
       - name: Start server using Frank!Runner in background
         if: ${{ matrix.withDocker != true  && matrix.name != 'advancedDevelopmentCredentials' }}
