@@ -1,9 +1,8 @@
-```none{3, 8, 9, 10, 11, 12}
+```none{3, 7, 8, 9, 10, 11}
 jdbc:
   - name: "frank2transactions"
     type: "org.postgresql.xa.PGXADataSource"
     url: "jdbc:postgresql://${jdbc.hostname:-localhost}:5432/testiaf"
-    authalias: "${db.authalias}"
     username: "testiaf_user"
     password: "testiaf_user00"
 
