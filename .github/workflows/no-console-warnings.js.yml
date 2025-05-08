@@ -157,9 +157,18 @@ jobs:
         if: ${{ matrix.withDocker != true }}
         run: find . -path './build/apache-tomcat*/catalina.out' -delete
         working-directory: frank-runner
+      - name: Get full path to credentials file
+        id: getPathCredentialsProperties
+        if: ${{ matrix.name == 'advancedDevelopmentCredentials' }}
+        run: echo "pathCredentialsProperties=$(readlink -f credentials.properties) >> $GITHUB_OUTPUT
+        working-directory: frank-manual/src/advancedDevelopmentCredentials
       - name: Start server using Frank!Runner in background
-        if: ${{ matrix.withDocker != true }}
+        if: ${{ matrix.withDocker != true  && matrix.name != 'advancedDevelopmentCredentials' }}
         run: ./restart.sh > serverStartLog.log &
+        working-directory: frank-runner
+      - name: Start server using Frank!Runner in background - exception of advancedDevelopmentCredentials
+        if: ${{ matrix.name == 'advancedDevelopmentCredentials' }}
+        run: ./restart.sh > serverStartLog.log -DcredentialFactory.class=org.frankframework.credentialprovider.PropertyFileCredentialFactory -DauthAliases.expansion.allowed=alias1 -DcredentialFactory.map.properties=${{ steps.out.getPathCredentialsProperties.pathCredentialsProperties }} &
         working-directory: frank-runner
       - name: Start server using docker-compose
         if: ${{ matrix.withDocker == true }}
