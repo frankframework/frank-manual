@@ -20,7 +20,7 @@
                 name="pipeParseCSV">
                 <recordHandler
                     name="recordHandlerGetDestinations"
-                    className="nl.nn.adapterframework.batch.RecordXmlTransformer"
+                    className="org.frankframework.batch.RecordXmlTransformer"
                     inputSeparator=";"
                     outputFields="
                         productId,
@@ -32,7 +32,7 @@
                 />
                 <resultHandler
                     name="resultHandlerGetDestinations"
-                    className="nl.nn.adapterframework.batch.Result2StringWriter"/>
+                    className="org.frankframework.batch.Result2StringWriter"/>
                 <Forward name="success" path="pipeSendApartments"/>
             </BatchFileTransformerPipe>
             <ForEachChildElementPipe
