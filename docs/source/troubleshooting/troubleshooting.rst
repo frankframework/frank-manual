@@ -351,4 +351,4 @@ Failed to access class Java exception with custom code
 
 What is going wrong?
 
-**Answer:** Your helper class, in this case ``org.wearefrank.mermaid.dashboard.MappingItem``, is not public. To be accessible from the custom pipe, it has to be in the same Java package and also in the same Java module. The first requirement is satisfied but not the second. For the maintainers of the Frank!Framework it is complicated to ensure that different Java files with custom code are in the same Java module. You are advised to make all your custom Java classes public or to put your helper classes as inner classes in your custom pipe, sender or listener.
+**Answer:** Your helper class, in this case ``org.wearefrank.mermaid.dashboard.MappingItem``, is not public. To be accessible from the custom pipe, it has to be in the same Java package and also in the same Java module. The first requirement is satisfied but not the second. You are advised to make all your custom Java classes public or to put your helper classes as inner classes in your custom pipe, sender or listener.
