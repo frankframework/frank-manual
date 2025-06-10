@@ -127,7 +127,7 @@ XSLT Testing with Larva
 
    scenario.description = adapt input ldap insert into functionally expired passwords
    
-   xpl.MaakLdapInput.className   = nl.nn.adapterframework.testtool.XsltProviderListener
+   xpl.MaakLdapInput.className   = org.frankframework.larva.XsltProviderListener
    xpl.MaakLdapInput.filename    = ../../../JavaSource/CheckPasswordFunctionalExpired/xsl/AdaptInputLdapInsertIntoPasswordFunctionalExpired.xsl
 
    step1.xpl.MaakLdapInput.read              = scenario01/step1.xml

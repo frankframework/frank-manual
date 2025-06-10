@@ -92,7 +92,7 @@ warnings.suppress.sqlInjections.ManageDatabase
 
   .. code-block:: none
 
-     The class [nl.nn.adapterframework.jdbc.XmlQuerySender] is used one or more times. Please change to [nl.nn.adapterframework.jdbc.FixedQuerySender] to avoid potential SQL injections!
+     The class [org.frankframework.jdbc.XmlQuerySender] is used one or more times. Please change to [org.frankframework.jdbc.FixedQuerySender] to avoid potential SQL injections!
     
   This warning expresses the following. Some of your adapters are using the sender "XmlQuerySender". This sender can execute SQL queries that are generated based on user input. This causes a potential security risk. If an attacker can write SQL queries and have them executed by the Frank!Framework, she can corrupt the database.
 

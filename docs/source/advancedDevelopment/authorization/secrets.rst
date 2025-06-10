@@ -13,9 +13,9 @@ We continue the example started in subsection :ref:`advancedDevelopmentAuthoriza
 .. literalinclude:: ../../../../srcSteps/Frank2Authentication/v500/docker-compose.yml
    :emphasize-lines: 19, 24, 25
 
-Property ``credentialFactory.class`` defines what Java class should be used by the Frank!Framework to read credentials. Class ``nl.nn.credentialprovider.PropertyFileCredentialFactory`` is the Java class that reads credentials from a properties file. The Frank!Framework also provides other ways to store credentials, for example in the application server.
+Property ``credentialFactory.class`` defines what Java class should be used by the Frank!Framework to read credentials. Class ``org.frankframework.credentialprovider.PropertyFileCredentialFactory`` is the Java class that reads credentials from a properties file. The Frank!Framework also provides other ways to store credentials, for example in the application server.
 
-Property ``credentialFactory.map.properties`` is only relevant when ``credentialFactory.class=nl.nn.credentialprovider.PropertyFileCredentialFactory`` and specifies the file to read the properties from. Properties are read from ``/opt/frank/secrets/credentials.properties`` in this case. The shown ``docker-compose.yml`` is only used for development. It defines a volume so that some ``credentails.properties`` can be read during development. In production, these properties should be configured by the system administrator of the customer's site. See :ref:`deploymentCredentials`.
+Property ``credentialFactory.map.properties`` is only relevant when ``credentialFactory.class=org.frankframework.credentialprovider.PropertyFileCredentialFactory`` and specifies the file to read the properties from. Properties are read from ``/opt/frank/secrets/credentials.properties`` in this case. The shown ``docker-compose.yml`` is only used for development. It defines a volume so that some ``credentails.properties`` can be read during development. In production, these properties should be configured by the system administrator of the customer's site. See :ref:`deploymentCredentials`.
 
 Here is the ``credentials.properties`` used in this example during development:
 
@@ -25,7 +25,7 @@ The user and the password configured for the server are repeated here so that th
 
 .. NOTE::
 
-   It is possible to store usernames and passwords in separate files; each username and each password in a dedicated file. This can be done by setting ``credentialFactory.class=nl.nn.credentialprovider.FileSystemCredentialFactory``. Frank applications usually need multiple aliases, so this approach is more complicated than managing all aliases in a single filee using the ``nl.nn.credentialprovider.PropertyFileCredentialFactory``.
+   It is possible to store usernames and passwords in separate files; each username and each password in a dedicated file. This can be done by setting ``credentialFactory.class=org.frankframework.credentialprovider.FileSystemCredentialFactory``. Frank applications usually need multiple aliases, so this approach is more complicated than managing all aliases in a single filee using the ``org.frankframework.credentialprovider.PropertyFileCredentialFactory``.
 
 Using secrets to authenticate
 -----------------------------
