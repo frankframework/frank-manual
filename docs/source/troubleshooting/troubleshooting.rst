@@ -330,3 +330,25 @@ My Frank application cannot authorize itself to an external system
 **Question:** I have a Frank application that communicates with an external system. That system requires authentication. I have configured my credentials and my credential factory as explained in :ref:`deploymentCredentials`, but I get an HTTP 401 response indicating that access to the external system was denied. What is going wrong?
 
 **Answer:** In order to verify the credentialFactory is working properly please analyse the Application Server startup logs. For Tomcat this is ${catalina.home}/logs. Here is an example error message that may help you to search this log\: ``WARNING [main] org.frankframework.credentialprovider.CredentialFactory.tryFactory Cannot instantiate CredentialFactory [org.frankframework.credentialprovider.FileSystemCredentialFactory] (java.lang.IllegalStateException): No property [credentialFactory.filesystem.root] found``. You will not see console warnings for this kind of errors.
+
+Failed to access class Java exception with custom code
+------------------------------------------------------
+
+**Question:** I have custom code in my Frank application. I am getting a Java exception like the following one:
+
+.. code-block:: none
+
+   <errorMessage timestamp="Fri Apr 25 14:37:38 UTC 2025" originator="IAF 9.2.0-20250412.042329" message="msgId [testmessagec0a87002--46cc9a3_1966d61f57c_-8000]: Illegal exception [org.frankframework.core.ListenerException]: (IllegalAccessError) failed to access class org.wearefrank.mermaid.dashboard.MappingItem from class org.wearefrank.mermaid.dashboard.AnalyzeMermaidTemplatePipe$Analysis (org.wearefrank.mermaid.dashboard.MappingItem is in unnamed module of loader java.net.URLClassLoader @64a294a6; org.wearefrank.mermaid.dashboard.AnalyzeMermaidTemplatePipe$Analysis is in unnamed module of loader org.frankframework.configuration.classloaders.DirectoryClassLoader @2edac0f7)">
+       <details>org.frankframework.core.ListenerException: (IllegalAccessError) failed to access class org.wearefrank.mermaid.dashboard.MappingItem from class org.wearefrank.mermaid.dashboard.AnalyzeMermaidTemplatePipe$Analysis (org.wearefrank.mermaid.dashboard.MappingItem is in unnamed module of loader java.net.URLClassLoader @64a294a6; org.wearefrank.mermaid.dashboard.AnalyzeMermaidTemplatePipe$Analysis is in unnamed module of loader org.frankframework.configuration.classloaders.DirectoryClassLoader @2edac0f7)
+       at org.frankframework.core.Adapter.processMessageWithExceptions(Adapter.java:643)
+       at org.frankframework.core.Adapter.processMessageDirect(Adapter.java:568)
+       at org.frankframework.management.bus.endpoints.TestPipeline.processMessage(TestPipeline.java:118)
+       at org.frankframework.management.bus.endpoints.TestPipeline.runTestPipeline(TestPipeline.java:92)
+       at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+       at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+       at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+       at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+
+What is going wrong?
+
+**Answer:** To be accessible from the custom pipe, a helper class either has to be public or it has to be in the same Java module. Due to the way the Frank!Framework loads custom classes, if your custom code is not part of an explicitly declared Java module, the JVM sees the different classes as being part of different (unnamed) modules even if they are loaded from the same JAR file. You are advised to make all your custom Java classes public or to put your helper classes as inner classes in your custom pipe, sender or listener. This way, JVM module visibility rules do not hinder your classes from finding each other.
