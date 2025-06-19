@@ -331,6 +331,8 @@ My Frank application cannot authorize itself to an external system
 
 **Answer:** In order to verify the credentialFactory is working properly please analyse the Application Server startup logs. For Tomcat this is ${catalina.home}/logs. Here is an example error message that may help you to search this log\: ``WARNING [main] org.frankframework.credentialprovider.CredentialFactory.tryFactory Cannot instantiate CredentialFactory [org.frankframework.credentialprovider.FileSystemCredentialFactory] (java.lang.IllegalStateException): No property [credentialFactory.filesystem.root] found``. You will not see console warnings for this kind of errors.
 
+.. _qaFailedToAccesClassJavaException:
+
 Failed to access class Java exception with custom code
 ------------------------------------------------------
 
