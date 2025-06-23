@@ -38,6 +38,8 @@ If Docker Desktop does not work under Windows, you may have to configure it so t
 
    .. image:: setFileResource.jpg
 
+.. _advancedDevelopmentDockerDevelBasicsDockerCompose:
+
 Starting the FF! with docker-compose
 ------------------------------------
 
@@ -48,7 +50,11 @@ The image runs Linux and contains Apache Tomcat with the Frank!Framework deploye
 .. literalinclude:: ../../../../srcSteps/Frank2DockerDevel/v500/docker-compose.yml
    :language: none
 
-This defines service ``frank-docker-example`` from the mentioned FF! image. It exposes port 8080 of the container to port 8080 on your device. It creates a Docker volume that maps subdirectory ``configurations`` (relative to the project root) to ``/opt/frank/configurations``, allowing you to write your configurations in directory ``configurations`` on your device. Then it sets some necessary properties for the Frank!Framework, most notably ``instance.name`` and ``dtap.stage``. See :ref:`propertiesDeploymentEnvironment` about DTAP stages and :ref:`propertiesFramework` for an overview of all properties that change the behavior of the FF!.
+.. WARNING::
+
+   In :ref:`advancedDevelopmentCustomCodeBackend` it is said that you can package configurations and put the archives in ``/opt/frank/configurations``. In that case, do not set ``configurations.directory.autoLoad``.
+
+The example above defines service ``frank-docker-example`` from the mentioned FF! image. It exposes port 8080 of the container to port 8080 on your device. It creates a Docker volume that maps subdirectory ``configurations`` (relative to the project root) to ``/opt/frank/configurations``, allowing you to write your configurations in directory ``configurations`` on your device. Then it sets some necessary properties for the Frank!Framework, most notably ``instance.name`` and ``dtap.stage``. See :ref:`propertiesDeploymentEnvironment` about DTAP stages and :ref:`propertiesFramework` for an overview of all properties that change the behavior of the FF!.
 
 You need one more file because the Frank!Framework expects that there is a database. Within Frank configurations, the database is referenced by a name. System administrators can then configure the application server of the deployment environment, such that the database name corresponds to a database. Application server Apache Tomcat expects a file ``context.xml`` for this. By default, the FF! uses a database with name ``jdbc/${instance.name.lc}`` with ``instance.name.lc`` the value of property ``instance.name`` converted to lower-case.
 
