@@ -38,7 +38,7 @@ Code example -- a simple calculation
 
 In general, writing custom classes requires a close understanding of the architecture of the Frank!Framework sources. That subject is beyond the scope of this manual, but we explain here how to write and use a specific type of custom pipes. If you follow these instructions, your pipe will integrate well with the other features of the Frank!Framework, e.g. Ladybug reports and drawings of flowcharts in the Frank!Console.
 
-Derive your custom pipe from ``org.frankframework.pipes.FixedForwardPipe`` and implement your logic in method ``PipeRunResult doPipe(Message message, PipeLineSession session) throws PipeRunException``. Class ``org.frankframework.stream.Message`` holds the input message taken by a pipe or the output message produced by a pipe. Your method should return a ``org.frankframework.core.PipeRunResult``, which wraps the combination of a forward name (e.g. ``success``) and the output message. The forward name is referenced in Frank configurations with a ``<Forward>`` XML tag to link the forward to a target pipe or pipeline exit. You can return ``PipeRunResult`` instances with other forward names to raise error conditions. To use the custom pipe, you have to reference it in a Frank configuration. This looks like: ``<Pipe name="pipe-name" className="full-name-of-the-custom-java-class"> ... </Pipe>`` with ``pipe-name`` replaced by the name you choose.
+Derive your custom pipe from ``org.frankframework.pipes.FixedForwardPipe`` and implement your logic in method ``PipeRunResult doPipe(Message message, PipeLineSession session) throws PipeRunException``. Class ``org.frankframework.stream.Message`` holds the input message taken by a pipe or the output message produced by a pipe. Your method should return a ``org.frankframework.core.PipeRunResult``, which wraps the combination of a forward name (e.g. ``success``) and the output message. The forward name is referenced in Frank configurations with a ``<Forward>`` XML tag to link the forward to a target pipe or pipeline exit. You can return ``PipeRunResult`` instances with other forward names to raise error conditions. To use the custom pipe, you have to reference it in a Frank configuration. This looks like: ``<Pipe name="pipe-name" className="full.path.of.MyClass"> ... </Pipe>`` with ``pipe-name`` replaced by the name you choose.
 
 Here is a template for the .java code to start from:
 
@@ -80,7 +80,7 @@ Packaging
 
 It is strongly advised to package your compiled custom code, either along with your configuration or in a dedicated archive. You have two options regarding packaging and deploying. You can build your Java code as a library that should be available to all configurations of the Frank application. In this case you should build a dedicated .jar file for the custom Java code and deploy that in ``/opt/frank/resources`` in the Frank!Framework Docker container (container based on the image provided by the maintainers of the Frank!Framework). The other option is to package the custom code in the same archive as the configuration. This way the custom code is only accessible by the configuration. Archives with configurations with or without custom Java code are deployed in ``/opt/frank/configurations``.
 
-When you package a configuration with custom code, DO NOT have a top-level directory in the archive that is named after the configuration. There is no need to have a common root folder. Just put the relevant files in the archive. Here is an example list for the files in the archive:
+When you package a configuration with custom code, DO NOT have a top-level directory in the archive that is named after the configuration. There is no need to have a common root folder. Just put the relevant files in the archive. Here is an example list for the files in the archive (from ``jar -tvf <filename>`` and then edited by hand to make it more clear):
 
 .. code-block:: none
 
@@ -110,7 +110,11 @@ When you package a configuration with custom code, DO NOT have a top-level direc
 
 .. WARNING::
 
-   It is tempting to create a test archive by hand using the command ``jar -cvf <some-name.jar> some-folder``. That would produce the unwanted top-level folder. Instead, go into ``some-folder`` and do ``jar -cvf <some-name.jar> *``. Also take care with zipping a foler using the Windows Explorer. If you use Maven, you can use the Maven resources plugin to copy the contents of your configuration's directory into the ``target/classes`` folder.
+   It is tempting to create a test archive by hand using the command ``jar -cvf <some-name.jar> some-folder``. That would produce the unwanted top-level folder. Instead, go into ``some-folder`` and do ``jar -cvf <some-name.jar> *``. Also take care with zipping a folder using the Windows Explorer. If you use Maven, you can use the Maven resources plugin to copy the contents of your configuration's directory into the ``target/classes`` folder.
+
+.. NOTE::
+
+   The first entry of a .jar file should be ``META-INF/MANIFEST.MF``. Otherwise .jar and .zip files are the same.
 
 Putting custom code in ``/opt/frank/resources`` has as a drawback that mapping volumes for the customer's resources becomes a bit harder. The customer cannot use a common folder to be mapped to ``/opt/frank/resources`` anymore -- more granular volumes become necessary. See :ref:`advancedDevelopmentDockerDevelAppServer` or https://github.com/frankframework/frankframework/blob/master/Docker.md. Or the customer should be requested to install the custom code's library as an additional step of the installation procedure.
 
