@@ -114,7 +114,7 @@ When you package a configuration with custom code, DO NOT have a top-level direc
 
 .. NOTE::
 
-   The first entry of a .jar file should be ``META-INF/MANIFEST.MF``. Otherwise .jar and .zip files are the same.
+   The first entry of a .jar file should be ``META-INF/MANIFEST.MF``. Otherwise .jar and .zip files are the same. Take this as a hint to use standard tools to produce the .jar -- editing the files in the archive by hand is discouraged.
 
 Putting custom code in ``/opt/frank/resources`` has as a drawback that mapping volumes for the customer's resources becomes a bit harder. The customer cannot use a common folder to be mapped to ``/opt/frank/resources`` anymore -- more granular volumes become necessary. See :ref:`advancedDevelopmentDockerDevelAppServer` or https://github.com/frankframework/frankframework/blob/master/Docker.md. Or the customer should be requested to install the custom code's library as an additional step of the installation procedure.
 
