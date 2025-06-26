@@ -41,12 +41,12 @@ configuration developed in this chapter. Please do the following:
 
 .. WARNING::
 
-   If your front-end conde consists of multiple files, you have to add a ``<base>`` tag within ``<head>``, for example ``<base href="/webcontent/my-configuration/">``. This way, relative URLs like ``my-file.html`` are queried from the server as ``webcontent/my-configuration/my-file.html`` which is what the Frank!Framework expects. If your frontend is built with Angular, do not configure this in ``index.html`` directly. Instead edit ``angular.json``. Add ``"baseHref": "/webcontent/my-configuration/"`` under ``"architect"`` \| ``"build"`` (of ``"@angular-devkit/build-angular:application"``) \| ``"options"``.
+   If your front-end conde consists of multiple files, you have to add a ``<base>`` tag within ``<head>``, for example ``<base href="/<application-context>/webcontent/my-configuration/">``. This way, relative URLs like ``my-file.html`` are queried from the server as ``webcontent/my-configuration/my-file.html`` which is what the Frank!Framework expects. If your frontend is built with Angular, do not configure this in ``index.html`` directly. Instead edit ``angular.json``. Add ``"baseHref": "/<application-context>/webcontent/my-configuration/"`` under ``"architect"`` \| ``"build"`` (of ``"@angular-devkit/build-angular:application"``) \| ``"options"``.
 
 Angular
 -------
 
-Frontend code to be served with a Frank configuration can also be built with Angular. In this case, add the following to your ``angular.json``: ``"baseHref": "/webcontent/my-configuration/"``. This ensures that the browser interprets URLs relative to ``"/webcontent/my-configuration/"``, which produces the URLs the Frank!Framework expects. This looks like the following:
+Frontend code to be served with a Frank configuration can also be built with Angular. In this case, add the following to your ``angular.json``: ``"baseHref": "/<application-context>/webcontent/my-configuration/"``. This ensures that the browser interprets URLs relative to ``"/webcontent/my-configuration/"``, which produces the URLs the Frank!Framework expects. This looks like the following:
 
 .. code-block:: none
 
@@ -61,7 +61,7 @@ Frontend code to be served with a Frank configuration can also be built with Ang
              "builder": "@angular-devkit/build-angular:application",
              "options": {
                ...
-               "baseHref": "/webcontent/my-configuration/"
+               "baseHref": "/<application-context>/webcontent/my-configuration/"
                ...
              },
              ...
@@ -72,7 +72,7 @@ Frontend code to be served with a Frank configuration can also be built with Ang
      }
    }
 
-When you use the Angular router use the ``HashLocationStrategy``, not the ``PathLocationStrategy``. This way the Angular router assigns URLs like ``webcontent/my-configuration/#/my-route`` to the configured routes. The frontend can handle these URLs by requesting ``webcontent/my-configuration`` from the sever. The ``PathLocationStrategy`` would produce URLs without a hash sign which would make the application server responsible for serving longer URLs. Serving those longer URLs has not been implemented in the Frank!Framework.
+When you use the Angular router use the ``HashLocationStrategy``, not the ``PathLocationStrategy``. This way the Angular router assigns URLs like ``<application-context>/webcontent/my-configuration/#/my-route`` to the configured routes. The frontend can handle these URLs by requesting ``<application-context>/webcontent/my-configuration`` from the sever. The ``PathLocationStrategy`` would produce URLs without a hash sign which would make the application server responsible for serving longer URLs. Serving those longer URLs has not been implemented in the Frank!Framework.
 
 Using the ``HashLocationStrategy`` can be configured in ``app.config.ts`` in the ``providers`` array. That array has a function call ``provideRouter``. Give that function the argument ``withHashLocation()``. This looks like the following:
 
