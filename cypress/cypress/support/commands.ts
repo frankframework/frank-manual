@@ -29,6 +29,7 @@ declare namespace Cypress {
     tryToFindMoreThanZero(query: string, numTrials: number)
     omitElementsWithText(textToOmit: string): Chainable<any>
     tryToFindMoreThanZeroOmitting(query: string, textToOmit: string, numTrials: number): Chainable<any>
+    visitConsideringAuth(url: string): Chainable<any>
   }
 }
 
@@ -75,4 +76,20 @@ Cypress.Commands.add('tryToFindMoreThanZeroOmitting', (query, textToOmit, numTri
       cy.wrap(numFound).should('equal', 0)
     }
   })
+})
+
+Cypress.Commands.add('visitConsideringAuth', (url) => {
+  const username = Cypress.env('username');
+  const password = Cypress.env('password');
+  const credentialsProvided = (username !== undefined && username.length > 0);
+  if (credentialsProvided) {
+    cy.visit(url, {
+      auth: {
+        username,
+        password
+      }
+    })
+  } else {
+    cy.visit(url)
+  }
 })

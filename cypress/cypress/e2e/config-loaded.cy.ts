@@ -1,6 +1,6 @@
 describe('Check that expected Frank configurations are really loaded', () => {
   it('Check that expected Frank configurations are really loaded', () => {
-    cy.visit('')
+    cy.visitConsideringAuth('')
     // Should be passed as array already
     const expectedConfigs = Cypress.env('expectedFrankConfigs')
     for (const expectedConfig of expectedConfigs) {

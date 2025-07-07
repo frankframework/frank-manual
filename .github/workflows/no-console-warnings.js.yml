@@ -52,6 +52,8 @@ jobs:
             iafUtilAllowed: true
             withDocker: true
             port: 8091
+            username: ADMIN
+            password: PASSWORD1234
           - name: Frank2Transactions with queue
             frankConfig: frank-manual/srcSteps/Frank2Transactions/v515
             iafUtilAllowed: true
@@ -196,11 +198,11 @@ jobs:
         working-directory: frank-manual/.github/workflows
       - name: Run the tests - really no warnings
         if: ${{ matrix.iafUtilAllowed != true }}
-        run: yarn run cypress run --spec cypress/e2e/config-loaded.cy.ts,cypress/e2e/no-warnings.cy.ts --env expectedFrankConfigs='[${{ matrix.expectedFrankConfigs }}]'
+        run: yarn run cypress run --spec cypress/e2e/config-loaded.cy.ts,cypress/e2e/no-warnings.cy.ts --env 'expectedFrankConfigs=[${{ matrix.expectedFrankConfigs }}],username=${{ matrix.username}},password=${{ matrix.password }}'
         working-directory: frank-manual/cypress
       - name: Run the tests - allow warning about IAF_Util
         if: ${{ matrix.iafUtilAllowed == true }}
-        run: yarn run cypress run --spec cypress/e2e/config-loaded.cy.ts,cypress/e2e/warning-only-iaf-util.cy.ts --env expectedFrankConfigs='[${{ matrix.expectedFrankConfigs }}]'
+        run: yarn run cypress run --spec cypress/e2e/config-loaded.cy.ts,cypress/e2e/warning-only-iaf-util.cy.ts --env 'expectedFrankConfigs=[${{ matrix.expectedFrankConfigs }}],username=${{ matrix.username}},password=${{ matrix.password }}'
         working-directory: frank-manual/cypress
       - name: Try to access server directly with curl - default port 8090
         if: ${{ ! matrix.port }}
