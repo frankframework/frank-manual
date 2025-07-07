@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - fix-test-about-credentials
+      - fix-tests-20250707
   workflow_dispatch:
 jobs:
   testing:
