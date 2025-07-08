@@ -11,7 +11,7 @@ These issues can be addressed by distributing a Docker image. Developers can cre
 
    From release 9.0 onwards, database libraries are no longer in the standard Docker image. See :ref:`deployingDatabaseDriver` for more explanation.
  
-File ``resources.yml`` is still mapped as a volume (``/opt/frank/resources``) to allow the customer to configure external resources. This explains why it is useful not to put ``resources.yml`` in ``/opt/frank/configurations`` - doing so would make it more difficult to include configurations in a Docker image without doing so for ``resources.yml``.
+File ``resources.yml`` is still mapped as a volume (in ``/opt/frank/resources``) to allow the customer to configure external resources. 
 
 The maintainers of the Frank!Framework have done a lot of work to make image ``frankframework/frankframework`` reliable, and hence you are recommended not to interfere with the way it configures Apache Tomcat. For example, it is deprecated upon to provide some ``context.xml``. Detailed information about this image and how to use it can be found here: https://github.com/frankframework/frankframework/blob/master/Docker.md.
 

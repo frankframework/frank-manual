@@ -7,8 +7,6 @@ In :ref:`gettingStarted`, you learned the basics of developing Frank configurati
 
 Using Docker has two additional advantages. First, developers with knowledge of Docker then use a tool that is more common than the less-known Frank!Runner. Second, with Docker it becomes easy to use the Frank!Flow, a tool that allows Frank configurations to be edited graphically.
 
-The development environment that is introduced here is not suitable for production. During development, it is easy to run the external database in a Docker container. This is not recommended in production because a database does not run efficiently in a Docker container.
-
 This section has the following sub-sections:
 
 .. toctree::
