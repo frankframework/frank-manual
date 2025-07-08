@@ -5,8 +5,8 @@ services:
       - 8080:8080
     volumes:
       - ./configurations:/opt/frank/configurations
+      - ./resources:/opt/frank/resources
       - ./my-log4j2.yaml:/opt/frank/my-log4j2.yaml
-      - ./my-log4j2.xml:/opt/frank/resources/my-log4j2.xml
       # - ./lib/log4j-core-2.24.0.jar:/usr/local/tomcat/lib/log4j-core-2.24.0.jar
     environment:
       instance.name: custom-logging
