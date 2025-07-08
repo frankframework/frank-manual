@@ -5,7 +5,7 @@
     path: server/configurations/Server/Configuration.xml
     change: add
 - file:
-    path: server/configurations/DeploymentSpecifics.properties
+    path: server/resources/DeploymentSpecifics.properties
     change: add
 - file:
     path: server/resources/resources.yml

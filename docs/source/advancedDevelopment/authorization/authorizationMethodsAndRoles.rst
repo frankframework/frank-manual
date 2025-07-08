@@ -7,7 +7,7 @@ In the previous subsection, the Frank!Console and Ladybug were secured with a ve
 
 Here is an example that again secures the Frank!Console and Ladybug. It has the following ``DeploymentSpecifics.properties``:
 
-.. literalinclude:: ../../../../srcSteps/Frank2Authentication/v480/server/configurations/DeploymentSpecifics.properties
+.. literalinclude:: ../../../../srcSteps/Frank2Authentication/v480/server/resources/DeploymentSpecifics.properties
 
 File ``localUsers.yml`` looks as follows:
 

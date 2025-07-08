@@ -31,7 +31,7 @@ A servlet is a Java class that handles incoming HTTP requests. Java programmers 
 
 Protecting HTTP interfaces is done by defining *authenticators* that are then assigned to the HTTP interfaces that they have to protect. Here is an example ``DeploymentSpecifics.properties`` that protects ``<ApiListener>`` elements:
 
-.. literalinclude:: ../../../../srcSteps/Frank2Authentication/v500/server/configurations/DeploymentSpecifics.properties
+.. literalinclude:: ../../../../srcSteps/Frank2Authentication/v500/server/resources/DeploymentSpecifics.properties
 
 This file defines an authenticator with the name ``inMem``, sets its properties like explained in subsection :ref:`advancedDevelopmentAuthorizationMethodsAndRoles` and then uses the authenticator to protect ``ApiListenerServlet``. In general, an authenticator is assigned to a servlet by setting property ``servlet.<servlet name>.authenticator=<name of the authenticator>``.
 

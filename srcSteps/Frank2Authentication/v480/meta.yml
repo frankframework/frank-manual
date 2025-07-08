@@ -3,7 +3,7 @@
     path: server/resources/localUsers.yml
     change: add
 - file:
-    path: server/configurations/DeploymentSpecifics.properties
+    path: server/resources/DeploymentSpecifics.properties
     change:
       - old: 3
         new: 1

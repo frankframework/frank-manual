@@ -14,7 +14,7 @@
         snippet: useHidden
         highlight: true
 - file:
-    path: server/configurations/DeploymentSpecifics.properties
+    path: server/resources/DeploymentSpecifics.properties
     change: del
 - file:
     path: server/configurations/Server/Configuration.xml

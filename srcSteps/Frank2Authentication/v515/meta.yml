@@ -10,7 +10,7 @@
         snippet: changePortsForGithubActions
         highlight: true
 - file:
-    path: server/configurations/DeploymentSpecifics.properties
+    path: server/resources/DeploymentSpecifics.properties
     change:
       - insert: 3
         snippet: allowAccessForGithubActions

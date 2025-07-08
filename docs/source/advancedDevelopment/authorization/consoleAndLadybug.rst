@@ -13,7 +13,7 @@ Setting ``dtap.stage`` to another value than ``LOC`` has another major consequen
 
 Properties ``dtap.stage`` and ``application.security.http.transportGuarantee`` should be provided as system properties. The other properties required for authorization can be provided as application properties, but not configuration properties. File ``DeploymentSpecifics.properties`` shown below demonstrate a very basic way to protect the Frank!Console and Ladybug:
 
-.. literalinclude:: ../../../../srcSteps/Frank2Authentication/v460/server/configurations/DeploymentSpecifics.properties
+.. literalinclude:: ../../../../srcSteps/Frank2Authentication/v460/server/resources/DeploymentSpecifics.properties
 
 The properties that restrict access to the console and Ladybug have a name starting with ``application.security.console.authentication``. The Frank!Framework supports many mechanisms by which users can authenticate themselves, the simplest being ``IN_MEMORY``. The mechanism is configured by setting a property of which the name ends with ``type``. The mechanism to authorize access to the console and Ladybug is thus controlled by property ``application.security.console.authentication.type``.
 
