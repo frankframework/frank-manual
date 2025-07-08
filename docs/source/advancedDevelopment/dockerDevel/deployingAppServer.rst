@@ -10,7 +10,11 @@ These issues can be addressed by distributing a Docker image. Developers can cre
 .. WARNING::
 
    From release 9.0 onwards, database libraries are no longer in the standard Docker image. See :ref:`deployingDatabaseDriver` for more explanation.
- 
+
+.. NOTE::
+
+   The Frank!Framework Docker image expects libraries like database drivers in directory ``/opt/frank/drivers``.
+
 File ``resources.yml`` is still mapped as a volume (in ``/opt/frank/resources``) to allow the customer to configure external resources. 
 
 The maintainers of the Frank!Framework have done a lot of work to make image ``frankframework/frankframework`` reliable, and hence you are recommended not to interfere with the way it configures Apache Tomcat. For example, it is deprecated upon to provide some ``context.xml``. Detailed information about this image and how to use it can be found here: https://github.com/frankframework/frankframework/blob/master/Docker.md.
