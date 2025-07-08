@@ -17,7 +17,13 @@ These issues can be addressed by distributing a Docker image. Developers can cre
 
 File ``resources.yml`` is still mapped as a volume (in ``/opt/frank/resources``) to allow the customer to configure external resources. 
 
-The maintainers of the Frank!Framework have done a lot of work to make image ``frankframework/frankframework`` reliable, and hence you are recommended not to interfere with the way it configures Apache Tomcat. For example, it is deprecated upon to provide some ``context.xml``. Detailed information about this image and how to use it can be found here: https://github.com/frankframework/frankframework/blob/master/Docker.md.
+The maintainers of the Frank!Framework have done a lot of work to make image ``frankframework/frankframework`` reliable, and hence you are recommended not to interfere with the way it configures Apache Tomcat. For example, it is deprecated upon to provide some ``context.xml``. The image expects the following data in the following directories:
+
+* **/opt/frank/configurations:** Strictly used for Frank configurations, possibly including .class files originating from configuration-specific custom Java code (see :ref:`advancedDevelopmentCustomCodeBackend`). Data for each configuration is hidden to other configurations.
+* **/opt/frank/resources:** Data that is accessible to all configurations. Example files are ``resources.yml`` and application-level properties files (see :ref:`propertiesDeploymentEnvironment`).
+* **/opt/frank/drivers:** Third-party libraries like database or queue drivers.
+
+Detailed information about the image and how to use it can be found here: https://github.com/frankframework/frankframework/blob/master/Docker.md.
 
 .. NOTE::
 
