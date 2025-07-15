@@ -27,21 +27,31 @@ There are also files with prefix ``frank2manual`` (number 6). This name is deriv
 
 In the figure, you also see that the file size is shown (number 7). This information is quite relevant, because some logfiles can grow very rapidly. During your career, you will probably see problems caused by full disks. Later in this manual you will see instructions on how to limit the size of your logfiles. Finally, you see a date column (number 8). This is the last date that the file was written, but this date is not updated in real time. To update the modification dates, you have to refresh your browser. Seeing the modification date in the directory listing simplifies searching a lot, because the same information is often spread over multiple logfiles. When you are searching for a specific time, you can quickly see which file to open.
 
-Log rotation
+Log Rotation
 ------------
 
-Here are a few logfiles that were present when this manual page was written:
+When this manual was written, the following log files were present:
 
-* catalina.2020-04-23.log
-* frank2manual-heartbeat.log
-* frank2manual-messages.log
-* frank2manual.log
-* frank2manual_xml.log
-* frank2manual_xml.log.1
+- ``catalina.2020-04-23.log``
+- ``frank2manual-heartbeat.log``
+- ``frank2manual-messages.log``
+- ``frank2manual.log``
+- ``frank2manual_xml.log``
+- ``frank2manual_xml.log.1``
 
-You see that the filename "catalina.2020-04-23.log" contains a date. No more text is written to this file when April 23 2020 ends. On April 24, a new file "catalina.2020-04-24.log" will be written, etc. You also see "frank2manual_xml.log.1". This file was created because "frank2manual_xml.log" became too large. When the size of "frank2manual_xml.log" passed a certain threshold, it was copied to "frank2manual_xml.log.1". Then "frank2manual_xml.log" was recreated to hold the additional text. When "frank2manual_xml.log" would again grow beyond the threshold, file "frank2manual_xml.log.1" would be copied to "frank2manual_xml.log.2" and then "frank2manual_xml.log" would be copied to "frank2manual_xml.log.1". Then "frank2manual_xml.log" would be recreated to hold the additional data. This approach is called log rotation.
+Notice that the file ``catalina.2020-04-23.log`` includes a date in its name. This indicates that the file contains logs for that specific day. Once the date changes, for example from April 23 to April 24, a new file like ``catalina.2020-04-24.log`` will be created, and no more data will be written to the previous day's file. This is a form of *daily log rotation*, commonly used by Tomcat (which writes the ``catalina`` logs).
 
-In the remainder of this section, you will examine "frank2manual-heartbeat.log", "frank2manual-messages.log" and "frank2manual.log".
+Now look at the files ``frank2manual_xml.log`` and ``frank2manual_xml.log.1``. These follow a different log rotation strategy, based on *file size*. When ``frank2manual_xml.log`` grows beyond a certain size limit, it is renamed (or "rotated") to ``frank2manual_xml.log.1``, and a new ``frank2manual_xml.log`` file is created to continue logging.
+
+If the new file grows too large again, the existing ``frank2manual_xml.log.1`` is renamed to ``frank2manual_xml.log.2``, the current ``frank2manual_xml.log`` becomes the new ``.log.1``, and logging continues in a fresh ``frank2manual_xml.log`` file. This process repeats as more log files are created, typically up to a configurable limit.
+
+This method is known as *log rotation*, and it is used to manage disk usage and keep log files at manageable sizes or time spans.
+
+In the next sections, we will take a closer look at the following logs:
+
+- ``frank2manual-heartbeat.log``
+- ``frank2manual-messages.log``
+- ``frank2manual.log``
 
 Heartbeat
 ---------
