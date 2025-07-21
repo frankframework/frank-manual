@@ -1,7 +1,7 @@
 ```xml{5, 6, 7, 8, 9, 10}
 ...
         <artifactId>commons-lang3</artifactId>
-        <version>3.12.0</version>
+        <version>3.18.0</version>
     </dependency>
     <dependency>
         <groupId>javax.servlet</groupId>
