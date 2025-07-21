@@ -137,7 +137,7 @@ All generated files appear in the ``target`` directory. Within that directory, t
 
 Maven has stored the artifact in the local repository on your computer. If you would build some other project that references ``org.wearefrank:mavenWebappExample:1.0-SNAPSHOT`` as a dependency, then the corresponding directory in the ``.m2`` folder would be accessed.
 
-15. Check that your ``.m2`` folder has directory ``repository\org\apache\commons\commons-lang3\3.12.0``.
+15. Check that your ``.m2`` folder has directory ``repository\org\apache\commons\commons-lang3\3.18.0``.
 
 Maven has downloaded the artifact that was referenced as ``<dependency>``. Please note that this version does not end with ``SNAPSHOT``. Version numbers that end with ``SNAPSHOT`` are development versions that will change. Versions without ``SNAPSHOT`` are expected not to change anymore. Anytime that such an artifact is used, the data should be the same.
 
