@@ -75,7 +75,7 @@ jobs:
             doMaven: true
             withPnpm: true
             port: 8091
-    name: ${{matrix.name}} - Test that Frank config has no warnings
+    name: ${{ matrix.name }} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
     steps:
       - name: Show additional properties
@@ -211,7 +211,7 @@ jobs:
         working-directory: ${{ matrix.frankConfig }}
       - name: Start server using docker-compose
         if: ${{ matrix.withDocker == true }}
-        run: docker compose up &
+        run: docker compose up --build --force-recreate &
         working-directory: ${{ matrix.frankConfig }}
       - name: Wait for server to be available - default port 8090 - default time 240
         if: ${{ ! matrix.port && ! matrix.waitTime }}
@@ -243,6 +243,10 @@ jobs:
       - name: Try to access server directly with curl - port ${{ matrix.port }}
         if: ${{ matrix.port }}
         run: curl -v -i -X DELETE http://localhost:${{ matrix.port }}/iaf/ladybug/api/report/all/Test
+      - name: Show .jar of packagedconfiguration
+        if: ${{ matrix.name == 'frank-mermaid-dashboard main container' }}
+        run: jar -tvf frank-mermaid-dashboard*.jar
+        working-directory: frank-manual/src/frank-mermaid-dashboard/target/dockerComposeTarget
       - name: Show files
         run: tree -L 5 .
         if: always()
