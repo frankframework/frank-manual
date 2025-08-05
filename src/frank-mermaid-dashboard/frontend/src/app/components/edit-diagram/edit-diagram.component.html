@@ -1,0 +1,5 @@
+<h1>Edit diagram {{ diagramName() }}</h1>
+
+<textarea [formControl]="diagramText"></textarea>
+<button [disabled]="!canSubmit" (click)="submit()">Submit</button>
+<a routerLink="/diagrams">Back</a>

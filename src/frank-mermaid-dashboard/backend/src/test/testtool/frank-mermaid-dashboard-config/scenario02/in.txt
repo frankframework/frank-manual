@@ -1,0 +1,6 @@
+flowchart TD
+S(Start)
+N1(Node 1)
+S --> N1
+N2(Node 2)
+#action_2# S --> N2

@@ -1,0 +1,30 @@
+name: frank-mermaid-dashboard
+services:
+  frank-mermaid-dashboard:
+    image: frankframework/frankframework:latest
+    ports:
+      - "8080:8080"
+    volumes:
+        - ./target/dockerComposeTarget:/opt/frank/configurations
+        - ./backend/src/test/testtool:/opt/frank/testtool
+        - ./resources.yml:/opt/frank/resources/resources.yml
+        - ./src/main/resources/DeploymentSpecifics.properties:/opt/frank/resources/DeploymentSpecifics.properties
+        - ./database:/opt/frank/database
+    environment:
+      instance.name: frank-mermaid-dashboard
+      dtap.stage: LOC
+      configurations.names: frank-mermaid-dashboard-config
+      configurations.frank-mermaid-dashboard-config.classLoaderType: JarFileClassLoader
+      configurations.frank-mermaid-dashboard-config.jar: /opt/frank/configurations/frank-mermaid-dashboard-config-0.0.1-SNAPSHOT.jar
+      configurations.frank-mermaid-dashboard-config.allowCustomClasses: true
+  monitored-1:
+    image: frankframework/frankframework:latest
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./monitored1/configurations:/opt/frank/configurations
+      - ./monitored1/resources:/opt/frank/resources
+    environment:
+      instance.name: monitored-1
+      dtap.stage: LOC
+      configurations.directory.autoLoad: true

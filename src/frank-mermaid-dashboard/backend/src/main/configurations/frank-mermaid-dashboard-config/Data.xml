@@ -1,0 +1,171 @@
+<Module
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+>
+<!-- Produces this syntax:
+
+["firstDiagram","secondDiagram"]
+
+-->
+	<Adapter name="ListDiagramNames">
+		<Receiver name="ListDiagramNames">
+			<ApiListener name="ListDiagramNames" uriPattern="/data/diagramNames" method="GET"/>
+		</Receiver>
+		<Pipeline>
+			<SenderPipe name="GetListedDiagramNames">
+				<FixedQuerySender query="SELECT diagramName FROM Diagram ORDER BY diagramName" queryType="SELECT"/>
+			</SenderPipe>
+		<XsltPipe name="PrepareForUI" styleSheetName="./xsl/prepareDiagramNamesForJsonUI.xsl"/>
+		</Pipeline>
+	</Adapter>
+
+	<Adapter name="GetDiagramTemplate">
+		<Receiver name="GetDiagramTemplate">
+			<ApiListener name="GetDiagramTemplate" uriPattern="/data/diagramTemplate/{diagramName}" method="GET" />
+		</Receiver>
+		<Pipeline>
+			<SenderPipe name="QueryDiagramTemplate">
+				<FixedQuerySender
+					query="SELECT template FROM Diagram WHERE diagramName=?"
+					queryType="SELECT"
+					scalar="true">
+				</FixedQuerySender>
+				<Param name="diagramName" sessionKey="diagramName" />
+			</SenderPipe>
+		</Pipeline>
+	</Adapter>
+	<Adapter name="GetDiagramBody">
+		<Receiver name="GetDiagramBody">
+			<ApiListener name="GetDiagramBody" uriPattern="/data/diagramBody/{diagramName}" method="GET" />
+		</Receiver>
+		<Pipeline>
+			<SenderPipe name="QueryDiagramBody">
+				<FixedQuerySender
+					query="SELECT body FROM Diagram WHERE diagramName=?"
+					queryType="SELECT"
+					scalar="true">
+				</FixedQuerySender>
+				<Param name="diagramName" sessionKey="diagramName" />
+			</SenderPipe>
+		</Pipeline>
+	</Adapter>
+
+	<Adapter name="parseTemplate">
+		<Receiver name="parseTemplate" transactionAttribute="Required">
+			<ApiListener
+				name="parseTemplate"
+				uriPattern="/data/diagram/{diagramName}"
+				method="PUT"/>
+		</Receiver>
+		<Pipeline>
+			<Pipe name="parse" className="org.wearefrank.mermaid.dashboard.AnalyzeMermaidTemplatePipe"/>
+			<EchoPipe name="saveParseResult" storeResultInSessionKey="parseResult"/>
+			<SenderPipe name="callDeleteDiagram" getInputFromSessionKey="diagramName">
+				<FrankSender target="deleteDiagramImpl"></FrankSender>
+			</SenderPipe>
+			<SenderPipe name="createDiagram" getInputFromSessionKey="parseResult">
+				<FixedQuerySender query="INSERT INTO Diagram VALUES(?, ?, ?)" queryType="OTHER" />
+				<Param name="diagramName" sessionKey="diagramName" />
+				<Param name="template" xpathExpression="/mermaid-template/original"/>
+				<Param name="body" xpathExpression="/mermaid-template/body"/>
+			</SenderPipe>
+			<ForEachChildElementPipe
+				name="createMermaidLines"
+				getInputFromSessionKey="parseResult"
+				elementXPathExpression="/mermaid-template/mapping/item">
+				<FixedQuerySender query="INSERT INTO MermaidLines VALUES(?, ?, ?)" queryType="OTHER"/>
+				<Param name="diagramName" sessionKey="diagramName" />
+				<Param name="statusName" xpathExpression="item/name" />
+				<Param name="lineNumber" xpathExpression="item/mermaid-line" />
+			</ForEachChildElementPipe>
+		</Pipeline>
+	</Adapter>
+	<Adapter name="deleteDiagram">
+		<Receiver name="deleteDiagram">
+			<ApiListener
+				name="deleteDiagram"
+				uriPattern="/data/diagram/{diagramName}"
+				method="DELETE"/>
+		</Receiver>
+		<Pipeline>
+			<EchoPipe name="diagramNameToMessage" getInputFromSessionKey="diagramName" />
+			<SenderPipe name="callDeleteDiagramImpl">
+				<FrankSender target="deleteDiagramImpl" />
+			</SenderPipe>
+		</Pipeline>
+	</Adapter>
+	<Adapter name="deleteDiagramImpl">
+		<Receiver name="deleteDiagramImpl" transactionAttribute="Required">
+			<FrankListener name="deleteDiagram" />
+		</Receiver>
+		<Pipeline>
+			<EchoPipe
+				name="getDiagramNameFromMessage"
+				storeResultInSessionKey="diagramName" />
+			<SenderPipe name="deleteFromMermaidLines">
+				<FixedQuerySender query="DELETE FROM MermaidLines WHERE diagramName = ?" queryType="OTHER" />
+				<Param name="diagramName" sessionKey="diagramName"/>
+			</SenderPipe>
+			<SenderPipe name="deleteFromDiagram">
+				<FixedQuerySender query="DELETE FROM Diagram WHERE diagramName = ?" queryType="OTHER" />
+				<Param name="diagramName" sessionKey="diagramName"/>
+			</SenderPipe>
+		</Pipeline>
+	</Adapter>
+
+<!-- Produces this syntax:
+
+{
+  "url": [
+    {
+      "url": "http://xxx",
+      "isFake": true,
+      "httpResponseOk": false
+    }
+  ]
+} 
+
+-->
+	<Adapter name="ListUrls">
+		<Receiver name="ListUrls">
+			<ApiListener name="ListUrls" uriPattern="/data/urls" method="GET" />
+		</Receiver>
+		<Pipeline>
+			<SenderPipe name="GetListedUrls">
+				<FixedQuerySender query="SELECT * FROM UrlStatus ORDER BY url" queryType="SELECT"/>
+			</SenderPipe>
+			<XsltPipe name="prepareForUI" styleSheetName="./xsl/prepareDbUrlStatusForJsonUI.xsl" />
+			<Json2XmlValidatorPipe
+				name="toJson"
+				outputFormat="JSON"
+				schema="./xsd/prepareDbUrlStatusForJsonUI.xsd"
+				throwException="true" />
+		</Pipeline>
+	</Adapter>
+
+	<Adapter name="ListLineStatuses">
+		<Receiver name="ListLineStatuses">
+			<ApiListener name="ListLineStatuses" uriPattern="/data/diagramLineStatuses/{diagramName}" method="GET" />
+		</Receiver>
+		<Pipeline>
+			<SenderPipe name="GetListLineStatuses">
+				<FixedQuerySender
+					query="SELECT ml.diagramName, ml.lineNumber, MIN(u.httpResponseOk) AS isOk
+						FROM MermaidLines AS ml, StatusDefinition AS s, UrlStatus AS u
+						WHERE  ml.diagramName = ? AND s.statusName = ml.statusName AND u.url = s.url
+						GROUP BY ml.diagramName, ml.lineNumber"
+					queryType="SELECT"
+					includeFieldDefinition="false"/>
+					<Param name="diagramName" sessionKey="diagramName" />
+			</SenderPipe>
+			<XsltPipe name="prepareForUI" styleSheetName="./xsl/prepareDbLineStatusForJsonUI.xsl">
+				<Param name="diagramName" sessionKey="diagramName"/>
+			</XsltPipe>
+			<Json2XmlValidatorPipe
+				name="toJson"
+				outputFormat="JSON"
+				schema="./xsd/prepareDbLineStatusForJsonUI.xsd"
+				throwException="true" />
+		</Pipeline>
+	</Adapter>
+</Module>

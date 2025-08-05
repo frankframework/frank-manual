@@ -1,0 +1,26 @@
+<mermaid-template>
+  <original><![CDATA[flowchart TD
+S(Start)
+N1(Node 1)
+#action_1# S --> N1
+N2(Node 2)
+#action_2# S --> N2
+]]></original>
+  <body><![CDATA[flowchart TD
+S(Start)
+N1(Node 1)
+ S --> N1
+N2(Node 2)
+ S --> N2
+]]></body>
+  <mapping>
+    <item>
+      <name>action_1</name>
+      <mermaid-line>0</mermaid-line>
+    </item>
+    <item>
+      <name>action_2</name>
+      <mermaid-line>1</mermaid-line>
+    </item>
+  </mapping>
+</mermaid-template>

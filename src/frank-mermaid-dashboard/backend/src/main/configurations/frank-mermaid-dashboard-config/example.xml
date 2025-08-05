@@ -1,0 +1,10 @@
+<mermaid-template>
+  <original><![CDATA[This is a long text]]></original>
+  <body>noot</body>
+  <mapping>
+    <item>
+      <name>itemName</name>
+      <mermaid-line>12</mermaid-line>
+    </item>
+  </mapping>
+</mermaid-template>

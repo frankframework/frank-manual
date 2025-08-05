@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="1" author="martijn">
+        <createTable tableName="Diagram">
+            <column name="diagramName" type="nvarchar(100)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="template" type="nvarchar(max)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="body" type="nvarchar(max)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="martijn">
+        <createTable tableName="UrlStatus">
+            <column name="url" type="nvarchar(max)">
+                <constraints  primaryKey="true" nullable="false"/>
+            </column>
+            <column name="isFake" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="httpResponseOk" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="martijn">
+        <createTable tableName="StatusName">
+            <column name="statusName" type="nvarchar(100)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="martijn">
+        <createTable tableName="StatusDefinition">
+            <column name="statusName" type="nvarchar(100)">
+                <constraints nullable="false" references="StatusName(statusName)" foreignKeyName="fk_statusdefinition_statusname"/>
+            </column>
+            <column name="url" type="nvarchar(max)">
+                <constraints nullable="false" references="UrlStatus(url)" foreignKeyName="fk_statusdefinition_url"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="martijn">
+        <addPrimaryKey
+            tableName="StatusDefinition"
+            columnNames="statusName,url"
+            constraintName="pk_statusdefinition"
+        />
+    </changeSet>
+    <changeSet id="6" author="martijn">
+        <createTable tableName="MermaidLines">
+            <column name="diagramName" type="nvarchar(100)">
+                <constraints nullable="false" references="Diagram(diagramName)" foreignKeyName="fk_mermaidlines_diagramname"/>
+            </column>
+            <column name="statusName" type="nvarchar(100)">
+                <constraints nullable="false" references="StatusName(statusName)" foreignKeyName="fk_mermaidlines_statusname"/>
+            </column>
+            <column name="lineNumber" type="INTEGER">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- We test here that we can poll URLs and that we can update the httpResponseOk field -->
+    <changeSet id="10" author="martijn">
+        <insert tableName="UrlStatus">
+            <column name="url" value="http://monitored-1:8080/api/hello" />
+            <column name="isFake" value="false" />
+            <column name="httpResponseOk" value="false" />
+        </insert>
+        <insert tableName="UrlStatus">
+            <column name="url" value="http://www.frankframework.org" />
+            <column name="isFake" value="true" />
+            <column name="httpResponseOk" value="true" />
+        </insert>
+    </changeSet>
+    <changeSet id="11" author="martijn">
+        <insert tableName="StatusName">
+            <column name="statusName" value="monitored1"></column>
+        </insert>
+        <insert tableName="StatusName">
+            <column name="statusName" value="FakeFrank"></column>
+        </insert>
+    </changeSet>
+    <changeSet id="12" author="martijn">
+        <insert tableName="StatusDefinition">
+            <column name="statusName" value="monitored1" />
+            <column name="url" value="http://monitored-1:8080/api/hello" />
+        </insert>
+        <insert tableName="StatusDefinition">
+            <column name="statusName" value="FakeFrank" />
+            <column name="url" value="http://www.frankframework.org" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

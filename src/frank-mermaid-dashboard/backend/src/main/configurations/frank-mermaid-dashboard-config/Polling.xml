@@ -1,0 +1,73 @@
+<Module
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+>
+	<Adapter name="CheckAllUrls">
+		<Receiver name="CheckAllUrls">
+			<JavaListener name="CheckAllUrls" serviceName="CheckAllUrls"/>
+		</Receiver>
+		<Pipeline>
+			<SenderPipe name="GetAllUrls">
+				<FixedQuerySender 
+					query="SELECT * FROM UrlStatus WHERE isFake = false ORDER BY url"
+					queryType="SELECT">
+				</FixedQuerySender>
+			</SenderPipe>
+			<ForEachChildElementPipe name="PollAllUrls" elementXPathExpression="/result/rowset/row">
+				<IbisLocalSender javaListener="CheckUrl"></IbisLocalSender>
+			</ForEachChildElementPipe>
+		</Pipeline>
+	</Adapter>
+	<Adapter name="CheckUrl">
+		<Receiver name="CheckUrl">
+			<JavaListener name="CheckUrl" serviceName="CheckUrl"/>
+		</Receiver>
+		<Pipeline>
+			<XsltPipe
+				name="GetUrlFromRow"
+				xpathExpression="/row/field[@name='URL']"
+				outputType="TEXT"
+				storeResultInSessionKey="url" />
+			<SenderPipe name="SendCheckUrlRequest">
+				<HttpSender urlParam="url" methodType="GET">
+					<Param name="url" sessionKey="url"></Param>
+				</HttpSender>
+				<Forward name="success" path="StorePositive" />
+				<Forward name="exception" path="StoreNegative" />
+			</SenderPipe>
+			<SenderPipe name="StorePositive">
+				<FixedQuerySender query="UPDATE Urlstatus SET httpResponseOk = true WHERE url = ?">
+					<Param name="url" sessionKey="url" />
+				</FixedQuerySender>
+				<Forward name="success" path="READY" />
+			</SenderPipe>
+			<SenderPipe name="StoreNegative">
+				<FixedQuerySender query="UPDATE Urlstatus SET httpResponseOk = false WHERE url = ?">
+					<Param name="url" sessionKey="url" />
+				</FixedQuerySender>
+				<Forward name="success" path="READY" />
+			</SenderPipe>
+		</Pipeline>
+	</Adapter>
+	<Adapter name="TestMermaidPipe">
+		<Receiver name="TestMermaidPipe">
+			<JavaListener name="TestMermaidPipe" serviceName="TestMermaidPipe"/>
+		</Receiver>
+		<Pipeline>
+			<Pipe className="org.wearefrank.mermaid.dashboard.AnalyzeMermaidTemplatePipe" name="analyzeMermaid" />
+			<XmlValidatorPipe
+				name="checkAnalysisResult"
+				root="mermaid-template"
+				schema="xsd/parsedTemplate.xsd"
+				throwException="true">
+			</XmlValidatorPipe>
+		</Pipeline>
+	</Adapter>
+	<Scheduler>
+		<SendMessageJob
+			name="CheckAllUrlsJob"
+			javaListener="CheckAllUrls"
+			cronExpression="/10 * * ? * *">
+		</SendMessageJob>
+	</Scheduler>
+</Module>

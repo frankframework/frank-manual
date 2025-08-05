@@ -1,0 +1,17 @@
+<h1>Diagram overview</h1>
+
+<table>
+  @for (diagramName of shownNames(); track $index) {
+    <tr>
+      <td>{{ diagramName }}</td>
+      <td><a [routerLink]="['/edit-diagram', diagramName, 'existing']">template</a></td>
+      <td><a [routerLink]="['/diagram', diagramName]">show</a></td>
+    </tr>
+  }
+  <tr>
+    <td><input type="text" [formControl]="newDiagramName" placeholder="Enter a diagram name"/></td>
+    <td></td>
+    <td><button (click)="newDiagram()">Create...</button></td>
+  </tr>
+</table>
+<button (click)="reload()">Reload</button>
