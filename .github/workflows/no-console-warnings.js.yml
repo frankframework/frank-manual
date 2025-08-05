@@ -246,7 +246,7 @@ jobs:
         run: curl -v -i -X DELETE http://localhost:${{ matrix.port }}/iaf/ladybug/api/report/all/Test
       - name: Show .jar of packaged configuration
         # For some reason checking matrix.name did not work.
-        if: ${{ matrix.showTheJar == true }}
+        # if: ${{ matrix.showTheJar == true }}
         run: jar -tvf frank-mermaid-dashboard*.jar
         working-directory: frank-manual/src/frank-mermaid-dashboard/target/dockerComposeTarget
       - name: Show files
