@@ -65,12 +65,12 @@ jobs:
           - name: frank-mermaid-dashboard main container
             frankConfig: frank/manual/src/frank-mermaid-dashboard
             iafUtilAllowed: false
-            ithDocker: true
+            withDocker: true
             doMaven: true
           - name: frank-mermaid-dashboard helper container
             frankConfig: frank/manual/src/frank-mermaid-dashboard
             iafUtilAllowed: false
-            ithDocker: true
+            withDocker: true
             doMaven: true
             port: 8091
     name: ${{matrix.name}} - Test that Frank config has no warnings
@@ -186,7 +186,7 @@ jobs:
         run: ./restart.sh -DcredentialFactory.class=org.frankframework.credentialprovider.PropertyFileCredentialFactory -DauthAliases.expansion.allowed=alias1 -DcredentialFactory.map.properties=${{ steps.getPathCredentialsProperties.outputs.pathCredentialsProperties }} > serverStartLog.log &
         working-directory: frank-runner
       - name: Do Maven build.
-        if: ${{ matrix.doMaven == 'true'}}
+        if: ${{ matrix.doMaven == true }}
         run: mvn clean install
         working-directory: ${{ matrix.frankConfig }}
       - name: Start server using docker-compose
