@@ -244,7 +244,7 @@ jobs:
         if: ${{ matrix.port }}
         run: curl -v -i -X DELETE http://localhost:${{ matrix.port }}/iaf/ladybug/api/report/all/Test
       - name: Show .jar of packagedconfiguration
-        if: ${{ matrix.name == 'frank-mermaid-dashboard main container' }}
+        if: ${{ contains(fromJson('["frank-mermaid-dashboard main container"]'), matrix.name) }}
         run: jar -tvf frank-mermaid-dashboard*.jar
         working-directory: frank-manual/src/frank-mermaid-dashboard/target/dockerComposeTarget
       - name: Show files
