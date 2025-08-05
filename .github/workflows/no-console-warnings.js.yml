@@ -253,7 +253,10 @@ jobs:
         run: docker ps -a | grep "frank-mermaid-dashboard" | grep "8090" | cut -d' ' -f1 > dockerContainerId.txt
       - name: Output application log
         if: ${{ always() && matrix.name == 'frank-mermaid-dashboard main container' }}
-        run: docker exec -it $(cat dockerContainerId.txt) 'cat /usr/local/tomcat/logs/frank-mermaid-dashboard.log'
+        run: docker exec -it $(cat dockerContainerId.txt) cat /usr/local/tomcat/logs/frank-mermaid-dashboard.log > appLog.log
+      - name: Show application log
+        if: ${{ always() && matrix.name == 'frank-mermaid-dashboard main container' }}
+        run: cat appLog.log
       - name: Show files
         run: tree -L 5 .
         if: always()
