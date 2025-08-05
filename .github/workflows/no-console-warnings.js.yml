@@ -248,6 +248,12 @@ jobs:
         if: ${{ always() && matrix.name == 'frank-mermaid-dashboard main container' }}
         run: jar -tvf frank-mermaid-dashboard-config-0.0.1-SNAPSHOT.jar
         working-directory: frank-manual/src/frank-mermaid-dashboard/target/dockerComposeTarget
+      - name: Get id of docker container
+        if: ${{ always() && matrix.name == 'frank-mermaid-dashboard main container' }}
+        run: docker ps -a | grep "frank-mermaid-dashboard" | grep "8090" | cut -d' ' -f1 > dockerContainerId.txt
+      - name: Output application log
+        if: ${{ always() && matrix.name == 'frank-mermaid-dashboard main container' }}
+        run: docker exec -it $(cat dockerContainerId.txt) 'cat /usr/local/tomcat/logs/frank-mermaid-dashboard.log'
       - name: Show files
         run: tree -L 5 .
         if: always()
