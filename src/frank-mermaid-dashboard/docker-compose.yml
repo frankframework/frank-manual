@@ -7,8 +7,7 @@ services:
     volumes:
         - ./target/dockerComposeTarget:/opt/frank/configurations
         - ./backend/src/test/testtool:/opt/frank/testtool
-        - ./resources.yml:/opt/frank/resources/resources.yml
-        - ./src/main/resources/DeploymentSpecifics.properties:/opt/frank/resources/DeploymentSpecifics.properties
+        - ./backend/src/main/resources:/opt/frank/resources
         - ./database:/opt/frank/database
     environment:
       instance.name: frank-mermaid-dashboard

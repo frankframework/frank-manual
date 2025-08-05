@@ -137,6 +137,7 @@
 			<XsltPipe name="prepareForUI" styleSheetName="./xsl/prepareDbUrlStatusForJsonUI.xsl" />
 			<Json2XmlValidatorPipe
 				name="toJson"
+				root="urls"
 				outputFormat="JSON"
 				schema="./xsd/prepareDbUrlStatusForJsonUI.xsd"
 				throwException="true" />
@@ -163,6 +164,7 @@
 			</XsltPipe>
 			<Json2XmlValidatorPipe
 				name="toJson"
+				root="lines"
 				outputFormat="JSON"
 				schema="./xsd/prepareDbLineStatusForJsonUI.xsd"
 				throwException="true" />
