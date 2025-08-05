@@ -13,8 +13,8 @@ services:
       instance.name: frank-mermaid-dashboard
       dtap.stage: LOC
       configurations.names: frank-mermaid-dashboard-config
-      #configurations.frank-mermaid-dashboard-config.classLoaderType: JarFileClassLoader
-      #configurations.frank-mermaid-dashboard-config.jar: /opt/frank/configurations/frank-mermaid-dashboard-config-0.0.1-SNAPSHOT.jar
+      configurations.frank-mermaid-dashboard-config.classLoaderType: JarFileClassLoader
+      configurations.frank-mermaid-dashboard-config.jar: /opt/frank/configurations/frank-mermaid-dashboard-config-0.0.1-SNAPSHOT.jar
       configurations.frank-mermaid-dashboard-config.allowCustomClasses: true
   monitored-1:
     image: frankframework/frankframework:latest
