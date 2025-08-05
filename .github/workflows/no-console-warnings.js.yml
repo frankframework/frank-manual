@@ -62,6 +62,15 @@ jobs:
             iafUtilAllowed: true
             withDocker: true
             waitTime: 600
+          - name: frank-mermaid-dashboard main container
+            frankConfig: frank/manual/src/frank-mermaid-dashboard
+            iafUtilAllowed: false
+            ithDocker: true
+          - name: frank-mermaid-dashboard helper container
+            frankConfig: frank/manual/src/frank-mermaid-dashboard
+            iafUtilAllowed: false
+            ithDocker: true
+            port: 8091
     name: ${{matrix.name}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
     steps:

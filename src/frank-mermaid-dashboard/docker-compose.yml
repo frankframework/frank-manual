@@ -3,7 +3,7 @@ services:
   frank-mermaid-dashboard:
     image: frankframework/frankframework:latest
     ports:
-      - "8080:8080"
+      - "8090:8080"
     volumes:
         - ./target/dockerComposeTarget:/opt/frank/configurations
         - ./backend/src/test/testtool:/opt/frank/testtool
@@ -19,7 +19,7 @@ services:
   monitored-1:
     image: frankframework/frankframework:latest
     ports:
-      - "8081:8080"
+      - "8091:8080"
     volumes:
       - ./monitored1/configurations:/opt/frank/configurations
       - ./monitored1/resources:/opt/frank/resources
