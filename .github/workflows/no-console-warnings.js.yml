@@ -68,6 +68,7 @@ jobs:
             withDocker: true
             doMaven: true
             withPnpm: true
+            showTheJar: true
           - name: frank-mermaid-dashboard helper container
             frankConfig: frank-manual/src/frank-mermaid-dashboard
             iafUtilAllowed: false
@@ -244,7 +245,8 @@ jobs:
         if: ${{ matrix.port }}
         run: curl -v -i -X DELETE http://localhost:${{ matrix.port }}/iaf/ladybug/api/report/all/Test
       - name: Show .jar of packaged configuration
-        if: ${{ contains(matrix.name, 'frank-mermaid-dashboard') }}
+        # For some reason checking matrix.name did not work.
+        if: ${{ matrix.showTheJar == true }}
         run: jar -tvf frank-mermaid-dashboard*.jar
         working-directory: frank-manual/src/frank-mermaid-dashboard/target/dockerComposeTarget
       - name: Show files
