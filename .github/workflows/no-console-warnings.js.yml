@@ -185,9 +185,21 @@ jobs:
         if: ${{ matrix.name == 'advancedDevelopmentCredentials' }}
         run: ./restart.sh -DcredentialFactory.class=org.frankframework.credentialprovider.PropertyFileCredentialFactory -DauthAliases.expansion.allowed=alias1 -DcredentialFactory.map.properties=${{ steps.getPathCredentialsProperties.outputs.pathCredentialsProperties }} > serverStartLog.log &
         working-directory: frank-runner
+      - name: Set up JDK 21
+        uses: actions/setup-java@v1
+        with:
+          java-version: 21
+      - name: Cache Maven dependencies
+        uses: actions/cache@v1
+        if: ${{ matrix.doMaven == true }}
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}${{ matrix.frankConfig }}-maven
+          restore-keys: |
+            ${{ runner.os }}${{ matrix.frankConfig }}-maven
       - name: Do Maven build.
         if: ${{ matrix.doMaven == true }}
-        run: mvn clean install
+        run: mvn clean install > maven.log
         working-directory: ${{ matrix.frankConfig }}
       - name: Start server using docker-compose
         if: ${{ matrix.withDocker == true }}
@@ -226,6 +238,12 @@ jobs:
       - name: Show files
         run: tree -L 5 .
         if: always()
+      - name: Store maven.log
+        uses: actions/upload-artifact@v4  
+        if: ${{ failure() && matrix.doMaven == true }}
+        with:
+          name: maven.log ${{ matrix.name }}
+          path: ${{ matrix.frankConfig }}/maven.log
       - name: Store video
         uses: actions/upload-artifact@v4  
         if: ${{ failure() }}
