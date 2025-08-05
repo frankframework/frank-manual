@@ -206,6 +206,10 @@ jobs:
           key: ${{ runner.os }}${{ matrix.frankConfig }}-maven
           restore-keys: |
             ${{ runner.os }}${{ matrix.frankConfig }}-maven
+      - name: Make database directory configurable
+        if: ${{ contains(matrix.name, 'frank-mermaid-dashboard') }}
+        run: chmod a+w database
+        working-directory: ${{ matrix.frankConfig }}
       - name: Do Maven build.
         if: ${{ matrix.doMaven == true }}
         run: mvn clean install > maven.log
