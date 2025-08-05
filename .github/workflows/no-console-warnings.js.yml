@@ -243,8 +243,8 @@ jobs:
       - name: Try to access server directly with curl - port ${{ matrix.port }}
         if: ${{ matrix.port }}
         run: curl -v -i -X DELETE http://localhost:${{ matrix.port }}/iaf/ladybug/api/report/all/Test
-      - name: Show .jar of packagedconfiguration
-        if: ${{ contains(fromJson('["frank-mermaid-dashboard main container"]'), matrix.name) }}
+      - name: Show .jar of packaged configuration
+        if: ${{ contains(matrix.name, 'frank-mermaid-dashboard') }}
         run: jar -tvf frank-mermaid-dashboard*.jar
         working-directory: frank-manual/src/frank-mermaid-dashboard/target/dockerComposeTarget
       - name: Show files
