@@ -63,12 +63,12 @@ jobs:
             withDocker: true
             waitTime: 600
           - name: frank-mermaid-dashboard main container
-            frankConfig: frank/manual/src/frank-mermaid-dashboard
+            frankConfig: frank-manual/src/frank-mermaid-dashboard
             iafUtilAllowed: false
             withDocker: true
             doMaven: true
           - name: frank-mermaid-dashboard helper container
-            frankConfig: frank/manual/src/frank-mermaid-dashboard
+            frankConfig: frank-manual/src/frank-mermaid-dashboard
             iafUtilAllowed: false
             withDocker: true
             doMaven: true
