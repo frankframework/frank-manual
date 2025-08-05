@@ -190,7 +190,7 @@ jobs:
         with:
           java-version: 21
       - name: Cache Maven dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         if: ${{ matrix.doMaven == true }}
         with:
           path: ~/.m2/repository
