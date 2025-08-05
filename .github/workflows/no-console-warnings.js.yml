@@ -67,11 +67,13 @@ jobs:
             iafUtilAllowed: false
             withDocker: true
             doMaven: true
+            withPnpm: true
           - name: frank-mermaid-dashboard helper container
             frankConfig: frank-manual/src/frank-mermaid-dashboard
             iafUtilAllowed: false
             withDocker: true
             doMaven: true
+            withPnpm: true
             port: 8091
     name: ${{matrix.name}} - Test that Frank config has no warnings
     runs-on: ubuntu-latest
@@ -189,6 +191,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 21
+      - name: Install pnpm
+        if: ${{ matrix.withPnpm == true}}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.4
+          run_install: false
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         if: ${{ matrix.doMaven == true }}
