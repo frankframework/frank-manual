@@ -250,7 +250,7 @@ jobs:
         run: curl -v -i -X DELETE http://localhost:${{ matrix.port }}/iaf/ladybug/api/report/all/Test
       - name: Show .jar of packaged configuration
         if: ${{ always() && matrix.name == 'frank-mermaid-dashboard main container' }}
-        run: jar -tvf frank-mermaid-dashboard-config-0.0.1-SNAPSHOT.jar
+        run: jar -tvf frank-mermaid-dashboard-config.jar
         working-directory: frank-manual/src/frank-mermaid-dashboard/target/dockerComposeTarget
       - name: Get id of docker container
         if: ${{ always() && matrix.name == 'frank-mermaid-dashboard main container' }}
