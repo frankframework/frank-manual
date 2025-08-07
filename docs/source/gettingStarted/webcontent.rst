@@ -93,7 +93,7 @@ Using the ``HashLocationStrategy`` can be configured in ``app.config.ts`` in the
 Building and packaging with Angular involved
 --------------------------------------------
 
-When your configuration has frontend code that is built with Angular, it is wise to have a subfolder for the Angular project, say ``frontend``. The Angular build then typically produces ``frontend/dist/browser``. The contents of that folder should appear in the ``webcontent`` folder of the configuration's .jar file, see :ref:`advancedDevelopmentCustomCodeBackendPackaging`.
+When your configuration has frontend code that is built with Angular, it is wise to have a subfolder for the Angular project, say ``frontend``. The Angular build then typically produces ``frontend/dist/browser``. The contents of that folder should appear in the ``webcontent`` folder of the configuration's .jar file, see :ref:`advancedDevelopmentDockerDevelSingleConfig`.
 
 A configuration's .jar file is typically produced with Maven, while Angular builds are done using ``npm``, ``yarn``, ``pnpm`` or similar. This can be solved by wrapping the Angular build inside a Maven project. Maven's ``exec-maven-plugin`` can be used to wrap commands that would normally be executed from command prompts. It handles commands and arguments such that it works both for Windows and Linux. Here is a ``pom.xml`` snippet that illustrates this:
 

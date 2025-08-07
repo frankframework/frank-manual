@@ -1,11 +1,11 @@
 .. _advancedDevelopmentDockerDevelAppServer:
 
-Deploying the full application
-==============================
+Additional information about deploying
+======================================
 
-The previous page :ref:`advancedDevelopmentDockerDevelSingleConfig` explained one way to deploy: only distributing one Frank configuration. This has the advantage that system administrators of the customer have complete freedom to optimize the deployment environment. There are two drawbacks. First, deployment is not fully automated - there is a manual step to upload the configuration somewhere. A second drawback can be that Frank configurations need some control over the application server.
+This section continues where section :ref:`advancedDevelopmentDockerDevelBasics` ended. It provides more information about deploying Frank applications.
 
-These issues can be addressed by distributing a Docker image. Developers can create it by writing a Dockerfile. The Dockerfile should derive from image ``frankframework/frankframework`` (if the desired application server is Apache Tomcat), which is available on Dockerhub and on a server owned by the maintainers of the Frank!Framework (see :ref:`advancedDevelopmentDockerDevelConfigureDocker`). The new image should include the Frank configurations (can be plural in this case) being deployed in the ``/opt/frank/configurations`` directory. The production environment does not reference them in a volume anymore.
+First, it is possible to distribute Frank applications as Docker images, as opposed to Frank configurations that still have to be deployed in an application server. Developers can create a Docker image by writing a Dockerfile. The Dockerfile should derive from image ``frankframework/frankframework`` (DockerHub) or ``nexus.frankframework.org/frankframework`` (server managed by maintainers of Frank!Framework). The new image should include the Frank configurations (can be plural in this case) being deployed in the ``/opt/frank/configurations`` directory. This directory can hold both packaged configurations and configurations as plain directory trees. This way, the production environment does not reference configurations from a volume anymore.
 
 .. WARNING::
 
@@ -15,7 +15,11 @@ These issues can be addressed by distributing a Docker image. Developers can cre
 
    The Frank!Framework Docker image expects libraries like database drivers in directory ``/opt/frank/drivers``.
 
-File ``resources.yml`` is still mapped as a volume (in ``/opt/frank/resources``) to allow the customer to configure external resources. 
+.. NOTE::
+
+   Directory ``/opt/frank/configurations`` can hold both packaged configurations and plain directory trees. In both cases, the Frank!Framework loads the configurations automatically when property ``configurations.directory.autoLoad`` is ``true``. This works from Frank!Framework version 9.3.0-20250806.042330 onwards. For earlier versions, it may be necessary to control the Java classloader used to load a configuration. See https://github.com/frankframework/frankframework/wiki/ClassLoaders#configuration-classloaders.
+
+File ``resources.yml`` is usually mapped as a volume (in ``/opt/frank/resources``) to allow the customer to configure external resources. 
 
 The maintainers of the Frank!Framework have done a lot of work to make image ``frankframework/frankframework`` reliable, and hence you are recommended not to interfere with the way it configures Apache Tomcat. For example, it is deprecated upon to provide some ``context.xml``. The image expects the following data in the following directories:
 
@@ -28,3 +32,7 @@ Detailed information about the image and how to use it can be found here: https:
 .. NOTE::
 
    It is possible to include ``resources.yml`` in the Docker image. In this case, all external resource descriptions for all DTAP stages have to be included. You probably need property ``jdbc.datasource.default``, which you can use to change the name of the default database. Using this property, you can use a different name for each DTAP stage. A drawback is that a new deployment is needed when the customer changes the external resources to be used. In most cases this is not a good way of working.
+
+.. WARNING::
+
+   When a configuration needs configuration-specific custom Java code, a property has to be set to allow this custom code to run. Set ``configurations.<configuration name>.allowCustomClasses`` as a system property to ``true``.

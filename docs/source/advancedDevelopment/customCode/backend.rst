@@ -31,11 +31,6 @@ Your custom code should work with the same Java version as is used by your versi
        ... other dependencies ...
     </dependencies>
 
-Because of the way the Frank!Framework loads custom code, take care with package-private classes when you have your code in multiple .java files. The Frank!Framework may load different .class files in different Java modules, see :ref:`qaFailedToAccesClassJavaException`.
-
-Code example -- a simple calculation
-------------------------------------
-
 In general, writing custom classes requires a close understanding of the architecture of the Frank!Framework sources. That subject is beyond the scope of this manual, but we explain here how to write and use a specific type of custom pipes. If you follow these instructions, your pipe will integrate well with the other features of the Frank!Framework, e.g. Ladybug reports and drawings of flowcharts in the Frank!Console.
 
 Derive your custom pipe from ``org.frankframework.pipes.FixedForwardPipe`` and implement your logic in method ``PipeRunResult doPipe(Message message, PipeLineSession session) throws PipeRunException``. Class ``org.frankframework.stream.Message`` holds the input message taken by a pipe or the output message produced by a pipe. Your method should return a ``org.frankframework.core.PipeRunResult``, which wraps the combination of a forward name (e.g. ``success``) and the output message. The forward name is referenced in Frank configurations with a ``<Forward>`` XML tag to link the forward to a target pipe or pipeline exit. You can return ``PipeRunResult`` instances with other forward names to raise error conditions. To use the custom pipe, you have to reference it in a Frank configuration. This looks like: ``<Pipe name="pipe-name" className="full.path.of.MyClass"> ... </Pipe>`` with ``pipe-name`` replaced by the name you choose.
@@ -76,60 +71,10 @@ Here is a template for the .java code to start from:
 
 .. _advancedDevelopmentCustomCodeBackendPackaging:
 
-Packaging
----------
+Packaging and deploying
+-----------------------
 
-It is strongly advised to package your compiled custom code, either along with your configuration or in a dedicated archive. You have two options regarding packaging and deploying. You can build your Java code as a library that should be available to all configurations of the Frank application. In this case you should build a dedicated .jar file for the custom Java code and deploy that in ``/opt/frank/resources`` in the Frank!Framework Docker container (container based on the image provided by the maintainers of the Frank!Framework). The other option is to package the custom code in the same archive as the configuration. This way the custom code is only accessible by the configuration. Archives with configurations with or without custom Java code are deployed in ``/opt/frank/configurations``.
+You have two options:
 
-When you package a configuration with custom code, DO NOT have a top-level directory in the archive that is named after the configuration. There is no need to have a common root folder. Just put the relevant files in the archive. Here is an example list for the files in the archive (from ``jar -tvf <filename>`` and then edited by hand to make it more clear):
-
-.. code-block:: none
-
-   META-INF/MANIFEST.MF
-   META-INF/maven/org.wearefrank/frank-mermaid-dashboard/pom.xml
-   META-INF/maven/org.wearefrank/frank-mermaid-dashboard/pom.properties
-   Configuration.xml
-   Data.xml
-   DatabaseChangelog.xml
-   DeploymentSpecifics.properties
-   Polling.xml
-   example.xml
-   org/wearefrank/mermaid/dashboard/AnalyzeMermaidTemplatePipe$Analysis.class
-   org/wearefrank/mermaid/dashboard/AnalyzeMermaidTemplatePipe$MappingItem.class
-   org/wearefrank/mermaid/dashboard/AnalyzeMermaidTemplatePipe.class
-   webcontent/chunk-2D4RQQEM.js
-   ...
-   webcontent/favicon.ico
-   webcontent/index.html
-   webcontent/main-2JFPUTB3.js
-   webcontent/polyfills-SC4UBBZS.js
-   webcontent/styles-5INURTSO.css
-   xsd/parsedTemplate.xsd
-   ...
-   xsl/prepareDbLineStatusForJsonUI.xsl
-   ...
-
-.. WARNING::
-
-   It is tempting to create a test archive by hand using the command ``jar -cvf <some-name.jar> some-folder``. That would produce the unwanted top-level folder. Instead, go into ``some-folder`` and do ``jar -cvf <some-name.jar> *``. Also take care with zipping a folder using the Windows Explorer. If you use Maven, you can use the Maven resources plugin to copy the contents of your configuration's directory into the ``target/classes`` folder.
-
-.. NOTE::
-
-   The first entry of a .jar file should be ``META-INF/MANIFEST.MF``. Otherwise .jar and .zip files are the same. Take this as a hint to use standard tools to produce the .jar -- editing the files in the archive by hand is discouraged.
-
-Putting custom code in ``/opt/frank/resources`` has as a drawback that mapping volumes for the customer's resources becomes a bit harder. The customer cannot use a common folder to be mapped to ``/opt/frank/resources`` anymore -- more granular volumes become necessary. See :ref:`advancedDevelopmentDockerDevelAppServer` or https://github.com/frankframework/frankframework/blob/master/Docker.md. Or the customer should be requested to install the custom code's library as an additional step of the installation procedure.
-
-Finally, take care with the name of built archive file. Maven adds a version number by default, for example ``frank-mermaid-dashboard-0.0.1-SNAPSHOT.jar`` for configuration ``frank-mermaid-dashboard``. This is only possible if the configuration's name is defined in ``Configuration.xml``, for example: ``<Configuration name="frank-mermaid-dashboard" ... >``. If you omit this ``name`` attribute, the base name of your archive is used as the configurations'name -- in this example the archive's name should be ``frank-mermaid-dashboard.jar``.
-
-Deployment
-----------
-
-In any case, the configuration's archive should be deployed in ``/opt/frank/configurations``. As said, there are two options regarding custom Java code:
-
-**Custom code common for all configurations:** Make a dedicated archive for the custom code and put it in ``/opt/frank/resources``. In addition, set property ``configurations.allowCustomClasses`` to ``true``.
-
-**Custom code only for one configuration:** Package the custom code in the archive of the configuration. In addition, set property ``configuration.<name of configuration>.allowCustomClasses`` to ``true``.
-
-.. WARNING::
-
-   In this section we advised you to package configurations. In that case DO NOT set ``configurations.directory.autoLoad``!. That would instruct the Frank!Framework to look for subdirectories of ``/opt/frank/configurations`` instead of archives. The other recommendations in :ref:`advancedDevelopmentDockerDevelBasicsDockerCompose` apply. It is wise to define ``instance.name`` and ``dtap.stage``.
+* If the custom code is specific to a configuration, package it with the configuration as explained in section :ref:`advancedDevelopmentDockerDevelSingleConfig`. The custom Java code is not accessible by other configurations in this case. To make this work, set property ``configurations.<configuration name>.allowCustomClasses`` to ``true``
+* Build the custom code in a dedicated .jar file and deploy it in ``/opt/frank/resources``. This makes the Java code available to all Frank configurations in the Docker container. Set property ``configurations.allowCustomClasses`` to ``true``.
