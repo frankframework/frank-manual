@@ -20,6 +20,7 @@
     </properties>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <sourceDirectory>backend/src/main/java</sourceDirectory>
         <testSourceDirectory>backend/src/test/java</testSourceDirectory>
         <defaultGoal>install</defaultGoal>
