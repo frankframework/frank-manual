@@ -24,8 +24,14 @@ In the previous subsections, authorization was configured to protect the Frank!C
      - ``<WebServiceListener>``
      - SoapProviderServlet
      - ``IbisTester`` or ``IbisWebService``
+   * - ``/webcontent``
+     - \*\*
+     - WebContentServlet
+     - ``IbisAdmin`` or ``IbisTester``.
 
 \* = ``ApiListenerServlet`` is open by default (no authentication required). To protect it, set property ``servlet.ApiListenerServlet.securityRoles`` and give it a list of roles as value. If a user has acquired one or more roles from the list, access is granted.
+
+\*\* = No XML tag in Frank!Configurations; this is about authorizing frontend code embedded in configurations, see :ref:`gettingStartedWebcontent`.
 
 A servlet is a Java class that handles incoming HTTP requests. Java programmers typically map different URLs to different servlets. For integration specialists, this means that the shown servlets within the source code of the Frank!Framework are used for the shown listeners. For example, the ApiListenerServlet services requests for URLs starting with ``/api``. And ``<ApiListener>`` elements within Frank configurations listen to URLs with this prefix. To protect access to ``<ApiListener>`` is to protect servlet ApiListenerServlet, and the same holds for the other lines of the table above.
 
