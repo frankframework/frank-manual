@@ -36,3 +36,7 @@ Detailed information about the image and how to use it can be found here: https:
 .. WARNING::
 
    When a configuration needs configuration-specific custom Java code, a property has to be set to allow this custom code to run. Set ``configurations.<configuration name>.allowCustomClasses`` as a system property to ``true``.
+
+.. NOTE::
+
+   About class loaders and custom Java code. It was said that configurations in ``/opt/frank/configurations`` are loaded when ``configurations.directory.autoLoad`` is ``true``. The Frank!Framework loads each subdirectory of ``/opt/frank/configurations`` using a ``DirectoryClassLoader`` and each .jar or .zip archive in ``/opt/frank/configurations`` using a ``JarFileClassLoader``. Custom Java code cannot be loaded with a ``DirectoryClassLoader``. This explains why configurations with custom Java code have to be packaged. As said, more information about classloaders is available at https://github.com/frankframework/frankframework/wiki/ClassLoaders#configuration-classloaders.

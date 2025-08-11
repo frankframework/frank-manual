@@ -76,5 +76,5 @@ Packaging and deploying
 
 You have two options:
 
-* If the custom code is specific to a configuration, package it with the configuration as explained in section :ref:`advancedDevelopmentDockerDevelSingleConfig`. The custom Java code is not accessible by other configurations in this case. To make this work, set property ``configurations.<configuration name>.allowCustomClasses`` to ``true``
+* If the custom code is specific to a configuration, package it with the configuration as explained in section :ref:`advancedDevelopmentDockerDevelSingleConfig`. The custom Java code is not accessible by other configurations in this case. To make this work, set property ``configurations.<configuration name>.allowCustomClasses`` to ``true``. Configurations with custom Java code have to be packaged and do not work as plain directory trees in ``/opt/frank/configurations``, see :ref:`advancedDevelopmentDockerDevelAppServer`.
 * Build the custom code in a dedicated .jar file and deploy it in ``/opt/frank/resources``. This makes the Java code available to all Frank configurations in the Docker container. Set property ``configurations.allowCustomClasses`` to ``true``.

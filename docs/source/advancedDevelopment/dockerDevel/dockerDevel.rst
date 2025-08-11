@@ -14,6 +14,6 @@ This section has the following sub-sections:
 
    basics
    frankflow
-   deploySingleConfig
+   packaging
    deployingAppServer
    jms
