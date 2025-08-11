@@ -27,7 +27,7 @@ In the previous subsections, authorization was configured to protect the Frank!C
    * - ``/webcontent``
      - \*\*
      - WebContentServlet
-     - ``IbisWebService``, ``IbisObserver``, ``IbisDataAdmin``, ``IbisAdmin``, ``IbisTester``.
+     - any role
 
 \* = ``ApiListenerServlet`` is open by default (no authentication required). To protect it, set property ``servlet.ApiListenerServlet.securityRoles`` and give it a list of roles as value. If a user has acquired one or more roles from the list, access is granted.
 
