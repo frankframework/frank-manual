@@ -29,6 +29,11 @@ Continue as follows:
       -DcredentialFactory.map.properties=<full-path-to-your-properties-file>
       
    This text all has to appear on the same line. In this command, replace ``<full-path-to-your-properties-file>`` to the full path of the file you created in the previous step.
+
+   .. NOTE::
+
+      Property ``authAliases.expansion.allowed`` and related properties have to be set as system properties.
+
 3. Browse to http://localhost. In the main menu, choose "Testing" and "Test a Pipeline".
 4. Choose adapter "TestCredentials" (number 1 in the picture below). Enter some arbitrary input message for this adapter (number 2). Then press "Send" (number 3). Check that the adapter succeeded (number 4). And check that the username and the password you provided are shown (number 5).
 
