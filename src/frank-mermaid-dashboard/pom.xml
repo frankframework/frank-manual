@@ -7,7 +7,7 @@
     <artifactId>frank-mermaid-dashboard-config</artifactId>
     <name>frank-mermaid-dashboard-config</name>
     <description>Augment Mermaid diagrams with the statuses of referred Frank applications</description>
-    <version>${revision}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -22,7 +22,6 @@
         <maven.compiler.source>21</maven.compiler.source>
         <!-- Frank!Framework version for which the configuration was created. -->
         <framework.version>9.2.0</framework.version>
-        <revision>0.0.1-SNAPSHOT</revision>
     </properties>
 
     <build>

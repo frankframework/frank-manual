@@ -1,3 +1,4 @@
 /target
 FrankConfig.xsd
 /frontend/node_modules
+.flattened-pom.xml

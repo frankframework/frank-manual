@@ -48,23 +48,32 @@ As said, there are two ways to add the metadata to the .jar file that is needed 
    configuration.version=1
    configuration.timestamp=20250807-163000
 
-The second approach is to add the metadata in ``META-INF/MANIFEST.MF``. This can easily be automated with Maven, which integrates well with CI/CD pipelines. Please use a parent ``pom.xml`` file provided by the maintainers of the Frank!Framework, as follows:
+The second approach is to add the metadata in ``META-INF/MANIFEST.MF``. This can easily be automated with Maven, which integrates well with CI/CD pipelines. Please use a parent ``pom.xml`` file provided by the maintainers of the Frank!Framework and add the data that has to appear in the manifest, as follows:
 
 .. code-block:: xml
 
    ...
+   <groupId>...</groupId>
+   <artifactId>...</artifactId>
+   <name>...</name>
+   <description>...</description>
+   <version>...</version>
+   <packaging>jar</packaging>
+
    <parent>
-     <groupId>org.frankframework</groupId>
-     <artifactId>configuration-parent</artifactId>
-     <version>9.3.0-20250927.042333</version>
+       <groupId>org.frankframework</groupId>
+       <artifactId>configuration-parent</artifactId>
+       <version>9.3.0-20250927.042333</version>
    </parent>
+
+   <properties>
+       <framework.version>9.2.0</framework.version>
+       ...
+   </properties>
    ...
 
-This parent ``pom.xml`` configures the maven-jar-plugin to write the necessary entries to file ``MANIFEST.MF``. To make this work, your ``pom.xml`` has to satisfy the following:
 
-* In addition to the ``<groupId>``, ``<artifactId>`` and ``<version>``, elements ``<name>`` and ``<description>`` should be present.
-* In the ``<properties>`` section, a property named ``revision`` should be defined. The value of ``<version>`` should be a reference to property ``revision`` (``<version>${revision}</version>``).
-* In the ``<properties>`` section, a property named ``framework.version`` should be defined. This is the Frank!Framework version that is minimally required to support your configuration.
+The parent ``pom.xml`` implements this by configuring the maven-jar-plugin.
 
 .. WARNING::
 
