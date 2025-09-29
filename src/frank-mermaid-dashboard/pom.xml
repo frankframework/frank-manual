@@ -121,12 +121,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>
-                                ${project.build.directory}/classes/frank-mermaid-dashboard-config</outputDirectory>
+                            <outputDirectory>${project.build.directory}/classes/frank-mermaid-dashboard-config</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>
-                                        backend/src/main/configurations/frank-mermaid-dashboard-config</directory>
+                                    <directory>backend/src/main/configurations/frank-mermaid-dashboard-config</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
@@ -139,8 +137,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>
-                                ${project.build.directory}/classes/frank-mermaid-dashboard-config/webcontent/</outputDirectory>
+                            <outputDirectory>${project.build.directory}/classes/frank-mermaid-dashboard-config/webcontent/</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>frontend/dist/frank-mermaid-dashboard-config/browser/</directory>
