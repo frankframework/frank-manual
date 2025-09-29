@@ -11,7 +11,7 @@ In section :ref:`advancedDevelopmentDockerDevelBasics` it was explained how to r
 Please follow the following rules when building the package:
 
 * The name of each configuration should be different from the name of the instance (``${instance.name}``).
-* A properties file ``BuildInfo.properties`` should be included with at least properties ``configuration.version`` and ``configuration.timestamp``.
+* Metadata should be provided in either ``BuildInfo.properties`` or the manifest file of the generated .jar file, see below.
 * File ``Configuration.xml`` and other files of the configuration should live under a top-level directory. The name of the top-level directory is the name of the configuration.
 * When frontend code is included as explained in :ref:`gettingStartedWebcontent`, it should live in a subdirectory ``<configuration name>/webcontent``.
 * When there are Java .class files, their directory tree is a *brother* of the configuration's root directory.
@@ -38,15 +38,49 @@ Here is the contents of an example archive:
    org/wearefrank/mermaid/dashboard/Analysis.class
    ...
 
-File ``META-INF/MANIFEST.MF`` and other files in directory ``META-INF`` (not shown), which are typically created when building a Maven project, are optional. The maintainers of the Frank!Framework may eliminate the need for ``BuildInfo.properties`` in a future release of the Frank!Framework, its role being taken over by ``META-INF/MANIFEST.MF``.
+About the metadata
+------------------
 
-Here is an example of ``BuildInfo.properties``:
+As said, there are two ways to add the metadata to the .jar file that is needed by the Frank!Framework. First, a file ``BuildInfo.properties`` can be added to the configuration. Here is an example:
 
-.. literalinclude:: ../../../../src/frank-mermaid-dashboard/backend/src/main/configurations/frank-mermaid-dashboard-config/BuildInfo.properties
+.. code-block:: none
 
-.. NOTE::
+   configuration.version=1
+   configuration.timestamp=20250807-163000
 
-   Developers are encouraged to automate packaging (CI/CD). This can be done using Maven. If a ``pom.xml`` is added, Maven has access to a version number that can be easily substituted inside ``BuildInfo.properties`` during the build.
+The second approach is to add the metadata in ``META-INF/MANIFEST.MF``. This can easily be automated with Maven, which integrates well with CI/CD pipelines. Please use a parent ``pom.xml`` file provided by the maintainers of the Frank!Framework, as follows:
+
+.. code-block:: xml
+
+   ...
+   <parent>
+     <groupId>org.frankframework</groupId>
+     <artifactId>configuration-parent</artifactId>
+     <version>9.3.0-20250927.042333</version>
+   </parent>
+   ...
+
+This parent ``pom.xml`` configures the maven-jar-plugin to write the necessary entries to file ``MANIFEST.MF``. To make this work, your ``pom.xml`` has to satisfy the following:
+
+* In addition to the ``<groupId>``, ``<artifactId>`` and ``<version>``, elements ``<name>`` and ``<description>`` should be present.
+* In the ``<properties>`` section, a property named ``revision`` should be defined. The value of ``<version>`` should be a reference to property ``revision`` (``<version>${revision}</version>``).
+* In the ``<properties>`` section, a property named ``framework.version`` should be defined. This is the Frank!Framework version that is minimally required to support your configuration.
+
+.. WARNING::
+
+   If you have some knowledge of Maven, you may be tempted to configure the maven-jar-plugin in your ``pom.xml`` without using the mentioned parent ``pom.xml``. The maintainers of the Frank!Framework discourage this approach. They carefully crafted this parent ``pom.xml`` to write the correct ``MANIFEST.MF`` and to do a few checks on your project.
+
+At the time of writing, the parent ``pom.xml`` has not been released on Maven Central. To fetch it from the nightly builds, please add the following to your ``pom.xml``.
+
+.. code-block:: xml
+
+   <repositories>
+     <repository>
+       <id>frankframework</id>
+       <name>frankframework</name>
+       <url>https://nexus.frankframework.org/repository/public</url>
+     </repository>
+   </repositories>
 
 Exercise
 --------
