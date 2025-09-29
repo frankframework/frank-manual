@@ -1,22 +1,28 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.wearefrank</groupId>
     <artifactId>frank-mermaid-dashboard-config</artifactId>
-    <name>Augment Mermaid diagrams with the statuses of referred Frank applications</name>
+    <name>frank-mermaid-dashboard-config</name>
+    <description>Augment Mermaid diagrams with the statuses of referred Frank applications</description>
     <version>${revision}</version>
     <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.frankframework</groupId>
+        <artifactId>configuration-parent</artifactId>
+        <version>9.3.0-20250927.042333</version>
+    </parent>
 
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <maven.compiler.target>21</maven.compiler.target>
-        <maven.compiler.source>21</maven.compiler.source>    
-        <!-- Specified here to allow the development environment to check the code.
-             Should be passed as parameter during the build -->
-        <ff.version>9.2.0</ff.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <!-- Frank!Framework version for which the configuration was created. -->
+        <framework.version>9.2.0</framework.version>
         <revision>0.0.1-SNAPSHOT</revision>
-        <maven.build.timestamp.format>dd-MM-yyyy HH:mm</maven.build.timestamp.format>
     </properties>
 
     <build>
@@ -115,10 +121,12 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/classes/frank-mermaid-dashboard-config</outputDirectory>
+                            <outputDirectory>
+                                ${project.build.directory}/classes/frank-mermaid-dashboard-config</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>backend/src/main/configurations/frank-mermaid-dashboard-config</directory>
+                                    <directory>
+                                        backend/src/main/configurations/frank-mermaid-dashboard-config</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
@@ -131,7 +139,8 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/classes/frank-mermaid-dashboard-config/webcontent/</outputDirectory>
+                            <outputDirectory>
+                                ${project.build.directory}/classes/frank-mermaid-dashboard-config/webcontent/</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>frontend/dist/frank-mermaid-dashboard-config/browser/</directory>
@@ -166,8 +175,8 @@
         <dependency>
             <groupId>org.frankframework</groupId>
             <artifactId>frankframework-core</artifactId>
-            <version>${ff.version}</version>
-            <scope>compile</scope>
+            <version>${framework.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -176,4 +185,14 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>frankframework</id>
+            <name>frankframework</name>
+            <!-- <url>https://nexus.frankframework.org/repository/private</url> -->
+            <url>https://nexus.frankframework.org/repository/public</url>
+        </repository>
+    </repositories>
+
 </project>
