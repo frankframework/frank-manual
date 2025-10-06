@@ -6,23 +6,31 @@ Database vendor specific information
 The following table shows your options to configure the ``type`` field of ``resources.yml``:
 
 .. csv-table::
-   :header: Brand, Kind, ``type``
+   :header: Brand, Non-XA DataSource, XA* DataSource
 
-   PostgreSQL, driver, ``org.postgresql.Driver``
-   PostgreSQL, non-XA datasource, ``org.postgresql.ds.PGSimpleDataSource``
-   PostgreSQL, XA datasource*, ``org.postgresql.xa.PGXADataSource``
-   MariaDB, driver, ``org.mariadb.jdbc.Driver``
-   MariaDB, datasource with or without XA, ``org.mariadb.jdbc.MariaDbDataSource``
-   MySQL, driver, ``com.mysql.cj.jdbc.Driver``
-   MySQL, XA datasource, ``com.mysql.cj.jdbc.MysqlXADataSource``
-   MS SQL, driver, ``com.microsoft.sqlserver.jdbc.SQLServerDriver``
-   MS SQL, XA datasource, ``com.microsoft.sqlserver.jdbc.SQLServerXADataSource``
-   Oracle, driver, ``oracle.jdbc.driver.OracleDriver``
-   Oracle, non-XA datasource, ``oracle.jdbc.pool.OracleDataSource``
-   Oracle, XA datasource, ``oracle.jdbc.xa.client.OracleXADataSource``
-   H2, non-XA datasource, ``org.h2.jdbcx.JdbcDataSource``
+   PostgreSQL, ``org.postgresql.ds.PGSimpleDataSource``, ``org.postgresql.xa.PGXADataSource``
+   MariaDB, ``org.mariadb.jdbc.MariaDbDataSource``, ``org.mariadb.jdbc.MariaDbDataSource``
+   MySQL, ``com.mysql.cj.jdbc.MysqlDataSource``, ``com.mysql.cj.jdbc.MysqlXADataSource``
+   MS SQL, ``com.microsoft.sqlserver.jdbc.SQLServerDataSource``, ``com.microsoft.sqlserver.jdbc.SQLServerXADataSource``
+   Oracle, ``oracle.jdbc.pool.OracleDataSource``, ``oracle.jdbc.xa.client.OracleXADataSource``
+   H2, ``org.h2.jdbcx.JdbcDataSource``, ``org.h2.jdbcx.JdbcDataSource``
 
 \* = Only works if you also enable a transaction manager, i.e. Narayana. A transaction manager coordinates XA transactions. You also have to set PostgreSQL property ``max_prepared_transactions``, see :ref:`dbVendorSpecificPostgreSQL`.
+
+
+The table below shows the database drivers. It's usage is discouraged but they may be used.
+
+.. csv-table::
+   :header: Brand, ``Driver``
+
+   PostgreSQL, ``org.postgresql.Driver``
+   MariaDB, ``org.mariadb.jdbc.Driver``
+   MySQL, ``com.mysql.cj.jdbc.Driver``
+   MS SQL, ``com.microsoft.sqlserver.jdbc.SQLServerDriver``
+   Oracle, ``oracle.jdbc.driver.OracleDriver``
+   "H2", ``org.h2.Driver``
+
+
 
 The following table shows a basic template for the ``url`` field of ``resources.yml`` for each database brand.
 
