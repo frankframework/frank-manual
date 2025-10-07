@@ -10,7 +10,7 @@ Frank developers write Frank configurations that may access a database. This dat
 Introduction to ``resources.yml``
 ---------------------------------
 
-When a Frank application is applied in the application server Apache Tomcat, then Tomcat's ``context.xml`` may be provided to configure the database. This approach is discouraged, because the Frank!Framework supports multiple application servers. The Frank!Framework supports database configurations that are provided in a YAML file, ``resources.yml``. When you use the image provided by the maintainers of the Frank!Framework, the path is expected to be ``/opt/frank/resources/resources.yml`` (or ``/opt/frank/configurations/resources.yml`` but doing that is not recommended, see :ref:`advancedDevelopmentDockerDevelBasics`).
+When a Frank application is applied in the application server Apache Tomcat, then Tomcat's ``context.xml`` may be provided to configure the database. This approach is discouraged, because the Frank!Framework supports multiple application servers. The Frank!Framework supports database configurations that are provided in a YAML file, ``resources.yml``. When you use the image provided by the maintainers of the Frank!Framework, the path is expected to be ``/opt/frank/resources/resources.yml``.
 
 Here is an example that shows the syntax of ``resources.yml`` (do not use in production):
 
