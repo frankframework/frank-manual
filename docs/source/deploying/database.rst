@@ -47,7 +47,7 @@ Database vendors provide Java libraries to access their databases from Java code
 
    If you are a Java developer, you can read https://medium.com/@satyendra.jaiswal/demystifying-jdbc-drivers-and-data-sources-a-comprehensive-guide-e7a498ab9f0b for a better understanding about database drivers and data sources.
 
-If the ``type`` field references a database driver, the Frank!Framework creates a database vendor independent datasource that uses the driver. If the ``type`` field references a vendor-specific datasource, the Frank!Framework uses that datasource directly. To choose a value for the ``type`` field, you need to know the brand of the database and you need to know whether you need XA transactions. XA transactions are transactions that have to commit or rollback manipulations of multiple systems; these systems can be databases or queues. If you need XA transactions, you have to configure a datasource and you have to choose one that supports XA transactions. For a concrete overview of your options, see :ref:`deployingDatabaseDriver`.
+To choose a value for the ``type`` field, you need to know the brand of the database and you need to know whether you need XA transactions. XA transactions are transactions that have to commit or rollback manipulations of multiple systems; these systems can be databases or queues. If you need XA transactions, you have to configure a datasource and you have to choose one that supports XA transactions. For a concrete overview of your options, see :ref:`deployingDatabaseDriver`.
 
 Fields ``url`` and ``properties``
 ---------------------------------
@@ -65,3 +65,4 @@ To access a database, the Frank!Framework needs a database driver or a datasourc
 
    This is possible sinds release 9.2 of the Frank!Framework, before this version the database libraries of many databases were included in the Docker image provided by the maintainers of the Frank!Framework. In order to give end users more granularity and control over which version they use, they can now easily overwrite driver types and versions.
 
+Frank developers should carefully consider the location of the database library. If the standard image is used to derive a customer-specific image and if the database library should be in the image, then add the library in ``/opt/frank/drivers``. If the customer is to add the database driver, make ``/opt/frank/drivers`` a volume. The customer can then supply the database library.
