@@ -41,7 +41,7 @@ There is a top-level YAML object ``jdbc`` that contains a list of database resou
 The ``type`` field
 ------------------
 
-Database vendors provide Java libraries to access their databases from Java code. The library for the chosen database has to be available on the Java classpath, see :ref:`deployingDatabaseGeneralAboutDriver` and :ref:`deployingDatabaseDriver`. As a system administrator, you have to choose a Java class from the library; the Java class that the Frank!Framework should access. This is the value of the ``type`` field. In general, there are two options: choosing a *database driver* (not recommended) or choosing a *datasource*. A database driver attempts to initialise a DataSource for you. It may do this based on bias defaults. It is therefor recommended to always configure a DataSource directly. Drivers do not provider more functionality, and are purely a wrapper around (usually a NON-XA) DataSource.
+Database vendors provide Java libraries to access their databases from Java code. The library for the chosen database has to be available on the Java classpath, see :ref:`deployingDatabaseGeneralAboutDriver` and :ref:`deployingDatabaseDriver`. As a system administrator, you have to choose a Java class from the library; the Java class that the Frank!Framework should access. This is the value of the ``type`` field. In general, there are two options: choosing a *database driver* (not recommended) or choosing a *datasource*. A database driver attempts to initialise a DataSource for you. It may do this based on biased defaults. It is therefore recommended to always configure a DataSource directly. Drivers do not provide more functionality, and are purely a wrapper around a (usually NON-XA) DataSource.
 
 .. NOTE::
 
