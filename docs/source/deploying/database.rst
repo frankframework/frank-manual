@@ -63,6 +63,6 @@ To access a database, the Frank!Framework needs a database driver or a datasourc
 
 .. WARNING::
 
-   This is possible sinds release 9.2 of the Frank!Framework, before this version the database libraries of many databases were included in the Docker image provided by the maintainers of the Frank!Framework. In order to give end users more granularity and control over which version they use, they can now easily overwrite driver types and versions.
+   This is possible since release 9.2 of the Frank!Framework, before this version the database libraries of many databases were included in the Docker image provided by the maintainers of the Frank!Framework. In order to give end users more granularity and control over which version they use, they can now easily overwrite driver types and versions.
 
 Frank developers should carefully consider the location of the database library. If the standard image is used to derive a customer-specific image and if the database library should be in the image, then add the library in ``/opt/frank/drivers``. If the customer is to add the database driver, make ``/opt/frank/drivers`` a volume. The customer can then supply the database library.
