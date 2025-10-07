@@ -12,7 +12,7 @@ JMS stands for Java Message Service. This is a standard that allows Java applica
 ``resources.yml``
 -----------------
 
-You can use file ``resources.yml`` to specify how the Frank!Framework can access the queue; this is the same file as used to configure databases. As a brother of the ``jdbc`` YAML object, there is a ``jms`` object. The ``jms`` object has a list of JMS resources. Here is an example:
+You can use file ``resources.yml`` to specify how the Frank!Framework can access the queue; this is the same file as used to configure databases. As a sibling of the ``jdbc`` YAML object, there is a ``jms`` object. The ``jms`` object has a list of JMS resources. Here is an example:
 
 .. code-block::
 
@@ -51,7 +51,7 @@ Fields ``authalias``, ``username`` and ``password`` are needed if the queueing s
 Vendor specific library
 -----------------------
 
-The Java class referenced in the ``type`` field, the queue connection factory, is in a vendor-specific queueing library. From the 9.0 release of the Frank!Framework onwards, the queueing library is not in the standard Docker image of the Frank!Framework. Frank developers may or may not add this library to customer-specific Docker images. The location of the queueing library is the same as the location of the database library: ``/usr/local/tomcat/lib`` or ``/opt/frank/resources``, see :ref:`deployingDatabaseDriver` for more information.
+The Java class referenced in the ``type`` field, the queue connection factory, is in a vendor-specific queueing library. From the 9.0 release of the Frank!Framework onwards, the queueing library is not in the standard Docker image of the Frank!Framework. Frank developers may or may not add this library to customer-specific Docker images. The location of the queueing library is the same as the location of the database library: ``/opt/frank/drivers``, see :ref:`deployingDatabaseDriver` for more information.
 
 The following table shows for a few vendors where to find the queueing library:
 
