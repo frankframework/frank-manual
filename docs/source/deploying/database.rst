@@ -41,7 +41,7 @@ There is a top-level YAML object ``jdbc`` that contains a list of database resou
 The ``type`` field
 ------------------
 
-Database vendors provide Java libraries to access their databases from Java code. The library for the chosen database has to be available on the Java classpath, see :ref:`deployingDatabaseGeneralAboutDriver` and :ref:`deployingDatabaseDriver`. As a system administrator, you have to choose a Java class from the library; the Java class that the Frank!Framework should access. This is the value of the ``type`` field. In general, there are two options: choosing a *database driver* or choosing a *datasource*. It is recommended to choose a datasource, not a driver.
+Database vendors provide Java libraries to access their databases from Java code. The library for the chosen database has to be available on the Java classpath, see :ref:`deployingDatabaseGeneralAboutDriver` and :ref:`deployingDatabaseDriver`. As a system administrator, you have to choose a Java class from the library; the Java class that the Frank!Framework should access. This is the value of the ``type`` field. In general, there are two options: choosing a *database driver* (not recommended) or choosing a *datasource*. A database driver attempts to initialise a DataSource for you. It may do this based on biased defaults. It is therefore recommended to always configure a DataSource directly. Drivers do not provide more functionality, and are purely a wrapper around a (usually NON-XA) DataSource.
 
 .. NOTE::
 
@@ -59,10 +59,10 @@ The field ``url`` contains the address of the database. The syntax is a bit diff
 Database driver or datasource
 -----------------------------
 
-To access a database, the Frank!Framework needs a database driver or a datasource. These are included in a Java library provided by the database vendor. Frank developers who provide a Docker image with a complete Frank application should include the database library of the chosen database. System administrators working with such Docker images do not have to worry about the library. System administrators who only receive a Frank configuration, not a complete Frank application, should install the database library in the deployment environment.
+To access a database, the Frank!Framework needs a database driver or a datasource, see :ref:`deployingDatabaseDriver`. These drivers are included in a Java library provided by the database vendor. The driver needs to be placed or mounted in the ``/opt/frank/drivers`` directory. Depending on your needs you might want to do this as part of your project (and use a Containerfile to copy the file over), or let a system administrator install the database library in the deployment environment.
 
 .. WARNING::
 
-   Until release 8.3 of the Frank!Framework, the database libraries of many databases were included in the Docker image provided by the maintainers of the Frank!Framework. This is the Docker image that holds the Frank!Framework deployed on Apache Tomcat. From the 9.0 release onwards, the database libraries will be excluded from this standard image to make it smaller. Frank developers typically derive a Docker image from this standard image to provide the Frank configurations the customer needs. They should take care now to add the database library of the chosen database.
+   This is possible since release 9.2 of the Frank!Framework, before this version the database libraries of many databases were included in the Docker image provided by the maintainers of the Frank!Framework. In order to give end users more granularity and control over which version they use, they can now easily overwrite driver types and versions.
 
 Frank developers should carefully consider the location of the database library. If the standard image is used to derive a customer-specific image and if the database library should be in the image, then add the library in ``/opt/frank/drivers``. If the customer is to add the database driver, make ``/opt/frank/drivers`` a volume. The customer can then supply the database library.
