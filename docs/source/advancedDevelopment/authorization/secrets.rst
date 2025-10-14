@@ -27,6 +27,10 @@ The user and the password configured for the server are repeated here so that th
 
    It is possible to store usernames and passwords in separate files; each username and each password in a dedicated file. This can be done by setting ``credentialFactory.class=org.frankframework.credentialprovider.FileSystemCredentialFactory``. Frank applications usually need multiple aliases, so this approach is more complicated than managing all aliases in a single filee using the ``org.frankframework.credentialprovider.PropertyFileCredentialFactory``.
 
+.. WARNING::
+
+   Take care with special characters and ``\`` in secrets files. The Frank!Framework has to convert the raw bytes of a secrets file to a character string, and then to a list of name/value pairs. It does this like it is done for properties files. See :ref:`propertiesSpecialChars`.
+
 Using secrets to authenticate
 -----------------------------
 
