@@ -21,15 +21,15 @@ Here is the ``credentials.properties`` used in this example during development:
 
 .. literalinclude:: ../../../../srcSteps/Frank2Authentication/v500/client/secrets/credentials.properties
 
+.. WARNING::
+
+   The Frank!Framework does some subtle translations of data it read from properties files. Suppose that your Frank application accesses an external system. The operator of the external system tells you that the password is ``abcd\t``. When you would type ``abcd\t`` in ``credentials.properties`` then authentication would fail. The Frank!Framework would interpret the ``\t`` charachter as a TAB. The correct value to write in ``credentials.properties`` is ``abcd\\t`` to escape the ``\``. See :ref:`propertiesSpecialChars`.
+
 The user and the password configured for the server are repeated here so that the client should be able to authorize to the server. The words ``username`` and ``password`` are both prepended by ``myAlias/``. With ``PropertyFileCredentialFactory`` you can define multiple sets of credentials, aliases, that could give access to different servers requiring authentication. In this case there is one alias that is named  ``myAlias``.
 
 .. NOTE::
 
    It is possible to store usernames and passwords in separate files; each username and each password in a dedicated file. This can be done by setting ``credentialFactory.class=org.frankframework.credentialprovider.FileSystemCredentialFactory``. Frank applications usually need multiple aliases, so this approach is more complicated than managing all aliases in a single filee using the ``org.frankframework.credentialprovider.PropertyFileCredentialFactory``.
-
-.. WARNING::
-
-   Take care with special characters and ``\`` in secrets files. The Frank!Framework has to convert the raw bytes of a secrets file to a character string, and then to a list of name/value pairs. It does this like it is done for properties files. See :ref:`propertiesSpecialChars`.
 
 Using secrets to authenticate
 -----------------------------
