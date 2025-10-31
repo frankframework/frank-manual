@@ -33,7 +33,7 @@ This message should be transformed according to the following:
 * The ``<accountId>``, ``<email>``, ``<street>``, ``<houseNumber>``, ``<city>``, ``<zip>`` and ``<country>`` inside ``<to>`` and ``<cc>`` elements remain the same apart from the namespace.
 * The ``<firstName>`` and ``<lastName>`` elements of a Conclusion request are not copied. Their values are combined and the resulting string is wrapped in an element ``<displayName>``.
 * The ``id`` attribute of the ``<document>`` element of the Conclusion request reappears in the ``<document>`` element posted to Mundo.
-* The Mundo request has an element ``<body>`` that is a brother of the ``<header>`` element. The value of that element is the message of the PDF file encoded as Base 64 string. In the exercise this is text data but we keep for the exercise that Base 64 encoding is necessary. To help you, the Mundo application in Frank2Example checks that the Base 64 decoded body, that should be plain text because the exercise works with text instead of PDF, contains the word ``document``.
+* The Mundo request has an element ``<body>`` that is a sibling of the ``<header>`` element. The value of that element is the message of the PDF file encoded as Base 64 string. In the exercise this is text data but we keep for the exercise that Base 64 encoding is necessary. To help you, the Mundo application in Frank2Example checks that the Base 64 decoded body, that should be plain text because the exercise works with text instead of PDF, contains the word ``document``.
 
 Here is an example of a valid request to Mundo, although the values may not match the values in the shown Conclusion request:
 

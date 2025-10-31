@@ -14,7 +14,7 @@ Please follow the following rules when building the package:
 * Metadata should be provided in either ``BuildInfo.properties`` or the manifest file of the generated .jar file, see below.
 * File ``Configuration.xml`` and other files of the configuration should live under a top-level directory. The name of the top-level directory is the name of the configuration.
 * When frontend code is included as explained in :ref:`gettingStartedWebcontent`, it should live in a subdirectory ``<configuration name>/webcontent``.
-* When there are Java .class files, their directory tree is a *brother* of the configuration's root directory.
+* When there are Java .class files, their directory tree is a *sibling* of the configuration's root directory.
 
 Here is the contents of an example archive:
 
