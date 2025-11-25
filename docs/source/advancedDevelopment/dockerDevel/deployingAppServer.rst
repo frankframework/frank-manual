@@ -13,7 +13,7 @@ First, it is possible to distribute Frank applications as Docker images, as oppo
 
 .. NOTE::
 
-   The Frank!Framework Docker image expects libraries like database drivers in directory ``/opt/frank/drivers``.
+   The Frank!Framework Docker image expects libraries like database drivers in directory ``/opt/frank/drivers``. The system administrator must mount their own drivers on this path, which in turn will 'overwrite' the provided drivers.
 
 .. NOTE::
 
