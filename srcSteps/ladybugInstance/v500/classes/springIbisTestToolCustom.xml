@@ -7,11 +7,11 @@
 
     <import resource="springIbisTestTool.xml"/>
 
-    <bean name="metadataExtractor" class="nl.nn.testtool.MetadataExtractor">
+    <bean name="metadataExtractor" class="org.wearefrank.ladybug.MetadataExtractor">
         <property name="extraMetadataFieldExtractors">
             <list>
-                <bean class="nl.nn.testtool.metadata.StatusMetadataFieldExtractor"/>
-                <bean class="nl.nn.testtool.metadata.XpathMetadataFieldExtractor">
+                <bean class="org.wearefrank.ladybug.metadata.StatusMetadataFieldExtractor"/>
+                <bean class="org.wearefrank.ladybug.metadata.XpathMetadataFieldExtractor">
                     <property name="name" value="customer"/>
                     <property name="label" value="Customer"/>
                     <!-- <property name="extractFrom" value="first"/> -->
