@@ -71,3 +71,7 @@ In the table below, all the options are listed for providing credentials:
 .. WARNING::
 
    The Frank!Framework does some subtle translations of data it read from properties files. Suppose that your Frank application accesses an external system. The operator of the external system tells you that the password is ``abcd\t``. When you would type ``abcd\t`` in ``credentials.properties`` then authentication would fail. The Frank!Framework would interpret the ``\t`` charachter as a TAB. The correct value to write in ``credentials.properties`` is ``abcd\\t`` to escape the ``\``. See :ref:`propertiesSpecialChars`.
+
+.. NOTE::
+
+   What if authorization still fails to the system that requires the credentials? You will not see a console warning when something is wrong, but error information is available in the logfiles. When you use Apache Tomcat, information is available in the cataline log.
