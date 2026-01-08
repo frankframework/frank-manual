@@ -13,5 +13,6 @@ services:
       - 8090:8080
     volumes:
       - ./src/main/resources:/opt/frank/resources
+      - ./drivers:/opt/frank/drivers
     environment:
       jdbc.hostname: db
