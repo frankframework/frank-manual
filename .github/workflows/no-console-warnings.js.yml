@@ -225,7 +225,7 @@ jobs:
         working-directory: ${{ matrix.frankConfig }}
       - name: Start server using docker-compose
         if: ${{ matrix.withDocker == true }}
-        run: docker compose up --build --force-recreate &
+        run: docker compose up --build --force-recreate > docker-compose-up.log &
         working-directory: ${{ matrix.frankConfig }}
       - name: Wait for server to be available - default port 8090 - default time 240
         if: ${{ ! matrix.port && ! matrix.waitTime }}
@@ -270,8 +270,14 @@ jobs:
       - name: Show files
         run: tree -L 5 .
         if: always()
-      - name: Store maven.log
+      - name: Store docker-compose-up.log
         uses: actions/upload-artifact@v4  
+        if: ${{ failure() && matrix.withDocker == true }}
+        with:
+          name: docker-compose-up.log ${{ matrix.name }}
+          path: ${{ matrix.frankConfig }}/docker-compose-up.log
+      - name: Store maven.log
+        uses: actions/upload-artifact@v4
         if: ${{ failure() && matrix.doMaven == true }}
         with:
           name: maven.log ${{ matrix.name }}
