@@ -221,7 +221,7 @@ jobs:
       - name: Add PostgreSQL driver
         if: contains(matrix.name, 'Frank2Transactions')
         # run: wget -o drivers/activemq-all-6.2.0.jar https://repo1.maven.org/maven2/org/apache/activemq/activemq-all/6.2.0/activemq-all-6.2.0.jar
-        run: wget -o drivers/artemis-jms-client-all-2.44.0.jar https://repo1.maven.org/maven2/org/apache/activemq/artemis-jms-client-all/2.44.0/artemis-jms-client-all-2.44.0.jar
+        run: wget -o drivers/artemis-jakarta-client-all-2.44.0.jar https://repo1.maven.org/maven2/org/apache/activemq/artemis-jakarta-client-all/2.44.0/artemis-jakarta-client-all-2.44.0.jar
         working-directory: ${{ matrix.frankConfig }}
       - name: Start server using docker-compose
         if: ${{ matrix.withDocker == true }}
