@@ -223,9 +223,12 @@ jobs:
         # run: wget -o drivers/activemq-all-6.2.0.jar https://repo1.maven.org/maven2/org/apache/activemq/activemq-all/6.2.0/activemq-all-6.2.0.jar
         run: wget -o drivers/artemis-jakarta-client-all-2.44.0.jar https://repo1.maven.org/maven2/org/apache/activemq/artemis-jakarta-client-all/2.44.0/artemis-jakarta-client-all-2.44.0.jar
         working-directory: ${{ matrix.frankConfig }}
+      - name: Show all files of Frank configuration
+        run: tree -L 5 .
+        working-directory: ${{ matrix.frankConfig }}
       - name: Start server using docker-compose
         if: ${{ matrix.withDocker == true }}
-        run: docker compose up --build --force-recreate > docker-compose-up.log &
+        run: docker compose up --pull always --build --force-recreate > docker-compose-up.log &
         working-directory: ${{ matrix.frankConfig }}
       - name: Wait for server to be available - default port 8090 - default time 240
         if: ${{ ! matrix.port && ! matrix.waitTime }}
@@ -288,3 +291,4 @@ jobs:
         with:
           name: videos ${{ matrix.name }}
           path: frank-manual/cypress/cypress/videos
+
