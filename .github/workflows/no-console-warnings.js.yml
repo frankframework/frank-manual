@@ -226,6 +226,10 @@ jobs:
       - name: Show all files of Frank configuration
         run: tree -L 5 .
         working-directory: ${{ matrix.frankConfig }}
+      - name: Remove old containers using docker-compose
+        if: ${{ matrix.withDocker == true }}
+        run: docker compose down
+        working-directory: ${{ matrix.frankConfig }}
       - name: Start server using docker-compose
         if: ${{ matrix.withDocker == true }}
         run: docker compose up --pull always --build --force-recreate > docker-compose-up.log &
