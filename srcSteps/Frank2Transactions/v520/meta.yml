@@ -1,6 +1,6 @@
 - predecessor: v512
 - file:
-    path: src/main/resources/Configuration.xml
+    path: src/main/configurations/TransactionsExample/Configuration.xml
     change:
       - old: 1
         new: 1
@@ -19,9 +19,24 @@
       - old: 7
         new: 0
         snippet: undo-xa-docker-compose
+      - old: 1
+        new: 0
+        snippet: undo-xa-docker-compose
       - old: 3
         new: 0
         snippet: undo-xa-docker-compose
+- file:
+    path: Dockerfile
+    change:
+      - old: 1
+        new: 0
+        snippet: undo-jms-docker
+      - old: 1
+        new: 0
+        snippet: undo-jms-docker
+      - old: 1
+        new: 0
+        snippet: undo-jms-docker
 - file:
     path: db/Dockerfile
     change: del
@@ -47,5 +62,9 @@
     context: 50
 - snippet:
     name: undo-xa-resources
+    markup: none
+    context: 50
+- snippet:
+    name: undo-jms-docker
     markup: none
     context: 50

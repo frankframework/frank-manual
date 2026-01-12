@@ -59,6 +59,6 @@ The following table shows for a few vendors where to find the queueing library:
    :header: Brand, URL to download library
 
    Active MQ Classic, https://mvnrepository.com/artifact/org.apache.activemq/activemq-all
-   Active MQ Artemis, https://mvnrepository.com/artifact/org.apache.activemq/artemis-jms-client-all
+   Active MQ Artemis, https://mvnrepository.com/artifact/org.apache.activemq/artemis-jakarta-client-all
 
 Please browse the internet for JMS library if you are using another brand.

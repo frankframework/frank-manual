@@ -12,11 +12,16 @@ services:
     image: apache/activemq-artemis:2.36.0
     ports:
       - 8160:8160
-      - 61616:61616
+      - 8092:61616
     environment:
       ANONYMOUS_LOGIN: true
   ff:
-    image: frankframework/frankframework:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PG_VERSION: 42.7.8
+        ARTEMIS_VERSION: 2.44.0
     ports:
       - 8090:8080
     volumes:

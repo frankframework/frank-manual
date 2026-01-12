@@ -2,10 +2,13 @@
     path: docker-compose.yml
     change: add
 - file:
-    path: src/main/resources/Configuration.xml
+    path: Dockerfile
     change: add
 - file:
-    path: src/main/resources/DatabaseChangelog.xml
+    path: src/main/configurations/TransactionsExample/Configuration.xml
+    change: add
+- file:
+    path: src/main/configurations/TransactionsExample/DatabaseChangelog.xml
     change: add
 - file:
     path: src/main/resources/DeploymentSpecifics.properties
