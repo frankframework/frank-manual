@@ -9,7 +9,11 @@ services:
       POSTGRES_USER: testiaf_user
       POSTGRES_DB: testiaf
   ff:
-    image: frankframework/frankframework:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PG_VERSION: 42.7.8
     ports:
       - 8080:8080
     volumes:

@@ -9,9 +9,24 @@
       - insert: 7
         highlight: true
         snippet: docker-compose
+      - insert: 1
+        highlight: true
+        snippet: docker-compose
       - insert: 3
         highlight: true
         snippet: docker-compose
+- file:
+    path: Dockerfile
+    change:
+      - insert: 1
+        highlight: true
+        snippet: Dockerfile
+      - insert: 1
+        highlight: true
+        snippet: Dockerfile
+      - insert: 1
+        highlight: true
+        snippet: Dockerfile
 - file:
     path: db/Dockerfile
     change: add
@@ -19,7 +34,7 @@
     path: db/install-scripts/enableXa.sql
     change: add
 - file:
-    path: src/main/resources/Configuration.xml
+    path: src/main/configurations/TransactionsExample/Configuration.xml
     change:
       - old: 1
         new: 1
@@ -41,6 +56,10 @@
         snippet: reference-queue
 - snippet:
     name: docker-compose
+    markup: none
+    context: 50
+- snippet:
+    name: Dockerfile
     markup: none
     context: 50
 - snippet:

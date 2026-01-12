@@ -1,4 +1,4 @@
-```none{3, 4, 11, 12, 13, 14, 15, 16, 17, 26, 27, 28}
+```none{3, 4, 11, 12, 13, 14, 15, 16, 17, 24, 31, 32, 33}
 services:
   db:
     image: frankframework.org/frank-manual/src-steps/frank-2-transactions/postgresql
@@ -13,11 +13,16 @@ services:
     image: apache/activemq-artemis:2.36.0
     ports:
       - 8160:8160
-      - 61616:61616
+      - 8092:61616
     environment:
       ANONYMOUS_LOGIN: true
   ff:
-    image: frankframework/frankframework:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PG_VERSION: 42.7.8
+        ARTEMIS_VERSION: 2.44.0
     ports:
       - 8080:8080
     volumes:

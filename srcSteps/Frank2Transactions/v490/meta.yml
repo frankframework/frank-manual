@@ -1,9 +1,9 @@
 - predecessor: v480
 - file:
-    path: src/main/resources/input.xsd
+    path: src/main/configurations/TransactionsExample/input.xsd
     change: add
 - file:
-    path: src/main/resources/Configuration.xml
+    path: src/main/configurations/TransactionsExample/Configuration.xml
     change:
       - old: 1
         new: 2
