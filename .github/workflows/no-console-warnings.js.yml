@@ -214,15 +214,6 @@ jobs:
         if: ${{ matrix.doMaven == true }}
         run: mvn clean install > maven.log
         working-directory: ${{ matrix.frankConfig }}
-      - name: Add PostgreSQL driver
-        if: contains(matrix.name, 'Frank2Transactions')
-        run: wget -o drivers/postgresql-42.7.8.jar https://jdbc.postgresql.org/download/postgresql-42.7.8.jar
-        working-directory: ${{ matrix.frankConfig }}
-      - name: Add PostgreSQL driver
-        if: contains(matrix.name, 'Frank2Transactions')
-        # run: wget -o drivers/activemq-all-6.2.0.jar https://repo1.maven.org/maven2/org/apache/activemq/activemq-all/6.2.0/activemq-all-6.2.0.jar
-        run: wget -o drivers/artemis-jakarta-client-all-2.44.0.jar https://repo1.maven.org/maven2/org/apache/activemq/artemis-jakarta-client-all/2.44.0/artemis-jakarta-client-all-2.44.0.jar
-        working-directory: ${{ matrix.frankConfig }}
       - name: Show all files of Frank configuration
         run: tree -L 5 .
         working-directory: ${{ matrix.frankConfig }}
