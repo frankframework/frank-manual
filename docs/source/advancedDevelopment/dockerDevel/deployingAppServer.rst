@@ -1,25 +1,25 @@
 .. _advancedDevelopmentDockerDevelAppServer:
 
-Additional information about deploying
-======================================
+Deploying as Docker image and orchestration
+===========================================
 
 This section continues where section :ref:`advancedDevelopmentDockerDevelBasics` ended. It provides more information about deploying Frank applications.
 
-First, it is possible to distribute Frank applications as Docker images, as opposed to Frank configurations that still have to be deployed in an application server. Developers can create a Docker image by writing a Dockerfile. The Dockerfile should derive from image ``frankframework/frankframework`` (DockerHub) or ``nexus.frankframework.org/frankframework`` (server managed by maintainers of Frank!Framework). The new image should include the Frank configurations (can be plural in this case) being deployed in the ``/opt/frank/configurations`` directory. This directory can hold both packaged configurations and configurations as plain directory trees. This way, the production environment does not reference configurations from a volume anymore.
+It is possible to distribute Frank configurations as Docker images. These can then be started with ``docker compose`` or a more advanced tool for container orchestration like Kubernetes. Developers can create a Docker image by writing a Dockerfile. The Dockerfile should derive from image ``frankframework/frankframework`` (DockerHub) or ``nexus.frankframework.org/frankframework`` (server managed by maintainers of Frank!Framework). The new image should include the Frank configurations (can be plural in this case) being deployed in the ``/opt/frank/configurations`` directory. This directory can hold both packaged configurations and configurations as plain directory trees. This way, the production environment does not reference configurations from a volume anymore. In addition, the image should provide the database driver (unless database H2 is used). See :ref:`deployingDatabaseDriver` to discover what driver you need for your database.
 
-.. WARNING::
+Here is an example Dockerfile:
 
-   From release 9.0 onwards, database libraries are no longer in the standard Docker image. See :ref:`deployingDatabaseDriver` for more explanation.
+.. literalinclude:: ../../../../srcSteps/Frank2Transactions/v480/Dockerfile
 
-.. NOTE::
+The version of the PostgreSQL driver is a parameter of this Dockerfile. It can be provided in a ``docker-compose.yml`` or similar. Here is an example ``docker-compose.yml``:
 
-   The Frank!Framework Docker image expects libraries like database drivers in directory ``/opt/frank/drivers``. The system administrator must mount their own drivers on this path, which in turn will 'overwrite' the provided drivers.
+.. literalinclude:: ../../../../srcSteps/Frank2Transactions/v480/docker-compose.yml
+
+There is no volume mapping for ``/opt/frank/configuration`` because that directory is filled in the image build by the Dockerfile. There is a volume mapping for ``/opt/frank/resources``. Here the system administrator of the customer can configure the deployment, for example by configuring the database.
 
 .. NOTE::
 
    Directory ``/opt/frank/configurations`` can hold both packaged configurations and plain directory trees. In both cases, the Frank!Framework loads the configurations automatically when property ``configurations.directory.autoLoad`` is ``true``. This works from Frank!Framework version 9.3.0-20250806.042330 onwards. For earlier versions, it may be necessary to control the Java classloader used to load a configuration. See https://github.com/frankframework/frankframework/wiki/ClassLoaders#configuration-classloaders.
-
-File ``resources.yml`` is usually mapped as a volume (in ``/opt/frank/resources``) to allow the customer to configure external resources. 
 
 The maintainers of the Frank!Framework have done a lot of work to make image ``frankframework/frankframework`` reliable, and hence you are recommended not to interfere with the way it configures Apache Tomcat. For example, it is deprecated upon to provide some ``context.xml``. The image expects the following data in the following directories:
 

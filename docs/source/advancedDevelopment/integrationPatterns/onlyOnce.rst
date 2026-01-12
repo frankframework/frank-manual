@@ -11,7 +11,7 @@ You can experiment with the message id and the correlation by downloading this :
 
 The example detects whether a duplicate message id is received and returns HTTP code 304 Not Modified in this case. This behavior is configured in the receiver of adapter ``writeDb``. The receiver is shown below (the remainder is a bit more complicated than needed here, but it is a useful example to explain transactions in the next section :ref:`advancedDevelopmentIntegrationPatternsTransactions`):
 
-.. literalinclude:: ../../../../srcSteps/Frank2Transactions/v480/src/main/resources/Configuration.xml
+.. literalinclude:: ../../../../srcSteps/Frank2Transactions/v480/src/main/configurations/TransactionsExample/Configuration.xml
    :emphasize-lines: 6, 8
    :language: xml
 
@@ -41,7 +41,7 @@ The receiver can be changed to expect a correlation id that is extracted from th
 
 First, attribute ``checkForDuplicatesMethod="CORRELATIONID"`` is set to inform the Frank!Framework that a correlation id is expected now instead of a message id. The input is no longer expected to be plain text, but XML. An XPath expression is needed to extract the correlation id, which is configured by attribute ``correlationIDXPath="/input/@correlationId"``. Then, an ``<XmlInputValidator>`` is added to check the syntax of the input. The XSD file ``input.xsd`` is shown below:
 
-.. literalinclude:: ../../../../srcSteps/Frank2Transactions/v490/src/main/resources/input.xsd
+.. literalinclude:: ../../../../srcSteps/Frank2Transactions/v490/src/main/configurations/TransactionsExample/input.xsd
    :language: xml
 
 Next, an ``<XsltPipe>`` is added to extract the message to be written to the database. The remaining changes of ``Configuration.xml`` save this message. The ``<PutInSessionPipe>`` saves the message into session key ``inputMessage``. The response of adapter ``writeTableMessage`` reports how many rows have been updated and is not relevant for adapter ``writeTableOtherMessage``. The input for that adapter is fetched by the ``<EchoPipe>``, which reads back the session key.

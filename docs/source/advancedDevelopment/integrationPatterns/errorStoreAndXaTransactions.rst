@@ -9,7 +9,7 @@ Section :ref:`advancedDevelopmentDockerDevelJms` explains how the development en
 
 With the development environment in place, it can be shown how our example configuration can be updated to have the Fire and Forget integration pattern. The changes are shown below:
 
-.. literalinclude:: ../../../../srcSteps/Frank2Transactions/v510/src/main/resources/Configuration.xml
+.. literalinclude:: ../../../../srcSteps/Frank2Transactions/v510/src/main/configurations/TransactionsExample/Configuration.xml
    :language: xml
    :lines: 1-21
    :emphasize-lines: 5, 6, 8, 12, 17, 18, 19
