@@ -25,7 +25,7 @@ The ``<JdbcMessageLog>`` configures the Frank!Framework to remember the incoming
 
 .. WARNING::
 
-   Table ``IBISSTORE`` is only created if property ``jdbc.migrator.active`` is true and if this is configured as a system property or application property. Setting this within a configuration is not sufficient.
+   Table ``IBISSTORE`` is only created if property ``jdbc.migrator.active`` is true and if this is configured as a environment property or application property. Setting this within a configuration is not sufficient.
 
 .. NOTE::
 

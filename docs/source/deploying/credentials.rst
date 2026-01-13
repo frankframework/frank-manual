@@ -32,14 +32,14 @@ Continue as follows:
 
    .. NOTE::
 
-      Property ``authAliases.expansion.allowed`` and related properties have to be set as system properties.
+      Property ``authAliases.expansion.allowed`` and related properties have to be set as environment properties.
 
 3. Browse to http://localhost. In the main menu, choose "Testing" and "Test a Pipeline".
 4. Choose adapter "TestCredentials" (number 1 in the picture below). Enter some arbitrary input message for this adapter (number 2). Then press "Send" (number 3). Check that the adapter succeeded (number 4). And check that the username and the password you provided are shown (number 5).
 
    .. image:: testCredentials.jpg
 
-The properties ``credentialFactory.class`` and ``credentialFactory.map.properties`` are relevant for system administrators. They are system properties. You can initialize them as Java Virtual Machine properties (with ``-D`` as shown). If you run the Frank!Framework on Apache Tomcat, you can configure them in ``catalina.properties``. If you are working with Docker Compose, they can be configured in ``docker-compose.yml``. For other application servers, there are other ways but these are beyond the scope of this section.
+The properties ``credentialFactory.class`` and ``credentialFactory.map.properties`` are relevant for system administrators. They are environment properties. You can initialize them as Java Virtual Machine properties (with ``-D`` as shown). If you run the Frank!Framework on Apache Tomcat, you can configure them in ``catalina.properties``. If you are working with Docker Compose, they can be configured in ``docker-compose.yml``. For other application servers, there are other ways but these are beyond the scope of this section.
 
 With property ``credentialFactory.class`` you define the source from which the credentials have to be obtained. In the example the credentials were in a properties file, but there are many other possibilities you can choose. You give the Java class name of the class that should read the credentials.
 

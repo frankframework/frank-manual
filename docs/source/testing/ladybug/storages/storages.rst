@@ -17,7 +17,7 @@ Please consider the following properties:
    ``ladybug.jdbc.migrator.active``, "Boolean property that determines whether table ``LADYBUG`` should be created. The default value is ``${jdbc.migrator.active}``. The default behavior is thus to treat the creation of table ``LADYBUG`` like the other database initializations that are or are not performed by the Frank!Framework (e.g. creating table ``IBISSTORE``)."
    ``ladybug.jdbc.datasource``, "The database name that points to the database in which Ladybug should write reports. No default value. If empty, Ladybug writes reports to the local file system."
 
-These properties have to be system properties or application properties, see :ref:`propertiesDeploymentEnvironment`.
+These properties have to be environment properties or application properties, see :ref:`propertiesDeploymentEnvironment`.
 
 .. WARNING::
 

@@ -46,4 +46,4 @@ Both in property files and in XML Frank config files, you can reference properti
 
     From stage LOC, I say My text is Hello there
 
-Depending on your application server, there are different ways to set system properties. Details can be fond in chapter :ref:`deploying`.
+Depending on your application server, there are different ways to set environment properties. Details can be fond in chapter :ref:`deploying`.

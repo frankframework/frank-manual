@@ -186,7 +186,7 @@ Property configurations.<configname>.parentConfig
 
 **Question:** What  is the use of the property configurations.<configname>.parentConfig exactly?
 
-**Answer:** It changes the order in which files and properties are loaded. For every file or property the framework has to load, it will first look it up as a global setting (eq. classpath resource or system property) then in the local configuration, then (if specified) the parent configuration, and lastly the war (``src/main/resources``). Class loading is described in subsection :ref:`propertiesInitialization`.
+**Answer:** It changes the order in which files and properties are loaded. For every file or property the framework has to load, it will first look it up as a global setting (eq. classpath resource or environment property) then in the local configuration, then (if specified) the parent configuration, and lastly the war (``src/main/resources``). Class loading is described in subsection :ref:`propertiesInitialization`.
 
 Authorization to turn on Ladybug
 --------------------------------

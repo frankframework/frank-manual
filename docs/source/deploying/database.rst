@@ -30,7 +30,7 @@ Here is an example that shows the syntax of ``resources.yml`` (do not use in pro
 
 .. NOTE::
 
-   The shown line ``authalias: "${db.authalias}"`` demonstrates that system properties or application properties can be referenced in ``resources.yml``.
+   The shown line ``authalias: "${db.authalias}"`` demonstrates that environment properties or application properties can be referenced in ``resources.yml``.
 
 There is a top-level YAML object ``jdbc`` that contains a list of database resources. Each resource is an object that has at least the fields ``name``, ``type`` and ``url``. The ``name`` should be the part of the database name that comes after ``jdbc/``. If the database name is ``jdbc/myDatabase``, then the ``name`` field should be ``myDatabase``. The fields ``type`` and ``url`` define how to reach the database. Sometimes the ``properties`` field is added, see below. Credentials to access the database should be provided through the combination of fields ``username`` and ``password``, or through ``authalias`` if the username and the password are treated as secrets (see :ref:`deploymentCredentials`).
 

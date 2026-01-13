@@ -69,7 +69,7 @@ This example shows the following. Scope ``SCOPE_openid`` means that a user is lo
 Configuring the Frank!Application by setting properties
 -------------------------------------------------------
 
-The following properties have to be set in the Frank!Framework. They configure the Frank!Console so that its users should authenticate themselves at identity provider Azure AD. Use them on the class level (``src/main/resources`` or ``classes``) or as system properties.
+The following properties have to be set in the Frank!Framework. They configure the Frank!Console so that its users should authenticate themselves at identity provider Azure AD. Use them on the class level (``src/main/resources`` or ``classes``) or as environment properties.
 
 .. code-block:: none
 

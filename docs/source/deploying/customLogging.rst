@@ -17,7 +17,7 @@ A system administrator typically provides a configuration file that references l
 Configuring logging for Frank applications
 ------------------------------------------
 
-To configure custom logging in Frank application, a system property ``log4j.configurationFile`` has to be set. Its value is a comma-separated list of all log4j2 configuration files to be read. A typical value is ``log4j4ibis.xml,my-log4j2.xml``. ``log4j4ibis.xml`` is the default log configuration provided by the Frank!Framework. ``my-log4j2.xml`` is a custom log configuration. The shown value references the two log configuration from the classpath of the Java Virtual Machine (JVM). System administrators can manipulate the classpath by properly configuring the application server (e.g. Apache Tomcat). It is also possible to reference files outside the JVM using URLs like ``file:///absolute/path/to/file``.
+To configure custom logging in Frank application, a environment property ``log4j.configurationFile`` has to be set. Its value is a comma-separated list of all log4j2 configuration files to be read. A typical value is ``log4j4ibis.xml,my-log4j2.xml``. ``log4j4ibis.xml`` is the default log configuration provided by the Frank!Framework. ``my-log4j2.xml`` is a custom log configuration. The shown value references the two log configuration from the classpath of the Java Virtual Machine (JVM). System administrators can manipulate the classpath by properly configuring the application server (e.g. Apache Tomcat). It is also possible to reference files outside the JVM using URLs like ``file:///absolute/path/to/file``.
 
 When you use a third-party appender, make sure to configure the application server so that the appender's library is on the classpath.
 

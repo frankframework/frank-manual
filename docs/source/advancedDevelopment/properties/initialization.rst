@@ -3,20 +3,20 @@
 How Properties Are Set
 ======================
 
-In subsection :ref:`propertiesDeploymentEnvironment`, the characteristics of the deployment environment of a Frank config were explained. The Frank!Framework can be deployed on different types of application servers. The Frank!Framework detects the type of application server and automatically sets the property ``application.server.type``. System administrators can configure the properties ``dtap.stage`` and ``dtap.side`` as system properties, for example by setting Java properties as explained in subsection :ref:`propertiesReference`. A consequence of the boot process of the Frank!Framework was explained, namely the difference between system properties, application properties and configuration properties (three levels). It was said that some properties can only be supplied as system properties (most basic level), while some others can only be supplied as system properties or application properties (the most basic level or the next level, but not as configuration properties). For most properties however, it does not matter how they are configured.
+In subsection :ref:`propertiesDeploymentEnvironment`, the characteristics of the deployment environment of a Frank config were explained. The Frank!Framework can be deployed on different types of application servers. The Frank!Framework detects the type of application server and automatically sets the property ``application.server.type``. System administrators can configure the properties ``dtap.stage`` and ``dtap.side`` as environment properties, for example by setting Java properties as explained in subsection :ref:`propertiesReference`. A consequence of the boot process of the Frank!Framework was explained, namely the difference between environment properties, application properties and configuration properties (three levels). It was said that some properties can only be supplied as environment properties (most basic level), while some others can only be supplied as environment properties or application properties (the most basic level or the next level, but not as configuration properties). For most properties however, it does not matter how they are configured.
 
 Precedence Order
 ----------------
 
-Each Frank config has its own set of properties. Next to these configuration properties, properties set within the deployment environment are applied, namely application properties and system properties. There is a precedence order between these three property sources. For each configuration, the order of precedence is as follows:
+Each Frank config has its own set of properties. Next to these configuration properties, properties set within the deployment environment are applied, namely application properties and environment properties. There is a precedence order between these three property sources. For each configuration, the order of precedence is as follows:
 
-#. System properties.
+#. Environment properties.
 #. Configuration properties.
 #. Application properties.
 
-As a consequence, the system administrator can override configuration properties by setting them as system properties. You tried this at the end of subsection :ref:`propertiesReference`. 
+As a consequence, the system administrator can override configuration properties by setting them as environment properties. You tried this at the end of subsection :ref:`propertiesReference`. 
 
-As said before, it is possible to put a Frank config in the ``classes`` folder of a Frank application, although this is considered bad practice. This Frank config only uses the application properties and the system properties, the system properties taking precedence.
+As said before, it is possible to put a Frank config in the ``classes`` folder of a Frank application, although this is considered bad practice. This Frank config only uses the application properties and the environment properties, the environment properties taking precedence.
 
 Property files
 --------------
@@ -50,7 +50,7 @@ You can use these property files to configure your properties differently for di
 
 Within your Frank config, you can use properties to call the right service URL from your Frank. In your adapters, you can reference a property ``serviceURL`` to find the URL of your service. In ``DeploymentSpecifics.properties``, you include the line ``serviceURL=https://dev.someservice.io``. In ``StageSpecifics_ACC.properties``, you include the line ``serviceURL=https://acc.someservice.io``. Finally in ``StageSpecifics_PRD.properties`` you set the real service URL: ``serviceURL=https://someservice.io``. In DTAP stages local, development or test, the service URL defined in ``DeploymentSpecifics.properties`` is applied. In DTAP stage acceptance, this value is superseeded by the definition in ``StageSpecifics_ACC.properties``. In production, the service URL found in ``StageSpecifics_PRD.properties`` is taken. 
 
-The mentioned files ``Test.properties`` ... ``DeploymentSpecifics.properties`` can also exist within the deployment on the application server (the ``classes`` folder). Then they have the same order of precedence, but they have a lower precedence than the configuration specific property files. Please remember that system properties always take precedence over properties configured in your Frank config. The order between the different properties files takes precedence over the order imposed by the deployment stack. As an example, assume we have ``StageSpecifics_LOC.properties`` and ``DeploymentSpecifics.properties`` that both exist on the application level and the configuration level. This makes four resources. Their precedence order is as follows (from high to low precedence):
+The mentioned files ``Test.properties`` ... ``DeploymentSpecifics.properties`` can also exist within the deployment on the application server (the ``classes`` folder). Then they have the same order of precedence, but they have a lower precedence than the configuration specific property files. Please remember that environment properties always take precedence over properties configured in your Frank config. The order between the different properties files takes precedence over the order imposed by the deployment stack. As an example, assume we have ``StageSpecifics_LOC.properties`` and ``DeploymentSpecifics.properties`` that both exist on the application level and the configuration level. This makes four resources. Their precedence order is as follows (from high to low precedence):
 
 1. ``StageSpecifics_LOC.properties``, configuration level.
 #. ``StageSpecifics_LOC.properties``, application level.
@@ -63,7 +63,7 @@ As said before, the FF! first reads all properties files and then uses that data
 
    It is NOT possible to define application-level properties based on configuration-level properties! Application-level properties have to be calculated while the FF! boots, before the FF! reads configurations outside the application level (shown as ``classes`` in :ref:`propertiesDeploymentEnvironment`.
 
-In addition to the chain of system properties and property files, some properties have default values. These default values are listed in subsection :ref:`propertiesFramework`. If some property is not configured by the system administrator and if it is not defined in the property files read by the Frank!Framework, then the default value is applied.
+In addition to the chain of environment properties and property files, some properties have default values. These default values are listed in subsection :ref:`propertiesFramework`. If some property is not configured by the system administrator and if it is not defined in the property files read by the Frank!Framework, then the default value is applied.
 
 Finally, a few properties can be changed at run time. On the left hand menu of the Frank!Console, go to "Environment Variables":
 

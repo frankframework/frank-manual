@@ -18,4 +18,4 @@ The steps below show you how to work with properties within Larva.
 
 #. Run the Larva tests again. They should still succeed.
 
-Here is the caveat. Larva does not know properties that are defined in layer "Configurations" shown in subsection :ref:`propertiesDeploymentEnvironment`. These are typically defined in a subdirectory of directory ``configurations``, or in a subdirectory of ``src/main/configurations`` in case of a Maven project. Only system properties and properties in layer "Frank!Framework + classes" are known.
+Here is the caveat. Larva does not know properties that are defined in layer "Configurations" shown in subsection :ref:`propertiesDeploymentEnvironment`. These are typically defined in a subdirectory of directory ``configurations``, or in a subdirectory of ``src/main/configurations`` in case of a Maven project. Only environment properties and properties in layer "Frank!Framework + classes" are known.

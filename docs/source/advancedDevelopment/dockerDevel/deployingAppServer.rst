@@ -37,7 +37,7 @@ Detailed information about the image and how to use it can be found here: https:
 
 .. WARNING::
 
-   When a configuration needs configuration-specific custom Java code, a property has to be set to allow this custom code to run. Set ``configurations.<configuration name>.allowCustomClasses`` as a system property to ``true``.
+   When a configuration needs configuration-specific custom Java code, a property has to be set to allow this custom code to run. Set ``configurations.<configuration name>.allowCustomClasses`` as a environment property to ``true``.
 
 .. NOTE::
 

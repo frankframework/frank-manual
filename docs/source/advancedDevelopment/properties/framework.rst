@@ -14,10 +14,10 @@ application.server.type
   The type of application server used to host the Frank!Famework. Set automatically by the Frank!Framework. This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for all possible values.
 
 dtap.side
-  Used to characterize the deployment environment as explained in subsection :ref:`propertiesDeploymentEnvironment`. Only works as system property. The default value is ``xxx``. This default is sufficient if the deployment server and the DTAP stage fully characterize the deployment. This property determines what property files are read by the Frank!Framework to set other properties.
+  Used to characterize the deployment environment as explained in subsection :ref:`propertiesDeploymentEnvironment`. Only works as environment property. The default value is ``xxx``. This default is sufficient if the deployment server and the DTAP stage fully characterize the deployment. This property determines what property files are read by the Frank!Framework to set other properties.
 
 dtap.stage
-  Defines the DTAP stage of the deployment. Only works as system property. Possible values are ``LOC``, ``DEV``, ``TST``, ``ACC`` and ``PRD``. If the Frank!Runner is used then there is a default value, namely ``LOC``. This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for more details.
+  Defines the DTAP stage of the deployment. Only works as environment property. Possible values are ``LOC``, ``DEV``, ``TST``, ``ACC`` and ``PRD``. If the Frank!Runner is used then there is a default value, namely ``LOC``. This property determines what property files are read by the Frank!Framework to set other properties. See subsection :ref:`propertiesDeploymentEnvironment` for more details.
 
 otap.side
   Has the same meaning as ``dtap.side``, exists for backward compatibility.
@@ -26,10 +26,10 @@ otap.stage
   Has the same meaning as ``dtap.stage``, exists for backward compatibility.
 
 configurations.names
-  The value should be a comma-separated list of all configurations. For example, if a Frank contains the application configuration (loaded into the application server along with the Frank!Framework) and a configuration ``MyConfig``, then the value of this property should be ``${instance.name},MyConfig``. Only works as system property or application property, unless nested configurations are used. Nested configurations are beyond the scope of this manual at the moment.
+  The value should be a comma-separated list of all configurations. For example, if a Frank contains the application configuration (loaded into the application server along with the Frank!Framework) and a configuration ``MyConfig``, then the value of this property should be ``${instance.name},MyConfig``. Only works as environment property or application property, unless nested configurations are used. Nested configurations are beyond the scope of this manual at the moment.
 
 configurations.MyConfig.classLoaderType
-  If there is a configuration ``MyConfig``, then this property defines how configuration ``MyConfig`` is read. For example, ``DirectoryClassLoader`` indicates that ``MyConfig`` is stored on the local file system of the server. Configurations can also be stored in the database; then this property has another value. This property should exist for every configuration. ``MyConfig`` should be replaced with the configuration name to get the property name. This property only works as a system property or an application property, unless nested configurations are used. Nested configurations are beyond the scope of this manual.
+  If there is a configuration ``MyConfig``, then this property defines how configuration ``MyConfig`` is read. For example, ``DirectoryClassLoader`` indicates that ``MyConfig`` is stored on the local file system of the server. Configurations can also be stored in the database; then this property has another value. This property should exist for every configuration. ``MyConfig`` should be replaced with the configuration name to get the property name. This property only works as a environment property or an application property, unless nested configurations are used. Nested configurations are beyond the scope of this manual.
 
 configurations.autoDatabaseClassLoader
   If this property is false (the default), only configurations mentioned in ``configurations.names`` can be uploaded to the database and only if their ``configurations.<config name>.classLoaderType`` property is ``DatabaseClassLoader``. This requires you to set a lot of properties. If you do not need this strict control for uploading configurations, then set this property to true. You can then upload any configuration to the database. The only exceptions are the configs mentioned in ``configurations.names`` in this case. 
@@ -56,13 +56,13 @@ configurations.directory.autoLoad
      When you use the Frank!Runner, this property is ``false``. Nevertheless you do not have to specify property ``configurations.names``, because the Frank!Runner sets this property for you.
 
 jdbc.migrator.active
-  Can be "true" or "false" (the default). When true, database initialization is switched on. The default behavior is to do this with Liquibase, see https://www.liquibase.org/. With Liquibase, the file ``DatabaseChangelog.xml`` is executed. This property behaves differently as a system property or application property on the one hand, or as a configuration property on the other hand. See section :ref:`advancedDevelopmentDatabase` for details.
+  Can be "true" or "false" (the default). When true, database initialization is switched on. The default behavior is to do this with Liquibase, see https://www.liquibase.org/. With Liquibase, the file ``DatabaseChangelog.xml`` is executed. This property behaves differently as a environment property or application property on the one hand, or as a configuration property on the other hand. See section :ref:`advancedDevelopmentDatabase` for details.
 
 log.dir
-  The directory to which the Frank!Framework writes its log files. Only works as system property. Usually it is not necessary to set this property because the Frank!Framework can automatically choose a suitable directory.
+  The directory to which the Frank!Framework writes its log files. Only works as environment property. Usually it is not necessary to set this property because the Frank!Framework can automatically choose a suitable directory.
 
 log.level
-  Determines the amount of log messages written by defining the minimum log level. Only works as system property. Possible values are ``ERROR``, ``WARN``, ``INFO`` and ``DEBUG``. The default value depends on ``dtap.stage``, as follows:
+  Determines the amount of log messages written by defining the minimum log level. Only works as environment property. Possible values are ``ERROR``, ``WARN``, ``INFO`` and ``DEBUG``. The default value depends on ``dtap.stage``, as follows:
 
   * If ``dtap.stage`` = ``LOC``, then the default value of ``log.level`` is ``DEBUG``.
   * If ``dtap.stage`` = ``DEV``, then the default value of ``log.level`` is ``DEBUG``.

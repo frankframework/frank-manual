@@ -3,7 +3,7 @@
 Environment Variables
 =====================
 
-In the previous section :ref:`frankConsoleLadybug`, you saw how a Frank config can be debugged with Ladybug. If an error happens on your production site, you typically cooperate with a Frank developer to fix the issue. A Frank developer may ask you about system variables or system properties. This short section helps you to answer these questions.
+In the previous section :ref:`frankConsoleLadybug`, you saw how a Frank config can be debugged with Ladybug. If an error happens on your production site, you typically cooperate with a Frank developer to fix the issue. A Frank developer may ask you about system variables or environment properties. This short section helps you to answer these questions.
 
 As an example, suppose that you are asked about property "configurations.names". Please do the following to find the value of this property:
 
