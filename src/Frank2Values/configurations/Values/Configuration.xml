@@ -1,0 +1,19 @@
+<Configuration
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+>
+    <Adapter name="values">
+        <Receiver>
+            <ApiListener name="values" method="POST" uriPattern="values" />
+        </Receiver>
+        <Pipeline>
+            <PutInSessionPipe name="save" sessionKey="saved"/>
+            <ReplacerPipe name="replace" getInputFromFixedValue="Property value ${my.property} and parameter value ?{my.param}">
+                <Param name="my.param" value="My parameter value"></Param>
+            </ReplacerPipe>
+            <ReplacerPipe name="contentType" getInputFromFixedValue="?{context.value}">
+                <Param name="context.value" sessionKey="originalMessage" contextKey="Header.content-type"/>
+            </ReplacerPipe>
+        </Pipeline>
+    </Adapter>
+</Configuration>
