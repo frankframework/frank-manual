@@ -46,21 +46,21 @@ The output should look like this:
 
 .. code-block:: none
 
-  $ mvn clean
-  [INFO] Scanning for projects...
-  [INFO]
-  [INFO] -----------------< org.wearefrank:mavenWebappExample >------------------
-  [INFO] Building mavenWebappExample 1.0-SNAPSHOT
-  [INFO] --------------------------------[ jar ]---------------------------------
-  [INFO]
-  [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ mavenWebappExample ---
-  [INFO] Deleting C:\Users\martijn\git\frank-manual\srcSteps\mavenWebapp\v500\target
-  [INFO] ------------------------------------------------------------------------
-  [INFO] BUILD SUCCESS
-  [INFO] ------------------------------------------------------------------------
-  [INFO] Total time:  0.265 s
-  [INFO] Finished at: 2024-01-29T15:43:19+01:00
-  [INFO] ------------------------------------------------------------------------
+   $ mvn clean
+   [INFO] Scanning for projects...
+   [INFO]
+   [INFO] -----------------< org.wearefrank:mavenWebappExample >------------------
+   [INFO] Building mavenWebappExample 1.0-SNAPSHOT
+   [INFO]   from pom.xml
+   [INFO] --------------------------------[ jar ]---------------------------------
+   [INFO]
+   [INFO] --- clean:3.2.0:clean (default-clean) @ mavenWebappExample ---
+   [INFO] ------------------------------------------------------------------------
+   [INFO] BUILD SUCCESS
+   [INFO] ------------------------------------------------------------------------
+   [INFO] Total time:  0.474 s
+   [INFO] Finished at: 2026-01-23T11:07:45+01:00
+   [INFO] ------------------------------------------------------------------------
 
 Maven distinguishes build phases. The ``mvn clean`` command tells maven to execute build phase ``clean``. Maven delegates everything it does to plugins. By default, Maven executes plugin ``maven-clean-plugin`` when it executes phase ``clean``. Maven plugins are artifacts themselves that can be referenced by Maven coordinates. You can change the versions of a plugin by adding a reference to it in your ``pom.xml``. This is what we did to compile for Java version 11. More explanation will be given in a later subsection. Maven plugins are little programs that may have multiple functions. These are named ``goals``. The output says that goal ``clean`` of ``maven-clean-plugin`` version ``2.5`` has been executed. This action deleted directory ``target`` which probably did not exist at this moment. All output of Maven appears in the ``target`` directory, so all output from previous runs of Maven has been removed as was intended.
 
@@ -70,27 +70,28 @@ The output should look as follows:
 
 .. code-block:: none
 
-  $ mvn compile
-  [INFO] Scanning for projects...
-  [INFO]
-  [INFO] -----------------< org.wearefrank:mavenWebappExample >------------------
-  [INFO] Building mavenWebappExample 1.0-SNAPSHOT
-  [INFO] --------------------------------[ jar ]---------------------------------
-  [INFO]
-  [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ mavenWebappExample ---
-  [WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
-  [INFO] skip non existing resourceDirectory C:\Users\martijn\git\frank-manual\srcSteps\mavenWebapp\v500\src\main\resources
-  [INFO]
-  [INFO] --- maven-compiler-plugin:3.12.1:compile (default-compile) @ mavenWebappExample ---
-  [INFO] Recompiling the module because of changed source code.
-  [WARNING] File encoding has not been set, using platform encoding windows-1252, i.e. build is platform dependent!
-  [INFO] Compiling 1 source file with javac [debug release 11] to target\classes
-  [INFO] ------------------------------------------------------------------------
-  [INFO] BUILD SUCCESS
-  [INFO] ------------------------------------------------------------------------
-  [INFO] Total time:  1.002 s
-  [INFO] Finished at: 2024-01-29T16:40:54+01:00
-  [INFO] ------------------------------------------------------------------------
+   $ mvn compile
+   [INFO] Scanning for projects...
+   [INFO]
+   [INFO] -----------------< org.wearefrank:mavenWebappExample >------------------
+   [INFO] Building mavenWebappExample 1.0-SNAPSHOT
+   [INFO]   from pom.xml
+   [INFO] --------------------------------[ jar ]---------------------------------
+   [INFO]
+   [INFO] --- resources:3.3.1:resources (default-resources) @ mavenWebappExample ---
+   [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+   [INFO] skip non existing resourceDirectory C:\Users\martijn\git\frank-manual\srcSteps\mavenWebapp\v500\src\main\resources
+   [INFO]
+   [INFO] --- compiler:3.14.1:compile (default-compile) @ mavenWebappExample ---
+   [INFO] Recompiling the module because of changed source code.
+   [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+   [INFO] Compiling 1 source file with javac [debug release 11] to target\classes
+   [INFO] ------------------------------------------------------------------------
+   [INFO] BUILD SUCCESS
+   [INFO] ------------------------------------------------------------------------
+   [INFO] Total time:  1.097 s
+   [INFO] Finished at: 2026-01-23T11:08:54+01:00
+   [INFO] ------------------------------------------------------------------------
 
 Build phase ``compile`` is part of the default life cycle. All preceding phases, like ``process-resources``, of the default life cycle are executed as well. Phase ``process-resources`` is linked to plugin ``maven-resources-plugin`` and its goal ``resources``. Phase ``compile`` executes goal ``compile`` of plugin ``maven-compiler-plugin``.
 
