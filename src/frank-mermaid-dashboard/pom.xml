@@ -1,34 +1,55 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.wearefrank</groupId>
-    <artifactId>frank-mermaid-dashboard-config</artifactId>
-    <name>frank-mermaid-dashboard-config</name>
-    <description>Augment Mermaid diagrams with the statuses of referred Frank applications</description>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
     <parent>
         <groupId>org.frankframework</groupId>
         <artifactId>configuration-parent</artifactId>
-        <version>9.3.0-20250927.042333</version>
+        <version>9.4.0</version>
     </parent>
+
+    <groupId>org.wearefrank</groupId>
+    <artifactId>frank-mermaid-dashboard-config</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>frank-mermaid-dashboard-config</name>
+    <description>Augment Mermaid diagrams with the statuses of referred Frank applications</description>
 
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.source>21</maven.compiler.source>
         <!-- Frank!Framework version for which the configuration was created. -->
-        <framework.version>9.2.0</framework.version>
+        <framework.version>9.4.0</framework.version>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.frankframework</groupId>
+            <artifactId>frankframework-core</artifactId>
+            <version>${framework.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>6.0.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>frankframework</id>
+            <name>frankframework</name>
+            <url>https://nexus.frankframework.org/repository/public</url>
+        </repository>
+    </repositories>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
-        <sourceDirectory>backend/src/main/java</sourceDirectory>
-        <testSourceDirectory>backend/src/test/java</testSourceDirectory>
         <defaultGoal>install</defaultGoal>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -57,7 +78,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>3.6.3</version>
                 <executions>
                     <execution>
                         <id>pnpm install --frozen-lockfile</id>
@@ -111,19 +132,23 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.4.0</version>
                 <executions>
                     <execution>
                         <id>copy-configuration-for-packaging</id>
-                        <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
+                        <phase>prepare-package</phase>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/classes/frank-mermaid-dashboard-config</outputDirectory>
+                            <outputDirectory>
+                                ${project.build.directory}/classes/frank-mermaid-dashboard-config
+                            </outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>backend/src/main/configurations/frank-mermaid-dashboard-config</directory>
+                                    <directory>
+                                        backend/src/main/configurations/frank-mermaid-dashboard-config
+                                    </directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
@@ -131,12 +156,14 @@
                     </execution>
                     <execution>
                         <id>copy-webcontent</id>
-                        <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
+                        <phase>prepare-package</phase>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/classes/frank-mermaid-dashboard-config/webcontent/</outputDirectory>
+                            <outputDirectory>
+                                ${project.build.directory}/classes/frank-mermaid-dashboard-config/webcontent/
+                            </outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>frontend/dist/frank-mermaid-dashboard-config/browser/</directory>
@@ -147,10 +174,10 @@
                     </execution>
                     <execution>
                         <id>fill-docker-compose-configurations-target-dir</id>
-                        <phase>install</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
+                        <phase>install</phase>
                         <configuration>
                             <outputDirectory>${project.build.directory}/dockerComposeTarget</outputDirectory>
                             <resources>
@@ -166,28 +193,8 @@
                 </executions>
             </plugin>
         </plugins>
+        <sourceDirectory>backend/src/main/java</sourceDirectory>
+        <testSourceDirectory>backend/src/test/java</testSourceDirectory>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>org.frankframework</groupId>
-            <artifactId>frankframework-core</artifactId>
-            <version>${framework.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.5.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <repositories>
-        <repository>
-            <id>frankframework</id>
-            <name>frankframework</name>
-            <url>https://nexus.frankframework.org/repository/public</url>
-        </repository>
-    </repositories>
 
 </project>

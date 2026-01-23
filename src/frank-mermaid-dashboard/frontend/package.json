@@ -10,13 +10,13 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^19.2.16",
+    "@angular/common": "^19.2.18",
     "@angular/compiler": "^19.2.18",
     "@angular/core": "^19.2.18",
-    "@angular/forms": "^19.2.0",
-    "@angular/platform-browser": "^19.2.0",
-    "@angular/platform-browser-dynamic": "^19.2.0",
-    "@angular/router": "^19.2.0",
+    "@angular/forms": "^19.2.18",
+    "@angular/platform-browser": "^19.2.18",
+    "@angular/platform-browser-dynamic": "^19.2.18",
+    "@angular/router": "^19.2.18",
     "mermaid": "^11.10.0",
     "uuid": "~11.1.0",
     "rxjs": "~7.8.0",
@@ -24,17 +24,17 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.2.7",
-    "@angular/cli": "^19.2.7",
-    "@angular/compiler-cli": "^19.2.0",
-    "@types/jasmine": "~5.1.0",
+    "@angular-devkit/build-angular": "^19.2.18",
+    "@angular/cli": "^19.2.18",
+    "@angular/compiler-cli": "^19.2.18",
+    "@types/jasmine": "~6.0.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.7.2"
+    "typescript": "~5.8.3"
   },
   "repository": {
     "url": "https://github.com/wearefrank/frank-mermaid-dashboard"
