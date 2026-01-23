@@ -15,7 +15,7 @@ Usage
 
 The purpose of this project can be demonstrated by doing the following:
 
-* Browse to http://localhost:8080/webcontent/frank-mermaid-dashboard-config. You should see the following figure:
+* Browse to http://localhost:8090/webcontent/frank-mermaid-dashboard-config. You should see the following figure:
 
    ![first screen](./readme-include/first-screen.jpg)
 
