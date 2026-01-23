@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - directory: src/frank-mermaid-dashboard/frontend
+    package-ecosystem: npm
+    schedule:
+      interval: monthly
+  - directory: src/frank-mermaid-dashboard
+    package-ecosystem: maven
+    schedule:
+      interval: monthly
+  - directory: srcSteps/mavenWebapp
+    package-ecosystem: maven
+    schedule:
+      interval: monthly
