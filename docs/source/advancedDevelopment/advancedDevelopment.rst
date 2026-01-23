@@ -9,6 +9,7 @@ Chapter :ref:`gettingStarted` provides the basics of Frank development. This cha
    :maxdepth: 3
 
    properties/properties
+   values/values
    database/database
    dockerDevel/dockerDevel
    integrationPatterns/integrationPatterns
