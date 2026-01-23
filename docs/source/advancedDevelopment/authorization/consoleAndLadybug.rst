@@ -17,10 +17,6 @@ Properties ``dtap.stage`` and ``application.security.http.transportGuarantee`` s
 
 The properties that restrict access to the console and Ladybug have a name starting with ``application.security.console.authentication``. The Frank!Framework supports many mechanisms by which users can authenticate themselves, the simplest being ``IN_MEMORY``. The mechanism is configured by setting a property of which the name ends with ``type``. The mechanism to authorize access to the console and Ladybug is thus controlled by property ``application.security.console.authentication.type``.
 
-.. NOTE::
-
-   It is possible to configura authorization for Ladybug differently from the way it is configured for the Frank!Console. Use properties that have a name starting with ``application.security.testtool.authentication`` for Ladybug specifically. Configure the authorization mechanism using ``application.security.testtool.authentication.type``. And for ``application.security.testtool.authentication.type=IN_MEMORY``, the username and the password for Ladybug specifically are configured with ``application.security.testtool.authentication.username`` and ``application.security.testtool.authentication.password``.
-
 When ``*.type`` is ``IN_MEMORY``, then properties ``*.username`` and ``*.password`` should be configured for the username and the password the user should enter. These are the remaining properties of the shown ``DeploymentSpecifics.properties``.
 
 Exercise

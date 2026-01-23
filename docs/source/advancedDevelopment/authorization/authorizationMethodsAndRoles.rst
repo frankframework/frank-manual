@@ -60,8 +60,7 @@ The following table shows all the available authorization mechanism and the prop
 
 \* = to get the real property name, prepend by:
 
-  * ``application.security.console.authentication.`` to protect the Frank!Console and Ladybug,
-  * ``application.security.testtool.authentication.`` to protect Ladybug differently, or
+  * ``application.security.console.authentication.`` to protect the Frank!Console and Ladybug, or
   * ``application.security.http.authenticators.<authenticator name>.`` to protect an HTTP interface, see :ref:`advancedDevelopmentAuthorizationHttpInterfaces`.
 
 \*\* = This is the default. Access is denied by default unless ``dtap.stage=LOC``, but there is an exception for protecting access to ``<ApiListener>`` listeners, see :ref:`advancedDevelopmentAuthorizationHttpInterfaces`.
