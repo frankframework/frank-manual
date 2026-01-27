@@ -17,6 +17,7 @@ jobs:
           - name: Frank2Values
             frankConfig: frank-manual/src/Frank2Values
             expectedFrankConfigs: Values
+            iafUtilAllowed: true
           - name: Frank2Hermes-v560
             frankConfig: frank-manual/srcSteps/Frank2Hermes/v560
             expectedFrankConfigs: hermesBridge

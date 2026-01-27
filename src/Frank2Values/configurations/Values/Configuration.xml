@@ -4,7 +4,7 @@
 >
     <Adapter name="values">
         <Receiver>
-            <ApiListener name="values" method="POST" uriPattern="values" />
+            <ApiListener name="values" method="POST" uriPattern="values" allowAllParams="true" />
         </Receiver>
         <Pipeline>
             <PutInSessionPipe name="save" sessionKey="saved"/>
