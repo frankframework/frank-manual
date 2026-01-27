@@ -27,6 +27,10 @@ These properties have to be environment properties or application properties, se
 
    In version 9.1.0-SNAPSHOT of the Frank!Framework, there is no default value for ``ladybug.jdbc.datasource``. It is NOT the case that default database were used when ``ladybug.jdbc.datasource`` would not be set. In some 8.x versions of the FF!, this behavior may be different.
 
+.. NOTE::
+
+   See :ref:`deployingDatabase` for information on how to configure database access in general.
+
 Extra columns and the database
 ------------------------------
  
