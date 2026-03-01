@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.frankframework</groupId>
         <artifactId>configuration-parent</artifactId>
-        <version>9.4.0</version>
+        <version>10.1.0-20260301.042325</version>
     </parent>
 
     <groupId>org.wearefrank</groupId>
