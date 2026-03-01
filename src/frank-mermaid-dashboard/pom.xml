@@ -22,7 +22,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.source>21</maven.compiler.source>
         <!-- Frank!Framework version for which the configuration was created. -->
-        <framework.version>9.4.0</framework.version>
+        <framework.version>10.1.0-20260301.042325</framework.version>
     </properties>
     <dependencies>
         <dependency>
