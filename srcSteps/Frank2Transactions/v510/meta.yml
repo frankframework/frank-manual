@@ -28,12 +28,6 @@
         highlight: true
         snippet: Dockerfile
 - file:
-    path: db/Dockerfile
-    change: add
-- file:
-    path: db/install-scripts/enableXa.sql
-    change: add
-- file:
     path: src/main/configurations/TransactionsExample/Configuration.xml
     change:
       - old: 1
