@@ -26,3 +26,5 @@ Second, ``resources.yml`` should be updated so that the Frank!Framework can find
 The queue is given the name ``qcf-artemis``, the name by which Frank configurations can reference it. The ``type`` field references the Java class that should be used to access the queue. And the ``url`` is needed by the Frank!Framework to reach the queue that is refenced as ``qcf-artemis`` in Frank configurations. Within the value of the ``url`` field, property ``jms.hostname`` is referenced. If the name of the Docker container holding the queue is changed, this property should be updated to hold the new name. Because of the property reference, the ``url`` within ``resources.yml`` does not have to be updated in this case.
 
 Above the JMS resource, the JDBC resource is updated to use another database driver, a database driver that supports XA transactions.
+
+If you want to test this environment update, you have to update your configuration as explained in :ref:`advancedDevelopmentIntegrationPatternsErrorStoreXa`. Call adapter ``writeDbAsync``.
