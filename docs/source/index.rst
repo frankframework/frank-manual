@@ -1,3 +1,6 @@
+.. meta::
+   :algolia-site-verification: 2D87C4BF471503E1
+
 Frank!Manual
 ============
 
