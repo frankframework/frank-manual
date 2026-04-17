@@ -237,7 +237,7 @@ Filling adapter response with session key
 
 **Question:** My adapter stores some result in a session key. How can I change my adapter such that it produces a response message filled with the value of the session key?
 
-**Answer:** Use the ``EchoPipe``. It is described in the Frank!Doc, see https://frank-manual.readthedocs.io/en/latest/gettingStarted/configurationSyntaxChecking.html.
+**Answer:** Use the ``EchoPipe``. It is described in the Frank!Doc.
 
 Reading auto-generated keys when inserting into database
 --------------------------------------------------------
